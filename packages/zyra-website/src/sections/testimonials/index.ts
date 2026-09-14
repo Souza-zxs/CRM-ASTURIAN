@@ -1,0 +1,1 @@
+export { PartnerTestimonials } from './PartnerTestimonials';

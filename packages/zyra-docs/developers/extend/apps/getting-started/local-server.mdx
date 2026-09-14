@@ -1,0 +1,87 @@
+---
+title: Local Server
+description: Manage the local Zyra Docker server — start, stop, upgrade, parallel test instance, and manual SDK setup.
+icon: "server"
+---
+
+## Managing the local server
+
+Use `yarn zyra docker:*` to control the local Zyra container:
+
+| Command | What it does |
+|---------|--------------|
+| `yarn zyra docker:start` | Start the server (pulls the image if needed) |
+| `yarn zyra docker:start 2.2.0` | Start a specific server version |
+| `yarn zyra docker:start --port 3030` | Start on a custom port |
+| `yarn zyra docker:stop` | Stop the server (preserves data) |
+| `yarn zyra docker:status` | Show URL, version, and login credentials |
+| `yarn zyra docker:logs` | Stream server logs |
+| `yarn zyra docker:reset` | Wipe data and start fresh |
+| `yarn zyra docker:upgrade` | Pull the latest `zyra-app-dev` image |
+| `yarn zyra docker:upgrade 2.2.0` | Upgrade to a specific version |
+
+Data persists across restarts in two Docker volumes (`zyra-app-dev-data` for PostgreSQL, `zyra-app-dev-storage` for files). Use `reset` to wipe everything.
+
+## Pinning the server version
+
+When no version is passed, `docker:start` resolves the version from your app's `engines.zyra` range in `package.json` — the same range the server validates against when your app is installed. It starts the newest published `zyra-app-dev` image that satisfies the range, falling back to `latest` when the field is absent or no published version matches:
+
+```json filename="package.json"
+{
+  "engines": {
+    "zyra": ">=2.2.0"
+  }
+}
+```
+
+Pass a version explicitly to override the range for a single run: `yarn zyra docker:start 2.3.0`. If a container already exists on a different version, `docker:start` upgrades it in place (recreating the container while preserving your data volumes).
+
+## Upgrading the server image
+
+`yarn zyra docker:upgrade` pulls the latest image, compares digests, and only recreates the container if anything actually changed. Volumes are preserved — only the container is replaced. If a new image was pulled and the container was running, the upgrade automatically starts a new container; run `yarn zyra docker:start` afterward to wait for it to become healthy.
+
+```bash filename="Terminal"
+yarn zyra docker:upgrade            # Latest
+yarn zyra docker:upgrade 2.2.0      # Specific version
+```
+
+Verify the running version with `yarn zyra docker:status` (it shows the `APP_VERSION` baked into the container).
+
+## Running a parallel test instance
+
+Pass `--test` to any `docker:*` command to manage a second, fully isolated instance — useful for integration tests or experiments without touching your main dev data:
+
+| Command | What it does |
+|---------|--------------|
+| `yarn zyra docker:start --test` | Start the test instance (defaults to port 2021) |
+| `yarn zyra docker:stop --test` | Stop it |
+| `yarn zyra docker:status --test` | Show its status |
+| `yarn zyra docker:logs --test` | Stream its logs |
+| `yarn zyra docker:reset --test` | Wipe its data |
+| `yarn zyra docker:upgrade --test` | Upgrade its image |
+
+The test instance has its own container (`zyra-app-dev-test`), volumes (`zyra-app-dev-test-data`, `zyra-app-dev-test-storage`), and config — it runs alongside your main instance without conflicts. Combine `--test` with `--port` to override 2021.
+
+## Manual setup (without the scaffolder)
+
+Skip the scaffolder if you're adding the SDK to an existing project:
+
+```bash filename="Terminal"
+yarn add zyra-sdk zyra-client-sdk
+```
+
+Add the script to `package.json`:
+
+```json filename="package.json"
+{
+  "scripts": {
+    "zyra": "zyra"
+  }
+}
+```
+
+You can now run `yarn zyra dev`, `yarn zyra docker:start`, and the rest.
+
+<Note>
+Don't install `zyra-sdk` globally — pin it per project so each app uses its own version.
+</Note>

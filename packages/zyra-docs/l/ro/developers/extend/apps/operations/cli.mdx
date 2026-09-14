@@ -1,0 +1,105 @@
+---
+title: CLI
+description: comenzi `yarn zyra` pentru executarea funcțiilor, transmiterea în flux a jurnalelor, gestionarea instalărilor de aplicații și comutarea între remote-uri.
+icon: terminal
+---
+
+Dincolo de `dev`, `dev:build`, `dev:add` și `dev:typecheck`, `yarn zyra` CLI oferă comenzi pentru executarea funcțiilor, vizualizarea jurnalelor și gestionarea instalărilor de aplicații.
+
+## Executarea funcțiilor (`yarn zyra dev:function:exec`)
+
+Rulați manual o funcție logică fără a o declanșa prin HTTP, cron sau eveniment de bază de date:
+
+```bash filename="Terminal"
+# Execute by function name
+yarn zyra dev:function:exec -n create-new-post-card
+
+# Execute by universalIdentifier
+yarn zyra dev:function:exec -u e56d363b-0bdc-4d8a-a393-6f0d1c75bdcf
+
+# Pass a JSON payload
+yarn zyra dev:function:exec -n create-new-post-card -p '{"name": "Hello"}'
+
+# Execute the post-install function
+yarn zyra dev:function:exec --postInstall
+```
+
+## Vizualizarea jurnalelor funcțiilor (`yarn zyra dev:function:logs`)
+
+Transmiteți în flux jurnalele de execuție pentru funcțiile logice ale aplicației:
+
+```bash filename="Terminal"
+# Stream all function logs
+yarn zyra dev:function:logs
+
+# Filter by function name
+yarn zyra dev:function:logs -n create-new-post-card
+
+# Filter by universalIdentifier
+yarn zyra dev:function:logs -u e56d363b-0bdc-4d8a-a393-6f0d1c75bdcf
+```
+
+<Note>
+Acest lucru este diferit de `yarn zyra docker:logs`, care afișează jurnalele containerului Docker. `yarn zyra dev:function:logs` afișează jurnalele de execuție ale funcțiilor aplicației de pe serverul Zyra.
+</Note>
+
+## Generarea clientului tipizat (`yarn zyra dev:generate-client`)
+
+Regenerați clientul tipizat al API-ului (`zyra-client-sdk`) din schema remote-ului activ, fără a construi sau sincroniza o aplicație. Folosiți-l pentru a obține un client tipizat în orice proiect — cum ar fi un serviciu backend aflat într-un repository separat — care comunică cu instanța dvs. Zyra:
+
+```bash filename="Terminal"
+# In your project (no Zyra app definition required)
+yarn add zyra-sdk zyra-client-sdk
+
+# Connect to the Zyra instance to generate the client from
+yarn zyra remote:add
+
+# Generate the typed client into node_modules/zyra-client-sdk
+yarn zyra dev:generate-client
+```
+
+Apoi importați clientul în codul dvs.:
+
+```typescript
+import { CoreApiClient } from 'zyra-client-sdk/core';
+```
+
+Rulați din nou comanda ori de câte ori se schimbă modelul de date pentru a reîmprospăta tipurile generate.
+
+<Note>
+Clientul este generat în interiorul `node_modules`, astfel încât nu este inclus în commit împreună cu codul dvs. Rulați `yarn zyra dev:generate-client` după fiecare instalare (de exemplu, într-un script `postinstall` sau în CI).
+</Note>
+
+## Dezinstalarea unei aplicații (`yarn zyra app:uninstall`)
+
+Eliminați aplicația din spațiul de lucru activ:
+
+```bash filename="Terminal"
+yarn zyra app:uninstall
+
+# Skip the confirmation prompt
+yarn zyra app:uninstall --yes
+```
+
+## Gestionarea remote-urilor
+
+Un „remote” este un server Zyra la care se conectează aplicația. În timpul configurării, Scaffolderul creează automat unul pentru dvs. Puteți adăuga mai multe remote-uri sau comuta între ele oricând.
+
+```bash filename="Terminal"
+# Add a new remote (opens a browser for OAuth login)
+yarn zyra remote:add
+
+# Connect to a local Zyra server (auto-detects port 2020 or 3000)
+yarn zyra remote:add --local
+
+# Add a remote non-interactively (useful for CI)
+yarn zyra remote:add --url https://your-zyra-server.com --api-key $ZYRA_API_KEY --as my-remote
+
+# List all configured remotes
+yarn zyra remote:list
+
+# Set the active remote
+yarn zyra remote:use <name>
+```
+
+Acreditările dvs. sunt stocate în `~/.zyra/config.json`.

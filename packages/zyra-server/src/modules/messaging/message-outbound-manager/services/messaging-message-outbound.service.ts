@@ -1,0 +1,111 @@
+import { Injectable } from '@nestjs/common';
+
+import { ConnectedAccountProvider } from 'zyra-shared/types';
+import { assertUnreachable } from 'zyra-shared/utils';
+
+import { type ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
+import { EmailGroupMessageOutboundService } from 'src/modules/messaging/message-outbound-manager/drivers/email-group/services/email-group-message-outbound.service';
+import { GmailMessageOutboundService } from 'src/modules/messaging/message-outbound-manager/drivers/gmail/services/gmail-message-outbound.service';
+import { ImapSmtpMessageOutboundService } from 'src/modules/messaging/message-outbound-manager/drivers/imap/services/imap-smtp-message-outbound.service';
+import { MicrosoftMessageOutboundService } from 'src/modules/messaging/message-outbound-manager/drivers/microsoft/services/microsoft-message-outbound.service';
+import { SendMessageInput } from 'src/modules/messaging/message-outbound-manager/types/send-message-input.type';
+import { type SendMessageResult } from 'src/modules/messaging/message-outbound-manager/types/send-message-result.type';
+import { WhatsappMessageOutboundService } from 'src/modules/messaging/message-outbound-manager/drivers/whatsapp/services/whatsapp-message-outbound.service';
+
+@Injectable()
+export class MessagingMessageOutboundService {
+  constructor(
+    private readonly gmailMessageOutboundService: GmailMessageOutboundService,
+    private readonly microsoftMessageOutboundService: MicrosoftMessageOutboundService,
+    private readonly imapSmtpMessageOutboundService: ImapSmtpMessageOutboundService,
+    private readonly emailGroupMessageOutboundService: EmailGroupMessageOutboundService,
+    private readonly whatsappMessageOutboundService: WhatsappMessageOutboundService,
+  ) {}
+
+  public async sendMessage(
+    sendMessageInput: SendMessageInput,
+    connectedAccount: ConnectedAccountEntity,
+  ): Promise<SendMessageResult> {
+    switch (connectedAccount.provider) {
+      case ConnectedAccountProvider.GOOGLE:
+        return this.gmailMessageOutboundService.sendMessage(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.MICROSOFT:
+        return this.microsoftMessageOutboundService.sendMessage(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.IMAP_SMTP_CALDAV:
+        return this.imapSmtpMessageOutboundService.sendMessage(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.EMAIL_GROUP:
+        return this.emailGroupMessageOutboundService.sendMessage(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.WHATSAPP:
+        return this.whatsappMessageOutboundService.sendMessage(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.OIDC:
+      case ConnectedAccountProvider.SAML:
+      case ConnectedAccountProvider.APP:
+      // Instagram only supports sending via the private-reply-to-comment
+      // API (7-day window, tied to a specific comment id) — the comment
+      // automation flow calls InstagramGraphApiService directly rather than
+      // going through this generic compose/send manager. There is no
+      // general-purpose "send any message anytime" capability to wire here.
+      case ConnectedAccountProvider.INSTAGRAM:
+        throw new Error(
+          `Provider ${connectedAccount.provider} does not support sending messages`,
+        );
+      default:
+        assertUnreachable(
+          connectedAccount.provider,
+          `Provider ${connectedAccount.provider} not supported for sending messages`,
+        );
+    }
+  }
+
+  public async createDraft(
+    sendMessageInput: SendMessageInput,
+    connectedAccount: ConnectedAccountEntity,
+  ): Promise<void> {
+    switch (connectedAccount.provider) {
+      case ConnectedAccountProvider.GOOGLE:
+        return this.gmailMessageOutboundService.createDraft(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.MICROSOFT:
+        return this.microsoftMessageOutboundService.createDraft(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.IMAP_SMTP_CALDAV:
+        return this.imapSmtpMessageOutboundService.createDraft(
+          sendMessageInput,
+          connectedAccount,
+        );
+      case ConnectedAccountProvider.EMAIL_GROUP:
+      case ConnectedAccountProvider.OIDC:
+      case ConnectedAccountProvider.SAML:
+      case ConnectedAccountProvider.APP:
+      case ConnectedAccountProvider.WHATSAPP:
+      case ConnectedAccountProvider.INSTAGRAM:
+        throw new Error(
+          `Provider ${connectedAccount.provider} does not support creating drafts`,
+        );
+      default:
+        assertUnreachable(
+          connectedAccount.provider,
+          `Provider ${connectedAccount.provider} not supported for creating drafts`,
+        );
+    }
+  }
+}

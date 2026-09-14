@@ -1,0 +1,10 @@
+{
+  "install": "yarn install",
+  "start": "(sudo service docker start || service docker start || true) && bash packages/zyra-utils/setup-dev-env.sh && npx nx database:reset zyra-server",
+  "terminals": [
+    {
+      "name": "Development Server",
+      "command": "yarn start"
+    }
+  ]
+}

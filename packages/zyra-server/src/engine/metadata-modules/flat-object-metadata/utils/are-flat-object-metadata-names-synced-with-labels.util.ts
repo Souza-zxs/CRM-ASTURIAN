@@ -1,0 +1,28 @@
+import { computeMetadataNamesFromLabelsOrThrow } from 'zyra-shared/metadata';
+
+import { isCallerZyraStandardApp } from 'src/engine/metadata-modules/utils/is-caller-zyra-standard-app.util';
+import { type UniversalFlatObjectMetadata } from 'src/engine/workspace-manager/workspace-migration/universal-flat-entity/types/universal-flat-object-metadata.type';
+import { type WorkspaceMigrationBuilderOptions } from 'src/engine/workspace-manager/workspace-migration/workspace-migration-builder/types/workspace-migration-builder-options.type';
+
+export const areFlatObjectMetadataNamesSyncedWithLabels = ({
+  flatObjectMetadata,
+  buildOptions,
+}: {
+  buildOptions: WorkspaceMigrationBuilderOptions;
+  flatObjectMetadata: Pick<
+    UniversalFlatObjectMetadata,
+    'namePlural' | 'nameSingular' | 'labelPlural' | 'labelSingular'
+  >;
+}) => {
+  const { nameSingular: computedSingularName, namePlural: computedPluralName } =
+    computeMetadataNamesFromLabelsOrThrow({
+      labelSingular: flatObjectMetadata.labelSingular,
+      labelPlural: flatObjectMetadata.labelPlural,
+      applyCustomSuffix: !isCallerZyraStandardApp(buildOptions),
+    });
+
+  return (
+    flatObjectMetadata.nameSingular === computedSingularName &&
+    flatObjectMetadata.namePlural === computedPluralName
+  );
+};

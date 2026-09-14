@@ -1,0 +1,9 @@
+**/node_modules
+**/dist
+.git
+.nx
+.cache
+.swc
+packages/zyra-server/.env
+.env
+*.log

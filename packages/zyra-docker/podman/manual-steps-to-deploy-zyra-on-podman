@@ -1,0 +1,71 @@
+#!/bin/bash
+set -e
+if [ ! -f "$(dirname "$0")/.env" ]; then
+    echo "Error: .env file not found"
+    exit 1
+fi
+source "$(dirname "$0")/.env"
+
+## steps to cleanup and start over from scratch - useful when testing
+#podman pod stop zyra-pod
+#podman pod rm zyra-pod
+#podman volume rm zyra-db-data zyra-server-data zyra-redis-data
+# end of cleanup
+
+podman volume create zyra-db-data
+podman volume create zyra-server-data
+podman volume create zyra-redis-data
+
+podman pod create --name zyra-pod -p 127.0.0.1:8080:3000
+
+podman run -d --pod zyra-pod --name zyra-db \
+  -e POSTGRES_DB=zyra \
+  -e POSTGRES_USER=zyra \
+  -e POSTGRES_PASSWORD="$POSTGRES_PASSWORD" \
+  -v zyra-db-data:/var/lib/postgresql/data:Z \
+  docker.io/library/postgres:16
+
+podman run -d --pod zyra-pod --name zyra-redis \
+  -v zyra-redis-data:/data:Z \
+  docker.io/library/redis:latest
+
+podman run -d --pod zyra-pod --name zyra-server \
+  -e NODE_PORT=3000 \
+  -e SERVER_URL="$SERVER_URL" \
+  -e PG_DATABASE_URL="postgresql://zyra:$POSTGRES_PASSWORD@zyra-db:5432/zyra" \
+  -e REDIS_URL="redis://zyra-redis:6379" \
+  -e APP_SECRET="$APP_SECRET" \
+  -e NODE_ENV=production \
+  -e LOG_LEVEL=info \
+  -v zyra-server-data:/app/docker-data:Z \
+  docker.io/zyracrm/zyra:latest
+
+podman run -d --pod zyra-pod --name zyra-worker \
+  --init \
+  -e SERVER_URL="$SERVER_URL" \
+  -e PG_DATABASE_URL="postgresql://zyra:$POSTGRES_PASSWORD@zyra-db:5432/zyra" \
+  -e REDIS_URL="redis://zyra-redis:6379" \
+  -e APP_SECRET="$APP_SECRET" \
+  -e DISABLE_DB_MIGRATIONS=true \
+  -e NODE_ENV=production \
+  -e LOG_LEVEL=info \
+  -v zyra-server-data:/app/docker-data:Z \
+  docker.io/zyracrm/zyra:latest \
+  yarn worker:prod
+
+# wait some time, check status
+sleep 30
+podman ps --pod -f name=zyra-pod
+
+
+mkdir -p ~/.config/systemd/user
+if [ ! -f "zyracrm.service" ]; then
+    echo "Error: zyracrm.service file not found"
+    exit 1
+fi
+cp zyracrm.service ~/.config/systemd/user
+
+systemctl --user daemon-reload
+systemctl --user enable zyracrm.service
+systemctl --user start zyracrm.service
+

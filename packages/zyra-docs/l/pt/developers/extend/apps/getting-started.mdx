@@ -1,0 +1,273 @@
+---
+title: Primeiros passos
+icon: rocket
+description: Crie seu primeiro app do Zyra em minutos.
+---
+
+## Pré-requisitos
+
+* **Node.js 24+** — [Baixar](https://nodejs.org/)
+* **Yarn 4** — Vem com o Node.js via Corepack. Ative-o: `corepack enable`
+* **Docker** — [Baixar](https://www.docker.com/products/docker-desktop/). Necessário para executar um servidor Zyra local. Ignore se você já tiver o Zyra em execução em outro lugar.
+
+A criação de um aplicativo Zyra tem três fases. A ferramenta de scaffolding as reúne em um único comando do fluxo ideal, mas cada fase é um conceito separado — quando algo falha, saber em que fase você está indica o que corrigir.
+
+| Fase                        | O que você faz                                     | Ferramenta                    | Resultado                             |
+| --------------------------- | -------------------------------------------------- | ----------------------------- | ------------------------------------- |
+| **1. Criar scaffolding**    | Gerar o código-fonte do aplicativo                 | `npx create-zyra-app`       | Um projeto TypeScript em disco        |
+| **2. Executar um servidor** | Iniciar um servidor Zyra para o qual sincronizar | Docker + `yarn zyra server` | Uma instância Zyra em execução      |
+| **3. Sincronizar**          | Sincronize seu código em tempo real com o servidor | `yarn zyra dev`             | Suas alterações aparecem na interface |
+
+---
+
+## Fase 1 — Fazer scaffolding do seu projeto
+
+Crie um novo aplicativo a partir do modelo:
+
+```bash filename="Terminal"
+npx create-zyra-app@latest my-zyra-app
+```
+
+Você será solicitado a informar um nome e uma descrição — pressione **Enter** para aceitar os valores padrão. Isso gera um projeto TypeScript em `my-zyra-app/` com um `application-config.ts` inicial, um papel padrão, um fluxo de trabalho de CI e um teste de integração.
+
+**Após esta fase:** você tem o código-fonte de um aplicativo na sua máquina. Ele ainda não está em execução — isso é a Fase 2.
+
+---
+
+## Fase 2 — Executar um servidor Zyra local
+
+Seu aplicativo precisa de um servidor Zyra para o qual sincronizar. O servidor é uma instância completa do Zyra — interface, API GraphQL, PostgreSQL — executando localmente no Docker. Seu código local envia suas definições para esse servidor, o que faz com que elas apareçam na interface.
+
+A ferramenta de scaffolding oferece iniciar um para você:
+
+> **Você gostaria de configurar uma instância local do Zyra?**
+
+* **Sim (recomendado)** — baixa a imagem Docker `zyracrm/zyra-app-dev` e a inicia na porta `2020`. Certifique-se de que o Docker esteja em execução primeiro.
+* **Não** — escolha isto se você já tiver um servidor Zyra ao qual deseja se conectar. Você pode conectá-lo depois com `yarn zyra remote add`.
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/start-instance.png" alt="Deve iniciar instância local?" />
+</div>
+
+Quando o servidor estiver ativo, um navegador será aberto para login. Use a conta de demonstração pré-configurada:
+
+* **E-mail:** `tim@apple.dev`
+* **Senha:** `tim@apple.dev`
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/login.png" alt="Tela de login do Zyra" />
+</div>
+
+Clique em **Authorize** na próxima tela — isso dá à CLI acesso ao seu espaço de trabalho.
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/authorize.png" alt="Tela de autorização da CLI do Zyra" />
+</div>
+
+Seu terminal confirmará que tudo está configurado.
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/scaffolded.png" alt="Scaffold do aplicativo criado com sucesso" />
+</div>
+
+**Após esta fase:** você tem um servidor Zyra em execução em [http://localhost:2020](http://localhost:2020) com sua CLI autorizada a sincronizar com ele.
+
+<Note>
+Se o Docker não estiver instalado ou em execução, a ferramenta de scaffolding informará o comando de inicialização correto para o seu sistema operacional. Quando o Docker estiver ativo, você pode retomar com `yarn zyra server start` — sem necessidade de recriar o scaffolding.
+</Note>
+
+---
+
+## Fase 3 — Sincronizar suas alterações
+
+Este é o ciclo interno no qual você passará a maior parte do tempo.
+
+```bash filename="Terminal"
+cd my-zyra-app
+yarn zyra dev
+```
+
+Isso monitora `src/`, recompila a cada alteração e sincroniza o resultado com o servidor. Edite um arquivo, salve e, em um segundo, o servidor refletirá a alteração. Você verá um painel de status em tempo real no seu terminal.
+
+Para uma saída mais detalhada (logs de build, solicitações de sincronização, rastros de erro), adicione `--verbose`.
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/dev.png" alt="Saída do terminal no modo de desenvolvimento" />
+</div>
+
+Abra [http://localhost:2020/settings/applications#developer](http://localhost:2020/settings/applications#developer). Você deverá ver seu aplicativo em **Your Apps**.
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/app-in-ui-1.png" alt="Lista Your Apps exibindo My zyra app" />
+</div>
+
+Clique em **My zyra app** para ver seu **registro do aplicativo** — um registro em nível de servidor que descreve seu aplicativo (nome, identificador, credenciais OAuth, origem). Um registro pode ser instalado em vários espaços de trabalho no mesmo servidor.
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/app-in-ui-2.png" alt="Detalhes do registro do aplicativo" />
+</div>
+
+Clique em **View installed app** para ver a instalação no espaço de trabalho. A aba **About** mostra a versão e as opções de gerenciamento.
+
+<div style={{textAlign: 'center'}}>
+  <img src="/images/docs/developers/extends/apps/app-in-ui-3.png" alt="Aplicação instalada" />
+</div>
+
+**Após esta fase:** você tem um ciclo de desenvolvimento em tempo real. Edite qualquer arquivo em `src/` e ele aparecerá na interface.
+
+### Sincronização única para CI e scripts
+
+Passe `--once` para executar uma única compilação + sincronização e sair — mesmo pipeline, sem watcher:
+
+```bash filename="Terminal"
+yarn zyra dev --once
+```
+
+| Comando                  | Comportamento                                                                                                                    | Quando usar                                                                      |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `yarn zyra dev`        | Monitora e ressincroniza a cada alteração. Fica em execução até você interrompê-lo.                                              | Desenvolvimento local interativo.                                                |
+| `yarn zyra dev --once` | Executa uma única compilação + sincronização e, em seguida, encerra com o código `0` em caso de sucesso ou `1` em caso de falha. | Scripts, CI, hooks de pre-commit, agentes de IA e fluxos de trabalho com script. |
+
+Ambos os modos precisam de um servidor em modo de desenvolvimento e de um remoto autenticado.
+
+<Warning>
+O modo de desenvolvimento só está disponível em instâncias do Zyra em modo de desenvolvimento (`NODE_ENV=development`). Instâncias de produção rejeitam solicitações de sincronização de desenvolvimento — use `yarn zyra deploy` para implantar em servidores de produção. Veja [Publicação de aplicativos](/l/pt/developers/extend/apps/publishing).
+</Warning>
+
+---
+
+## O que você pode criar
+
+Os aplicativos são compostos por **entidades** — cada uma definida como um arquivo TypeScript com um único `export default`:
+
+| Entidade                     | O que faz                                                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Objetos e campos**         | Modelos de dados personalizados (Cartão postal, Fatura etc.) com campos tipados                                    |
+| **Funções lógicas**          | Funções TypeScript do lado do servidor acionadas por rotas HTTP, agendamentos do cron ou eventos de banco de dados |
+| **Componentes de front-end** | Componentes React que são renderizados na UI do Zyra (painel lateral, widgets, menu de comandos)                 |
+| **Habilidades e agentes**    | Recursos de IA — instruções reutilizáveis e assistentes autônomos                                                  |
+| **Exibições e navegação**    | Exibições de lista pré-configuradas e itens de menu da barra lateral                                               |
+| **Layouts de página**        | Páginas de detalhes de registros personalizadas com abas e widgets                                                 |
+
+Referência completa: [Criando aplicativos](/l/pt/developers/extend/apps/building).
+
+## Estrutura do projeto
+
+```text filename="my-zyra-app/"
+my-zyra-app/
+  package.json
+  src/
+    application-config.ts                   # Required — your app's entry point
+    default-role.ts                         # Permissions for logic functions
+    constants/
+      universal-identifiers.ts              # Auto-generated UUIDs and metadata
+    __tests__/
+      setup-test.ts
+      app-install.integration-test.ts
+  .github/workflows/ci.yml                  # GitHub Actions
+  public/                                   # Static assets
+  vitest.config.ts                          # Test runner config
+  tsconfig.json, tsconfig.spec.json
+  .nvmrc, .yarnrc.yml, .oxlintrc.json
+  README.md, LLMS.md
+```
+
+| Arquivo / Pasta                          | Finalidade                                                               |
+| ---------------------------------------- | ------------------------------------------------------------------------ |
+| `src/application-config.ts`              | **Obrigatório.** O principal arquivo de configuração do seu aplicativo.  |
+| `src/default-role.ts`                    | Papel padrão que controla o que suas funções de lógica podem acessar.    |
+| `src/constants/universal-identifiers.ts` | UUIDs gerados automaticamente e metadados (nome de exibição, descrição). |
+| `src/__tests__/`                         | Testes de integração (configuração + teste de exemplo).                  |
+| `public/`                                | Recursos estáticos (imagens, fontes) servidos com seu aplicativo.        |
+
+### Começando a partir de um exemplo
+
+Use `--example` para começar com um projeto mais completo (objetos personalizados, campos, funções de lógica, componentes de front-end):
+
+```bash filename="Terminal"
+npx create-zyra-app@latest my-zyra-app --example postcard
+```
+
+Os exemplos estão em [zyra-apps/examples](https://github.com/zyrahq/zyra/tree/main/packages/zyra-apps/examples). Você também pode criar o scaffolding de entidades individuais em um projeto existente com `yarn zyra add` — veja [Criando aplicativos](/l/pt/developers/extend/apps/building#scaffolding-entities-with-yarn-zyra-add).
+
+---
+
+## Gerenciando o servidor local
+
+Use `yarn zyra server` para controlar o contêiner Zyra local:
+
+| Comando                                | O que faz                                        |
+| -------------------------------------- | ------------------------------------------------ |
+| `yarn zyra server start`             | Inicia o servidor (baixa a imagem se necessário) |
+| `yarn zyra server start --port 3030` | Iniciar em uma porta personalizada               |
+| `yarn zyra server stop`              | Interrompe o servidor (preserva os dados)        |
+| `yarn zyra server status`            | Mostra a URL, a versão e as credenciais de login |
+| `yarn zyra server logs`              | Transmite os logs do servidor                    |
+| `yarn zyra server reset`             | Apaga os dados e começa do zero                  |
+| `yarn zyra server upgrade`           | Baixa a imagem mais recente `zyra-app-dev`     |
+| `yarn zyra server upgrade 2.2.0`     | Atualizar para uma versão específica             |
+
+Os dados são persistidos entre reinicializações em dois volumes do Docker (`zyra-app-dev-data` para PostgreSQL, `zyra-app-dev-storage` para arquivos). Use `reset` para apagar tudo.
+
+### Atualizando a imagem do servidor
+
+`yarn zyra server upgrade` baixa a imagem mais recente, compara os digests e só recria o contêiner se algo realmente tiver mudado. Os volumes são preservados — apenas o contêiner é substituído. Se uma nova imagem foi baixada e o contêiner estava em execução, a atualização inicia automaticamente um novo contêiner; execute `yarn zyra server start` depois para aguardar até que ele fique saudável.
+
+```bash filename="Terminal"
+yarn zyra server upgrade            # Latest
+yarn zyra server upgrade 2.2.0      # Specific version
+```
+
+Verifique a versão em execução com `yarn zyra server status` (ele mostra o `APP_VERSION` incorporado ao contêiner).
+
+### Executando uma instância de teste paralela
+
+Passe `--test` para qualquer comando de `server` para gerenciar uma segunda instância totalmente isolada — útil para testes de integração ou para experimentar sem tocar nos seus dados principais de desenvolvimento:
+
+| Comando                             | O que faz                                        |
+| ----------------------------------- | ------------------------------------------------ |
+| `yarn zyra server start --test`   | Inicia a instância de teste (padrão: porta 2021) |
+| `yarn zyra server stop --test`    | Parar                                            |
+| `yarn zyra server status --test`  | Mostrar seu status                               |
+| `yarn zyra server logs --test`    | Transmitir seus logs                             |
+| `yarn zyra server reset --test`   | Apagar seus dados                                |
+| `yarn zyra server upgrade --test` | Atualizar sua imagem                             |
+
+A instância de teste tem seu próprio contêiner (`zyra-app-dev-test`), volumes (`zyra-app-dev-test-data`, `zyra-app-dev-test-storage`) e configuração — ela é executada junto com sua instância principal sem conflitos. Combine `--test` com `--port` para substituir 2021.
+
+---
+
+## Configuração manual (sem o gerador)
+
+Ignore a ferramenta de scaffolding se você estiver adicionando o SDK a um projeto existente:
+
+```bash filename="Terminal"
+yarn add zyra-sdk zyra-client-sdk
+```
+
+Adicione o script ao `package.json`:
+
+```json filename="package.json"
+{
+  "scripts": {
+    "zyra": "zyra"
+  }
+}
+```
+
+Agora você pode executar `yarn zyra dev`, `yarn zyra server start` e o restante.
+
+<Note>
+Não instale `zyra-sdk` globalmente — fixe-o por projeto, para que cada aplicativo use sua própria versão.
+</Note>
+
+---
+
+## Resolução de Problemas
+
+* **Erros do Docker** — Certifique-se de que o Docker Desktop (ou o daemon) esteja em execução antes de `yarn zyra server start`. A mensagem de erro mostrará o comando de inicialização correto para o seu sistema operacional.
+* **Versão errada do Node** — É necessário 24 ou superior. Verifique com `node -v`.
+* **Falta o Yarn 4** — Execute `corepack enable`.
+* **Dependências com problemas** — `rm -rf node_modules && yarn install`.
+
+Travou? Peça ajuda no [Discord da Zyra](https://discord.com/channels/1130383047699738754/1130386664812982322).

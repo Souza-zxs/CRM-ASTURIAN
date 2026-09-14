@@ -1,0 +1,145 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "sh scripts/vercel-install.sh",
+  "buildCommand": "sh scripts/vercel-build.sh",
+  "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.zyra.com" }],
+      "destination": "https://zyra.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.zyra.com" }],
+      "destination": "https://zyra.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.zyra-main.com" }],
+      "destination": "https://zyra-main.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.zyra-main.com" }],
+      "destination": "https://zyra-main.com/:path*",
+      "permanent": true
+    },
+    { "source": "/en", "destination": "/", "statusCode": 301 },
+    { "source": "/en/:path*", "destination": "/:path*", "statusCode": 301 },
+    {
+      "source": "/user-guide",
+      "destination": "https://docs.zyra.com/user-guide/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/user-guide/section/:folder/:slug*",
+      "destination": "https://docs.zyra.com/user-guide/:folder/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/user-guide/:folder/:slug*",
+      "destination": "https://docs.zyra.com/user-guide/:folder/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/developers",
+      "destination": "https://docs.zyra.com/developers/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/developers/section/:folder/:slug*",
+      "destination": "https://docs.zyra.com/developers/:folder/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/developers/:folder/:slug*",
+      "destination": "https://docs.zyra.com/developers/:folder/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/zyra-ui",
+      "destination": "https://docs.zyra.com/zyra-ui/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/zyra-ui/section/:folder/:slug*",
+      "destination": "https://docs.zyra.com/zyra-ui/:folder/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/zyra-ui/:folder/:slug*",
+      "destination": "https://docs.zyra.com/zyra-ui/:folder/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/resources/why-zyra",
+      "destination": "/why-zyra",
+      "permanent": true
+    },
+    { "source": "/story", "destination": "/why-zyra", "permanent": true },
+    {
+      "source": "/legal/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    { "source": "/legal/terms", "destination": "/terms", "permanent": true },
+    { "source": "/legal/dpa", "destination": "/terms", "permanent": true },
+    {
+      "source": "/case-studies/9-dots-story",
+      "destination": "/customers/9dots",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/act-immi-story",
+      "destination": "/customers/act-education",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/:slug*",
+      "destination": "/customers",
+      "permanent": true
+    },
+    {
+      "source": "/implementation-services",
+      "destination": "/partners",
+      "permanent": true
+    },
+    {
+      "source": "/onboarding-packages",
+      "destination": "/partners",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'none'" }
+      ]
+    },
+    {
+      "source": "/(images|illustrations|lottie)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

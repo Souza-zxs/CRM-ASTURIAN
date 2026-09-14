@@ -1,0 +1,77 @@
+---
+title: Befehle
+icon: terminal
+description: Nützliche Befehle für die Entwicklung von Zyra.
+---
+
+Befehle können vom Repository-Stammverzeichnis mit `npx nx` ausgeführt werden. Verwende `npx nx run {project}:{command}` für eine explizite Zielangabe.
+
+## Die App starten
+
+```bash
+npx nx start zyra-front          # Frontend dev server (http://localhost:3001)
+npx nx start zyra-server         # Backend server (http://localhost:3000)
+npx nx run zyra-server:worker    # Background worker
+```
+
+## Datenbank
+
+```bash
+npx nx database:reset zyra-server                          # Reset and seed database
+npx nx run zyra-server:database:migrate:prod               # Run migrations
+npx nx run zyra-server:database:migrate:generate --name <name> --type <fast|slow>  # Generate a migration
+```
+
+## Linting
+
+```bash
+npx nx lint:diff-with-main zyra-front    # Lint changed files (fastest)
+npx nx lint:diff-with-main zyra-server
+npx nx lint zyra-front --configuration=fix  # Auto-fix
+```
+
+## Typprüfung
+
+```bash
+npx nx typecheck zyra-front
+npx nx typecheck zyra-server
+```
+
+## Tests
+
+```bash
+# Frontend
+npx nx test zyra-front                          # Jest unit tests
+npx nx storybook:build zyra-front               # Build Storybook
+npx nx storybook:test zyra-front                # Storybook tests
+
+# Backend
+npx nx run zyra-server:test:unit                # Unit tests
+npx nx run zyra-server:test:integration         # Integration tests
+npx nx run zyra-server:test:integration:with-db-reset  # Integration with DB reset
+
+# Single file (fastest)
+npx jest path/to/test.test.ts --config=packages/{project}/jest.config.mjs
+```
+
+## GraphQL
+
+```bash
+npx nx run zyra-front:graphql:generate                        # Regenerate types
+npx nx run zyra-front:graphql:generate --configuration=metadata  # Metadata schema
+```
+
+## Übersetzungen
+
+```bash
+npx nx run zyra-front:lingui:extract   # Extract strings
+npx nx run zyra-front:lingui:compile   # Compile translations
+```
+
+## Build
+
+```bash
+npx nx build zyra-shared   # Must be built first
+npx nx build zyra-front
+npx nx build zyra-server
+```

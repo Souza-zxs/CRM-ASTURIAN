@@ -1,0 +1,31 @@
+{
+  "slug": "acme-test",
+  "product": {
+    "name": "Acme CRM",
+    "shortName": "Acme",
+    "tagline": "Acme CRM — run your pipeline"
+  },
+  "theme": {
+    "mode": "generated",
+    "primaryHex": "#e0483e"
+  },
+  "assets": {
+    "emailLogoUrl": "https://assets.acme.example/logo.png"
+  },
+  "domain": {
+    "frontDomain": "app.acme.example",
+    "serverUrl": "https://api.acme.example",
+    "defaultSubdomain": "app"
+  },
+  "email": {
+    "fromName": "Acme CRM",
+    "fromAddress": "noreply@acme.example",
+    "supportAddress": "support@acme.example"
+  },
+  "legal": {
+    "companyLine": "Acme CRM — a product of Acme Inc.",
+    "websiteUrl": "https://acme.example/",
+    "docsUrl": "https://docs.acme.example"
+  },
+  "defaultLocale": "en"
+}

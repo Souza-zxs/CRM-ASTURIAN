@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["zyra-shared", "zyra-shared/*"],
+            "message": "zyra-apps applications must not import from zyra-shared directly. Import the runtime types and helpers you need from zyra-sdk instead so the app bundle stays minimal."
+          }
+        ]
+      }
+    ]
+  }
+}

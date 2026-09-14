@@ -1,0 +1,1 @@
+export { WhyZyraHero } from './WhyZyraHero';

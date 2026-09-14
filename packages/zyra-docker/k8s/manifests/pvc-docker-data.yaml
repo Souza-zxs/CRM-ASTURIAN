@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zyracrm-docker-data-pvc
+  namespace: zyracrm
+spec:
+  storageClassName: default
+  volumeName: zyracrm-docker-data-pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

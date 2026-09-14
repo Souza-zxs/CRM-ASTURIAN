@@ -1,0 +1,73 @@
+# Publica as imagens Docker do Zyra no GitHub Container Registry (GHCR).
+# PRONTO PARA USAR: o GHCR usa o GITHUB_TOKEN — não precisa de conta/registry externo.
+# Para ativar: git mv .github/disabled-workflows/publish-image.yaml .github/workflows/
+#
+# Publica:
+#   ghcr.io/<owner>/zyra          (target "zyra": server + frontend)
+#   ghcr.io/<owner>/zyra-app-dev  (target "zyra-app-dev": instância all-in-one de teste)
+#
+# Depois de publicar, aponte as actions spawn-* para ghcr.io/<owner>/zyra-app-dev.
+
+name: 'Publish Docker images'
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag da imagem (ex: latest, v2.16.0)'
+        required: false
+        default: latest
+  push:
+    tags:
+      - 'zyra/v*'
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  DOCKERFILE: packages/zyra-docker/zyra/Dockerfile
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - image: zyra
+            target: zyra
+          - image: zyra-app-dev
+            target: zyra-app-dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve tag
+        id: meta
+        run: |
+          RAW="${{ github.event.inputs.tag || github.ref_name }}"
+          # normaliza refs de tag "zyra/v1.2.3" -> "v1.2.3"
+          echo "tag=${RAW##*/}" >> "$GITHUB_OUTPUT"
+          echo "owner=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push ${{ matrix.image }}
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ env.DOCKERFILE }}
+          target: ${{ matrix.target }}
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ steps.meta.outputs.owner }}/${{ matrix.image }}:${{ steps.meta.outputs.tag }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

@@ -1,0 +1,87 @@
+---
+title: Servidor local
+description: "Administra el servidor Docker local de Zyra: inícialo, deténlo, actualízalo, crea una instancia de prueba en paralelo y realiza la configuración manual del SDK."
+icon: server
+---
+
+## Administrar el servidor local
+
+Usa `yarn zyra docker:*` para controlar el contenedor local de Zyra:
+
+| Comando                                | Qué hace                                                          |
+| -------------------------------------- | ----------------------------------------------------------------- |
+| `yarn zyra docker:start`             | Inicia el servidor local (descarga la imagen si es necesario)     |
+| `yarn zyra docker:start 2.2.0`       | Iniciar una versión específica del servidor                       |
+| `yarn zyra docker:start --port 3030` | Inicia en un puerto personalizado                                 |
+| `yarn zyra docker:stop`              | Detiene el servidor (conserva los datos)                          |
+| `yarn zyra docker:status`            | Muestra la URL, la versión y las credenciales de inicio de sesión |
+| `yarn zyra docker:logs`              | Transmite los registros del servidor                              |
+| `yarn zyra docker:reset`             | Elimina los datos y comienza desde cero                           |
+| `yarn zyra docker:upgrade`           | Descarga la última imagen `zyra-app-dev`                        |
+| `yarn zyra docker:upgrade 2.2.0`     | Actualiza a una versión específica                                |
+
+Los datos se conservan entre reinicios en dos volúmenes de Docker (`zyra-app-dev-data` para PostgreSQL, `zyra-app-dev-storage` para archivos). Usa `reset` para borrar todo.
+
+## Fijar la versión del servidor
+
+Cuando no se pasa ninguna versión, `docker:start` resuelve la versión a partir del rango `engines.zyra` de tu aplicación en `package.json`, el mismo rango con el que el servidor valida cuando tu aplicación se instala. Inicia la imagen publicada más reciente de `zyra-app-dev` que satisface el rango, recurriendo a `latest` cuando el campo está ausente o ninguna versión publicada coincide:
+
+```json filename="package.json"
+{
+  "engines": {
+    "zyra": ">=2.2.0"
+  }
+}
+```
+
+Pasa una versión explícitamente para anular el rango en una sola ejecución: `yarn zyra docker:start 2.3.0`. Si ya existe un contenedor en una versión diferente, `docker:start` lo actualiza in situ (recreando el contenedor mientras conserva tus volúmenes de datos).
+
+## Actualización de la imagen del servidor
+
+`yarn zyra docker:upgrade` descarga la última imagen, compara los digests y solo recrea el contenedor si realmente cambió algo. Los volúmenes se conservan — solo se reemplaza el contenedor. Si se descargó una nueva imagen y el contenedor estaba en ejecución, la actualización inicia automáticamente un contenedor nuevo; ejecuta `yarn zyra docker:start` después para esperar a que esté en buen estado.
+
+```bash filename="Terminal"
+yarn zyra docker:upgrade            # Latest
+yarn zyra docker:upgrade 2.2.0      # Specific version
+```
+
+Puedes verificar la versión en ejecución con `yarn zyra docker:status` (muestra el `APP_VERSION` incluido en el contenedor).
+
+## Ejecutar una instancia de prueba en paralelo
+
+Pasa `--test` a cualquier comando de `docker:*` para administrar una segunda instancia completamente aislada — útil para ejecutar pruebas de integración o experimentar sin tocar los datos principales de desarrollo:
+
+| Comando                             | Qué hace                                                       |
+| ----------------------------------- | -------------------------------------------------------------- |
+| `yarn zyra docker:start --test`   | Inicia la instancia de prueba (usa el puerto 2021 por defecto) |
+| `yarn zyra docker:stop --test`    | Deténla                                                        |
+| `yarn zyra docker:status --test`  | Muestra su estado                                              |
+| `yarn zyra docker:logs --test`    | Transmite sus registros                                        |
+| `yarn zyra docker:reset --test`   | Borra sus datos                                                |
+| `yarn zyra docker:upgrade --test` | Actualiza su imagen                                            |
+
+La instancia de prueba se ejecuta en su propio contenedor de Docker (`zyra-app-dev-test`) con volúmenes dedicados (`zyra-app-dev-test-data`, `zyra-app-dev-test-storage`) y configuración dedicada, por lo que puede ejecutarse en paralelo con la instancia principal sin conflictos. Combina `--test` con `--port` para anular el puerto predeterminado (2021).
+
+## Configuración manual (sin el generador)
+
+Omite el generador si vas a agregar el SDK a un proyecto existente:
+
+```bash filename="Terminal"
+yarn add zyra-sdk zyra-client-sdk
+```
+
+Agrega el script a `package.json`:
+
+```json filename="package.json"
+{
+  "scripts": {
+    "zyra": "zyra"
+  }
+}
+```
+
+Ahora puedes ejecutar `yarn zyra dev`, `yarn zyra docker:start` y todos los demás comandos.
+
+<Note>
+No instales `zyra-sdk` globalmente — fíjalo por proyecto para que cada app use su propia versión.
+</Note>

@@ -1,0 +1,32 @@
+{
+  "slug": "zyra",
+  "product": {
+    "name": "Zyra",
+    "shortName": "Zyra",
+    "tagline": "O CRM que se adapta ao seu jeito de vender."
+  },
+  "theme": {
+    "mode": "scale",
+    "primaryHex": "#6e56cf",
+    "docsPrimaryHex": "#141414"
+  },
+  "assets": {
+    "emailLogoUrl": "https://app.zyra.com/images/icons/windows11/Square150x150Logo.scale-100.png"
+  },
+  "domain": {
+    "frontDomain": "app.zyra.com",
+    "serverUrl": "http://localhost:3000",
+    "defaultSubdomain": "app"
+  },
+  "email": {
+    "fromName": "Felix from Zyra",
+    "fromAddress": "noreply@yourdomain.com",
+    "supportAddress": "support@zyra.com"
+  },
+  "legal": {
+    "companyLine": "Zyra — Horizon LTDA",
+    "websiteUrl": "https://zyra.com/",
+    "docsUrl": "https://docs.zyra.com",
+    "socialLinks": {}
+  }
+}

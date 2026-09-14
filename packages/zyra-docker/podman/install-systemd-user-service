@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+mkdir -p ~/.config/systemd/user
+[ -f zyracrm.service ] || { echo "Error: zyracrm.service not found"; exit 1; }
+cp zyracrm.service ~/.config/systemd/user
+
+
+systemctl --user daemon-reload
+systemctl --user enable zyracrm.service
+systemctl --user start zyracrm.service

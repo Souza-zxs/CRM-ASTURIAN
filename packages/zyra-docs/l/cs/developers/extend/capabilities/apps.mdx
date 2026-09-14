@@ -1,0 +1,81 @@
+---
+title: Aplikace Zyra
+description: Vytvářejte a spravujte přizpůsobení Zyra jako kód.
+---
+
+<Warning>
+Aplikace jsou aktuálně v alfa fázi. Funkce funguje, ale stále se vyvíjí.
+</Warning>
+
+## Co jsou aplikace?
+
+Aplikace vám umožňují rozšířit Zyra o vlastní objekty, pole, logické funkce, front-endové komponenty, AI schopnosti a další — vše je spravováno jako kód. Místo konfigurace všeho přes uživatelské rozhraní definujete v TypeScriptu svůj datový model a logiku a nasadíte je do jednoho nebo více pracovních prostorů.
+
+**Co můžete vytvořit:**
+
+* **Vlastní objekty a pole** — rozšiřte svůj datový model o nové entity nebo přidejte pole k existujícím objektům, jako jsou Společnost nebo Osoba
+* **Logické funkce** — serverové funkce spouštěné událostmi v databázi, plány cronu nebo HTTP routami
+* **Front-endové komponenty** — komponenty Reactu, které se vykreslují v uživatelském rozhraní Zyra (stránky záznamů, příkazová nabídka, postranní panely)
+* **Dovednosti AI a agenti** — rozšiřte AI v Zyra o vlastní možnosti
+* **Zobrazení a navigace** — předkonfigurovaná uložená zobrazení a odkazy v postranním panelu
+
+## Rychlý start
+
+```bash filename="Terminal"
+npx create-zyra-app@latest my-zyra-app
+cd my-zyra-app
+yarn zyra dev
+```
+
+Tímto se vytvoří kostra nové aplikace, volitelně se spustí lokální server Zyra a začne sledovat změny ve vašich souborech. Podrobný postup najdete v průvodci [Začínáme](/l/cs/developers/extend/apps/getting-started).
+
+## Podrobné návody
+
+| Průvodce                                            | Popis                                                                                                                                    |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| [Začínáme](/l/cs/developers/extend/apps/getting-started) | Vytvoření kostry aplikace, nastavení lokálního serveru, struktura projektu, CI                                                           |
+| [Tvorba aplikací](/l/cs/developers/extend/apps/building) | Definice entit (`defineObject`, `defineLogicFunction`, `defineFrontComponent` atd.), klienti API, balíčky npm, veřejná aktiva, testování |
+| [Publikování](/l/cs/developers/extend/apps/publishing)   | Nasazení na server, publikování na npm, tržiště                                                                                          |
+
+## Klíčové pojmy
+
+### Detekce entit
+
+SDK detekuje entity prohledáváním vašich souborů TypeScript a hledá volání `export default define<Entity>({...})`. Pojmenování souborů a struktura složek jsou flexibilní — detekce je založená na AST, nikoli na cestách.
+
+### Dostupné typy entit
+
+| Funkce                             | Účel                                             |
+| ---------------------------------- | ------------------------------------------------ |
+| `defineApplication()`              | Metadata aplikace (povinné, jedno na aplikaci)   |
+| `defineObject()`                   | Vlastní objekty s poli                           |
+| `defineField()`                    | Pole u existujících objektů                      |
+| `defineLogicFunction()`            | Serverová logika se spouštěči                    |
+| `defineFrontComponent()`           | Komponenty Reactu v uživatelském rozhraní Zyra |
+| `defineRole()`                     | Role oprávnění                                   |
+| `defineView()`                     | Konfigurace uložených zobrazení                  |
+| `defineNavigationMenuItem()`       | Odkazy postranní navigace                        |
+| `defineSkill()`                    | Dovednosti agenta AI                             |
+| `defineAgent()`                    | AI agenti s prompty                              |
+| `definePageLayout()`               | Vlastní rozvržení stránek záznamu                |
+| `definePreInstallLogicFunction()`  | Spouští se před instalací aplikace               |
+| `definePostInstallLogicFunction()` | Spouští se po instalaci aplikace                 |
+
+### Vývojový postup
+
+1. **`yarn zyra dev`** — sleduje zdrojové soubory, při změně znovu sestaví, synchronizuje se serverem a generuje typované klienty API
+2. **`yarn zyra build`** — vytvoří distribuovatelný build
+3. **`yarn zyra deploy`** — nasadí na vzdálený server Zyra
+4. **`yarn zyra add`** — interaktivně vytvoří kostru nové entity
+
+### Referenční dokumentace CLI
+
+```bash filename="Terminal"
+yarn zyra help          # List all commands
+yarn zyra server start  # Start local dev server
+yarn zyra remote add    # Connect to a Zyra server
+yarn zyra exec -n fn    # Execute a logic function
+yarn zyra logs -n fn    # Stream function logs
+```
+
+Úplný přehled příkazů CLI najdete v průvodci [Začínáme](/l/cs/developers/extend/apps/getting-started).

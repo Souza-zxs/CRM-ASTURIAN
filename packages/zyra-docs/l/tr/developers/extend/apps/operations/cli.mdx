@@ -1,0 +1,105 @@
+---
+title: CLI
+description: Fonksiyonları çalıştırmak, günlükleri akış olarak izlemek, uygulama kurulumlarını yönetmek ve uzaklar arasında geçiş yapmak için yarn zyra komutları.
+icon: terminal
+---
+
+`dev`, `dev:build`, `dev:add` ve `dev:typecheck` dışında, `yarn zyra` CLI, fonksiyonları çalıştırma, günlükleri görüntüleme ve uygulama kurulumlarını yönetme komutları sağlar.
+
+## Fonksiyonları çalıştırma (`yarn zyra dev:function:exec`)
+
+Bir mantık fonksiyonunu HTTP, cron veya veritabanı olayıyla tetiklemeden manuel olarak çalıştırın:
+
+```bash filename="Terminal"
+# Execute by function name
+yarn zyra dev:function:exec -n create-new-post-card
+
+# Execute by universalIdentifier
+yarn zyra dev:function:exec -u e56d363b-0bdc-4d8a-a393-6f0d1c75bdcf
+
+# Pass a JSON payload
+yarn zyra dev:function:exec -n create-new-post-card -p '{"name": "Hello"}'
+
+# Execute the post-install function
+yarn zyra dev:function:exec --postInstall
+```
+
+## Fonksiyon günlüklerini görüntüleme (`yarn zyra dev:function:logs`)
+
+Uygulamanızın mantık fonksiyonlarının yürütme günlüklerini akış olarak alın:
+
+```bash filename="Terminal"
+# Stream all function logs
+yarn zyra dev:function:logs
+
+# Filter by function name
+yarn zyra dev:function:logs -n create-new-post-card
+
+# Filter by universalIdentifier
+yarn zyra dev:function:logs -u e56d363b-0bdc-4d8a-a393-6f0d1c75bdcf
+```
+
+<Note>
+Bu, Docker konteyner günlüklerini gösteren `yarn zyra docker:logs` komutundan farklıdır. `yarn zyra dev:function:logs`, uygulamanızın fonksiyon yürütme günlüklerini Zyra sunucusundan gösterir.
+</Note>
+
+## Tiplendirilmiş istemciyi oluşturma (`yarn zyra dev:generate-client`)
+
+Bir uygulamayı oluşturup eşitlemeden, etkin uzak sunucunun şemasından tiplendirilmiş API istemcisini (`zyra-client-sdk`) yeniden oluşturun. Bunu, Zyra örneğinizle iletişim kuran — örneğin ayrı bir depoda bulunan bir arka uç hizmeti — herhangi bir projede tiplendirilmiş bir istemci edinmek için kullanın:
+
+```bash filename="Terminal"
+# In your project (no Zyra app definition required)
+yarn add zyra-sdk zyra-client-sdk
+
+# Connect to the Zyra instance to generate the client from
+yarn zyra remote:add
+
+# Generate the typed client into node_modules/zyra-client-sdk
+yarn zyra dev:generate-client
+```
+
+Ardından istemciyi kodunuza içe aktarın:
+
+```typescript
+import { CoreApiClient } from 'zyra-client-sdk/core';
+```
+
+Oluşturulan türleri yenilemek için veri modeliniz her değiştiğinde komutu yeniden çalıştırın.
+
+<Note>
+İstemci `node_modules` içinde oluşturulur, bu nedenle kodunuzla birlikte commit edilmez. Her kurulumdan sonra (örneğin bir `postinstall` betiğinde veya CI içinde) `yarn zyra dev:generate-client` komutunu çalıştırın.
+</Note>
+
+## Bir uygulamayı kaldırma (`yarn zyra app:uninstall`)
+
+Uygulamanızı etkin çalışma alanından kaldırın:
+
+```bash filename="Terminal"
+yarn zyra app:uninstall
+
+# Skip the confirmation prompt
+yarn zyra app:uninstall --yes
+```
+
+## Uzakları yönetme
+
+Bir **uzak**, uygulamanızın bağlandığı Zyra sunucusudur. Kurulum sırasında iskelet oluşturucu sizin için otomatik olarak bir tane oluşturur. Dilediğiniz zaman daha fazla uzak ekleyebilir veya aralarında geçiş yapabilirsiniz.
+
+```bash filename="Terminal"
+# Add a new remote (opens a browser for OAuth login)
+yarn zyra remote:add
+
+# Connect to a local Zyra server (auto-detects port 2020 or 3000)
+yarn zyra remote:add --local
+
+# Add a remote non-interactively (useful for CI)
+yarn zyra remote:add --url https://your-zyra-server.com --api-key $ZYRA_API_KEY --as my-remote
+
+# List all configured remotes
+yarn zyra remote:list
+
+# Set the active remote
+yarn zyra remote:use <name>
+```
+
+Kimlik bilgileriniz `~/.zyra/config.json` içinde saklanır.

@@ -1,0 +1,48 @@
+#
+# Crowdin CLI configuration for Documentation translations
+# See https://crowdin.github.io/crowdin-cli/configuration for more information
+#
+
+"preserve_hierarchy": true
+"base_url": "https://api.crowdin.com"
+"base_path": ".."
+
+files: [
+  {
+    "source": "packages/zyra-docs/getting-started/**/*.mdx",
+    "translation": "packages/zyra-docs/l/%two_letters_code%/getting-started/**/%original_file_name%",
+  },
+  {
+    #
+    # MDX documentation files - user-guide
+    # Using md type to preserve JSX component structure
+    # This prevents Crowdin from reformatting <Warning>, <Accordion>, etc.
+    #
+    "source": "packages/zyra-docs/user-guide/**/*.mdx",
+    "translation": "packages/zyra-docs/l/%two_letters_code%/user-guide/**/%original_file_name%",
+  },
+  {
+    #
+    # MDX documentation files - developers
+    # Using md type to preserve JSX component structure
+    #
+    "source": "packages/zyra-docs/developers/**/*.mdx",
+    "translation": "packages/zyra-docs/l/%two_letters_code%/developers/**/%original_file_name%",
+  },
+  {
+    #
+    # MDX documentation files - zyra-ui
+    # Using md type to preserve JSX component structure
+    #
+    "source": "packages/zyra-docs/zyra-ui/**/*.mdx",
+    "translation": "packages/zyra-docs/l/%two_letters_code%/zyra-ui/**/%original_file_name%",
+  },
+  {
+    #
+    # Navigation labels template - translated into per-locale navigation.json
+    #
+    "source": "packages/zyra-docs/navigation/navigation.template.json",
+    "translation": "packages/zyra-docs/l/%two_letters_code%/navigation.json",
+  }
+]
+

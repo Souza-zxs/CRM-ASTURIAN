@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: zyra-db
+    image: postgres:16
+    environment:
+      POSTGRES_DB: zyra
+      POSTGRES_USER: zyra
+      POSTGRES_PASSWORD: ${PG_DATABASE_PASSWORD}
+    volumes:
+      - zyra-db-data:/var/lib/postgresql/data:Z
+
+  redis:
+    container_name: zyra-redis
+    image: redis:latest
+    command: ["--maxmemory-policy", "noeviction"]
+    volumes:
+      - zyra-redis-data:/data:Z
+
+  server:
+    container_name: zyra-server
+    image: zyracrm/zyra:latest
+    environment:
+      NODE_PORT: "3000"
+      SERVER_URL: ${SERVER_URL}
+      PG_DATABASE_URL: "postgresql://zyra:${PG_DATABASE_PASSWORD}@zyra-db:5432/zyra"
+      REDIS_URL: "redis://zyra-redis:6379"
+      APP_SECRET: ${APP_SECRET}
+      NODE_ENV: production
+      LOG_LEVEL: info
+    volumes:
+      - zyra-server-data:/app/docker-data:Z
+    ports:
+      - 127.0.0.1:8080:3000
+
+  worker:
+    container_name: zyra-worker
+    image: zyracrm/zyra:latest
+    command: yarn worker:prod
+    environment:
+      SERVER_URL: ${SERVER_URL}
+      PG_DATABASE_URL: "postgresql://zyra:${PG_DATABASE_PASSWORD}@zyra-db:5432/zyra"
+      REDIS_URL: "redis://zyra-redis:6379"
+      APP_SECRET: ${APP_SECRET}
+      DISABLE_DB_MIGRATIONS: "true"
+      NODE_ENV: production
+      LOG_LEVEL: info
+    volumes:
+      - zyra-server-data:/app/docker-data:Z
+    init: true
+
+volumes:
+  zyra-db-data:
+  zyra-server-data:
+  zyra-redis-data:

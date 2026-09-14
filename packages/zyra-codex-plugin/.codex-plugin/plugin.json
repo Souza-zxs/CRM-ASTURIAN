@@ -1,0 +1,50 @@
+{
+  "name": "zyra",
+  "version": "0.1.0",
+  "description": "Create, operate, develop, publish, and query Zyra apps through Codex.",
+  "author": {
+    "name": "Zyra PBC",
+    "url": "https://zyra.com/"
+  },
+  "homepage": "https://docs.zyra.com/",
+  "repository": "https://github.com/zyrahq/zyra",
+  "license": "AGPL-3.0",
+  "keywords": [
+    "zyra",
+    "create-zyra-app",
+    "mcp",
+    "oauth",
+    "crm",
+    "apps",
+    "scaffolding",
+    "cli",
+    "zyra-sdk",
+    "publishing"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Zyra",
+    "shortDescription": "Create, develop, publish, and query apps",
+    "longDescription": "Scaffold, develop, deploy, and publish Zyra apps end-to-end. Five focused skills cover app creation, entity development (objects, fields, logic, layouts, front components), remote/sync/deploy operations, marketplace publishing assets, and workspace data retrieval via MCP. The bundled Zyra docs MCP server keeps guidance current, and the setup helper wires per-user workspace MCP with OAuth in one command.",
+    "developerName": "Zyra PBC",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://zyra.com/",
+    "privacyPolicyURL": "https://zyra.com/privacy-policy",
+    "termsOfServiceURL": "https://zyra.com/terms",
+    "defaultPrompt": [
+      "Create and run a new Zyra app",
+      "Push a Zyra app to production",
+      "Develop a Zyra app feature"
+    ],
+    "brandColor": "#000000",
+    "composerIcon": "./assets/zyra-logo.svg",
+    "logo": "./assets/zyra-logo.png",
+    "screenshots": []
+  }
+}

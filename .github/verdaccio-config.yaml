@@ -1,0 +1,22 @@
+storage: /tmp/verdaccio-storage
+auth:
+  htpasswd:
+    file: /tmp/verdaccio-htpasswd
+    max_users: 100
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+packages:
+  'zyra-sdk':
+    access: $all
+    publish: $all
+  'zyra-client-sdk':
+    access: $all
+    publish: $all
+  'create-zyra-app':
+    access: $all
+    publish: $all
+  '**':
+    access: $all
+    proxy: npmjs
+log: { type: stdout, format: pretty, level: warn }

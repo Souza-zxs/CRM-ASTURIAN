@@ -1,0 +1,118 @@
+import { msg } from '@lingui/core/macro';
+
+import { type WebsiteRoute } from './website-route';
+
+export const STATIC_WEBSITE_ROUTES: readonly WebsiteRoute[] = [
+  {
+    changeFrequency: 'weekly',
+    description: msg`The CRM that adapts to how you sell. Modular, scalable, and built to fit your business.`,
+    id: 'home',
+    indexed: true,
+    path: '/',
+    priority: 1,
+    title: msg`Zyra | The CRM That Adapts to How You Sell`,
+  },
+  {
+    changeFrequency: 'monthly',
+    description: msg`Pipelines, custom objects, AI assistants, and a native API on top of Postgres. Zyra is the CRM with the modern UX teams actually want to use.`,
+    id: 'product',
+    indexed: true,
+    path: '/product',
+    priority: 0.8,
+    title: msg`Zyra CRM Features — A Modern, Customisable CRM Platform`,
+  },
+  {
+    changeFrequency: 'monthly',
+    description: msg`Simple, transparent pricing that scales with your team.`,
+    id: 'pricing',
+    indexed: true,
+    path: '/pricing',
+    priority: 0.9,
+    title: msg`Zyra CRM Pricing — Plans from $9 per User per Month`,
+  },
+  {
+    changeFrequency: 'monthly',
+    description: msg`Find a certified Zyra partner to migrate, customise, and operate your CRM, or join the ecosystem and grow your practice with us.`,
+    id: 'partners',
+    indexed: true,
+    path: '/partners',
+    priority: 0.7,
+    title: msg`Zyra Partners — Certified Zyra CRM Implementers`,
+  },
+  {
+    changeFrequency: 'weekly',
+    description: msg`Browse Zyra's certified partners — the agencies and individuals who migrate, customise, host, and support Zyra across regions, languages, and deployment models.`,
+    id: 'partnersList',
+    indexed: true,
+    path: '/partners/list',
+    priority: 0.6,
+    title: msg`Find a Zyra Partner — Zyra CRM Marketplace`,
+  },
+  {
+    // The application form: noindex (a utility route, excluded from the
+    // sitemap by getIndexedWebsiteRoutes), reachable from the partner CTAs.
+    changeFrequency: 'yearly',
+    description: msg`Apply to join the Zyra partner ecosystem and grow your practice with Zyra.`,
+    id: 'partnersApply',
+    indexed: false,
+    path: '/partners/apply',
+    priority: 0.3,
+    title: msg`Become a Zyra Partner — Apply`,
+  },
+  {
+    changeFrequency: 'monthly',
+    description: msg`Packaged CRMs make every company look the same. Zyra is the CRM teams shape around their workflow, with a modern UI and a developer-first platform.`,
+    id: 'whyZyra',
+    indexed: true,
+    path: '/why-zyra',
+    priority: 0.8,
+    title: msg`Why Zyra — A CRM Built to Be Customised`,
+  },
+  {
+    changeFrequency: 'weekly',
+    description: msg`Every new release of Zyra, with changelogs, demos, and the highlights teams care about most.`,
+    id: 'releases',
+    indexed: true,
+    path: '/releases',
+    priority: 0.7,
+    title: msg`Zyra Releases — What's New in Zyra`,
+  },
+  {
+    changeFrequency: 'monthly',
+    description: msg`Real customer stories from teams running their business on Zyra: how they migrated, what they customised, and what changed once their CRM finally fit.`,
+    id: 'customers',
+    indexed: true,
+    path: '/customers',
+    priority: 0.7,
+    title: msg`Zyra Customers — How Modern Teams Run Their CRM`,
+  },
+  {
+    changeFrequency: 'yearly',
+    description: msg`How Zyra collects, uses, and protects your data — our GDPR- and CCPA-compliant privacy policy.`,
+    id: 'privacyPolicy',
+    indexed: true,
+    path: '/privacy-policy',
+    priority: 0.3,
+    title: msg`Privacy Policy | Zyra`,
+  },
+  {
+    changeFrequency: 'yearly',
+    description: msg`The terms governing your use of Zyra and its CRM services.`,
+    id: 'terms',
+    indexed: true,
+    path: '/terms',
+    priority: 0.3,
+    title: msg`Terms of Service | Zyra`,
+  },
+  {
+    // The interactive halftone generator: an internal dev tool, noindex and
+    // excluded from the sitemap (getIndexedWebsiteRoutes). Mounted client-only.
+    changeFrequency: 'monthly',
+    description: msg`Interactive halftone generator exported from Zyra.`,
+    id: 'halftone',
+    indexed: false,
+    path: '/halftone',
+    priority: 0,
+    title: msg`Halftone Generator | Zyra`,
+  },
+];

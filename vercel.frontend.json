@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "echo skipping default install, buildCommand handles it",
+  "buildCommand": "sh scripts/vercel-build-front.sh",
+  "outputDirectory": "packages/zyra-front/build",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

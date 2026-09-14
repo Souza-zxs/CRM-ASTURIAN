@@ -1,0 +1,154 @@
+{
+  "folders": [
+    {
+      "name": "ROOT",
+      "path": "../"
+    },
+    {
+      "name": "packages/zyra-docker",
+      "path": "../packages/zyra-docker"
+    },
+    {
+      "name": "packages/zyra-front",
+      "path": "../packages/zyra-front"
+    },
+    {
+      "name": "packages/zyra-ui",
+      "path": "../packages/zyra-ui"
+    },
+    {
+      "name": "packages/zyra-emails",
+      "path": "../packages/zyra-emails"
+    },
+    {
+      "name": "packages/zyra-shared",
+      "path": "../packages/zyra-shared"
+    },
+    {
+      "name": "packages/zyra-server",
+      "path": "../packages/zyra-server"
+    },
+    {
+      "name": "packages/zyra-utils",
+      "path": "../packages/zyra-utils"
+    },
+    {
+      "name": "packages/zyra-zapier",
+      "path": "../packages/zyra-zapier"
+    },
+    {
+      "name": "packages/zyra-oxlint-rules",
+      "path": "../packages/zyra-oxlint-rules"
+    },
+    {
+      "name": "packages/zyra-e2e-testing",
+      "path": "../packages/zyra-e2e-testing"
+    },
+    {
+      "name": "packages/zyra-docs",
+      "path": "../packages/zyra-docs"
+    },
+    {
+      "name": "packages/create-zyra-app",
+      "path": "../packages/create-zyra-app"
+    },
+    {
+      "name": "packages/zyra-apps",
+      "path": "../packages/zyra-apps"
+    },
+    {
+      "name": "packages/zyra-claude-skills",
+      "path": "../packages/zyra-claude-skills"
+    },
+    {
+      "name": "packages/zyra-cli",
+      "path": "../packages/zyra-cli"
+    },
+    {
+      "name": "packages/zyra-client-sdk",
+      "path": "../packages/zyra-client-sdk"
+    },
+    {
+      "name": "packages/zyra-companion",
+      "path": "../packages/zyra-companion"
+    },
+    {
+      "name": "packages/zyra-front-component-renderer",
+      "path": "../packages/zyra-front-component-renderer"
+    },
+    {
+      "name": "packages/zyra-sdk",
+      "path": "../packages/zyra-sdk"
+    },
+    {
+      "name": "packages/zyra-website",
+      "path": "../packages/zyra-website"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": false,
+    "files.eol": "auto",
+    "[typescript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.oxc": "explicit",
+        "source.addMissingImports": "always"
+      }
+    },
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.oxc": "explicit",
+        "source.addMissingImports": "always"
+      }
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.oxc": "explicit",
+        "source.addMissingImports": "always"
+      }
+    },
+    "[json]": {
+      "editor.formatOnSave": true
+    },
+    "javascript.format.enable": false,
+    "typescript.format.enable": false,
+    "cSpell.enableFiletypes": [
+      "!javascript",
+      "!json",
+      "!typescript",
+      "!typescriptreact",
+      "md",
+      "mdx"
+    ],
+    "cSpell.words": [
+      "zyra"
+    ],
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "[javascript][typescript][typescriptreact]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.oxc": "explicit",
+        "source.addMissingImports": "always"
+      }
+    },
+    "search.exclude": {
+      "**/.yarn": true,
+    },
+    "files.exclude": {
+      "packages/": true
+    },
+    "oxc.lint.enable": true,
+    "jest.runMode": "on-demand",
+    "jest.disabledWorkspaceFolders": [
+      "ROOT",
+      "packages/zyra-zapier",
+      "packages/zyra-docker",
+      "packages/zyra-utils",
+      "packages/zyra-postgres"
+    ]
+  }
+}

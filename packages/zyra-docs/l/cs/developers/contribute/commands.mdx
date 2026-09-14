@@ -1,0 +1,77 @@
+---
+title: Příkazy
+icon: terminal
+description: Užitečné příkazy pro vývoj Zyra.
+---
+
+Příkazy je možné spouštět z kořene repozitáře pomocí `npx nx`. Pro explicitní cílení použijte `npx nx run {project}:{command}`.
+
+## Spuštění aplikace
+
+```bash
+npx nx start zyra-front          # Frontend dev server (http://localhost:3001)
+npx nx start zyra-server         # Backend server (http://localhost:3000)
+npx nx run zyra-server:worker    # Background worker
+```
+
+## Databáze
+
+```bash
+npx nx database:reset zyra-server                          # Reset and seed database
+npx nx run zyra-server:database:migrate:prod               # Run migrations
+npx nx run zyra-server:database:migrate:generate --name <name> --type <fast|slow>  # Generate a migration
+```
+
+## Lintování
+
+```bash
+npx nx lint:diff-with-main zyra-front    # Lint changed files (fastest)
+npx nx lint:diff-with-main zyra-server
+npx nx lint zyra-front --configuration=fix  # Auto-fix
+```
+
+## Kontrola typů
+
+```bash
+npx nx typecheck zyra-front
+npx nx typecheck zyra-server
+```
+
+## Testování
+
+```bash
+# Frontend
+npx nx test zyra-front                          # Jest unit tests
+npx nx storybook:build zyra-front               # Build Storybook
+npx nx storybook:test zyra-front                # Storybook tests
+
+# Backend
+npx nx run zyra-server:test:unit                # Unit tests
+npx nx run zyra-server:test:integration         # Integration tests
+npx nx run zyra-server:test:integration:with-db-reset  # Integration with DB reset
+
+# Single file (fastest)
+npx jest path/to/test.test.ts --config=packages/{project}/jest.config.mjs
+```
+
+## GraphQL
+
+```bash
+npx nx run zyra-front:graphql:generate                        # Regenerate types
+npx nx run zyra-front:graphql:generate --configuration=metadata  # Metadata schema
+```
+
+## Překlady
+
+```bash
+npx nx run zyra-front:lingui:extract   # Extract strings
+npx nx run zyra-front:lingui:compile   # Compile translations
+```
+
+## Sestavení
+
+```bash
+npx nx build zyra-shared   # Must be built first
+npx nx build zyra-front
+npx nx build zyra-server
+```

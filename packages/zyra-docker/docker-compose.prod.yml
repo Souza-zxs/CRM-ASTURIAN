@@ -1,0 +1,55 @@
+# Production deploy for a shared VPS (no local Postgres/Redis — both are
+# external managed services: Supabase Postgres and Upstash Redis). Mirrors
+# the two Railway services (server, worker) defined in .railway/railway.ts,
+# just run via Docker Compose instead. See docs/deploy-vps.md.
+#
+# White-label: set ZYRA_BRAND (a slug under brands/<slug>/, see
+# brands/README.md) in the shell or in a .env file next to this compose file
+# before building — it's baked into the image at build time. Left unset, it
+# defaults to "zyra" (Zyra's own identity, a no-op).
+#
+# Usage (from repo root on the VPS):
+#   ZYRA_BRAND=acme-test docker compose -f packages/zyra-docker/docker-compose.prod.yml up -d --build
+
+name: zyra
+
+services:
+  server:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        ZYRA_BRAND: ${ZYRA_BRAND:-zyra}
+    restart: unless-stopped
+    env_file:
+      - ../../packages/zyra-server/.env.production
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    ports:
+      - "127.0.0.1:3002:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/healthz', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      # First boot builds a large dynamic GraphQL schema and can take a
+      # while — give it generous room before marking unhealthy.
+      start_period: 300s
+      retries: 5
+
+  worker:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        ZYRA_BRAND: ${ZYRA_BRAND:-zyra}
+    restart: unless-stopped
+    command: ["node", "dist/queue-worker/queue-worker"]
+    env_file:
+      - ../../packages/zyra-server/.env.production
+    environment:
+      NODE_ENV: production
+      # Only the "server" service runs migrations / registers cron jobs on
+      # boot — running both would race and double-register.
+      DISABLE_DB_MIGRATIONS: "true"
+      DISABLE_CRON_JOBS_REGISTRATION: "true"

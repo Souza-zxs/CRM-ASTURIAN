@@ -1,0 +1,105 @@
+---
+title: CLI
+description: Comandos de `yarn zyra` para ejecutar funciones, transmitir registros en tiempo real, gestionar instalaciones de aplicaciones y cambiar entre remotos.
+icon: terminal
+---
+
+Más allá de `dev`, `dev:build`, `dev:add` y `dev:typecheck`, la CLI de `yarn zyra` proporciona comandos para ejecutar funciones, ver registros y gestionar instalaciones de aplicaciones.
+
+## Ejecutar funciones (`yarn zyra dev:function:exec`)
+
+Ejecuta manualmente una función de lógica sin activarla mediante HTTP, cron o evento de base de datos:
+
+```bash filename="Terminal"
+# Execute by function name
+yarn zyra dev:function:exec -n create-new-post-card
+
+# Execute by universalIdentifier
+yarn zyra dev:function:exec -u e56d363b-0bdc-4d8a-a393-6f0d1c75bdcf
+
+# Pass a JSON payload
+yarn zyra dev:function:exec -n create-new-post-card -p '{"name": "Hello"}'
+
+# Execute the post-install function
+yarn zyra dev:function:exec --postInstall
+```
+
+## Ver registros de funciones (`yarn zyra dev:function:logs`)
+
+Transmitir en tiempo real los registros de ejecución de las funciones de lógica de tu aplicación:
+
+```bash filename="Terminal"
+# Stream all function logs
+yarn zyra dev:function:logs
+
+# Filter by function name
+yarn zyra dev:function:logs -n create-new-post-card
+
+# Filter by universalIdentifier
+yarn zyra dev:function:logs -u e56d363b-0bdc-4d8a-a393-6f0d1c75bdcf
+```
+
+<Note>
+Esto es diferente de `yarn zyra docker:logs`, que muestra los registros del contenedor de Docker. `yarn zyra dev:function:logs` muestra los registros de ejecución de funciones de tu aplicación desde el servidor de Zyra.
+</Note>
+
+## Generando el cliente tipado (`yarn zyra dev:generate-client`)
+
+Regenera el cliente de API tipado (`zyra-client-sdk`) a partir del esquema del remoto activo, sin compilar ni sincronizar una aplicación. Úsalo para obtener un cliente tipado en cualquier proyecto — como un servicio backend que vive en un repositorio separado — que se comunica con tu instancia de Zyra:
+
+```bash filename="Terminal"
+# In your project (no Zyra app definition required)
+yarn add zyra-sdk zyra-client-sdk
+
+# Connect to the Zyra instance to generate the client from
+yarn zyra remote:add
+
+# Generate the typed client into node_modules/zyra-client-sdk
+yarn zyra dev:generate-client
+```
+
+Luego importa el cliente en tu código:
+
+```typescript
+import { CoreApiClient } from 'zyra-client-sdk/core';
+```
+
+Vuelve a ejecutar el comando cada vez que cambie tu modelo de datos para actualizar los tipos generados.
+
+<Note>
+El cliente se genera dentro de `node_modules`, por lo que no se incluye en tus commits de código. Ejecuta `yarn zyra dev:generate-client` después de cada instalación (por ejemplo, en un script de `postinstall` o en CI).
+</Note>
+
+## Desinstalar una aplicación (`yarn zyra app:uninstall`)
+
+Elimina tu aplicación del espacio de trabajo activo:
+
+```bash filename="Terminal"
+yarn zyra app:uninstall
+
+# Skip the confirmation prompt
+yarn zyra app:uninstall --yes
+```
+
+## Gestión de remotos
+
+Un **remoto** es un servidor de Zyra al que se conecta tu app. Durante la configuración, el generador crea uno automáticamente para ti. Puedes añadir más remotos o cambiar entre ellos en cualquier momento.
+
+```bash filename="Terminal"
+# Add a new remote (opens a browser for OAuth login)
+yarn zyra remote:add
+
+# Connect to a local Zyra server (auto-detects port 2020 or 3000)
+yarn zyra remote:add --local
+
+# Add a remote non-interactively (useful for CI)
+yarn zyra remote:add --url https://your-zyra-server.com --api-key $ZYRA_API_KEY --as my-remote
+
+# List all configured remotes
+yarn zyra remote:list
+
+# Set the active remote
+yarn zyra remote:use <name>
+```
+
+Tus credenciales se almacenan en `~/.zyra/config.json`.

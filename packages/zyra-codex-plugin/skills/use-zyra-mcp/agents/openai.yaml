@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use Zyra MCP"
+  short_description: "Query Zyra MCP and format readable records."
+  default_prompt: "Use $use-zyra-mcp to connect Codex to Zyra MCP or retrieve readable workspace data."

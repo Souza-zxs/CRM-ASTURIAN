@@ -1,0 +1,11 @@
+{
+  "name": "zyra-cli",
+  "version": "0.3.1",
+  "description": "[DEPRECATED] Use zyra-sdk instead: https://www.npmjs.com/package/zyra-sdk",
+  "scripts": {
+    "build": "echo 'use npx nx build'",
+    "start": "echo 'deprecated'"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
