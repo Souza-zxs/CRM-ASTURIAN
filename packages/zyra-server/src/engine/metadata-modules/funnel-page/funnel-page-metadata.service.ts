@@ -70,9 +70,15 @@ export class FunnelPageMetadataService {
 
     const { id: _inputId, ...updatableFields } = input;
 
-    const definedFields = Object.fromEntries(
-      Object.entries(updatableFields).filter(([, value]) => value !== undefined),
-    );
+    const definedFields = {
+      ...Object.fromEntries(
+        Object.entries(updatableFields).filter(([, value]) => value !== undefined),
+      ),
+      // .update() is a raw query-builder operation — unlike .save(), it does
+      // NOT run TypeORM's @UpdateDateColumn lifecycle, so updatedAt has to be
+      // set explicitly or it stays stale.
+      updatedAt: new Date(),
+    };
 
     await this.funnelPageRepository.update(workspaceId, { id }, definedFields);
 
@@ -87,14 +93,15 @@ export class FunnelPageMetadataService {
     workspaceId: string;
   }): Promise<FunnelPageEntity> {
     const funnelPage = await this.findOneForWorkspace({ id, workspaceId });
+    const updatedAt = new Date();
 
     await this.funnelPageRepository.update(
       workspaceId,
       { id },
-      { status: FunnelPageStatus.PUBLISHED },
+      { status: FunnelPageStatus.PUBLISHED, updatedAt },
     );
 
-    return { ...funnelPage, status: FunnelPageStatus.PUBLISHED };
+    return { ...funnelPage, status: FunnelPageStatus.PUBLISHED, updatedAt };
   }
 
   async unpublish({
@@ -105,14 +112,15 @@ export class FunnelPageMetadataService {
     workspaceId: string;
   }): Promise<FunnelPageEntity> {
     const funnelPage = await this.findOneForWorkspace({ id, workspaceId });
+    const updatedAt = new Date();
 
     await this.funnelPageRepository.update(
       workspaceId,
       { id },
-      { status: FunnelPageStatus.DRAFT },
+      { status: FunnelPageStatus.DRAFT, updatedAt },
     );
 
-    return { ...funnelPage, status: FunnelPageStatus.DRAFT };
+    return { ...funnelPage, status: FunnelPageStatus.DRAFT, updatedAt };
   }
 
   async delete({

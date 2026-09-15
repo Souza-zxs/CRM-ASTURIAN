@@ -235,6 +235,17 @@ export class WhatsappTemplateMetadataService {
       id,
       workspaceId,
     });
+
+    if (
+      template.status !== WhatsappTemplateStatus.DRAFT &&
+      template.status !== WhatsappTemplateStatus.REJECTED
+    ) {
+      throw new WhatsappException(
+        `WhatsApp template ${id} was already submitted (status ${template.status})`,
+        WhatsappExceptionCode.WHATSAPP_TEMPLATE_SYNC_FAILED,
+      );
+    }
+
     const channel = await this.whatsappChannelRepository.findOne({
       where: { id: template.whatsappChannelId, workspaceId },
     });
