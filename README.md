@@ -1,25 +1,25 @@
 <p align="center">
-  <img src="./packages/zyra-website/public/images/core/logo.svg" width="100px" alt="Logo da Zyra" />
+  <img src="./packages/zyra-website/public/images/core/logo.svg" width="100px" alt="Logo" />
 </p>
 
-<h2 align="center">Zyra — CRM da Horizon LTDA</h2>
+<h2 align="center">[Nome do Cliente] — CRM</h2>
 
-<p align="center"><strong>Software proprietário e privado.</strong> © 2026 Horizon LTDA. Todos os direitos reservados.</p>
+<p align="center"><strong>Software proprietário e privado.</strong> © 2026 [Empresa Cliente]. Todos os direitos reservados.</p>
 
 <br />
 
 # Sobre
 
-A **Zyra** é um CRM completo (contatos, empresas, oportunidades, atividades, e-mails e dashboards), construído como **monorepo Nx** e orientado a metadados — objetos, campos e views são definidos como dados, o que permite adaptar o CRM sem novo deploy.
+Este é um CRM completo (contatos, empresas, oportunidades, atividades, e-mails e dashboards), construído como **monorepo Nx** e orientado a metadados — objetos, campos e views são definidos como dados, o que permite adaptar o CRM sem novo deploy.
 
 > [!IMPORTANT]
-> Este é um produto **proprietário da Horizon LTDA**. O repositório é **privado e confidencial**. Os direitos foram adquiridos dos criadores originais. Consulte o arquivo [`LICENSE`](./LICENSE).
+> Este é um produto **proprietário da [Empresa Cliente]**. O repositório é **privado e confidencial**. Os direitos foram adquiridos dos criadores originais. Consulte o arquivo [`LICENSE`](./LICENSE).
 
 <br />
 
 # Como rodar (Windows)
 
-A Zyra roda localmente com **npm + Vite**. Apenas Postgres e Redis sobem em **Docker**; todo o resto é npm puro.
+O sistema roda localmente com **npm + Vite**. Apenas Postgres e Redis sobem em **Docker**; todo o resto é npm puro.
 
 ```powershell
 # Primeira vez
@@ -64,6 +64,8 @@ packages/
 └── ...             # cli, sdk, website, docs e demais pacotes
 ```
 
+> Os nomes de pacote acima (`zyra-*`) são identificadores técnicos internos do monorepo, não a marca do produto.
+
 Documentação técnica de desenvolvimento: [`CLAUDE.md`](./CLAUDE.md) ·
 Contexto de produto e marca: [`PRODUCT.md`](./PRODUCT.md) ·
 Sistema de design: [`DESIGN.md`](./DESIGN.md)
@@ -72,4 +74,4 @@ Sistema de design: [`DESIGN.md`](./DESIGN.md)
 
 ---
 
-<p align="center">Zyra é uma marca e um produto da <strong>Horizon LTDA</strong>. Uso interno autorizado apenas.</p>
+<p align="center">Este produto é uma marca da <strong>[Empresa Cliente]</strong>. Uso interno autorizado apenas.</p>

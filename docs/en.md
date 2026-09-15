@@ -1,16 +1,16 @@
 <!-- Languages: [English](./en.md) · [Português](./pt-BR.md) · [Español](./es.md) · [Français](./fr.md) · [Deutsch](./de.md) · [Italiano](./it.md) -->
 
-# Zyra — How it works
+# [Nome do Cliente] — How it works
 
-> **Proprietary software.** © 2026 Horizon LTDA. All rights reserved. This is **not** open-source software. See [`../LICENSE`](../LICENSE).
+> **Proprietary software.** © 2026 [Empresa Cliente]. All rights reserved. This is **not** open-source software. See [`../LICENSE`](../LICENSE).
 
-## What Zyra is
+## What [Nome do Cliente] is
 
-Zyra is a complete **CRM** (contacts, companies, opportunities, activities, emails and dashboards), owned by **Horizon LTDA**. It is **metadata-driven**: objects, fields and views are defined as data, so the CRM can be adapted without a new deployment.
+[Nome do Cliente] is a complete **CRM** (contacts, companies, opportunities, activities, emails and dashboards), owned by **[Empresa Cliente]**. It is **metadata-driven**: objects, fields and views are defined as data, so the CRM can be adapted without a new deployment.
 
 ## How it works
 
-Zyra is an **Nx monorepo** with three runtime pieces talking over **GraphQL**:
+[Nome do Cliente] is an **Nx monorepo** with three runtime pieces talking over **GraphQL**:
 
 ```
 Browser ──HTTP/GraphQL──► Server (NestJS, :3000)
@@ -25,9 +25,11 @@ Browser ──HTTP/GraphQL──► Server (NestJS, :3000)
 - **Database**: **PostgreSQL**, multi-tenant — a `core` schema, a `metadata` schema (the blueprint), and one schema **per workspace** with the real tables.
 - **Cache/queues**: **Redis**.
 
+> Package names above (`zyra-front`, `zyra-server`, ...) are internal technical identifiers, not the product brand.
+
 ## How to run it locally (Windows)
 
-Zyra runs with **npm + Vite**. Only PostgreSQL and Redis run in **Docker**; everything else is plain npm.
+[Nome do Cliente] runs with **npm + Vite**. Only PostgreSQL and Redis run in **Docker**; everything else is plain npm.
 
 ```powershell
 # First time
@@ -54,4 +56,4 @@ Full Windows guide: [`../WINDOWS.md`](../WINDOWS.md).
 
 ## Ownership
 
-Zyra is a **private, proprietary product of Horizon LTDA**. The rights were acquired from the original creators. The repository is confidential; no open-source license applies.
+[Nome do Cliente] is a **private, proprietary product of [Empresa Cliente]**. The rights were acquired from the original creators. The repository is confidential; no open-source license applies.

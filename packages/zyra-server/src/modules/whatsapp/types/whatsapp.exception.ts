@@ -11,6 +11,10 @@ export enum WhatsappExceptionCode {
   WHATSAPP_SEND_FAILED = 'WHATSAPP_SEND_FAILED',
   WHATSAPP_INVALID_WEBHOOK_SIGNATURE = 'WHATSAPP_INVALID_WEBHOOK_SIGNATURE',
   WHATSAPP_NUMBER_ALREADY_CONNECTED_ELSEWHERE = 'WHATSAPP_NUMBER_ALREADY_CONNECTED_ELSEWHERE',
+  WHATSAPP_TEMPLATE_NOT_FOUND = 'WHATSAPP_TEMPLATE_NOT_FOUND',
+  WHATSAPP_TEMPLATE_CREATE_FAILED = 'WHATSAPP_TEMPLATE_CREATE_FAILED',
+  WHATSAPP_TEMPLATE_SYNC_FAILED = 'WHATSAPP_TEMPLATE_SYNC_FAILED',
+  WHATSAPP_TEMPLATE_SEND_FAILED = 'WHATSAPP_TEMPLATE_SEND_FAILED',
 }
 
 const getWhatsappExceptionUserFriendlyMessage = (
@@ -29,6 +33,14 @@ const getWhatsappExceptionUserFriendlyMessage = (
       return msg`Invalid WhatsApp webhook signature.`;
     case WhatsappExceptionCode.WHATSAPP_NUMBER_ALREADY_CONNECTED_ELSEWHERE:
       return msg`This WhatsApp number is already connected to another workspace.`;
+    case WhatsappExceptionCode.WHATSAPP_TEMPLATE_NOT_FOUND:
+      return msg`WhatsApp template not found.`;
+    case WhatsappExceptionCode.WHATSAPP_TEMPLATE_CREATE_FAILED:
+      return msg`Could not save the WhatsApp template.`;
+    case WhatsappExceptionCode.WHATSAPP_TEMPLATE_SYNC_FAILED:
+      return msg`Could not submit the WhatsApp template to Meta for approval.`;
+    case WhatsappExceptionCode.WHATSAPP_TEMPLATE_SEND_FAILED:
+      return msg`Could not send the WhatsApp template message.`;
     default:
       assertUnreachable(code);
   }

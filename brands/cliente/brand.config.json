@@ -1,0 +1,31 @@
+{
+  "slug": "cliente",
+  "product": {
+    "name": "[Nome do Cliente]",
+    "shortName": "[Nome do Cliente]",
+    "tagline": "O CRM que se adapta ao seu jeito de vender."
+  },
+  "theme": {
+    "mode": "generated",
+    "primaryHex": "#6e56cf"
+  },
+  "assets": {
+    "emailLogoUrl": "https://example.com/logo.png"
+  },
+  "domain": {
+    "frontDomain": "app.example.com",
+    "serverUrl": "https://api.example.com",
+    "defaultSubdomain": "app"
+  },
+  "email": {
+    "fromName": "[Nome do Cliente]",
+    "fromAddress": "noreply@example.com",
+    "supportAddress": "suporte@example.com"
+  },
+  "legal": {
+    "companyLine": "[Nome do Cliente] — [Empresa Cliente]",
+    "websiteUrl": "https://example.com/",
+    "docsUrl": "https://docs.example.com",
+    "socialLinks": {}
+  }
+}

@@ -29,6 +29,7 @@ import {
   IconMail,
   IconMessage,
   IconPlug,
+  IconRocket,
   IconServer,
   IconSettings,
   IconSparkles,
@@ -127,6 +128,12 @@ const useSettingsNavigationItems = (): SettingsNavigationSection[] => {
           path: SettingsPath.Objects,
           Icon: IconHierarchy2,
           isHidden: !permissionMap[PermissionFlagType.DATA_MODEL],
+        },
+        {
+          label: t`Funnel`,
+          path: SettingsPath.Funnel,
+          Icon: IconRocket,
+          isHidden: !permissionMap[PermissionFlagType.WORKSPACE],
         },
         {
           label: t`Layout`,

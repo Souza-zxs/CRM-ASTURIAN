@@ -14,6 +14,7 @@ import {
   IconBrandInstagram,
   IconBrandWhatsapp,
   IconCalendarEvent,
+  IconFileText,
   IconMailCog,
   IconPhone,
   IconRobot,
@@ -104,6 +105,24 @@ export const SettingsAccountsSettingsSection = () => {
                 }
                 title={t`WhatsApp`}
                 description={t`Manage your connected WhatsApp numbers.`}
+              />
+            </UndecoratedLink>
+          </StyledCardLinkSlot>
+        )}
+        {isWhatsappMessagingEnabled && (
+          <StyledCardLinkSlot>
+            <UndecoratedLink
+              to={getSettingsPath(SettingsPath.AccountsWhatsappTemplates)}
+            >
+              <SettingsCard
+                Icon={
+                  <IconFileText
+                    size={theme.icon.size.lg}
+                    stroke={theme.icon.stroke.sm}
+                  />
+                }
+                title={t`WhatsApp Templates`}
+                description={t`Create and submit message templates for Meta's approval.`}
               />
             </UndecoratedLink>
           </StyledCardLinkSlot>

@@ -404,6 +404,20 @@ const SettingsAccountsWhatsappAgent = lazy(() =>
   ),
 );
 
+const SettingsAccountsWhatsappTemplates = lazy(() =>
+  import('~/pages/settings/accounts/SettingsAccountsWhatsappTemplates').then(
+    (module) => ({
+      default: module.SettingsAccountsWhatsappTemplates,
+    }),
+  ),
+);
+
+const SettingsFunnel = lazy(() =>
+  import('~/pages/settings/funnel/SettingsFunnel').then((module) => ({
+    default: module.SettingsFunnel,
+  })),
+);
+
 const SettingsBilling = lazy(() =>
   import('~/pages/settings/billing/SettingsBilling').then((module) => ({
     default: module.SettingsBilling,
@@ -680,6 +694,10 @@ export const SettingsRoutes = ({ isAdminPageEnabled }: SettingsRoutesProps) => (
           element={<SettingsAccountsWhatsappAgent />}
         />
         <Route
+          path={SettingsPath.AccountsWhatsappTemplates}
+          element={<SettingsAccountsWhatsappTemplates />}
+        />
+        <Route
           path={SettingsPath.NewAccount}
           element={<SettingsNewAccount />}
         />
@@ -704,6 +722,7 @@ export const SettingsRoutes = ({ isAdminPageEnabled }: SettingsRoutesProps) => (
         }
       >
         <Route path={SettingsPath.General} element={<SettingsGeneral />} />
+        <Route path={SettingsPath.Funnel} element={<SettingsFunnel />} />
         <Route
           path={SettingsPath.WorkspaceEmail}
           element={<SettingsWorkspaceEmail />}

@@ -1,6 +1,6 @@
-# Rodando o Zyra localmente no Windows (npm + Vite)
+# Rodando o [Nome do Cliente] localmente no Windows (npm + Vite)
 
-Este guia descreve como rodar o Zyra em um Windows do zero, usando **npm** e **Vite**.
+Este guia descreve como rodar o [Nome do Cliente] em um Windows do zero, usando **npm** e **Vite**.
 Postgres e Redis rodam via **Docker** (única dependência de infraestrutura); todo o resto é npm/Node.
 
 ## Pré-requisitos

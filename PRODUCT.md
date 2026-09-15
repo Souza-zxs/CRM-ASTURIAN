@@ -1,16 +1,16 @@
-# Site da Zyra — Contexto de Produto e Marca
+# Site do [Nome do Cliente] — Contexto de Produto e Marca
 
-> Contexto estratégico para o trabalho de design do site de marketing da Zyra (`packages/zyra-website`). Carregado em toda invocação `impeccable`.
+> Contexto estratégico para o trabalho de design do site de marketing do [Nome do Cliente] (`packages/zyra-website`). Carregado em toda invocação `impeccable`.
 
 ## Registro
 
-**Marca.** O site de marketing é uma superfície pública onde o próprio design faz parte do argumento de credibilidade. Prospects avaliam a Zyra em parte pela forma como o site transmite confiança. O app do produto (`packages/zyra-front`) é uma superfície separada, de registro de produto, governada em outro lugar.
+**Marca.** O site de marketing é uma superfície pública onde o próprio design faz parte do argumento de credibilidade. Prospects avaliam o [Nome do Cliente] em parte pela forma como o site transmite confiança. O app do produto (`packages/zyra-front`) é uma superfície separada, de registro de produto, governada em outro lugar.
 
 ## Público e Propósito
 
 O público primário varia por rota, mas a premissa de trabalho para páginas relacionadas a parceiros é:
 
-- **Quem:** Um tomador de decisão com orçamento (fundador, líder de RevOps ou COO) buscando um parceiro de implementação de CRM. Já está no site da Zyra, avaliando uma shortlist de parceiros.
+- **Quem:** Um tomador de decisão com orçamento (fundador, líder de RevOps ou COO) buscando um parceiro de implementação de CRM. Já está no site do [Nome do Cliente], avaliando uma shortlist de parceiros.
 - **Contexto:** Fazendo uma comparação lado a lado entre 2–5 candidatos em uma única sessão de navegação. Vai gastar de 30 a 90 segundos em cada perfil antes de decidir se agenda uma call.
 - **Decisão a ser tomada:** "Este parceiro é credível, do tamanho certo, da especialidade certa e dentro do orçamento? Confio o suficiente para investir 30 minutos numa call de descoberta?"
 
@@ -32,7 +32,7 @@ Especificamente:
 
 **Editorial · Conduzida pelo fundador · Pensada.**
 
-O site se lê como uma publicação independente e cuidadosa, não como uma landing page de SaaS. Títulos com serifa, bastante espaço em branco, ritmo tipográfico deliberado. Discretamente opinativa — a Zyra tem um ponto de vista sobre CRM (customizável e bem desenhado) e o site reflete isso sem gritar.
+O site se lê como uma publicação independente e cuidadosa, não como uma landing page de SaaS. Títulos com serifa, bastante espaço em branco, ritmo tipográfico deliberado. Discretamente opinativa — o [Nome do Cliente] tem um ponto de vista sobre CRM (customizável e bem desenhado) e o site reflete isso sem gritar.
 
 Âncoras de tom:
 - A documentação da Stripe pela clareza, o marketing da Linear pela contenção, uma revista editorial impressa pelas escolhas tipográficas.

@@ -1,0 +1,6 @@
+export enum FunnelPageType {
+  SIGNUP = 'SIGNUP',
+  WORKSHOP = 'WORKSHOP',
+  SALES = 'SALES',
+  CONFIRMATION = 'CONFIRMATION',
+}

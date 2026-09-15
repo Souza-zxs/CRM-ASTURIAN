@@ -1,6 +1,6 @@
 # Deploy em uma VPS compartilhada
 
-Este documento descreve como publicar o backend do Zyra (server + worker) em uma
+Este documento descreve como publicar o backend do [Nome do Cliente] (server + worker) em uma
 VPS própria via Docker Compose, usando bancos gerenciados externos (Postgres e
 Redis) em vez de subir esses serviços na própria VPS — o mesmo modelo hoje usado
 no Railway (`.railway/railway.ts`), só que rodando em container próprio.
@@ -58,7 +58,9 @@ node scripts/create-brand.mjs
 Para publicar com uma marca específica, exporte `ZYRA_BRAND` com o slug da marca
 antes do build — ele é passado como build arg do Dockerfile e fica embutido na
 imagem (gera `packages/zyra-server/.env.brand` dentro do container). Sem
-`ZYRA_BRAND`, o padrão é `zyra` (identidade própria da Zyra, sem efeito).
+`ZYRA_BRAND`, o padrão é `zyra` (identidade original do fork, sem efeito).
+Para publicar com a marca deste cliente, use `ZYRA_BRAND=cliente` (veja
+`brands/cliente/brand.config.json` e `brands/README.md`).
 
 ## 4. Subir os containers
 

@@ -1,6 +1,6 @@
-# Zyra Website — DESIGN.md
+# [Nome do Cliente] Website — DESIGN.md
 
-> Sistema visual do site de marketing do Zyra. Destilado de `packages/zyra-website/src/theme/`. Carregado por toda invocação `impeccable` junto com o PRODUCT.md.
+> Sistema visual do site de marketing do [Nome do Cliente]. Destilado de `packages/zyra-website/src/theme/`. Carregado por toda invocação `impeccable` junto com o PRODUCT.md.
 
 ## Tema
 

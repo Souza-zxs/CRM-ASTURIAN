@@ -1,4 +1,4 @@
-# Briefing para IA Geradora de Slides — Apresentação Comercial do Zyra
+# Briefing para IA Geradora de Slides — Apresentação Comercial do [Nome do Cliente]
 
 > Este documento é um **briefing de conteúdo**, não a apresentação em si. Ele foi escrito para
 > ser lido por uma ferramenta de IA que gera slides (Gamma, Beautiful.ai, Tome, Canva AI, Copilot
@@ -10,7 +10,7 @@
 
 ## 1. Objetivo da apresentação
 
-Apresentar o **Zyra**, um CRM completo, a um público empresarial (empresa que está avaliando
+Apresentar o **[Nome do Cliente]**, um CRM completo, a um público empresarial (empresa que está avaliando
 adotar um CRM ou trocar o que usa hoje). O objetivo é gerar **interesse e agendar uma
 demonstração** — não fechar venda nem discutir comercial.
 
@@ -28,20 +28,24 @@ schema" — traduza tudo para benefício de negócio).
 ## 3. Tom de voz
 
 - Direto, confiante, sem exagero de superlativos ("líder de mercado", "o melhor CRM do mundo").
-- Foco em **problema → como o Zyra resolve → resultado prático**.
+- Foco em **problema → como o [Nome do Cliente] resolve → resultado prático**.
 - Português do Brasil, formal mas acessível (fala com um empresário, não com um desenvolvedor).
-- Zyra é um **produto próprio e proprietário** (não mencionar que a base é open-source nem
-  citar "Twenty CRM" — para o mercado, Zyra é um produto da Horizon, ponto final).
+- [Nome do Cliente] é um **produto próprio e proprietário** (não mencionar que a base é open-source nem
+  citar "Twenty CRM" — para o mercado, [Nome do Cliente] é um produto da [Empresa Cliente], ponto final).
 
 ## 4. Identidade visual (para a IA de slides seguir)
 
-- **Cor de destaque**: roxo `#6E56CF` (usar em títulos, ícones de destaque, botões/CTAs nos
-  slides, gráficos).
+> **Placeholder — ajuste antes de usar:** a cor de destaque e o logo abaixo ainda são os da
+> identidade visual original (Zyra). Troque pela paleta e pelo logo reais do [Nome do Cliente]
+> antes de gerar a apresentação.
+
+- **Cor de destaque**: `#6E56CF` (placeholder — substituir pela cor de marca do [Nome do Cliente])
+  (usar em títulos, ícones de destaque, botões/CTAs nos slides, gráficos).
 - **Cor de fundo**: branco ou cinza muito claro no modo claro; grafite escuro no modo escuro.
   Escolher um dos dois modos e manter consistente em toda a apresentação (não misturar).
-- **Logo**: o símbolo "Z" da marca Zyra (arquivo de referência:
-  `packages/zyra-ui/src/icon/components/ZyraMark.tsx`) — usar no slide de capa e no rodapé dos
-  demais slides.
+- **Logo**: logo do [Nome do Cliente] (placeholder atual no repositório:
+  `packages/zyra-ui/src/icon/components/ZyraMark.tsx` — substituir pelo logo real) — usar no
+  slide de capa e no rodapé dos demais slides.
 - **Tipografia**: sans-serif moderna e limpa (ex.: Inter, ou equivalente disponível na
   ferramenta de slides). Títulos em peso forte (bold/semibold), corpo de texto regular.
 - **Estilo geral**: visual de produto SaaS B2B moderno — bastante espaço em branco, poucos
@@ -50,8 +54,8 @@ schema" — traduza tudo para benefício de negócio).
 
 ## 5. Sobre as imagens — regra mais importante deste briefing
 
-**Sempre que possível, use capturas de tela reais do produto Zyra rodando**, não fotos de banco
-de imagens nem ilustrações genéricas de "pessoas sorrindo em escritório". Zyra é um produto de
+**Sempre que possível, use capturas de tela reais do produto rodando**, não fotos de banco
+de imagens nem ilustrações genéricas de "pessoas sorrindo em escritório". [Nome do Cliente] é um produto de
 software real e funcional — a apresentação fica muito mais forte mostrando a própria interface.
 
 Instruções para quem for tirar as capturas (rodando `npm run dev` localmente):
@@ -64,8 +68,8 @@ Instruções para quem for tirar as capturas (rodando `npm run dev` localmente):
 
 Cada slide abaixo já indica **exatamente qual tela capturar**. Se uma tela específica ainda não
 estiver pronta visualmente ou não puder ser capturada a tempo, use um mockup simplificado no
-mesmo estilo visual (cor `#6E56CF`, mesma tipografia) em vez de imagem genérica — nunca deixar
-o slide sem nenhum apoio visual.
+mesmo estilo visual (cor de marca do [Nome do Cliente], mesma tipografia) em vez de imagem
+genérica — nunca deixar o slide sem nenhum apoio visual.
 
 ## 6. Estrutura dos slides
 
@@ -78,9 +82,9 @@ e **instrução de imagem**.
 ### Slide 1 — Capa
 
 **Objetivo:** identificação imediata.
-**Texto:** "Zyra" (logo) + linha de apoio: "O CRM que organiza toda a operação comercial em um
+**Texto:** "[Nome do Cliente]" (logo) + linha de apoio: "O CRM que organiza toda a operação comercial em um
 só lugar."
-**Imagem:** logo Zyra (ZyraMark) centralizado, fundo em degradê sutil na cor de marca.
+**Imagem:** logo do [Nome do Cliente] centralizado, fundo em degradê sutil na cor de marca.
 
 ---
 
@@ -95,20 +99,20 @@ ferramentas desconectados (planilha, e-mail, chat, calendário) sem conexão ent
 
 ---
 
-### Slide 3 — O que é o Zyra
+### Slide 3 — O que é o [Nome do Cliente]
 
 **Objetivo:** definição em uma frase.
-**Texto:** "Zyra é um CRM completo que centraliza contatos, empresas, oportunidades de venda,
+**Texto:** "[Nome do Cliente] é um CRM completo que centraliza contatos, empresas, oportunidades de venda,
 tarefas e conversas em uma única plataforma — com automação e inteligência artificial
 integradas."
-**Imagem:** screenshot da tela inicial do Zyra logado (dashboard/visão geral de um workspace).
+**Imagem:** screenshot da tela inicial do [Nome do Cliente] logado (dashboard/visão geral de um workspace).
 
 ---
 
 ### Slide 4 — Toda a informação do cliente em um só lugar
 
 **Objetivo:** mostrar o núcleo do produto: a base de dados relacional do CRM.
-**Texto:** Zyra organiza automaticamente **Pessoas, Empresas, Oportunidades, Tarefas e Notas**
+**Texto:** [Nome do Cliente] organiza automaticamente **Pessoas, Empresas, Oportunidades, Tarefas e Notas**
 — e conecta tudo isso entre si. Uma nota ou tarefa pode estar ligada a qualquer registro; um
 histórico de interações (timeline) mostra tudo que já aconteceu com aquele cliente, sem precisar
 procurar em vários lugares.
@@ -120,7 +124,7 @@ detalhe de um registro mostrando a timeline de atividades.
 ### Slide 5 — Um CRM que se adapta ao seu negócio, não o contrário
 
 **Objetivo:** diferencial de flexibilidade (customização sem código).
-**Texto:** cada empresa vende de um jeito diferente. No Zyra é possível criar **campos e
+**Texto:** cada empresa vende de um jeito diferente. No [Nome do Cliente] é possível criar **campos e
 objetos personalizados** — sem depender de programação — para refletir exatamente o processo
 comercial da sua empresa, do zero.
 **Imagem:** screenshot do menu de criação/edição de um campo customizado ou de um objeto
@@ -142,7 +146,7 @@ do negócio).
 ### Slide 7 — Automação que trabalha por você
 
 **Objetivo:** apresentar o motor de Workflows.
-**Texto:** Zyra automatiza tarefas repetitivas com um **editor visual de automações**: dispara
+**Texto:** [Nome do Cliente] automatiza tarefas repetitivas com um **editor visual de automações**: dispara
 ações quando um registro é criado ou muda de status, em um horário programado, por um botão
 manual ou por um webhook externo. As automações podem enviar e-mails, atualizar registros,
 disparar requisições para outros sistemas, aplicar condições e até acionar um **agente de IA**
@@ -155,19 +159,19 @@ conectados).
 ### Slide 8 — Converse com seus clientes sem sair do CRM
 
 **Objetivo:** apresentar comunicação omnichannel — o grande diferencial recente do produto.
-**Texto:** Zyra conecta diretamente o **WhatsApp Business (API oficial da Meta)**, e-mail
+**Texto:** [Nome do Cliente] conecta diretamente o **WhatsApp Business (API oficial da Meta)**, e-mail
 (Google/Microsoft) e calendário à plataforma. Toda conversa e todo compromisso ficam registrados
 automaticamente no histórico do cliente — sem copiar e colar entre sistemas, sem perder
 contexto.
 **Imagem:** screenshot da tela de conexão do WhatsApp Business (fluxo de cadastro do número) e/ou
-de uma conversa de WhatsApp integrada dentro do Zyra.
+de uma conversa de WhatsApp integrada dentro do [Nome do Cliente].
 
 ---
 
 ### Slide 9 — Inteligência artificial integrada
 
 **Objetivo:** mostrar o diferencial de IA como parte nativa do produto, não um "plugin".
-**Texto:** Zyra tem **agentes de IA configuráveis** que podem responder, qualificar leads,
+**Texto:** [Nome do Cliente] tem **agentes de IA configuráveis** que podem responder, qualificar leads,
 resumir conversas e executar ações dentro dos fluxos de automação — com controle de permissão
 sobre o que cada agente pode fazer (enviar e-mail, criar registro, consultar dados, etc.).
 **Imagem:** screenshot do painel de configuração de um agente de IA ou do chat de IA dentro do
@@ -178,7 +182,7 @@ produto.
 ### Slide 10 — Segurança e controle sob medida
 
 **Objetivo:** tranquilizar decisores de TI/segurança — barreira comum em vendas B2B.
-**Texto:** cada empresa opera em um ambiente isolado (workspace próprio). Zyra tem **controle de
+**Texto:** cada empresa opera em um ambiente isolado (workspace próprio). [Nome do Cliente] tem **controle de
 acesso por papéis (roles)**, com permissões granulares por objeto, por campo e até por linha de
 dado — cada pessoa do time vê e faz exatamente o que deveria.
 **Imagem:** screenshot da tela de gerenciamento de papéis/permissões (roles).
@@ -188,15 +192,15 @@ dado — cada pessoa do time vê e faz exatamente o que deveria.
 ### Slide 11 — Conecta com o que sua empresa já usa
 
 **Objetivo:** mostrar extensibilidade/ecossistema, reduzir medo de "ilha isolada".
-**Texto:** além das integrações nativas, o Zyra se conecta com **milhares de outras ferramentas**
+**Texto:** além das integrações nativas, o [Nome do Cliente] se conecta com **milhares de outras ferramentas**
 via Zapier, e expõe uma **API aberta e webhooks** para integrações sob medida com os sistemas que
 sua empresa já usa.
 **Imagem:** screenshot da tela de gerenciamento de chaves de API/webhooks, ou um diagrama simples
-mostrando o Zyra no centro conectado a outros sistemas (WhatsApp, e-mail, Zapier, API).
+mostrando o [Nome do Cliente] no centro conectado a outros sistemas (WhatsApp, e-mail, Zapier, API).
 
 ---
 
-### Slide 12 — Por que Zyra
+### Slide 12 — Por que [Nome do Cliente]
 
 **Objetivo:** slide-resumo dos diferenciais, para reforçar antes do fechamento.
 **Texto (lista curta, sem inventar métricas):**
@@ -213,9 +217,9 @@ cada ponto.
 ### Slide 13 — Próximos passos
 
 **Objetivo:** call-to-action, sem falar de preço.
-**Texto:** "Vamos mostrar o Zyra funcionando com o seu processo comercial." + convite para
+**Texto:** "Vamos mostrar o [Nome do Cliente] funcionando com o seu processo comercial." + convite para
 agendar uma demonstração/conversa.
-**Imagem:** logo Zyra + informação de contato (a definir pelo time comercial).
+**Imagem:** logo do [Nome do Cliente] + informação de contato (a definir pelo time comercial).
 
 ---
 
@@ -223,10 +227,10 @@ agendar uma demonstração/conversa.
 
 - [ ] Nenhum slide menciona preço, plano, valor ou "grátis".
 - [ ] Nenhuma métrica, número de clientes ou depoimento foi inventado — só usar dados reais
-      fornecidos pela Horizon.
-- [ ] Nenhuma referência a "Twenty CRM" ou origem open-source — Zyra é apresentado como produto
+      fornecidos pela [Empresa Cliente].
+- [ ] Nenhuma referência a "Twenty CRM" ou origem open-source — [Nome do Cliente] é apresentado como produto
       próprio.
-- [ ] Cor de marca `#6E56CF` usada de forma consistente.
+- [ ] Cor de marca do [Nome do Cliente] usada de forma consistente (substituir o placeholder `#6E56CF` pela cor real antes de gerar).
 - [ ] Prioridade para screenshots reais do produto sobre imagens de banco de imagens.
 - [ ] Máximo de ~5 linhas de texto por slide — o conteúdo detalhado acima é referência para a
       narrativa falada, não para lotar o slide de texto.

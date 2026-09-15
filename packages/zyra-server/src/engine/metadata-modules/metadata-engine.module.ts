@@ -13,6 +13,7 @@ import { CommandMenuItemModule } from 'src/engine/metadata-modules/command-menu-
 import { FieldMetadataModule } from 'src/engine/metadata-modules/field-metadata/field-metadata.module';
 import { FlatEntityMapsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/flat-entity/filters/flat-entity-maps-graphql-api-exception.filter';
 import { FrontComponentModule } from 'src/engine/metadata-modules/front-component/front-component.module';
+import { FunnelPageMetadataModule } from 'src/engine/metadata-modules/funnel-page/funnel-page-metadata.module';
 import { LogicFunctionLayerModule } from 'src/engine/metadata-modules/logic-function-layer/logic-function-layer.module';
 import { LogicFunctionModule } from 'src/engine/metadata-modules/logic-function/logic-function.module';
 import { MessageChannelMetadataModule } from 'src/engine/metadata-modules/message-channel/message-channel-metadata.module';
@@ -33,6 +34,7 @@ import { InstagramChannelMetadataModule } from 'src/engine/metadata-modules/inst
 import { VoiceAgentMetadataModule } from 'src/engine/metadata-modules/voice-agent/voice-agent-metadata.module';
 import { WhatsappAgentMetadataModule } from 'src/engine/metadata-modules/whatsapp-agent/whatsapp-agent-metadata.module';
 import { WhatsappChannelMetadataModule } from 'src/engine/metadata-modules/whatsapp-channel/whatsapp-channel-metadata.module';
+import { WhatsappTemplateMetadataModule } from 'src/engine/metadata-modules/whatsapp-template/whatsapp-template-metadata.module';
 import { WorkspaceMetadataVersionModule } from 'src/engine/metadata-modules/workspace-metadata-version/workspace-metadata-version.module';
 
 @Module({
@@ -69,6 +71,8 @@ import { WorkspaceMetadataVersionModule } from 'src/engine/metadata-modules/work
     InstagramChannelMetadataModule,
     VoiceAgentMetadataModule,
     WhatsappAgentMetadataModule,
+    WhatsappTemplateMetadataModule,
+    FunnelPageMetadataModule,
   ],
   providers: [
     {
@@ -101,6 +105,8 @@ import { WorkspaceMetadataVersionModule } from 'src/engine/metadata-modules/work
     InstagramChannelMetadataModule,
     VoiceAgentMetadataModule,
     WhatsappAgentMetadataModule,
+    WhatsappTemplateMetadataModule,
+    FunnelPageMetadataModule,
   ],
 })
 export class MetadataEngineModule {}

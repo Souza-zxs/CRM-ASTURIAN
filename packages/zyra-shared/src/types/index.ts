@@ -126,6 +126,18 @@ export { FILTERABLE_FIELD_TYPES } from './FilterableFieldType';
 export { FirstDayOfTheWeek } from './FirstDayOfTheWeek';
 export type { FormatRecordSerializedRelationProperties } from './FormatRecordSerializedRelationProperties.type';
 export type { FromTo } from './FromToType';
+export type {
+  FunnelSignupPageContent,
+  FunnelWorkshopPageContent,
+  FunnelValueStackItem,
+  FunnelFaqItem,
+  FunnelSalesPageContent,
+  FunnelConfirmationVariant,
+  FunnelConfirmationPageContent,
+  FunnelPageContent,
+} from './FunnelPageContent';
+export { FunnelPageStatus } from './FunnelPageStatus';
+export { FunnelPageType } from './FunnelPageType';
 export { HTTPMethod } from './HttpMethod';
 export type { IndexOf } from './IndexOf.type';
 export type { IsEmptyObject } from './IsEmptyObject.type';
@@ -298,3 +310,7 @@ export { ViewType } from './ViewType';
 export { ViewVisibility } from './ViewVisibility';
 export { WebhookSubscriptionChannelType } from './WebhookSubscriptionChannelType';
 export { WebhookSubscriptionStatus } from './WebhookSubscriptionStatus';
+export type { WhatsappTemplateButton } from './WhatsappTemplateButton';
+export { WhatsappTemplateButtonType } from './WhatsappTemplateButton';
+export { WhatsappTemplateCategory } from './WhatsappTemplateCategory';
+export { WhatsappTemplateStatus } from './WhatsappTemplateStatus';
