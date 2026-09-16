@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 import { THEME_LIGHT } from 'zyra-ui/theme';
 
 // The product draws a colored, photo-less avatar from a color4 surface with
-// color12 text (zyra-front hashes the name to the tone; the mockup data
+// color12 text (asturian-front hashes the name to the tone; the mockup data
 // assigns it). Baked per tone from the product ramp — gray is the base and
 // the unknown-tone fallback; our `teal` is the product's turquoise.
 const AvatarFrame = styled.div<{ $size: number }>`

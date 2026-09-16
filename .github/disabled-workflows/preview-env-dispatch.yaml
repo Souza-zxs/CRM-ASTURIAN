@@ -8,7 +8,7 @@ on:
     paths:
       - packages/zyra-docker/**
       - packages/zyra-server/**
-      - packages/zyra-front/**
+      - packages/asturian-front/**
       - .github/workflows/preview-env-dispatch.yaml
 
 concurrency:

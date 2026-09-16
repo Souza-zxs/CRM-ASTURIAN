@@ -40,9 +40,9 @@ jobs:
             const name = context.payload.workflow_run.name;
             const projectByWorkflow = {
               'CI New UI': 'zyra-ui',
-              'CI Front': 'zyra-front',
+              'CI Front': 'asturian-front',
             };
-            const project = projectByWorkflow[name] ?? 'zyra-front';
+            const project = projectByWorkflow[name] ?? 'asturian-front';
             const artifactName = `argos-screenshots-${project}`;
             core.setOutput('workflow_name', name);
             core.setOutput('project', project);

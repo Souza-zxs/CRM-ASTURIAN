@@ -46,7 +46,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     root: __dirname,
-    cacheDir: '../../node_modules/.vite/packages/zyra-front',
+    cacheDir: '../../node_modules/.vite/packages/asturian-front',
 
     server: {
       port: port,

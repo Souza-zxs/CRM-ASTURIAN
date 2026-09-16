@@ -63,7 +63,7 @@ ruleTester.run(RULE_NAME, rule, {
     },
     // Files outside the upgrade-command tree are ignored.
     {
-      filename: '/project/packages/zyra-front/src/foo.ts',
+      filename: '/project/packages/asturian-front/src/foo.ts',
       code: `class C { async up(q) { await q.query(\`UPDATE "x" SET "y" = 1\`); } }`,
     },
   ],

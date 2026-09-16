@@ -106,11 +106,11 @@ function copyAssetOverrides(config) {
     // workspace como fallback de "sem logo próprio") — antes isso só escrevia
     // em favicon.ico, um caminho que nada no app referencia, então o override
     // de favicon da marca era um no-op silencioso.
-    [config.assets?.faviconPath, 'packages/zyra-front/public/images/icons/android/android-launchericon-48-48.png'],
-    [config.assets?.faviconPath, 'packages/zyra-front/public/images/icons/android/android-launchericon-192-192.png'],
-    [config.assets?.faviconPath, 'packages/zyra-front/public/favicon.ico'],
-    [config.assets?.appleTouchIconPath, 'packages/zyra-front/public/images/icons/ios/192.png'],
-    [config.assets?.ogImagePath, 'packages/zyra-front/public/images/og-image.png'],
+    [config.assets?.faviconPath, 'packages/asturian-front/public/images/icons/android/android-launchericon-48-48.png'],
+    [config.assets?.faviconPath, 'packages/asturian-front/public/images/icons/android/android-launchericon-192-192.png'],
+    [config.assets?.faviconPath, 'packages/asturian-front/public/favicon.ico'],
+    [config.assets?.appleTouchIconPath, 'packages/asturian-front/public/images/icons/ios/192.png'],
+    [config.assets?.ogImagePath, 'packages/asturian-front/public/images/og-image.png'],
     [config.assets?.docsLogoPath, 'packages/zyra-docs/logo.svg'],
     [config.assets?.docsFaviconPath, 'packages/zyra-docs/favicon.png'],
   ];
@@ -134,7 +134,7 @@ function escapeHtml(value) {
 }
 
 function patchFrontIndexHtml(config) {
-  const indexPath = path.join(REPO_ROOT, 'packages/zyra-front/index.html');
+  const indexPath = path.join(REPO_ROOT, 'packages/asturian-front/index.html');
   let html = readFileSync(indexPath, 'utf8');
 
   const name = escapeHtml(config.product.name);
@@ -170,11 +170,11 @@ function patchFrontIndexHtml(config) {
   }
 
   writeFileSync(indexPath, html);
-  console.log(`[select-brand] atualizado packages/zyra-front/index.html`);
+  console.log(`[select-brand] atualizado packages/asturian-front/index.html`);
 }
 
 function patchFrontManifest(config) {
-  const manifestPath = path.join(REPO_ROOT, 'packages/zyra-front/public/manifest.json');
+  const manifestPath = path.join(REPO_ROOT, 'packages/asturian-front/public/manifest.json');
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 
   manifest.name = config.product.name;
@@ -182,7 +182,7 @@ function patchFrontManifest(config) {
   manifest.theme_color = config.theme.primaryHex;
 
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
-  console.log(`[select-brand] atualizado packages/zyra-front/public/manifest.json`);
+  console.log(`[select-brand] atualizado packages/asturian-front/public/manifest.json`);
 }
 
 function patchDocsJson(config) {
@@ -367,7 +367,7 @@ function updateDefaultLocale(config) {
 
   const filePath = path.join(
     REPO_ROOT,
-    'packages/zyra-front/src/modules/localization/constants/DefaultAppLocale.ts',
+    'packages/asturian-front/src/modules/localization/constants/DefaultAppLocale.ts',
   );
   const content = `// Gerado por scripts/select-brand.mjs para a marca "${BRAND_SLUG}".
 // Não edite à mão enquanto uma marca não-padrão estiver selecionada — rode o

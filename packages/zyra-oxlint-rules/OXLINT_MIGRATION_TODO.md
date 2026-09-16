@@ -13,11 +13,11 @@ This file tracks what was lost or temporarily disabled during the ESLint to Oxli
 
 ## Re-activated Rules
 
-### zyra-front
+### asturian-front
 
 | Rule | Violations Fixed | Method |
 |------|-----------------|--------|
-| `zyra/sort-css-properties-alphabetically` | 578 | Auto-fix via `npx nx lint zyra-front --configuration=fix` |
+| `zyra/sort-css-properties-alphabetically` | 578 | Auto-fix via `npx nx lint asturian-front --configuration=fix` |
 
 ## Dropped Plugins (No Oxlint Equivalent)
 
@@ -48,7 +48,7 @@ The `oxc.oxc-vscode` extension provides inline diagnostics for built-in oxlint r
    - Enable TypeScript's `verbatimModuleSyntax` (major migration)
    - Keep disabled until oxlint supports decorator-aware type import analysis
 2. **Max consts per file** (`zyra-server`): Manually split 24 constant files to have at most 1 exported const each, then re-enable the rule.
-3. **Folder structure enforcement** (`zyra-front`): Re-implemented as `zyra/folder-structure` custom oxlint rule (enabled as `"warn"`). 403 pre-existing violations to address:
+3. **Folder structure enforcement** (`asturian-front`): Re-implemented as `zyra/folder-structure` custom oxlint rule (enabled as `"warn"`). 403 pre-existing violations to address:
    - 160 non-kebab-case module folder names (e.g. `graphWidgetBarChart` → `graph-widget-bar-chart`)
    - 215 modules nested deeper than 4 levels
    - 28 util/hook file naming violations (`.util.ts` suffixes, kebab-case filenames, PascalCase)

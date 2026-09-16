@@ -73,11 +73,11 @@ jobs:
 
       - name: Setup environment files
         run: |
-          cp packages/zyra-front/.env.example packages/zyra-front/.env
+          cp packages/asturian-front/.env.example packages/asturian-front/.env
           npx nx reset:env:e2e-testing-server zyra-server
 
       - name: Build frontend
-        run: NODE_ENV=production npx nx build zyra-front
+        run: NODE_ENV=production npx nx build asturian-front
 
       - name: Build server
         run: npx nx build zyra-server
@@ -106,7 +106,7 @@ jobs:
 
       - name: Start frontend
         run: |
-          npm_config_yes=true npx serve -s packages/zyra-front/build -l 3001 &
+          npm_config_yes=true npx serve -s packages/asturian-front/build -l 3001 &
           echo "Waiting for frontend to be ready..."
           timeout 60 bash -c 'until curl -s http://localhost:3001; do sleep 2; done'
 

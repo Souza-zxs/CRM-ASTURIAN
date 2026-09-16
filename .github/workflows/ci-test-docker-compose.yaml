@@ -109,8 +109,8 @@ jobs:
           sudo systemctl restart docker
       - name: Create frontend placeholder
         run: |
-          mkdir -p packages/zyra-front/build
-          echo '<html><body>CI placeholder</body></html>' > packages/zyra-front/build/index.html
+          mkdir -p packages/asturian-front/build
+          echo '<html><body>CI placeholder</body></html>' > packages/asturian-front/build/index.html
       - name: Build app-dev image
         run: |
           docker build \

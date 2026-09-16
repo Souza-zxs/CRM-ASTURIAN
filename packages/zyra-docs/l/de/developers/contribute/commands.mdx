@@ -9,7 +9,7 @@ Befehle können vom Repository-Stammverzeichnis mit `npx nx` ausgeführt werden.
 ## Die App starten
 
 ```bash
-npx nx start zyra-front          # Frontend dev server (http://localhost:3001)
+npx nx start asturian-front          # Frontend dev server (http://localhost:3001)
 npx nx start zyra-server         # Backend server (http://localhost:3000)
 npx nx run zyra-server:worker    # Background worker
 ```
@@ -25,15 +25,15 @@ npx nx run zyra-server:database:migrate:generate --name <name> --type <fast|slow
 ## Linting
 
 ```bash
-npx nx lint:diff-with-main zyra-front    # Lint changed files (fastest)
+npx nx lint:diff-with-main asturian-front    # Lint changed files (fastest)
 npx nx lint:diff-with-main zyra-server
-npx nx lint zyra-front --configuration=fix  # Auto-fix
+npx nx lint asturian-front --configuration=fix  # Auto-fix
 ```
 
 ## Typprüfung
 
 ```bash
-npx nx typecheck zyra-front
+npx nx typecheck asturian-front
 npx nx typecheck zyra-server
 ```
 
@@ -41,9 +41,9 @@ npx nx typecheck zyra-server
 
 ```bash
 # Frontend
-npx nx test zyra-front                          # Jest unit tests
-npx nx storybook:build zyra-front               # Build Storybook
-npx nx storybook:test zyra-front                # Storybook tests
+npx nx test asturian-front                          # Jest unit tests
+npx nx storybook:build asturian-front               # Build Storybook
+npx nx storybook:test asturian-front                # Storybook tests
 
 # Backend
 npx nx run zyra-server:test:unit                # Unit tests
@@ -57,21 +57,21 @@ npx jest path/to/test.test.ts --config=packages/{project}/jest.config.mjs
 ## GraphQL
 
 ```bash
-npx nx run zyra-front:graphql:generate                        # Regenerate types
-npx nx run zyra-front:graphql:generate --configuration=metadata  # Metadata schema
+npx nx run asturian-front:graphql:generate                        # Regenerate types
+npx nx run asturian-front:graphql:generate --configuration=metadata  # Metadata schema
 ```
 
 ## Übersetzungen
 
 ```bash
-npx nx run zyra-front:lingui:extract   # Extract strings
-npx nx run zyra-front:lingui:compile   # Compile translations
+npx nx run asturian-front:lingui:extract   # Extract strings
+npx nx run asturian-front:lingui:compile   # Compile translations
 ```
 
 ## Build
 
 ```bash
 npx nx build zyra-shared   # Must be built first
-npx nx build zyra-front
+npx nx build asturian-front
 npx nx build zyra-server
 ```

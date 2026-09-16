@@ -61,7 +61,7 @@ const ListCard = styled.div`
   overflow: hidden;
 `;
 
-// Mirrors zyra-front's ActivityRow: 48px tall, 16px horizontal padding,
+// Mirrors asturian-front's ActivityRow: 48px tall, 16px horizontal padding,
 // 8px gap, sitting inside a bordered card with 1px dividers between rows.
 const ActivityRowBox = styled.div<{ $index: number }>`
   align-items: center;

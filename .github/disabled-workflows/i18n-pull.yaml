@@ -57,7 +57,7 @@ jobs:
         run: |
           npx nx run zyra-server:lingui:compile --strict
           npx nx run zyra-emails:lingui:compile --strict
-          npx nx run zyra-front:lingui:compile --strict
+          npx nx run asturian-front:lingui:compile --strict
         continue-on-error: true
 
       - name: Stash any changes before pulling translations
@@ -112,7 +112,7 @@ jobs:
         run: |
           npx nx run zyra-server:lingui:compile
           npx nx run zyra-emails:lingui:compile
-          npx nx run zyra-front:lingui:compile
+          npx nx run asturian-front:lingui:compile
           git status
           git add .
           if ! git diff --staged --quiet --exit-code; then

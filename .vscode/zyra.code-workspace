@@ -9,8 +9,8 @@
       "path": "../packages/zyra-docker"
     },
     {
-      "name": "packages/zyra-front",
-      "path": "../packages/zyra-front"
+      "name": "packages/asturian-front",
+      "path": "../packages/asturian-front"
     },
     {
       "name": "packages/zyra-ui",

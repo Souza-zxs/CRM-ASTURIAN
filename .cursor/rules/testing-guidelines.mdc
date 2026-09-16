@@ -83,29 +83,29 @@ npx jest path/to/test.test.ts --config=packages/PROJECT/jest.config.mjs
 
 # ✅ Examples:
 # Frontend tests (use .test.ts extension)
-npx jest packages/zyra-front/src/modules/localization/utils/detection/detectNumberFormat.test.ts --config=packages/zyra-front/jest.config.mjs
+npx jest packages/asturian-front/src/modules/localization/utils/detection/detectNumberFormat.test.ts --config=packages/asturian-front/jest.config.mjs
 
 # Server tests (use .spec.ts extension)
 npx jest packages/zyra-server/src/utils/__test__/is-work-email.spec.ts --config=packages/zyra-server/jest.config.mjs
 
 # ❌ AVOID - This runs ALL tests (slow):
-npx nx test zyra-front --testPathPattern=detectNumberFormat.test.ts
+npx nx test asturian-front --testPathPattern=detectNumberFormat.test.ts
 
 # ✅ Run tests in watch mode for development:
-npx jest path/to/test.test.ts --config=packages/zyra-front/jest.config.mjs --watch
+npx jest path/to/test.test.ts --config=packages/asturian-front/jest.config.mjs --watch
 
 # ✅ Run with coverage for single file:
-npx jest path/to/test.test.ts --config=packages/zyra-front/jest.config.mjs --coverage
+npx jest path/to/test.test.ts --config=packages/asturian-front/jest.config.mjs --coverage
 ```
 
 ### Test Suite Execution
 ```bash
 # Run all tests for a project (use sparingly)
-npx nx test zyra-front
+npx nx test asturian-front
 npx nx test zyra-server
 
 # Run tests matching a pattern
-npx jest --testNamePattern="UserService" --config=packages/zyra-front/jest.config.mjs
+npx jest --testNamePattern="UserService" --config=packages/asturian-front/jest.config.mjs
 ```
 
 ## Common Patterns

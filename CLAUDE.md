@@ -14,7 +14,7 @@ Zyra é um CRM proprietário da Horizon LTDA (privado), construído com tecnolog
 npm run dev
 
 # Individual package development
-npx nx start zyra-front     # Start frontend dev server
+npx nx start asturian-front     # Start frontend dev server
 npx nx start zyra-server    # Start backend server
 npx nx run zyra-server:worker  # Start background worker
 ```
@@ -25,15 +25,15 @@ npx nx run zyra-server:worker  # Start background worker
 npx jest path/to/test.test.ts --config=packages/PROJECT/jest.config.mjs
 
 # Run all tests for a package
-npx nx test zyra-front      # Frontend unit tests
+npx nx test asturian-front      # Frontend unit tests
 npx nx test zyra-server     # Backend unit tests
 npx nx run zyra-server:test:integration:with-db-reset  # Integration tests with DB reset
 # To run an indivual test or a pattern of tests, use the following command:
 cd packages/{workspace} && npx jest "pattern or filename"
 
 # Storybook
-npx nx storybook:build zyra-front
-npx nx storybook:test zyra-front
+npx nx storybook:build asturian-front
+npx nx storybook:test asturian-front
 
 # When testing the UI end to end, click on "Continue with Email" and use the prefilled credentials.
 ```
@@ -41,20 +41,20 @@ npx nx storybook:test zyra-front
 ### Qualidade de Código
 ```bash
 # Linting (diff with main - fastest, always prefer this)
-npx nx lint:diff-with-main zyra-front
+npx nx lint:diff-with-main asturian-front
 npx nx lint:diff-with-main zyra-server
-npx nx lint:diff-with-main zyra-front --configuration=fix  # Auto-fix
+npx nx lint:diff-with-main asturian-front --configuration=fix  # Auto-fix
 
 # Linting (full project - slower, use only when needed)
-npx nx lint zyra-front
+npx nx lint asturian-front
 npx nx lint zyra-server
 
 # Type checking
-npx nx typecheck zyra-front
+npx nx typecheck asturian-front
 npx nx typecheck zyra-server
 
 # Format code
-npx nx fmt zyra-front
+npx nx fmt asturian-front
 npx nx fmt zyra-server
 ```
 
@@ -62,7 +62,7 @@ npx nx fmt zyra-server
 ```bash
 # Build packages (zyra-shared must be built first)
 npx nx build zyra-shared
-npx nx build zyra-front
+npx nx build asturian-front
 npx nx build zyra-server
 ```
 
@@ -91,8 +91,8 @@ Este servidor é somente leitura — para operações de escrita (reset, migraç
 ### GraphQL
 ```bash
 # Generate GraphQL types (run after schema changes)
-npx nx run zyra-front:graphql:generate
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 
 ## Visão Geral da Arquitetura
@@ -105,7 +105,7 @@ npx nx run zyra-front:graphql:generate --configuration=metadata
 ### Estrutura de Pacotes
 ```
 packages/
-├── zyra-front/          # React frontend application
+├── asturian-front/          # React frontend application
 ├── zyra-server/         # NestJS backend API
 ├── zyra-ui/             # Shared UI components library
 ├── zyra-shared/         # Common types and utilities

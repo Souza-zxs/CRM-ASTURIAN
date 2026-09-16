@@ -1,7 +1,7 @@
 import { type Page } from '@playwright/test';
 
-// Mirrors TOKEN_PAIR_LOCAL_STORAGE_KEY from zyra-front
-// (packages/zyra-front/src/modules/auth/states/tokenPairState.ts).
+// Mirrors TOKEN_PAIR_LOCAL_STORAGE_KEY from asturian-front
+// (packages/asturian-front/src/modules/auth/states/tokenPairState.ts).
 // Since #21507 the frontend stores the auth token pair in localStorage
 // instead of a cookie.
 const TOKEN_PAIR_LOCAL_STORAGE_KEY = 'tokenPairState';

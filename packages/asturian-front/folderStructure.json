@@ -1,5 +1,5 @@
 {
-  "projectRoot": "packages/zyra-front",
+  "projectRoot": "packages/asturian-front",
   "structureRoot": "src",
   "regexParameters": {
     "camelCase": "^[a-z]+([A-Za-z0-9]+)+",

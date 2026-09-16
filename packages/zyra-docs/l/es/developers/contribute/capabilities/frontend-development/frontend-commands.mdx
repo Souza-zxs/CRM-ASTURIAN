@@ -8,41 +8,41 @@ icon: terminal
 ### Iniciando la aplicación
 
 ```bash
-npx nx start zyra-front
+npx nx start asturian-front
 ```
 
 ### Regenerar el esquema de graphql basado en el esquema API graphql
 
 ```bash
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 
 O
 
 ```bash
-npx nx run zyra-front:graphql:generate
+npx nx run asturian-front:graphql:generate
 ```
 
 ### Lint
 
 ```bash
-npx nx run zyra-front:lint # pasar --fix para corregir errores de lint
+npx nx run asturian-front:lint # pasar --fix para corregir errores de lint
 ```
 
 ## Traducciones
 
 ```bash
-npx nx run zyra-front:lingui:extract
-npx nx run zyra-front:lingui:compile
+npx nx run asturian-front:lingui:extract
+npx nx run asturian-front:lingui:compile
 ```
 
 ### Prueba
 
 ```bash
-npx nx run zyra-front:test # ejecutar pruebas con Jest
-npx nx run zyra-front:storybook:serve:dev # ejecutar Storybook
-npx nx run zyra-front:storybook:test # ejecutar pruebas # (requiere que yarn storybook:serve:dev esté en ejecución)
-npx nx run zyra-front:storybook:coverage # (requiere que yarn storybook:serve:dev esté en ejecución)
+npx nx run asturian-front:test # ejecutar pruebas con Jest
+npx nx run asturian-front:storybook:serve:dev # ejecutar Storybook
+npx nx run asturian-front:storybook:test # ejecutar pruebas # (requiere que yarn storybook:serve:dev esté en ejecución)
+npx nx run asturian-front:storybook:coverage # (requiere que yarn storybook:serve:dev esté en ejecución)
 ```
 
 ## Stack Tecnológico

@@ -7,7 +7,7 @@ alwaysApply: true
 
 ## Directory Organization
 ```
-packages/zyra-front/src/
+packages/asturian-front/src/
 ├── components/      # Reusable UI components
 ├── pages/          # Route components  
 ├── modules/        # Feature modules

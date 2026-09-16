@@ -1,6 +1,6 @@
 # Marcas (whitelabel)
 
-Cada subdiretório aqui é uma marca whitelabel: `brand.config.json` mais uma pasta `assets/` opcional com overrides. `scripts/select-brand.mjs` lê `ZYRA_BRAND` (um slug igual ao nome de um diretório aqui, padrão `zyra`) e aplica a identidade dessa marca em `zyra-front`, `zyra-server`, `zyra-emails` e `zyra-docs`.
+Cada subdiretório aqui é uma marca whitelabel: `brand.config.json` mais uma pasta `assets/` opcional com overrides. `scripts/select-brand.mjs` lê `ZYRA_BRAND` (um slug igual ao nome de um diretório aqui, padrão `zyra`) e aplica a identidade dessa marca em `asturian-front`, `zyra-server`, `zyra-emails` e `zyra-docs`.
 
 ## `zyra/` é especial
 
@@ -34,13 +34,13 @@ ZYRA_BRAND=<slug> node scripts/select-brand.mjs
 # ou: ZYRA_BRAND=<slug> npm run brand:select
 ```
 
-Isso sobrescreve arquivos versionados (`packages/zyra-front/index.html`, `manifest.json`, os ícones/favicon em `packages/zyra-front/public/images/icons/`, `packages/zyra-ui/src/theme/constants/Accent{Light,Dark}.ts`, `packages/zyra-docs/docs.json`) do mesmo jeito que `scripts/vercel-build-front.sh` já faz no deploy — **não commite** essas mudanças em cima de uma marca não-`zyra`; rode o seletor de volta para `zyra` (ou `git checkout` nesses arquivos) antes de commitar.
+Isso sobrescreve arquivos versionados (`packages/asturian-front/index.html`, `manifest.json`, os ícones/favicon em `packages/asturian-front/public/images/icons/`, `packages/zyra-ui/src/theme/constants/Accent{Light,Dark}.ts`, `packages/zyra-docs/docs.json`) do mesmo jeito que `scripts/vercel-build-front.sh` já faz no deploy — **não commite** essas mudanças em cima de uma marca não-`zyra`; rode o seletor de volta para `zyra` (ou `git checkout` nesses arquivos) antes de commitar.
 
 O override de favicon/logo é copiado para todo arquivo que o app realmente referencia (o ícone usado em `<link rel="icon">`, o ícone padrão de workspace usado como logo de fallback em várias telas, e `favicon.ico` como reforço) — antes disso ser corrigido, um override de favicon era um no-op silencioso.
 
-**Atenção ao testar várias marcas em sequência no mesmo checkout local**: `packages/zyra-ui/src/theme/constants/Accent{Light,Dark}.ts` e `packages/zyra-front/src/modules/localization/constants/DefaultAppLocale.ts` só são reescritos quando a marca selecionada define `theme.scale`/`defaultLocale` — a marca `zyra` omite os dois de propósito (sentinela = "não mexer, o arquivo commitado já é a verdade"). Isso significa que voltar para `ZYRA_BRAND=zyra` depois de testar outra marca **não** desfaz esses dois arquivos sozinho (diferente de `index.html`/`manifest.json`/`docs.json`, que são sempre reescritos incondicionalmente e por isso revertem sozinhos). Para voltar ao estado limpo depois de testar localmente, rode:
+**Atenção ao testar várias marcas em sequência no mesmo checkout local**: `packages/zyra-ui/src/theme/constants/Accent{Light,Dark}.ts` e `packages/asturian-front/src/modules/localization/constants/DefaultAppLocale.ts` só são reescritos quando a marca selecionada define `theme.scale`/`defaultLocale` — a marca `zyra` omite os dois de propósito (sentinela = "não mexer, o arquivo commitado já é a verdade"). Isso significa que voltar para `ZYRA_BRAND=zyra` depois de testar outra marca **não** desfaz esses dois arquivos sozinho (diferente de `index.html`/`manifest.json`/`docs.json`, que são sempre reescritos incondicionalmente e por isso revertem sozinhos). Para voltar ao estado limpo depois de testar localmente, rode:
 ```bash
-git checkout -- packages/zyra-ui/src/theme/constants/AccentLight.ts packages/zyra-ui/src/theme/constants/AccentDark.ts packages/zyra-front/src/modules/localization/constants/DefaultAppLocale.ts
+git checkout -- packages/zyra-ui/src/theme/constants/AccentLight.ts packages/zyra-ui/src/theme/constants/AccentDark.ts packages/asturian-front/src/modules/localization/constants/DefaultAppLocale.ts
 ```
 Isso não é um problema em builds de deploy reais (Docker/Vercel sempre partem de um checkout limpo do git), só na iteração local.
 

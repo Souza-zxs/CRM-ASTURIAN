@@ -27,7 +27,7 @@ const createIndexedDbStore = (cacheName: string): idb.UseStore | undefined => {
     return undefined;
   }
 
-  return idb.createStore(`zyra-front-${cacheName}`, INDEXED_DB_STORE_NAME);
+  return idb.createStore(`asturian-front-${cacheName}`, INDEXED_DB_STORE_NAME);
 };
 
 const createCrossTabChannel = (cacheName: string): BroadcastChannel | null => {
@@ -36,7 +36,7 @@ const createCrossTabChannel = (cacheName: string): BroadcastChannel | null => {
   }
 
   try {
-    return new BroadcastChannel(`zyra-front-${cacheName}-sync`);
+    return new BroadcastChannel(`asturian-front-${cacheName}-sync`);
   } catch (error) {
     logError(error);
     return null;

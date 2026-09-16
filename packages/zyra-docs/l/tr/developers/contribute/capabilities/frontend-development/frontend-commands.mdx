@@ -8,41 +8,41 @@ icon: terminal
 ### Uygulamayı Başlatma
 
 ```bash
-npx nx start zyra-front
+npx nx start asturian-front
 ```
 
 ### API graphql şemasına dayalı graphql şemasını yeniden oluştur
 
 ```bash
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 
 VEYA
 
 ```bash
-npx nx run zyra-front:graphql:generate
+npx nx run asturian-front:graphql:generate
 ```
 
 ### Kod Temizleme
 
 ```bash
-npx nx run zyra-front:lint # lint hatalarını düzeltmek için --fix'i geç
+npx nx run asturian-front:lint # lint hatalarını düzeltmek için --fix'i geç
 ```
 
 ## Çeviriler
 
 ```bash
-npx nx run zyra-front:lingui:extract
-npx nx run zyra-front:lingui:compile
+npx nx run asturian-front:lingui:extract
+npx nx run asturian-front:lingui:compile
 ```
 
 ### Test
 
 ```bash
-npx nx run zyra-front:test # jest testlerini çalıştır
-npx nx run zyra-front:storybook:serve:dev # storybook'u çalıştır
-npx nx run zyra-front:storybook:test # testleri çalıştır # (yarn storybook:serve:dev'nin çalışıyor olması gerekir)
-npx nx run zyra-front:storybook:coverage # (yarn storybook:serve:dev'nin çalışıyor olması gerekir)
+npx nx run asturian-front:test # jest testlerini çalıştır
+npx nx run asturian-front:storybook:serve:dev # storybook'u çalıştır
+npx nx run asturian-front:storybook:test # testleri çalıştır # (yarn storybook:serve:dev'nin çalışıyor olması gerekir)
+npx nx run asturian-front:storybook:coverage # (yarn storybook:serve:dev'nin çalışıyor olması gerekir)
 ```
 
 ## Teknoloji Yığını

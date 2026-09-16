@@ -40,13 +40,13 @@ If feature descriptions are not provided or need enhancement, research the codeb
 ### Where to Look
 
 **For Workflow Features:**
-- Frontend: `packages/zyra-front/src/modules/workflow/`
+- Frontend: `packages/asturian-front/src/modules/workflow/`
 - Backend: `packages/zyra-server/src/modules/workflow/`
-- Components: `packages/zyra-front/src/modules/workflow/components/`
+- Components: `packages/asturian-front/src/modules/workflow/components/`
 
 **For UI/UX Changes:**
-- Components: `packages/zyra-front/src/modules/ui/`
-- Layout: `packages/zyra-front/src/modules/layout/`
+- Components: `packages/asturian-front/src/modules/ui/`
+- Layout: `packages/asturian-front/src/modules/layout/`
 - Design system: `packages/zyra-ui/src/`
 
 **For Backend/API Features:**
@@ -72,11 +72,11 @@ git log --since="2 weeks ago" --oneline --no-merges
 git log v1.7.0..v1.8.0 --oneline
 
 # Search for specific feature keywords in code
-grep -r "iterator" packages/zyra-front/src/modules/workflow/
-grep -r "bulk select" packages/zyra-front/src/modules/workflow/
+grep -r "iterator" packages/asturian-front/src/modules/workflow/
+grep -r "bulk select" packages/asturian-front/src/modules/workflow/
 
 # Find recent changes in specific directory
-git log --since="2 weeks ago" --oneline -- packages/zyra-front/src/modules/workflow/
+git log --since="2 weeks ago" --oneline -- packages/asturian-front/src/modules/workflow/
 ```
 
 ### Using Codebase Search

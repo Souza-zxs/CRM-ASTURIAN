@@ -19,13 +19,13 @@ Browser ──HTTP/GraphQL──► Server (NestJS, :3000)
                                └─ Redis :6379  ◄── Worker (BullMQ background jobs)
 ```
 
-- **Front** (`zyra-front`): React app bundled with **Vite** — the user interface.
+- **Front** (`asturian-front`): React app bundled with **Vite** — the user interface.
 - **Server** (`zyra-server`): **NestJS** API with **GraphQL**, **TypeORM** and an engine that **generates the GraphQL schema dynamically per workspace** from the metadata tables.
 - **Worker**: same server code, consuming **BullMQ** queues on Redis for background jobs.
 - **Database**: **PostgreSQL**, multi-tenant — a `core` schema, a `metadata` schema (the blueprint), and one schema **per workspace** with the real tables.
 - **Cache/queues**: **Redis**.
 
-> Package names above (`zyra-front`, `zyra-server`, ...) are internal technical identifiers, not the product brand.
+> Package names above (`asturian-front`, `zyra-server`, ...) are internal technical identifiers, not the product brand.
 
 ## How to run it locally (Windows)
 

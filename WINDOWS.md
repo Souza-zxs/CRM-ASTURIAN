@@ -66,7 +66,7 @@ Atalho equivalente:
 | `npm run services:reset` | Para e **apaga** os dados do banco |
 | `npm run db:init` | Inicializa o schema do banco |
 | `npx nx start zyra-server` | Só o backend |
-| `cd packages/zyra-front; npx vite --port 3001` | Só o frontend |
+| `cd packages/asturian-front; npx vite --port 3001` | Só o frontend |
 
 ## Portas
 
@@ -81,7 +81,7 @@ Atalho equivalente:
 
 As variáveis de ambiente já vêm prontas em:
 - `packages/zyra-server/.env`
-- `packages/zyra-front/.env`
+- `packages/asturian-front/.env`
 
 Os valores padrão já apontam para o Postgres/Redis do Docker (`localhost:5432` / `localhost:6379`).
 

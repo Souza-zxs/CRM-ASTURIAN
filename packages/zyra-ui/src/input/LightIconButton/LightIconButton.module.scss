@@ -1,5 +1,5 @@
 // State rules below only assign CSS custom properties; the actual
-// declarations live on the flat .button class so zyra-front
+// declarations live on the flat .button class so asturian-front
 // styled(LightIconButton) overrides keep beating them at (0,1,0) specificity,
 // exactly like the legacy single Linaria class did.
 // Cascade order replicates the legacy Linaria color switch precedence:

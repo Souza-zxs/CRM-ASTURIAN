@@ -48,7 +48,7 @@ const TimelineGroup = styled.div`
   position: relative;
 `;
 
-// The 24px rounded rail zyra-front renders behind the event icons.
+// The 24px rounded rail asturian-front renders behind the event icons.
 const TimelineRail = styled.div`
   background: ${THEME_LIGHT.background.secondary};
   border: 1px solid ${THEME_LIGHT.border.color.light};

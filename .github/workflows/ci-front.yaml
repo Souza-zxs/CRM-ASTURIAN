@@ -25,7 +25,7 @@ jobs:
       files: |
         package.json
         yarn.lock
-        packages/zyra-front/**
+        packages/asturian-front/**
         packages/zyra-front-component-renderer/**
         packages/zyra-ui/**
         packages/zyra-shared/**
@@ -51,14 +51,14 @@ jobs:
       - name: Diagnostic disk space issue
         run: df -h
       - name: Front / Write .env
-        run: npx nx reset:env zyra-front
+        run: npx nx reset:env asturian-front
       - name: Front / Build storybook
-        run: npx nx storybook:build zyra-front
+        run: npx nx storybook:build asturian-front
       - name: Upload storybook build
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: storybook-static
-          path: packages/zyra-front/storybook-static
+          path: packages/asturian-front/storybook-static
           retention-days: 1
       - name: Save storybook build cache
         uses: ./.github/actions/save-cache
@@ -90,7 +90,7 @@ jobs:
         with:
           key: ${{ env.STORYBOOK_BUILD_CACHE_KEY_FOR_RESTORE_ACTION }}
       - name: Clean stale storybook vitest cache
-        run: rm -rf packages/zyra-front/node_modules/.cache/storybook
+        run: rm -rf packages/asturian-front/node_modules/.cache/storybook
       - name: Build dependencies
         run: |
           npx nx build zyra-shared
@@ -100,7 +100,7 @@ jobs:
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: storybook-static
-          path: packages/zyra-front/storybook-static
+          path: packages/asturian-front/storybook-static
       - name: Resolve Playwright version
         id: playwright-version
         run: echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
@@ -113,30 +113,30 @@ jobs:
       - name: Install Playwright
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: |
-          cd packages/zyra-front
+          cd packages/asturian-front
           npx playwright install chromium
       - name: Front / Write .env
-        run: npx nx reset:env zyra-front
+        run: npx nx reset:env asturian-front
       - name: Serve storybook & run tests
         run: |
-          npx http-server packages/zyra-front/storybook-static --port 6006 --silent &
+          npx http-server packages/asturian-front/storybook-static --port 6006 --silent &
           timeout 30 bash -c 'until curl -sf http://localhost:6006 > /dev/null 2>&1; do sleep 1; done'
-          npx nx storybook:test zyra-front --configuration=${{ matrix.storybook_scope }} --shard=${{ matrix.shard }}/${{ env.SHARD_COUNTER }}
+          npx nx storybook:test asturian-front --configuration=${{ matrix.storybook_scope }} --shard=${{ matrix.shard }}/${{ env.SHARD_COUNTER }}
       - name: Upload screenshots for visual regression
         if: always() && !cancelled() && matrix.storybook_scope != 'performance'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: argos-screenshots-zyra-front-${{ matrix.storybook_scope }}-${{ matrix.shard }}
-          path: packages/zyra-front/screenshots
+          name: argos-screenshots-asturian-front-${{ matrix.storybook_scope }}-${{ matrix.shard }}
+          path: packages/asturian-front/screenshots
           retention-days: 1
           overwrite: true
       # - name: Rename coverage file
       #   run: |
-      #     if [ -f "packages/zyra-front/coverage/storybook/coverage-final.json" ]; then
-      #       mv packages/zyra-front/coverage/storybook/coverage-final.json packages/zyra-front/coverage/storybook/coverage-shard-${{matrix.shard}}.json
+      #     if [ -f "packages/asturian-front/coverage/storybook/coverage-final.json" ]; then
+      #       mv packages/asturian-front/coverage/storybook/coverage-final.json packages/asturian-front/coverage/storybook/coverage-shard-${{matrix.shard}}.json
       #     else
       #       echo "Error: coverage-final.json not found"
-      #       ls -la packages/zyra-front/coverage/storybook/ || echo "Coverage directory does not exist"
+      #       ls -la packages/asturian-front/coverage/storybook/ || echo "Coverage directory does not exist"
       #       exit 1
       #     fi
       # - name: Upload coverage artifact
@@ -144,13 +144,13 @@ jobs:
       #   with:
       #     retention-days: 1
       #     name: coverage-artifacts-${{ matrix.storybook_scope }}-${{ github.run_id }}-${{ matrix.shard }}
-      #     path: packages/zyra-front/coverage/storybook/coverage-shard-${{matrix.shard}}.json
+      #     path: packages/asturian-front/coverage/storybook/coverage-shard-${{matrix.shard}}.json
   # merge-reports-and-check-coverage:
   #   timeout-minutes: 30
   #   runs-on: ubuntu-latest
   #   needs: front-sb-test
   #   env:
-  #     PATH_TO_COVERAGE: packages/zyra-front/coverage/storybook
+  #     PATH_TO_COVERAGE: packages/asturian-front/coverage/storybook
   #   strategy:
   #     matrix:
   #       storybook_scope: [modules, pages, performance]
@@ -170,7 +170,7 @@ jobs:
   #         mkdir -p ${{ env.PATH_TO_COVERAGE }}
   #         npx nyc merge coverage-artifacts ${{ env.PATH_TO_COVERAGE }}/coverage-storybook.json
   #     - name: Checking coverage
-  #       run: npx nx storybook:coverage zyra-front --checkCoverage=true --configuration=${{ matrix.storybook_scope }}
+  #       run: npx nx storybook:coverage asturian-front --checkCoverage=true --configuration=${{ matrix.storybook_scope }}
   front-sb-screenshots:
     timeout-minutes: 5
     runs-on: ubuntu-latest
@@ -180,13 +180,13 @@ jobs:
       - name: Download shard screenshot artifacts
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
-          pattern: argos-screenshots-zyra-front-*
+          pattern: argos-screenshots-asturian-front-*
           merge-multiple: true
           path: screenshots
       - name: Upload merged screenshots artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: argos-screenshots-zyra-front
+          name: argos-screenshots-asturian-front
           path: screenshots
           retention-days: 1
           overwrite: true
@@ -244,14 +244,14 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/yarn-install
       - name: Front / Write .env
-        run: npx nx reset:env zyra-front
+        run: npx nx reset:env asturian-front
       - name: Build frontend
-        run: npx nx build zyra-front
+        run: npx nx build asturian-front
       # - name: Upload frontend build artifact
       #   uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
       #   with:
       #     name: frontend-build
-      #     path: packages/zyra-front/build
+      #     path: packages/asturian-front/build
       #     retention-days: 1
   ci-front-status-check:
     if: always() && !cancelled()

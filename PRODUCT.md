@@ -4,7 +4,7 @@
 
 ## Registro
 
-**Marca.** O site de marketing é uma superfície pública onde o próprio design faz parte do argumento de credibilidade. Prospects avaliam o [Nome do Cliente] em parte pela forma como o site transmite confiança. O app do produto (`packages/zyra-front`) é uma superfície separada, de registro de produto, governada em outro lugar.
+**Marca.** O site de marketing é uma superfície pública onde o próprio design faz parte do argumento de credibilidade. Prospects avaliam o [Nome do Cliente] em parte pela forma como o site transmite confiança. O app do produto (`packages/asturian-front`) é uma superfície separada, de registro de produto, governada em outro lugar.
 
 ## Público e Propósito
 

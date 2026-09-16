@@ -2,7 +2,7 @@
 
 > **Status:** Cut-over complete (June 2026). All 192 components and all 70 stories were
 > migrated from the legacy library with full public-API parity (export-identifier diff:
-> 0 missing / 0 extra across all 13 subpath modules), `zyra-front` was switched over to
+> 0 missing / 0 extra across all 13 subpath modules), `asturian-front` was switched over to
 > `zyra-ui`, and the legacy `zyra-ui-deprecated` package was removed. Gates green:
 > typecheck, lint, jest, build, storybook:build,
 > storybook:test (225 stories incl. play functions + live axe gate), size.
@@ -18,9 +18,9 @@
 ## Goals
 
 1. Publish as a standalone, versioned **npm package**.
-2. Replace `zyra-ui` in `zyra-front` with **no visual change** (same design, token for token).
+2. Replace `zyra-ui` in `asturian-front` with **no visual change** (same design, token for token).
 3. **Migrate every component** currently exported by `zyra-ui-deprecated`. *(Done — June 2026.)*
-4. **Absorb the generic, reusable UI** currently living in `zyra-front/src/modules/ui` (dropdowns, modals, tab lists, side panels, navigation, field inputs/displays, etc.), decoupling it from application concerns so it ships from the library.
+4. **Absorb the generic, reusable UI** currently living in `asturian-front/src/modules/ui` (dropdowns, modals, tab lists, side panels, navigation, field inputs/displays, etc.), decoupling it from application concerns so it ships from the library.
 5. Enforce a **quality bar in CI**: bundle size, render/load time, and accessibility, measured against the old library.
 
 ## Current state (`zyra-ui-deprecated`)
@@ -32,11 +32,11 @@
 | Behavior | Hand-rolled (modals, menus, tooltips, selects, etc.); `react-tooltip` for tooltips |
 | Build | Vite library mode, dual ESM/CJS, `vite-plugin-dts`, auto-generated barrels |
 | Icons | `@tabler/icons-react` re-exports + custom icons + Jotai-backed `IconsProvider` |
-| Consumption | ~1,730 files in `zyra-front` import it (mostly `display` and `theme-constants`), plus `zyra-front-component-renderer` and `zyra-sdk`; imported by package name |
+| Consumption | ~1,730 files in `asturian-front` import it (mostly `display` and `theme-constants`), plus `zyra-front-component-renderer` and `zyra-sdk`; imported by package name |
 | Published | No (`private: true`) |
 
-`zyra-front/src/modules/ui/` (application-level UI) consumes `zyra-ui-deprecated` today. Its **generic, reusable**
-components are now **in scope** — they migrate into `zyra-ui` (see [Application-level UI migration](#application-level-ui-migration-zyra-frontsrcmodulesui)).
+`asturian-front/src/modules/ui/` (application-level UI) consumes `zyra-ui-deprecated` today. Its **generic, reusable**
+components are now **in scope** — they migrate into `zyra-ui` (see [Application-level UI migration](#application-level-ui-migration-asturian-frontsrcmodulesui)).
 
 ## Decision 1 — Headless library: Base UI
 
@@ -185,7 +185,7 @@ Decisions taken during the port where reality diverged from the map above (publi
   mid-animation retargeting or initial-mount animation.
 - **`Avatar`'s `invalidAvatarUrlsAtomV2` and the icon system's `iconsState` Jotai atoms were kept** — both are
   public `display` exports, overriding this doc's earlier "Jotai → local state" idea.
-- **`CardContent` kept framer-motion**: its motion props are part of the public prop type and zyra-front's
+- **`CardContent` kept framer-motion**: its motion props are part of the public prop type and asturian-front's
   `CalendarDayCardContent` passes them.
 - **`ProgressBar` is pure SCSS** (Base UI Progress was optional and not needed for parity); `useProgressAnimation`
   keeps framer motion-values verbatim (public hook).
@@ -201,9 +201,9 @@ Decisions taken during the port where reality diverged from the map above (publi
   `--btn-*` custom properties, all declarations on a flat `(0,1,0)` class so `styled(Component)` consumer
   overrides keep working.
 
-## Application-level UI migration (`zyra-front/src/modules/ui`)
+## Application-level UI migration (`asturian-front/src/modules/ui`)
 
-`zyra-front/src/modules/ui` holds ~250 application-level UI building blocks that consume `zyra-ui-deprecated`
+`asturian-front/src/modules/ui` holds ~250 application-level UI building blocks that consume `zyra-ui-deprecated`
 today: `display`, `feedback` (snackbar/dialog managers), `field` (input + display), `input`
 (incl. relation picker), `layout` (dropdown, modal, tab-list, side-panel, page, table, resizable-panel,
 expandable-list, selectable-list, top-bar, …), `navigation` (drawer, breadcrumb, step-bar, menu-item),
@@ -212,16 +212,16 @@ expandable-list, selectable-list, top-bar, …), `navigation` (drawer, breadcrum
 These are a **different kind of migration** than the `zyra-ui-deprecated` swap: they are stateful and
 app-coupled — Jotai atoms, hooks, contexts, and (in places) GraphQL/router/Recoil-style state — rather
 than pure presentation. The goal is to extract the **generic, reusable** parts into `zyra-ui`
-while leaving genuinely app-specific wiring in `zyra-front`.
+while leaving genuinely app-specific wiring in `asturian-front`.
 
 **Approach**
 
-- **Triage, don't lift-and-shift.** Per component, classify as: (a) **generic** → migrate to `zyra-ui`; (b) **app-specific** → keep in `zyra-front`; (c) **hybrid** → split a presentational/headless core (library) from an app-wired wrapper (front).
+- **Triage, don't lift-and-shift.** Per component, classify as: (a) **generic** → migrate to `zyra-ui`; (b) **app-specific** → keep in `asturian-front`; (c) **hybrid** → split a presentational/headless core (library) from an app-wired wrapper (front).
 - **Decouple state.** Replace internal Jotai/global state with controlled props (`props down, events up`); where a component needs local state, keep it self-contained. The library must not import app stores, GraphQL, or routing.
 - **Prefer Base UI primitives** for behavior already covered there — Dropdown→`Menu`/`Popover`, modal/side-panel→`Dialog`, tab-list→`Tabs`, expandable/selectable lists→`Collapsible`/list patterns, drag-and-drop stays on the existing dnd lib but exposed generically.
 - **Same parity bar** as the rest of the package: stories (all states, light/dark), interaction + a11y tests, visual-parity diff, within-budget size entry.
 
-**Out of scope (stays in `zyra-front`):** components bound to domain entities, record/table data fetching,
+**Out of scope (stays in `asturian-front`):** components bound to domain entities, record/table data fetching,
 workspace/router/permission logic, and anything whose only consumer is a single feature screen.
 
 A component-by-component triage of `modules/ui` (generic / app-specific / hybrid, with target subpath
@@ -248,7 +248,7 @@ is a hypothesis to validate during the Phase 0 inventory/triage, not a final lis
 Cross-cutting: **~120 files use Linaria prop interpolation** and **~26 use framer-motion** — the two
 systemic conversions (→ SCSS Modules, → CSS/Base UI transitions) dominate, not any single component.
 
-### In `zyra-front/src/modules/ui`
+### In `asturian-front/src/modules/ui`
 
 Here difficulty is **decoupling from app state**, not visuals. Ranked hardest:
 
@@ -256,7 +256,7 @@ Here difficulty is **decoupling from app state**, not visuals. Ranked hardest:
 | --- | --- | --- |
 | `layout/dropdown` | Floating UI positioning + open-state atoms + hotkey scoping; foundational to many features | Generic positioning wrapper; controlled open state; injectable keyboard handling |
 | `utilities/hotkey` + `utilities/focus` | Hand-rolled global hotkey **scope stack** and focus stack as shared runtime state | Extract as an injectable system; the rest of the library must not assume the global stack |
-| `navigation/navigation-drawer` (~40 files) | Deeply bound to `currentWorkspaceState`, auth, Apollo error handling, multi-workspace switching | Mostly **app-specific** — migrate only the generic drawer shell, leave workspace logic in `zyra-front` |
+| `navigation/navigation-drawer` (~40 files) | Deeply bound to `currentWorkspaceState`, auth, Apollo error handling, multi-workspace switching | Mostly **app-specific** — migrate only the generic drawer shell, leave workspace logic in `asturian-front` |
 | `layout/selectable-list` | 2D arrow-key navigation state machine over atom families | Pure grid-position functions + a controlled selection API |
 | `layout/expandable-list` | Floating UI + DOM overflow measurement | Layout-agnostic overflow API, drop Floating UI coupling |
 | `layout/table` | Generic types but heavy sorting/metadata atoms | Make field-agnostic; lift state out |
@@ -266,7 +266,7 @@ Here difficulty is **decoupling from app state**, not visuals. Ranked hardest:
 | `layout/tab-list` | Router `useNavigate`, measurement system, dropdown coupling | Callback-based navigation; extract measurement |
 | `input` date pickers (`internal/date`, ~47 files) | `temporal-polyfill`, reads `currentWorkspaceMemberState` for tz/locale | Parameterize locale/timezone via props |
 
-**Probably should NOT migrate (too app-coupled, keep in `zyra-front`):** `field/input` & `field/display`
+**Probably should NOT migrate (too app-coupled, keep in `asturian-front`):** `field/input` & `field/display`
 (bound to `FieldMetadata` / `object-record`), the full navigation-drawer workspace/auth UI, snackbar
 Apollo error formatting, and the icon/theme-color pickers tied to Zyra's icon set and theme system.
 
@@ -344,8 +344,8 @@ to review diffs.
 ## Migration & rollout
 
 1. ~~Build `zyra-ui` to parity with the same API surface and design~~ **Done** — validated by the export-parity diff, a11y, and size suites; visual-parity triage via Argos still pending.
-2. Dogfood on a few non-critical `zyra-front` screens behind a temporary alias.
-3. Codemod imports `zyra-ui-deprecated` → `zyra-ui` (subpaths preserved) across `zyra-front` (~1,730 files), `zyra-front-component-renderer`, and `zyra-sdk`; handle any changed APIs explicitly.
+2. Dogfood on a few non-critical `asturian-front` screens behind a temporary alias.
+3. Codemod imports `zyra-ui-deprecated` → `zyra-ui` (subpaths preserved) across `asturian-front` (~1,730 files), `zyra-front-component-renderer`, and `zyra-sdk`; handle any changed APIs explicitly.
 4. Swap the dependency, run the full test suite + visual diffs, ship.
 5. Remove `zyra-ui-deprecated` after a soak period.
 
@@ -355,7 +355,7 @@ to review diffs.
 - ~~**Phase 1 — Primitives**~~ ✅ done June 2026 (canonical pattern: `Button.tsx` + data-attribute Sass matrix).
 - ~~**Phase 2 — Behavioral**~~ ✅ done June 2026 (Base UI where mapped; see Migration outcomes for exceptions).
 - ~~**Phase 3 — Long tail**~~ ✅ done June 2026. Follow-up debt: the a11y fix pass for the 119 `a11y: 'todo'` stories, and the Argos visual-parity triage.
-- **Phase 4 — Application-level UI:** migrate the generic/hybrid components from `zyra-front/src/modules/ui` per the triage — decouple state, split headless cores, swap each behind its existing `@/ui/...` import path.
+- **Phase 4 — Application-level UI:** migrate the generic/hybrid components from `asturian-front/src/modules/ui` per the triage — decouple state, split headless cores, swap each behind its existing `@/ui/...` import path.
 - **Phase 5 — Hardening & publish:** close gaps; finalize release pipeline; cut `1.0.0`; publish docs.
 - ~~**Phase 6 — Cut-over**~~ ✅ done June 2026: codemod imports → swap dependency → remove `zyra-ui-deprecated`.
 
@@ -382,4 +382,4 @@ a passing visual-parity diff, and a within-budget size entry.
 4. ~~Visual regression tooling: Chromatic vs self-hosted image snapshots.~~ **Resolved:** Argos (self-hosted at argos.zyra-internal.com). See [Visual regression](#visual-regression).
 5. ~~How aggressively to drop `framer-motion`.~~ **Resolved:** keep it where animation is the public contract (`utilities/animation`, `AnimatedButton`, `AnimatedCheckmark`, `AnimatedExpandableContainer`, `useProgressAnimation`, `CardContent`); converted to CSS/Base UI transitions everywhere it was an internal micro-transition.
 6. ~~Scope of `assets` / `testing` / `json-visualizer`.~~ **Resolved:** ported — assets byte-identical, testing decorators converted to SCSS, json-visualizer recursion verbatim with CSS/Collapsible animations.
-7. Where to draw the generic-vs-app-specific line for `modules/ui`, and whether hybrid components live as a headless core in `zyra-ui` with a thin app wrapper in `zyra-front`. **(Still open — Phase 4.)**
+7. Where to draw the generic-vs-app-specific line for `modules/ui`, and whether hybrid components live as a headless core in `zyra-ui` with a thin app wrapper in `asturian-front`. **(Still open — Phase 4.)**

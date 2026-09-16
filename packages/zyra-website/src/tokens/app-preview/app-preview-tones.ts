@@ -109,7 +109,7 @@ const WORKFLOW_CANVAS = {
   actionIcon: THEME_LIGHT.color.red,
 };
 
-// zyra-front's graph-color registry assigns chart series from the color8
+// asturian-front's graph-color registry assigns chart series from the color8
 // shade; trend arrows use the turquoise8/red8 success/danger pair.
 const DASHBOARD_CHART = {
   accent: THEME_LIGHT.color.blue8,

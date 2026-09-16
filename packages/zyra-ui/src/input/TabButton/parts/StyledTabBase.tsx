@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styles from './StyledTabBase.module.scss';
 
 // The deprecated Linaria styled components forwarded refs and arbitrary
-// native props (zyra-front spreads drag-and-drop props onto
+// native props (asturian-front spreads drag-and-drop props onto
 // StyledTabContainer), so the ports preserve that contract.
 type StyledTabButtonProps = {
   active?: boolean;

@@ -26,7 +26,7 @@ import {
   type KanbanCard as KanbanCardData,
 } from '../../types';
 
-// zyra-front hashes a record's identifier to its avatar tone; the mockup
+// asturian-front hashes a record's identifier to its avatar tone; the mockup
 // does the same so each opportunity gets a stable, distinct color.
 const TITLE_AVATAR_TONES = [
   'blue',
@@ -75,7 +75,7 @@ const CardHeader = styled.div`
   padding: 8px 8px 4px;
 `;
 
-// The identifier renders as zyra-front's RecordChip: a rounded initial
+// The identifier renders as asturian-front's RecordChip: a rounded initial
 // avatar (the record's hashed tone) + the name at regular weight in a
 // transparent chip. The slot flexes so the name ellipsizes and the selection
 // checkbox (only shown on selected cards) sits at the right.

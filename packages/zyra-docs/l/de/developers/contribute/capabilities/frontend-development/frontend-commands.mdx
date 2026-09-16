@@ -8,41 +8,41 @@ icon: Terminal
 ### Die App starten
 
 ```bash
-npx nx start zyra-front
+npx nx start asturian-front
 ```
 
 ### GraphQL-Schema basierend auf API-GraphQL-Schema regenerieren
 
 ```bash
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 
 ODER
 
 ```bash
-npx nx run zyra-front:graphql:generate
+npx nx run asturian-front:graphql:generate
 ```
 
 ### Lint
 
 ```bash
-npx nx run zyra-front:lint # Füge --fix hinzu, um Lint-Fehler zu beheben
+npx nx run asturian-front:lint # Füge --fix hinzu, um Lint-Fehler zu beheben
 ```
 
 ## Übersetzungen
 
 ```bash
-npx nx run zyra-front:lingui:extract
-npx nx run zyra-front:lingui:compile
+npx nx run asturian-front:lingui:extract
+npx nx run asturian-front:lingui:compile
 ```
 
 ### Test
 
 ```bash
-npx nx run zyra-front:test # führe JEST-Tests aus
-npx nx run zyra-front:storybook:serve:dev # führe Storybook aus
-npx nx run zyra-front:storybook:test # führe Tests aus # benötigt yarn storybook:serve:dev als laufenden Prozess
-npx nx run zyra-front:storybook:coverage # benötigt yarn storybook:serve:dev als laufenden Prozess
+npx nx run asturian-front:test # führe JEST-Tests aus
+npx nx run asturian-front:storybook:serve:dev # führe Storybook aus
+npx nx run asturian-front:storybook:test # führe Tests aus # benötigt yarn storybook:serve:dev als laufenden Prozess
+npx nx run asturian-front:storybook:coverage # benötigt yarn storybook:serve:dev als laufenden Prozess
 ```
 
 ## Technologie-Stack

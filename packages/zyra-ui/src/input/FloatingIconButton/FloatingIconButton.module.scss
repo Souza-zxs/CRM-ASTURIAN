@@ -1,5 +1,5 @@
 // Ported from the legacy Linaria FloatingIconButton. State rules below are
-// kept flat on .button so zyra-front styled(FloatingIconButton) overrides
+// kept flat on .button so asturian-front styled(FloatingIconButton) overrides
 // keep beating them at (0,1,0) specificity. Source order replicates the
 // legacy ternary precedence: hover/active beat the isActive background,
 // applyShadow beats the focus ring, and disabled wins last.

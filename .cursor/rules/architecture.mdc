@@ -14,7 +14,7 @@ alwaysApply: true
 ## Package Structure
 ```
 packages/
-├── zyra-front/     # React app
+├── asturian-front/     # React app
 ├── zyra-server/    # NestJS API  
 ├── zyra-ui/        # Shared components
 ├── zyra-shared/    # Common types/utils

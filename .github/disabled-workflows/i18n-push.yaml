@@ -40,7 +40,7 @@ jobs:
         run: |
           npx nx run zyra-server:lingui:extract
           npx nx run zyra-emails:lingui:extract
-          npx nx run zyra-front:lingui:extract
+          npx nx run asturian-front:lingui:extract
 
       - name: Check and commit extracted files
         id: check_extract_changes
@@ -59,7 +59,7 @@ jobs:
         run: |
           npx nx run zyra-server:lingui:compile
           npx nx run zyra-emails:lingui:compile
-          npx nx run zyra-front:lingui:compile
+          npx nx run asturian-front:lingui:compile
 
       - name: Check and commit compiled files
         id: check_compile_changes

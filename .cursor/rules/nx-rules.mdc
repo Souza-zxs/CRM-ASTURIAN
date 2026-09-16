@@ -9,17 +9,17 @@ alwaysApply: true
 ## Core Commands
 ```bash
 # Run target for specific project
-npx nx run zyra-front:build
+npx nx run asturian-front:build
 npx nx run zyra-server:test
 
 # Lint diff with main (recommended - much faster!)
-npx nx lint:diff-with-main zyra-front           # Lint only files changed vs main
+npx nx lint:diff-with-main asturian-front           # Lint only files changed vs main
 npx nx lint:diff-with-main zyra-server
-npx nx lint:diff-with-main zyra-front --configuration=fix  # Auto-fix changed files
+npx nx lint:diff-with-main asturian-front --configuration=fix  # Auto-fix changed files
 
 # Run target for all projects (slower)
 npx nx run-many --target=build --all
-npx nx run-many --target=test --projects=zyra-front,zyra-server
+npx nx run-many --target=test --projects=asturian-front,zyra-server
 
 # Generate/modify projects
 npx nx g @nx/react:app my-app
@@ -38,11 +38,11 @@ npx nx g @nx/react:component my-component
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "options": { "outputPath": "dist/packages/zyra-front" }
+      "options": { "outputPath": "dist/packages/asturian-front" }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "options": { "jestConfig": "packages/zyra-front/jest.config.mjs" }
+      "options": { "jestConfig": "packages/asturian-front/jest.config.mjs" }
     }
   }
 }

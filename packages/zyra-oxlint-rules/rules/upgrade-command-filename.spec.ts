@@ -54,7 +54,7 @@ ruleTester.run(RULE_NAME, rule, {
     },
     {
       code: DUMMY_CODE,
-      filename: '/project/packages/zyra-front/src/components/Button.tsx',
+      filename: '/project/packages/asturian-front/src/components/Button.tsx',
     },
     {
       code: DUMMY_CODE,

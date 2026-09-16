@@ -40,7 +40,7 @@ describe('createIndexedDbBackedJotaiStorage', () => {
     createIndexedDbBackedJotaiStorage<Item>('metadata-store');
 
     expect(mockedCreateStore).toHaveBeenCalledWith(
-      'zyra-front-metadata-store',
+      'asturian-front-metadata-store',
       'keyval',
     );
   });

@@ -8,41 +8,41 @@ icon: 터미널
 ### 앱 시작하기
 
 ```bash
-npx nx start zyra-front
+npx nx start asturian-front
 ```
 
 ### API GraphQL 스키마를 기반으로 GraphQL 스키마 재생성
 
 ```bash
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 
 또는
 
 ```bash
-npx nx run zyra-front:graphql:generate
+npx nx run asturian-front:graphql:generate
 ```
 
 ### 린트
 
 ```bash
-npx nx run zyra-front:lint # pass --fix to fix lint errors
+npx nx run asturian-front:lint # pass --fix to fix lint errors
 ```
 
 ## 번역
 
 ```bash
-npx nx run zyra-front:lingui:extract
-npx nx run zyra-front:lingui:compile
+npx nx run asturian-front:lingui:extract
+npx nx run asturian-front:lingui:compile
 ```
 
 ### 테스트
 
 ```bash
-npx nx run zyra-front:test # run jest tests
-npx nx run zyra-front:storybook:serve:dev # run storybook
-npx nx run zyra-front:storybook:test # run tests # (needs yarn storybook:serve:dev to be running)
-npx nx run zyra-front:storybook:coverage # (needs yarn storybook:serve:dev to be running)
+npx nx run asturian-front:test # run jest tests
+npx nx run asturian-front:storybook:serve:dev # run storybook
+npx nx run asturian-front:storybook:test # run tests # (needs yarn storybook:serve:dev to be running)
+npx nx run asturian-front:storybook:coverage # (needs yarn storybook:serve:dev to be running)
 ```
 
 ## 기술 스택

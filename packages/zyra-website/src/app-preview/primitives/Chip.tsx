@@ -31,7 +31,7 @@ type ChipProps = {
 
 // Variant styling lives in data-attribute selectors (not prop functions) so
 // every value bakes at build — zyra-ui's theme is tree-shaken out of the
-// runtime bundle. Sized against the content box like zyra-front's chip:
+// runtime bundle. Sized against the content box like asturian-front's chip:
 // 12px content + 4px padding = 20px.
 const StyledContainer = styled.div<{ $maxWidth?: number }>`
   --chip-horizontal-padding: ${THEME_LIGHT.spacing(1)};

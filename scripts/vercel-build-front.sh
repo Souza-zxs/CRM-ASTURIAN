@@ -8,7 +8,7 @@ node scripts/select-brand.mjs
 
 # Same NODE_ENV=production caveat as vercel-build.sh (the backend build
 # script): plain `npm install` skips devDependencies, but Nx and the Vite/
-# SWC toolchain zyra-front needs to build live there.
+# SWC toolchain asturian-front needs to build live there.
 npm install --legacy-peer-deps --include=dev
 
 # Same native-binding gap as the backend build (npm/cli#4828) — Vite's
@@ -19,10 +19,10 @@ npm install --no-save --legacy-peer-deps --include=dev \
   @swc/core-linux-x64-gnu \
   @typescript/native-preview-linux-x64
 
-# zyra-front imports zyra-shared directly (e.g. zyra-shared/vite) — it must
+# asturian-front imports zyra-shared directly (e.g. zyra-shared/vite) — it must
 # be built first, same as the backend build.
 npx nx build zyra-shared
-npx nx build zyra-front
+npx nx build asturian-front
 
 # This is a standalone static deploy (its own Vercel project/domain, no
 # backend alongside it), so generateFrontConfig.ts's request-time injection
@@ -33,7 +33,7 @@ npx nx build zyra-front
 if [ -n "$REACT_APP_SERVER_BASE_URL" ]; then
   node -e "
     const fs = require('fs');
-    const path = 'packages/zyra-front/build/index.html';
+    const path = 'packages/asturian-front/build/index.html';
     const url = process.env.REACT_APP_SERVER_BASE_URL;
     let html = fs.readFileSync(path, 'utf8');
     html = html.replace(

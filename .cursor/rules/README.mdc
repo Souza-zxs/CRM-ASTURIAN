@@ -53,16 +53,16 @@ You can manually reference any rule using the `@ruleName` syntax:
 ### Frontend Commands
 ```bash
 # Testing
-npx nx test zyra-front                    # Run unit tests
-npx nx storybook:build zyra-front         # Build Storybook
+npx nx test asturian-front                    # Run unit tests
+npx nx storybook:build asturian-front         # Build Storybook
 npx nx storybook:test                       # Run Storybook tests
 
 # Development
-npx nx lint:diff-with-main zyra-front            # Lint files changed vs main (fastest)
-npx nx lint:diff-with-main zyra-front --configuration=fix  # Auto-fix changed files
-npx nx lint zyra-front                    # Lint all files (slower)
-npx nx typecheck zyra-front               # Type checking
-npx nx run zyra-front:graphql:generate    # Generate GraphQL types
+npx nx lint:diff-with-main asturian-front            # Lint files changed vs main (fastest)
+npx nx lint:diff-with-main asturian-front --configuration=fix  # Auto-fix changed files
+npx nx lint asturian-front                    # Lint all files (slower)
+npx nx typecheck asturian-front               # Type checking
+npx nx run asturian-front:graphql:generate    # Generate GraphQL types
 ```
 
 ### Backend Commands

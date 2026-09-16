@@ -1,7 +1,7 @@
 import { themeCssVariables } from '@ui/theme-constants';
 
 // Same wireframe "Z" glyph used on zyra-website's brand mark, ported so the
-// app (zyra-front) can render it too — colored with the app's accent
+// app (asturian-front) can render it too — colored with the app's accent
 // (violet) instead of the website's monochromatic ink/surface scheme, since
 // the two surfaces intentionally use different color systems.
 const ZYRA_MARK_OUTLINE =

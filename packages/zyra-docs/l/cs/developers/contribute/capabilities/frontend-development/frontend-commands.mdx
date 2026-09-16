@@ -8,41 +8,41 @@ icon: terminal
 ### Spuštění aplikace
 
 ```bash
-npx nx start zyra-front
+npx nx start asturian-front
 ```
 
 ### Regenerujte schéma GraphQL na základě API graphql schématu
 
 ```bash
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 
 NEBO
 
 ```bash
-npx nx run zyra-front:graphql:generate
+npx nx run asturian-front:graphql:generate
 ```
 
 ### Linter
 
 ```bash
-npx nx run zyra-front:lint # přidejte --fix pro opravu chyb ve formátování
+npx nx run asturian-front:lint # přidejte --fix pro opravu chyb ve formátování
 ```
 
 ## Překlady
 
 ```bash
-npx nx run zyra-front:lingui:extract
-npx nx run zyra-front:lingui:compile
+npx nx run asturian-front:lingui:extract
+npx nx run asturian-front:lingui:compile
 ```
 
 ### Testovat
 
 ```bash
-npx nx run zyra-front:test # spusťte jest testy
-npx nx run zyra-front:storybook:serve:dev # spusťte storybook
-npx nx run zyra-front:storybook:test # spusťte testy # (vyžaduje, aby byl spuštěn yarn storybook:serve:dev)
-npx nx run zyra-front:storybook:coverage # (vyžaduje, aby byl spuštěn yarn storybook:serve:dev)
+npx nx run asturian-front:test # spusťte jest testy
+npx nx run asturian-front:storybook:serve:dev # spusťte storybook
+npx nx run asturian-front:storybook:test # spusťte testy # (vyžaduje, aby byl spuštěn yarn storybook:serve:dev)
+npx nx run asturian-front:storybook:coverage # (vyžaduje, aby byl spuštěn yarn storybook:serve:dev)
 ```
 
 ## Technologický stack

@@ -7,7 +7,7 @@ import { type AgentMessagePartEntity } from 'src/engine/metadata-modules/ai/ai-a
 
 // Maps TypeORM entity fields to UI message parts.
 // A parallel mapping for GraphQL DTOs exists in the frontend at:
-// packages/zyra-front/src/modules/ai/utils/mapDBPartToUIMessagePart.ts
+// packages/asturian-front/src/modules/ai/utils/mapDBPartToUIMessagePart.ts
 
 export const mapDBPartToUIMessagePart = (
   part: AgentMessagePartEntity,

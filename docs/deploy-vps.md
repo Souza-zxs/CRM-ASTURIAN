@@ -5,7 +5,7 @@ VPS própria via Docker Compose, usando bancos gerenciados externos (Postgres e
 Redis) em vez de subir esses serviços na própria VPS — o mesmo modelo hoje usado
 no Railway (`.railway/railway.ts`), só que rodando em container próprio.
 
-O front-end (`packages/zyra-front`) **não** é servido por este Compose — ele é
+O front-end (`packages/asturian-front`) **não** é servido por este Compose — ele é
 publicado separadamente (ex.: Vercel, via `scripts/vercel-build-front.sh`, que já
 aplica a marca whitelabel automaticamente). Este guia cobre só o backend.
 

@@ -12,12 +12,12 @@ COPY ./.yarn/patches /app/.yarn/patches
 
 COPY ./packages/zyra-ui/package.json /app/packages/zyra-ui/
 COPY ./packages/zyra-shared/package.json /app/packages/zyra-shared/
-COPY ./packages/zyra-front/package.json /app/packages/zyra-front/
+COPY ./packages/asturian-front/package.json /app/packages/asturian-front/
 COPY ./packages/zyra-front-component-renderer/package.json /app/packages/zyra-front-component-renderer/
 COPY ./packages/zyra-sdk/package.json /app/packages/zyra-sdk/
 COPY ./packages/zyra-client-sdk/package.json /app/packages/zyra-client-sdk/
 
-RUN yarn workspaces focus zyra zyra-front zyra-front-component-renderer zyra-ui zyra-shared zyra-sdk zyra-client-sdk && yarn cache clean && npx nx reset
+RUN yarn workspaces focus zyra asturian-front zyra-front-component-renderer zyra-ui zyra-shared zyra-sdk zyra-client-sdk && yarn cache clean && npx nx reset
 
 
 FROM node:24.16.0-alpine3.23@sha256:2bdb65ed1dab192432bc31c95f94155ca5ad7fc1392fb7eb7526ab682fa5bf14 AS server-deps
@@ -59,23 +59,23 @@ RUN find /app/packages/zyra-server/dist -name '*.d.ts' -delete \
 RUN yarn workspaces focus --production zyra-emails zyra-shared zyra-client-sdk zyra-server
 
 
-FROM front-deps AS zyra-front-build
+FROM front-deps AS asturian-front-build
 
-COPY ./packages/zyra-front /app/packages/zyra-front
+COPY ./packages/asturian-front /app/packages/asturian-front
 COPY ./packages/zyra-front-component-renderer /app/packages/zyra-front-component-renderer
 COPY ./packages/zyra-ui /app/packages/zyra-ui
 COPY ./packages/zyra-shared /app/packages/zyra-shared
 COPY ./packages/zyra-sdk /app/packages/zyra-sdk
 COPY ./packages/zyra-client-sdk /app/packages/zyra-client-sdk
-RUN npx nx run zyra-front:lingui:extract && \
-    npx nx run zyra-front:lingui:compile
+RUN npx nx run asturian-front:lingui:extract && \
+    npx nx run asturian-front:lingui:compile
 # To skip the memory-intensive frontend build, pre-build on the host:
-#   npx nx build zyra-front
-# The check below will use packages/zyra-front/build/ if it already exists.
-RUN if [ -d /app/packages/zyra-front/build ]; then \
+#   npx nx build asturian-front
+# The check below will use packages/asturian-front/build/ if it already exists.
+RUN if [ -d /app/packages/asturian-front/build ]; then \
       echo "Using pre-built frontend from host"; \
     else \
-      NODE_OPTIONS="--max-old-space-size=8192" npx nx build zyra-front; \
+      NODE_OPTIONS="--max-old-space-size=8192" npx nx build asturian-front; \
     fi
 
 
@@ -173,7 +173,7 @@ USER 1000
 
 FROM zyra-server AS zyra
 
-COPY --chown=1000 --from=zyra-front-build /app/packages/zyra-front/build /app/packages/zyra-server/dist/front
+COPY --chown=1000 --from=asturian-front-build /app/packages/asturian-front/build /app/packages/zyra-server/dist/front
 
 LABEL org.opencontainers.image.description="Zyra image with backend and frontend."
 
@@ -253,7 +253,7 @@ COPY --from=zyra-server-build /app/packages/zyra-client-sdk/package.json /app/pa
 COPY --from=zyra-server-build /app/packages/zyra-client-sdk/dist /app/packages/zyra-client-sdk/dist
 
 # Frontend static build
-COPY --from=zyra-front-build /app/packages/zyra-front/build /app/packages/zyra-server/dist/front
+COPY --from=asturian-front-build /app/packages/asturian-front/build /app/packages/zyra-server/dist/front
 
 # Source maps are not needed in the dev image (no Sentry). Node dev headers are
 # dropped for the same scanner-hygiene reasons as in zyra-server above.

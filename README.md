@@ -56,7 +56,7 @@ Depois abra **http://localhost:3001**. O guia completo está em **[WINDOWS.md](.
 
 ```
 packages/
-├── zyra-front/     # aplicação React (front)
+├── asturian-front/     # aplicação React (front)
 ├── zyra-server/    # API NestJS (back + worker)
 ├── zyra-ui/        # biblioteca de componentes
 ├── zyra-shared/    # tipos e utilitários comuns

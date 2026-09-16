@@ -5,7 +5,7 @@ import { rule, RULE_NAME } from './folder-structure';
 const ruleTester = new RuleTester();
 
 const DUMMY_CODE = 'const x = 1;';
-const PROJECT = '/project/packages/zyra-front';
+const PROJECT = '/project/packages/asturian-front';
 
 const filename = (path: string) => `${PROJECT}/${path}`;
 

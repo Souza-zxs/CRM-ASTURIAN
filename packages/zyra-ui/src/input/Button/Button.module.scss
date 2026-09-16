@@ -7,7 +7,7 @@ $gray-scale-light-gray1: color(display-p3 1 1 1);
 // The variant × accent × inverted × disabled × focus matrix below is ported
 // token-for-token from computeButtonDynamicStyles in the deprecated
 // Button.tsx. Matrix rules only assign CSS custom properties; the actual
-// declarations live on the flat .button class so zyra-front styled(Button)
+// declarations live on the flat .button class so asturian-front styled(Button)
 // overrides keep beating them at (0,1,0) specificity, exactly like the legacy
 // single Linaria class did.
 // Cascade order inside each branch: base, then [data-focus], then

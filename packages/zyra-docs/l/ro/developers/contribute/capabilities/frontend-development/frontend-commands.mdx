@@ -8,41 +8,41 @@ icon: terminal
 ### Pornirea aplicației
 
 ```bash
-npx nx start zyra-front
+npx nx start asturian-front
 ```
 
 ### Regenerează schema graphql pe baza schemei graphql a API-ului
 
 ```bash
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 
 SAU
 
 ```bash
-npx nx run zyra-front:graphql:generate
+npx nx run asturian-front:graphql:generate
 ```
 
 ### Lint
 
 ```bash
-npx nx run zyra-front:lint # utilizați --fix pentru a corecta erorile de lint
+npx nx run asturian-front:lint # utilizați --fix pentru a corecta erorile de lint
 ```
 
 ## Traduceri
 
 ```bash
-npx nx run zyra-front:lingui:extract
-npx nx run zyra-front:lingui:compile
+npx nx run asturian-front:lingui:extract
+npx nx run asturian-front:lingui:compile
 ```
 
 ### Test
 
 ```bash
-npx nx run zyra-front:test # rulați teste jest
-npx nx run zyra-front:storybook:serve:dev # rulați storybook
-npx nx run zyra-front:storybook:test # rulați testele # (are nevoie de yarn storybook:serve:dev pentru a rula)
-npx nx run zyra-front:storybook:coverage # (are nevoie de yarn storybook:serve:dev pentru a rula)
+npx nx run asturian-front:test # rulați teste jest
+npx nx run asturian-front:storybook:serve:dev # rulați storybook
+npx nx run asturian-front:storybook:test # rulați testele # (are nevoie de yarn storybook:serve:dev pentru a rula)
+npx nx run asturian-front:storybook:coverage # (are nevoie de yarn storybook:serve:dev pentru a rula)
 ```
 
 ## Tehnologii Utilizate

@@ -3,6 +3,6 @@
     "nvm use",
     "yarn",
     "cp $ROOT_WORKTREE_PATH/packages/zyra-server/.env packages/zyra-server/.env || true",
-    "cp $ROOT_WORKTREE_PATH/packages/zyra-front/.env packages/zyra-front/.env || true"
+    "cp $ROOT_WORKTREE_PATH/packages/asturian-front/.env packages/asturian-front/.env || true"
   ]
 }

@@ -24,12 +24,12 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: "import { isDefined } from 'zyra-shared';",
       options: [{ depConstraints }],
-      filename: '/project/packages/zyra-front/src/utils.ts',
+      filename: '/project/packages/asturian-front/src/utils.ts',
     },
     {
       code: "import { Button } from 'zyra-ui';",
       options: [{ depConstraints }],
-      filename: '/project/packages/zyra-front/src/components.tsx',
+      filename: '/project/packages/asturian-front/src/components.tsx',
     },
     {
       code: "import { isDefined } from 'zyra-shared';",
@@ -39,34 +39,34 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: "import { helper } from './local';",
       options: [{ depConstraints }],
-      filename: '/project/packages/zyra-front/src/utils.ts',
+      filename: '/project/packages/asturian-front/src/utils.ts',
     },
     {
       code: "import lodash from 'lodash';",
       options: [{ depConstraints }],
-      filename: '/project/packages/zyra-front/src/utils.ts',
+      filename: '/project/packages/asturian-front/src/utils.ts',
     },
     {
       code: "import { isDefined } from 'zyra-shared';",
       options: [{ depConstraints: [] }],
-      filename: '/project/packages/zyra-front/src/utils.ts',
+      filename: '/project/packages/asturian-front/src/utils.ts',
     },
   ],
   invalid: [
     {
       code: "import { ServerService } from 'zyra-server';",
       options: [{ depConstraints }],
-      filename: '/project/packages/zyra-front/src/bad-import.ts',
+      filename: '/project/packages/asturian-front/src/bad-import.ts',
       errors: [{ messageId: 'moduleBoundaryViolation' }],
     },
     {
-      code: "import { Component } from 'zyra-front';",
+      code: "import { Component } from 'asturian-front';",
       options: [{ depConstraints }],
       filename: '/project/packages/zyra-server/src/bad-import.ts',
       errors: [{ messageId: 'moduleBoundaryViolation' }],
     },
     {
-      code: "import { Component } from 'zyra-front';",
+      code: "import { Component } from 'asturian-front';",
       options: [{ depConstraints }],
       filename: '/project/packages/zyra-shared/src/bad-import.ts',
       errors: [{ messageId: 'moduleBoundaryViolation' }],

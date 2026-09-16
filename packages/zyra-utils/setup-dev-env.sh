@@ -239,10 +239,10 @@ info "Setting up .env files..."
 cd "$REPO_ROOT"
 
 if command -v npx &>/dev/null && [ -d node_modules ]; then
-  npx nx reset:env zyra-front
+  npx nx reset:env asturian-front
   npx nx reset:env zyra-server
 else
-  for pkg in zyra-front zyra-server; do
+  for pkg in asturian-front zyra-server; do
     src="packages/$pkg/.env.example"
     dst="packages/$pkg/.env"
     if [ -f "$src" ] && [ ! -f "$dst" ]; then
@@ -276,6 +276,6 @@ echo ""
 echo "Dev environment ready."
 echo ""
 echo "  yarn start                         # start everything"
-echo "  npx nx start zyra-front          # frontend  -> http://localhost:3001"
+echo "  npx nx start asturian-front          # frontend  -> http://localhost:3001"
 echo "  npx nx start zyra-server         # backend   -> http://localhost:3000"
 echo ""

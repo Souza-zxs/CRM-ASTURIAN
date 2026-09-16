@@ -1,5 +1,5 @@
 #
-# Crowdin CLI configuration for App translations (zyra-front, zyra-server, zyra-emails)
+# Crowdin CLI configuration for App translations (asturian-front, zyra-server, zyra-emails)
 # See https://crowdin.github.io/crowdin-cli/configuration for more information
 #
 
@@ -10,7 +10,7 @@ files:
   #
   # Source files filter - PO files for Lingui
   #
-  - source: packages/zyra-front/src/locales/en.po
+  - source: packages/asturian-front/src/locales/en.po
     #
     # Translation files path
     #

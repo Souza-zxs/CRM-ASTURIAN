@@ -3,7 +3,7 @@ import { defineRule } from '@oxlint/plugins';
 export const RULE_NAME = 'enforce-module-boundaries';
 
 const PACKAGE_TAG_MAP: Record<string, string[]> = {
-  'zyra-front': ['scope:frontend'],
+  'asturian-front': ['scope:frontend'],
   'zyra-server': ['scope:backend'],
   'zyra-ui': ['scope:shared'],
   'zyra-shared': ['scope:shared'],

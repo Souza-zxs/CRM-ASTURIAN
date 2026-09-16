@@ -9,39 +9,39 @@ icon: "terminal"
 ### Starting the app
 
 ```bash
-npx nx start zyra-front
+npx nx start asturian-front
 ```
 
 ### Regenerate graphql schema based on API graphql schema
 
 ```bash
-npx nx run zyra-front:graphql:generate --configuration=metadata
+npx nx run asturian-front:graphql:generate --configuration=metadata
 ```
 OR
 ```bash
-npx nx run zyra-front:graphql:generate
+npx nx run asturian-front:graphql:generate
 ```
 
 ### Lint
 
 ```bash
-npx nx run zyra-front:lint # pass --fix to fix lint errors
+npx nx run asturian-front:lint # pass --fix to fix lint errors
 ```
 
 ## Translations
 
 ```bash
-npx nx run zyra-front:lingui:extract
-npx nx run zyra-front:lingui:compile
+npx nx run asturian-front:lingui:extract
+npx nx run asturian-front:lingui:compile
 ```
 
 ### Test
 
 ```bash
-npx nx run zyra-front:test # run jest tests
-npx nx run zyra-front:storybook:serve:dev # run storybook
-npx nx run zyra-front:storybook:test # run tests # (needs yarn storybook:serve:dev to be running)
-npx nx run zyra-front:storybook:coverage # (needs yarn storybook:serve:dev to be running)
+npx nx run asturian-front:test # run jest tests
+npx nx run asturian-front:storybook:serve:dev # run storybook
+npx nx run asturian-front:storybook:test # run tests # (needs yarn storybook:serve:dev to be running)
+npx nx run asturian-front:storybook:coverage # (needs yarn storybook:serve:dev to be running)
 ```
 
 ## Tech Stack

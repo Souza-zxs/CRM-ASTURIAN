@@ -21,9 +21,9 @@ jobs:
         package.json
         yarn.lock
         packages/zyra-server/**
-        packages/zyra-front/src/generated/**
-        packages/zyra-front/src/generated-metadata/**
-        packages/zyra-front/src/generated-admin/**
+        packages/asturian-front/src/generated/**
+        packages/asturian-front/src/generated-metadata/**
+        packages/asturian-front/src/generated-admin/**
         packages/zyra-client-sdk/**
         packages/zyra-emails/**
         packages/zyra-shared/**
@@ -239,16 +239,16 @@ jobs:
         run: |
           HAS_ERRORS=false
 
-          npx nx run zyra-front:graphql:generate
-          npx nx run zyra-front:graphql:generate --configuration=metadata
-          npx nx run zyra-front:graphql:generate --configuration=admin
+          npx nx run asturian-front:graphql:generate
+          npx nx run asturian-front:graphql:generate --configuration=metadata
+          npx nx run asturian-front:graphql:generate --configuration=admin
 
-          if ! git diff --quiet -- packages/zyra-front/src/generated packages/zyra-front/src/generated-metadata packages/zyra-front/src/generated-admin; then
+          if ! git diff --quiet -- packages/asturian-front/src/generated packages/asturian-front/src/generated-metadata packages/asturian-front/src/generated-admin; then
             echo "::error::GraphQL schema changes detected. Please run the three graphql:generate configurations ('data', 'metadata', 'admin') and commit the changes."
             echo ""
             echo "The following GraphQL schema changes were detected:"
             echo "==================================================="
-            git diff -- packages/zyra-front/src/generated packages/zyra-front/src/generated-metadata packages/zyra-front/src/generated-admin
+            git diff -- packages/asturian-front/src/generated packages/asturian-front/src/generated-metadata packages/asturian-front/src/generated-admin
             echo "==================================================="
             echo ""
             HAS_ERRORS=true

@@ -78,7 +78,7 @@ const DataRow = styled.div<{ $rowIndex: number }>`
   /* Axis-split clip: the reveal animation clips VERTICALLY only. Unlike
      overflow:hidden, clip never creates a scroll container, so the
      sticky first column holds at every instant — including mid-reveal.
-     The product pins this column (zyra-front's record table); the old
+     The product pins this column (asturian-front's record table); the old
      mockup ships it broken (user-ratified improvement). */
   overflow-x: visible;
   overflow-y: clip;
