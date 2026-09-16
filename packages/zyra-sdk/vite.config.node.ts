@@ -26,8 +26,7 @@ export default defineConfig(() => {
         entry: {
           cli: 'src/cli/cli.ts',
           operations: 'src/cli/operations/index.ts',
-          'front-component-renderer/build':
-            'src/front-component-renderer/build/index.ts',
+          'front-component-renderer/build': 'src/front-component-renderer/index.ts',
         },
         name: 'zyra-sdk',
       },
