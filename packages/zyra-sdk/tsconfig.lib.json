@@ -31,7 +31,6 @@
     "**/__tests__/**",
     "**/__stories__/**",
     "**/*.stories.ts",
-    "**/*.stories.tsx",
-    "src/cli"
+    "**/*.stories.tsx"
   ]
 }
