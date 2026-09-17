@@ -1,12 +1,3 @@
-// NOT run by the zyra-sdk `build` target (see project.json) — src/cli/operations/build.ts
-// imports @/cli/utilities/build/manifest/manifest-writer and
-// @/cli/utilities/build/common/typecheck-plugin, neither of which has ever existed in this
-// repo's git history (pre-existing gap, not something removed here). The 'cli' and
-// 'operations' entries below can't build until those files are implemented. zyra-server
-// doesn't need this config's output (it only imports zyra-sdk/define and
-// zyra-sdk/front-component, built by the other vite.config.*.ts files), so this step is
-// skipped from the build chain rather than blocking the whole zyra-sdk (and therefore
-// zyra-server) build.
 import path from 'path';
 import { type PackageJson } from 'type-fest';
 import { defineConfig } from 'vite';
@@ -14,10 +5,20 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 import packageJson from './package.json';
 
+// Split out of vite.config.node.ts: that config used to bundle this entry
+// together with the CLI (`cli`/`operations`), which imports from
+// src/cli/utilities/build/* — a directory that doesn't exist in this
+// repository (missing since the initial snapshot, unrelated to this entry).
+// Bundling them in the same Rollup pass meant the CLI's broken imports took
+// down this entry too, even though nothing here depends on the CLI code.
+// This entry (zyra-sdk/front-component-renderer/build) is a real runtime
+// dependency of zyra-front-component-renderer, so it needs to build
+// independently of the CLI. See vite.config.node.ts for the (still broken)
+// cli/operations entries.
 export default defineConfig(() => {
   return {
     root: __dirname,
-    cacheDir: '../../node_modules/.vite/packages/zyra-sdk-node',
+    cacheDir: '../../node_modules/.vite/packages/zyra-sdk-front-component-renderer',
     resolve: {
       alias: {
         '@/': path.resolve(__dirname, 'src') + '/',
@@ -32,14 +33,8 @@ export default defineConfig(() => {
       emptyOutDir: false,
       outDir: 'dist',
       lib: {
-        // cli/operations import from src/cli/utilities/build/*, which is
-        // missing from this repository (pre-existing gap, not something
-        // this app needs) — this config is broken until those files are
-        // restored. See vite.config.front-component-renderer.ts, which
-        // used to share this file and now builds independently.
         entry: {
-          cli: 'src/cli/cli.ts',
-          operations: 'src/cli/operations/index.ts',
+          'front-component-renderer/build': 'src/front-component-renderer/index.ts',
         },
         name: 'zyra-sdk',
       },

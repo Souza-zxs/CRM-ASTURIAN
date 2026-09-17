@@ -1,4 +1,4 @@
-import { FUNNEL_API_URL, FUNNEL_WORKSPACE_ID } from '@/config';
+import { FUNNEL_API_URL, FUNNEL_WORKSPACE_ID } from '@/funnel/config';
 
 export type SubmitFunnelLeadInput = {
   funnelPageId: string;
@@ -30,10 +30,12 @@ export const submitFunnelLead = async (
   );
 
   if (!response.ok) {
-    const body = (await response.json().catch(() => null)) as {
-      message?: string;
-    } | null;
+    const body: unknown = await response.json().catch(() => null);
+    const message =
+      typeof body === 'object' && body !== null && 'message' in body
+        ? String((body as { message: unknown }).message)
+        : undefined;
 
-    throw new Error(body?.message ?? `Failed to submit (${response.status})`);
+    throw new Error(message ?? `Failed to submit (${response.status})`);
   }
 };
