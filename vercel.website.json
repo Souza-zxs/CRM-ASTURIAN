@@ -2,5 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "echo skipping default install, buildCommand handles it",
   "buildCommand": "sh scripts/vercel-build-website.sh",
-  "outputDirectory": "packages/zyra-website/dist"
+  "outputDirectory": "packages/zyra-website/dist",
+  "rewrites": [
+    { "source": "/w/:slug", "destination": "/index.html" }
+  ]
 }
