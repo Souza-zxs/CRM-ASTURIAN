@@ -1,9 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "echo skipping default install, buildCommand handles it",
-  "buildCommand": "sh scripts/vercel-build-funnel.sh",
-  "outputDirectory": "packages/zyra-funnel/build",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}

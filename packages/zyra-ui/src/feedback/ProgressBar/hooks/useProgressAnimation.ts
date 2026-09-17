@@ -1,11 +1,16 @@
 import { millisecondsToSeconds } from 'date-fns';
-import {
-  animate,
-  type AnimationPlaybackControls,
-  type ValueAnimationTransition,
-} from 'framer-motion';
+import { animate } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 import { isDefined } from '@ui/utilities/utils/isDefined';
+
+// framer-motion doesn't re-export these two types from its public API (only
+// from its internal 'motion-dom' dependency) — derive them from the number
+// overload of `animate` itself instead of depending on an unofficial
+// subpath. This file only ever animates numbers, so no need for a generic.
+type AnimationPlaybackControls = ReturnType<typeof animate<number>>;
+type NumberAnimationTransition = NonNullable<
+  Parameters<typeof animate<number>>[2]
+>;
 
 export const useProgressAnimation = ({
   autoPlay = true,
@@ -16,7 +21,7 @@ export const useProgressAnimation = ({
   autoPlay?: boolean;
   initialValue?: number;
   finalValue?: number;
-  options?: ValueAnimationTransition<number>;
+  options?: NumberAnimationTransition;
 }) => {
   const [animation, setAnimation] = useState<
     AnimationPlaybackControls | undefined
@@ -34,7 +39,7 @@ export const useProgressAnimation = ({
       animate(initialValue, finalValue, {
         ...options,
         duration,
-        onUpdate: (nextValue) => {
+        onUpdate: (nextValue: number) => {
           if (value === nextValue) return;
           setValue(nextValue);
           options?.onUpdate?.(nextValue);
