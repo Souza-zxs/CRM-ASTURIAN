@@ -15,7 +15,7 @@ export class UpdateWhatsappTemplateInput {
   @IsNotEmpty()
   id: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsString()
   @IsOptional()
   name?: string;
@@ -25,22 +25,22 @@ export class UpdateWhatsappTemplateInput {
   @IsOptional()
   category?: WhatsappTemplateCategory;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsString()
   @IsOptional()
   language?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsString()
   @IsOptional()
   headerText?: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsString()
   @IsOptional()
   bodyText?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsString()
   @IsOptional()
   footerText?: string | null;

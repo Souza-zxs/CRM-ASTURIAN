@@ -69,9 +69,9 @@ npx nx build zyra-server
 ### Operações de Banco de Dados
 ```bash
 # Database management
-npx nx database:reset zyra-server         # Reset database
-npx nx run zyra-server:database:init:prod # Initialize database
-npx nx run zyra-server:database:migrate:prod # Run instance commands (fast only)
+npx nx database:reset zyra-server  # Reset database (wipes data)
+npx nx run zyra-server:database:init    # First-time schema setup + migrations (includes slow)
+npx nx run zyra-server:database:migrate # Run pending instance commands (fast only)
 
 # Generate an instance command (fast or slow)
 npx nx run zyra-server:database:migrate:generate --name <name> --type <fast|slow>

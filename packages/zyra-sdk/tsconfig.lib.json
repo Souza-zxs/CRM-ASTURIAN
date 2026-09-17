@@ -16,6 +16,15 @@
   "exclude": [
     "node_modules",
     "dist",
+    // src/cli/utilities/build/** has never existed in this repo's git history —
+    // most of src/cli references it (manifest-reader, typecheck-plugin, etc.),
+    // so type-checking the CLI here always fails. zyra-server only consumes
+    // zyra-sdk/define and zyra-sdk/front-component, not the CLI, so it's
+    // excluded from this declaration build until that missing subsystem is
+    // implemented. See vite.config.node.ts and project.json for the matching
+    // exclusion of the CLI's bundle build.
+    "src/cli/**",
+
     "**/*.test.ts",
     "**/*.spec.ts",
     "**/*.e2e-spec.ts",

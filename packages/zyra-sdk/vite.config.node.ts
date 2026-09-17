@@ -1,3 +1,12 @@
+// NOT run by the zyra-sdk `build` target (see project.json) — src/cli/operations/build.ts
+// imports @/cli/utilities/build/manifest/manifest-writer and
+// @/cli/utilities/build/common/typecheck-plugin, neither of which has ever existed in this
+// repo's git history (pre-existing gap, not something removed here). The 'cli' and
+// 'operations' entries below can't build until those files are implemented. zyra-server
+// doesn't need this config's output (it only imports zyra-sdk/define and
+// zyra-sdk/front-component, built by the other vite.config.*.ts files), so this step is
+// skipped from the build chain rather than blocking the whole zyra-sdk (and therefore
+// zyra-server) build.
 import path from 'path';
 import { type PackageJson } from 'type-fest';
 import { defineConfig } from 'vite';
@@ -26,8 +35,6 @@ export default defineConfig(() => {
         entry: {
           cli: 'src/cli/cli.ts',
           operations: 'src/cli/operations/index.ts',
-          'front-component-renderer/build':
-            'src/front-component-renderer/build/index.ts',
         },
         name: 'zyra-sdk',
       },

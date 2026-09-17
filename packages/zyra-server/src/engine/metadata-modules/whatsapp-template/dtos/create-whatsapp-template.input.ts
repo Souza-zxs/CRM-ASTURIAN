@@ -29,7 +29,7 @@ export class CreateWhatsappTemplateInput {
   @IsNotEmpty()
   language: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsString()
   @IsOptional()
   headerText?: string | null;
@@ -39,7 +39,7 @@ export class CreateWhatsappTemplateInput {
   @IsNotEmpty()
   bodyText: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsString()
   @IsOptional()
   footerText?: string | null;

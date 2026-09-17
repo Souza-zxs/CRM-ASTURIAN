@@ -46,7 +46,7 @@ export class WhatsappTemplateDTO {
 
   @IsString()
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   headerText: string | null;
 
   @IsString()
@@ -56,7 +56,7 @@ export class WhatsappTemplateDTO {
 
   @IsString()
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   footerText: string | null;
 
   @IsOptional()
@@ -70,17 +70,17 @@ export class WhatsappTemplateDTO {
 
   @IsString()
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   metaTemplateId: string | null;
 
   @IsString()
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   metaTemplateStatus: string | null;
 
   @IsString()
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   rejectionReason: string | null;
 
   @HideField()
