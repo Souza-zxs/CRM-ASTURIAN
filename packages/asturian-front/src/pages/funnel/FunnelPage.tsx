@@ -1,17 +1,12 @@
+import { ConfirmationPageView } from '@/funnel/components/ConfirmationPageView';
+import { SalesPageView } from '@/funnel/components/SalesPageView';
+import { SignupPageView } from '@/funnel/components/SignupPageView';
+import { WorkshopPageView } from '@/funnel/components/WorkshopPageView';
+import { fetchFunnelPage, type FunnelPageResponse } from '@/funnel/api/fetchFunnelPage';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FunnelPageType } from 'zyra-shared/types';
 
-import {
-  fetchFunnelPage,
-  type FunnelPageResponse,
-} from '@/funnel/api/fetchFunnelPage';
-import { ConfirmationPageView } from '@/funnel/ConfirmationPageView';
-import { SalesPageView } from '@/funnel/SalesPageView';
-import { SignupPageView } from '@/funnel/SignupPageView';
-import { WorkshopPageView } from '@/funnel/WorkshopPageView';
-
-import NotFoundPage from './NotFoundPage';
+import { NotFound } from '~/pages/not-found/NotFound';
 
 const applySeo = (funnelPage: FunnelPageResponse) => {
   if (funnelPage.seoTitle !== null) {
@@ -31,11 +26,11 @@ const applySeo = (funnelPage: FunnelPageResponse) => {
   }
 };
 
-// Dynamic funnel pages (signup/workshop/sales/confirmation) live at /w/:slug
-// and are fetched at runtime from the workspace's funnel content — unlike
-// the rest of the site's static marketing routes, content here changes
-// without a redeploy (see packages/zyra-server's funnel-page module).
-const FunnelPage = () => {
+// Fully public route (see BlankLayout in useCreateAppRouter.tsx) — funnel
+// visitors are anonymous, unlike the rest of the CRM app. Content is
+// fetched from the workspace's funnel-page backend at runtime, not part
+// of the app's authenticated GraphQL data layer.
+export const FunnelPage = () => {
   const { slug = '' } = useParams<{ slug: string }>();
   const [funnelPage, setFunnelPage] = useState<
     FunnelPageResponse | null | undefined
@@ -61,23 +56,21 @@ const FunnelPage = () => {
   }, [slug]);
 
   if (funnelPage === undefined) return null;
-  if (funnelPage === null) return <NotFoundPage />;
+  if (funnelPage === null) return <NotFound />;
 
   switch (funnelPage.content.type) {
-    case FunnelPageType.SIGNUP:
+    case 'SIGNUP':
       return (
         <SignupPageView
           content={funnelPage.content}
           funnelPageId={funnelPage.id}
         />
       );
-    case FunnelPageType.WORKSHOP:
+    case 'WORKSHOP':
       return <WorkshopPageView content={funnelPage.content} />;
-    case FunnelPageType.SALES:
+    case 'SALES':
       return <SalesPageView content={funnelPage.content} />;
-    case FunnelPageType.CONFIRMATION:
+    case 'CONFIRMATION':
       return <ConfirmationPageView content={funnelPage.content} />;
   }
 };
-
-export default FunnelPage;

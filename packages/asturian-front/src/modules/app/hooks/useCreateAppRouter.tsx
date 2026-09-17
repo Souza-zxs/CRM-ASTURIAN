@@ -108,6 +108,12 @@ const NotFound = lazy(() =>
   })),
 );
 
+const FunnelPage = lazy(() =>
+  import('~/pages/funnel/FunnelPage').then((module) => ({
+    default: module.FunnelPage,
+  })),
+);
+
 export const useCreateAppRouter = (
   isFunctionSettingsEnabled?: boolean,
   isAdminPageEnabled?: boolean,
@@ -278,6 +284,14 @@ export const useCreateAppRouter = (
             element={
               <LazyRoute>
                 <Authorize />
+              </LazyRoute>
+            }
+          />
+          <Route
+            path={AppPath.FunnelPage}
+            element={
+              <LazyRoute fallback={null}>
+                <FunnelPage />
               </LazyRoute>
             }
           />

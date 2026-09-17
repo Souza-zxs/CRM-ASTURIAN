@@ -2,7 +2,6 @@ import { type ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import CustomersPage from './routes/CustomersPage';
-import FunnelPage from './routes/FunnelPage';
 import HalftonePage from './routes/HalftonePage';
 import HomePage from './routes/HomePage';
 import NotFoundPage from './routes/NotFoundPage';
@@ -43,7 +42,6 @@ const renderSiteRoutes = (): ReactNode => (
     </Route>
     <Route element={<PartnerApplyPage />} path="partners/apply" />
     <Route element={<HalftonePage />} path="halftone" />
-    <Route element={<FunnelPage />} path="w/:slug" />
   </>
 );
 

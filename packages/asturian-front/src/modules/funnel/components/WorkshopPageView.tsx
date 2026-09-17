@@ -1,14 +1,23 @@
+import { type FunnelWorkshopPageContent } from '@/funnel/types/FunnelPage';
 import { styled } from '@linaria/react';
-import { type FunnelWorkshopPageContent } from 'zyra-shared/types';
+import { Button } from 'zyra-ui/input';
+import { themeCssVariables } from 'zyra-ui/theme-constants';
 
-import { Button } from '@/ui/Button';
-import { SectionShell } from '@/ui/SectionShell';
-import { radius, spacing } from '@/tokens';
+const StyledPage = styled.div`
+  align-items: center;
+  background: ${themeCssVariables.grayScale.gray1};
+  display: flex;
+  flex-direction: column;
+  gap: ${themeCssVariables.spacing[8]};
+  min-height: 100dvh;
+  padding: ${themeCssVariables.spacing[8]} ${themeCssVariables.spacing[4]};
+`;
 
-const VideoFrame = styled.div`
+const StyledVideoFrame = styled.div`
   aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: ${radius(2)};
+  background: ${themeCssVariables.grayScale.gray10};
+  border-radius: ${themeCssVariables.border.radius.md};
+  max-width: 960px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -23,12 +32,6 @@ const VideoFrame = styled.div`
   }
 `;
 
-const CtaRow = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: ${spacing(8)};
-`;
-
 const isEmbeddableVideoUrl = (url: string) =>
   url.includes('youtube') || url.includes('youtu.be') || url.includes('vimeo');
 
@@ -38,8 +41,8 @@ type WorkshopPageViewProps = {
 
 export const WorkshopPageView = ({ content }: WorkshopPageViewProps) => {
   return (
-    <SectionShell rhythm="spacious" scheme="dark">
-      <VideoFrame>
+    <StyledPage>
+      <StyledVideoFrame>
         {isEmbeddableVideoUrl(content.videoUrl) ? (
           <iframe
             allow="autoplay; encrypted-media; picture-in-picture"
@@ -52,10 +55,8 @@ export const WorkshopPageView = ({ content }: WorkshopPageViewProps) => {
           // eslint-disable-next-line jsx-a11y/media-has-caption
           <video controls src={content.videoUrl} />
         )}
-      </VideoFrame>
-      <CtaRow>
-        <Button href={`/w/${content.ctaRedirectSlug}`} label={content.ctaLabel} />
-      </CtaRow>
-    </SectionShell>
+      </StyledVideoFrame>
+      <Button title={content.ctaLabel} to={`/w/${content.ctaRedirectSlug}`} />
+    </StyledPage>
   );
 };

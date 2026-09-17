@@ -7,6 +7,7 @@ export enum AppPath {
   SignUp = '/cadastro',
   Invite = '/invite/:workspaceInviteHash',
   ResetPassword = '/reset-password/:passwordResetToken',
+  FunnelPage = '/w/:slug',
 
   // Onboarding
   WorkspaceActivation = '/workspace-activation',
