@@ -20,27 +20,27 @@ describe('sanitizeURL', () => {
 describe('getLogoUrlFromDomainName', () => {
   test('should return the correct logo URL for a given domain', () => {
     expect(getLogoUrlFromDomainName('example.com')).toBe(
-      'https://zyra-icons.com/example.com',
+      'https://logo.clearbit.com/example.com',
     );
 
     expect(getLogoUrlFromDomainName('http://example.com/')).toBe(
-      'https://zyra-icons.com/example.com',
+      'https://logo.clearbit.com/example.com',
     );
 
     expect(getLogoUrlFromDomainName('https://www.example.com/')).toBe(
-      'https://zyra-icons.com/example.com',
+      'https://logo.clearbit.com/example.com',
     );
 
     expect(getLogoUrlFromDomainName('www.example.com')).toBe(
-      'https://zyra-icons.com/example.com',
+      'https://logo.clearbit.com/example.com',
     );
 
     expect(getLogoUrlFromDomainName('example.com/')).toBe(
-      'https://zyra-icons.com/example.com',
+      'https://logo.clearbit.com/example.com',
     );
 
     expect(getLogoUrlFromDomainName('apple.com')).toBe(
-      'https://zyra-icons.com/apple.com',
+      'https://logo.clearbit.com/apple.com',
     );
   });
 
