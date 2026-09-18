@@ -1,5 +1,13 @@
+import path from 'node:path';
+
 import dts from 'rollup-plugin-dts';
 
+// Windows absolute paths (C:\...) start with neither '.' nor '/', so once
+// Rollup resolves a relative or workspace import to an absolute filesystem
+// path, the old startsWith('/') check misclassified it as an external bare
+// import — leaving every local/workspace type unbundled (this is why the
+// generated .d.ts files had unresolved './x.ts' and raw absolute-path
+// re-exports instead of inlined types).
 const external = (id) => {
   if (id === 'zyra-shared' || id.startsWith('zyra-shared/')) {
     return false;
@@ -7,7 +15,10 @@ const external = (id) => {
   if (id.startsWith('@/')) {
     return false;
   }
-  return !id.startsWith('.') && !id.startsWith('/');
+  if (id.startsWith('.') || path.isAbsolute(id)) {
+    return false;
+  }
+  return true;
 };
 
 const plugins = [

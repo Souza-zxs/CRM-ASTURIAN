@@ -64,7 +64,7 @@
       "require": "./dist/front-component-renderer.cjs"
     },
     "./front-component-renderer/build": {
-      "types": "./dist/front-component-renderer/build/index.d.ts",
+      "types": "./dist/front-component-renderer/index.d.ts",
       "import": "./dist/front-component-renderer/build.mjs",
       "require": "./dist/front-component-renderer/build.cjs"
     }
