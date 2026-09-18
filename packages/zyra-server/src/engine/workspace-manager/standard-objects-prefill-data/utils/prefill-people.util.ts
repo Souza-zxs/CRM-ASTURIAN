@@ -47,7 +47,7 @@ export const prefillPeople = async (
         nameLastName: 'Chesky',
         emailsPrimaryEmail: 'chesky@airbnb.com',
         avatarUrl:
-          'https://zyrahq.github.io/placeholder-images/founders/brian-chesky.jpg',
+          'https://twentyhq.github.io/placeholder-images/founders/brian-chesky.jpg',
         position: 1,
         createdBySource: FieldActorSource.SYSTEM,
         createdByWorkspaceMemberId: null,
@@ -65,7 +65,7 @@ export const prefillPeople = async (
         nameLastName: 'Amodei',
         emailsPrimaryEmail: 'amodei@anthropic.com',
         avatarUrl:
-          'https://zyrahq.github.io/placeholder-images/founders/dario-amodei.jpg',
+          'https://twentyhq.github.io/placeholder-images/founders/dario-amodei.jpg',
         position: 2,
         createdBySource: FieldActorSource.SYSTEM,
         createdByWorkspaceMemberId: null,
@@ -83,7 +83,7 @@ export const prefillPeople = async (
         nameLastName: 'Collison',
         emailsPrimaryEmail: 'collison@stripe.com',
         avatarUrl:
-          'https://zyrahq.github.io/placeholder-images/founders/patrick-collison.jpg',
+          'https://twentyhq.github.io/placeholder-images/founders/patrick-collison.jpg',
         position: 3,
         createdBySource: FieldActorSource.SYSTEM,
         createdByWorkspaceMemberId: null,
@@ -101,7 +101,7 @@ export const prefillPeople = async (
         nameLastName: 'Field',
         emailsPrimaryEmail: 'field@figma.com',
         avatarUrl:
-          'https://zyrahq.github.io/placeholder-images/founders/dylan-field.jpg',
+          'https://twentyhq.github.io/placeholder-images/founders/dylan-field.jpg',
         position: 4,
         createdBySource: FieldActorSource.SYSTEM,
         createdByWorkspaceMemberId: null,
@@ -119,7 +119,7 @@ export const prefillPeople = async (
         nameLastName: 'Zhao',
         emailsPrimaryEmail: 'zhao@notion.com',
         avatarUrl:
-          'https://zyrahq.github.io/placeholder-images/founders/ivan-zhao.jpg',
+          'https://twentyhq.github.io/placeholder-images/founders/ivan-zhao.jpg',
         position: 5,
         createdBySource: FieldActorSource.SYSTEM,
         createdByWorkspaceMemberId: null,
