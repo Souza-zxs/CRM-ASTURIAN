@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 import { SecureHttpClientService } from 'src/engine/core-modules/secure-http-client/secure-http-client.service';
 import { ZyraConfigService } from 'src/engine/core-modules/zyra-config/zyra-config.service';
@@ -14,6 +14,8 @@ type TelemetryEventPayload = TelemetrySignUpEvent;
 
 @Injectable()
 export class TelemetryService {
+  private readonly logger = new Logger(TelemetryService.name);
+
   constructor(
     private readonly zyraConfigService: ZyraConfigService,
     private readonly secureHttpClientService: SecureHttpClientService,
@@ -37,7 +39,11 @@ export class TelemetryService {
           }),
         ),
       );
-    } catch {
+    } catch (error) {
+      this.logger.warn(
+        `Failed to publish telemetry event: ${error instanceof Error ? error.message : String(error)}`,
+      );
+
       return { success: false };
     }
 

@@ -822,11 +822,12 @@ export class ConfigVariables {
 
   @ConfigVariablesMetadata({
     group: ConfigVariablesGroup.LOGGING,
-    description: 'Enable or disable telemetry logging',
+    description:
+      'Enable or disable telemetry logging. Defaults to false: this fork has no telemetry collector of its own (the endpoint this ships with, zyra-telemetry.com, was never registered), so enabling it only spends a request per signup for nothing.',
     type: ConfigVariableType.BOOLEAN,
   })
   @IsOptional()
-  TELEMETRY_ENABLED = true;
+  TELEMETRY_ENABLED = false;
 
   @ConfigVariablesMetadata({
     group: ConfigVariablesGroup.LOGGING,

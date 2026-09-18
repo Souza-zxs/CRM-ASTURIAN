@@ -32,23 +32,31 @@ export class SearchHelpCenterTool implements Tool {
       const MINTLIFY_SUBDOMAIN =
         this.zyraConfigService.get('MINTLIFY_SUBDOMAIN');
 
-      const useDirectApi = MINTLIFY_API_KEY && MINTLIFY_SUBDOMAIN;
-
-      const endpoint = useDirectApi
-        ? `https://api-dsc.mintlify.com/v1/search/${MINTLIFY_SUBDOMAIN}`
-        : 'https://zyra-help-search.com/search/zyra';
-
-      const headers = {
-        'Content-Type': 'application/json',
-        ...(useDirectApi && { Authorization: `Bearer ${MINTLIFY_API_KEY}` }),
-      };
+      // Mintlify's search API requires a key, and there is no public fallback
+      // proxy of our own in front of it (zyra-help-search.com was never
+      // registered — this fork's rebrand renamed the upstream Twenty domain
+      // in text only). Fail clearly instead of calling a domain that could
+      // later be squatted.
+      if (!MINTLIFY_API_KEY || !MINTLIFY_SUBDOMAIN) {
+        return {
+          success: false,
+          message: `Help center search is not configured for "${query}"`,
+          error:
+            'MINTLIFY_API_KEY and MINTLIFY_SUBDOMAIN must be set to enable help center search.',
+        };
+      }
 
       const httpClient = this.secureHttpClientService.getHttpClient();
 
       const response = await httpClient.post(
-        endpoint,
+        `https://api-dsc.mintlify.com/v1/search/${MINTLIFY_SUBDOMAIN}`,
         { query, pageSize: 10 },
-        { headers },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${MINTLIFY_API_KEY}`,
+          },
+        },
       );
 
       const results = response.data;
