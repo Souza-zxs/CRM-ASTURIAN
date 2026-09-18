@@ -896,7 +896,6 @@
                   "l/ar/getting-started/core-concepts/data-model",
                   "l/ar/getting-started/core-concepts/layout",
                   "l/ar/getting-started/core-concepts/workflows",
-                  "l/ar/getting-started/core-concepts/calendar-and-email",
                   "l/ar/getting-started/core-concepts/ai",
                   "l/ar/getting-started/core-concepts/apps",
                   "l/ar/getting-started/core-concepts/dashboards",
@@ -908,12 +907,6 @@
           {
             "tab": "دليل المستخدم",
             "groups": [
-              {
-                "group": "نظرة عامة",
-                "pages": [
-                  "l/ar/user-guide/introduction"
-                ]
-              },
               {
                 "group": "نموذج البيانات",
                 "icon": "database",
@@ -1143,7 +1136,6 @@
                 "group": "الصلاحيات والوصول",
                 "icon": "lock",
                 "pages": [
-                  "l/ar/user-guide/permissions-access/overview",
                   {
                     "group": "مرجع",
                     "pages": [
@@ -1163,7 +1155,6 @@
                 "group": "الفوترة",
                 "icon": "credit-card",
                 "pages": [
-                  "l/ar/user-guide/billing/overview",
                   {
                     "group": "مرجع",
                     "pages": [
@@ -1209,12 +1200,6 @@
             "tab": "المطورون",
             "groups": [
               {
-                "group": "نظرة عامة",
-                "pages": [
-                  "l/ar/developers/introduction"
-                ]
-              },
-              {
                 "group": "التطبيقات",
                 "pages": [
                   {
@@ -1231,7 +1216,6 @@
                   {
                     "group": "التهيئة",
                     "pages": [
-                      "l/ar/developers/extend/apps/config/overview",
                       "l/ar/developers/extend/apps/config/application",
                       "l/ar/developers/extend/apps/config/roles",
                       "l/ar/developers/extend/apps/config/install-hooks",
@@ -1241,7 +1225,6 @@
                   {
                     "group": "بيانات",
                     "pages": [
-                      "l/ar/developers/extend/apps/data/overview",
                       "l/ar/developers/extend/apps/data/objects",
                       "l/ar/developers/extend/apps/data/extending-objects",
                       "l/ar/developers/extend/apps/data/relations"
@@ -1250,7 +1233,6 @@
                   {
                     "group": "المنطق",
                     "pages": [
-                      "l/ar/developers/extend/apps/logic/overview",
                       "l/ar/developers/extend/apps/logic/logic-functions",
                       "l/ar/developers/extend/apps/logic/skills-and-agents",
                       "l/ar/developers/extend/apps/logic/connections"
@@ -1270,7 +1252,6 @@
                   {
                     "group": "العمليات",
                     "pages": [
-                      "l/ar/developers/extend/apps/operations/overview",
                       "l/ar/developers/extend/apps/operations/cli",
                       "l/ar/developers/extend/apps/operations/sync-and-recovery",
                       "l/ar/developers/extend/apps/operations/testing",
