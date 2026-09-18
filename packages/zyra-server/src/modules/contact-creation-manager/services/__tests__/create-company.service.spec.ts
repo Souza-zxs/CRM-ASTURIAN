@@ -1,14 +1,10 @@
 import { Test, type TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
-import {
-  ConnectedAccountProvider,
-  FieldActorSource,
-} from 'zyra-shared/types';
+import { ConnectedAccountProvider, FieldActorSource } from 'zyra-shared/types';
 import { STANDARD_OBJECTS } from 'zyra-shared/metadata';
 
 import { ObjectMetadataEntity } from 'src/engine/metadata-modules/object-metadata/object-metadata.entity';
-import { SecureHttpClientService } from 'src/engine/core-modules/secure-http-client/secure-http-client.service';
 import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
 import {
   type CompanyToCreate,
@@ -18,7 +14,6 @@ import {
 describe('CreateCompanyService', () => {
   let service: CreateCompanyService;
   let mockCompanyRepository: any;
-  let mockHttpService: any;
 
   const workspaceId = 'workspace-1';
 
@@ -59,7 +54,7 @@ describe('CreateCompanyService', () => {
   };
   const inputForCompanyToCreate1 = {
     address: {
-      addressCity: undefined,
+      addressCity: '',
     },
     createdBy: {
       context: {
@@ -91,7 +86,7 @@ describe('CreateCompanyService', () => {
     domainName: {
       primaryLinkUrl: 'https://example2.com',
     },
-    name: 'BNQ',
+    name: 'Example2',
     position: 2,
   };
 
@@ -103,19 +98,9 @@ describe('CreateCompanyService', () => {
       updateMany: jest.fn(),
     };
 
-    mockHttpService = {
-      get: jest.fn(),
-    };
-
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         CreateCompanyService,
-        {
-          provide: SecureHttpClientService,
-          useValue: {
-            getHttpClient: jest.fn().mockReturnValue(mockHttpService),
-          },
-        },
         {
           provide: GlobalWorkspaceOrmManager,
           useValue: {
@@ -164,13 +149,6 @@ describe('CreateCompanyService', () => {
     });
 
     it('should successfully create a company', async () => {
-      mockHttpService.get.mockResolvedValue({
-        data: {
-          name: 'Example1',
-          city: undefined,
-        },
-      });
-
       await service.createOrRestoreCompanies([companyToCreate1], workspaceId);
 
       expect(mockCompanyRepository.find).toHaveBeenCalled();
@@ -180,20 +158,6 @@ describe('CreateCompanyService', () => {
     });
 
     it('should successfully two companies', async () => {
-      mockHttpService.get
-        .mockResolvedValueOnce({
-          data: {
-            name: 'Example1',
-            city: undefined,
-          },
-        })
-        .mockResolvedValueOnce({
-          data: {
-            name: 'BNQ',
-            city: '',
-          },
-        });
-
       await service.createOrRestoreCompanies(
         [companyToCreate1, companyToCreate2],
         workspaceId,

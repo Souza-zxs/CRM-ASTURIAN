@@ -58,5 +58,3 @@ export { STANDARD_OBJECT_RECORDS_UNDER_OBJECT_RECORDS_PERMISSIONS } from './Stan
 export { SUBDOMAIN_PATTERN } from './SubdomainPattern';
 export { SystemPermissionFlag } from './SystemPermissionFlag';
 export { VIEW_GROUP_VISIBLE_OPTIONS_MAX } from './ViewGroupVisibleOptionsMax';
-export { ZYRA_COMPANIES_BASE_URL } from './ZyraCompaniesBaseUrl';
-export { ZYRA_ICONS_BASE_URL } from './ZyraIconsBaseUrl';

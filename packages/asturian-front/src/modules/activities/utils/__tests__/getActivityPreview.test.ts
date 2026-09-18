@@ -75,7 +75,7 @@ describe('getActivityPreview', () => {
         props: {
           backgroundColor: 'default',
           textAlignment: 'left',
-          url: 'https://zyra-icons.com/anthropic.com',
+          url: 'https://logo.clearbit.com/anthropic.com',
           caption: '',
           width: 230,
         },

@@ -2,8 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectDataSource, InjectRepository } from '@nestjs/typeorm';
 
 import { msg } from '@lingui/core/macro';
-import { ZYRA_ICONS_BASE_URL } from 'zyra-shared/constants';
-import { isDefined } from 'zyra-shared/utils';
+import { getLogoUrlFromDomainName, isDefined } from 'zyra-shared/utils';
 import { WorkspaceActivationStatus } from 'zyra-shared/workspace';
 import {
   QueryFailedError,
@@ -573,8 +572,11 @@ export class SignInUpService {
               queryRunner,
             );
 
-          if (isWorkEmailFound) {
-            const logoUrl = `${ZYRA_ICONS_BASE_URL}/${getDomainFromEmailOrThrow(email)}`;
+          const logoUrl = isWorkEmailFound
+            ? getLogoUrlFromDomainName(getDomainFromEmailOrThrow(email))
+            : undefined;
+
+          if (isDefined(logoUrl)) {
             const logoFile =
               await this.fileCorePictureService.uploadWorkspaceLogoFromUrl({
                 imageUrl: logoUrl,

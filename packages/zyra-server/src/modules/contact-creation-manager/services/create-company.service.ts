@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { type AxiosInstance } from 'axios';
 import uniqBy from 'lodash.uniqby';
-import { ZYRA_COMPANIES_BASE_URL } from 'zyra-shared/constants';
 import {
   type ConnectedAccountProvider,
   type FieldActorSource,
@@ -10,7 +8,6 @@ import {
 import { isDefined, normalizeUrlOrigin } from 'zyra-shared/utils';
 import { type DeepPartial, ILike } from 'typeorm';
 
-import { SecureHttpClientService } from 'src/engine/core-modules/secure-http-client/secure-http-client.service';
 import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { type WorkspaceRepository } from 'src/engine/zyra-orm/repository/workspace.repository';
 import { buildSystemAuthContext } from 'src/engine/zyra-orm/utils/build-system-auth-context.util';
@@ -31,16 +28,9 @@ export type CompanyToCreate = {
 
 @Injectable()
 export class CreateCompanyService {
-  private readonly httpService: AxiosInstance;
-
   constructor(
     private readonly globalWorkspaceOrmManager: GlobalWorkspaceOrmManager,
-    private readonly secureHttpClientService: SecureHttpClientService,
-  ) {
-    this.httpService = this.secureHttpClientService.getHttpClient({
-      baseURL: ZYRA_COMPANIES_BASE_URL,
-    });
-  }
+  ) {}
 
   async createOrRestoreCompanies(
     companies: CompanyToCreate[],
@@ -113,10 +103,8 @@ export class CreateCompanyService {
 
         let lastCompanyPosition =
           await this.getLastCompanyPosition(companyRepository);
-        const newCompaniesData = await Promise.all(
-          newCompaniesToCreate.map((company) =>
-            this.prepareCompanyData(company, ++lastCompanyPosition),
-          ),
+        const newCompaniesData = newCompaniesToCreate.map((company) =>
+          this.prepareCompanyData(company, ++lastCompanyPosition),
         );
 
         const createdCompanies = await companyRepository.save(newCompaniesData);
@@ -183,11 +171,11 @@ export class CreateCompanyService {
       .filter(isDefined);
   }
 
-  private async prepareCompanyData(
+  private prepareCompanyData(
     company: CompanyToCreate,
     position: number,
-  ): Promise<DeepPartial<CompanyWorkspaceEntity>> {
-    const { name, city } = await this.getCompanyInfoFromDomainName(
+  ): DeepPartial<CompanyWorkspaceEntity> {
+    const { name, city } = this.getCompanyInfoFromDomainName(
       company.domainName,
     );
     const createdByName = computeDisplayName(
@@ -243,26 +231,13 @@ export class CreateCompanyService {
     return lastCompanyPosition ?? 0;
   }
 
-  private async getCompanyInfoFromDomainName(
-    domainName: string | undefined,
-  ): Promise<{
+  private getCompanyInfoFromDomainName(domainName: string | undefined): {
     name: string;
     city: string;
-  }> {
-    try {
-      const response = await this.httpService.get(`/${domainName}`);
-
-      const data = response.data;
-
-      return {
-        name: data.name ?? getCompanyNameFromDomainName(domainName ?? ''),
-        city: data.city,
-      };
-    } catch {
-      return {
-        name: getCompanyNameFromDomainName(domainName ?? ''),
-        city: '',
-      };
-    }
+  } {
+    return {
+      name: getCompanyNameFromDomainName(domainName ?? ''),
+      city: '',
+    };
   }
 }

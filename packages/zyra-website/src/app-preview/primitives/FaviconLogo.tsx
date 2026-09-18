@@ -2,6 +2,7 @@
 
 import { styled } from '@linaria/react';
 import { useState } from 'react';
+import { getLogoUrlFromDomainName as getClearbitLogoUrlFromDomainName } from 'zyra-shared/utils';
 import { THEME_LIGHT } from 'zyra-ui/theme';
 
 import { createBoundedFailureCache } from '@/platform/visuals/engine/bounded-failure-cache';
@@ -38,21 +39,12 @@ const FaviconImage = styled.img`
   width: 100%;
 `;
 
-function sanitizeUrl(link: string | null | undefined) {
-  return link
-    ? link.replace(/(https?:\/\/)|(www\.)/g, '').replace(/\/$/, '')
-    : '';
-}
-
 function getLogoUrlFromDomainName(domainName?: string): string | undefined {
   const sharedLogoUrl = sharedAssetUrls.companyLogoForDomain(domainName);
   if (sharedLogoUrl) {
     return sharedLogoUrl;
   }
-  const sanitizedDomain = sanitizeUrl(domainName);
-  return sanitizedDomain
-    ? `https://zyra-icons.com/${sanitizedDomain}`
-    : undefined;
+  return getClearbitLogoUrlFromDomainName(domainName);
 }
 
 export function FaviconLogo({

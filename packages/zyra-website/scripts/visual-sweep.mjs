@@ -23,7 +23,7 @@ const page = await browser.newPage({
 });
 // Wave-close gates: every same-origin request resolves, and the page's
 // total image weight stays inside the budget. External fallbacks (e.g.
-// zyra-icons.com favicons) are by-design misses and out of scope.
+// Clearbit favicons) are by-design misses and out of scope.
 const sameOriginNotFound = [];
 let totalImageBytes = 0;
 page.on('response', (response) => {
