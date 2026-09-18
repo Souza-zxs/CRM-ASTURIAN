@@ -7,10 +7,13 @@ import { DataModelVisual } from './DataModelVisual';
 import { LayoutVisual } from './LayoutVisual';
 import { WorkflowVisual } from './WorkflowVisual';
 
-const STEP_VISUALS: readonly ComponentType<{ active: boolean }>[] = [
-  DataModelVisual,
-  WorkflowVisual,
-  LayoutVisual,
+const STEP_VISUALS: readonly {
+  id: string;
+  Visual: ComponentType<{ active: boolean }>;
+}[] = [
+  { id: 'data-model', Visual: DataModelVisual },
+  { id: 'workflow', Visual: WorkflowVisual },
+  { id: 'layout', Visual: LayoutVisual },
 ];
 
 // Matches the product stepper's frame convention: the card chrome lives 6%
@@ -41,13 +44,17 @@ const SlideInner = styled.div`
 
 // The stepper's visual stage: one card per step, crossfading with the
 // active step exactly like the product page's stepper.
-export function StepperVisual({ activeStepIndex }: { activeStepIndex: number }) {
+export function StepperVisual({
+  activeStepIndex,
+}: {
+  activeStepIndex: number;
+}) {
   return (
     <SlideArea>
-      {STEP_VISUALS.map((Visual, stepNumber) => {
+      {STEP_VISUALS.map(({ id, Visual }, stepNumber) => {
         const isActive = stepNumber === activeStepIndex;
         return (
-          <Slide data-active={isActive ? '' : undefined} key={stepNumber}>
+          <Slide data-active={isActive ? '' : undefined} key={id}>
             <SlideInner>
               <Visual active={isActive} />
             </SlideInner>

@@ -6,7 +6,7 @@ import { buildBreadcrumbListJsonLd, JsonLd } from '@/platform/seo';
 import { LegalDocument, PrivacyPolicyDocument } from '@/sections/legal';
 import { Menu } from '@/sections/menu';
 
-const PrivacyPolicyPage = () => {
+export const PrivacyPolicyPage = () => {
   const { i18n } = useLingui();
   const locale = useLocale();
 
@@ -30,5 +30,3 @@ const PrivacyPolicyPage = () => {
     </>
   );
 };
-
-export default PrivacyPolicyPage;

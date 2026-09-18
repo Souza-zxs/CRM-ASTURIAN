@@ -1,22 +1,22 @@
 import { type ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import CustomersPage from './routes/CustomersPage';
-import HalftonePage from './routes/HalftonePage';
-import HomePage from './routes/HomePage';
-import NotFoundPage from './routes/NotFoundPage';
-import PartnerApplyPage from './routes/PartnerApplyPage';
-import PartnerProfilePage from './routes/PartnerProfilePage';
-import PartnersListPage from './routes/PartnersListPage';
-import PartnersPage from './routes/PartnersPage';
-import PricingPage from './routes/PricingPage';
-import PrivacyPolicyPage from './routes/PrivacyPolicyPage';
-import ProductPage from './routes/ProductPage';
-import ReleasesPage from './routes/ReleasesPage';
-import RootLayout from './routes/RootLayout';
-import SiteLayout from './routes/SiteLayout';
-import TermsPage from './routes/TermsPage';
-import WhyZyraPage from './routes/WhyZyraPage';
+import { CustomersPage } from './routes/CustomersPage';
+import { HalftonePage } from './routes/HalftonePage';
+import { HomePage } from './routes/HomePage';
+import { NotFoundPage } from './routes/NotFoundPage';
+import { PartnerApplyPage } from './routes/PartnerApplyPage';
+import { PartnerProfilePage } from './routes/PartnerProfilePage';
+import { PartnersListPage } from './routes/PartnersListPage';
+import { PartnersPage } from './routes/PartnersPage';
+import { PricingPage } from './routes/PricingPage';
+import { PrivacyPolicyPage } from './routes/PrivacyPolicyPage';
+import { ProductPage } from './routes/ProductPage';
+import { ReleasesPage } from './routes/ReleasesPage';
+import { RootLayout } from './routes/RootLayout';
+import { SiteLayout } from './routes/SiteLayout';
+import { TermsPage } from './routes/TermsPage';
+import { WhyZyraPage } from './routes/WhyZyraPage';
 
 // The marketing routes, mirroring the old app/[locale]/** tree. The source
 // locale (en) is unprefixed; other locales get a short URL segment — see

@@ -5,7 +5,7 @@ import { ReleasesFeed } from '@/sections/releases-feed';
 import { ReleasesHero } from '@/sections/releases-hero';
 
 // Hero only for now; the release feed lands below it as its port arrives.
-const ReleasesPage = () => {
+export const ReleasesPage = () => {
   const locale = useLocale();
 
   return (
@@ -27,5 +27,3 @@ const ReleasesPage = () => {
     </>
   );
 };
-
-export default ReleasesPage;

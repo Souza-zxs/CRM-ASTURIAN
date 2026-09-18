@@ -1,5 +1,5 @@
 import { type FunnelSignupPageContent } from '@/funnel/types/FunnelPage';
-import { submitFunnelLead } from '@/funnel/api/submitFunnelLead';
+import { submitFunnelLead } from '@/funnel/api/submit-funnel-lead';
 import { SettingsTextInput } from '@/ui/input/components/SettingsTextInput';
 import { styled } from '@linaria/react';
 import { useState } from 'react';

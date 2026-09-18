@@ -11,9 +11,9 @@ import { buildBreadcrumbListJsonLd, JsonLd } from '@/platform/seo';
 import { usePreloadedPartners } from '@/platform/ssg/PreloadedPartnersContext';
 import { Menu } from '@/sections/menu';
 
-import NotFoundPage from './NotFoundPage';
+import { NotFoundPage } from './NotFoundPage';
 
-const PartnerProfilePage = () => {
+export const PartnerProfilePage = () => {
   const { i18n } = useLingui();
   const locale = useLocale();
   const { slug = '' } = useParams<{ slug: string }>();
@@ -63,5 +63,3 @@ const PartnerProfilePage = () => {
     </>
   );
 };
-
-export default PartnerProfilePage;

@@ -2,7 +2,7 @@ import { ConfirmationPageView } from '@/funnel/components/ConfirmationPageView';
 import { SalesPageView } from '@/funnel/components/SalesPageView';
 import { SignupPageView } from '@/funnel/components/SignupPageView';
 import { WorkshopPageView } from '@/funnel/components/WorkshopPageView';
-import { fetchFunnelPage, type FunnelPageResponse } from '@/funnel/api/fetchFunnelPage';
+import { fetchFunnelPage, type FunnelPageResponse } from '@/funnel/api/fetch-funnel-page';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 

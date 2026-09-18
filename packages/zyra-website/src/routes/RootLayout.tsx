@@ -18,7 +18,7 @@ import { fontFaceStyles, globalStyles } from './global-styles';
 // and provides the client i18n context. Mounted twice in App.tsx — once at
 // "/" for the unprefixed source locale, once at "/:localeSegment" for the
 // others — so both branches share this one implementation.
-const RootLayout = () => {
+export const RootLayout = () => {
   const { localeSegment } = useParams<{ localeSegment?: string }>();
   const locale = resolveLocaleSegment(localeSegment);
   activateRouteI18n(locale);
@@ -28,9 +28,7 @@ const RootLayout = () => {
   }, [locale]);
 
   return (
-    <div
-      className={`${tokenCssVariables} ${globalStyles} ${fontFaceStyles}`}
-    >
+    <div className={`${tokenCssVariables} ${globalStyles} ${fontFaceStyles}`}>
       <I18nProvider locale={locale} messages={getLocaleMessages(locale)}>
         <ContactCalModalRoot>
           <Outlet />
@@ -39,5 +37,3 @@ const RootLayout = () => {
     </div>
   );
 };
-
-export default RootLayout;

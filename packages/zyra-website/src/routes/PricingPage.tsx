@@ -5,7 +5,7 @@ import { PlanTable } from '@/sections/pricing-plan-table';
 import { PricingPlans } from '@/sections/pricing-plans';
 import { PricingSalesfarce } from '@/sections/pricing-salesfarce';
 
-const PricingPage = () => (
+export const PricingPage = () => (
   <>
     <Menu scheme="muted" />
     <main>
@@ -17,5 +17,3 @@ const PricingPage = () => (
     </main>
   </>
 );
-
-export default PricingPage;

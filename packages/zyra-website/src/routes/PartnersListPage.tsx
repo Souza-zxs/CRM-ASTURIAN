@@ -9,7 +9,7 @@ import { buildBreadcrumbListJsonLd, JsonLd } from '@/platform/seo';
 import { usePreloadedPartners } from '@/platform/ssg/PreloadedPartnersContext';
 import { Menu } from '@/sections/menu';
 
-const PartnersListPage = () => {
+export const PartnersListPage = () => {
   const locale = useLocale();
   const preloaded = usePreloadedPartners();
   const [partners, setPartners] = useState<readonly MarketplacePartner[]>(
@@ -45,5 +45,3 @@ const PartnersListPage = () => {
     </>
   );
 };
-
-export default PartnersListPage;

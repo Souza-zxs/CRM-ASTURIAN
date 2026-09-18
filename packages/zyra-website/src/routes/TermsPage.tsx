@@ -6,7 +6,7 @@ import { buildBreadcrumbListJsonLd, JsonLd } from '@/platform/seo';
 import { LegalDocument, TermsDocument } from '@/sections/legal';
 import { Menu } from '@/sections/menu';
 
-const TermsPage = () => {
+export const TermsPage = () => {
   const { i18n } = useLingui();
   const locale = useLocale();
 
@@ -30,5 +30,3 @@ const TermsPage = () => {
     </>
   );
 };
-
-export default TermsPage;

@@ -8,7 +8,7 @@ import { PartnerSignoff } from '@/sections/partner-signoff';
 import { PartnerTestimonials } from '@/sections/testimonials';
 
 // Sections land in old-site order as their ports arrive.
-const PartnersPage = () => {
+export const PartnersPage = () => {
   const locale = useLocale();
 
   return (
@@ -32,5 +32,3 @@ const PartnersPage = () => {
     </PartnerApplicationModalRoot>
   );
 };
-
-export default PartnersPage;

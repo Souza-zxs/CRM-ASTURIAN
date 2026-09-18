@@ -6,7 +6,7 @@ import { Problem } from '@/sections/problem';
 import { Stepper } from '@/sections/stepper';
 import { ThreeCards } from '@/sections/three-cards';
 
-const HomePage = () => (
+export const HomePage = () => (
   <>
     <Menu scheme="muted" />
     <main>
@@ -19,5 +19,3 @@ const HomePage = () => (
     </main>
   </>
 );
-
-export default HomePage;

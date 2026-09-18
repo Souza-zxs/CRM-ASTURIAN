@@ -9,7 +9,7 @@ import { ProductHero } from '@/sections/product-hero';
 import { ProductStepper } from '@/sections/stepper';
 import { ProductThreeCards } from '@/sections/three-cards';
 
-const ProductPage = () => {
+export const ProductPage = () => {
   const locale = useLocale();
 
   return (
@@ -37,5 +37,3 @@ const ProductPage = () => {
     </>
   );
 };
-
-export default ProductPage;

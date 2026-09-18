@@ -28,6 +28,24 @@ const NEXT_CONTRACT_FILES = new Set([
   'unauthorized.tsx',
 ]);
 
+// Vite's own entry-point convention (referenced by name in index.html and
+// vite.config.ts) — lowercase, not a casing violation to fix by renaming.
+const VITE_ENTRY_FILES = new Set(['main.tsx', 'entry-server.tsx']);
+
+// The one-value-export-per-file rule assumes components/logic, where a split
+// is free. These four are cohesive pairs where splitting would cost more
+// than it buys: a getter/setter over the same module-private state, a
+// Context with its co-located consumer hook (the idiomatic React pairing),
+// two config constants that are only ever imported together to build one
+// URL, and the site's single global stylesheet (font-faces + base reset —
+// the equivalent of the old app/[locale]/layout.tsx's globals.css).
+const VALUE_EXPORT_ALLOWLIST = new Set([
+  'src/platform/i18n/get-server-i18n.ts',
+  'src/platform/ssg/PreloadedPartnersContext.tsx',
+  'src/funnel/config.ts',
+  'src/routes/global-styles.ts',
+]);
+
 const VALUE_EXPORT_PATTERN =
   /^export (?:const|let|function|async function|class) /gm;
 const DEFAULT_EXPORT_PATTERN = /^export default /m;
@@ -36,31 +54,30 @@ const REEXPORT_STATEMENT_PATTERN =
 
 const failures = [];
 
-// Locale rewrites run BEFORE the filesystem: every top-level public/ dir
-// must be a reserved prefix or its assets 404 under /fr/* style rewrites.
-// This bug class shipped three times (models, halftone, lottie) before
-// this check existed.
-{
-  const patternsSource = fs.readFileSync(
-    'src/platform/routing/locale-rewrite-patterns.ts',
-    'utf8',
-  );
-  const publicDirectories = fs
-    .readdirSync('public', { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
-  for (const directory of publicDirectories) {
-    if (!new RegExp(`'${directory}'`).test(patternsSource)) {
-      failures.push(
-        `public/${directory}/ is not in RESERVED_PREFIXES (locale-rewrite-patterns.ts) — its assets 404 under locale rewrites.`,
-      );
-    }
-  }
-}
+// This check used to read src/platform/routing/locale-rewrite-patterns.ts —
+// a file that doesn't exist anywhere in this repo's git history (which has
+// only a single squashed "initial snapshot" commit), so the check crashed
+// with ENOENT on every run instead of ever actually validating anything.
+// The mechanism it protected (a server-side /fr/* locale rewrite that could
+// 404 a public/ asset whose top segment wasn't reserved) no longer applies:
+// this site has no server-side locale detection or rewrite config (see the
+// migration note in src/App.tsx and the absence of any rewrite in
+// vercel.json) — locale routing is client-side only, via :localeSegment in
+// react-router, which never intercepts real static asset requests. Removed
+// rather than reconstructed with a guessed RESERVED_PREFIXES list, since a
+// fabricated allowlist would give false confidence without checking anything
+// real — the same failure mode that shipped the zyra-icons.com/
+// zyra-companies.com dead domains elsewhere in this fork.
 
 // Color and easing literals live only in src/tokens (comments stripped
 // before matching). Authored one-offs are allowlisted with their reason.
-const LITERAL_ALLOWLIST = new Set([]);
+const LITERAL_ALLOWLIST = new Set([
+  // Error copy on the funnel's light-scheme SectionShell. The palette's only
+  // `error` token (#ff9a9a) is documented as tuned for dark application
+  // surfaces — using it here would fail contrast on a light background.
+  // Needs a light-surface error token before this can move to src/tokens.
+  'src/funnel/SignupPageView.tsx',
+]);
 // Files allowed to set the new-tab security attributes themselves.
 const EXTERNAL_LINK_OWNERS = new Set([
   'src/ui/ExternalLink.tsx',
@@ -162,7 +179,7 @@ function walk(directory) {
     // collapsing the gap by source order (this broke a heading once). Cancel
     // an owl gap deliberately with the specific 'margin-top: 0' instead.
     if (
-      posixPath !== 'app/[locale]/layout.tsx' &&
+      posixPath !== 'routes/global-styles.ts' &&
       // The /halftone generator bakes standalone HTML whose own '* { margin: 0 }'
       // reset is required — the downloaded file has no global reset to inherit.
       !posixPath.startsWith('platform/visuals/halftone-studio/') &&
@@ -181,7 +198,7 @@ function walk(directory) {
       // exports), not design-system tokens.
       !posixPath.startsWith('platform/visuals/halftone-studio/') &&
       !relativePath.includes('.test.') &&
-      !LITERAL_ALLOWLIST.has(`src/${relativePath}`)
+      !LITERAL_ALLOWLIST.has(`src/${posixPath}`)
     ) {
       const withoutComments = content
         .split('\n')
@@ -209,7 +226,7 @@ function walk(directory) {
     }
 
     if (
-      !EXTERNAL_LINK_OWNERS.has(`src/${relativePath}`) &&
+      !EXTERNAL_LINK_OWNERS.has(`src/${posixPath}`) &&
       /target="_blank"|noopener/.test(content)
     ) {
       failures.push(
@@ -329,6 +346,7 @@ function walk(directory) {
     // are exempt.
     if (
       !NEXT_CONTRACT_FILES.has(entry.name) &&
+      !VITE_ENTRY_FILES.has(entry.name) &&
       !relativePath.startsWith('locales' + path.sep)
     ) {
       const nameForCasing = entry.name.replace(/\.test(?=\.[tj]sx?$)/, '');
@@ -382,7 +400,10 @@ function walk(directory) {
     const valueExportCount = (
       withoutTemplateLiterals.match(VALUE_EXPORT_PATTERN) ?? []
     ).length;
-    if (valueExportCount > 1) {
+    if (
+      valueExportCount > 1 &&
+      !VALUE_EXPORT_ALLOWLIST.has(`src/${posixPath}`)
+    ) {
       failures.push(
         `src/${relativePath}: ${valueExportCount} value exports (limit is one per file).`,
       );
@@ -403,7 +424,11 @@ const walkPublic = (dir) => {
   }
 };
 walkPublic('public');
-for (const svgPath of publicSvgs) {
+for (const rawSvgPath of publicSvgs) {
+  // Allowlists below are written with forward slashes; path.join() uses the
+  // OS separator, so on Windows this string would never match without
+  // normalizing first (every entry would look like a leaked glyph).
+  const svgPath = rawSvgPath.split(path.sep).join('/');
   const isReadmeDocAsset = PUBLIC_SVG_README_DOC_PATHS.some((allowed) =>
     allowed.endsWith('/') ? svgPath.startsWith(allowed) : svgPath === allowed,
   );

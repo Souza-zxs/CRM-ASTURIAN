@@ -45,8 +45,15 @@ const outputFilePath = (locale, routePath) => {
   return path.join(DIST_DIR, relative);
 };
 
-const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-const escapeHtml = (value) => value.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
+const HTML_ESCAPES = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+};
+const escapeHtml = (value) =>
+  value.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
 const absoluteUrl = (metadataBase, urlPath) => `${metadataBase}${urlPath}`;
 
 const buildHeadHtml = (metadata) => {
@@ -56,7 +63,9 @@ const buildHeadHtml = (metadata) => {
     `<meta name="robots" content="${metadata.robots.index ? 'index' : 'noindex'}, ${metadata.robots.follow ? 'follow' : 'nofollow'}" />`,
     `<link rel="canonical" href="${escapeHtml(absoluteUrl(metadata.metadataBase, metadata.alternates.canonical))}" />`,
   ];
-  for (const [hreflang, href] of Object.entries(metadata.alternates.languages)) {
+  for (const [hreflang, href] of Object.entries(
+    metadata.alternates.languages,
+  )) {
     tags.push(
       `<link rel="alternate" hreflang="${hreflang}" href="${escapeHtml(absoluteUrl(metadata.metadataBase, href))}" />`,
     );
@@ -107,8 +116,14 @@ const truncateDescription = (text, max = 160) => {
 const prerenderStaticRoutes = async () => {
   for (const route of STATIC_WEBSITE_ROUTES) {
     const locales = route.localeMode === 'source' ? [SOURCE_LOCALE] : undefined;
+    // One-off build script, not a hot path: at most one route in this list
+    // matches 'partnersList', so there's nothing to parallelize with
+    // Promise.all — this fires (or doesn't) once per prerender run.
     const preloadedPartners =
-      route.id === 'partnersList' ? await fetchLiveMarketplacePartners() : null;
+      route.id === 'partnersList'
+        ? // eslint-disable-next-line no-await-in-loop
+          await fetchLiveMarketplacePartners()
+        : null;
 
     for (const locale of WEBSITE_LOCALE_LIST) {
       const metadata = buildPageMetadata({

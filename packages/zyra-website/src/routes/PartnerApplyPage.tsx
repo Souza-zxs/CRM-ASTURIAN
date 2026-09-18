@@ -29,7 +29,7 @@ const ApplyContainer = styled.div`
   }
 `;
 
-const PartnerApplyPage = () => {
+export const PartnerApplyPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -43,5 +43,3 @@ const PartnerApplyPage = () => {
     </ApplyBackground>
   );
 };
-
-export default PartnerApplyPage;

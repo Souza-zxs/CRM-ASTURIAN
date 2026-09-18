@@ -6,7 +6,7 @@ import { WhyZyraHero } from '@/sections/why-zyra-hero';
 import { WhyZyraMarquee } from '@/sections/why-zyra-marquee';
 import { WhyZyraSignoff } from '@/sections/why-zyra-signoff';
 
-const WhyZyraPage = () => {
+export const WhyZyraPage = () => {
   const locale = useLocale();
 
   return (
@@ -30,5 +30,3 @@ const WhyZyraPage = () => {
     </>
   );
 };
-
-export default WhyZyraPage;

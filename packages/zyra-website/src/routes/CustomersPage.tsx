@@ -5,7 +5,7 @@ import { CustomersHero } from '@/sections/customers-hero';
 import { Faq } from '@/sections/faq';
 import { Menu } from '@/sections/menu';
 
-const CustomersPage = () => {
+export const CustomersPage = () => {
   const locale = useLocale();
 
   return (
@@ -28,5 +28,3 @@ const CustomersPage = () => {
     </>
   );
 };
-
-export default CustomersPage;

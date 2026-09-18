@@ -83,7 +83,14 @@ export function HalftoneModelScene({
     const RETRY_DELAY_MS = 300;
 
     void (async () => {
+      // Sequential by design: each retry waits out the previous attempt's
+      // WebGL context acquisition (or its backoff delay) before trying
+      // again, so there's nothing here to run in parallel with Promise.all.
+      // `cancelled` is flipped by the effect's cleanup below, not inside
+      // this loop — the linter can't see across that closure boundary.
+      // eslint-disable-next-line no-unmodified-loop-condition
       for (let attempt = 0; attempt < MAX_ATTEMPTS && !cancelled; attempt++) {
+        // eslint-disable-next-line no-await-in-loop
         const createdSession = await createSession();
         if (cancelled) {
           createdSession?.dispose();
@@ -94,6 +101,7 @@ export function HalftoneModelScene({
           return;
         }
         if (attempt < MAX_ATTEMPTS - 1) {
+          // eslint-disable-next-line no-await-in-loop
           await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
         }
       }
