@@ -29,7 +29,7 @@
 
 coverage
 dist
-build
+packages/*/build
 storybook-static
 *.tsbuildinfo
 .oxlintcache

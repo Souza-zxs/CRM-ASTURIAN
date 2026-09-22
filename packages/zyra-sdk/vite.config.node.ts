@@ -1,12 +1,10 @@
-// NOT run by the zyra-sdk `build` target (see project.json) — src/cli/operations/build.ts
-// imports @/cli/utilities/build/manifest/manifest-writer and
-// @/cli/utilities/build/common/typecheck-plugin, neither of which has ever existed in this
-// repo's git history (pre-existing gap, not something removed here). The 'cli' and
-// 'operations' entries below can't build until those files are implemented. zyra-server
-// doesn't need this config's output (it only imports zyra-sdk/define and
-// zyra-sdk/front-component, built by the other vite.config.*.ts files), so this step is
-// skipped from the build chain rather than blocking the whole zyra-sdk (and therefore
-// zyra-server) build.
+// NOT run by the zyra-sdk `build` target (see project.json) — it's only wired into
+// `build:cli` (packaging the `zyra` CLI binary). src/cli/operations/build.ts and the rest
+// of src/cli/utilities/build/* were recovered after being lost to a `.gitignore` bug (an
+// unscoped `build` glob swallowed these source directories; see the fix in the root
+// .gitignore). zyra-server doesn't need this config's output (it only imports
+// zyra-sdk/define and zyra-sdk/front-component, built by the other vite.config.*.ts
+// files), so this step stays out of the main build chain and only runs for `build:cli`.
 import path from 'path';
 import { type PackageJson } from 'type-fest';
 import { defineConfig } from 'vite';
@@ -32,11 +30,10 @@ export default defineConfig(() => {
       emptyOutDir: false,
       outDir: 'dist',
       lib: {
-        // cli/operations import from src/cli/utilities/build/*, which is
-        // missing from this repository (pre-existing gap, not something
-        // this app needs) — this config is broken until those files are
-        // restored. See vite.config.front-component-renderer.ts, which
-        // used to share this file and now builds independently.
+        // cli/operations import from src/cli/utilities/build/*, recovered
+        // after the .gitignore bug described above. See
+        // vite.config.front-component-renderer.ts, which used to share
+        // this file and now builds independently.
         entry: {
           cli: 'src/cli/cli.ts',
           operations: 'src/cli/operations/index.ts',

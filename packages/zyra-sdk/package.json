@@ -64,7 +64,7 @@
       "require": "./dist/front-component-renderer.cjs"
     },
     "./front-component-renderer/build": {
-      "types": "./dist/front-component-renderer/index.d.ts",
+      "types": "./dist/front-component-renderer/build/index.d.ts",
       "import": "./dist/front-component-renderer/build.mjs",
       "require": "./dist/front-component-renderer/build.cjs"
     }
@@ -86,6 +86,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "semver": "7.6.3",
+    "sharp": "^0.34.5",
     "tinyglobby": "^0.2.15",
     "zyra-client-sdk": "*",
     "typescript": "^5.9.3",
