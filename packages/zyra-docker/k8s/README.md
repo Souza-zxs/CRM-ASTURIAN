@@ -36,11 +36,10 @@ See [QUICKSTART](../helm/zyra/QUICKSTART.md) and [chart README](../helm/zyra/REA
 
 ### Step 1: Clone the Repository
 
-Clone the repository to your local machine:
+Clone the repository to your local machine, then navigate to this directory:
 
 ``` bash
-git clone https://github.com/zyrahq/zyra.git
-cd zyra/packages/zyra-docker/k8s
+cd packages/zyra-docker/k8s
 ```
 
 ### Step 2: Customize the Manifests and Terraform Files

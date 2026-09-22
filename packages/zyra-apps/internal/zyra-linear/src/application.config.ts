@@ -19,7 +19,7 @@ export default defineApplication({
     'public/gallery/command-menu-item-3.png',
     'public/gallery/command-menu-item-4.png',
   ],
-  termsUrl: 'https://github.com/zyrahq/zyra?tab=License-1-ov-file#readme',
+  termsUrl: 'https://www.zyra.com/terms',
   websiteUrl: 'https://www.zyra.com',
   serverVariables: {
     LINEAR_CLIENT_ID: {

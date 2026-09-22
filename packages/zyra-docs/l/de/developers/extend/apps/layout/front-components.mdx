@@ -216,8 +216,8 @@ const SyncPrs = () => {
     const client = new RestApiClient();
 
     await client.post('/s/github/fetch-prs', {
-      owner: 'zyrahq',
-      repo: 'zyra',
+      owner: 'your-org',
+      repo: 'your-repo',
     });
   };
 

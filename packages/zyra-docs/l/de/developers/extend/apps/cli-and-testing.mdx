@@ -380,7 +380,7 @@ Das Scaffolding-Tool erzeugt einen einsatzbereiten GitHub-Actions-Workflow in `.
 Der Workflow:
 
 1. Checkt Ihren Code aus
-2. Startet einen temporären Zyra-Server mit der Aktion `zyrahq/zyra/.github/actions/spawn-zyra-docker-image`
+2. Startet einen temporären Zyra-Server mit der Aktion `./.github/actions/spawn-zyra-docker-image`
 3. Installiert Abhängigkeiten mit `yarn install --immutable`
 4. Führt `yarn test` aus, wobei `ZYRA_API_URL` und `ZYRA_API_KEY` aus den Aktionsausgaben injiziert werden.
 
@@ -405,7 +405,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
+        uses: ./.github/actions/spawn-zyra-docker-image
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

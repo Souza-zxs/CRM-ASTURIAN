@@ -25,7 +25,6 @@ export default defineApplication({
   websiteUrl: 'https://docs.zyra.com/developers/extend/apps/getting-started',
   termsUrl: 'https://www.zyra.com/terms',
   emailSupport: 'contact@zyra.com',
-  issueReportUrl: 'https://github.com/zyrahq/zyra/issues',
   applicationVariables: {
     FIREFLIES_API_KEY: {
       universalIdentifier: FIREFLIES_API_KEY_VARIABLE_UNIVERSAL_IDENTIFIER,

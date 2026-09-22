@@ -121,7 +121,7 @@ Runs integration tests on every push to `main` and every pull request.
 **What it does:**
 
 1. Checks out your app's source.
-2. Spawns an isolated Zyra test instance using the `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` composite action (the CI equivalent of `yarn zyra docker:start --test`).
+2. Spawns an isolated Zyra test instance using the `./.github/actions/spawn-zyra-app-dev-test` composite action (the CI equivalent of `yarn zyra docker:start --test`).
 3. Enables Corepack, sets up Node.js from your `.nvmrc`, and installs dependencies with `yarn install --immutable`.
 4. Runs `yarn test`, passing `ZYRA_API_URL` and `ZYRA_API_KEY` from the spawned instance so your tests can talk to a real server.
 
@@ -139,8 +139,8 @@ Deploys your app to a configured Zyra server on every push to `main`, and option
 **What it does:**
 
 1. Checks out the PR head (for labeled PRs) or the pushed commit.
-2. Runs `zyrahq/zyra/.github/actions/deploy-zyra-app@main` — the CI equivalent of `yarn zyra app:publish --private`.
-3. Runs `zyrahq/zyra/.github/actions/install-zyra-app@main` so the newly deployed version is installed into the target workspace.
+2. Runs `./.github/actions/deploy-zyra-app` — the CI equivalent of `yarn zyra app:publish --private`.
+3. Runs `./.github/actions/install-zyra-app` so the newly deployed version is installed into the target workspace.
 
 **Required configuration:**
 
@@ -159,7 +159,7 @@ Add the `deploy` label to a pull request. The `if:` guard in `cd.yml` will run t
 
 ### Pinning the reusable actions
 
-Both workflows reference reusable actions at `@main`, so action updates in the `zyrahq/zyra` repo are picked up automatically. If you want deterministic builds, replace `@main` with a commit SHA or release tag on each `uses:` line.
+Both workflows reference reusable actions at `@main`, so action updates are picked up automatically. If you want deterministic builds, replace `@main` with a commit SHA or release tag on each `uses:` line.
 
 ## Publishing to npm
 

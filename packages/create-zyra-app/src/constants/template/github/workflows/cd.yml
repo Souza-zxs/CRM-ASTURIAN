@@ -17,11 +17,16 @@ concurrency:
   group: cd-${{ github.ref }}
   cancel-in-progress: true
 
+# TODO: this workflow depends on reusable actions (deploy-zyra-app,
+# install-zyra-app) that are not published anywhere publicly yet. Either
+# publish them to a public actions repository you control, or vendor their
+# logic directly into this file, then remove `&& false` below to re-enable.
 jobs:
   deploy-and-install:
     if: >-
-      github.event_name == 'push' ||
-      (github.event_name == 'pull_request' && github.event.label.name == 'deploy')
+      false &&
+      (github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && github.event.label.name == 'deploy'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -35,7 +35,7 @@
   - https://docs.zyra.com/developers/extend/apps/operations/cli.md
   - https://docs.zyra.com/developers/extend/apps/operations/testing.md
   - https://docs.zyra.com/developers/extend/apps/operations/publishing.md
-- Rich app example: https://github.com/zyrahq/zyra/tree/main/packages/zyra-apps/examples/postcard
+- Rich app example: packages/zyra-apps/examples/postcard
 
 ## UUID requirement
 

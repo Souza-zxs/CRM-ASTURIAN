@@ -247,7 +247,7 @@ Generátor kostry vytvoří připravený k použití workflow GitHub Actions v `
 Workflow:
 
 1. Načte váš kód (checkout).
-2. Spustí dočasný server Zyra pomocí akce `zyrahq/zyra/.github/actions/spawn-zyra-docker-image`
+2. Spustí dočasný server Zyra pomocí akce `./.github/actions/spawn-zyra-docker-image`
 3. Nainstaluje závislosti pomocí `yarn install --immutable`
 4. Spustí `yarn test` s proměnnými `ZYRA_API_URL` a `ZYRA_API_KEY` vloženými z výstupů akce
 
@@ -272,7 +272,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
+        uses: ./.github/actions/spawn-zyra-docker-image
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

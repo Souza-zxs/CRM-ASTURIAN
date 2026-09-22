@@ -18,7 +18,6 @@ export default defineApplication({
   websiteUrl: 'https://docs.zyra.com/developers/extend/apps/getting-started',
   termsUrl: 'https://www.zyra.com/terms',
   emailSupport: 'contact@zyra.com',
-  issueReportUrl: 'https://github.com/zyrahq/zyra/issues',
   defaultRoleUniversalIdentifier: DEFAULT_ROLE_UNIVERSAL_IDENTIFIER,
   serverVariables: {
     SLACK_CLIENT_ID: {

@@ -1,3 +1,10 @@
+# DISABLED: this script pulls install.sh and release tags from a public
+# GitHub repo (zyrahq/zyra) that does not exist / is not owned by this
+# project. There is no public distribution of Zyra yet. Once one exists,
+# update the URLs below (search for "zyrahq/zyra") and remove this guard.
+echo "❌ This 1-click install script is disabled: there is no public Zyra distribution to pull from yet."
+exit 1
+
 pull_version=${VERSION:-$(curl -s https://api.github.com/repos/zyrahq/zyra/tags | grep '"name":' | head -n 1 | cut -d '"' -f 4)}
 
 if [[ -z "$pull_version" ]]; then

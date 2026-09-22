@@ -121,7 +121,7 @@ Rulează testele de integrare la fiecare push pe `main` și la fiecare pull requ
 **Ce face:**
 
 1. Preia codul sursă al aplicației.
-2. Pornește o instanță de test Zyra izolată folosind acțiunea compozită `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` (echivalentul din CI al `yarn zyra server start --test`).
+2. Pornește o instanță de test Zyra izolată folosind acțiunea compozită `./.github/actions/spawn-zyra-app-dev-test` (echivalentul din CI al `yarn zyra server start --test`).
 3. Activează Corepack, configurează Node.js pe baza fișierului `.nvmrc` și instalează dependențele cu `yarn install --immutable`.
 4. Rulează `yarn test`, transmitând `ZYRA_API_URL` și `ZYRA_API_KEY` din instanța pornită, astfel încât testele să poată comunica cu un server real.
 
@@ -139,8 +139,8 @@ Implementează aplicația pe un server Zyra configurat la fiecare push pe `main`
 **Ce face:**
 
 1. Preia head-ul PR-ului (pentru PR-urile etichetate) sau commitul împins.
-2. Rulează `zyrahq/zyra/.github/actions/deploy-zyra-app@main` — echivalentul din CI al `yarn zyra deploy`.
-3. Rulează `zyrahq/zyra/.github/actions/install-zyra-app@main` astfel încât versiunea nou implementată să fie instalată în spațiul de lucru țintă.
+2. Rulează `./.github/actions/deploy-zyra-app` — echivalentul din CI al `yarn zyra deploy`.
+3. Rulează `./.github/actions/install-zyra-app` astfel încât versiunea nou implementată să fie instalată în spațiul de lucru țintă.
 
 **Configurare necesară:**
 
@@ -159,7 +159,7 @@ Adaugă eticheta `deploy` la un pull request. Condiția `if:` din `cd.yml` va ru
 
 ### Fixarea acțiunilor reutilizabile
 
-Ambele fluxuri de lucru fac referire la acțiuni reutilizabile la `@main`, astfel încât actualizările acțiunilor din repo-ul `zyrahq/zyra` sunt preluate automat. Dacă dorești builduri deterministe, înlocuiește `@main` cu un SHA de commit sau cu un tag de release pe fiecare linie `uses:`.
+Ambele fluxuri de lucru fac referire la acțiuni reutilizabile la `@main`, astfel încât actualizările acțiunilor sunt preluate automat. Dacă dorești builduri deterministe, înlocuiește `@main` cu un SHA de commit sau cu un tag de release pe fiecare linie `uses:`.
 
 ## Publicarea pe npm
 
