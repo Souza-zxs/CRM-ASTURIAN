@@ -247,7 +247,7 @@ Scaffolderul generează un workflow GitHub Actions gata de utilizare în `.githu
 Workflow-ul:
 
 1. Preia codul
-2. Pornește un server Zyra temporar folosind acțiunea `./.github/actions/spawn-zyra-docker-image`
+2. Pornește un server Zyra temporar folosind acțiunea `zyrahq/zyra/.github/actions/spawn-zyra-docker-image`
 3. Instalează dependențele cu `yarn install --immutable`
 4. Rulează `yarn test` cu `ZYRA_API_URL` și `ZYRA_API_KEY` injectate din rezultatele acțiunii
 
@@ -272,7 +272,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: ./.github/actions/spawn-zyra-docker-image
+        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

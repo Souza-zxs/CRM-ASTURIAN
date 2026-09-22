@@ -1,7 +1,13 @@
 <div align="center">
+  <a href="https://zyra.com">
+    <picture>
+      <img alt="Zyra logo" src="https://raw.githubusercontent.com/zyrahq/zyra/main/packages/zyra-website/public/images/core/logo.svg" height="128">
+    </picture>
+  </a>
   <h1>Zyra SDK</h1>
 
 <a href="https://www.npmjs.com/package/zyra-sdk"><img alt="NPM version" src="https://img.shields.io/npm/v/zyra-sdk.svg?style=for-the-badge&labelColor=000000"></a>
+<a href="https://github.com/zyrahq/zyra/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=000000"></a>
 <a href="https://discord.gg/cx5n4Jzs57"><img alt="Join the community on Discord" src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&logo=Zyra&labelColor=000000&logoWidth=20"></a>
 
 </div>
@@ -65,7 +71,8 @@ The CLI stores credentials per remote in `~/.zyra/config.json`. Run `yarn zyra r
 ### Development setup
 
 ```bash
-# Clone this repository, then:
+git clone https://github.com/zyrahq/zyra.git
+cd zyra
 yarn install
 ```
 
@@ -89,4 +96,5 @@ npx nx run zyra-sdk:start -- <command>
 
 ### Resources
 
+- See our [GitHub](https://github.com/zyrahq/zyra)
 - Join our [Discord](https://discord.gg/cx5n4Jzs57)

@@ -247,7 +247,7 @@ Bu, `tsc --noEmit` komutunu çalıştırır ve tüm tip hatalarını raporlar.
 İş akışı:
 
 1. Kodunuzu çalışma alanına alır
-2. `./.github/actions/spawn-zyra-docker-image` eylemini kullanarak geçici bir Zyra sunucusu başlatır
+2. `zyrahq/zyra/.github/actions/spawn-zyra-docker-image` eylemini kullanarak geçici bir Zyra sunucusu başlatır
 3. `yarn install --immutable` ile bağımlılıkları kurar
 4. Eylem çıktılarından enjekte edilen `ZYRA_API_URL` ve `ZYRA_API_KEY` ile `yarn test` çalıştırır
 
@@ -272,7 +272,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: ./.github/actions/spawn-zyra-docker-image
+        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

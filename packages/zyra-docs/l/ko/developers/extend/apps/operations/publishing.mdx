@@ -121,7 +121,7 @@ yarn zyra app:publish --private
 **하는 일:**
 
 1. 앱의 소스 코드를 체크아웃합니다.
-2. `./.github/actions/spawn-zyra-app-dev-test` 컴포지트 액션을 사용해 격리된 Zyra 테스트 인스턴스를 생성합니다(CI에서 `yarn zyra docker:start --test`와 동등합니다).
+2. `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` 컴포지트 액션을 사용해 격리된 Zyra 테스트 인스턴스를 생성합니다(CI에서 `yarn zyra docker:start --test`와 동등합니다).
 3. Corepack을 활성화하고, `.nvmrc`에 따라 Node.js를 설정하며, `yarn install --immutable`로 의존성을 설치합니다.
 4. 생성된 인스턴스에서 `ZYRA_API_URL`과 `ZYRA_API_KEY`를 전달하여 실제 서버와 통신할 수 있도록 `yarn test`를 실행합니다.
 
@@ -139,8 +139,8 @@ yarn zyra app:publish --private
 **하는 일:**
 
 1. 라벨이 지정된 PR의 경우 PR 헤드, 아니면 푸시된 커밋을 체크아웃합니다.
-2. `./.github/actions/deploy-zyra-app`를 실행합니다 — CI에서의 `yarn zyra app:publish --private`에 해당합니다.
-3. `./.github/actions/install-zyra-app`를 실행하여 새로 배포된 버전을 대상 워크스페이스에 설치합니다.
+2. `zyrahq/zyra/.github/actions/deploy-zyra-app@main`를 실행합니다 — CI에서의 `yarn zyra app:publish --private`에 해당합니다.
+3. `zyrahq/zyra/.github/actions/install-zyra-app@main`를 실행하여 새로 배포된 버전을 대상 워크스페이스에 설치합니다.
 
 **필수 구성:**
 
@@ -159,7 +159,7 @@ yarn zyra app:publish --private
 
 ### 재사용 가능한 액션 고정하기
 
-두 워크플로 모두 `@main`의 재사용 가능한 액션을 참조하므로, 액션 업데이트가 자동으로 반영됩니다. 결정적 빌드를 원한다면, 각 `uses:` 줄에서 `@main`을 커밋 SHA 또는 릴리스 태그로 바꾸세요.
+두 워크플로 모두 `@main`의 재사용 가능한 액션을 참조하므로, `zyrahq/zyra` 저장소의 액션 업데이트가 자동으로 반영됩니다. 결정적 빌드를 원한다면, 각 `uses:` 줄에서 `@main`을 커밋 SHA 또는 릴리스 태그로 바꾸세요.
 
 ## npm에 게시
 

@@ -1,7 +1,7 @@
 ## Base documentation
 
 - Documentation: https://docs.zyra.com/developers/extend/apps/getting-started
-- Rich app example: packages/zyra-apps/examples/postcard
+- Rich app example: https://github.com/zyrahq/zyra/tree/main/packages/zyra-apps/examples/postcard
 
 ## UUID requirement
 

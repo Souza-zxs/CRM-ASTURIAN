@@ -1,7 +1,7 @@
 ## Base documentation
 
 - Documentation: https://docs.zyra.com/developers/extend/apps/getting-started
-- Rich app example: packages/zyra-apps/fixtures/rich-app
+- Rich app example: https://github.com/zyrahq/zyra/tree/main/packages/zyra-apps/fixtures/rich-app
 
 ## UUID requirement
 

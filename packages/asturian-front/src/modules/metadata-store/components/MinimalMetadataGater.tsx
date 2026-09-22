@@ -26,7 +26,8 @@ export const MinimalMetadataGater = ({ children }: React.PropsWithChildren) => {
     isMatchingLocation(location, AppPath.WorkspaceActivation) ||
     isMatchingLocation(location, AppPath.PlanRequired) ||
     isMatchingLocation(location, AppPath.PlanRequiredSuccess) ||
-    isMatchingLocation(location, AppPath.Authorize);
+    isMatchingLocation(location, AppPath.Authorize) ||
+    isMatchingLocation(location, AppPath.FunnelPage);
 
   const shouldShowLoader = !isMinimalMetadataReady && !isOnExcludedPath;
 

@@ -380,7 +380,7 @@ yarn zyra remote switch <name>
 Рабочий процесс:
 
 1. Извлекает ваш код
-2. Поднимает временный сервер Zyra с помощью экшена `./.github/actions/spawn-zyra-docker-image`
+2. Поднимает временный сервер Zyra с помощью экшена `zyrahq/zyra/.github/actions/spawn-zyra-docker-image`
 3. Устанавливает зависимости с помощью `yarn install --immutable`
 4. Запускает `yarn test` с `ZYRA_API_URL` и `ZYRA_API_KEY`, переданными из выходных данных экшена
 
@@ -405,7 +405,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: ./.github/actions/spawn-zyra-docker-image
+        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

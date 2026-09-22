@@ -20,27 +20,27 @@ describe('sanitizeURL', () => {
 describe('getLogoUrlFromDomainName', () => {
   test('should return the correct logo URL for a given domain', () => {
     expect(getLogoUrlFromDomainName('example.com')).toBe(
-      'https://logo.clearbit.com/example.com',
+      'https://www.google.com/s2/favicons?domain=example.com&sz=128',
     );
 
     expect(getLogoUrlFromDomainName('http://example.com/')).toBe(
-      'https://logo.clearbit.com/example.com',
+      'https://www.google.com/s2/favicons?domain=example.com&sz=128',
     );
 
     expect(getLogoUrlFromDomainName('https://www.example.com/')).toBe(
-      'https://logo.clearbit.com/example.com',
+      'https://www.google.com/s2/favicons?domain=example.com&sz=128',
     );
 
     expect(getLogoUrlFromDomainName('www.example.com')).toBe(
-      'https://logo.clearbit.com/example.com',
+      'https://www.google.com/s2/favicons?domain=example.com&sz=128',
     );
 
     expect(getLogoUrlFromDomainName('example.com/')).toBe(
-      'https://logo.clearbit.com/example.com',
+      'https://www.google.com/s2/favicons?domain=example.com&sz=128',
     );
 
     expect(getLogoUrlFromDomainName('apple.com')).toBe(
-      'https://logo.clearbit.com/apple.com',
+      'https://www.google.com/s2/favicons?domain=apple.com&sz=128',
     );
   });
 

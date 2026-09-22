@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# DISABLED: this script pulls docker-compose.yml, .env.example and release
-# tags from a public GitHub repo (zyrahq/zyra) and a public Docker Hub image
-# (zyracrm/zyra) that do not exist / are not owned by this project. There is
-# no public distribution of Zyra yet. Once one exists, update the URLs below
-# (search for "zyrahq/zyra" and "zyracrm/zyra") and remove this guard.
-echo "❌ This 1-click install script is disabled: there is no public Zyra distribution to pull from yet."
-exit 1
-
 echo "🔧 Checking dependencies..."
 if ! command -v docker &>/dev/null; then
   echo -e "\t❌ Docker is not installed or not in PATH. Please install Docker first.\n\t\tSee https://docs.docker.com/get-docker/"

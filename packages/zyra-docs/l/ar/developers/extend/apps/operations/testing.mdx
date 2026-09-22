@@ -247,7 +247,7 @@ yarn zyra dev:typecheck
 سير العمل:
 
 1. يجلب الشيفرة الخاصة بك
-2. يشغّل خادم Zyra مؤقتًا باستخدام الإجراء `./.github/actions/spawn-zyra-docker-image`
+2. يشغّل خادم Zyra مؤقتًا باستخدام الإجراء `zyrahq/zyra/.github/actions/spawn-zyra-docker-image`
 3. يثبّت التبعيات باستخدام `yarn install --immutable`
 4. يشغّل `yarn test` مع حقن `ZYRA_API_URL` و`ZYRA_API_KEY` من مخرجات الإجراء
 
@@ -272,7 +272,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: ./.github/actions/spawn-zyra-docker-image
+        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

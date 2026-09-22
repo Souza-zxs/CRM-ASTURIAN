@@ -121,7 +121,7 @@ Executa testes de integração a cada push para `main` e a cada pull request.
 **O que faz:**
 
 1. Faz checkout do código-fonte do seu app.
-2. Inicia uma instância de teste do Zyra isolada usando a ação composta `./.github/actions/spawn-zyra-app-dev-test` (o equivalente em CI de `yarn zyra docker:start --test`).
+2. Inicia uma instância de teste do Zyra isolada usando a ação composta `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` (o equivalente em CI de `yarn zyra docker:start --test`).
 3. Habilita o Corepack, configura o Node.js a partir do seu `.nvmrc` e instala as dependências com `yarn install --immutable`.
 4. Executa `yarn test`, passando `ZYRA_API_URL` e `ZYRA_API_KEY` da instância iniciada para que seus testes possam se comunicar com um servidor real.
 
@@ -139,8 +139,8 @@ Faz o deploy do seu app para um servidor Zyra configurado a cada push para `main
 **O que faz:**
 
 1. Faz checkout do head do PR (para PRs rotulados) ou do commit enviado.
-2. Executa `./.github/actions/deploy-zyra-app` — o equivalente em CI de `yarn zyra app:publish --private`.
-3. Executa `./.github/actions/install-zyra-app` para que a versão recém-implantada seja instalada no espaço de trabalho de destino.
+2. Executa `zyrahq/zyra/.github/actions/deploy-zyra-app@main` — o equivalente em CI de `yarn zyra app:publish --private`.
+3. Executa `zyrahq/zyra/.github/actions/install-zyra-app@main` para que a versão recém-implantada seja instalada no espaço de trabalho de destino.
 
 **Configuração obrigatória:**
 
@@ -159,7 +159,7 @@ Adicione o rótulo `deploy` a um pull request. A condição `if:` em `cd.yml` ex
 
 ### Fixando as ações reutilizáveis
 
-Ambos os fluxos de trabalho fazem referência a ações reutilizáveis em `@main`, portanto as atualizações de ações são aplicadas automaticamente. Se você quiser builds determinísticos, substitua `@main` por um SHA de commit ou uma tag de release em cada linha `uses:`.
+Ambos os fluxos de trabalho fazem referência a ações reutilizáveis em `@main`, portanto as atualizações de ações no repositório `zyrahq/zyra` são aplicadas automaticamente. Se você quiser builds determinísticos, substitua `@main` por um SHA de commit ou uma tag de release em cada linha `uses:`.
 
 ## Publicação no npm
 

@@ -121,7 +121,7 @@ yarn zyra app:publish --private
 **作用:**
 
 1. 检出你的应用源代码。
-2. 使用 `./.github/actions/spawn-zyra-app-dev-test` 组合 action 启动一个隔离的 Zyra 测试实例（相当于 CI 中的 `yarn zyra docker:start --test`）。
+2. 使用 `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` 组合 action 启动一个隔离的 Zyra 测试实例（相当于 CI 中的 `yarn zyra docker:start --test`）。
 3. 启用 Corepack，从你的 `.nvmrc` 设置 Node.js，并使用 `yarn install --immutable` 安装依赖。
 4. 运行 `yarn test`，并从启动的实例传入 `ZYRA_API_URL` 和 `ZYRA_API_KEY`，以便你的测试可以与真实服务器通信。
 
@@ -139,8 +139,8 @@ yarn zyra app:publish --private
 **作用:**
 
 1. 检出 PR 的 head（针对已加标签的 PR），或被推送的提交。
-2. 运行 `./.github/actions/deploy-zyra-app`——相当于 CI 中的 `yarn zyra app:publish --private`。
-3. 运行 `./.github/actions/install-zyra-app`，将新部署的版本安装到目标工作区。
+2. 运行 `zyrahq/zyra/.github/actions/deploy-zyra-app@main`——相当于 CI 中的 `yarn zyra app:publish --private`。
+3. 运行 `zyrahq/zyra/.github/actions/install-zyra-app@main`，将新部署的版本安装到目标工作区。
 
 **必需的配置:**
 
@@ -159,7 +159,7 @@ yarn zyra app:publish --private
 
 ### 固定可复用的 actions
 
-两个工作流都引用了位于 `@main` 的可复用 actions，因此会自动获取 action 更新。 如果你希望构建具有确定性，请在每个 `uses:` 行中将 `@main` 替换为某个提交的 SHA 或发行标签。
+两个工作流都引用了位于 `@main` 的可复用 actions，因此会自动获取 `zyrahq/zyra` 仓库中的 action 更新。 如果你希望构建具有确定性，请在每个 `uses:` 行中将 `@main` 替换为某个提交的 SHA 或发行标签。
 
 ## 发布到 npm
 
