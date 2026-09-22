@@ -121,7 +121,7 @@ When updating an already deployed tarball app, the server requires the `version`
 **Что делает:**
 
 1. Извлекает исходный код вашего приложения.
-2. Запускает изолированный тестовый экземпляр Zyra с помощью составного действия `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` (эквивалент для CI `yarn zyra server start --test`).
+2. Запускает изолированный тестовый экземпляр Zyra с помощью составного действия `./.github/actions/spawn-zyra-app-dev-test` (эквивалент для CI `yarn zyra server start --test`).
 3. Включает Corepack, настраивает Node.js на основе вашего `.nvmrc` и устанавливает зависимости с помощью `yarn install --immutable`.
 4. Запускает `yarn test`, передавая `ZYRA_API_URL` и `ZYRA_API_KEY` из запущенного экземпляра, чтобы ваши тесты могли взаимодействовать с реальным сервером.
 
@@ -139,8 +139,8 @@ When updating an already deployed tarball app, the server requires the `version`
 **Что делает:**
 
 1. Извлекает head-коммит PR (для PR с меткой) или запушенный коммит.
-2. Запускает `zyrahq/zyra/.github/actions/deploy-zyra-app@main` — эквивалент для CI `yarn zyra deploy`.
-3. Запускает `zyrahq/zyra/.github/actions/install-zyra-app@main`, чтобы новая развернутая версия была установлена в целевое рабочее пространство.
+2. Запускает `./.github/actions/deploy-zyra-app` — эквивалент для CI `yarn zyra deploy`.
+3. Запускает `./.github/actions/install-zyra-app`, чтобы новая развернутая версия была установлена в целевое рабочее пространство.
 
 **Обязательная конфигурация:**
 
@@ -159,7 +159,7 @@ When updating an already deployed tarball app, the server requires the `version`
 
 ### Закрепление версий повторно используемых действий
 
-Оба рабочих процесса ссылаются на повторно используемые действия с указанием `@main`, поэтому обновления действий в репозитории `zyrahq/zyra` подхватываются автоматически. Если вам нужны детерминированные сборки, замените `@main` на SHA коммита или тег релиза в каждой строке `uses:`.
+Оба рабочих процесса ссылаются на повторно используемые действия с указанием `@main`, поэтому обновления действий подхватываются автоматически. Если вам нужны детерминированные сборки, замените `@main` на SHA коммита или тег релиза в каждой строке `uses:`.
 
 ## Публикация в npm
 

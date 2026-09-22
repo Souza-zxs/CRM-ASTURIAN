@@ -406,7 +406,7 @@ export default defineRole({
 * スキャフォルドされたロールから開始し、最小権限の原則に従って段階的に制限してください。
 * `objectPermissions` と `fieldPermissions` を、関数に必要なオブジェクト／フィールドに置き換えてください。
 * `permissionFlags` はプラットフォームレベルの機能へのアクセスを制御します。 最小限に保ち、必要なものだけを追加してください。
-* 動作例は Hello World アプリにあります: [packages/zyra-apps/hello-world/src/roles/function-role.ts](https://github.com/zyrahq/zyra/blob/main/packages/zyra-apps/hello-world/src/roles/function-role.ts)。
+* 動作例は Hello World アプリにあります: packages/zyra-apps/hello-world/src/roles/function-role.ts。
 
 ### Logic function config and entrypoint
 
@@ -606,7 +606,7 @@ const { me } = await client.query({ me: { id: true, displayName: true } });
 
 ### Hello World の例
 
-オブジェクト、関数、複数のトリガーを示す最小のエンドツーエンド例は[こちら](https://github.com/zyrahq/zyra/tree/main/packages/zyra-apps/hello-world)をご覧ください。
+オブジェクト、関数、複数のトリガーを示す最小のエンドツーエンド例はこちらをご覧ください。
 
 ## 手動セットアップ（スキャフォルダーなし）
 

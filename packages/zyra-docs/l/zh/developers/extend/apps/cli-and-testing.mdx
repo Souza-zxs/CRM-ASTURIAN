@@ -380,7 +380,7 @@ yarn zyra remote switch <name>
 工作流：
 
 1. 检出你的代码
-2. 使用 `zyrahq/zyra/.github/actions/spawn-zyra-docker-image` 动作启动一个临时的 Zyra 服务器
+2. 使用 `./.github/actions/spawn-zyra-docker-image` 动作启动一个临时的 Zyra 服务器
 3. 使用 `yarn install --immutable` 安装依赖
 4. 运行 `yarn test`，并从该动作的输出中注入 `ZYRA_API_URL` 和 `ZYRA_API_KEY`
 
@@ -405,7 +405,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
+        uses: ./.github/actions/spawn-zyra-docker-image
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

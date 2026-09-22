@@ -16,9 +16,14 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+# TODO: this workflow depends on a reusable action (spawn-zyra-app-dev-test)
+# that is not published anywhere publicly yet. Either publish it to a public
+# actions repository you control, or vendor its logic directly into this file,
+# then remove the `if: false` below to re-enable this job.
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4

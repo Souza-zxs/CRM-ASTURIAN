@@ -121,7 +121,7 @@ Entegrasyon testlerini `main` dalına yapılan her itmede ve her çekme isteğin
 **Ne yapar:**
 
 1. Uygulamanızın kaynak kodunu alır.
-2. `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` bileşik eylemini kullanarak yalıtılmış bir Zyra test örneği başlatır (CI'daki `yarn zyra docker:start --test` eşdeğeridir).
+2. `./.github/actions/spawn-zyra-app-dev-test` bileşik eylemini kullanarak yalıtılmış bir Zyra test örneği başlatır (CI'daki `yarn zyra docker:start --test` eşdeğeridir).
 3. Corepack’i etkinleştirir, `.nvmrc` dosyanızdan Node.js'i kurar ve bağımlılıkları `yarn install --immutable` ile yükler.
 4. Oluşturulan örnekten `ZYRA_API_URL` ve `ZYRA_API_KEY` değerlerini aktararak `yarn test`i çalıştırır; böylece testleriniz gerçek bir sunucuyla haberleşebilir.
 
@@ -139,8 +139,8 @@ Gizli anahtar gerekmez — test örneği geçicidir ve yalnızca iş süresi boy
 **Ne yapar:**
 
 1. Etiketli PR'ler için PR'in head commit'ini ya da itilen commit'i alır.
-2. `zyrahq/zyra/.github/actions/deploy-zyra-app@main` çalıştırır — `yarn zyra app:publish --private` komutunun CI eşdeğeridir.
-3. `zyrahq/zyra/.github/actions/install-zyra-app@main` eylemini çalıştırır; böylece yeni dağıtılan sürüm hedef çalışma alanına kurulur.
+2. `./.github/actions/deploy-zyra-app` çalıştırır — `yarn zyra app:publish --private` komutunun CI eşdeğeridir.
+3. `./.github/actions/install-zyra-app` eylemini çalıştırır; böylece yeni dağıtılan sürüm hedef çalışma alanına kurulur.
 
 **Gerekli yapılandırma:**
 
@@ -159,7 +159,7 @@ Bir çekme isteğine `deploy` etiketini ekleyin. `cd.yml` içindeki `if:` koruma
 
 ### Yeniden kullanılabilir eylemleri sabitleme
 
-Her iki iş akışı da `@main` üzerindeki yeniden kullanılabilir eylemlere başvurur; bu nedenle `zyrahq/zyra` deposundaki eylem güncellemeleri otomatik olarak alınır. Deterministik derlemeler istiyorsanız, her `uses:` satırında `@main` ifadesini bir commit SHA'sı veya sürüm etiketiyle değiştirin.
+Her iki iş akışı da `@main` üzerindeki yeniden kullanılabilir eylemlere başvurur; bu nedenle eylem güncellemeleri otomatik olarak alınır. Deterministik derlemeler istiyorsanız, her `uses:` satırında `@main` ifadesini bir commit SHA'sı veya sürüm etiketiyle değiştirin.
 
 ## npm’ye yayımlama
 

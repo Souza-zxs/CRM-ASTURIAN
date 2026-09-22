@@ -14,7 +14,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-88.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-88.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": []
@@ -187,7 +187,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-5.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-5.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": [
@@ -368,7 +368,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-27.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-27.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": []
@@ -556,7 +556,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-19.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-19.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": []
@@ -737,7 +737,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-23.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-23.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": [
@@ -927,7 +927,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-20.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-20.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": [
@@ -1281,7 +1281,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-62.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-62.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": []
@@ -1469,7 +1469,7 @@ export const mockedPersonRecords: ObjectRecord[] =
       "edges": []
     },
     "avatarFile": null,
-    "avatarUrl": "https://zyrahq.github.io/placeholder-images/people/image-94.png",
+    "avatarUrl": "https://twentyhq.github.io/placeholder-images/people/image-94.png",
     "calendarEventParticipants": {
       "__typename": "CalendarEventParticipantConnection",
       "edges": []

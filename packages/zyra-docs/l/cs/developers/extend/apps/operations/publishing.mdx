@@ -121,7 +121,7 @@ Automaticky spouští integrační testy při každém pushi do `main` a u pull 
 **K čemu slouží:**
 
 1. Provede checkout zdrojového kódu vaší aplikace.
-2. Spustí izolovanou testovací instanci Zyra pomocí složené akce `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` (ekvivalent v CI k `yarn zyra docker:start --test`).
+2. Spustí izolovanou testovací instanci Zyra pomocí složené akce `./.github/actions/spawn-zyra-app-dev-test` (ekvivalent v CI k `yarn zyra docker:start --test`).
 3. Povolí Corepack, nastaví Node.js podle vašeho `.nvmrc` a nainstaluje závislosti pomocí `yarn install --immutable`.
 4. Spustí `yarn test` a předá `ZYRA_API_URL` a `ZYRA_API_KEY` ze spuštěné instance, aby vaše testy mohly komunikovat se skutečným serverem.
 
@@ -139,8 +139,8 @@ Nasazuje vaši aplikaci na nakonfigurovaný server Zyra při každém pushi do `
 **K čemu slouží:**
 
 1. Provede checkout headu PR (u označených PR) nebo pushnutého commitu.
-2. Spustí `zyrahq/zyra/.github/actions/deploy-zyra-app@main` — ekvivalent v CI k `yarn zyra app:publish --private`.
-3. Spustí `zyrahq/zyra/.github/actions/install-zyra-app@main`, aby se nově nasazená verze nainstalovala do cílového pracovního prostoru.
+2. Spustí `./.github/actions/deploy-zyra-app` — ekvivalent v CI k `yarn zyra app:publish --private`.
+3. Spustí `./.github/actions/install-zyra-app`, aby se nově nasazená verze nainstalovala do cílového pracovního prostoru.
 
 **Požadovaná konfigurace:**
 
@@ -159,7 +159,7 @@ Přidejte k pull requestu štítek `deploy`. Podmínka `if:` v `cd.yml` spustí 
 
 ### Připnutí verzí znovupoužitelných akcí
 
-Obě workflowy odkazují na znovupoužitelné akce na `@main`, takže aktualizace akcí v repozitáři `zyrahq/zyra` se přeberou automaticky. Pokud chcete deterministická sestavení, nahraďte `@main` v každém řádku `uses:` za commit SHA nebo tag vydání.
+Obě workflowy odkazují na znovupoužitelné akce na `@main`, takže aktualizace akcí se přeberou automaticky. Pokud chcete deterministická sestavení, nahraďte `@main` v každém řádku `uses:` za commit SHA nebo tag vydání.
 
 ## Publikování na npm
 

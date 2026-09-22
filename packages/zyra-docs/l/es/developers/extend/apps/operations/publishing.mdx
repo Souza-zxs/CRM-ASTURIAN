@@ -121,7 +121,7 @@ Ejecuta pruebas de integración en cada push a `main` y en cada pull request.
 **Qué hace:**
 
 1. Obtiene el código fuente de tu aplicación.
-2. Inicia una instancia de prueba aislada de Zyra usando la acción compuesta `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` (el equivalente en CI de `yarn zyra docker:start --test`).
+2. Inicia una instancia de prueba aislada de Zyra usando la acción compuesta `./.github/actions/spawn-zyra-app-dev-test` (el equivalente en CI de `yarn zyra docker:start --test`).
 3. Habilita Corepack, configura Node.js desde tu `.nvmrc` e instala las dependencias con `yarn install --immutable`.
 4. Ejecuta `yarn test`, pasando `ZYRA_API_URL` y `ZYRA_API_KEY` de la instancia iniciada para que tus pruebas puedan comunicarse con un servidor real.
 
@@ -139,8 +139,8 @@ Despliega tu aplicación en un servidor de Zyra configurado en cada push a `main
 **Qué hace:**
 
 1. Obtiene el head del PR (para PR etiquetados) o el commit enviado.
-2. Ejecuta `zyrahq/zyra/.github/actions/deploy-zyra-app@main` — el equivalente en CI de `yarn zyra app:publish --private`.
-3. Ejecuta `zyrahq/zyra/.github/actions/install-zyra-app@main` para que la versión recién desplegada se instale en el espacio de trabajo de destino.
+2. Ejecuta `./.github/actions/deploy-zyra-app` — el equivalente en CI de `yarn zyra app:publish --private`.
+3. Ejecuta `./.github/actions/install-zyra-app` para que la versión recién desplegada se instale en el espacio de trabajo de destino.
 
 **Configuración necesaria:**
 
@@ -159,7 +159,7 @@ Añade la etiqueta `deploy` a un pull request. La condición `if:` en `cd.yml` e
 
 ### Fijar las acciones reutilizables
 
-Ambos flujos de trabajo hacen referencia a acciones reutilizables en `@main`, por lo que las actualizaciones de acciones en el repositorio `zyrahq/zyra` se aplican automáticamente. Si quieres compilaciones deterministas, reemplaza `@main` por un SHA de commit o una etiqueta de versión en cada línea `uses:`.
+Ambos flujos de trabajo hacen referencia a acciones reutilizables en `@main`, por lo que las actualizaciones de acciones se aplican automáticamente. Si quieres compilaciones deterministas, reemplaza `@main` por un SHA de commit o una etiqueta de versión en cada línea `uses:`.
 
 ## Publicación en npm
 

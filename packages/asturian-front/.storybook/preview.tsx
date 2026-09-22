@@ -44,7 +44,7 @@ const respondWithMockImage = () =>
 const remoteImageMockHandlers = [
   http.get('https://picsum.photos/*', respondWithMockImage),
   http.get('https://zyra-icons.com/*', respondWithMockImage),
-  http.get('https://zyrahq.github.io/*', respondWithMockImage),
+  http.get('https://twentyhq.github.io/*', respondWithMockImage),
   http.get('https://via.placeholder.com/*', respondWithMockImage),
   http.get(
     'https://zyra-front-screenshots.s3.eu-west-3.amazonaws.com/*',

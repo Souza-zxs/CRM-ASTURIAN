@@ -124,7 +124,6 @@ COPY --chown=1000 --from=zyra-server-build /app/packages/zyra-emails/dist /app/p
 COPY --chown=1000 --from=zyra-server-build /app/packages/zyra-client-sdk/package.json /app/packages/zyra-client-sdk/
 COPY --chown=1000 --from=zyra-server-build /app/packages/zyra-client-sdk/dist /app/packages/zyra-client-sdk/dist
 
-LABEL org.opencontainers.image.source=https://github.com/zyrahq/zyra
 LABEL org.opencontainers.image.description="Zyra server image (no frontend)."
 
 # Remove unused, unpatchable components the scanner flags (none are executed at
@@ -287,7 +286,6 @@ ENV PG_DATABASE_URL=postgres://zyra:zyra@localhost:5432/default \
 EXPOSE 2020
 VOLUME ["/data/postgres", "/app/packages/zyra-server/.local-storage"]
 
-LABEL org.opencontainers.image.source=https://github.com/zyrahq/zyra
 LABEL org.opencontainers.image.description="All-in-one Zyra image for local development and SDK usage. Includes PostgreSQL, Redis, server, and worker."
 
 ENTRYPOINT ["/init"]

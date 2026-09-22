@@ -247,7 +247,7 @@ Le générateur crée un workflow GitHub Actions prêt à l’emploi dans `.gith
 Le workflow :
 
 1. Récupère votre code
-2. Lance un serveur Zyra temporaire en utilisant l’action `zyrahq/zyra/.github/actions/spawn-zyra-docker-image`
+2. Lance un serveur Zyra temporaire en utilisant l’action `./.github/actions/spawn-zyra-docker-image`
 3. Installe les dépendances avec `yarn install --immutable`
 4. Exécute `yarn test` avec `ZYRA_API_URL` et `ZYRA_API_KEY` injectés à partir des sorties de l’action
 
@@ -272,7 +272,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
+        uses: ./.github/actions/spawn-zyra-docker-image
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

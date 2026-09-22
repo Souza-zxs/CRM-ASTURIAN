@@ -121,7 +121,7 @@ Führt Ihre Integrationstests bei jedem Push auf `main` und bei Pull Requests au
 **Was sie macht:**
 
 1. Checkt den Quellcode Ihrer App aus.
-2. Startet eine isolierte Zyra-Testinstanz mithilfe der Composite-Action `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` (das CI-Äquivalent zu `yarn zyra docker:start --test`).
+2. Startet eine isolierte Zyra-Testinstanz mithilfe der Composite-Action `./.github/actions/spawn-zyra-app-dev-test` (das CI-Äquivalent zu `yarn zyra docker:start --test`).
 3. Aktiviert Corepack, richtet Node.js anhand Ihrer `.nvmrc` ein und installiert Abhängigkeiten mit `yarn install --immutable`.
 4. Führt `yarn test` aus und übergibt `ZYRA_API_URL` und `ZYRA_API_KEY` aus der gestarteten Instanz, damit Ihre Tests mit einem echten Server kommunizieren können.
 
@@ -139,8 +139,8 @@ Stellt Ihre App bei jedem Push auf `main` auf einem konfigurierten Zyra-Server b
 **Was sie macht:**
 
 1. Checkt den PR-Head (bei PRs mit Label) oder den gepushten Commit aus.
-2. Führt `zyrahq/zyra/.github/actions/deploy-zyra-app@main` aus — das CI-Äquivalent zu `yarn zyra app:publish --private`.
-3. Führt `zyrahq/zyra/.github/actions/install-zyra-app@main` aus, damit die neu bereitgestellte Version in den Ziel-Workspace installiert wird.
+2. Führt `./.github/actions/deploy-zyra-app` aus — das CI-Äquivalent zu `yarn zyra app:publish --private`.
+3. Führt `./.github/actions/install-zyra-app` aus, damit die neu bereitgestellte Version in den Ziel-Workspace installiert wird.
 
 **Erforderliche Konfiguration:**
 
@@ -159,7 +159,7 @@ Fügen Sie einem Pull Request das Label `deploy` hinzu. Die `if:`-Bedingung in `
 
 ### Fixieren der wiederverwendbaren Actions
 
-Beide Workflows verweisen auf wiederverwendbare Actions mit `@main`, sodass Aktualisierungen der Actions im Repository `zyrahq/zyra` automatisch übernommen werden. Wenn Sie deterministische Builds möchten, ersetzen Sie `@main` in jeder `uses:`-Zeile durch eine Commit-SHA oder einen Release-Tag.
+Beide Workflows verweisen auf wiederverwendbare Actions mit `@main`, sodass Aktualisierungen der Actions automatisch übernommen werden. Wenn Sie deterministische Builds möchten, ersetzen Sie `@main` in jeder `uses:`-Zeile durch eine Commit-SHA oder einen Release-Tag.
 
 ## Auf npm veröffentlichen
 

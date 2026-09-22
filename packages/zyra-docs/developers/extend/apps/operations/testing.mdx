@@ -247,7 +247,7 @@ The scaffolder generates a ready-to-use GitHub Actions workflow at `.github/work
 The workflow:
 
 1. Checks out your code
-2. Spins up a temporary Zyra server using the `zyrahq/zyra/.github/actions/spawn-zyra-docker-image` action
+2. Spins up a temporary Zyra server using the `./.github/actions/spawn-zyra-docker-image` action
 3. Installs dependencies with `yarn install --immutable`
 4. Runs `yarn test` with `ZYRA_API_URL` and `ZYRA_API_KEY` injected from the action outputs
 
@@ -272,7 +272,7 @@ jobs:
 
       - name: Spawn Zyra instance
         id: zyra
-        uses: zyrahq/zyra/.github/actions/spawn-zyra-docker-image@main
+        uses: ./.github/actions/spawn-zyra-docker-image
         with:
           zyra-version: ${{ env.ZYRA_VERSION }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

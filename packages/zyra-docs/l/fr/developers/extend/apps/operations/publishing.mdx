@@ -121,7 +121,7 @@ Il exécute automatiquement vos tests d’intégration à chaque push sur `main`
 **Ce que cela fait:**
 
 1. Récupère le code source de votre application.
-2. Lance une instance de test Zyra isolée à l’aide de l’action composite `zyrahq/zyra/.github/actions/spawn-zyra-app-dev-test@main` (l’équivalent CI de `yarn zyra docker:start --test`).
+2. Lance une instance de test Zyra isolée à l’aide de l’action composite `./.github/actions/spawn-zyra-app-dev-test` (l’équivalent CI de `yarn zyra docker:start --test`).
 3. Active Corepack, configure Node.js à partir de votre `.nvmrc` et installe les dépendances avec `yarn install --immutable`.
 4. Exécute `yarn test`, en passant `ZYRA_API_URL` et `ZYRA_API_KEY` depuis l’instance lancée pour que vos tests puissent communiquer avec un serveur réel.
 
@@ -139,8 +139,8 @@ Déploie votre application vers un serveur Zyra configuré à chaque push sur `m
 **Ce que cela fait:**
 
 1. Récupère la tête de la PR (pour les PR étiquetées) ou le commit poussé.
-2. Exécute `zyrahq/zyra/.github/actions/deploy-zyra-app@main` — l’équivalent CI de `yarn zyra app:publish --private`.
-3. Exécute `zyrahq/zyra/.github/actions/install-zyra-app@main` afin que la version nouvellement déployée soit installée dans l’espace de travail cible.
+2. Exécute `./.github/actions/deploy-zyra-app` — l’équivalent CI de `yarn zyra app:publish --private`.
+3. Exécute `./.github/actions/install-zyra-app` afin que la version nouvellement déployée soit installée dans l’espace de travail cible.
 
 **Configuration requise:**
 
@@ -159,7 +159,7 @@ Ajoutez le label `deploy` à une pull request. La condition `if:` dans `cd.yml` 
 
 ### Épingler les actions réutilisables
 
-Les deux workflows référencent des actions réutilisables sur `@main`, de sorte que les mises à jour des actions dans le dépôt `zyrahq/zyra` sont récupérées automatiquement. Si vous souhaitez des builds déterministes, remplacez `@main` par un SHA de commit ou un tag de version sur chaque ligne `uses:`.
+Les deux workflows référencent des actions réutilisables sur `@main`, de sorte que les mises à jour des actions sont récupérées automatiquement. Si vous souhaitez des builds déterministes, remplacez `@main` par un SHA de commit ou un tag de version sur chaque ligne `uses:`.
 
 ## Publication sur npm
 
