@@ -43,7 +43,7 @@ export class FunnelPublicController {
     seoTitle: string | null;
     seoDescription: string | null;
   }> {
-    this.assertValidWorkspaceId(workspaceId);
+    this.assertValidUuid(workspaceId, 'workspace id');
 
     const funnelPage = await this.funnelPageMetadataService.findPublishedBySlug(
       { workspaceId, slug },
@@ -76,10 +76,10 @@ export class FunnelPublicController {
   async createLead(
     @Param('workspaceId') workspaceId: string,
     @Body() body: CreateFunnelLeadBodyDto,
-  ): Promise<{ success: true }> {
-    this.assertValidWorkspaceId(workspaceId);
+  ): Promise<{ success: true; leadId: string }> {
+    this.assertValidUuid(workspaceId, 'workspace id');
 
-    await this.funnelPageMetadataService.createLead({
+    const funnelLead = await this.funnelPageMetadataService.createLead({
       workspaceId,
       input: {
         funnelPageId: body.funnelPageId,
@@ -92,12 +92,28 @@ export class FunnelPublicController {
       },
     });
 
+    return { success: true, leadId: funnelLead.id };
+  }
+
+  @Post(':workspaceId/leads/:leadId/attended')
+  async markLeadAsAttendee(
+    @Param('workspaceId') workspaceId: string,
+    @Param('leadId') leadId: string,
+  ): Promise<{ success: true }> {
+    this.assertValidUuid(workspaceId, 'workspace id');
+    this.assertValidUuid(leadId, 'lead id');
+
+    await this.funnelPageMetadataService.markLeadAsAttendee({
+      workspaceId,
+      leadId,
+    });
+
     return { success: true };
   }
 
-  private assertValidWorkspaceId(workspaceId: string): void {
-    if (!UUID_FORMAT.test(workspaceId)) {
-      throw new BadRequestException('Invalid workspace id');
+  private assertValidUuid(value: string, label: string): void {
+    if (!UUID_FORMAT.test(value)) {
+      throw new BadRequestException(`Invalid ${label}`);
     }
   }
 }

@@ -6,6 +6,7 @@ import { isDefined } from 'zyra-shared/utils';
 import { type WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspace-auth-context.type';
 import { CreateRecordService } from 'src/engine/core-modules/record-crud/services/create-record.service';
 import { FindRecordsService } from 'src/engine/core-modules/record-crud/services/find-records.service';
+import { UpdateRecordService } from 'src/engine/core-modules/record-crud/services/update-record.service';
 import { type CreateFunnelLeadInput } from 'src/engine/metadata-modules/funnel-page/dtos/create-funnel-lead.input';
 import { parseFunnelLeadName } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-name.util';
 import { parseFunnelLeadPhone } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-phone.util';
@@ -40,6 +41,7 @@ export class FunnelLeadCrmSyncService {
   constructor(
     private readonly findRecordsService: FindRecordsService,
     private readonly createRecordService: CreateRecordService,
+    private readonly updateRecordService: UpdateRecordService,
   ) {}
 
   // Never throws: the lead is already saved in funnelLead by the time this
@@ -66,6 +68,77 @@ export class FunnelLeadCrmSyncService {
     }
   }
 
+  // Moves the lead's opportunity from NEW to MEETING once they open the
+  // workshop page. Only NEW opportunities are touched, so a lead who already
+  // advanced further (or reloads the page) is never moved backwards.
+  async markLeadAsAttendee({
+    workspaceId,
+    email,
+  }: {
+    workspaceId: string;
+    email: string;
+  }): Promise<void> {
+    try {
+      const authContext = buildSystemAuthContext(workspaceId);
+      const personId = await this.findPersonId({ authContext, email });
+
+      if (!isDefined(personId)) {
+        return;
+      }
+
+      const newOpportunities = await this.findRecordsService.execute({
+        objectName: 'opportunity',
+        filter: { pointOfContactId: { eq: personId }, stage: { eq: 'NEW' } },
+        limit: 1,
+        authContext,
+        shouldBuildEffectiveSelectFields: false,
+      });
+
+      const opportunityId = getRecordId(newOpportunities.result?.records[0]);
+
+      if (!isDefined(opportunityId)) {
+        return;
+      }
+
+      const updatedOpportunity = await this.updateRecordService.execute({
+        objectName: 'opportunity',
+        objectRecordId: opportunityId,
+        objectRecord: { stage: 'MEETING' },
+        authContext,
+      });
+
+      if (!updatedOpportunity.success) {
+        throw new Error(
+          `Could not update opportunity: ${updatedOpportunity.message}`,
+        );
+      }
+    } catch (error) {
+      this.logger.error(
+        `Failed to mark funnel lead as attendee in workspace ${workspaceId}: ${
+          error instanceof Error ? error.message : 'unknown error'
+        }`,
+      );
+    }
+  }
+
+  private async findPersonId({
+    authContext,
+    email,
+  }: {
+    authContext: WorkspaceAuthContext;
+    email: string;
+  }): Promise<string | null> {
+    const existingPeople = await this.findRecordsService.execute({
+      objectName: 'person',
+      filter: { emails: { primaryEmail: { eq: email } } },
+      limit: 1,
+      authContext,
+      shouldBuildEffectiveSelectFields: false,
+    });
+
+    return getRecordId(existingPeople.result?.records[0]);
+  }
+
   // Same email twice (a lead signing up again, or already in the CRM) must
   // not create a duplicate person.
   private async findOrCreatePersonId({
@@ -75,15 +148,10 @@ export class FunnelLeadCrmSyncService {
     authContext: WorkspaceAuthContext;
     lead: CreateFunnelLeadInput;
   }): Promise<string> {
-    const existingPeople = await this.findRecordsService.execute({
-      objectName: 'person',
-      filter: { emails: { primaryEmail: { eq: lead.email } } },
-      limit: 1,
+    const existingPersonId = await this.findPersonId({
       authContext,
-      shouldBuildEffectiveSelectFields: false,
+      email: lead.email,
     });
-
-    const existingPersonId = getRecordId(existingPeople.result?.records[0]);
 
     if (isDefined(existingPersonId)) {
       return existingPersonId;

@@ -197,4 +197,28 @@ export class FunnelPageMetadataService {
 
     return funnelLead;
   }
+
+  // Public write path like createLead: the lead id (an unguessable uuid the
+  // visitor got back at signup) is the only credential, and it is looked up
+  // scoped to the workspace in the URL so it can't touch another workspace.
+  async markLeadAsAttendee({
+    workspaceId,
+    leadId,
+  }: {
+    workspaceId: string;
+    leadId: string;
+  }): Promise<void> {
+    const funnelLead = await this.funnelLeadRepository.findOne(workspaceId, {
+      where: { id: leadId },
+    });
+
+    if (!funnelLead) {
+      throw new NotFoundException('Funnel lead not found for this workspace');
+    }
+
+    await this.funnelLeadCrmSyncService.markLeadAsAttendee({
+      workspaceId,
+      email: funnelLead.email,
+    });
+  }
 }

@@ -69,8 +69,18 @@ export const SignupPageView = ({
     setIsSubmitting(true);
 
     try {
-      await submitFunnelLead({ funnelPageId, name, email, whatsapp });
-      navigate(`/w/${content.formSuccessRedirectSlug}`);
+      const { leadId } = await submitFunnelLead({
+        funnelPageId,
+        name,
+        email,
+        whatsapp,
+      });
+
+      // The lead id follows the visitor through the funnel so later steps
+      // (workshop, purchase) can update the same person in the CRM.
+      navigate(
+        `/w/${content.formSuccessRedirectSlug}?lead=${encodeURIComponent(leadId)}`,
+      );
     } catch {
       setError('Não foi possível enviar sua inscrição. Tente novamente.');
     } finally {

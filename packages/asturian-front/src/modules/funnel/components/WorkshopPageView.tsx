@@ -1,5 +1,8 @@
+import { markFunnelLeadAttended } from '@/funnel/api/mark-funnel-lead-attended';
 import { type FunnelWorkshopPageContent } from '@/funnel/types/FunnelPage';
 import { styled } from '@linaria/react';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Button } from 'zyra-ui/input';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
 
@@ -40,6 +43,21 @@ type WorkshopPageViewProps = {
 };
 
 export const WorkshopPageView = ({ content }: WorkshopPageViewProps) => {
+  const [searchParams] = useSearchParams();
+  const leadId = searchParams.get('lead');
+
+  // Opening the workshop page is what makes a lead an attendee. An effect is
+  // right here: it's a side effect of the page being shown, not of an event.
+  useEffect(() => {
+    if (leadId !== null) {
+      void markFunnelLeadAttended(leadId);
+    }
+  }, [leadId]);
+
+  const salesPagePath = `/w/${content.ctaRedirectSlug}${
+    leadId !== null ? `?lead=${encodeURIComponent(leadId)}` : ''
+  }`;
+
   return (
     <StyledPage>
       <StyledVideoFrame>
@@ -56,7 +74,7 @@ export const WorkshopPageView = ({ content }: WorkshopPageViewProps) => {
           <video controls src={content.videoUrl} />
         )}
       </StyledVideoFrame>
-      <Button title={content.ctaLabel} to={`/w/${content.ctaRedirectSlug}`} />
+      <Button title={content.ctaLabel} to={salesPagePath} />
     </StyledPage>
   );
 };

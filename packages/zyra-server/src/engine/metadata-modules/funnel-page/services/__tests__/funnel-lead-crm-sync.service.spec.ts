@@ -13,11 +13,13 @@ const lead: CreateFunnelLeadInput = {
 describe('FunnelLeadCrmSyncService', () => {
   const findRecordsService = { execute: jest.fn() };
   const createRecordService = { execute: jest.fn() };
+  const updateRecordService = { execute: jest.fn() };
 
   const buildService = () =>
     new FunnelLeadCrmSyncService(
       findRecordsService as never,
       createRecordService as never,
+      updateRecordService as never,
     );
 
   beforeEach(() => {
@@ -97,5 +99,92 @@ describe('FunnelLeadCrmSyncService', () => {
     await expect(
       buildService().syncLeadToCrm({ workspaceId: WORKSPACE_ID, lead }),
     ).resolves.toBeUndefined();
+  });
+
+  describe('markLeadAsAttendee', () => {
+    const markAttendee = () =>
+      buildService().markLeadAsAttendee({
+        workspaceId: WORKSPACE_ID,
+        email: lead.email,
+      });
+
+    it('should move the lead opportunity from NEW to MEETING', async () => {
+      findRecordsService.execute
+        .mockResolvedValueOnce({
+          success: true,
+          result: { records: [{ id: 'person-1' }], count: 1 },
+        })
+        .mockResolvedValueOnce({
+          success: true,
+          result: { records: [{ id: 'opportunity-1' }], count: 1 },
+        });
+      updateRecordService.execute.mockResolvedValue({ success: true });
+
+      await markAttendee();
+
+      expect(findRecordsService.execute).toHaveBeenNthCalledWith(
+        2,
+        expect.objectContaining({
+          objectName: 'opportunity',
+          filter: {
+            pointOfContactId: { eq: 'person-1' },
+            stage: { eq: 'NEW' },
+          },
+        }),
+      );
+      expect(updateRecordService.execute).toHaveBeenCalledWith(
+        expect.objectContaining({
+          objectName: 'opportunity',
+          objectRecordId: 'opportunity-1',
+          objectRecord: { stage: 'MEETING' },
+        }),
+      );
+    });
+
+    it('should leave the CRM untouched when no opportunity is in stage NEW', async () => {
+      findRecordsService.execute
+        .mockResolvedValueOnce({
+          success: true,
+          result: { records: [{ id: 'person-1' }], count: 1 },
+        })
+        .mockResolvedValueOnce({
+          success: true,
+          result: { records: [], count: 0 },
+        });
+
+      await markAttendee();
+
+      expect(updateRecordService.execute).not.toHaveBeenCalled();
+    });
+
+    it('should do nothing when the person is not in the CRM', async () => {
+      findRecordsService.execute.mockResolvedValue({
+        success: true,
+        result: { records: [], count: 0 },
+      });
+
+      await markAttendee();
+
+      expect(findRecordsService.execute).toHaveBeenCalledTimes(1);
+      expect(updateRecordService.execute).not.toHaveBeenCalled();
+    });
+
+    it('should not throw when the update fails', async () => {
+      findRecordsService.execute
+        .mockResolvedValueOnce({
+          success: true,
+          result: { records: [{ id: 'person-1' }], count: 1 },
+        })
+        .mockResolvedValueOnce({
+          success: true,
+          result: { records: [{ id: 'opportunity-1' }], count: 1 },
+        });
+      updateRecordService.execute.mockResolvedValue({
+        success: false,
+        message: 'boom',
+      });
+
+      await expect(markAttendee()).resolves.toBeUndefined();
+    });
   });
 });
