@@ -22,12 +22,21 @@ export type FunnelSignupPageContent = {
   formSuccessRedirectSlug: string;
 };
 
+// Mirrors FunnelWorkshopSchedule in zyra-shared: each lead is placed in the
+// next daily session after signing up, and the video is locked until then.
+export type FunnelWorkshopSchedule = {
+  timesOfDay: string[];
+  utcOffsetMinutes: number;
+  minLeadMinutes: number;
+};
+
 export type FunnelWorkshopPageContent = {
   type: 'WORKSHOP';
   videoUrl: string;
   chatEnabled: boolean;
   ctaLabel: string;
   ctaRedirectSlug: string;
+  schedule?: FunnelWorkshopSchedule;
 };
 
 export type FunnelSalesPageContent = {

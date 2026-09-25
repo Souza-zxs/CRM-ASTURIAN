@@ -128,6 +128,7 @@ export type { FormatRecordSerializedRelationProperties } from './FormatRecordSer
 export type { FromTo } from './FromToType';
 export type {
   FunnelSignupPageContent,
+  FunnelWorkshopSchedule,
   FunnelWorkshopPageContent,
   FunnelValueStackItem,
   FunnelFaqItem,

@@ -5,6 +5,7 @@ import {
   type FunnelPageType,
   type FunnelValueStackItem,
 } from '@/funnel/types/FunnelPage';
+import { SettingsFunnelWorkshopScheduleFields } from '@/funnel/components/SettingsFunnelWorkshopScheduleFields';
 import { Select } from '@/ui/input/components/Select';
 import { SettingsTextInput } from '@/ui/input/components/SettingsTextInput';
 import { TextArea } from '@/ui/input/components/TextArea';
@@ -167,7 +168,10 @@ type ValueStackFieldProps = {
 const ValueStackField = ({ valueStack, onChange }: ValueStackFieldProps) => {
   const { t } = useLingui();
 
-  const updateItem = (index: number, changes: Partial<FunnelValueStackItem>) => {
+  const updateItem = (
+    index: number,
+    changes: Partial<FunnelValueStackItem>,
+  ) => {
     onChange(
       valueStack.map((item, itemIndex) =>
         itemIndex === index ? { ...item, ...changes } : item,
@@ -467,6 +471,10 @@ export const SettingsFunnelPageForm = ({
               }
               fullWidth
             />
+            <SettingsFunnelWorkshopScheduleFields
+              schedule={content.schedule}
+              onChange={(schedule) => setContent({ ...content, schedule })}
+            />
           </>
         )}
 
@@ -481,9 +489,7 @@ export const SettingsFunnelPageForm = ({
             />
             <ValueStackField
               valueStack={content.valueStack}
-              onChange={(valueStack) =>
-                setContent({ ...content, valueStack })
-              }
+              onChange={(valueStack) => setContent({ ...content, valueStack })}
             />
             <SettingsTextInput
               instanceId="funnel-sales-price"
