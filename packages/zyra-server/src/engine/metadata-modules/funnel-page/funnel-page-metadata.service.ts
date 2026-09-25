@@ -198,6 +198,27 @@ export class FunnelPageMetadataService {
     return funnelLead;
   }
 
+  // The public workshop page needs the signup instant to work out which daily
+  // session this lead was placed in (see computeNextWorkshopSession). Only the
+  // timestamp leaves the server, nothing about the lead.
+  async findLeadSignupTime({
+    workspaceId,
+    leadId,
+  }: {
+    workspaceId: string;
+    leadId: string;
+  }): Promise<Date> {
+    const funnelLead = await this.funnelLeadRepository.findOne(workspaceId, {
+      where: { id: leadId },
+    });
+
+    if (!funnelLead) {
+      throw new NotFoundException('Funnel lead not found for this workspace');
+    }
+
+    return funnelLead.createdAt;
+  }
+
   // Public write path like createLead: the lead id (an unguessable uuid the
   // visitor got back at signup) is the only credential, and it is looked up
   // scoped to the workspace in the URL so it can't touch another workspace.

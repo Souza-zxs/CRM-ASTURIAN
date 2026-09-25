@@ -9,11 +9,13 @@ import { FunnelPageResolver } from 'src/engine/metadata-modules/funnel-page/reso
 import { FunnelLeadCrmSyncService } from 'src/engine/metadata-modules/funnel-page/services/funnel-lead-crm-sync.service';
 import { provideWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/provide-workspace-scoped-repository';
 import { RecordCrudModule } from 'src/engine/core-modules/record-crud/record-crud.module';
+import { ThrottlerModule } from 'src/engine/core-modules/throttler/throttler.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([FunnelPageEntity, FunnelLeadEntity]),
     RecordCrudModule,
+    ThrottlerModule,
   ],
   providers: [
     FunnelPageMetadataService,
