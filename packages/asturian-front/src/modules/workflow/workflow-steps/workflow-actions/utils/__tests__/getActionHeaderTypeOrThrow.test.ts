@@ -26,6 +26,12 @@ describe('getActionHeaderTypeOrThrow', () => {
     expect(getActionHeaderTypeOrThrow('SEND_EMAIL').message).toBe('Core');
   });
 
+  it('should return "Core" for SEND_WHATSAPP_TEMPLATE action type', () => {
+    expect(getActionHeaderTypeOrThrow('SEND_WHATSAPP_TEMPLATE').message).toBe(
+      'Core',
+    );
+  });
+
   it('should return "Core" for HTTP_REQUEST action type', () => {
     expect(getActionHeaderTypeOrThrow('HTTP_REQUEST').message).toBe('Core');
   });

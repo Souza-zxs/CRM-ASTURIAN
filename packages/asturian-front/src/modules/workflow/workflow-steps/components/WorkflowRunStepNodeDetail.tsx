@@ -10,6 +10,7 @@ import { WorkflowEditActionCreateRecord } from '@/workflow/workflow-steps/workfl
 import { WorkflowEditActionDeleteRecord } from '@/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionDeleteRecord';
 import { WorkflowEditActionEmpty } from '@/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmpty';
 import { WorkflowEditActionEmailBase } from '@/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase';
+import { WorkflowEditActionSendWhatsappTemplate } from '@/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate';
 import { WorkflowEditActionUpdateRecord } from '@/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionUpdateRecord';
 import { WorkflowEditActionUpsertRecord } from '@/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionUpsertRecord';
 import { WorkflowEditActionDelay } from '@/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay';
@@ -120,6 +121,17 @@ export const WorkflowRunStepNodeDetail = ({
         case 'LOGIC_FUNCTION': {
           return (
             <WorkflowEditActionLogicFunction
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'SEND_WHATSAPP_TEMPLATE': {
+          return (
+            <WorkflowEditActionSendWhatsappTemplate
               key={stepId}
               action={stepDefinition.definition}
               actionOptions={{

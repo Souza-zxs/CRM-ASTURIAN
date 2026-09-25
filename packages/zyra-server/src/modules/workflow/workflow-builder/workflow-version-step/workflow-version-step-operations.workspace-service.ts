@@ -311,6 +311,23 @@ export class WorkflowVersionStepOperationsWorkspaceService {
           },
         };
       }
+      case WorkflowActionType.SEND_WHATSAPP_TEMPLATE: {
+        return {
+          builtStep: {
+            ...baseStep,
+            name: 'Send WhatsApp Template',
+            type: WorkflowActionType.SEND_WHATSAPP_TEMPLATE,
+            settings: {
+              ...BASE_STEP_DEFINITION,
+              input: {
+                whatsappTemplateId: '',
+                to: '',
+                bodyParameters: [],
+              },
+            },
+          },
+        };
+      }
       case WorkflowActionType.DRAFT_EMAIL: {
         return {
           builtStep: {

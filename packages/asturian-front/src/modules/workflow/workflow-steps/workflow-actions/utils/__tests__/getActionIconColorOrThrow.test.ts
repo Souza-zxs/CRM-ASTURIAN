@@ -3,12 +3,13 @@ import { getActionIconColorOrThrow } from '@/workflow/workflow-steps/workflow-ac
 import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 describe('getActionIconColorOrThrow', () => {
-  it('returns red for CODE, HTTP_REQUEST, SEND_EMAIL, DRAFT_EMAIL, LOGIC_FUNCTION', () => {
+  it('returns red for CODE, HTTP_REQUEST, SEND_EMAIL, DRAFT_EMAIL, SEND_WHATSAPP_TEMPLATE, LOGIC_FUNCTION', () => {
     const redActions: WorkflowActionType[] = [
       'CODE',
       'HTTP_REQUEST',
       'SEND_EMAIL',
       'DRAFT_EMAIL',
+      'SEND_WHATSAPP_TEMPLATE',
       'LOGIC_FUNCTION',
     ];
     redActions.forEach((actionType) => {
