@@ -1,5 +1,6 @@
 import { type FunnelSignupPageContent } from '@/funnel/types/FunnelPage';
 import { submitFunnelLead } from '@/funnel/api/submit-funnel-lead';
+import { trackMetaPixelEvent } from '@/funnel/utils/metaPixel';
 import { SettingsTextInput } from '@/ui/input/components/SettingsTextInput';
 import { styled } from '@linaria/react';
 import { useState } from 'react';
@@ -75,6 +76,10 @@ export const SignupPageView = ({
         email,
         whatsapp,
       });
+
+      // The lead id doubles as the event id, so a future server-side
+      // Conversions API call can be deduplicated against this browser event.
+      trackMetaPixelEvent({ eventName: 'Lead', eventId: leadId });
 
       // The lead id follows the visitor through the funnel so later steps
       // (workshop, purchase) can update the same person in the CRM.
