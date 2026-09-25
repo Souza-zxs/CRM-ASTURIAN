@@ -1,5 +1,6 @@
 import { type FunnelSignupPageContent } from '@/funnel/types/FunnelPage';
 import { submitFunnelLead } from '@/funnel/api/submit-funnel-lead';
+import { trackMetaPixelEvent } from '@/funnel/utils/metaPixel';
 import { SettingsTextInput } from '@/ui/input/components/SettingsTextInput';
 import { styled } from '@linaria/react';
 import { useState } from 'react';
@@ -69,8 +70,22 @@ export const SignupPageView = ({
     setIsSubmitting(true);
 
     try {
-      await submitFunnelLead({ funnelPageId, name, email, whatsapp });
-      navigate(`/w/${content.formSuccessRedirectSlug}`);
+      const { leadId } = await submitFunnelLead({
+        funnelPageId,
+        name,
+        email,
+        whatsapp,
+      });
+
+      // The lead id doubles as the event id, so a future server-side
+      // Conversions API call can be deduplicated against this browser event.
+      trackMetaPixelEvent({ eventName: 'Lead', eventId: leadId });
+
+      // The lead id follows the visitor through the funnel so later steps
+      // (workshop, purchase) can update the same person in the CRM.
+      navigate(
+        `/w/${content.formSuccessRedirectSlug}?lead=${encodeURIComponent(leadId)}`,
+      );
     } catch {
       setError('Não foi possível enviar sua inscrição. Tente novamente.');
     } finally {

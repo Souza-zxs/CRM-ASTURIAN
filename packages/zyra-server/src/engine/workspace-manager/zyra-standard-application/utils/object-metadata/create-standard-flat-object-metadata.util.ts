@@ -386,12 +386,8 @@ export const STANDARD_FLAT_OBJECT_METADATA_BUILDERS_BY_OBJECT_NAME = {
             .universalIdentifier,
         nameSingular: 'messageChannelMessageAssociationMessageFolder',
         namePlural: 'messageChannelMessageAssociationMessageFolders',
-        labelSingular: i18nLabel(
-          msg`Pasta de mensagens da associação de mensagem do canal de mensagens`,
-        ),
-        labelPlural: i18nLabel(
-          msg`Pastas de mensagens da associação de mensagem do canal de mensagens`,
-        ),
+        labelSingular: i18nLabel(msg`Pasta da associação de mensagem do canal`),
+        labelPlural: i18nLabel(msg`Pastas da associação de mensagem do canal`),
         description: i18nLabel(
           msg`Tabela de junção que vincula associações de mensagem do canal de mensagens às pastas de mensagens`,
         ),

@@ -11,6 +11,7 @@ export const getActionIconColorOrThrow = (
     case 'HTTP_REQUEST':
     case 'SEND_EMAIL':
     case 'DRAFT_EMAIL':
+    case 'SEND_WHATSAPP_TEMPLATE':
       return themeCssVariables.color.red;
     case 'CREATE_RECORD':
     case 'UPDATE_RECORD':

@@ -10,6 +10,7 @@ import { type WorkflowIfElseActionSettings } from 'src/modules/workflow/workflow
 import { type WorkflowIteratorActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/iterator/types/workflow-iterator-action-settings.type';
 import { type WorkflowLogicFunctionActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/logic-function/types/workflow-logic-function-action-settings.type';
 import { type WorkflowSendEmailActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/mail-sender/types/workflow-send-email-action-settings.type';
+import { type WorkflowSendWhatsappTemplateActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/send-whatsapp-template/types/workflow-send-whatsapp-template-action-settings.type';
 import {
   type WorkflowCreateRecordActionSettings,
   type WorkflowDeleteRecordActionSettings,
@@ -51,6 +52,11 @@ export type WorkflowSendEmailAction = BaseWorkflowAction & {
 export type WorkflowDraftEmailAction = BaseWorkflowAction & {
   type: WorkflowActionType.DRAFT_EMAIL;
   settings: WorkflowSendEmailActionSettings;
+};
+
+export type WorkflowSendWhatsappTemplateAction = BaseWorkflowAction & {
+  type: WorkflowActionType.SEND_WHATSAPP_TEMPLATE;
+  settings: WorkflowSendWhatsappTemplateActionSettings;
 };
 
 export type WorkflowCreateRecordAction = BaseWorkflowAction & {
@@ -127,6 +133,7 @@ export type WorkflowAction =
   | WorkflowLogicFunctionAction
   | WorkflowSendEmailAction
   | WorkflowDraftEmailAction
+  | WorkflowSendWhatsappTemplateAction
   | WorkflowCreateRecordAction
   | WorkflowUpdateRecordAction
   | WorkflowDeleteRecordAction

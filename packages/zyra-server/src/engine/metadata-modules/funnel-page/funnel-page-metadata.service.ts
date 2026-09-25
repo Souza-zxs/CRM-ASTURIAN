@@ -7,6 +7,7 @@ import { CreateFunnelPageInput } from 'src/engine/metadata-modules/funnel-page/d
 import { UpdateFunnelPageInput } from 'src/engine/metadata-modules/funnel-page/dtos/update-funnel-page.input';
 import { FunnelLeadEntity } from 'src/engine/metadata-modules/funnel-page/entities/funnel-lead.entity';
 import { FunnelPageEntity } from 'src/engine/metadata-modules/funnel-page/entities/funnel-page.entity';
+import { FunnelLeadCrmSyncService } from 'src/engine/metadata-modules/funnel-page/services/funnel-lead-crm-sync.service';
 import { InjectWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/inject-workspace-scoped-repository.decorator';
 import { WorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/workspace-scoped-repository';
 
@@ -17,6 +18,7 @@ export class FunnelPageMetadataService {
     private readonly funnelPageRepository: WorkspaceScopedRepository<FunnelPageEntity>,
     @InjectWorkspaceScopedRepository(FunnelLeadEntity)
     private readonly funnelLeadRepository: WorkspaceScopedRepository<FunnelLeadEntity>,
+    private readonly funnelLeadCrmSyncService: FunnelLeadCrmSyncService,
   ) {}
 
   async findAllForWorkspace(workspaceId: string): Promise<FunnelPageEntity[]> {
@@ -72,7 +74,9 @@ export class FunnelPageMetadataService {
 
     const definedFields = {
       ...Object.fromEntries(
-        Object.entries(updatableFields).filter(([, value]) => value !== undefined),
+        Object.entries(updatableFields).filter(
+          ([, value]) => value !== undefined,
+        ),
       ),
       // .update() is a raw query-builder operation — unlike .save(), it does
       // NOT run TypeORM's @UpdateDateColumn lifecycle, so updatedAt has to be
@@ -176,7 +180,7 @@ export class FunnelPageMetadataService {
       throw new NotFoundException('Funnel page not found for this workspace');
     }
 
-    return this.funnelLeadRepository.save(workspaceId, {
+    const funnelLead = await this.funnelLeadRepository.save(workspaceId, {
       funnelPageId: input.funnelPageId,
       name: input.name,
       email: input.email,
@@ -184,6 +188,58 @@ export class FunnelPageMetadataService {
       utmSource: input.utmSource ?? null,
       utmMedium: input.utmMedium ?? null,
       utmCampaign: input.utmCampaign ?? null,
+    });
+
+    await this.funnelLeadCrmSyncService.syncLeadToCrm({
+      workspaceId,
+      lead: input,
+    });
+
+    return funnelLead;
+  }
+
+  // The public workshop page needs the signup instant to work out which daily
+  // session this lead was placed in (see computeNextWorkshopSession). Only the
+  // timestamp leaves the server, nothing about the lead.
+  async findLeadSignupTime({
+    workspaceId,
+    leadId,
+  }: {
+    workspaceId: string;
+    leadId: string;
+  }): Promise<Date> {
+    const funnelLead = await this.funnelLeadRepository.findOne(workspaceId, {
+      where: { id: leadId },
+    });
+
+    if (!funnelLead) {
+      throw new NotFoundException('Funnel lead not found for this workspace');
+    }
+
+    return funnelLead.createdAt;
+  }
+
+  // Public write path like createLead: the lead id (an unguessable uuid the
+  // visitor got back at signup) is the only credential, and it is looked up
+  // scoped to the workspace in the URL so it can't touch another workspace.
+  async markLeadAsAttendee({
+    workspaceId,
+    leadId,
+  }: {
+    workspaceId: string;
+    leadId: string;
+  }): Promise<void> {
+    const funnelLead = await this.funnelLeadRepository.findOne(workspaceId, {
+      where: { id: leadId },
+    });
+
+    if (!funnelLead) {
+      throw new NotFoundException('Funnel lead not found for this workspace');
+    }
+
+    await this.funnelLeadCrmSyncService.markLeadAsAttendee({
+      workspaceId,
+      email: funnelLead.email,
     });
   }
 }

@@ -887,6 +887,7 @@ msgstr "刪除帳戶"
 #: src/pages/settings/accounts/SettingsAccountsVoiceAgent.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsappAgent.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
 #: src/pages/settings/accounts/SettingsNewAccount.tsx
 msgid "Accounts"
 msgstr "帳戶"
@@ -914,8 +915,10 @@ msgid "Action on click"
 msgstr "按一下時的動作"
 
 #. js-lingui-id: 7L01XJ
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/roles/role-permissions/object-level-permissions/object-form/components/SettingsRolePermissionsObjectLevelObjectFormObjectLevelTableHeader.tsx
 #: src/modules/settings/roles/role-permissions/objects-permissions/components/SettingsRolePermissionsObjectsTableHeader.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsTableHeader.tsx
@@ -1060,6 +1063,16 @@ msgstr "新增密件副本"
 msgid "Add Block"
 msgstr "新增區塊"
 
+#. js-lingui-id: JbktD5
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Add bullet"
+msgstr ""
+
+#. js-lingui-id: 6oU9VZ
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Add button"
+msgstr ""
+
 #. js-lingui-id: 02qdT/
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
 msgid "Add CC"
@@ -1149,6 +1162,7 @@ msgid "Add inputs to your form"
 msgstr "增加輸入到您的表單"
 
 #. js-lingui-id: NQ8llq
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/object-record/record-field/ui/form-types/components/FormArrayFieldInput.tsx
 msgid "Add item"
 msgstr "添加項目"
@@ -1248,6 +1262,11 @@ msgstr ""
 #: src/modules/settings/domains/components/SettingsPublicDomainsListCard.tsx
 msgid "Add Public Domain"
 msgstr "新增公用領域"
+
+#. js-lingui-id: Cw27zP
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Add question"
+msgstr ""
 
 #. js-lingui-id: AmiJYR
 #: src/modules/settings/data-model/object-details/components/tabs/ObjectFields.tsx
@@ -2045,6 +2064,11 @@ msgstr "和"
 #: src/modules/workflow/workflow-steps/filters/components/WorkflowStepFilterLogicalOperatorCell.tsx
 msgid "And"
 msgstr "和"
+
+#. js-lingui-id: 4xBHUg
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Answer"
+msgstr ""
 
 #. js-lingui-id: 9BhGWn
 #. placeholder {0}: fieldLabel ?? ''
@@ -2874,6 +2898,7 @@ msgid "Blue"
 msgstr "藍色"
 
 #. js-lingui-id: bGQplw
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsEmailDetail.tsx
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
 msgid "Body"
@@ -2990,9 +3015,24 @@ msgstr ""
 msgid "Bullet List"
 msgstr ""
 
+#. js-lingui-id: RYtHky
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Bullets"
+msgstr ""
+
 #. js-lingui-id: 9emr42
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTriggersTab.tsx
 msgid "Bundled with {applicationName}"
+msgstr ""
+
+#. js-lingui-id: 3W/QV7
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Button label"
+msgstr ""
+
+#. js-lingui-id: KU8moT
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Buttons (optional)"
 msgstr ""
 
 #. js-lingui-id: 8ds4Hj
@@ -3178,11 +3218,13 @@ msgstr "無法掃描？ 複製"
 
 #. js-lingui-id: dEgA5A
 #: src/modules/applications/components/AuthorizeActionButtons.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignTemplatePicker.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
 #: src/modules/side-panel/pages/compose-campaign/components/SidePanelCampaignComposerPage.tsx
@@ -3324,6 +3366,8 @@ msgid "Catalan"
 msgstr "加泰羅尼亞語"
 
 #. js-lingui-id: K7tIrx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/applications/components/SettingsApplicationAboutSidebar.tsx
 msgid "Category"
 msgstr "分類"
@@ -3471,6 +3515,11 @@ msgstr ""
 #. js-lingui-id: eIgKP9
 #: src/modules/settings/billing/hooks/useHandleCheckoutSession.ts
 msgid "Checkout session error. Please retry or contact {productName} team"
+msgstr ""
+
+#. js-lingui-id: wmvw14
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Checkout URL"
 msgstr ""
 
 #. js-lingui-id: SviKkE
@@ -3990,6 +4039,11 @@ msgstr "配置 IMAP 設定以接收和同步您的電子郵件。"
 msgid "Configure SMTP settings to send emails from your account."
 msgstr "配置 SMTP 設定以從您的帳戶發送電子郵件。"
 
+#. js-lingui-id: V6k91/
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Configure the content of a funnel page — it becomes live at /{slug} once published."
+msgstr ""
+
 #. js-lingui-id: TiCmQz
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx
 msgid "Configure the default AI models for all workspaces"
@@ -4078,6 +4132,11 @@ msgstr ""
 #: src/modules/settings/accounts/components/SettingsNewAccountSection.tsx
 msgid "Connect a new account to your workspace"
 msgstr "將新帳戶連接到工作區"
+
+#. js-lingui-id: cd3Sbi
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "Connect a WhatsApp number before creating a template"
+msgstr ""
 
 #. js-lingui-id: yjjRhQ
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
@@ -4622,6 +4681,11 @@ msgstr ""
 msgid "Create and configure AI agents"
 msgstr "創建和配置 AI 代理"
 
+#. js-lingui-id: Q9SbKG
+#: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
+msgid "Create and submit message templates for Meta's approval."
+msgstr ""
+
 #. js-lingui-id: uXGLuq
 #: src/pages/settings/api-webhooks/SettingsApiWebhooks.tsx
 msgid "Create API key"
@@ -4652,6 +4716,11 @@ msgstr "創建日期字段"
 msgid "Create new view"
 msgstr "建立新檢視"
 
+#. js-lingui-id: XRuL0i
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Create page"
+msgstr ""
+
 #. js-lingui-id: gSyzEV
 #: src/pages/onboarding/CreateProfile.tsx
 msgid "Create profile"
@@ -4677,6 +4746,11 @@ msgstr "創建選擇字段"
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownLayoutContent.tsx
 msgid "Create Select..."
 msgstr "創建選擇……"
+
+#. js-lingui-id: A5hiCy
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Create template"
+msgstr ""
 
 #. js-lingui-id: zt6Erc
 #: src/modules/views/components/UpdateViewButtonGroup.tsx
@@ -4870,6 +4944,13 @@ msgstr ""
 #. js-lingui-id: Lw7Xl4
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignCsvImportButton.tsx
 msgid "CSV columns: keywords, replyMessage (separate multiple keywords with ; or |)"
+msgstr ""
+
+#. js-lingui-id: On//sA
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "CTA label"
 msgstr ""
 
 #. js-lingui-id: J1QT+3
@@ -5449,6 +5530,7 @@ msgstr "刪除"
 #: src/modules/ai/components/AiChatThreadDeleteConfirmationModal.tsx
 #: src/modules/ai/components/AiChatThreadItemMenu.tsx
 #: src/modules/blocknote-editor/components/CustomSideMenu.tsx
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
 #: src/modules/navigation-menu-item/display/folder/components/NavigationMenuItemFolderNavigationDrawerItemDropdown.tsx
 #: src/modules/object-record/record-field-list/record-detail-section/relation/components/RecordDetailRelationRecordsListItem.tsx
 #: src/modules/object-record/record-field/ui/meta-types/input/components/MultiItemFieldMenuItem.tsx
@@ -5456,6 +5538,7 @@ msgstr "刪除"
 #: src/modules/page-layout/widgets/standalone-rich-text/components/DashboardEditorSideMenu.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminDeleteJobsConfirmationModal.tsx
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminQueueJobRowDropdownMenu.tsx
 #: src/modules/settings/data-model/object-details/components/SettingsObjectFieldDisabledActionDropdown.tsx
@@ -5586,6 +5669,11 @@ msgstr "刪除欄位"
 msgid "Delete Folder"
 msgstr "刪除資料夾"
 
+#. js-lingui-id: 4z4jRj
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Delete funnel page"
+msgstr ""
+
 #. js-lingui-id: k/RLDM
 #: src/modules/workflow/workflow-steps/filters/components/WorkflowStepFilterGroupOptionsDropdown.tsx
 msgid "Delete group"
@@ -5600,6 +5688,11 @@ msgstr "刪除節點"
 #: src/pages/settings/admin-panel/SettingsAdminApplicationRegistrationDangerZone.tsx
 msgid "Delete or transfer this app registration"
 msgstr "刪除或轉移此應用程式註冊"
+
+#. js-lingui-id: O1M1zi
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Delete page"
+msgstr ""
 
 #. js-lingui-id: mcXHCJ
 #: src/modules/settings/roles/role-permissions/objects-permissions/components/SettingsRolePermissionsObjectsSection.tsx
@@ -5624,6 +5717,11 @@ msgstr "永久刪除角色"
 #. js-lingui-id: rvJGTw
 #: src/pages/settings/ai/SettingsSkillForm.tsx
 msgid "Delete Skill"
+msgstr ""
+
+#. js-lingui-id: DFjdv0
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Delete template"
 msgstr ""
 
 #. js-lingui-id: DgHnjS
@@ -5689,6 +5787,11 @@ msgstr "刪除 Webhook"
 #. js-lingui-id: E2+81y
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "Delete WhatsApp agent"
+msgstr ""
+
+#. js-lingui-id: vUnFJt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Delete WhatsApp template"
 msgstr ""
 
 #. js-lingui-id: tWD0z0
@@ -5773,6 +5876,7 @@ msgid "Describe what you want the AI to do..."
 msgstr "描述您希望 AI 實現的功能..."
 
 #. js-lingui-id: Nu4oKW
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/config-variables/components/ConfigVariableTable.tsx
 #: src/modules/settings/data-model/new-object/components/SettingsAvailableStandardObjectsSection.tsx
 #: src/modules/settings/developers/components/SettingsDevelopersWebhookForm.tsx
@@ -6301,6 +6405,11 @@ msgstr "編輯字段"
 msgid "Edit folder"
 msgstr "編輯資料夾"
 
+#. js-lingui-id: leHTxD
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Edit funnel page"
+msgstr ""
+
 #. js-lingui-id: JTcEch
 #: src/modules/side-panel/hooks/useOpenWidgetSettingsInSidePanel.ts
 msgid "Edit Graph"
@@ -6321,6 +6430,11 @@ msgstr "編輯連結"
 #. js-lingui-id: IaSCqp
 #: src/modules/settings/roles/role-permissions/permission-flags/hooks/useActionRolePermissionFlagConfig.ts
 msgid "Edit own profile information"
+msgstr ""
+
+#. js-lingui-id: QNi+Eq
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Edit page"
 msgstr ""
 
 #. js-lingui-id: h2KoTu
@@ -6345,6 +6459,11 @@ msgstr "編輯記錄表"
 msgid "Edit Records on All Objects"
 msgstr "編輯所有物件的記錄"
 
+#. js-lingui-id: bHboUQ
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Edit template"
+msgstr ""
+
 #. js-lingui-id: eMFB6/
 #: src/modules/views/view-picker/components/ViewPickerContentEditMode.tsx
 msgid "Edit view"
@@ -6358,6 +6477,11 @@ msgstr ""
 #. js-lingui-id: wPbPxI
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Edit WhatsApp agent"
+msgstr ""
+
+#. js-lingui-id: EhKv4P
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Edit WhatsApp template"
 msgstr ""
 
 #. js-lingui-id: 6o1M/Q
@@ -6640,6 +6764,11 @@ msgstr ""
 #. js-lingui-id: ke8/7C
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleRow.tsx
 msgid "Enable or disable campaign"
+msgstr ""
+
+#. js-lingui-id: X6MJ4T
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Enable simulated chat"
 msgstr ""
 
 #. js-lingui-id: IrI9pg
@@ -7782,6 +7911,11 @@ msgstr ""
 msgid "False"
 msgstr "假"
 
+#. js-lingui-id: /lDBHm
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "FAQ"
+msgstr ""
+
 #. js-lingui-id: XVIZ7v
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx
@@ -8170,6 +8304,11 @@ msgstr ""
 msgid "Followers"
 msgstr ""
 
+#. js-lingui-id: mouIoQ
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Footer (optional)"
+msgstr ""
+
 #. js-lingui-id: Ghistm
 #: src/modules/settings/applications/hooks/useComputeApplicationContentForLayoutAndLogic.ts
 msgid "for {objectLabel}"
@@ -8319,6 +8458,18 @@ msgstr ""
 #: src/utils/title-utils.ts
 msgid "Functions - Settings"
 msgstr "功能 - 設定"
+
+#. js-lingui-id: MWYJBI
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
+msgid "Funnel"
+msgstr ""
+
+#. js-lingui-id: Wtll1S
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Funnel pages"
+msgstr ""
 
 #. js-lingui-id: Weq9zb
 #: src/modules/keyboard-shortcut-menu/components/KeyboardShortcutMenuOpenContent.tsx
@@ -8542,6 +8693,11 @@ msgstr "群組名稱"
 msgid "Group sorting"
 msgstr "分組排序"
 
+#. js-lingui-id: ieUt/q
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Guarantee"
+msgstr ""
+
 #. js-lingui-id: tR3dv3
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
@@ -8572,6 +8728,11 @@ msgstr ""
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Handoff instructions"
+msgstr ""
+
+#. js-lingui-id: dXq23t
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Header (optional)"
 msgstr ""
 
 #. js-lingui-id: HUk3sK
@@ -8622,6 +8783,12 @@ msgstr ""
 #. js-lingui-id: oEpvJo
 #: src/pages/settings/applications/tabs/SettingsApplicationFrontComponentPreviewTab.tsx
 msgid "Headless component"
+msgstr ""
+
+#. js-lingui-id: +670Zw
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Headline"
 msgstr ""
 
 #. js-lingui-id: UPqS9C
@@ -9206,6 +9373,11 @@ msgstr "輸入設置"
 msgid "Input tokens"
 msgstr "輸入權杖"
 
+#. js-lingui-id: AedpJp
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "inscricao"
+msgstr ""
+
 #. js-lingui-id: Dlxuac
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTestTab.tsx
 msgid "Insert a JSON input, then press \"Run Function\"."
@@ -9724,6 +9896,7 @@ msgid "Label must contain at least one alphanumeric character"
 msgstr "標籤必須包含至少一個英數字元"
 
 #. js-lingui-id: vXIe7J
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 #: src/pages/settings/profile/appearance/components/SettingsExperience.tsx
 msgid "Language"
 msgstr "語言"
@@ -10031,6 +10204,11 @@ msgstr ""
 msgid "Legend"
 msgstr ""
 
+#. js-lingui-id: MoEQGj
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "lembrete_sessao"
+msgstr ""
+
 #. js-lingui-id: 8PPI2g
 #: src/modules/object-record/object-filter-dropdown/utils/getOperandLabel.ts
 msgid "Less than or equal"
@@ -10262,6 +10440,11 @@ msgstr "正在加載數據指標……"
 msgid "Loading more..."
 msgstr "載入更多..."
 
+#. js-lingui-id: jmjDHH
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Loading pages..."
+msgstr ""
+
 #. js-lingui-id: nDnbEe
 #: src/pages/settings/admin-panel/SettingsAdminQueueDetail.tsx
 msgid "Loading retention configuration..."
@@ -10274,6 +10457,7 @@ msgstr "正在載入技能..."
 
 #. js-lingui-id: IhVWKA
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignTemplatePicker.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 msgid "Loading templates..."
 msgstr ""
 
@@ -10375,6 +10559,11 @@ msgstr ""
 #: src/modules/workflow/workflow-diagram/utils/generateNodesAndEdgesForIteratorNode.ts
 msgid "loop"
 msgstr "循環"
+
+#. js-lingui-id: QAvhiI
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Lowercase letters, digits and underscores only — this is Meta's internal template identifier."
+msgstr ""
 
 #. js-lingui-id: MsaCqr
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
@@ -10479,6 +10668,16 @@ msgstr ""
 #: src/pages/settings/members/tabs/SettingsWorkspaceMembersTeamTab.tsx
 msgid "Manage the members of your workspace here"
 msgstr "在此管理您的工作區成員"
+
+#. js-lingui-id: Y7yPZn
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "Manage the message templates submitted to Meta for approval — required to message a contact outside the 24h window."
+msgstr ""
+
+#. js-lingui-id: xJmO2N
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Manage the signup, workshop, sales and confirmation pages served publicly by the funnel site."
+msgstr ""
 
 #. js-lingui-id: 5UjiOC
 #: src/pages/settings/applications/SettingsApplicationConnectionDetail.tsx
@@ -10670,6 +10869,7 @@ msgid "Merging..."
 msgstr "正在合併..."
 
 #. js-lingui-id: xDAtGP
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/event-logs/utils/getColumnsForEventLogTable.tsx
 msgid "Message"
 msgstr ""
@@ -10736,6 +10936,11 @@ msgstr "最小"
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Min range"
 msgstr "最小範圍"
+
+#. js-lingui-id: MCnikF
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Minimum minutes before a session starts"
+msgstr ""
 
 #. js-lingui-id: 5IrCQY
 #: src/modules/settings/data-model/fields/forms/select/components/SettingsDataModelFieldSelectFormOptionRow.tsx
@@ -11010,10 +11215,13 @@ msgid "N/A"
 msgstr ""
 
 #. js-lingui-id: 6YtxFj
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/admin-panel/apps/components/SettingsAdminApps.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminGeneral.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceContent.tsx
@@ -11248,6 +11456,11 @@ msgstr "新字段"
 msgid "New folder"
 msgstr "新增資料夾"
 
+#. js-lingui-id: ymrY1A
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "New funnel page"
+msgstr ""
+
 #. js-lingui-id: 93KA8w
 #: src/modules/page-layout/widgets/fields/components/FieldsConfigurationEditor.tsx
 msgid "New Group"
@@ -11293,6 +11506,11 @@ msgstr "新筆記"
 msgid "New Object"
 msgstr "新對象"
 
+#. js-lingui-id: fos4db
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "New page"
+msgstr ""
+
 #. js-lingui-id: 7vhWI8
 #: src/pages/auth/PasswordReset.tsx
 msgid "New Password"
@@ -11334,6 +11552,11 @@ msgstr ""
 msgid "New task"
 msgstr "新任務"
 
+#. js-lingui-id: G1Gw0v
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "New template"
+msgstr ""
+
 #. js-lingui-id: IQ+GEj
 #: src/pages/settings/ai/SettingsAI.tsx
 msgid "New Tool"
@@ -11358,6 +11581,11 @@ msgstr "新增 Webhook"
 #. js-lingui-id: co4Cd4
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "New WhatsApp agent"
+msgstr ""
+
+#. js-lingui-id: kiMFlt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "New WhatsApp template"
 msgstr ""
 
 #. js-lingui-id: vam7Jz
@@ -11385,6 +11613,16 @@ msgstr "下一步"
 #: src/modules/spreadsheet-import/steps/components/SelectSheetStep/SelectSheetStep.tsx
 msgid "Next Step"
 msgstr "下一步"
+
+#. js-lingui-id: kpGLOc
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Next step label"
+msgstr ""
+
+#. js-lingui-id: UFXmO4
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Next step URL or slug"
+msgstr ""
 
 #. js-lingui-id: ulck7h
 #: src/modules/object-record/record-merge/utils/getPositionWordLabel.ts
@@ -11745,6 +11983,11 @@ msgstr "未找到此帳戶的資料夾"
 msgid "No follower data captured yet"
 msgstr ""
 
+#. js-lingui-id: xy+pz6
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "No funnel page created yet"
+msgstr ""
+
 #. js-lingui-id: 9kCSLK
 #: src/pages/settings/data-model/SettingsObjectIndexTable.tsx
 msgid "No indexes match your filters."
@@ -12083,6 +12326,11 @@ msgstr ""
 #. js-lingui-id: hoTqcL
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
 msgid "No WhatsApp agent configured yet"
+msgstr ""
+
+#. js-lingui-id: RequV7
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "No WhatsApp template created yet"
 msgstr ""
 
 #. js-lingui-id: 0uWxPM
@@ -12885,6 +13133,11 @@ msgstr ""
 msgid "Page Not Found | {0}"
 msgstr ""
 
+#. js-lingui-id: epL65f
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Page type"
+msgstr ""
+
 #. js-lingui-id: sF+Xp9
 #: src/modules/settings/event-logs/components/EventLogTableSelector.tsx
 msgid "Page Views"
@@ -13020,6 +13273,11 @@ msgstr ""
 #: src/pages/settings/billing/SettingsUsageUserDetail.tsx
 msgid "Per-day credit consumption."
 msgstr "每日點數消耗。"
+
+#. js-lingui-id: 2ohMoL
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Perceived value"
+msgstr ""
 
 #. js-lingui-id: SrVzRe
 #: src/modules/object-record/record-board/record-board-column/components/RecordBoardColumnHeaderAggregateDropdownContent.tsx
@@ -13394,6 +13652,11 @@ msgstr "上一頁"
 msgid "Previous 7 days"
 msgstr ""
 
+#. js-lingui-id: a7u1N9
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Price"
+msgstr ""
+
 #. js-lingui-id: aHCEmh
 #: src/pages/settings/admin-panel/SettingsAdminNewAiModel.tsx
 msgid "Pricing"
@@ -13594,6 +13857,11 @@ msgstr ""
 msgid "Public topics appear on the recipient preferences page."
 msgstr ""
 
+#. js-lingui-id: EEYbdt
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Publish"
+msgstr ""
+
 #. js-lingui-id: zSYgxW
 #: src/pages/settings/applications/tabs/SettingsApplicationRegistrationDistributionTab.tsx
 msgid "Publish your app to the marketplace so others can install it"
@@ -13639,6 +13907,11 @@ msgstr ""
 #. js-lingui-id: Z9go8W
 #: src/modules/settings/data-model/object-details/components/tabs/SettingsObjectIndexesSection.tsx
 msgid "Queries that relied on it will fall back to a sequential scan. You can recreate it later."
+msgstr ""
+
+#. js-lingui-id: bfgr/e
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Question"
 msgstr ""
 
 #. js-lingui-id: /IUt/5
@@ -13884,6 +14157,16 @@ msgstr "紀錄"
 msgid "Red"
 msgstr "紅色"
 
+#. js-lingui-id: Fpguai
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Redirect slug (offer page)"
+msgstr ""
+
+#. js-lingui-id: ERoFUs
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Redirect slug on success"
+msgstr ""
+
 #. js-lingui-id: dAZObA
 #: src/pages/settings/applications/tabs/SettingsApplicationRegistrationOAuthTab.tsx
 msgid "Redirect URIs"
@@ -13905,6 +14188,7 @@ msgid "Redirection URI"
 msgstr "重定向 URI"
 
 #. js-lingui-id: pTGa/J
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
 #: src/pages/settings/admin-panel/SettingsAdminInferredVersion.tsx
 #: src/pages/settings/admin-panel/SettingsAdminInstanceStatus.tsx
 #: src/pages/settings/admin-panel/SettingsAdminWorkspacesStatus.tsx
@@ -14034,6 +14318,16 @@ msgstr "全部移除"
 msgid "Remove as default"
 msgstr "刪除默認值"
 
+#. js-lingui-id: 8/Db2k
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Remove bullet"
+msgstr ""
+
+#. js-lingui-id: 7Pv/ze
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Remove button"
+msgstr ""
+
 #. js-lingui-id: 2HpFUd
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateSoftDelete.tsx
 msgid "Remove Deleted filter"
@@ -14053,6 +14347,11 @@ msgstr ""
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelEditOrganizeActions.tsx
 msgid "Remove from sidebar"
 msgstr "從側邊欄移除"
+
+#. js-lingui-id: vop1s3
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Remove item"
+msgstr ""
 
 #. js-lingui-id: 99VIgC
 #: src/pages/settings/members/SettingsWorkspaceMember.tsx
@@ -14085,6 +14384,11 @@ msgstr "移除供應商"
 #: src/pages/settings/admin-panel/SettingsAdminAiProviderDetail.tsx
 msgid "Remove provider \"{0}\""
 msgstr "移除供應商「{0}」"
+
+#. js-lingui-id: Z3RTej
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Remove question"
+msgstr ""
 
 #. js-lingui-id: SjxzXf
 #: src/modules/object-record/advanced-filter/components/AdvancedFilterRecordFilterOptionsDropdown.tsx
@@ -14611,9 +14915,11 @@ msgid "Save as new view"
 msgstr "另存為新視圖"
 
 #. js-lingui-id: y3aU20
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 msgid "Save changes"
 msgstr ""
 
@@ -14635,6 +14941,11 @@ msgstr ""
 #. js-lingui-id: f5yMQc
 #: src/modules/information-banner/components/maintenance/InformationBannerMaintenance.tsx
 msgid "Scheduled maintenance: {startFormatted} — {endFormatted}"
+msgstr ""
+
+#. js-lingui-id: RBkqUi
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Scheduled sessions (automatic event)"
 msgstr ""
 
 #. js-lingui-id: QJ8HBJ
@@ -15116,6 +15427,11 @@ msgstr "選取要編輯的導覽項目"
 msgid "Select a sender"
 msgstr ""
 
+#. js-lingui-id: lTDsBn
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Select a template"
+msgstr ""
+
 #. js-lingui-id: jL3gox
 #: src/modules/object-record/record-field/ui/form-types/components/FormBooleanFieldInput.tsx
 msgid "Select a value"
@@ -15123,6 +15439,7 @@ msgstr "選擇一個值"
 
 #. js-lingui-id: bNEh9F
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 msgid "Select a WhatsApp number"
 msgstr ""
 
@@ -15327,6 +15644,16 @@ msgstr "已發送"
 msgid "Sent and Received"
 msgstr "已發送和接收"
 
+#. js-lingui-id: PwrfZ8
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "SEO description (optional)"
+msgstr ""
+
+#. js-lingui-id: FmUc+K
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "SEO title (optional)"
+msgstr ""
+
 #. js-lingui-id: 6oxz/y
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
 msgid "Serbian (Cyrillic)"
@@ -15356,6 +15683,11 @@ msgstr ""
 #: src/modules/settings/security/components/SSO/SettingsSSOSAMLForm.tsx
 msgid "Service Provider Details"
 msgstr "服務提供者詳細信息"
+
+#. js-lingui-id: iNv0Mi
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Session times (HH:mm, separated by commas)"
+msgstr ""
 
 #. js-lingui-id: 4FANIj
 #: src/modules/object-record/record-table/record-table-cell/components/RecordTableCellDisplayContainer.tsx
@@ -15758,6 +16090,12 @@ msgstr "跳過聯結物件（類似多對多關聯）"
 msgid "Sky"
 msgstr "天藍色"
 
+#. js-lingui-id: L85WcV
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Slug"
+msgstr ""
+
 #. js-lingui-id: Ik7fz5
 #: src/modules/advanced-text-editor/extensions/slash-command/DefaultSlashCommands.ts
 msgid "Small section heading"
@@ -16035,8 +16373,10 @@ msgstr "狀態"
 #. js-lingui-id: uAQUqI
 #: src/modules/ai/components/AiChatThreadFilterDropdownRootMenu.tsx
 #: src/modules/ai/components/AiChatThreadFilterDropdownStatusMenu.tsx
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappChannelsListCard.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/accounts/components/SettingsConnectedAccountsTableHeader.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceContent.tsx
@@ -16164,6 +16504,11 @@ msgstr "子域已更新"
 msgid "subheading"
 msgstr ""
 
+#. js-lingui-id: VjEXwv
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Subheadline"
+msgstr ""
+
 #. js-lingui-id: UJmAAK
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
@@ -16201,6 +16546,11 @@ msgstr "主題、正文和附件將與您的團隊共享。"
 #: src/modules/workflow/workflow-steps/workflow-actions/form-action/components/WorkflowEditActionFormFiller.tsx
 msgid "Submit"
 msgstr "提交"
+
+#. js-lingui-id: O3daTU
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Submit for approval"
+msgstr ""
 
 #. js-lingui-id: EDl9kS
 #: src/modules/information-banner/components/billing/InformationBannerNoBillingSubscription.tsx
@@ -16524,6 +16874,16 @@ msgstr "任務標題"
 #: src/pages/settings/members/SettingsWorkspaceMembers.tsx
 #: src/pages/settings/members/SettingsWorkspaceMembers.tsx
 msgid "Team"
+msgstr ""
+
+#. js-lingui-id: /K2CvV
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Template"
+msgstr ""
+
+#. js-lingui-id: 8XzLLk
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Templates must be submitted to Meta for approval before they can be used to message contacts outside the 24h window."
 msgstr ""
 
 #. js-lingui-id: lKXcJz
@@ -17013,6 +17373,11 @@ msgstr "這不應該發生"
 msgid "This subdomain is reserved"
 msgstr "此子網域已被保留"
 
+#. js-lingui-id: sCBTQt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "This template was already submitted to Meta and can no longer be edited — create a new template instead."
+msgstr ""
+
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
 msgid "This value will be saved to the database."
@@ -17090,6 +17455,18 @@ msgstr ""
 msgid "This will permanently delete \"{0}\" and it will stop replying to WhatsApp messages. This action cannot be undone."
 msgstr ""
 
+#. js-lingui-id: yKjPWm
+#. placeholder {0}: whatsappTemplate.name
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "This will permanently delete \"{0}\". This action cannot be undone."
+msgstr ""
+
+#. js-lingui-id: GJPzaM
+#. placeholder {0}: funnelPage.slug
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "This will permanently delete \"/{0}\". This action cannot be undone."
+msgstr ""
+
 #. js-lingui-id: XGDxrH
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx
 msgid "This will permanently delete the field and all its data from {objectLabel}. Type \"yes\" to confirm."
@@ -17140,6 +17517,11 @@ msgstr "時間格式"
 msgid "Time zone"
 msgstr "時區"
 
+#. js-lingui-id: W2VfsE
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Time zone (minutes from UTC, Brasília is -180)"
+msgstr ""
+
 #. js-lingui-id: cklVjM
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownCalendarViewContent.tsx
 msgid "Timeline"
@@ -17188,6 +17570,11 @@ msgstr ""
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
 msgid "To"
 msgstr "收件者"
+
+#. js-lingui-id: bAvbCC
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "To (phone number)"
+msgstr ""
 
 #. js-lingui-id: ecUA8p
 #: src/modules/ai/utils/groupThreadsByDate.ts
@@ -17543,6 +17930,7 @@ msgid "Two-factor authentication setup completed successfully!"
 msgstr "雙因素身份驗證設定成功完成！"
 
 #. js-lingui-id: +zy2Nq
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
 #: src/modules/settings/components/SettingsDnsRecordsTable.tsx
 #: src/modules/settings/data-model/indexes/forms/components/SettingsObjectIndexOptionsForm.tsx
 #: src/modules/settings/data-model/object-details/components/SettingsObjectRelationsTable.tsx
@@ -17565,6 +17953,16 @@ msgstr "類型"
 #: src/modules/object-record/record-field/ui/meta-types/input/components/RichTextFieldEditor.tsx
 msgid "Type '/' for commands, '@' for mentions"
 msgstr "輸入「/」以使用指令，輸入「@」以提及"
+
+#. js-lingui-id: sfvqIb
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Type a number or pick a variable"
+msgstr ""
+
+#. js-lingui-id: hzt+K/
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Type a value or pick a variable"
+msgstr ""
 
 #. js-lingui-id: qzD6hf
 #: src/modules/side-panel/components/SidePanelTopBar.tsx
@@ -17771,6 +18169,11 @@ msgstr ""
 #. js-lingui-id: 9dX/SD
 #: src/modules/advanced-text-editor/extensions/slash-command/DefaultSlashCommands.ts
 msgid "Unordered list with bullets"
+msgstr ""
+
+#. js-lingui-id: 4DLZUa
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Unpublish"
 msgstr ""
 
 #. js-lingui-id: BEZcuL
@@ -18155,6 +18558,11 @@ msgstr "使用事件"
 msgid "Usage period"
 msgstr ""
 
+#. js-lingui-id: mJA0jY
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Use {{1}}, {{2}}... for variables, e.g.: Oi {{1}}, sua sessão libera em {{2}} minutos."
+msgstr ""
+
 #. js-lingui-id: 09f27O
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "Use {suggestion} instead"
@@ -18229,6 +18637,7 @@ msgstr "適用於樞紐／聯結表"
 #: src/pages/settings/accounts/SettingsAccountsVoiceAgent.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsappAgent.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
 #: src/pages/settings/accounts/SettingsNewAccount.tsx
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAiPrompts.tsx
@@ -18336,10 +18745,21 @@ msgstr "已成功重新整理有效性權杖"
 msgid "Value"
 msgstr "值"
 
+#. js-lingui-id: bKzrJS
+#. placeholder {0}: index + 1
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Value for {{{0}}}"
+msgstr ""
+
 #. js-lingui-id: UZHvVi
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
 msgid "Value is set in the server environment, it may be a different value on the worker."
 msgstr "值在伺服器環境中設置，但可能在工作節點上不同。"
+
+#. js-lingui-id: 4OkyPc
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Value stack"
+msgstr ""
 
 #. js-lingui-id: fXVIZq
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx
@@ -18366,6 +18786,11 @@ msgstr ""
 #: src/modules/object-record/record-field/ui/form-types/components/VariableChip.tsx
 msgid "Variable not found"
 msgstr "變量未找到"
+
+#. js-lingui-id: ZWZjuT
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Variant"
+msgstr ""
 
 #. js-lingui-id: QDEWii
 #: src/pages/settings/emailing-domains/utils/getEmailingDomainStatusText.ts
@@ -18402,6 +18827,11 @@ msgstr ""
 #: src/pages/settings/admin-panel/SettingsAdminNewAiModel.tsx
 msgid "Video"
 msgstr "影片"
+
+#. js-lingui-id: IwPgpE
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Video URL"
+msgstr ""
 
 #. js-lingui-id: fROFIL
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
@@ -18892,6 +19322,8 @@ msgstr ""
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 msgid "WhatsApp number"
 msgstr ""
 
@@ -18899,6 +19331,18 @@ msgstr ""
 #. placeholder {0}: data?.connectWhatsappNumber.displayPhoneNumber ?? ''
 #: src/modules/settings/accounts/hooks/useConnectWhatsappNumber.ts
 msgid "WhatsApp number {0} connected."
+msgstr ""
+
+#. js-lingui-id: ghWiWt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "WhatsApp templates"
+msgstr ""
+
+#. js-lingui-id: ndAujT
+#: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
+msgid "WhatsApp Templates"
 msgstr ""
 
 #. js-lingui-id: m7GziZ
@@ -19080,6 +19524,7 @@ msgstr "Workflow"
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
 #: src/pages/settings/general/SettingsGeneral.tsx
 #: src/pages/settings/layout/components/SettingsLayoutDetailScaffold.tsx
 #: src/pages/settings/layout/SettingsLayout.tsx

@@ -177,13 +177,13 @@ msgstr "{0} - Configuração"
 #. placeholder {0}: importedRules.length
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignCsvImportButton.tsx
 msgid "{0} campaigns imported from CSV."
-msgstr ""
+msgstr "{0} campanhas importadas do CSV."
 
 #. js-lingui-id: okrK9q
 #. placeholder {0}: preview.duplicateEmails
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "{0} duplicate"
-msgstr ""
+msgstr "{0} duplicado(s)"
 
 #. js-lingui-id: stCODw
 #. placeholder {0}: appObject.fields.length
@@ -195,14 +195,14 @@ msgstr "{0} campos"
 #. placeholder {0}: loadBalanceObjectMetadataItem.labelPlural
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "{0} have no relation to {loadBalancePoolObjectLabel}. Pick a different object to balance by."
-msgstr ""
+msgstr "{0} não tem relação com {loadBalancePoolObjectLabel}. Escolha outro objeto para balancear."
 
 #. js-lingui-id: MY0lRK
 #. placeholder {0}: preview.totalMembers
 #. placeholder {1}: preview.sendable
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "{0} in this list — {1} sendable"
-msgstr ""
+msgstr "{0} nesta lista — {1} enviáveis"
 
 #. js-lingui-id: T8aKxO
 #. placeholder {0}: layout.name
@@ -220,20 +220,20 @@ msgstr "Edição do layout de {0}"
 #. placeholder {0}: provider.displayName
 #: src/pages/settings/applications/tabs/SettingsApplicationConnectionsSection.tsx
 msgid "{0} OAuth is not yet set up by your server administrator. They need to fill in the OAuth client ID and secret on the application registration before you can add a connection."
-msgstr ""
+msgstr "O OAuth de {0} ainda não foi configurado pelo administrador do servidor. Ele precisa preencher o ID e o segredo do cliente OAuth no registro do aplicativo antes que você possa adicionar uma conexão."
 
 #. js-lingui-id: FGOUAP
 #. placeholder {0}: displayedRecords.length
 #. placeholder {1}: totalCount + liveRecords.length
 #: src/modules/settings/event-logs/components/SettingsLogs.tsx
 msgid "{0} of {1}"
-msgstr ""
+msgstr "{0} de {1}"
 
 #. js-lingui-id: BzvoVr
 #. placeholder {0}: preview.topicUnsubscribed
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "{0} opted out of this topic"
-msgstr ""
+msgstr "{0} optaram por sair deste tópico"
 
 #. js-lingui-id: fvImQM
 #. placeholder {0}: formatNumber(contextStoreNumberOfSelectedRecords)
@@ -241,7 +241,7 @@ msgstr ""
 #: src/modules/object-record/record-index/components/RecordIndexPageHeader.tsx
 #: src/modules/side-panel/components/SidePanelMultipleRecordsInfo.tsx
 msgid "{0} selected"
-msgstr ""
+msgstr "{0} selecionados"
 
 #. js-lingui-id: peiknr
 #. placeholder {0}: activeFilterLabels.length
@@ -257,7 +257,7 @@ msgstr "{0} exibidos"
 #. placeholder {0}: preview.globallyUnsubscribed
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "{0} unsubscribed from everything"
-msgstr ""
+msgstr "{0} cancelaram a inscrição em tudo"
 
 #. js-lingui-id: r4l/MK
 #. placeholder {0}: formatUsageValue(totalCredits)
@@ -281,7 +281,7 @@ msgstr "{0} widgets"
 #. placeholder {0}: preview.withoutEmail
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "{0} without email"
-msgstr ""
+msgstr "{0} sem e-mail"
 
 #. js-lingui-id: 2UKfhY
 #. placeholder {0}: selectedItemNames.length
@@ -845,7 +845,7 @@ msgstr "ID da chave de acesso"
 #. js-lingui-id: SkUcEr
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Access token"
-msgstr ""
+msgstr "Token de acesso"
 
 #. js-lingui-id: CrjDqe
 #: src/pages/auth/Authorize.tsx
@@ -887,6 +887,7 @@ msgstr "Exclusão de Conta"
 #: src/pages/settings/accounts/SettingsAccountsVoiceAgent.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsappAgent.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
 #: src/pages/settings/accounts/SettingsNewAccount.tsx
 msgid "Accounts"
 msgstr "Contas"
@@ -914,8 +915,10 @@ msgid "Action on click"
 msgstr "Ação ao clicar"
 
 #. js-lingui-id: 7L01XJ
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/roles/role-permissions/object-level-permissions/object-form/components/SettingsRolePermissionsObjectLevelObjectFormObjectLevelTableHeader.tsx
 #: src/modules/settings/roles/role-permissions/objects-permissions/components/SettingsRolePermissionsObjectsTableHeader.tsx
 #: src/modules/settings/roles/role-permissions/permission-flags/components/SettingsRolePermissionsSettingsTableHeader.tsx
@@ -958,7 +961,7 @@ msgstr "Ativar chave Enterprise"
 #. js-lingui-id: i7ur8L
 #: src/modules/settings/billing/hooks/useEndSubscriptionTrialPeriod.ts
 msgid "Activating subscription..."
-msgstr ""
+msgstr "Ativando assinatura..."
 
 #. js-lingui-id: jSZacs
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -1060,6 +1063,16 @@ msgstr "Adicionar CCO"
 msgid "Add Block"
 msgstr "Adicionar Bloco"
 
+#. js-lingui-id: JbktD5
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Add bullet"
+msgstr "Adicionar item"
+
+#. js-lingui-id: 6oU9VZ
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Add button"
+msgstr "Adicionar botão"
+
 #. js-lingui-id: 02qdT/
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
 msgid "Add CC"
@@ -1073,13 +1086,13 @@ msgstr "Adicionar conexão"
 #. js-lingui-id: 3AphJD
 #: src/modules/settings/billing/components/StartSubscriptionConfirmationModal.tsx
 msgid "Add credit card"
-msgstr ""
+msgstr "Adicionar cartão de crédito"
 
 #. js-lingui-id: NKMrde
 #: src/modules/ai/components/AIChatNoMoreBillingCreditsBanner.tsx
 #: src/modules/information-banner/components/billing/InformationBannerEndTrialPeriod.tsx
 msgid "Add Credit Card"
-msgstr ""
+msgstr "Adicionar cartão de crédito"
 
 #. js-lingui-id: RVp8im
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx
@@ -1095,7 +1108,7 @@ msgstr "Adicionar provedor personalizado"
 #. js-lingui-id: WT0Ie4
 #: src/modules/settings/workspace/components/SettingsWorkspaceEmailGroupSection.tsx
 msgid "Add email channel"
-msgstr ""
+msgstr "Adicionar canal de e-mail"
 
 #. js-lingui-id: DpV70M
 #: src/modules/settings/data-model/object-details/components/tabs/ObjectFields.tsx
@@ -1149,6 +1162,7 @@ msgid "Add inputs to your form"
 msgstr "Adicione entradas ao seu formulário"
 
 #. js-lingui-id: NQ8llq
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/object-record/record-field/ui/form-types/components/FormArrayFieldInput.tsx
 msgid "Add item"
 msgstr "Adicionar item"
@@ -1249,6 +1263,11 @@ msgstr "Adicionar permissão"
 msgid "Add Public Domain"
 msgstr "Adicionar Domínio Público"
 
+#. js-lingui-id: Cw27zP
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Add question"
+msgstr "Adicionar pergunta"
+
 #. js-lingui-id: AmiJYR
 #: src/modules/settings/data-model/object-details/components/tabs/ObjectFields.tsx
 msgid "Add relation"
@@ -1315,7 +1334,7 @@ msgstr "Adicionar aos Favoritos"
 #. js-lingui-id: YttdVS
 #: src/modules/settings/unsubscribe-topics/components/SettingsWorkspaceUnsubscribeTopicSection.tsx
 msgid "Add unsubscribe topic"
-msgstr ""
+msgstr "Adicionar tópico de cancelamento de inscrição"
 
 #. js-lingui-id: XnwceV
 #: src/pages/settings/applications/components/SettingsApplicationRegistrationRedirectURIsInput.tsx
@@ -1325,7 +1344,7 @@ msgstr "Adicionar URI"
 #. js-lingui-id: NW6aBY
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignReplyVariationsField.tsx
 msgid "Add variation"
-msgstr ""
+msgstr "Adicionar variação"
 
 #. js-lingui-id: q9e2Bs
 #: src/modules/views/view-picker/components/ViewPickerListContent.tsx
@@ -1358,7 +1377,7 @@ msgstr "Adicionar widget abaixo"
 #. js-lingui-id: ZEOklT
 #: src/modules/settings/billing/components/StartSubscriptionConfirmationModal.tsx
 msgid "Add your credit card"
-msgstr ""
+msgstr "Adicione seu cartão de crédito"
 
 #. js-lingui-id: m2qDV8
 #: src/modules/object-record/record-table/empty-state/utils/getEmptyStateTitle.ts
@@ -1405,7 +1424,7 @@ msgstr "Administrador"
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdmins.tsx
 msgid "Admin panel"
-msgstr ""
+msgstr "Painel de administração"
 
 #. js-lingui-id: g1in8j
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
@@ -1451,12 +1470,12 @@ msgstr "Painel de administração - Saúde"
 #. js-lingui-id: Faptqt
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdmins.tsx
 msgid "Administrator"
-msgstr ""
+msgstr "Administrador"
 
 #. js-lingui-id: 3zE1mx
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdmins.tsx
 msgid "Administrators"
-msgstr ""
+msgstr "Administradores"
 
 #. js-lingui-id: sxkWRg
 #: src/modules/navigation/components/SettingsNavigationDrawer.tsx
@@ -1612,7 +1631,7 @@ msgstr "Consumo de IA ao longo do tempo."
 #. js-lingui-id: xoqtMs
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "AI enabled"
-msgstr ""
+msgstr "IA ativada"
 
 #. js-lingui-id: kNfr85
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
@@ -1963,7 +1982,7 @@ msgstr "Ocorreu um erro ao verificar a existência do usuário"
 #. js-lingui-id: LfKkm6
 #: src/modules/page-layout/widgets/components/PageLayoutWidgetErrorDisplay.tsx
 msgid "An error occurred while loading this widget."
-msgstr ""
+msgstr "Ocorreu um erro ao carregar este widget."
 
 #. js-lingui-id: I/scZd
 #: src/modules/ai/components/AiChatErrorMessage.tsx
@@ -2046,11 +2065,16 @@ msgstr "e"
 msgid "And"
 msgstr "E"
 
+#. js-lingui-id: 4xBHUg
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Answer"
+msgstr "Resposta"
+
 #. js-lingui-id: 9BhGWn
 #. placeholder {0}: fieldLabel ?? ''
 #: src/modules/object-record/advanced-filter/components/AdvancedFilterCompositeSubFieldSelectMenu.tsx
 msgid "Any {0} field"
-msgstr ""
+msgstr "Qualquer campo de {0}"
 
 #. js-lingui-id: COyjuu
 #: src/modules/side-panel/pages/page-layout/hooks/useTranslatedVisibilityLabel.ts
@@ -2193,7 +2217,7 @@ msgstr "Aparência"
 #. js-lingui-id: LqRVps
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "apple"
-msgstr ""
+msgstr "apple"
 
 #. js-lingui-id: QsDjlD
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
@@ -2339,7 +2363,7 @@ msgstr "Tem certeza de que deseja excluir {sourceHandle}? Os e-mails recebidos e
 #. js-lingui-id: MMJ5lw
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Are you sure you want to delete {topicName}? Recipients will no longer be able to opt out of this category."
-msgstr ""
+msgstr "Tem certeza de que deseja excluir {topicName}? Os destinatários não poderão mais cancelar a inscrição nesta categoria."
 
 #. js-lingui-id: 4CHeVx
 #: src/pages/settings/ai/components/SettingsAgentEvalsTab.tsx
@@ -2524,7 +2548,7 @@ msgstr "às {minuteNumStr} minutos após a hora"
 #. placeholder {0}: lastTime ?? ''
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getHoursDescription.ts
 msgid "at {remainingTimes} and {0}"
-msgstr ""
+msgstr "às {remainingTimes} e {0}"
 
 #. js-lingui-id: MTsGe4
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getMinutesDescription.ts
@@ -2560,7 +2584,7 @@ msgstr "às minutos {firstValue} e {secondValue}"
 #. placeholder {0}: lastValue ?? ''
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getMinutesDescription.ts
 msgid "at minutes {remainingValues} and {0}"
-msgstr ""
+msgstr "nos minutos {remainingValues} e {0}"
 
 #. js-lingui-id: PuQ8VT
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getMinutesDescription.ts
@@ -2571,7 +2595,7 @@ msgstr "na virada da hora"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Attach automatically to the next Reel"
-msgstr ""
+msgstr "Anexar automaticamente ao próximo Reel"
 
 #. js-lingui-id: N7m8E+
 #: src/modules/ai/components/internal/AgentChatFileUploadButton.tsx
@@ -2739,7 +2763,7 @@ msgstr "Voltar"
 #. js-lingui-id: wWjfh4
 #: src/modules/ui/navigation/bread-crumb/components/MobileBreadcrumb.tsx
 msgid "Back to {text}"
-msgstr ""
+msgstr "Voltar para {text}"
 
 #. js-lingui-id: Dht9W3
 #: src/pages/not-found/NotFound.tsx
@@ -2764,12 +2788,12 @@ msgstr "Cores do plano de fundo"
 #. js-lingui-id: uayqnb
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "Balance by"
-msgstr ""
+msgstr "Balancear por"
 
 #. js-lingui-id: b2ghLW
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 msgid "Base credits"
-msgstr ""
+msgstr "Créditos base"
 
 #. js-lingui-id: EbQe8o
 #: src/modules/settings/billing/components/SettingsBillingCreditsSection.tsx
@@ -2874,6 +2898,7 @@ msgid "Blue"
 msgstr "Azul"
 
 #. js-lingui-id: bGQplw
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsEmailDetail.tsx
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
 msgid "Body"
@@ -2990,10 +3015,25 @@ msgstr "marcador"
 msgid "Bullet List"
 msgstr "Lista de marcadores"
 
+#. js-lingui-id: RYtHky
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Bullets"
+msgstr "Itens"
+
 #. js-lingui-id: 9emr42
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTriggersTab.tsx
 msgid "Bundled with {applicationName}"
 msgstr "Incluído com {applicationName}"
+
+#. js-lingui-id: 3W/QV7
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Button label"
+msgstr "Texto do botão"
+
+#. js-lingui-id: KU8moT
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Buttons (optional)"
+msgstr "Botões (opcional)"
 
 #. js-lingui-id: 8ds4Hj
 #: src/pages/settings/applications/components/SettingsAvailableApplicationCard.tsx
@@ -3004,7 +3044,7 @@ msgstr "por {author}"
 #. placeholder {0}: brand?.productName || 'Zyra'
 #: src/modules/auth/sign-in-up/components/FooterNote.tsx
 msgid "By using {0}, you agree to the"
-msgstr ""
+msgstr "Ao usar {0}, você concorda com os"
 
 #. js-lingui-id: Yx41df
 #: src/modules/auth/sign-in-up/components/FooterNote.tsx
@@ -3118,7 +3158,7 @@ msgstr "Calendários"
 #. js-lingui-id: WmaqVR
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "Call history"
-msgstr ""
+msgstr "Histórico de chamadas"
 
 #. js-lingui-id: qIlodj
 #: src/modules/object-record/record-field/ui/form-types/components/FormPhoneFieldInput.tsx
@@ -3128,43 +3168,43 @@ msgstr "Código de chamada"
 #. js-lingui-id: D02dD9
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 msgid "Campaign"
-msgstr ""
+msgstr "Campanha"
 
 #. js-lingui-id: NUbbCm
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 msgid "Campaign created."
-msgstr ""
+msgstr "Campanha criada."
 
 #. js-lingui-id: nuSS0N
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 msgid "Campaign duplicated."
-msgstr ""
+msgstr "Campanha duplicada."
 
 #. js-lingui-id: BzRXvr
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Campaign name"
-msgstr ""
+msgstr "Nome da campanha"
 
 #. js-lingui-id: 06mPlO
 #: src/modules/activities/emails/hooks/useSendMessageCampaign.ts
 msgid "Campaign queued to {queuedCount} recipient(s)"
-msgstr ""
+msgstr "Campanha enfileirada para {queuedCount} destinatário(s)"
 
 #. js-lingui-id: 6nG/xd
 #: src/modules/activities/emails/hooks/useSendMessageCampaign.ts
 msgid "Campaign queued to {queuedCount} recipient(s), {skippedCount} skipped"
-msgstr ""
+msgstr "Campanha enfileirada para {queuedCount} destinatário(s), {skippedCount} ignorado(s)"
 
 #. js-lingui-id: mYnSoU
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 msgid "Campaign updated."
-msgstr ""
+msgstr "Campanha atualizada."
 
 #. js-lingui-id: oRJtCM
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramTabbedContent.tsx
 msgid "Campaigns"
-msgstr ""
+msgstr "Campanhas"
 
 #. js-lingui-id: msssZq
 #: src/modules/settings/data-model/objects/forms/components/SettingsDataModelObjectAboutForm.tsx
@@ -3178,11 +3218,13 @@ msgstr "Não consegue escanear? Copie o"
 
 #. js-lingui-id: dEgA5A
 #: src/modules/applications/components/AuthorizeActionButtons.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignTemplatePicker.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
 #: src/modules/side-panel/pages/compose-campaign/components/SidePanelCampaignComposerPage.tsx
@@ -3316,7 +3358,7 @@ msgstr "Cartão"
 #. js-lingui-id: TbCWB7
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 msgid "Card payment is currently unavailable. Please verify your Stripe configuration or contact your workspace admin."
-msgstr ""
+msgstr "O pagamento com cartão está indisponível no momento. Verifique a configuração do Stripe ou entre em contato com o administrador do workspace."
 
 #. js-lingui-id: M1RLfx
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
@@ -3324,6 +3366,8 @@ msgid "Catalan"
 msgstr "Catalão"
 
 #. js-lingui-id: K7tIrx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/applications/components/SettingsApplicationAboutSidebar.tsx
 msgid "Category"
 msgstr "Categoria"
@@ -3466,12 +3510,17 @@ msgstr "Verifique sua caixa de entrada para confirmar seu novo endereço de e-ma
 #. js-lingui-id: RLe7Vk
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "Checking…"
-msgstr ""
+msgstr "Verificando…"
 
 #. js-lingui-id: eIgKP9
 #: src/modules/settings/billing/hooks/useHandleCheckoutSession.ts
 msgid "Checkout session error. Please retry or contact {productName} team"
-msgstr ""
+msgstr "Erro na sessão de checkout. Tente novamente ou entre em contato com a equipe do {productName}"
+
+#. js-lingui-id: wmvw14
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Checkout URL"
+msgstr "URL do checkout"
 
 #. js-lingui-id: SviKkE
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
@@ -3486,7 +3535,7 @@ msgstr "Chinês - Tradicional"
 #. js-lingui-id: 7tGQfY
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignTemplatePicker.tsx
 msgid "Choose a campaign template"
-msgstr ""
+msgstr "Escolha um modelo de campanha"
 
 #. js-lingui-id: NFfUic
 #: src/pages/auth/SignInUp.tsx
@@ -3814,7 +3863,7 @@ msgstr "Comentário"
 #. js-lingui-id: u83kyC
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 msgid "Comment-to-DM campaigns currently running on your Instagram account."
-msgstr ""
+msgstr "Campanhas de comentário para DM em execução na sua conta do Instagram."
 
 #. js-lingui-id: chL5IG
 #: src/modules/settings/hooks/useSettingsNavigationItems.tsx
@@ -3923,12 +3972,12 @@ msgstr "Configurar"
 #. js-lingui-id: RmHU8L
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
 msgid "Configure AI agents to answer and make phone calls."
-msgstr ""
+msgstr "Configure agentes de IA para atender e fazer ligações."
 
 #. js-lingui-id: 7hTBAc
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
 msgid "Configure AI agents to automatically reply to WhatsApp messages."
-msgstr ""
+msgstr "Configure agentes de IA para responder automaticamente a mensagens do WhatsApp."
 
 #. js-lingui-id: +zUMwJ
 #: src/modules/settings/security/components/SettingsSecuritySettings.tsx
@@ -3958,17 +4007,17 @@ msgstr "Configurar métodos de login alternativos para usuários com permissões
 #. js-lingui-id: zXzR4W
 #: src/modules/settings/security/components/SettingsSecuritySettings.tsx
 msgid "Configure how long audit logs are retained"
-msgstr ""
+msgstr "Configure por quanto tempo os logs de auditoria são mantidos"
 
 #. js-lingui-id: AVaPZ3
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "Configure how the AI agent should behave during phone calls."
-msgstr ""
+msgstr "Configure como o agente de IA deve se comportar durante as ligações."
 
 #. js-lingui-id: JhZfB6
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Configure how the AI agent should behave when replying to WhatsApp messages."
-msgstr ""
+msgstr "Configure como o agente de IA deve se comportar ao responder mensagens do WhatsApp."
 
 #. js-lingui-id: OLqG0t
 #: src/modules/settings/data-model/object-details/components/tabs/ObjectSettings.tsx
@@ -3989,6 +4038,11 @@ msgstr "Configure as configurações do IMAP para receber e sincronizar seus e-m
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "Configure SMTP settings to send emails from your account."
 msgstr "Configure as configurações de SMTP para enviar e-mails da sua conta."
+
+#. js-lingui-id: V6k91/
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Configure the content of a funnel page — it becomes live at /{slug} once published."
+msgstr "Configure o conteúdo de uma página do funil — ela fica no ar em /{slug} depois de publicada."
 
 #. js-lingui-id: TiCmQz
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx
@@ -4079,10 +4133,15 @@ msgstr "Conectar {providerDisplayName}"
 msgid "Connect a new account to your workspace"
 msgstr "Conecte uma nova conta ao seu espaço de trabalho"
 
+#. js-lingui-id: cd3Sbi
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "Connect a WhatsApp number before creating a template"
+msgstr "Conecte um número de WhatsApp antes de criar um template"
+
 #. js-lingui-id: yjjRhQ
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
 msgid "Connect a WhatsApp number before creating an agent"
-msgstr ""
+msgstr "Conecte um número de WhatsApp antes de criar um agente"
 
 #. js-lingui-id: vPCRNy
 #: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
@@ -4102,7 +4161,7 @@ msgstr "Conectar com o Google"
 #. js-lingui-id: gk8yLs
 #: src/modules/settings/accounts/components/SettingsAccountsListEmptyStateCard.tsx
 msgid "Connect with Instagram"
-msgstr ""
+msgstr "Conectar com o Instagram"
 
 #. js-lingui-id: IOfqM8
 #: src/modules/settings/accounts/components/SettingsAccountsListEmptyStateCard.tsx
@@ -4112,7 +4171,7 @@ msgstr "Conectar com a Microsoft"
 #. js-lingui-id: sI4XPO
 #: src/modules/settings/accounts/components/SettingsAccountsListEmptyStateCard.tsx
 msgid "Connect with WhatsApp"
-msgstr ""
+msgstr "Conectar com o WhatsApp"
 
 #. js-lingui-id: iZWbGJ
 #: src/modules/settings/playground/components/SettingsMcpSetup.tsx
@@ -4180,7 +4239,7 @@ msgstr "Considere adicionar um filtro para exibir mais dados."
 #. js-lingui-id: jfC/xh
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 #. js-lingui-id: Y2y0mC
 #: src/modules/settings/accounts/components/SettingsAccountsCalendarChannelDetails.tsx
@@ -4284,7 +4343,7 @@ msgstr "Continuar sem sincronizar"
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Control whether recipients can find and manage this topic."
-msgstr ""
+msgstr "Controle se os destinatários podem encontrar e gerenciar este tópico."
 
 #. js-lingui-id: +iFqZW
 #: src/modules/settings/roles/role-settings/components/SettingsRoleApplicability.tsx
@@ -4373,7 +4432,7 @@ msgstr "Copie e cole o código abaixo"
 #. js-lingui-id: BphTnq
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramReportsSection.tsx
 msgid "Copy public report link"
-msgstr ""
+msgstr "Copiar link público do relatório"
 
 #. js-lingui-id: S+Jl8l
 #: src/modules/auth/sign-in-up/components/internal/SignInUpTwoFactorAuthenticationProvision.tsx
@@ -4451,12 +4510,12 @@ msgstr "Não foi possível excluir o domínio de acesso aprovado"
 #. js-lingui-id: Ffsi+b
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignCsvImportButton.tsx
 msgid "Could not import campaigns from this CSV file."
-msgstr ""
+msgstr "Não foi possível importar campanhas deste arquivo CSV."
 
 #. js-lingui-id: nLE+wu
 #: src/modules/settings/accounts/hooks/useConnectWhatsappNumber.ts
 msgid "Could not load the Facebook SDK. Please try again."
-msgstr ""
+msgstr "Não foi possível carregar o SDK do Facebook. Tente novamente."
 
 #. js-lingui-id: KqYYBp
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -4487,7 +4546,7 @@ msgstr "Não foi possível adicionar aos favoritos"
 #. js-lingui-id: OkB1TC
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "Couldn't check availability. Please try again."
-msgstr ""
+msgstr "Não foi possível verificar a disponibilidade. Tente novamente."
 
 #. js-lingui-id: s8lFtq
 #: src/hooks/useCopyToClipboard.tsx
@@ -4525,7 +4584,7 @@ msgstr "Contar todos"
 #. js-lingui-id: GlOvtl
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "Count by"
-msgstr ""
+msgstr "Contar por"
 
 #. js-lingui-id: vQJINq
 #: src/modules/object-record/record-board/record-board-column/utils/getAggregateOperationLabel.ts
@@ -4605,12 +4664,12 @@ msgstr "Criar Espaço de Trabalho"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Create agent"
-msgstr ""
+msgstr "Criar agente"
 
 #. js-lingui-id: 3T8ziB
 #: src/utils/title-utils.ts
 msgid "Create an account"
-msgstr ""
+msgstr "Criar uma conta"
 
 #. js-lingui-id: /WlFSf
 #: src/pages/settings/applications/tabs/SettingsApplicationsDeveloperTab.tsx
@@ -4622,6 +4681,11 @@ msgstr "Criar um aplicativo"
 msgid "Create and configure AI agents"
 msgstr "Criar e configurar agentes de IA"
 
+#. js-lingui-id: Q9SbKG
+#: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
+msgid "Create and submit message templates for Meta's approval."
+msgstr "Crie e envie templates de mensagem para aprovação da Meta."
+
 #. js-lingui-id: uXGLuq
 #: src/pages/settings/api-webhooks/SettingsApiWebhooks.tsx
 msgid "Create API key"
@@ -4630,12 +4694,12 @@ msgstr "Criar Chave API"
 #. js-lingui-id: Lot/Rw
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleForm.tsx
 msgid "Create automation"
-msgstr ""
+msgstr "Criar automação"
 
 #. js-lingui-id: P0Cdm9
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Create campaign"
-msgstr ""
+msgstr "Criar campanha"
 
 #. js-lingui-id: 4+EmHM
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownDefaultView.tsx
@@ -4651,6 +4715,11 @@ msgstr "Criar campo de data"
 #: src/modules/views/view-picker/components/ViewPickerCreateButton.tsx
 msgid "Create new view"
 msgstr "Criar nova visualização"
+
+#. js-lingui-id: XRuL0i
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Create page"
+msgstr "Criar página"
 
 #. js-lingui-id: gSyzEV
 #: src/pages/onboarding/CreateProfile.tsx
@@ -4678,6 +4747,11 @@ msgstr "Criar campo de seleção"
 msgid "Create Select..."
 msgstr "Criar seleção..."
 
+#. js-lingui-id: A5hiCy
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Create template"
+msgstr "Criar template"
+
 #. js-lingui-id: zt6Erc
 #: src/modules/views/components/UpdateViewButtonGroup.tsx
 #: src/modules/views/view-picker/components/ViewPickerContentCreateMode.tsx
@@ -4703,7 +4777,7 @@ msgstr "Criar Espaço de Trabalho"
 #. js-lingui-id: cpE88+
 #: src/pages/auth/SignInUp.tsx
 msgid "Create your account"
-msgstr ""
+msgstr "Crie sua conta"
 
 #. js-lingui-id: 9chYz/
 #: src/pages/auth/SignInUp.tsx
@@ -4770,7 +4844,7 @@ msgstr "Saldo de créditos"
 #. js-lingui-id: Woqoyp
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 msgid "Credit consumption for the current period"
-msgstr ""
+msgstr "Consumo de créditos no período atual"
 
 #. js-lingui-id: 7iwYAn
 #: src/modules/settings/usage/components/SettingsUsageAnalyticsSection.tsx
@@ -4827,7 +4901,7 @@ msgstr "Limite de créditos atingido. Atualize seu plano de créditos para mante
 #. js-lingui-id: yLljbQ
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 msgid "Credits used"
-msgstr ""
+msgstr "Créditos usados"
 
 #. js-lingui-id: n3kKrs
 #: src/modules/settings/billing/components/SettingsBillingCreditsSection.tsx
@@ -4870,7 +4944,14 @@ msgstr "CRUD"
 #. js-lingui-id: Lw7Xl4
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignCsvImportButton.tsx
 msgid "CSV columns: keywords, replyMessage (separate multiple keywords with ; or |)"
-msgstr ""
+msgstr "Colunas do CSV: keywords, replyMessage (separe várias palavras-chave com ; ou |)"
+
+#. js-lingui-id: On//sA
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "CTA label"
+msgstr "Texto do botão de ação (CTA)"
 
 #. js-lingui-id: J1QT+3
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
@@ -5014,12 +5095,12 @@ msgstr "Personalizar campos"
 #. js-lingui-id: 0lvH/K
 #: src/pages/settings/layout/SettingsLayout.tsx
 msgid "Customize how your workspace looks."
-msgstr ""
+msgstr "Personalize a aparência do seu workspace."
 
 #. js-lingui-id: zZksLX
 #: src/pages/settings/layout/SettingsLayout.tsx
 msgid "Customize layout"
-msgstr ""
+msgstr "Personalizar disposição"
 
 #. js-lingui-id: NSv0tC
 #: src/modules/settings/roles/role-permissions/permission-flags/hooks/useSettingsRolePermissionFlagConfig.ts
@@ -5449,6 +5530,7 @@ msgstr "excluir"
 #: src/modules/ai/components/AiChatThreadDeleteConfirmationModal.tsx
 #: src/modules/ai/components/AiChatThreadItemMenu.tsx
 #: src/modules/blocknote-editor/components/CustomSideMenu.tsx
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
 #: src/modules/navigation-menu-item/display/folder/components/NavigationMenuItemFolderNavigationDrawerItemDropdown.tsx
 #: src/modules/object-record/record-field-list/record-detail-section/relation/components/RecordDetailRelationRecordsListItem.tsx
 #: src/modules/object-record/record-field/ui/meta-types/input/components/MultiItemFieldMenuItem.tsx
@@ -5456,6 +5538,7 @@ msgstr "excluir"
 #: src/modules/page-layout/widgets/standalone-rich-text/components/DashboardEditorSideMenu.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminDeleteJobsConfirmationModal.tsx
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminQueueJobRowDropdownMenu.tsx
 #: src/modules/settings/data-model/object-details/components/SettingsObjectFieldDisabledActionDropdown.tsx
@@ -5536,7 +5619,7 @@ msgstr "Excluir conta e todos os dados associados ou sair do espaço de trabalho
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "Delete agent"
-msgstr ""
+msgstr "Excluir agente"
 
 #. js-lingui-id: YMNj8z
 #: src/pages/settings/ai/components/SettingsAgentDeleteConfirmationModal.tsx
@@ -5559,7 +5642,7 @@ msgstr "Excluir aplicativo"
 #. js-lingui-id: ngpytw
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleRow.tsx
 msgid "Delete campaign"
-msgstr ""
+msgstr "Excluir campanha"
 
 #. js-lingui-id: YFpLoV
 #: src/modules/ai/components/AiChatThreadDeleteConfirmationModal.tsx
@@ -5569,7 +5652,7 @@ msgstr "Excluir conversa"
 #. js-lingui-id: 4xlcyV
 #: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
 msgid "Delete email channel"
-msgstr ""
+msgstr "Excluir canal de e-mail"
 
 #. js-lingui-id: gf2eXy
 #: src/pages/settings/ai/components/SettingsAgentEvalsTab.tsx
@@ -5586,6 +5669,11 @@ msgstr "Excluir campo"
 msgid "Delete Folder"
 msgstr "Excluir pasta"
 
+#. js-lingui-id: 4z4jRj
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Delete funnel page"
+msgstr "Excluir página do funil"
+
 #. js-lingui-id: k/RLDM
 #: src/modules/workflow/workflow-steps/filters/components/WorkflowStepFilterGroupOptionsDropdown.tsx
 msgid "Delete group"
@@ -5600,6 +5688,11 @@ msgstr "Excluir nó"
 #: src/pages/settings/admin-panel/SettingsAdminApplicationRegistrationDangerZone.tsx
 msgid "Delete or transfer this app registration"
 msgstr "Excluir ou transferir este registro de aplicativo"
+
+#. js-lingui-id: O1M1zi
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Delete page"
+msgstr "Excluir página"
 
 #. js-lingui-id: mcXHCJ
 #: src/modules/settings/roles/role-permissions/objects-permissions/components/SettingsRolePermissionsObjectsSection.tsx
@@ -5625,6 +5718,11 @@ msgstr "Excluir Função Permanentemente"
 #: src/pages/settings/ai/SettingsSkillForm.tsx
 msgid "Delete Skill"
 msgstr "Excluir habilidade"
+
+#. js-lingui-id: DFjdv0
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Delete template"
+msgstr "Excluir template"
 
 #. js-lingui-id: DgHnjS
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
@@ -5669,7 +5767,7 @@ msgstr "Excluir Método de Autenticação em Duas Etapas"
 #. js-lingui-id: EhjVw/
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Delete unsubscribe topic"
-msgstr ""
+msgstr "Excluir tópico de cancelamento de inscrição"
 
 #. js-lingui-id: aRG49z
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownCustomView.tsx
@@ -5679,7 +5777,7 @@ msgstr "Excluir visualização"
 #. js-lingui-id: NYP4a+
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 msgid "Delete voice agent"
-msgstr ""
+msgstr "Excluir agente de voz"
 
 #. js-lingui-id: snMaH4
 #: src/modules/settings/developers/components/SettingsDevelopersWebhookForm.tsx
@@ -5689,7 +5787,12 @@ msgstr "Excluir Webhook"
 #. js-lingui-id: E2+81y
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "Delete WhatsApp agent"
-msgstr ""
+msgstr "Excluir agente de WhatsApp"
+
+#. js-lingui-id: vUnFJt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Delete WhatsApp template"
+msgstr "Excluir template de WhatsApp"
 
 #. js-lingui-id: tWD0z0
 #: src/modules/side-panel/pages/page-layout/components/WidgetSettingsFooter.tsx
@@ -5750,22 +5853,22 @@ msgstr "Decrescente"
 #. js-lingui-id: og2QiG
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "Describe the persona, goal and tone of voice the agent should use during the call."
-msgstr ""
+msgstr "Descreva a persona, o objetivo e o tom de voz que o agente deve usar durante a ligação."
 
 #. js-lingui-id: eUFGGV
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Describe the persona, goal and tone of voice the agent should use when replying to messages."
-msgstr ""
+msgstr "Descreva a persona, o objetivo e o tom de voz que o agente deve usar ao responder mensagens."
 
 #. js-lingui-id: mKnfpj
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "Describe what makes a lead qualified on this call."
-msgstr ""
+msgstr "Descreva o que torna um lead qualificado nesta ligação."
 
 #. js-lingui-id: miY4kz
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Describe what makes a lead qualified on this conversation."
-msgstr ""
+msgstr "Descreva o que torna um lead qualificado nesta conversa."
 
 #. js-lingui-id: g+5exC
 #: src/modules/workflow/workflow-steps/workflow-actions/ai-agent-action/components/WorkflowAiAgentPromptTab.tsx
@@ -5773,6 +5876,7 @@ msgid "Describe what you want the AI to do..."
 msgstr "Descreva o que você quer que a IA faça..."
 
 #. js-lingui-id: Nu4oKW
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/config-variables/components/ConfigVariableTable.tsx
 #: src/modules/settings/data-model/new-object/components/SettingsAvailableStandardObjectsSection.tsx
 #: src/modules/settings/developers/components/SettingsDevelopersWebhookForm.tsx
@@ -5862,18 +5966,18 @@ msgstr "Links para desenvolvedores"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramTabbedContent.tsx
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnóstico"
 
 #. js-lingui-id: iXuicB
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Diagnostics are not available yet"
-msgstr ""
+msgstr "O diagnóstico ainda não está disponível"
 
 #. js-lingui-id: i4qU7o
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Direct message reply"
-msgstr ""
+msgstr "Resposta por mensagem direta"
 
 #. js-lingui-id: MRB7nI
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
@@ -5884,7 +5988,7 @@ msgstr "Direção"
 #. js-lingui-id: XDeNvP
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Disable impersonation"
-msgstr ""
+msgstr "Desativar personificação"
 
 #. js-lingui-id: E/QGRL
 #: src/modules/page-layout/components/PageLayoutTabListNewTabDropdownContent.tsx
@@ -6007,7 +6111,7 @@ msgstr "Não sincronize e-mails de team@ support@ noreply@..."
 #. js-lingui-id: DPfwMq
 #: src/modules/page-layout/widgets/fields/components/FieldsConfigurationGroupRenameInput.tsx
 msgid "Done"
-msgstr ""
+msgstr "Concluído"
 
 #. js-lingui-id: Wm78zZ
 #: src/modules/settings/experience/components/NumberFormatSelect.tsx
@@ -6090,7 +6194,7 @@ msgstr "Duplicar"
 #. js-lingui-id: hHI6Nm
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleRow.tsx
 msgid "Duplicate campaign"
-msgstr ""
+msgstr "Duplicar campanha"
 
 #. js-lingui-id: qaE1sk
 #: src/modules/workflow/workflow-steps/components/WorkflowStepFooter.tsx
@@ -6196,17 +6300,17 @@ msgstr "por exemplo, resumo, status, contagem"
 #. js-lingui-id: eoje5T
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "E.g.: Link in bio promo"
-msgstr ""
+msgstr "Ex.: Promoção do link da bio"
 
 #. js-lingui-id: 3HHGHg
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "E.g.: Sales representative"
-msgstr ""
+msgstr "Ex.: Representante de vendas"
 
 #. js-lingui-id: Ny1zGU
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "E.g.: Support assistant"
-msgstr ""
+msgstr "Ex.: Assistente de suporte"
 
 #. js-lingui-id: npNQJR
 #: src/pages/settings/data-model/new-index/SettingsObjectNewIndex.tsx
@@ -6269,13 +6373,13 @@ msgstr "Editar ações"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "Edit agent"
-msgstr ""
+msgstr "Editar agente"
 
 #. js-lingui-id: Hl1yZ2
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleRow.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Edit campaign"
-msgstr ""
+msgstr "Editar campanha"
 
 #. js-lingui-id: DMIYL8
 #: src/modules/settings/roles/role-permissions/permission-flags/hooks/useSettingsRolePermissionFlagConfig.ts
@@ -6301,6 +6405,11 @@ msgstr "Editar Campos"
 msgid "Edit folder"
 msgstr "Editar pasta"
 
+#. js-lingui-id: leHTxD
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Edit funnel page"
+msgstr "Editar página do funil"
+
 #. js-lingui-id: JTcEch
 #: src/modules/side-panel/hooks/useOpenWidgetSettingsInSidePanel.ts
 msgid "Edit Graph"
@@ -6322,6 +6431,11 @@ msgstr "Editar link"
 #: src/modules/settings/roles/role-permissions/permission-flags/hooks/useActionRolePermissionFlagConfig.ts
 msgid "Edit own profile information"
 msgstr "Editar as próprias informações de perfil"
+
+#. js-lingui-id: QNi+Eq
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Edit page"
+msgstr "Editar página"
 
 #. js-lingui-id: h2KoTu
 #: src/modules/settings/billing/components/SettingsBillingContent.tsx
@@ -6345,6 +6459,11 @@ msgstr "Editar tabela de registros"
 msgid "Edit Records on All Objects"
 msgstr "Editar Registros em Todos os Objetos"
 
+#. js-lingui-id: bHboUQ
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Edit template"
+msgstr "Editar template"
+
 #. js-lingui-id: eMFB6/
 #: src/modules/views/view-picker/components/ViewPickerContentEditMode.tsx
 msgid "Edit view"
@@ -6353,12 +6472,17 @@ msgstr "Editar visualização"
 #. js-lingui-id: W5UJlP
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "Edit voice agent"
-msgstr ""
+msgstr "Editar agente de voz"
 
 #. js-lingui-id: wPbPxI
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Edit WhatsApp agent"
-msgstr ""
+msgstr "Editar agente de WhatsApp"
+
+#. js-lingui-id: EhKv4P
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Edit WhatsApp template"
+msgstr "Editar template de WhatsApp"
 
 #. js-lingui-id: 6o1M/Q
 #: src/pages/settings/general/SettingsGeneral.tsx
@@ -6431,12 +6555,12 @@ msgstr "Email não pode estar vazio"
 #. js-lingui-id: TezkhJ
 #: src/modules/settings/unsubscribe-topics/components/SettingsWorkspaceUnsubscribeTopicSection.tsx
 msgid "Email categories recipients can opt out of."
-msgstr ""
+msgstr "Categorias de e-mail nas quais os destinatários podem cancelar a inscrição."
 
 #. js-lingui-id: KHxfvN
 #: src/modules/settings/workspace/components/SettingsWorkspaceEmailGroupSection.tsx
 msgid "Email Channels"
-msgstr ""
+msgstr "Canais de e-mail"
 
 #. js-lingui-id: UZQ5eW
 #: src/modules/object-record/record-field/ui/meta-types/display/components/EmailsFieldDisplay.tsx
@@ -6508,7 +6632,7 @@ msgstr "E-mail/Domínio"
 #. js-lingui-id: 4B3eAl
 #: src/pages/settings/email/SettingsWorkspaceEmail.tsx
 msgid "Emailing is in demo mode"
-msgstr ""
+msgstr "O envio de e-mails está em modo de demonstração"
 
 #. js-lingui-id: BXEcos
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
@@ -6526,7 +6650,7 @@ msgstr "E-mails e Calendário"
 #. js-lingui-id: zFmfbM
 #: src/pages/settings/email/SettingsWorkspaceEmail.tsx
 msgid "Emails are logged, not sent. Sending requires the AWS SES driver with an Enterprise license, or Zyra Cloud."
-msgstr ""
+msgstr "Os e-mails são apenas registrados, não enviados. O envio exige o driver AWS SES com licença Enterprise, ou o Zyra Cloud."
 
 #. js-lingui-id: mHrqHa
 #: src/modules/settings/accounts/components/SettingsAccountsMessageChannelDetails.tsx
@@ -6619,7 +6743,7 @@ msgstr "Ativar opções de contorno"
 #. js-lingui-id: Tt0V8j
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Enable impersonation"
-msgstr ""
+msgstr "Ativar personificação"
 
 #. js-lingui-id: gZo0V9
 #: src/modules/ai/components/SettingsAgentModelCapabilities.tsx
@@ -6630,17 +6754,22 @@ msgstr "Habilitar recursos específicos do modelo"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "Enable or disable agent"
-msgstr ""
+msgstr "Ativar ou desativar agente"
 
 #. js-lingui-id: YLeu+7
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "Enable or disable AI on this conversation"
-msgstr ""
+msgstr "Ativar ou desativar a IA nesta conversa"
 
 #. js-lingui-id: ke8/7C
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleRow.tsx
 msgid "Enable or disable campaign"
-msgstr ""
+msgstr "Ativar ou desativar campanha"
+
+#. js-lingui-id: X6MJ4T
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Enable simulated chat"
+msgstr "Ativar chat simulado"
 
 #. js-lingui-id: IrI9pg
 #: src/modules/settings/admin-panel/health-status/maintenance-mode/components/SettingsAdminMaintenanceMode.tsx
@@ -6826,7 +6955,7 @@ msgstr "Insira um número maior que 1"
 #. js-lingui-id: H4EIZl
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
 msgid "Enter offset"
-msgstr ""
+msgstr "Informe o deslocamento"
 
 #. js-lingui-id: /xM6j0
 #: src/modules/settings/data-model/fields/forms/select/components/SettingsDataModelFieldSelectForm.tsx
@@ -6904,7 +7033,7 @@ msgstr "Digite os valores, separados por vírgula"
 #. js-lingui-id: GDMzJS
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Enter your two-factor authentication code to confirm."
-msgstr ""
+msgstr "Digite seu código de autenticação em dois fatores para confirmar."
 
 #. js-lingui-id: GpB8YV
 #: src/modules/settings/admin-panel/components/SettingsAdminContent.tsx
@@ -6956,7 +7085,7 @@ msgstr "Entradas ({0}, apenas a iteração mais recente)"
 #. placeholder {0}: entries.length
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsEntries.tsx
 msgid "Entries ({0})"
-msgstr ""
+msgstr "Entradas ({0})"
 
 #. js-lingui-id: 3IeauL
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTabEnvironmentVariableTableRow.tsx
@@ -7047,7 +7176,7 @@ msgstr "Erro ao abrir o Stripe"
 #. placeholder {0}: String(error)
 #: src/modules/ui/field/display/components/PhonesDisplay.tsx
 msgid "Error parsing additional phones: {0}"
-msgstr ""
+msgstr "Erro ao processar telefones adicionais: {0}"
 
 #. js-lingui-id: zRXcyv
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -7117,7 +7246,7 @@ msgstr "Erro ao cancelar a alternância de plano."
 #. js-lingui-id: x87b7H
 #: src/modules/settings/billing/hooks/useEndSubscriptionTrialPeriod.ts
 msgid "Error while ending trial period. Please contact {productName} team."
-msgstr ""
+msgstr "Erro ao encerrar o período de teste. Entre em contato com a equipe do {productName}."
 
 #. js-lingui-id: 5g78zo
 #: src/pages/settings/members/SettingsWorkspaceMember.tsx
@@ -7168,7 +7297,7 @@ msgstr "Evento"
 #. js-lingui-id: cW8SdW
 #: src/modules/settings/event-logs/components/EventLogFilters.tsx
 msgid "Event type"
-msgstr ""
+msgstr "Tipo de evento"
 
 #. js-lingui-id: poC90w
 #: src/modules/settings/accounts/components/SettingsAccountsCalendarChannelDetails.tsx
@@ -7346,7 +7475,7 @@ msgstr "Corpo esperado"
 #. js-lingui-id: oe5UIm
 #: src/modules/workflow/workflow-steps/components/WorkflowExpectedOutputBodyInput.tsx
 msgid "Expected Output Body"
-msgstr ""
+msgstr "Corpo de saída esperado"
 
 #. js-lingui-id: qiUBKD
 #: src/modules/workflow/workflow-steps/workflow-actions/http-request-action/components/WorkflowEditActionHttpRequest.tsx
@@ -7401,17 +7530,17 @@ msgstr "Expira em {dateDiff}"
 #. js-lingui-id: vHL8v0
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Expiring soon"
-msgstr ""
+msgstr "Expirando em breve"
 
 #. js-lingui-id: K6cOfj
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Explain in which situations the agent should hand off the conversation to a human."
-msgstr ""
+msgstr "Explique em quais situações o agente deve passar a conversa para uma pessoa."
 
 #. js-lingui-id: Y8OpkS
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "Explain in which situations the agent should transfer the call to a human."
-msgstr ""
+msgstr "Explique em quais situações o agente deve transferir a ligação para uma pessoa."
 
 #. js-lingui-id: GS+Mus
 #: src/modules/object-record/record-index/export/hooks/useRecordIndexExportRecords.ts
@@ -7465,7 +7594,7 @@ msgstr "Falhou"
 #. js-lingui-id: n9lz4A
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Failed jobs"
-msgstr ""
+msgstr "Jobs com falha"
 
 #. js-lingui-id: tKcbYd
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminHealthAccountSyncCountersTable.tsx
@@ -7505,27 +7634,27 @@ msgstr "Falha ao adicionar o provedor"
 #. js-lingui-id: GpZWpu
 #: src/pages/settings/accounts/SettingsAccountsInstagramCallback.tsx
 msgid "Failed to connect the Instagram account."
-msgstr ""
+msgstr "Falha ao conectar a conta do Instagram."
 
 #. js-lingui-id: srup/O
 #: src/modules/settings/accounts/hooks/useConnectWhatsappNumber.ts
 msgid "Failed to connect the WhatsApp number."
-msgstr ""
+msgstr "Falha ao conectar o número de WhatsApp."
 
 #. js-lingui-id: 5UH0/o
 #: src/modules/settings/accounts/components/SettingsAccountsNewEmailGroupChannel.tsx
 msgid "Failed to create email channel. Email channels may not be configured on this server."
-msgstr ""
+msgstr "Falha ao criar o canal de e-mail. Os canais de e-mail podem não estar configurados neste servidor."
 
 #. js-lingui-id: ITWxKI
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 msgid "Failed to create unsubscribe topic."
-msgstr ""
+msgstr "Falha ao criar o tópico de cancelamento de inscrição."
 
 #. js-lingui-id: AXveCw
 #: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
 msgid "Failed to delete email channel."
-msgstr ""
+msgstr "Falha ao excluir o canal de e-mail."
 
 #. js-lingui-id: pUligB
 #: src/modules/settings/admin-panel/health-status/hooks/useDeleteJobs.ts
@@ -7545,7 +7674,7 @@ msgstr "Falha ao excluir a ferramenta"
 #. js-lingui-id: HUBJsk
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Failed to delete unsubscribe topic."
-msgstr ""
+msgstr "Falha ao excluir o tópico de cancelamento de inscrição."
 
 #. js-lingui-id: NUmmdc
 #: src/modules/command-menu-item/engine-command/record/single-record/dashboard/components/DuplicateDashboardSingleRecordCommand.tsx
@@ -7585,7 +7714,7 @@ msgstr "Falha ao carregar o componente do Front: {errorMessage}"
 #. js-lingui-id: VxZSi+
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdmins.tsx
 msgid "Failed to load server administrators."
-msgstr ""
+msgstr "Falha ao carregar os administradores do servidor."
 
 #. js-lingui-id: nKkohy
 #: src/modules/settings/developers/hooks/useWebhookForm.ts
@@ -7654,7 +7783,7 @@ msgstr "Falha ao salvar as instruções do espaço de trabalho"
 #: src/modules/activities/emails/hooks/useSendMessageCampaign.ts
 #: src/modules/activities/emails/hooks/useSendMessageCampaign.ts
 msgid "Failed to send campaign"
-msgstr ""
+msgstr "Falha ao enviar a campanha"
 
 #. js-lingui-id: Lo/GQ5
 #: src/modules/activities/emails/hooks/useSendEmail.ts
@@ -7723,12 +7852,12 @@ msgstr "Falha ao atualizar a função"
 #. js-lingui-id: ahCOdw
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Failed to update server administrator access."
-msgstr ""
+msgstr "Falha ao atualizar o acesso de administrador do servidor."
 
 #. js-lingui-id: 16Z+3L
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Failed to update unsubscribe topic."
-msgstr ""
+msgstr "Falha ao atualizar o tópico de cancelamento de inscrição."
 
 #. js-lingui-id: 204Qo2
 #: src/modules/settings/billing/hooks/useCreditUpgradeAction.ts
@@ -7782,6 +7911,11 @@ msgstr "Alternativa"
 msgid "False"
 msgstr "Falso"
 
+#. js-lingui-id: /lDBHm
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "FAQ"
+msgstr "Perguntas frequentes"
+
 #. js-lingui-id: XVIZ7v
 #: src/modules/settings/admin-panel/ai/components/SettingsAdminAI.tsx
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx
@@ -7812,7 +7946,7 @@ msgstr "Somente em destaque"
 #. js-lingui-id: PpZkda
 #: src/pages/settings/community/SettingsCommunity.tsx
 msgid "Features"
-msgstr ""
+msgstr "Recursos"
 
 #. js-lingui-id: 2lOBKV
 #: src/modules/metadata-error-handler/hooks/useMetadataErrorHandler.ts
@@ -7938,7 +8072,7 @@ msgstr "Campos a atualizar"
 #. js-lingui-id: 9k2rvq
 #: src/modules/views/types/ViewType.ts
 msgid "Fields widget"
-msgstr ""
+msgstr "Widget de campos"
 
 #. js-lingui-id: YlwXq3
 #: src/modules/side-panel/components/hooks/usePageLayoutHeaderInfo.ts
@@ -7981,7 +8115,7 @@ msgstr "Rótulo do arquivo"
 #. js-lingui-id: REA7PV
 #: src/modules/ui/field/display/components/FileChip.tsx
 msgid "File no longer exists - {label}"
-msgstr ""
+msgstr "O arquivo não existe mais - {label}"
 
 #. js-lingui-id: ncBVqE
 #: src/modules/object-record/record-field/ui/meta-types/hooks/useUploadFilesFieldFile.ts
@@ -8147,28 +8281,33 @@ msgstr "Pastas"
 #. js-lingui-id: I7Exsw
 #: src/pages/settings/community/SettingsCommunity.tsx
 msgid "Follow us on X"
-msgstr ""
+msgstr "Siga-nos no X"
 
 #. js-lingui-id: iG6nIA
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Follow-up delay (minutes)"
-msgstr ""
+msgstr "Atraso do follow-up (minutos)"
 
 #. js-lingui-id: i5hDya
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Follow-up message (optional)"
-msgstr ""
+msgstr "Mensagem de follow-up (opcional)"
 
 #. js-lingui-id: FHqoAc
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramFollowerChart.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramFollowerChart.tsx
 msgid "Follower count over time"
-msgstr ""
+msgstr "Evolução do número de seguidores"
 
 #. js-lingui-id: x5LEuB
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramFollowerChart.tsx
 msgid "Followers"
-msgstr ""
+msgstr "Seguidores"
+
+#. js-lingui-id: mouIoQ
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Footer (optional)"
+msgstr "Rodapé (opcional)"
 
 #. js-lingui-id: Ghistm
 #: src/modules/settings/applications/hooks/useComputeApplicationContentForLayoutAndLogic.ts
@@ -8179,7 +8318,7 @@ msgstr "para {objectLabel}"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Forbidden phrases"
-msgstr ""
+msgstr "Frases proibidas"
 
 #. js-lingui-id: glx6on
 #: src/modules/auth/sign-in-up/components/SignInUpGlobalScopeForm.tsx
@@ -8283,17 +8422,17 @@ msgstr "Componentes de front-end"
 #. js-lingui-id: g2Tj8R
 #: src/modules/side-panel/pages/page-layout/utils/getChartNumberFormatLabel.ts
 msgid "Full"
-msgstr ""
+msgstr "Completo"
 
 #. js-lingui-id: aerYcp
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "full admin panel access"
-msgstr ""
+msgstr "acesso total ao painel de administração"
 
 #. js-lingui-id: CU/Sq6
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "full server access"
-msgstr ""
+msgstr "acesso total ao servidor"
 
 #. js-lingui-id: Ld0Tt4
 #: src/modules/side-panel/components/hooks/usePageLayoutHeaderInfo.ts
@@ -8319,6 +8458,18 @@ msgstr "Execução da função"
 #: src/utils/title-utils.ts
 msgid "Functions - Settings"
 msgstr "Funções - Configurações"
+
+#. js-lingui-id: MWYJBI
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
+msgid "Funnel"
+msgstr "Funil"
+
+#. js-lingui-id: Wtll1S
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Funnel pages"
+msgstr "Páginas do funil"
 
 #. js-lingui-id: Weq9zb
 #: src/modules/keyboard-shortcut-menu/components/KeyboardShortcutMenuOpenContent.tsx
@@ -8436,7 +8587,7 @@ msgstr "Google OIDC"
 #. js-lingui-id: P1Rw/Z
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Grant access"
-msgstr ""
+msgstr "Conceder acesso"
 
 #. js-lingui-id: 6eo66Q
 #: src/modules/settings/workspace/components/ToggleImpersonate.tsx
@@ -8446,12 +8597,12 @@ msgstr "Conceda acesso ao seu espaço de trabalho para que possamos solucionar p
 #. js-lingui-id: 3xMv4O
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Grant admin panel access"
-msgstr ""
+msgstr "Conceder acesso ao painel de administração"
 
 #. js-lingui-id: FdPN4f
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Grant full access"
-msgstr ""
+msgstr "Conceder acesso total"
 
 #. js-lingui-id: WUgtid
 #: src/modules/settings/roles/role-permissions/object-level-permissions/object-form/components/SettingsRolePermissionsObjectLevelObjectFormObjectLevelTableRow.tsx
@@ -8508,7 +8659,7 @@ msgstr "Verde"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Greeting message"
-msgstr ""
+msgstr "Mensagem de boas-vindas"
 
 #. js-lingui-id: L8fEEm
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownCustomView.tsx
@@ -8542,11 +8693,16 @@ msgstr "Nome do grupo}]}``` }}} code block? Wait. We messed up. Actually we must
 msgid "Group sorting"
 msgstr "Ordenação de grupo"
 
+#. js-lingui-id: ieUt/q
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Guarantee"
+msgstr "Garantia"
+
 #. js-lingui-id: tR3dv3
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "guaranteed, risk-free, 100% return"
-msgstr ""
+msgstr "garantido, sem risco, 100% de retorno"
 
 #. js-lingui-id: eKiSkN
 #: src/modules/advanced-text-editor/extensions/slash-command/DefaultSlashCommands.ts
@@ -8572,7 +8728,12 @@ msgstr "Identificador"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Handoff instructions"
-msgstr ""
+msgstr "Instruções de transferência"
+
+#. js-lingui-id: dXq23t
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Header (optional)"
+msgstr "Cabeçalho (opcional)"
 
 #. js-lingui-id: HUk3sK
 #: src/modules/workflow/workflow-steps/workflow-actions/http-request-action/components/WorkflowEditActionHttpRequest.tsx
@@ -8624,6 +8785,12 @@ msgstr "Headless"
 msgid "Headless component"
 msgstr "Componente headless"
 
+#. js-lingui-id: +670Zw
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Headline"
+msgstr "Título"
+
 #. js-lingui-id: UPqS9C
 #: src/modules/settings/admin-panel/components/SettingsAdminContent.tsx
 msgid "Health"
@@ -8632,7 +8799,7 @@ msgstr "Saúde"
 #. js-lingui-id: vMSaKP
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Health checks for the Instagram connection powering your campaigns."
-msgstr ""
+msgstr "Verificações de saúde da conexão com o Instagram que alimenta suas campanhas."
 
 #. js-lingui-id: HyaXse
 #: src/pages/settings/admin-panel/SettingsAdminInstanceStatus.tsx
@@ -8653,7 +8820,7 @@ msgstr "Hebraico"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Hi! This is the company's virtual assistant, how can I help?"
-msgstr ""
+msgstr "Olá! Sou o assistente virtual da empresa, como posso ajudar?"
 
 #. js-lingui-id: D+zLDD
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownHiddenRecordGroupsContent.tsx
@@ -8698,7 +8865,7 @@ msgstr "Ocultar grupos vazios"
 #. placeholder {0}: groupValue ?? ''
 #: src/modules/object-record/record-group/components/RecordGroupMenuItemDraggable.tsx
 msgid "Hide group {0}"
-msgstr ""
+msgstr "Ocultar grupo {0}"
 
 #. js-lingui-id: wgmt7A
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableOptionsDropdownContent.tsx
@@ -8718,7 +8885,7 @@ msgstr "Ocultar índices do sistema"
 #. js-lingui-id: B4Zkuk
 #: src/pages/settings/community/SettingsCommunity.tsx
 msgid "Hire a partner to help you implement and customize {productName}."
-msgstr ""
+msgstr "Contrate um parceiro para ajudar a implementar e personalizar o {productName}."
 
 #. js-lingui-id: i0qMbr
 #: src/modules/navigation/components/MainNavigationDrawerTabsRow.tsx
@@ -8758,6 +8925,29 @@ msgid ""
 "\n"
 "See the [Getting Started guide](https://zyra.com/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](https://zyra.com/developers/extend/apps/building) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
+"Hospede as personalizações e substituições do seu workspace.\n"
+"\n"
+"#### O que inclui\n"
+"Toda extensão que você cria sobre o aplicativo padrão fica agrupada em Personalizado. Ele mantém em um só lugar as mudanças de esquema, de interface e a lógica específica do workspace.\n"
+"\n"
+"- Objetos e campos personalizados para o seu próprio modelo de dados\n"
+"- Visualizações, itens de navegação e layouts de registro que moldam o trabalho da sua equipe\n"
+"- Funções de lógica, componentes de front-end e agentes que automatizam ou estendem o workspace\n"
+"\n"
+"#### Por que existe\n"
+"Use este aplicativo para personalizações específicas do workspace que devem ficar locais a este workspace.\n"
+"\n"
+"Se você está moldando um workspace para um negócio, mantenha aqui. Se está criando um aplicativo de negócio reutilizável, com modelo de dados, interface e automação próprios, que deve ser versionado, compartilhado ou instalado em vários workspaces, crie um aplicativo dedicado.\n"
+"\n"
+"#### Crie seu próprio aplicativo\n"
+"\n"
+"Crie a estrutura de um novo aplicativo com um comando:\n"
+"\n"
+"```bash\n"
+"npx create-zyra-app@latest my-zyra-app\n"
+"```\n"
+"\n"
+"Veja o [guia de primeiros passos](https://zyra.com/developers/extend/apps/getting-started) para o passo a passo completo e o [Building Apps](https://zyra.com/developers/extend/apps/building) para as APIs `defineApplication` / `defineEntity`."
 
 #. js-lingui-id: yY8wAv
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
@@ -8964,7 +9154,7 @@ msgstr "Configuração IMAP"
 #. js-lingui-id: LnUhnM
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "IMAP Connection security"
-msgstr ""
+msgstr "Segurança da conexão IMAP"
 
 #. js-lingui-id: Ubs0tf
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
@@ -9007,13 +9197,13 @@ msgstr "Representar usuários do espaço de trabalho"
 #. js-lingui-id: 1ZMDWV
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "impersonation"
-msgstr ""
+msgstr "personificação"
 
 #. js-lingui-id: gFoGWm
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdmins.tsx
 msgid "Impersonation"
-msgstr ""
+msgstr "Personificação"
 
 #. js-lingui-id: yImXof
 #: src/pages/settings/admin-panel/SettingsAdminUserDetail.tsx
@@ -9065,7 +9255,7 @@ msgstr "Em {dateDiff}"
 #. js-lingui-id: /LCAwL
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "In progress"
-msgstr ""
+msgstr "Em andamento"
 
 #. js-lingui-id: hVockd
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
@@ -9097,7 +9287,7 @@ msgstr "Opções da habilidade inativa"
 #. js-lingui-id: lobg2P
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "Inbound"
-msgstr ""
+msgstr "Recebidas"
 
 #. js-lingui-id: Gp4Yi6
 #: src/modules/activities/emails/components/EmailsCard.tsx
@@ -9206,6 +9396,11 @@ msgstr "Configurações de entrada"
 msgid "Input tokens"
 msgstr "Tokens de entrada"
 
+#. js-lingui-id: AedpJp
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "inscricao"
+msgstr "inscricao"
+
 #. js-lingui-id: Dlxuac
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTestTab.tsx
 msgid "Insert a JSON input, then press \"Run Function\"."
@@ -9216,17 +9411,17 @@ msgstr "Insira uma entrada JSON e pressione \"Executar Função\"."
 #: src/pages/settings/accounts/SettingsAccountsInstagram.tsx
 #: src/pages/settings/accounts/SettingsAccountsInstagram.tsx
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #. js-lingui-id: gc/aU0
 #: src/modules/settings/accounts/hooks/useConnectInstagramAccount.ts
 msgid "Instagram connection is not configured on this server."
-msgstr ""
+msgstr "A conexão com o Instagram não está configurada neste servidor."
 
 #. js-lingui-id: mwdx0j
 #: src/pages/settings/accounts/SettingsAccountsInstagramCallback.tsx
 msgid "Instagram did not return an authorization code."
-msgstr ""
+msgstr "O Instagram não retornou um código de autorização."
 
 #. js-lingui-id: TKQ7K+
 #: src/pages/settings/applications/components/SettingsApplicationRegistrationShareLinkButtons.tsx
@@ -9328,7 +9523,7 @@ msgstr "Configuração inválida"
 #. js-lingui-id: SEpkD6
 #: src/modules/page-layout/widgets/components/PageLayoutWidgetInvalidConfigDisplay.tsx
 msgid "Invalid configuration: {errorMessage}"
-msgstr ""
+msgstr "Configuração inválida: {errorMessage}"
 
 #. js-lingui-id: ER/0YT
 #: src/modules/workflow/workflow-trigger/utils/getTriggerScheduleDescription.ts
@@ -9643,7 +9838,7 @@ msgstr "Entrar para a equipe {workspaceName}"
 #. js-lingui-id: cIo6Vk
 #: src/pages/settings/community/SettingsCommunity.tsx
 msgid "Join the community"
-msgstr ""
+msgstr "Entrar na comunidade"
 
 #. js-lingui-id: B2Zb/F
 #: src/pages/settings/ai/components/SettingsAgentResponseFormat.tsx
@@ -9693,7 +9888,7 @@ msgstr "Atalhos de teclado"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Keywords"
-msgstr ""
+msgstr "Palavras-chave"
 
 #. js-lingui-id: h6S9Yz
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
@@ -9724,6 +9919,7 @@ msgid "Label must contain at least one alphanumeric character"
 msgstr "O rótulo deve conter pelo menos um caractere alfanumérico"
 
 #. js-lingui-id: vXIe7J
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 #: src/pages/settings/profile/appearance/components/SettingsExperience.tsx
 msgid "Language"
 msgstr "Idioma"
@@ -9871,7 +10067,7 @@ msgstr "Último pagamento falhou. Por favor, atualize suas informações de fatu
 #. js-lingui-id: g/mod1
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Last reconciliation"
-msgstr ""
+msgstr "Última reconciliação"
 
 #. js-lingui-id: uPb/1Y
 #: src/pages/settings/applications/SettingsApplicationConnectionDetail.tsx
@@ -9892,7 +10088,7 @@ msgstr "Última atualização"
 #. js-lingui-id: 0gPw43
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Last webhook received"
-msgstr ""
+msgstr "Último webhook recebido"
 
 #. js-lingui-id: wL3cK8
 #: src/modules/object-record/record-board/record-board-column/utils/getAggregateOperationShortLabel.ts
@@ -10031,6 +10227,11 @@ msgstr "Verificações HS256 legadas em todos os tokens"
 msgid "Legend"
 msgstr "Legenda"
 
+#. js-lingui-id: MoEQGj
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "lembrete_sessao"
+msgstr "lembrete_sessao"
+
 #. js-lingui-id: 8PPI2g
 #: src/modules/object-record/object-filter-dropdown/utils/getOperandLabel.ts
 msgid "Less than or equal"
@@ -10149,7 +10350,7 @@ msgstr "Listado"
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Listed on the unsubscribe page"
-msgstr ""
+msgstr "Listado na página de cancelamento de inscrição"
 
 #. js-lingui-id: HhVDr2
 #: src/modules/settings/data-model/objects/forms/components/SettingsDataModelObjectAboutForm.tsx
@@ -10170,7 +10371,7 @@ msgstr "URL ativa"
 #. js-lingui-id: eg8PJK
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "Load balanced"
-msgstr ""
+msgstr "Balanceado"
 
 #. js-lingui-id: yQ2kGp
 #: src/modules/object-record/record-table/record-table-section/components/RecordTableRecordGroupSectionLoadMore.tsx
@@ -10196,7 +10397,7 @@ msgstr "Carregando {names}"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
 msgid "Loading agents..."
-msgstr ""
+msgstr "Carregando agentes..."
 
 #. js-lingui-id: fS/QXs
 #: src/pages/settings/applications/tabs/SettingsApplicationsAvailableTab.tsx
@@ -10206,17 +10407,17 @@ msgstr "Carregando aplicativos..."
 #. js-lingui-id: kd5ysI
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "Loading calls..."
-msgstr ""
+msgstr "Carregando ligações..."
 
 #. js-lingui-id: iDLzxi
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 msgid "Loading campaigns..."
-msgstr ""
+msgstr "Carregando campanhas..."
 
 #. js-lingui-id: aZczPx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "Loading conversations..."
-msgstr ""
+msgstr "Carregando conversas..."
 
 #. js-lingui-id: Nx262D
 #: src/modules/activities/files/components/DocumentViewer.tsx
@@ -10226,7 +10427,7 @@ msgstr "Carregando csv ... "
 #. js-lingui-id: qrYIEA
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Loading diagnostics..."
-msgstr ""
+msgstr "Carregando diagnóstico..."
 
 #. js-lingui-id: Zzca95
 #: src/modules/activities/files/components/AttachmentList.tsx
@@ -10242,7 +10443,7 @@ msgstr "Carregando e-mails"
 #. js-lingui-id: WunKqu
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramReportsSection.tsx
 msgid "Loading follower history..."
-msgstr ""
+msgstr "Carregando histórico de seguidores..."
 
 #. js-lingui-id: IFQsdb
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminQueueJobsTable.tsx
@@ -10262,6 +10463,11 @@ msgstr "Carregando dados de métricas..."
 msgid "Loading more..."
 msgstr "Carregando mais..."
 
+#. js-lingui-id: jmjDHH
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Loading pages..."
+msgstr "Carregando páginas..."
+
 #. js-lingui-id: nDnbEe
 #: src/pages/settings/admin-panel/SettingsAdminQueueDetail.tsx
 msgid "Loading retention configuration..."
@@ -10274,8 +10480,9 @@ msgstr "Carregando habilidades..."
 
 #. js-lingui-id: IhVWKA
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignTemplatePicker.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 msgid "Loading templates..."
-msgstr ""
+msgstr "Carregando templates..."
 
 #. js-lingui-id: 7YK6ap
 #: src/modules/page-layout/widgets/email-thread/components/EmailThreadWidget.tsx
@@ -10364,7 +10571,7 @@ msgstr "Logs"
 #. js-lingui-id: MspNoT
 #: src/modules/settings/event-logs/components/SettingsLogs.tsx
 msgid "Logs require ClickHouse to be configured. Please contact your administrator."
-msgstr ""
+msgstr "Os logs exigem que o ClickHouse esteja configurado. Entre em contato com o administrador."
 
 #. js-lingui-id: FJBbw5
 #: src/modules/object-metadata/hooks/useSortSubFieldChoicesForField.ts
@@ -10376,6 +10583,11 @@ msgstr "Longitude"
 msgid "loop"
 msgstr "loop"
 
+#. js-lingui-id: QAvhiI
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Lowercase letters, digits and underscores only — this is Meta's internal template identifier."
+msgstr "Somente letras minúsculas, números e sublinhados — este é o identificador interno do template na Meta."
+
 #. js-lingui-id: MsaCqr
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "Mail Account"
@@ -10384,7 +10596,7 @@ msgstr "Conta de Email"
 #. js-lingui-id: HRha/x
 #: src/modules/navigation/components/MobileNavigationBar.tsx
 msgid "Main navigation"
-msgstr ""
+msgstr "Navegação principal"
 
 #. js-lingui-id: 6Dd2PM
 #: src/modules/settings/admin-panel/health-status/maintenance-mode/components/SettingsAdminMaintenanceMode.tsx
@@ -10432,7 +10644,7 @@ msgstr "Gerenciar informações de cobrança"
 #. js-lingui-id: 16c4f5
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
 msgid "Manage comment-to-DM automation rules."
-msgstr ""
+msgstr "Gerencie as regras de automação de comentário para DM."
 
 #. js-lingui-id: GDz4fg
 #. placeholder {0}: provider.displayName
@@ -10468,17 +10680,27 @@ msgstr "Gerenciar configurações de acesso de suporte"
 #. js-lingui-id: Knu0nI
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 msgid "Manage the AI agents that answer and make phone calls on behalf of your business."
-msgstr ""
+msgstr "Gerencie os agentes de IA que atendem e fazem ligações em nome da sua empresa."
 
 #. js-lingui-id: me8BZq
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
 msgid "Manage the AI agents that reply to WhatsApp messages on behalf of your business."
-msgstr ""
+msgstr "Gerencie os agentes de IA que respondem mensagens do WhatsApp em nome da sua empresa."
 
 #. js-lingui-id: N7fMy9
 #: src/pages/settings/members/tabs/SettingsWorkspaceMembersTeamTab.tsx
 msgid "Manage the members of your workspace here"
 msgstr "Gerencie os membros do seu espaço aqui"
+
+#. js-lingui-id: Y7yPZn
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "Manage the message templates submitted to Meta for approval — required to message a contact outside the 24h window."
+msgstr "Gerencie os templates de mensagem enviados à Meta para aprovação — necessários para enviar mensagem a um contato fora da janela de 24h."
+
+#. js-lingui-id: xJmO2N
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Manage the signup, workshop, sales and confirmation pages served publicly by the funnel site."
+msgstr "Gerencie as páginas de inscrição, workshop, vendas e confirmação exibidas publicamente pelo site do funil."
 
 #. js-lingui-id: 5UjiOC
 #: src/pages/settings/applications/SettingsApplicationConnectionDetail.tsx
@@ -10498,7 +10720,7 @@ msgstr "Gerenciar workflows"
 #. js-lingui-id: Zto/Rp
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
 msgid "Manage your connected WhatsApp numbers."
-msgstr ""
+msgstr "Gerencie seus números de WhatsApp conectados."
 
 #. js-lingui-id: FyFNsd
 #: src/pages/settings/accounts/SettingsAccounts.tsx
@@ -10525,7 +10747,7 @@ msgstr "Marketplace"
 #. placeholder {0}: fieldLabel ?? ''
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/UnmatchColumn.tsx
 msgid "Match {0} ({unmatchedCount} Unmatched)"
-msgstr ""
+msgstr "Corresponder {0} ({unmatchedCount} sem correspondência)"
 
 #. js-lingui-id: gDLior
 #: src/modules/spreadsheet-import/steps/components/SpreadsheetImportStepperContainer.tsx
@@ -10593,7 +10815,7 @@ msgstr "MCP"
 #. js-lingui-id: KFatQ9
 #: src/modules/settings/playground/components/SettingsMcpSetup.tsx
 msgid "MCP client configuration"
-msgstr ""
+msgstr "Configuração do cliente MCP"
 
 #. js-lingui-id: 8CWirf
 #: src/pages/settings/ai/components/SettingsAiOverviewTab.tsx
@@ -10670,6 +10892,7 @@ msgid "Merging..."
 msgstr "Mesclando..."
 
 #. js-lingui-id: xDAtGP
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/event-logs/utils/getColumnsForEventLogTable.tsx
 msgid "Message"
 msgstr "Mensagem"
@@ -10736,6 +10959,11 @@ msgstr "Mínimo"
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Min range"
 msgstr "Intervalo mínimo"
+
+#. js-lingui-id: MCnikF
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Minimum minutes before a session starts"
+msgstr "Mínimo de minutos antes de uma sessão começar"
 
 #. js-lingui-id: 5IrCQY
 #: src/modules/settings/data-model/fields/forms/select/components/SettingsDataModelFieldSelectFormOptionRow.tsx
@@ -10912,7 +11140,7 @@ msgstr "Versão com mais instalações"
 #. js-lingui-id: YlibCb
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "Most recent calls made or received by this agent."
-msgstr ""
+msgstr "Ligações mais recentes feitas ou recebidas por este agente."
 
 #. js-lingui-id: 3Ib6FN
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelEditOrganizeActions.tsx
@@ -11010,10 +11238,13 @@ msgid "N/A"
 msgstr "N/D"
 
 #. js-lingui-id: 6YtxFj
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/admin-panel/apps/components/SettingsAdminApps.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminGeneral.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceContent.tsx
@@ -11154,7 +11385,7 @@ msgstr "Nova Conta"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
 msgid "New agent"
-msgstr ""
+msgstr "Novo agente"
 
 #. js-lingui-id: mJIA0/
 #: src/pages/settings/ai/SettingsAgentForm.tsx
@@ -11165,7 +11396,7 @@ msgstr "Novo agente"
 #. js-lingui-id: JLx7YM
 #: src/modules/navigation/components/MobileNavigationBar.tsx
 msgid "New AI chat"
-msgstr ""
+msgstr "Novo chat de IA"
 
 #. js-lingui-id: JJFwWE
 #: src/pages/settings/admin-panel/SettingsAdminNewAiProvider.tsx
@@ -11182,18 +11413,18 @@ msgstr "Novo Domínio de Acesso Aprovado"
 #. js-lingui-id: By1vhu
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleForm.tsx
 msgid "New automation"
-msgstr ""
+msgstr "Nova automação"
 
 #. js-lingui-id: fV8wLJ
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "New campaign"
-msgstr ""
+msgstr "Nova campanha"
 
 #. js-lingui-id: yGfI61
 #: src/modules/side-panel/hooks/useOpenCampaignComposerInSidePanel.ts
 msgid "New Campaign"
-msgstr ""
+msgstr "Nova campanha"
 
 #. js-lingui-id: hIQkLb
 #: src/modules/ai/components/AiChatThreadsList.tsx
@@ -11222,7 +11453,7 @@ msgstr "Novo e-mail"
 #: src/modules/settings/accounts/components/SettingsAccountsNewEmailGroupChannel.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsNewEmailGroupChannel.tsx
 msgid "New Email Channel"
-msgstr ""
+msgstr "Novo canal de e-mail"
 
 #. js-lingui-id: k6B3QD
 #: src/modules/navigation-menu-item/display/sections/favorites/components/FavoritesSection.tsx
@@ -11233,7 +11464,7 @@ msgstr "Novo favorito"
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldConfigure.tsx
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldSelect.tsx
 msgid "New field"
-msgstr ""
+msgstr "Novo campo"
 
 #. js-lingui-id: 8YPqRx
 #: src/modules/settings/data-model/fields/forms/number/components/SettingsDataModelFieldNumberSettingsFormCard.tsx
@@ -11247,6 +11478,11 @@ msgstr "Novo campo"
 #: src/modules/side-panel/components/SidePanelFolderInfo.tsx
 msgid "New folder"
 msgstr "Nova pasta"
+
+#. js-lingui-id: ymrY1A
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "New funnel page"
+msgstr "Nova página do funil"
 
 #. js-lingui-id: 93KA8w
 #: src/modules/page-layout/widgets/fields/components/FieldsConfigurationEditor.tsx
@@ -11293,6 +11529,11 @@ msgstr "Nova nota"
 msgid "New Object"
 msgstr "Novo Objeto"
 
+#. js-lingui-id: fos4db
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "New page"
+msgstr "Nova página"
+
 #. js-lingui-id: 7vhWI8
 #: src/pages/auth/PasswordReset.tsx
 msgid "New Password"
@@ -11334,6 +11575,11 @@ msgstr "Nova aba"
 msgid "New task"
 msgstr "Nova tarefa"
 
+#. js-lingui-id: G1Gw0v
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "New template"
+msgstr "Novo template"
+
 #. js-lingui-id: IQ+GEj
 #: src/pages/settings/ai/SettingsAI.tsx
 msgid "New Tool"
@@ -11343,12 +11589,12 @@ msgstr "Nova ferramenta"
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 msgid "New Unsubscribe Topic"
-msgstr ""
+msgstr "Novo tópico de cancelamento de inscrição"
 
 #. js-lingui-id: LGS7GX
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "New voice agent"
-msgstr ""
+msgstr "Novo agente de voz"
 
 #. js-lingui-id: U1DAok
 #: src/modules/settings/developers/components/SettingsDevelopersWebhookForm.tsx
@@ -11358,7 +11604,12 @@ msgstr "Novo Webhook"
 #. js-lingui-id: co4Cd4
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "New WhatsApp agent"
-msgstr ""
+msgstr "Novo agente de WhatsApp"
+
+#. js-lingui-id: kiMFlt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "New WhatsApp template"
+msgstr "Novo template de WhatsApp"
 
 #. js-lingui-id: vam7Jz
 #: src/modules/side-panel/components/hooks/usePageLayoutHeaderInfo.ts
@@ -11370,7 +11621,7 @@ msgstr "Novo widget"
 #. js-lingui-id: horr45
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 msgid "Newsletters"
-msgstr ""
+msgstr "Newsletters"
 
 #. js-lingui-id: hXzOVo
 #: src/modules/auth/sign-in-up/components/internal/SignInUpTwoFactorAuthenticationProvision.tsx
@@ -11385,6 +11636,16 @@ msgstr "Próximo"
 #: src/modules/spreadsheet-import/steps/components/SelectSheetStep/SelectSheetStep.tsx
 msgid "Next Step"
 msgstr "Próxima Etapa"
+
+#. js-lingui-id: kpGLOc
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Next step label"
+msgstr "Texto do próximo passo"
+
+#. js-lingui-id: UFXmO4
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Next step URL or slug"
+msgstr "URL ou slug do próximo passo"
 
 #. js-lingui-id: ulck7h
 #: src/modules/object-record/record-merge/utils/getPositionWordLabel.ts
@@ -11431,7 +11692,7 @@ msgstr "Nenhum {objectLabelSingular} encontrado"
 #. js-lingui-id: oPoLg+
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "No access"
-msgstr ""
+msgstr "Sem acesso"
 
 #. js-lingui-id: glQp+P
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
@@ -11471,7 +11732,7 @@ msgstr "Nenhum dado de uso de IA registrado ainda."
 #. js-lingui-id: 5P+oLK
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "No answer"
-msgstr ""
+msgstr "Sem resposta"
 
 #. js-lingui-id: 9mx36q
 #: src/modules/settings/roles/role-assignment/components/SettingsRoleAssignmentTable.tsx
@@ -11522,7 +11783,7 @@ msgstr "Sem corpo"
 #. js-lingui-id: b+xcFs
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "No call recorded yet"
-msgstr ""
+msgstr "Nenhuma ligação registrada ainda"
 
 #. js-lingui-id: c3+z7H
 #: src/modules/object-record/record-field/ui/form-types/components/FormCallingCodeSelectInput.tsx
@@ -11532,7 +11793,7 @@ msgstr "Sem código de chamada"
 #. js-lingui-id: TjNmnR
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRulesSection.tsx
 msgid "No campaign configured yet"
-msgstr ""
+msgstr "Nenhuma campanha configurada ainda"
 
 #. js-lingui-id: d14J3J
 #: src/modules/ai/components/NavigationDrawerAiChatContent.tsx
@@ -11567,7 +11828,7 @@ msgstr "Nenhum contexto foi fornecido para esta solicitação"
 #. js-lingui-id: qhx6jX
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "No conversation recorded yet"
-msgstr ""
+msgstr "Nenhuma conversa registrada ainda"
 
 #. js-lingui-id: 4BSfjK
 #: src/modules/object-record/record-field/ui/form-types/components/FormCountrySelectInput.tsx
@@ -11585,7 +11846,7 @@ msgstr "Sem credenciais"
 #. js-lingui-id: 6TAAUn
 #: src/modules/settings/billing/components/TrialCard.tsx
 msgid "No Credit Card"
-msgstr ""
+msgstr "Sem cartão de crédito"
 
 #. js-lingui-id: FoID5n
 #: src/pages/settings/billing/SettingsUsageUserDetail.tsx
@@ -11743,7 +12004,12 @@ msgstr "Nenhuma pasta encontrada para esta conta"
 #. js-lingui-id: 43Tc2i
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramReportsSection.tsx
 msgid "No follower data captured yet"
-msgstr ""
+msgstr "Nenhum dado de seguidores capturado ainda"
+
+#. js-lingui-id: xy+pz6
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "No funnel page created yet"
+msgstr "Nenhuma página do funil criada ainda"
 
 #. js-lingui-id: 9kCSLK
 #: src/pages/settings/data-model/SettingsObjectIndexTable.tsx
@@ -11785,7 +12051,7 @@ msgstr "Nenhuma versão mais recente encontrada"
 #. js-lingui-id: qtoOYG
 #: src/modules/side-panel/pages/page-layout/components/dashboard/SidePanelDashboardRecordTableSettings.tsx
 msgid "No limit"
-msgstr ""
+msgstr "Sem limite"
 
 #. js-lingui-id: vV85hO
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsDetail.tsx
@@ -11893,7 +12159,7 @@ msgstr "Nenhuma permissão foi definida para objetos individuais."
 #. js-lingui-id: 5sv+ia
 #: src/modules/activities/emails/hooks/useSendMessageCampaign.ts
 msgid "No recipients to send to ({skippedCount} skipped)"
-msgstr ""
+msgstr "Nenhum destinatário para enviar ({skippedCount} ignorados)"
 
 #. js-lingui-id: V/+aTW
 #: src/modules/object-record/record-field/ui/form-types/components/FormMorphRelationToOneFieldInput.tsx
@@ -11927,7 +12193,7 @@ msgstr "Nenhum registro correspondente aos critérios do filtro foi encontrado."
 #. js-lingui-id: gvIkAA
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "No relation to count by"
-msgstr ""
+msgstr "Nenhuma relação para contar por"
 
 #. js-lingui-id: YLozFb
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsHttpRequestDetail.tsx
@@ -11991,7 +12257,7 @@ msgstr "Sem campo de seleção"
 #. js-lingui-id: JkPTT8
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdmins.tsx
 msgid "No server administrators found."
-msgstr ""
+msgstr "Nenhum administrador do servidor encontrado."
 
 #. js-lingui-id: RQ6tfU
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelSystemObjectPickerSubView.tsx
@@ -12006,7 +12272,7 @@ msgstr "Nenhum objeto do sistema com visualizações encontrado"
 #. js-lingui-id: L4Miic
 #: src/modules/side-panel/pages/page-layout/components/dropdown-content/ChartGroupByFieldSelectionMorphRelationFieldView.tsx
 msgid "No targets available"
-msgstr ""
+msgstr "Nenhum alvo disponível"
 
 #. js-lingui-id: t0t36i
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsAiAgentDetail.tsx
@@ -12016,7 +12282,7 @@ msgstr "Nenhuma ferramenta foi chamada"
 #. js-lingui-id: vK0RL8
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "No topic"
-msgstr ""
+msgstr "Sem tópico"
 
 #. js-lingui-id: ZCTuAQ
 #: src/modules/settings/logic-functions/components/tabs/SettingsLogicFunctionTriggersTab.tsx
@@ -12037,7 +12303,7 @@ msgstr "Nenhum dado de uso"
 #. js-lingui-id: YrBAQE
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 msgid "No usage data is available for this workspace."
-msgstr ""
+msgstr "Não há dados de uso disponíveis para este workspace."
 
 #. js-lingui-id: TayaS7
 #: src/modules/settings/usage/components/SettingsUsageAnalyticsSection.tsx
@@ -12058,7 +12324,7 @@ msgstr "Sem valor"
 #. js-lingui-id: 4jhave
 #: src/modules/workflow/workflow-variables/components/WorkflowVariablesDropdown.tsx
 msgid "No variables are available yet. Variables come from the workflow trigger and previous steps."
-msgstr ""
+msgstr "Ainda não há variáveis disponíveis. As variáveis vêm do gatilho do workflow e dos passos anteriores."
 
 #. js-lingui-id: w4AWog
 #: src/modules/workflow/workflow-variables/components/WorkflowVariablesDropdownSteps.tsx
@@ -12078,12 +12344,17 @@ msgstr "Nenhuma variável para definir nesta aplicação"
 #. js-lingui-id: 4iGUzR
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 msgid "No voice agent configured yet"
-msgstr ""
+msgstr "Nenhum agente de voz configurado ainda"
 
 #. js-lingui-id: hoTqcL
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
 msgid "No WhatsApp agent configured yet"
-msgstr ""
+msgstr "Nenhum agente de WhatsApp configurado ainda"
+
+#. js-lingui-id: RequV7
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "No WhatsApp template created yet"
+msgstr "Nenhum template de WhatsApp criado ainda"
 
 #. js-lingui-id: 0uWxPM
 #: src/modules/object-record/record-table/empty-state/utils/getEmptyStateTitle.ts
@@ -12164,7 +12435,7 @@ msgstr "Não disponível na Visualização Padrão"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "Not defined"
-msgstr ""
+msgstr "Não definido"
 
 #. js-lingui-id: 4wUkDk
 #: src/modules/object-record/record-board/record-board-column/utils/getAggregateOperationShortLabel.ts
@@ -12269,7 +12540,7 @@ msgstr "Número de novos créditos alocados a cada {recurringInterval}"
 #. js-lingui-id: n49P/Y
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
 msgid "Number of records to skip. Combine with Limit to page through results."
-msgstr ""
+msgstr "Número de registros a ignorar. Combine com Limite para paginar os resultados."
 
 #. js-lingui-id: qg5nhQ
 #: src/modules/settings/data-model/fields/forms/number/components/SettingsDataModelFieldNumberForm.tsx
@@ -12289,7 +12560,7 @@ msgstr "Lista numerada"
 #. js-lingui-id: ybgVbg
 #: src/modules/auth/components/AuthSplitLayout.tsx
 msgid "O CRM que se adapta ao seu jeito de vender."
-msgstr ""
+msgstr "O CRM que se adapta ao seu jeito de vender."
 
 #. js-lingui-id: b/j06W
 #: src/pages/settings/admin-panel/SettingsAdminApplicationRegistrationDetail.tsx
@@ -12373,7 +12644,7 @@ msgstr "Opções de permissão de objeto"
 #. js-lingui-id: gaqIMK
 #: src/modules/settings/event-logs/components/EventLogFilters.tsx
 msgid "Object type"
-msgstr ""
+msgstr "Tipo de objeto"
 
 #. js-lingui-id: rDycBw
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionUpsertRecord.tsx
@@ -12434,12 +12705,12 @@ msgstr "Fora do caminho comum"
 #. js-lingui-id: Zd5vVt
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
 msgid "Offset"
-msgstr ""
+msgstr "Deslocamento"
 
 #. js-lingui-id: xV4QQm
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
 msgid "Offset cannot be negative."
-msgstr ""
+msgstr "O deslocamento não pode ser negativo."
 
 #. js-lingui-id: ec0+nM
 #: src/modules/advanced-text-editor/extensions/slash-command/DefaultSlashCommands.ts
@@ -12480,7 +12751,7 @@ msgstr "no {ordinalDay} do mês"
 #. placeholder {0}: lastDay ?? ''
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getDayOfMonthDescription.ts
 msgid "on the {remainingDays} and {0} of the month"
-msgstr ""
+msgstr "nos dias {remainingDays} e {0} do mês"
 
 #. js-lingui-id: aJ++Ko
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getDayOfWeekDescription.ts
@@ -12521,12 +12792,12 @@ msgstr "Chamada de onboarding"
 #. js-lingui-id: qaG+Ug
 #: src/modules/side-panel/pages/page-layout/components/ChartFiltersDeletedFieldsWarning.tsx
 msgid "One or more filters reference deactivated or deleted fields and will be automatically removed on save."
-msgstr ""
+msgstr "Um ou mais filtros fazem referência a campos desativados ou excluídos e serão removidos automaticamente ao salvar."
 
 #. js-lingui-id: oFTo3P
 #: src/modules/settings/event-logs/components/SettingsLogs.tsx
 msgid "Only application logs are available on your current plan. Other log types require an Enterprise subscription."
-msgstr ""
+msgstr "Apenas os logs da aplicação estão disponíveis no seu plano atual. Os outros tipos de log exigem uma assinatura Enterprise."
 
 #. js-lingui-id: zii2Qj
 #: src/modules/settings/accounts/components/SettingsAccountsCalendarVisibilitySettingsCard.tsx
@@ -12548,7 +12819,7 @@ msgstr "apenas em {monthName}"
 #. placeholder {0}: lastMonth ?? ''
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getMonthsDescription.ts
 msgid "only in {remainingMonths} and {0}"
-msgstr ""
+msgstr "somente em {remainingMonths} e {0}"
 
 #. js-lingui-id: G+ijJ2
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getDayOfWeekDescription.ts
@@ -12565,7 +12836,7 @@ msgstr "apenas em {firstDay} e {secondDay}"
 #. placeholder {0}: lastDay ?? ''
 #: src/modules/workflow/workflow-trigger/utils/cron-to-human/descriptors/getDayOfWeekDescription.ts
 msgid "only on {remainingDays} and {0}"
-msgstr ""
+msgstr "somente em {remainingDays} e {0}"
 
 #. js-lingui-id: saaSLd
 #: src/modules/activities/emails/components/EmailThreadNotShared.tsx
@@ -12655,7 +12926,7 @@ msgstr "Opcional — usa a função do IAM se estiver vazio"
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Optional context shown to recipients on the preferences page."
-msgstr ""
+msgstr "Contexto opcional exibido aos destinatários na página de preferências."
 
 #. js-lingui-id: hY8F2i
 #: src/modules/settings/developers/components/SettingsDevelopersWebhookForm.tsx
@@ -12779,12 +13050,12 @@ msgstr "Interrupção"
 #. js-lingui-id: xpN59a
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "Outbound"
-msgstr ""
+msgstr "Enviadas"
 
 #. js-lingui-id: nvADne
 #: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
 msgid "Outbound mail from this channel is sent through this domain. It must be verified before email can be delivered."
-msgstr ""
+msgstr "Os e-mails enviados por este canal saem por este domínio. Ele precisa ser verificado antes que os e-mails possam ser entregues."
 
 #. js-lingui-id: gh06VD
 #: src/modules/ai/components/CodeExecutionDisplay.tsx
@@ -12877,13 +13148,18 @@ msgstr "Layouts de página"
 #. js-lingui-id: zQF6Kb
 #: src/modules/settings/event-logs/components/EventLogFilters.tsx
 msgid "Page name"
-msgstr ""
+msgstr "Nome da página"
 
 #. js-lingui-id: skPhWs
 #. placeholder {0}: brand?.productName || 'Zyra'
 #: src/pages/not-found/NotFound.tsx
 msgid "Page Not Found | {0}"
-msgstr ""
+msgstr "Página não encontrada | {0}"
+
+#. js-lingui-id: epL65f
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Page type"
+msgstr "Tipo de página"
 
 #. js-lingui-id: sF+Xp9
 #: src/modules/settings/event-logs/components/EventLogTableSelector.tsx
@@ -12952,7 +13228,7 @@ msgstr "Cole o código abaixo"
 #. js-lingui-id: XQXS1x
 #: src/modules/settings/playground/components/SettingsMcpSetup.tsx
 msgid "Paste this configuration into MCP-aware clients like Claude, Codex, or Cursor."
-msgstr ""
+msgstr "Cole esta configuração em clientes compatíveis com MCP, como Claude, Codex ou Cursor."
 
 #. js-lingui-id: raz2Pm
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -12972,7 +13248,7 @@ msgstr "Caminho"
 #. js-lingui-id: IgrLD/
 #: src/modules/settings/event-logs/components/SettingsLogs.tsx
 msgid "Pause"
-msgstr ""
+msgstr "Pausar"
 
 #. js-lingui-id: QmXBEc
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -12994,12 +13270,12 @@ msgstr "Pendente"
 #. js-lingui-id: TP9fex
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Pending jobs"
-msgstr ""
+msgstr "Jobs pendentes"
 
 #. js-lingui-id: +QAp1+
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleRow.tsx
 msgid "Pending next Reel"
-msgstr ""
+msgstr "Pendente para o próximo Reel"
 
 #. js-lingui-id: PxBA+g
 #: src/modules/settings/accounts/components/SettingsAccountsMessageAutoCreationCard.tsx
@@ -13020,6 +13296,11 @@ msgstr "Consumo diário de IA."
 #: src/pages/settings/billing/SettingsUsageUserDetail.tsx
 msgid "Per-day credit consumption."
 msgstr "Consumo diário de créditos."
+
+#. js-lingui-id: 2ohMoL
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Perceived value"
+msgstr "Valor percebido"
 
 #. js-lingui-id: SrVzRe
 #: src/modules/object-record/record-board/record-board-column/components/RecordBoardColumnHeaderAggregateDropdownContent.tsx
@@ -13053,7 +13334,7 @@ msgstr "Execute ações administrativas ou exclua permanentemente este usuário"
 #. js-lingui-id: NtQvjo
 #: src/modules/settings/event-logs/components/EventLogFilters.tsx
 msgid "Period"
-msgstr ""
+msgstr "Período"
 
 #. js-lingui-id: wSpwGR
 #: src/modules/settings/security/components/SettingsSecuritySettings.tsx
@@ -13099,7 +13380,7 @@ msgstr "Telefone"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 msgid "Phone number"
-msgstr ""
+msgstr "Número de telefone"
 
 #. js-lingui-id: HF6C2L
 #: src/modules/object-record/record-field/ui/form-types/components/FormPhoneFieldInput.tsx
@@ -13121,17 +13402,17 @@ msgstr "Escolha um registro {objectLabel}"
 #. js-lingui-id: 1Mj027
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
 msgid "Pick a connected account or set a workspace member as variable"
-msgstr ""
+msgstr "Escolha uma conta conectada ou defina um membro do workspace como variável"
 
 #. js-lingui-id: NCdqTy
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "Pick a name and a logo for your new workspace."
-msgstr ""
+msgstr "Escolha um nome e um logo para o seu novo workspace."
 
 #. js-lingui-id: cjUSHr
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "Pick a name and a web address for your new workspace."
-msgstr ""
+msgstr "Escolha um nome e um endereço web para o seu novo workspace."
 
 #. js-lingui-id: JqqNlC
 #: src/modules/side-panel/utils/getSidePanelSubPageTitle.ts
@@ -13147,7 +13428,7 @@ msgstr "Selecione um objeto"
 #. js-lingui-id: c1JeA3
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "Pick from"
-msgstr ""
+msgstr "Escolher de"
 
 #. js-lingui-id: JHXjkT
 #: src/pages/settings/data-model/new-index/SettingsObjectNewIndex.tsx
@@ -13326,7 +13607,7 @@ msgstr "posição decrescente"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Post"
-msgstr ""
+msgstr "Publicação"
 
 #. js-lingui-id: ofTr89
 #: src/modules/object-record/record-field/ui/form-types/components/FormAddressFieldInput.tsx
@@ -13393,6 +13674,11 @@ msgstr "Anterior"
 #: src/modules/ai/utils/groupThreadsByDate.ts
 msgid "Previous 7 days"
 msgstr "Últimos 7 dias"
+
+#. js-lingui-id: a7u1N9
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Price"
+msgstr "Preço"
 
 #. js-lingui-id: aHCEmh
 #: src/pages/settings/admin-panel/SettingsAdminNewAiModel.tsx
@@ -13473,7 +13759,7 @@ msgstr "Foto de perfil"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "promo, desconto, quero"
-msgstr ""
+msgstr "promo, desconto, quero"
 
 #. js-lingui-id: W9uQXX
 #: src/modules/workflow/workflow-steps/workflow-actions/ai-agent-action/components/WorkflowEditActionAiAgent.tsx
@@ -13586,13 +13872,18 @@ msgstr "Domínios Públicos"
 #. js-lingui-id: LhIrkh
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignReplyVariationsField.tsx
 msgid "Public reply variations"
-msgstr ""
+msgstr "Variações de resposta pública"
 
 #. js-lingui-id: 3ixt5E
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Public topics appear on the recipient preferences page."
-msgstr ""
+msgstr "Os tópicos públicos aparecem na página de preferências do destinatário."
+
+#. js-lingui-id: EEYbdt
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Publish"
+msgstr "Publicar"
 
 #. js-lingui-id: zSYgxW
 #: src/pages/settings/applications/tabs/SettingsApplicationRegistrationDistributionTab.tsx
@@ -13613,12 +13904,12 @@ msgstr "Execução de código em Python"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Qualification criteria"
-msgstr ""
+msgstr "Critérios de qualificação"
 
 #. js-lingui-id: agKlOk
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "Qualification summary"
-msgstr ""
+msgstr "Resumo da qualificação"
 
 #. js-lingui-id: 2vudsu
 #: src/modules/side-panel/pages/page-layout/utils/getDateGranularityLabel.ts
@@ -13640,6 +13931,11 @@ msgstr "trimestres"
 #: src/modules/settings/data-model/object-details/components/tabs/SettingsObjectIndexesSection.tsx
 msgid "Queries that relied on it will fall back to a sequential scan. You can recreate it later."
 msgstr "As consultas que dependiam dele recorrerão a uma varredura sequencial. Você pode recriá-lo depois."
+
+#. js-lingui-id: bfgr/e
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Question"
+msgstr "Pergunta"
 
 #. js-lingui-id: /IUt/5
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminWorkerHealthStatus.tsx
@@ -13664,7 +13960,7 @@ msgstr "Executou {formattedName}"
 #. js-lingui-id: ofUcbc
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "Random"
-msgstr ""
+msgstr "Aleatório"
 
 #. js-lingui-id: z1U/Fh
 #: src/modules/ui/field/input/components/RatingInput.tsx
@@ -13884,6 +14180,16 @@ msgstr "Registros"
 msgid "Red"
 msgstr "Vermelho"
 
+#. js-lingui-id: Fpguai
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Redirect slug (offer page)"
+msgstr "Slug de redirecionamento (página de oferta)"
+
+#. js-lingui-id: ERoFUs
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Redirect slug on success"
+msgstr "Slug de redirecionamento em caso de sucesso"
+
 #. js-lingui-id: dAZObA
 #: src/pages/settings/applications/tabs/SettingsApplicationRegistrationOAuthTab.tsx
 msgid "Redirect URIs"
@@ -13905,6 +14211,7 @@ msgid "Redirection URI"
 msgstr "URI de Redirecionamento"
 
 #. js-lingui-id: pTGa/J
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
 #: src/pages/settings/admin-panel/SettingsAdminInferredVersion.tsx
 #: src/pages/settings/admin-panel/SettingsAdminInstanceStatus.tsx
 #: src/pages/settings/admin-panel/SettingsAdminWorkspacesStatus.tsx
@@ -13996,7 +14303,7 @@ msgstr "Recarregando..."
 #. js-lingui-id: qlAIQ1
 #: src/modules/settings/components/SettingsItemTypeTag.tsx
 msgid "Remote"
-msgstr ""
+msgstr "Remoto"
 
 #. js-lingui-id: t/YqKh
 #: src/modules/object-record/record-group/components/RecordGroupReorderConfirmationModal.tsx
@@ -14011,7 +14318,7 @@ msgstr "Remover"
 #. placeholder {0}: favoritesEdit.navigationMenuItemCount
 #: src/modules/navigation-menu-item/display/folder/components/NavigationMenuItemFolderDnd.tsx
 msgid "Remove {0} navigation menu item?"
-msgstr ""
+msgstr "Remover o item de menu de navegação {0}?"
 
 #. js-lingui-id: XABoh4
 #. placeholder {0}: favoritesEdit.navigationMenuItemCount
@@ -14034,6 +14341,16 @@ msgstr "Remover tudo"
 msgid "Remove as default"
 msgstr "Remover como padrão"
 
+#. js-lingui-id: 8/Db2k
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Remove bullet"
+msgstr "Remover item"
+
+#. js-lingui-id: 7Pv/ze
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Remove button"
+msgstr "Remover botão"
+
 #. js-lingui-id: 2HpFUd
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateSoftDelete.tsx
 msgid "Remove Deleted filter"
@@ -14042,7 +14359,7 @@ msgstr "Remover filtro Excluído"
 #. js-lingui-id: pOec2Q
 #: src/modules/views/view-picker/components/ViewPickerOptionDropdown.tsx
 msgid "Remove Favorite"
-msgstr ""
+msgstr "Remover dos favoritos"
 
 #. js-lingui-id: /hrkZs
 #: src/modules/settings/data-model/indexes/forms/components/SettingsObjectIndexFieldsForm.tsx
@@ -14053,6 +14370,11 @@ msgstr "Remover campo"
 #: src/modules/navigation-menu-item/edit/side-panel/components/SidePanelEditOrganizeActions.tsx
 msgid "Remove from sidebar"
 msgstr "Remover da barra lateral"
+
+#. js-lingui-id: vop1s3
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Remove item"
+msgstr "Remover item"
 
 #. js-lingui-id: 99VIgC
 #: src/pages/settings/members/SettingsWorkspaceMember.tsx
@@ -14085,6 +14407,11 @@ msgstr "Remover provedor"
 #: src/pages/settings/admin-panel/SettingsAdminAiProviderDetail.tsx
 msgid "Remove provider \"{0}\""
 msgstr "Remover o provedor \"{0}\""
+
+#. js-lingui-id: Z3RTej
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Remove question"
+msgstr "Remover pergunta"
 
 #. js-lingui-id: SjxzXf
 #: src/modules/object-record/advanced-filter/components/AdvancedFilterRecordFilterOptionsDropdown.tsx
@@ -14120,7 +14447,7 @@ msgstr "Remover variável"
 #. js-lingui-id: kGTsHt
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignReplyVariationsField.tsx
 msgid "Remove variation"
-msgstr ""
+msgstr "Remover variação"
 
 #. js-lingui-id: 2wxgft
 #: src/modules/activities/files/components/AttachmentDropdown.tsx
@@ -14181,7 +14508,7 @@ msgstr "Relatar um problema"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramReportsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramTabbedContent.tsx
 msgid "Reports"
-msgstr ""
+msgstr "Relatórios"
 
 #. js-lingui-id: OlFf9i
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsHttpRequestDetail.tsx
@@ -14202,7 +14529,7 @@ msgstr "Exigir autenticação"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Require the person to follow the account before receiving the DM"
-msgstr ""
+msgstr "Exigir que a pessoa siga a conta antes de receber a DM"
 
 #. js-lingui-id: TMLAx2
 #: src/pages/settings/ai/components/SettingsToolParameterTable.tsx
@@ -14387,12 +14714,12 @@ msgstr "Revogar"
 #. js-lingui-id: cg+Poy
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Revoke access"
-msgstr ""
+msgstr "Revogar acesso"
 
 #. js-lingui-id: iu5Egq
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Revoke admin panel access"
-msgstr ""
+msgstr "Revogar acesso ao painel de administração"
 
 #. js-lingui-id: rJrWw4
 #: src/modules/settings/admin-panel/signing-keys/components/SettingsAdminRevokeSigningKeyConfirmationModal.tsx
@@ -14490,7 +14817,7 @@ msgstr "Funções"
 #. js-lingui-id: ufKFGo
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 msgid "Rollover credits"
-msgstr ""
+msgstr "Créditos acumulados"
 
 #. js-lingui-id: Qz0FZ3
 #: src/modules/settings/billing/components/SettingsBillingCreditsSection.tsx
@@ -14516,7 +14843,7 @@ msgstr "Rotacionar segredo"
 #. js-lingui-id: 13TAbH
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "Round robin"
-msgstr ""
+msgstr "Rodízio"
 
 #. js-lingui-id: Eb/I7b
 #: src/modules/ai/components/RoutingDebugDisplay.tsx
@@ -14611,11 +14938,13 @@ msgid "Save as new view"
 msgstr "Salvar como nova visualização"
 
 #. js-lingui-id: y3aU20
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 msgid "Save changes"
-msgstr ""
+msgstr "Salvar alterações"
 
 #. js-lingui-id: 7byqGp
 #: src/modules/layout-customization/hooks/useEnterLayoutCustomizationMode.ts
@@ -14636,6 +14965,11 @@ msgstr "Agende uma janela de manutenção e notifique todos os usuários"
 #: src/modules/information-banner/components/maintenance/InformationBannerMaintenance.tsx
 msgid "Scheduled maintenance: {startFormatted} — {endFormatted}"
 msgstr "Manutenção agendada: {startFormatted} — {endFormatted}"
+
+#. js-lingui-id: RBkqUi
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Scheduled sessions (automatic event)"
+msgstr "Sessões agendadas (evento automático)"
 
 #. js-lingui-id: QJ8HBJ
 #: src/modules/settings/playground/components/PlaygroundSetupForm.tsx
@@ -15114,7 +15448,12 @@ msgstr "Selecione um item de navegação para editar"
 #. js-lingui-id: YkYui1
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "Select a sender"
-msgstr ""
+msgstr "Selecione um remetente"
+
+#. js-lingui-id: lTDsBn
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Select a template"
+msgstr "Selecione um template"
 
 #. js-lingui-id: jL3gox
 #: src/modules/object-record/record-field/ui/form-types/components/FormBooleanFieldInput.tsx
@@ -15123,8 +15462,9 @@ msgstr "Selecione um valor"
 
 #. js-lingui-id: bNEh9F
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 msgid "Select a WhatsApp number"
-msgstr ""
+msgstr "Selecione um número de WhatsApp"
 
 #. js-lingui-id: YcJS1T
 #: src/modules/command-menu/hooks/__tests__/useWorkflowCommandMenu.test.tsx
@@ -15282,7 +15622,7 @@ msgstr "Envie um e-mail de convite para sua equipe"
 #. js-lingui-id: WRLt0i
 #: src/modules/side-panel/pages/compose-campaign/components/SidePanelCampaignComposerPage.tsx
 msgid "Send campaign"
-msgstr ""
+msgstr "Enviar campanha"
 
 #. js-lingui-id: 65dxv8
 #: src/modules/workflow/workflow-run/observability/WorkflowRunStepLogsEmailDetail.tsx
@@ -15303,7 +15643,7 @@ msgstr "Envie e-mails por meio de contas conectadas"
 #. js-lingui-id: ULtHaJ
 #: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
 msgid "Sending domain"
-msgstr ""
+msgstr "Domínio de envio"
 
 #. js-lingui-id: asU5VT
 #: src/modules/workflow/workflow-steps/workflow-actions/http-request-action/components/HttpRequestExecutionResult.tsx
@@ -15327,6 +15667,16 @@ msgstr "Enviado"
 msgid "Sent and Received"
 msgstr "Enviado e Recebido"
 
+#. js-lingui-id: PwrfZ8
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "SEO description (optional)"
+msgstr "Descrição de SEO (opcional)"
+
+#. js-lingui-id: FmUc+K
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "SEO title (optional)"
+msgstr "Título de SEO (opcional)"
+
 #. js-lingui-id: 6oxz/y
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
 msgid "Serbian (Cyrillic)"
@@ -15335,12 +15685,12 @@ msgstr "Sérvio (Cirílico)"
 #. js-lingui-id: hjUUtd
 #: src/pages/settings/admin-panel/SettingsAdminUserDetail.tsx
 msgid "Server access"
-msgstr ""
+msgstr "Acesso ao servidor"
 
 #. js-lingui-id: 4Fpy78
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "Server administrator access updated."
-msgstr ""
+msgstr "Acesso de administrador do servidor atualizado."
 
 #. js-lingui-id: fHVf32
 #: src/pages/settings/applications/tabs/SettingsApplicationRegistrationConfigTab.tsx
@@ -15356,6 +15706,11 @@ msgstr "As variáveis de servidor são aplicadas a todas as instalações do wor
 #: src/modules/settings/security/components/SSO/SettingsSSOSAMLForm.tsx
 msgid "Service Provider Details"
 msgstr "Detalhes do Provedor de Serviço"
+
+#. js-lingui-id: iNv0Mi
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Session times (HH:mm, separated by commas)"
+msgstr "Horários das sessões (HH:mm, separados por vírgula)"
 
 #. js-lingui-id: 4FANIj
 #: src/modules/object-record/record-table/record-table-cell/components/RecordTableCellDisplayContainer.tsx
@@ -15512,7 +15867,7 @@ msgstr "Compartilhar"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramReportsSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramReportsSection.tsx
 msgid "Share report publicly"
-msgstr ""
+msgstr "Compartilhar relatório publicamente"
 
 #. js-lingui-id: Vy9kmk
 #: src/pages/settings/members/tabs/SettingsWorkspaceMembersInviteTab.tsx
@@ -15574,7 +15929,7 @@ msgstr "mostrar tudo"
 #. placeholder {0}: groupValue ?? ''
 #: src/modules/object-record/record-group/components/RecordGroupMenuItemDraggable.tsx
 msgid "Show group {0}"
-msgstr ""
+msgstr "Mostrar grupo {0}"
 
 #. js-lingui-id: 1OVrop
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableOptionsDropdownContent.tsx
@@ -15758,6 +16113,12 @@ msgstr "Ignorar o objeto de junção (semelhante a relações muitos-para-muitos
 msgid "Sky"
 msgstr "Céu"
 
+#. js-lingui-id: L85WcV
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
+msgid "Slug"
+msgstr "Slug"
+
 #. js-lingui-id: Ik7fz5
 #: src/modules/advanced-text-editor/extensions/slash-command/DefaultSlashCommands.ts
 msgid "Small section heading"
@@ -15777,7 +16138,7 @@ msgstr "Configuração SMTP"
 #. js-lingui-id: 3x3eiP
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "SMTP Connection security"
-msgstr ""
+msgstr "Segurança da conexão SMTP"
 
 #. js-lingui-id: UeDEV/
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
@@ -15835,12 +16196,12 @@ msgstr "Algo deu errado"
 #. js-lingui-id: i34/fH
 #: src/pages/onboarding/WorkspaceActivation.tsx
 msgid "Something went wrong while creating your workspace. Please try again."
-msgstr ""
+msgstr "Algo deu errado ao criar o seu workspace. Tente novamente."
 
 #. js-lingui-id: teokEm
 #: src/modules/settings/event-logs/components/SettingsLogs.tsx
 msgid "Something went wrong while loading logs. Please try again."
-msgstr ""
+msgstr "Algo deu errado ao carregar os logs. Tente novamente."
 
 #. js-lingui-id: yHwG3y
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownCalendarViewContent.tsx
@@ -16004,12 +16365,12 @@ msgstr "Data de início"
 #. js-lingui-id: oA4yYS
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignTemplatePicker.tsx
 msgid "Start from a ready-made playbook or build your own campaign from scratch."
-msgstr ""
+msgstr "Comece por um roteiro pronto ou crie sua própria campanha do zero."
 
 #. js-lingui-id: p6oHQh
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignTemplatePicker.tsx
 msgid "Start from scratch"
-msgstr ""
+msgstr "Começar do zero"
 
 #. js-lingui-id: s+K73L
 #: src/modules/settings/billing/components/SettingsBillingSubscriptionInfo.tsx
@@ -16035,8 +16396,10 @@ msgstr "Estado"
 #. js-lingui-id: uAQUqI
 #: src/modules/ai/components/AiChatThreadFilterDropdownRootMenu.tsx
 #: src/modules/ai/components/AiChatThreadFilterDropdownStatusMenu.tsx
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappChannelsListCard.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 #: src/modules/settings/accounts/components/SettingsConnectedAccountsTableHeader.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceContent.tsx
@@ -16059,7 +16422,7 @@ msgstr "Status"
 #. js-lingui-id: oCQwvS
 #: src/pages/settings/community/SettingsCommunity.tsx
 msgid "Stay up to date with product news and community updates."
-msgstr ""
+msgstr "Fique por dentro das novidades do produto e da comunidade."
 
 #. js-lingui-id: lATgy+
 #: src/modules/workflow/workflow-steps/filters/components/WorkflowStepFilterGroupOptionsDropdown.tsx
@@ -16074,7 +16437,7 @@ msgstr "Opções de filtro da etapa"
 #. js-lingui-id: iecKU0
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Still interested? Here's a special offer just for you."
-msgstr ""
+msgstr "Ainda tem interesse? Aqui vai uma oferta especial só para você."
 
 #. js-lingui-id: I8EmDx
 #: src/modules/information-banner/components/impersonate/InformationBannerIsImpersonating.tsx
@@ -16089,7 +16452,7 @@ msgstr "Armazenado no banco de dados"
 #. js-lingui-id: GGiaAW
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "Strategy"
-msgstr ""
+msgstr "Estratégia"
 
 #. js-lingui-id: C9VfWO
 #: src/modules/object-record/record-field/ui/form-types/components/FormAddressFieldInput.tsx
@@ -16164,6 +16527,11 @@ msgstr "Subdomínio atualizado"
 msgid "subheading"
 msgstr "subtítulo"
 
+#. js-lingui-id: VjEXwv
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Subheadline"
+msgstr "Subtítulo"
+
 #. js-lingui-id: UJmAAK
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
@@ -16202,6 +16570,11 @@ msgstr "Assunto, corpo e anexos serão compartilhados com sua equipe."
 msgid "Submit"
 msgstr "Enviar"
 
+#. js-lingui-id: O3daTU
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "Submit for approval"
+msgstr "Enviar para aprovação"
+
 #. js-lingui-id: EDl9kS
 #: src/modules/information-banner/components/billing/InformationBannerNoBillingSubscription.tsx
 msgid "Subscribe"
@@ -16228,7 +16601,7 @@ msgstr "Assinatura ativada."
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 msgid "Subscription error. Please retry or contact {productName} team"
-msgstr ""
+msgstr "Erro na assinatura. Tente novamente ou entre em contato com a equipe do {productName}"
 
 #. js-lingui-id: gvXPJz
 #: src/modules/settings/billing/components/SettingsBillingSubscriptionInfo.tsx
@@ -16285,7 +16658,7 @@ msgstr "Soma"
 #. js-lingui-id: dXoieq
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentCallHistory.tsx
 msgid "Summary"
-msgstr ""
+msgstr "Resumo"
 
 #. js-lingui-id: DBC3t5
 #: src/pages/settings/profile/appearance/components/DateTimeSettingsCalendarStartDaySelect.tsx
@@ -16374,7 +16747,7 @@ msgstr "Sincronizar com Outlook"
 #. js-lingui-id: KWnWCH
 #: src/pages/onboarding/SyncEmails.tsx
 msgid "Sync your Emails and Calendar with {productName}. Choose your privacy settings."
-msgstr ""
+msgstr "Sincronize seus e-mails e calendário com o {productName}. Escolha suas configurações de privacidade."
 
 #. js-lingui-id: N2FcBE
 #: src/modules/settings/accounts/components/SettingsAccountsConnectedAccountsRowRightContainer.tsx
@@ -16400,7 +16773,7 @@ msgstr "Sincronizar rótulos dos Objetos e Nomes da API"
 #. js-lingui-id: EHu0x2
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappChannelsListCard.tsx
 msgid "Syncing"
-msgstr ""
+msgstr "Sincronizando"
 
 #. js-lingui-id: D+NlUC
 #: src/modules/ui/navigation/navigation-drawer/components/MultiWorkspaceDropdown/internal/MultiWorkspaceDropdownThemesComponents.tsx
@@ -16428,7 +16801,7 @@ msgstr "Objetos do sistema"
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "System prompt"
-msgstr ""
+msgstr "Prompt do sistema"
 
 #. js-lingui-id: FHPe8O
 #: src/pages/settings/ai/components/SettingsAgentSettingsTab.tsx
@@ -16498,7 +16871,7 @@ msgstr "Tabela"
 #. js-lingui-id: xCJzJn
 #: src/modules/views/types/ViewType.ts
 msgid "Table widget"
-msgstr ""
+msgstr "Widget de tabela"
 
 #. js-lingui-id: sceIIK
 #: src/modules/settings/data-model/fields/forms/morph-relation/components/SettingsDataModelFieldRelationJunctionForm.tsx
@@ -16525,6 +16898,16 @@ msgstr "Título da tarefa"
 #: src/pages/settings/members/SettingsWorkspaceMembers.tsx
 msgid "Team"
 msgstr "Equipe"
+
+#. js-lingui-id: /K2CvV
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Template"
+msgstr "Template"
+
+#. js-lingui-id: 8XzLLk
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Templates must be submitted to Meta for approval before they can be used to message contacts outside the 24h window."
+msgstr "Os templates precisam ser enviados à Meta para aprovação antes de poderem ser usados para enviar mensagens a contatos fora da janela de 24h."
 
 #. js-lingui-id: lKXcJz
 #: src/pages/settings/emailing-domains/utils/getEmailingDomainStatusText.ts
@@ -16590,12 +16973,12 @@ msgstr "Editor de Texto"
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "Thanks for your interest! Here's the link: ..."
-msgstr ""
+msgstr "Obrigado pelo seu interesse! Aqui está o link: ..."
 
 #. js-lingui-id: Kpk97K
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignReplyVariationsField.tsx
 msgid "Thanks! Check your DMs 📩"
-msgstr ""
+msgstr "Obrigado! Confira suas DMs 📩"
 
 #. js-lingui-id: KJjmr/
 #: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
@@ -16651,6 +17034,36 @@ msgid ""
 "\n"
 "See the [Getting Started guide](https://zyra.com/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](https://zyra.com/developers/extend/apps/building) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
+"A base do modelo de dados sobre a qual todo workspace Zyra funciona.\n"
+"\n"
+"#### O que significa \"fundação\"\n"
+"\n"
+"Todo workspace Zyra começa com este conjunto de objetos. Eles definem a forma do seu CRM, incluindo relacionamentos, atividades e relatórios. Todo o resto, incluindo aplicativos do marketplace, agentes de IA e objetos personalizados, se conecta a eles.\n"
+"\n"
+"#### Objetos incluídos\n"
+"- **Pessoas e Empresas**: registros de contatos e contas\n"
+"- **Oportunidades**: seu funil de vendas\n"
+"- **Notas e Tarefas**: atividades e follow-ups\n"
+"- **Workflows e Dashboards**: automação e relatórios\n"
+"\n"
+"Se você remover este aplicativo, o resto do Zyra fica sem base.\n"
+"\n"
+"#### Crie seu próprio aplicativo\n"
+"\n"
+"Estenda o Zyra com seus próprios objetos, campos, funções de lógica ou skills de IA. Crie a estrutura de um novo aplicativo com um comando:\n"
+"\n"
+"```bash\n"
+"npx create-zyra-app@latest my-zyra-app\n"
+"```\n"
+"\n"
+"Depois, dentro da pasta:\n"
+"\n"
+"```bash\n"
+"cd my-zyra-app\n"
+"yarn zyra dev\n"
+"```\n"
+"\n"
+"Veja o [guia de primeiros passos](https://zyra.com/developers/extend/apps/getting-started) para o passo a passo completo e o [Building Apps](https://zyra.com/developers/extend/apps/building) para as APIs `defineApplication` / `defineEntity`."
 
 #. js-lingui-id: n+CCXl
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx
@@ -16712,7 +17125,7 @@ msgstr "O nome do seu domínio"
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "The name recipients see for this topic."
-msgstr ""
+msgstr "O nome que os destinatários veem para este tópico."
 
 #. js-lingui-id: L97sPr
 #: src/pages/not-found/NotFound.tsx
@@ -16722,7 +17135,7 @@ msgstr "A página que você está procurando não existe mais ou nunca existiu. 
 #. js-lingui-id: wxyrqd
 #: src/modules/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord.tsx
 msgid "the selected object"
-msgstr ""
+msgstr "o objeto selecionado"
 
 #. js-lingui-id: jrCR2X
 #: src/modules/workflow/workflow-trigger/components/WorkflowEditTriggerManual.tsx
@@ -16737,7 +17150,7 @@ msgstr "Os registros selecionados (até {maxRecordsFormatted}) serão passados p
 #. js-lingui-id: qrhV2s
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "The unsubscribe topic this email belongs to. Recipients who opted out of it are skipped, and the unsubscribe link is scoped to it."
-msgstr ""
+msgstr "O tópico de cancelamento de inscrição ao qual este e-mail pertence. Os destinatários que optaram por sair dele são ignorados, e o link de cancelamento se aplica somente a ele."
 
 #. js-lingui-id: uWikAA
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx
@@ -16848,7 +17261,7 @@ msgstr "Esta ação não pode ser desfeita."
 #. js-lingui-id: M0WyJi
 #: src/pages/settings/members/SettingsWorkspaceMember.tsx
 msgid "This action cannot be undone. This member will be removed and unassigned from their records. Their synced emails and calendars will stop syncing and be reassigned to you."
-msgstr ""
+msgstr "Esta ação não pode ser desfeita. Este membro será removido e desvinculado dos seus registros. Os e-mails e calendários sincronizados dele deixarão de sincronizar e serão atribuídos a você."
 
 #. js-lingui-id: Ox1hE7
 #: src/modules/settings/profile/components/DeleteAccount.tsx
@@ -16875,13 +17288,13 @@ msgstr "Essa ação não pode ser desfeita. Isso redefinirá permanentemente seu
 #. js-lingui-id: kVRKMS
 #: src/modules/settings/profile/components/DeleteAccount.tsx
 msgid "This action cannot be undone. Your membership will be removed; synced emails and calendars stay with the workspace."
-msgstr ""
+msgstr "Esta ação não pode ser desfeita. Sua participação será removida; os e-mails e calendários sincronizados permanecem com o workspace."
 
 #. js-lingui-id: muD0kr
 #. placeholder {0}: favoritesEdit.navigationMenuItemCount
 #: src/modules/navigation-menu-item/display/folder/components/NavigationMenuItemFolderDnd.tsx
 msgid "This action will delete this folder and all {0} navigation menu items inside. Do you want to continue?"
-msgstr ""
+msgstr "Esta ação excluirá esta pasta e todos os {0} itens de menu de navegação dentro dela. Deseja continuar?"
 
 #. js-lingui-id: gSO0+U
 #: src/modules/navigation-menu-item/display/folder/components/NavigationMenuItemFolderDnd.tsx
@@ -16891,12 +17304,12 @@ msgstr "Esta ação excluirá esta pasta e o item do menu de navegação dentro 
 #. js-lingui-id: +Ws/AI
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "This address is already taken"
-msgstr ""
+msgstr "Este endereço já está em uso"
 
 #. js-lingui-id: vQt2Hi
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "This address is available"
-msgstr ""
+msgstr "Este endereço está disponível"
 
 #. js-lingui-id: E5I/qG
 #: src/pages/settings/applications/tabs/SettingsApplicationRegistrationGeneralTab.tsx
@@ -17013,6 +17426,11 @@ msgstr "Isso nunca deveria acontecer"
 msgid "This subdomain is reserved"
 msgstr "Este subdomínio está reservado"
 
+#. js-lingui-id: sCBTQt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "This template was already submitted to Meta and can no longer be edited — create a new template instead."
+msgstr "Este template já foi enviado à Meta e não pode mais ser editado — crie um novo template."
+
 #. js-lingui-id: MMGDfe
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
 msgid "This value will be saved to the database."
@@ -17071,7 +17489,7 @@ msgstr "Isso desconectará todos os modelos deste provedor. Os modelos não esta
 #. placeholder {0}: pendingChange?.description ?? ''
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "This will grant {0} to {userLabel}."
-msgstr ""
+msgstr "Isto concederá {0} a {userLabel}."
 
 #. js-lingui-id: y8xx3L
 #: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsContainer.tsx
@@ -17082,13 +17500,25 @@ msgstr "Isso modificará {contextStoreNumberOfSelectedRecords} registros. Esta a
 #. placeholder {0}: voiceAgent.name
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 msgid "This will permanently delete \"{0}\" and it will stop answering or making calls. This action cannot be undone."
-msgstr ""
+msgstr "Isto excluirá \"{0}\" permanentemente, e ele deixará de atender e fazer ligações. Esta ação não pode ser desfeita."
 
 #. js-lingui-id: ityqZB
 #. placeholder {0}: whatsappAgent.name
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "This will permanently delete \"{0}\" and it will stop replying to WhatsApp messages. This action cannot be undone."
-msgstr ""
+msgstr "Isto excluirá \"{0}\" permanentemente, e ele deixará de responder mensagens do WhatsApp. Esta ação não pode ser desfeita."
+
+#. js-lingui-id: yKjPWm
+#. placeholder {0}: whatsappTemplate.name
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateRow.tsx
+msgid "This will permanently delete \"{0}\". This action cannot be undone."
+msgstr "Isto excluirá \"{0}\" permanentemente. Esta ação não pode ser desfeita."
+
+#. js-lingui-id: GJPzaM
+#. placeholder {0}: funnelPage.slug
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "This will permanently delete \"/{0}\". This action cannot be undone."
+msgstr "Isto excluirá \"/{0}\" permanentemente. Esta ação não pode ser desfeita."
 
 #. js-lingui-id: XGDxrH
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx
@@ -17109,7 +17539,7 @@ msgstr "Isso excluirá permanentemente seu método de autenticação de dois fat
 #. placeholder {0}: pendingChange?.description ?? ''
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdminAccess.tsx
 msgid "This will revoke {0} for {userLabel}."
-msgstr ""
+msgstr "Isto revogará {0} de {userLabel}."
 
 #. js-lingui-id: f8HOUp
 #: src/modules/ai/components/ThinkingStepsDisplay.tsx
@@ -17139,6 +17569,11 @@ msgstr "Formato de hora"
 #: src/pages/settings/profile/appearance/components/DateTimeSettingsTimeZoneSelect.tsx
 msgid "Time zone"
 msgstr "Fuso horário"
+
+#. js-lingui-id: W2VfsE
+#: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
+msgid "Time zone (minutes from UTC, Brasília is -180)"
+msgstr "Fuso horário (minutos em relação ao UTC, Brasília é -180)"
 
 #. js-lingui-id: cklVjM
 #: src/modules/object-record/object-options-dropdown/components/ObjectOptionsDropdownCalendarViewContent.tsx
@@ -17188,6 +17623,11 @@ msgstr "Título"
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionEmailBase.tsx
 msgid "To"
 msgstr "Para"
+
+#. js-lingui-id: bAvbCC
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "To (phone number)"
+msgstr "Para (número de telefone)"
 
 #. js-lingui-id: ecUA8p
 #: src/modules/ai/utils/groupThreadsByDate.ts
@@ -17346,7 +17786,7 @@ msgstr "Acompanhe o consumo de IA em todo o seu workspace."
 #. js-lingui-id: UifXv0
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramReportsSection.tsx
 msgid "Track how your follower count evolves and optionally share a public report."
-msgstr ""
+msgstr "Acompanhe a evolução do número de seguidores e, se quiser, compartilhe um relatório público."
 
 #. js-lingui-id: YT/cKI
 #: src/modules/settings/billing/components/SettingsBillingCreditsSection.tsx
@@ -17367,7 +17807,7 @@ msgstr "Transferir propriedade"
 #. js-lingui-id: xEfOVe
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "Transfer phone number"
-msgstr ""
+msgstr "Número de telefone para transferência"
 
 #. js-lingui-id: lhkaAC
 #: src/modules/settings/billing/components/internal/PlansTags.tsx
@@ -17507,7 +17947,7 @@ msgstr "Turno não encontrado"
 #. js-lingui-id: g6fTS7
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "Turn off the AI on a specific conversation to take over and reply as a human without disabling the whole agent."
-msgstr ""
+msgstr "Desative a IA em uma conversa específica para assumir e responder como pessoa, sem desativar o agente inteiro."
 
 #. js-lingui-id: EdHWDU
 #: src/modules/settings/data-model/fields/forms/select/components/SettingsDataModelFieldSelectFormOptionRow.tsx
@@ -17543,6 +17983,7 @@ msgid "Two-factor authentication setup completed successfully!"
 msgstr "Configuração de autenticação em duas etapas concluída com sucesso!"
 
 #. js-lingui-id: +zy2Nq
+#: src/modules/funnel/components/SettingsFunnelPagesSection.tsx
 #: src/modules/settings/components/SettingsDnsRecordsTable.tsx
 #: src/modules/settings/data-model/indexes/forms/components/SettingsObjectIndexOptionsForm.tsx
 #: src/modules/settings/data-model/object-details/components/SettingsObjectRelationsTable.tsx
@@ -17565,6 +18006,16 @@ msgstr "Tipo"
 #: src/modules/object-record/record-field/ui/meta-types/input/components/RichTextFieldEditor.tsx
 msgid "Type '/' for commands, '@' for mentions"
 msgstr "Digite '/' para comandos, '@' para menções"
+
+#. js-lingui-id: sfvqIb
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Type a number or pick a variable"
+msgstr "Digite um número ou escolha uma variável"
+
+#. js-lingui-id: hzt+K/
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Type a value or pick a variable"
+msgstr "Digite um valor ou escolha uma variável"
 
 #. js-lingui-id: qzD6hf
 #: src/modules/side-panel/components/SidePanelTopBar.tsx
@@ -17773,15 +18224,20 @@ msgstr "não ordenada"
 msgid "Unordered list with bullets"
 msgstr "Lista não ordenada com marcadores"
 
+#. js-lingui-id: 4DLZUa
+#: src/modules/funnel/components/SettingsFunnelPageRow.tsx
+msgid "Unpublish"
+msgstr "Despublicar"
+
 #. js-lingui-id: BEZcuL
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "Unsubscribe topic"
-msgstr ""
+msgstr "Tópico de cancelamento de inscrição"
 
 #. js-lingui-id: Molx4x
 #: src/modules/settings/unsubscribe-topics/components/SettingsWorkspaceUnsubscribeTopicSection.tsx
 msgid "Unsubscribe Topics"
-msgstr ""
+msgstr "Tópicos de cancelamento de inscrição"
 
 #. js-lingui-id: wja8aL
 #: src/modules/activities/timeline-activities/rows/activity/components/EventRowActivity.tsx
@@ -17812,7 +18268,7 @@ msgstr "{labelSingular} sem título"
 #. js-lingui-id: I8j5OO
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleRow.tsx
 msgid "Untitled campaign"
-msgstr ""
+msgstr "Campanha sem título"
 
 #. js-lingui-id: zJsHrW
 #: src/modules/workflow/workflow-steps/workflow-actions/ai-agent-action/components/WorkflowOutputSchemaBuilder.tsx
@@ -17822,7 +18278,7 @@ msgstr "Campo sem título"
 #. js-lingui-id: cChtk1
 #: src/modules/ui/field/display/components/FileChip.tsx
 msgid "Untitled file"
-msgstr ""
+msgstr "Arquivo sem título"
 
 #. js-lingui-id: RBz20h
 #: src/modules/side-panel/pages/page-layout/components/SidePanelPageLayoutDashboardWidgetTypeSelect.tsx
@@ -17832,7 +18288,7 @@ msgstr "iFrame sem título"
 #. js-lingui-id: PMPun8
 #: src/modules/activities/emails/components/CampaignComposerFields.tsx
 msgid "Untitled list"
-msgstr ""
+msgstr "Lista sem título"
 
 #. js-lingui-id: xzOKup
 #: src/modules/settings/roles/role/components/SettingsRoleCreateEffect.tsx
@@ -17844,7 +18300,7 @@ msgstr "Papel sem título"
 #: src/modules/settings/unsubscribe-topics/components/SettingsWorkspaceUnsubscribeTopicSection.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 msgid "Untitled topic"
-msgstr ""
+msgstr "Tópico sem título"
 
 #. js-lingui-id: p1M9l4
 #: src/modules/workflow/workflow-steps/workflow-actions/code-action/components/WorkflowEditActionCode.tsx
@@ -17980,7 +18436,7 @@ msgstr "Status da atualização atualizado"
 #. placeholder {0}: latestAvailableVersion ?? ''
 #: src/pages/settings/applications/tabs/SettingsApplicationDetailAboutTab.tsx
 msgid "Upgrade to {0}"
-msgstr ""
+msgstr "Fazer upgrade para {0}"
 
 #. js-lingui-id: nCRRVY
 #. placeholder {0}: nextResourceCreditsAmount ?? ''
@@ -17989,7 +18445,7 @@ msgstr ""
 #: src/modules/ai/components/AIChatNoMoreBillingCreditsBanner.tsx
 #: src/modules/information-banner/components/billing/InformationBannerNoMoreCredits.tsx
 msgid "Upgrade to {0} credits for ${1}/{2}."
-msgstr ""
+msgstr "Faça upgrade para {0} créditos por ${1}/{2}."
 
 #. js-lingui-id: pKCx2F
 #: src/pages/settings/applications/components/SettingsApplicationVersionContainer.tsx
@@ -18004,7 +18460,7 @@ msgstr "Atualize para acessar"
 #. js-lingui-id: bihQKI
 #: src/modules/settings/event-logs/components/SettingsLogs.tsx
 msgid "Upgrade to access audit logs"
-msgstr ""
+msgstr "Faça upgrade para acessar os logs de auditoria"
 
 #. js-lingui-id: Wurpq2
 #: src/modules/settings/security/components/SettingsSecuritySettings.tsx
@@ -18014,7 +18470,7 @@ msgstr "Faça upgrade para o Enterprise para acessar os logs de auditoria."
 #. js-lingui-id: 9gm/Oo
 #: src/modules/settings/billing/hooks/useCreditUpgradeAction.ts
 msgid "Upgrading subscription..."
-msgstr ""
+msgstr "Atualizando assinatura..."
 
 #. js-lingui-id: +Gi3x1
 #: src/pages/settings/applications/components/SettingsApplicationVersionContainer.tsx
@@ -18153,12 +18609,17 @@ msgstr "Eventos de uso"
 #. js-lingui-id: 6SbZqO
 #: src/modules/settings/admin-panel/components/SettingsAdminWorkspaceBillingContent.tsx
 msgid "Usage period"
-msgstr ""
+msgstr "Período de uso"
+
+#. js-lingui-id: mJA0jY
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+msgid "Use {{1}}, {{2}}... for variables, e.g.: Oi {{1}}, sua sessão libera em {{2}} minutos."
+msgstr "Use {{1}}, {{2}}... para variáveis, ex.: Oi {{1}}, sua sessão libera em {{2}} minutos."
 
 #. js-lingui-id: 09f27O
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "Use {suggestion} instead"
-msgstr ""
+msgstr "Use {suggestion} no lugar"
 
 #. js-lingui-id: 6kLyt5
 #: src/modules/auth/sign-in-up/components/internal/SignInUpTwoFactorAuthenticationProvision.tsx
@@ -18193,7 +18654,7 @@ msgstr "Use apenas letras, números e traços. Comece e termine com uma letra ou
 #. js-lingui-id: oSORjU
 #: src/modules/workflow/workflow-steps/workflow-actions/ai-agent-action/components/WorkflowOutputSchemaBuilder.tsx
 msgid "Use only letters, numbers, underscores, dots or hyphens (max 64 characters)."
-msgstr ""
+msgstr "Use apenas letras, números, sublinhados, pontos ou hifens (máximo de 64 caracteres)."
 
 #. js-lingui-id: c6uZUV
 #: src/modules/object-record/record-table/empty-state/utils/getEmptyStateSubTitle.ts
@@ -18229,6 +18690,7 @@ msgstr "Útil para tabelas pivô/de junção"
 #: src/pages/settings/accounts/SettingsAccountsVoiceAgent.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsappAgent.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
 #: src/pages/settings/accounts/SettingsNewAccount.tsx
 #: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
 #: src/pages/settings/ai/SettingsAiPrompts.tsx
@@ -18276,7 +18738,7 @@ msgstr "Usuários"
 #. js-lingui-id: zCO0/Y
 #: src/modules/settings/admin-panel/components/SettingsAdminServerAdmins.tsx
 msgid "Users with server-level access. Open a user to grant or revoke access; use the search below to find anyone."
-msgstr ""
+msgstr "Usuários com acesso em nível de servidor. Abra um usuário para conceder ou revogar o acesso; use a busca abaixo para encontrar qualquer pessoa."
 
 #. js-lingui-id: UIOjSC
 #: src/modules/settings/admin-panel/signing-keys/components/SettingsAdminSigningKeysTable.tsx
@@ -18301,7 +18763,7 @@ msgstr "Usando valor padrão. Defina um valor personalizado para substituir."
 #. js-lingui-id: nfagfM
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramDiagnosticsSection.tsx
 msgid "Valid"
-msgstr ""
+msgstr "Válido"
 
 #. js-lingui-id: zzp4XX
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
@@ -18336,10 +18798,21 @@ msgstr "Token de validade atualizado com sucesso"
 msgid "Value"
 msgstr "Valor"
 
+#. js-lingui-id: bKzrJS
+#. placeholder {0}: index + 1
+#: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
+msgid "Value for {{{0}}}"
+msgstr "Valor para {{{0}}}"
+
 #. js-lingui-id: UZHvVi
 #: src/modules/settings/admin-panel/config-variables/components/ConfigVariableHelpText.tsx
 msgid "Value is set in the server environment, it may be a different value on the worker."
 msgstr "O valor é definido no ambiente do servidor, pode ser um valor diferente no worker."
+
+#. js-lingui-id: 4OkyPc
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Value stack"
+msgstr "Pilha de valor"
 
 #. js-lingui-id: fXVIZq
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx
@@ -18366,6 +18839,11 @@ msgstr "Nome da variável"
 #: src/modules/object-record/record-field/ui/form-types/components/VariableChip.tsx
 msgid "Variable not found"
 msgstr "Variável não encontrada"
+
+#. js-lingui-id: ZWZjuT
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Variant"
+msgstr "Variante"
 
 #. js-lingui-id: QDEWii
 #: src/pages/settings/emailing-domains/utils/getEmailingDomainStatusText.ts
@@ -18402,6 +18880,11 @@ msgstr "Gráfico de barras verticais"
 #: src/pages/settings/admin-panel/SettingsAdminNewAiModel.tsx
 msgid "Video"
 msgstr "Vídeo"
+
+#. js-lingui-id: IwPgpE
+#: src/modules/funnel/components/SettingsFunnelPageForm.tsx
+msgid "Video URL"
+msgstr "URL do vídeo"
 
 #. js-lingui-id: fROFIL
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
@@ -18451,12 +18934,12 @@ msgstr "Ver detalhes de faturamento"
 #. js-lingui-id: 5JEph3
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentRow.tsx
 msgid "View call history"
-msgstr ""
+msgstr "Ver histórico de chamadas"
 
 #. js-lingui-id: rlos13
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentRow.tsx
 msgid "View conversations"
-msgstr ""
+msgstr "Ver conversas"
 
 #. js-lingui-id: SXCuo2
 #: src/modules/ai/components/AiChatApiKeyNotConfiguredMessage.tsx
@@ -18615,19 +19098,19 @@ msgstr "Visualizar modelo de dados"
 #. js-lingui-id: KAXSwC
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentForm.tsx
 msgid "Voice"
-msgstr ""
+msgstr "Voz"
 
 #. js-lingui-id: v+w4bK
 #: src/modules/settings/accounts/components/SettingsAccountsVoiceAgentsSection.tsx
 msgid "Voice agents"
-msgstr ""
+msgstr "Agentes de voz"
 
 #. js-lingui-id: ZBswPG
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
 #: src/pages/settings/accounts/SettingsAccountsVoiceAgent.tsx
 #: src/pages/settings/accounts/SettingsAccountsVoiceAgent.tsx
 msgid "Voice AI Agent"
-msgstr ""
+msgstr "Agente de IA de voz"
 
 #. js-lingui-id: uUehLT
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminQueueJobsTable.tsx
@@ -18702,7 +19185,7 @@ msgstr "Assistir à demonstração de membros"
 #. js-lingui-id: h4KC4F
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 msgid "We couldn't confirm your payment method. Please retry."
-msgstr ""
+msgstr "Não conseguimos confirmar sua forma de pagamento. Tente novamente."
 
 #. js-lingui-id: 6eMAkI
 #: src/modules/auth/sign-in-up/components/EmailVerificationSent.tsx
@@ -18712,13 +19195,13 @@ msgstr "Encontramos um problema ao verificar"
 #. js-lingui-id: v3f61k
 #: src/pages/onboarding/InviteTeam.tsx
 msgid "We found teammates from your calendar. Review and invite them."
-msgstr ""
+msgstr "Encontramos colegas de equipe no seu calendário. Revise e convide-os."
 
 #. js-lingui-id: 4x3zRh
 #. placeholder {0}: objectLabelSingular ?? ''
 #: src/modules/workflow/workflow-steps/workflow-actions/components/WorkflowEditActionUpsertRecord.tsx
 msgid "We match on these fields. If a {0} already exists, we update it. Otherwise, we create a new one."
-msgstr ""
+msgstr "Usamos estes campos para correspondência. Se já existir um {0}, nós o atualizamos. Caso contrário, criamos um novo."
 
 #. js-lingui-id: id6ein
 #: src/modules/ui/input/components/ImageInput.tsx
@@ -18836,7 +19319,7 @@ msgstr "Peso"
 #. placeholder {0}: brand?.productName || 'Zyra'
 #: src/pages/auth/SignInUp.tsx
 msgid "Welcome to {0}"
-msgstr ""
+msgstr "Boas-vindas ao {0}"
 
 #. js-lingui-id: t8ZvkC
 #: src/pages/auth/SignInUp.tsx
@@ -18869,37 +19352,51 @@ msgstr "O que está instalado e em uso no seu workspace"
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
 msgid "WhatsApp"
-msgstr ""
+msgstr "WhatsApp"
 
 #. js-lingui-id: 4n8LEK
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
 msgid "WhatsApp agents"
-msgstr ""
+msgstr "Agentes de WhatsApp"
 
 #. js-lingui-id: NBe8LI
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsappAgent.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsappAgent.tsx
 msgid "WhatsApp AI Agent"
-msgstr ""
+msgstr "Agente de IA do WhatsApp"
 
 #. js-lingui-id: jWquF3
 #: src/modules/settings/accounts/hooks/useConnectWhatsappNumber.ts
 msgid "WhatsApp connection is not configured on this server."
-msgstr ""
+msgstr "A conexão com o WhatsApp não está configurada neste servidor."
 
 #. js-lingui-id: zLJh7i
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentsSection.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplateForm.tsx
 msgid "WhatsApp number"
-msgstr ""
+msgstr "Número de WhatsApp"
 
 #. js-lingui-id: V1XfjK
 #. placeholder {0}: data?.connectWhatsappNumber.displayPhoneNumber ?? ''
 #: src/modules/settings/accounts/hooks/useConnectWhatsappNumber.ts
 msgid "WhatsApp number {0} connected."
-msgstr ""
+msgstr "Número de WhatsApp {0} conectado."
+
+#. js-lingui-id: ghWiWt
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
+msgid "WhatsApp templates"
+msgstr "Templates de WhatsApp"
+
+#. js-lingui-id: ndAujT
+#: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
+#: src/pages/settings/accounts/SettingsAccountsWhatsappTemplates.tsx
+msgid "WhatsApp Templates"
+msgstr "Templates de WhatsApp"
 
 #. js-lingui-id: m7GziZ
 #: src/modules/ai/components/suggested-prompts/default-suggested-prompts.ts
@@ -18919,12 +19416,12 @@ msgstr "Quando qualquer negócio com valor acima de $100.000 tiver sua etapa ou 
 #. js-lingui-id: lK/lrO
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramAutomationRuleForm.tsx
 msgid "When someone comments one of these keywords on the selected post, they automatically get a direct message."
-msgstr ""
+msgstr "Quando alguém comentar uma destas palavras-chave na publicação selecionada, recebe automaticamente uma mensagem direta."
 
 #. js-lingui-id: OTWJjS
 #: src/modules/settings/accounts/components/SettingsAccountsInstagramCampaignForm.tsx
 msgid "When someone comments one of these keywords, they automatically get a direct message."
-msgstr ""
+msgstr "Quando alguém comentar uma destas palavras-chave, recebe automaticamente uma mensagem direta."
 
 #. js-lingui-id: C51ilI
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeysNew.tsx
@@ -19080,6 +19577,7 @@ msgstr "Workflows"
 #: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
 #: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
 #: src/pages/settings/general/SettingsGeneral.tsx
 #: src/pages/settings/layout/components/SettingsLayoutDetailScaffold.tsx
 #: src/pages/settings/layout/SettingsLayout.tsx
@@ -19102,7 +19600,7 @@ msgstr "Workspace (todos os apps)"
 #. js-lingui-id: vDeg7Q
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
 msgid "Workspace address"
-msgstr ""
+msgstr "Endereço do workspace"
 
 #. js-lingui-id: fQ8teq
 #: src/modules/auth/sign-in-up/hooks/useSignUpInNewWorkspace.ts
@@ -19149,7 +19647,7 @@ msgstr "Logo do workspace"
 #. js-lingui-id: yz2+6L
 #: src/modules/auth/sign-in-up/hooks/useSignUpInNewWorkspace.ts
 msgid "Workspace logo upload failed"
-msgstr ""
+msgstr "Falha no envio do logo do workspace"
 
 #. js-lingui-id: wtxjAY
 #: src/modules/settings/event-logs/components/EventLogFilters.tsx
@@ -19332,7 +19830,7 @@ msgstr "Você pode ver a lógica da função nas configurações da sua aplicaç
 #. js-lingui-id: VlX5Sq
 #: src/modules/object-record/record-field/ui/form-types/components/FormMultiRecordPicker.tsx
 msgid "You can select at most {QUERY_MAX_RECORDS} records."
-msgstr ""
+msgstr "Você pode selecionar no máximo {QUERY_MAX_RECORDS} registros."
 
 #. js-lingui-id: OLE3Ky
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
@@ -19342,7 +19840,7 @@ msgstr "Você pode configurar qualquer combinação de IMAP (recepção de e-mai
 #. js-lingui-id: kv8vw3
 #: src/modules/settings/profile/components/EmailField.tsx
 msgid "You can't change your email because you belong to 2 or more workspaces."
-msgstr ""
+msgstr "Você não pode alterar seu e-mail porque pertence a 2 ou mais workspaces."
 
 #. js-lingui-id: hiLxmN
 #: src/modules/settings/admin-panel/hooks/useHandleImpersonate.ts
@@ -19393,7 +19891,7 @@ msgstr "Você será cobrado ${yearlyPrice} por usuário por ano cobrado anualmen
 #. js-lingui-id: 5K1++A
 #: src/modules/settings/billing/components/StartSubscriptionConfirmationModal.tsx
 msgid "You will be redirected to add your credit card. Once added, your subscription will start automatically."
-msgstr ""
+msgstr "Você será redirecionado para adicionar seu cartão de crédito. Depois de adicionado, sua assinatura começará automaticamente."
 
 #. js-lingui-id: C2d+Xk
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
@@ -19423,6 +19921,8 @@ msgid ""
 "You've hit your usage limit. \n"
 "Upgrade to {0} credits for ${1}/{2}."
 msgstr ""
+"Você atingiu o seu limite de uso. \n"
+"Faça upgrade para {0} créditos por ${1}/{2}."
 
 #. js-lingui-id: yZ0wRS
 #: src/modules/ai/components/AIChatNoMoreBillingCreditsBanner.tsx
@@ -19502,7 +20002,7 @@ msgstr "Seu nome como será exibido no aplicativo"
 #. js-lingui-id: 8mfOAZ
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 msgid "Your payment details are incomplete. Please review and retry."
-msgstr ""
+msgstr "Os dados do seu pagamento estão incompletos. Revise e tente novamente."
 
 #. js-lingui-id: MxZ8eH
 #: src/pages/settings/admin-panel/SettingsAdminNewAiProvider.tsx

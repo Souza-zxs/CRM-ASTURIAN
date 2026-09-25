@@ -1,5 +1,7 @@
 import { type FunnelSalesPageContent } from '@/funnel/types/FunnelPage';
+import { trackMetaPixelEvent } from '@/funnel/utils/metaPixel';
 import { styled } from '@linaria/react';
+import { useEffect } from 'react';
 import { Button } from 'zyra-ui/input';
 import { Section } from 'zyra-ui/layout';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
@@ -69,6 +71,12 @@ type SalesPageViewProps = {
 };
 
 export const SalesPageView = ({ content }: SalesPageViewProps) => {
+  // Showing the offer is the "ViewContent" moment of the funnel. A no-op
+  // unless the visitor accepted tracking.
+  useEffect(() => {
+    trackMetaPixelEvent({ eventName: 'ViewContent' });
+  }, []);
+
   return (
     <StyledPage>
       <StyledContent>
@@ -113,6 +121,7 @@ export const SalesPageView = ({ content }: SalesPageViewProps) => {
               // prop only renders a react-router Link (internal navigation),
               // so an external redirect goes through onClick instead.
               onClick={() => {
+                trackMetaPixelEvent({ eventName: 'InitiateCheckout' });
                 window.location.href = content.checkoutUrl;
               }}
             />

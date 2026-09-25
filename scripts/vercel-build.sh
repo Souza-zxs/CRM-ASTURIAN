@@ -24,7 +24,7 @@ npm install --no-save --legacy-peer-deps --include=dev \
 
 npx nx run zyra-server:build
 
-# This deployment is API-only (see vercel.json's rewrites) — Vercel still
+# This deployment is API-only (see vercel.api.json's rewrites) — Vercel still
 # wants a static Output Directory to exist.
 mkdir -p public
 echo 'Zyra API' > public/index.html

@@ -75,6 +75,8 @@ export {
   workflowEmailFilesSchema,
   workflowSendEmailActionSettingsSchema,
 } from './schemas/send-email-action-settings-schema';
+export { workflowSendWhatsappTemplateActionSchema } from './schemas/send-whatsapp-template-action-schema';
+export { workflowSendWhatsappTemplateActionSettingsSchema } from './schemas/send-whatsapp-template-action-settings-schema';
 export { stepFilterGroupSchema } from './schemas/step-filter-group-schema';
 export { stepFilterSchema } from './schemas/step-filter-schema';
 export { workflowUpdateRecordActionSchema } from './schemas/update-record-action-schema';

@@ -81,6 +81,7 @@ import { AddInstagramChannelEntitiesFastInstanceCommand } from 'src/database/com
 import { AddVoiceAgentEntitiesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1788928982829-add-voice-agent-entities';
 import { AddWhatsappAgentEntitiesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1789000000000-add-whatsapp-agent-entities';
 import { AddInstagramCampaignAndReportingEntitiesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1790000000000-add-instagram-campaign-and-reporting-entities';
+import { CreateFunnelTablesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1791000000000-create-funnel-tables';
 
 export const INSTANCE_COMMANDS = [
   AddViewFieldGroupIdIndexOnViewFieldFastInstanceCommand,
@@ -164,4 +165,5 @@ export const INSTANCE_COMMANDS = [
   AddVoiceAgentEntitiesFastInstanceCommand,
   AddWhatsappAgentEntitiesFastInstanceCommand,
   AddInstagramCampaignAndReportingEntitiesFastInstanceCommand,
+  CreateFunnelTablesFastInstanceCommand,
 ];

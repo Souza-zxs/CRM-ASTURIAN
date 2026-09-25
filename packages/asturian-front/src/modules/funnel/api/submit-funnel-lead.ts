@@ -19,7 +19,7 @@ const getUtmParams = () => {
 
 export const submitFunnelLead = async (
   input: SubmitFunnelLeadInput,
-): Promise<void> => {
+): Promise<{ leadId: string }> => {
   const response = await fetch(
     `${FUNNEL_API_URL}/funnel/${FUNNEL_WORKSPACE_ID}/leads`,
     {
@@ -38,4 +38,17 @@ export const submitFunnelLead = async (
 
     throw new Error(message ?? `Failed to submit (${response.status})`);
   }
+
+  const body: unknown = await response.json();
+
+  if (
+    typeof body !== 'object' ||
+    body === null ||
+    !('leadId' in body) ||
+    typeof body.leadId !== 'string'
+  ) {
+    throw new Error('Unexpected response when submitting the lead');
+  }
+
+  return { leadId: body.leadId };
 };

@@ -1,4 +1,5 @@
 import { ConfirmationPageView } from '@/funnel/components/ConfirmationPageView';
+import { FunnelTrackingConsent } from '@/funnel/components/FunnelTrackingConsent';
 import { SalesPageView } from '@/funnel/components/SalesPageView';
 import { SignupPageView } from '@/funnel/components/SignupPageView';
 import { WorkshopPageView } from '@/funnel/components/WorkshopPageView';
@@ -58,19 +59,28 @@ export const FunnelPage = () => {
   if (funnelPage === undefined) return null;
   if (funnelPage === null) return <NotFound />;
 
-  switch (funnelPage.content.type) {
-    case 'SIGNUP':
-      return (
-        <SignupPageView
-          content={funnelPage.content}
-          funnelPageId={funnelPage.id}
-        />
-      );
-    case 'WORKSHOP':
-      return <WorkshopPageView content={funnelPage.content} />;
-    case 'SALES':
-      return <SalesPageView content={funnelPage.content} />;
-    case 'CONFIRMATION':
-      return <ConfirmationPageView content={funnelPage.content} />;
-  }
+  const renderPageView = () => {
+    switch (funnelPage.content.type) {
+      case 'SIGNUP':
+        return (
+          <SignupPageView
+            content={funnelPage.content}
+            funnelPageId={funnelPage.id}
+          />
+        );
+      case 'WORKSHOP':
+        return <WorkshopPageView content={funnelPage.content} />;
+      case 'SALES':
+        return <SalesPageView content={funnelPage.content} />;
+      case 'CONFIRMATION':
+        return <ConfirmationPageView content={funnelPage.content} />;
+    }
+  };
+
+  return (
+    <>
+      {renderPageView()}
+      <FunnelTrackingConsent pageKey={slug} />
+    </>
+  );
 };
