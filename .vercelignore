@@ -7,3 +7,7 @@
 packages/zyra-server/.env
 .env
 *.log
+# Nunca enviar segredos locais no deploy pelo CLI (o CLI ignora o .gitignore
+# quando existe um .vercelignore). O build do front le as variaveis do painel.
+**/.env
+**/.env.*
