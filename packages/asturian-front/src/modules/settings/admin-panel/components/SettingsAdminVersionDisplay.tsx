@@ -8,21 +8,6 @@ type SettingsAdminVersionDisplayProps = {
   noVersionMessage: string;
 };
 
-const StyledActionLink = styled.a`
-  align-items: center;
-  color: ${themeCssVariables.font.color.primary};
-  display: flex;
-  font-size: ${themeCssVariables.font.size.sm};
-  font-weight: ${themeCssVariables.font.weight.regular};
-  gap: ${themeCssVariables.spacing[1]};
-  text-decoration: none;
-
-  :hover {
-    color: ${themeCssVariables.font.color.primary};
-    cursor: pointer;
-  }
-`;
-
 const StyledSpan = styled.span`
   color: ${themeCssVariables.font.color.primary};
   font-size: ${themeCssVariables.font.size.sm};
@@ -43,12 +28,6 @@ export const SettingsAdminVersionDisplay = ({
   }
 
   return (
-    <StyledActionLink
-      href={`https://hub.docker.com/r/zyracrm/zyra/tags?name=${version}`}
-      target="_blank"
-      rel="noreferrer"
-    >
-      {version}
-    </StyledActionLink>
+    <StyledSpan>{version}</StyledSpan>
   );
 };

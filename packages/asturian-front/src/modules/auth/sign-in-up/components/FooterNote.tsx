@@ -6,6 +6,7 @@ import { brandState } from '@/client-config/states/brandState';
 import { useIsCurrentLocationOnAWorkspace } from '@/domain-manager/hooks/useIsCurrentLocationOnAWorkspace';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
+import { PUBLIC_SITE_URLS } from '@/support/constants/PublicSiteUrls';
 
 const StyledCopyContainer = styled.div`
   align-items: center;
@@ -68,7 +69,7 @@ export const FooterNote = () => {
       <StyledCopyContainer>
         <Trans>By using {brand?.productName || 'Zyra'}, you agree to the</Trans>{' '}
         <a
-          href="https://zyra.com/legal/terms"
+          href={PUBLIC_SITE_URLS.terms}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -76,7 +77,7 @@ export const FooterNote = () => {
         </a>{' '}
         <Trans>and</Trans>{' '}
         <a
-          href="https://zyra.com/legal/privacy"
+          href={PUBLIC_SITE_URLS.privacy}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -98,7 +99,7 @@ export const FooterNote = () => {
         </>
       )}
       <a
-        href="https://zyra.com/legal/privacy"
+        href={PUBLIC_SITE_URLS.privacy}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -106,7 +107,7 @@ export const FooterNote = () => {
       </a>
       <StyledSeparator>•</StyledSeparator>
       <a
-        href="https://zyra.com/legal/terms"
+        href={PUBLIC_SITE_URLS.terms}
         target="_blank"
         rel="noopener noreferrer"
       >

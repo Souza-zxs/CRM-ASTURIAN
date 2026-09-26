@@ -1,4 +1,5 @@
 import { t } from '@lingui/core/macro';
+import { DOCUMENTATION_BASE_URL } from 'zyra-shared/constants';
 
 export const getCustomApplicationDescription =
   (): string => t`Host your workspace's customizations and overrides.
@@ -23,4 +24,4 @@ Scaffold a new app in one command:
 npx create-zyra-app@latest my-zyra-app
 \`\`\`
 
-See the [Getting Started guide](https://zyra.com/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](https://zyra.com/developers/extend/apps/building) for the \`defineApplication\` / \`defineEntity\` APIs.`;
+See the [Getting Started guide](${DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](${DOCUMENTATION_BASE_URL}/developers/extend/apps/building) for the \`defineApplication\` / \`defineEntity\` APIs.`;

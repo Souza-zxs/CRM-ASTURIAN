@@ -33,6 +33,7 @@ import { LightIconButton } from 'zyra-ui/input';
 import { ThemeContext, themeCssVariables } from 'zyra-ui/theme-constants';
 import { useDebouncedCallback } from 'use-debounce';
 import { v4 } from 'uuid';
+import { DOCUMENTATION_BASE_URL } from 'zyra-shared/constants';
 
 export type WorkflowEditActionFormBuilderProps = {
   triggerType: WorkflowTriggerType | undefined;
@@ -251,7 +252,7 @@ export const WorkflowEditActionFormBuilder = ({
                 label: t`Learn more`,
                 onClick: () =>
                   window.open(
-                    'https://docs.zyra.com/user-guide/workflows/capabilities/workflow-actions#form',
+                    `${DOCUMENTATION_BASE_URL}/user-guide/workflows/capabilities/workflow-actions#form`,
                     '_blank',
                     'noopener,noreferrer',
                   ),

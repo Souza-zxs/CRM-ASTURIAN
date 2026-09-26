@@ -1,1 +1,1 @@
-export const DOCUMENTATION_BASE_URL = 'https://docs.zyra.com';
+export const DOCUMENTATION_BASE_URL = 'https://workshop-os-docs.vercel.app';
