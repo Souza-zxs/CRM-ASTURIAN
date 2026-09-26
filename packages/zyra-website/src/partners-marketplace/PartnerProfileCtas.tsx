@@ -12,7 +12,7 @@ import { ProfileEyebrow } from './ProfileEyebrow';
 
 // Where "Contact partner" enquiries route when a partner has no direct channel
 // (calendar / LinkedIn) of their own.
-const CONTACT_EMAIL = 'rashad@zyra.com';
+const CONTACT_EMAIL = 'horizontecnologiaa@gmail.com';
 
 const Wrapper = styled.div`
   display: flex;

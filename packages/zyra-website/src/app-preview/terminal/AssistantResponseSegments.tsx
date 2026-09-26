@@ -3,6 +3,7 @@ import { type ReactNode } from 'react';
 
 import { APP_PREVIEW_STAGE } from '@/tokens/app-preview/app-preview-stage';
 import { APP_PREVIEW_TONES } from '@/tokens/app-preview/app-preview-tones';
+import { SITE_URLS } from '@/platform/site-urls';
 
 import { type AssistantResponseStreamingStage } from './assistant-response-stage';
 import { type StreamingSegment } from './StreamingText';
@@ -209,7 +210,7 @@ const WRAPUP_PARAGRAPH: StreamingSegment[] = [
   node(
     'w-docs',
     <ReferenceLink
-      href="https://zyra.com/developers"
+      href={SITE_URLS.docsDevelopers}
       onClick={(event) => event.preventDefault()}
     >
       Documentação de apps da Zyra

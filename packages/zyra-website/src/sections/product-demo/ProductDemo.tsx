@@ -14,6 +14,7 @@ import {
   SectionIntro,
   SectionShell,
 } from '@/ui';
+import { SITE_URLS } from '@/platform/site-urls';
 
 // The closer: the full product mockup in its static frame under a "try
 // it live" intro, with the dash pattern fading in behind the lower half
@@ -97,7 +98,7 @@ export function ProductDemo() {
               </Heading>
             </HeadingMeasure>
             <Button
-              href="https://app.zyra.com/welcome"
+              href={SITE_URLS.appSignUp}
               label={i18n._(msg`Try Zyra Cloud`)}
             />
           </IntroMeasure>

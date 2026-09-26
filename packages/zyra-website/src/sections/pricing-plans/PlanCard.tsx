@@ -9,6 +9,7 @@ import { TalkToUsButton } from '@/contact-cal';
 import { useAnimatedNumber } from '@/platform/motion';
 import { color, mediaUp, radius, semanticColor, spacing } from '@/tokens';
 import { Body, Button, Heading, Image } from '@/ui';
+import { SITE_URLS } from '@/platform/site-urls';
 
 import {
   PLANS_DATA,
@@ -199,7 +200,7 @@ export function PlanCard({
           />
         ) : (
           <Button
-            href="https://app.zyra.com/welcome"
+            href={SITE_URLS.appSignUp}
             label={i18n._(msg`Começar grátis`)}
             variant={highlighted ? 'filled' : 'outlined'}
           />

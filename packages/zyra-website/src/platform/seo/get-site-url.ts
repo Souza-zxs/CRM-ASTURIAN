@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = 'https://zyra.com';
+const DEFAULT_SITE_URL = 'https://workshop-os-six.vercel.app';
 
 export const getSiteUrl = (): string => {
   const configured = process.env.NEXT_PUBLIC_WEBSITE_URL;

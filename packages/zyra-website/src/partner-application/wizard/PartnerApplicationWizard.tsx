@@ -222,12 +222,7 @@ export function PartnerApplicationWizard({
 
   if (state.isSubmitted) {
     return (
-      <PartnerApplicationSuccess
-        company={state.company}
-        email={state.email}
-        name={state.name}
-        onDismiss={onSuccess}
-      />
+      <PartnerApplicationSuccess onDismiss={onSuccess} />
     );
   }
 

@@ -2,8 +2,6 @@ import { type MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import {
   IconBook,
-  IconBrandLinkedin,
-  IconBrandX,
   IconCode,
   IconTag,
   IconUsers,
@@ -115,18 +113,5 @@ export const MENU: {
     { href: '/customers', label: msg`Clientes` },
     { href: '/pricing', label: msg`Preços` },
   ],
-  socialLinks: [
-    {
-      ariaLabel: msg`LinkedIn (abre em nova aba)`,
-      href: SITE_URLS.linkedin,
-      icon: IconBrandLinkedin,
-      showInDesktop: false,
-    },
-    {
-      ariaLabel: msg`X (abre em nova aba)`,
-      href: SITE_URLS.x,
-      icon: IconBrandX,
-      showInDesktop: false,
-    },
-  ],
+  socialLinks: [],
 };

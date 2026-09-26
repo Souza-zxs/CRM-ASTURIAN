@@ -31,7 +31,7 @@ export function TermsDocument() {
       <p>
         If you do not agree with (or cannot comply with) Agreements, then you
         may not use the Service, but please let us know by emailing at
-        contact@zyra.com so we can try to find a solution. These Terms apply to
+        horizontecnologiaa@gmail.com so we can try to find a solution. These Terms apply to
         all visitors, users and others who wish to access or use Service.
       </p>
       <p>Thank you for being responsible.</p>
@@ -42,7 +42,7 @@ export function TermsDocument() {
         newsletters, marketing or promotional materials and other information we
         may send. However, you may opt out of receiving any, or all, of these
         communications from us by following the unsubscribe link or by emailing
-        us at contact@zyra.com.
+        us at horizontecnologiaa@gmail.com.
       </p>
 
       <h2>Purchases</h2>
@@ -340,7 +340,7 @@ export function TermsDocument() {
 
       <h2>Error Reporting and Feedback</h2>
       <p>
-        You may provide us either directly at contact@zyra.com or via third
+        You may provide us either directly at horizontecnologiaa@gmail.com or via third
         party sites and tools with information and feedback concerning errors,
         suggestions for improvements, ideas, problems, complaints, and other
         matters related to our Service (&quot;Feedback&quot;). You acknowledge
@@ -503,7 +503,7 @@ export function TermsDocument() {
         Please send your feedback, comments, requests for technical support:
       </p>
       <p>
-        By email: <a href="mailto:contact@zyra.com">contact@zyra.com</a>.
+        By email: <a href="mailto:horizontecnologiaa@gmail.com">horizontecnologiaa@gmail.com</a>.
       </p>
     </>
   );

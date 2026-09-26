@@ -1,4 +1,5 @@
 // The mockup's sidebar, ported from the old app-preview data.
+import { SITE_URLS } from '@/platform/site-urls';
 import { COMPANIES_TABLE_PAGE } from './companies-table-page';
 import { SALES_DASHBOARD_PAGE } from './sales-dashboard-page';
 import { WORKFLOWS_FOLDER } from './workflows-folder';
@@ -64,7 +65,7 @@ export const APP_PREVIEW_CONFIG: AppPreviewConfig = {
       {
         id: 'book-demo',
         label: 'Agendar demonstração',
-        href: 'https://cal.com/forms/f7841033-0a20-4958-8c92-4e34ec128a81',
+        href: SITE_URLS.appSignUp,
         icon: { kind: 'brand', brand: 'zyra', overlay: 'link' },
       },
     ],

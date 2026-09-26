@@ -1,5 +1,8 @@
 import { LocalizedLink } from '@/platform/i18n/LocalizedLink';
 import { ExternalLink } from '@/ui';
+import { getSiteUrl } from '@/platform/seo/get-site-url';
+
+const SITE_ORIGIN = getSiteUrl();
 
 export function PrivacyPolicyDocument() {
   return (
@@ -23,7 +26,7 @@ export function PrivacyPolicyDocument() {
 
       <p>
         {'Zyra operates the website '}
-        <ExternalLink href="https://zyra.com">https://zyra.com</ExternalLink>
+        <ExternalLink href={SITE_ORIGIN}>{SITE_ORIGIN}</ExternalLink>
         {' and related cloud services (collectively, the “'}
         <strong>Service</strong>
         ”).
@@ -57,8 +60,8 @@ export function PrivacyPolicyDocument() {
           <p>
             <strong>Service</strong>
             {' – means the Zyra website ('}
-            <ExternalLink href="https://zyra.com">
-              https://zyra.com
+            <ExternalLink href={SITE_ORIGIN}>
+              {SITE_ORIGIN}
             </ExternalLink>
             ) and any related services or applications operated by Horizon LTDA.
           </p>
@@ -326,13 +329,7 @@ export function PrivacyPolicyDocument() {
             <strong>Stripe</strong>
             {' for payment processing, '}
             <strong>Sentry</strong>
-            {
-              ' for error tracking. A comprehensive list of subprocessors is available in our '
-            }
-            <ExternalLink href="https://trust.zyra.com/">
-              Trust Center
-            </ExternalLink>
-            .
+            {' for error tracking.'}
           </p>
         </li>
         <li>
@@ -792,7 +789,7 @@ export function PrivacyPolicyDocument() {
         <li>
           <p>
             <strong>By Email:</strong>{' '}
-            <a href="mailto:privacy@zyra.com">privacy@zyra.com</a>
+            <a href="mailto:horizontecnologiaa@gmail.com">horizontecnologiaa@gmail.com</a>
           </p>
         </li>
       </ul>

@@ -4,7 +4,6 @@ import { msg } from '@lingui/core/macro';
 import { type IconComponent } from '@/icons';
 import { SITE_URLS } from '@/platform/site-urls';
 
-import { IconBrandLinkedin, IconBrandX } from '@tabler/icons-react';
 
 export type FooterNavLink = {
   label: MessageDescriptor;
@@ -80,23 +79,12 @@ export const FOOTER: {
       links: [
         { label: msg`Política de Privacidade`, href: '/privacy-policy' },
         { label: msg`Termos e Condições`, href: '/terms' },
-        {
-          label: msg`Central de Confiança`,
-          href: SITE_URLS.trustCenter,
-          external: true,
-        },
       ],
     },
     {
       id: 'footer-connect',
       title: msg`Conecte-se`,
-      links: [
-        {
-          label: msg`LinkedIn`,
-          href: SITE_URLS.linkedin,
-          external: true,
-        },
-      ],
+      links: [],
       ctas: [
         {
           kind: 'contact-modal',
@@ -112,16 +100,5 @@ export const FOOTER: {
       ],
     },
   ],
-  socialLinks: [
-    {
-      ariaLabel: msg`LinkedIn (abre em nova aba)`,
-      href: SITE_URLS.linkedin,
-      icon: IconBrandLinkedin,
-    },
-    {
-      ariaLabel: msg`X (abre em nova aba)`,
-      href: SITE_URLS.x,
-      icon: IconBrandX,
-    },
-  ],
+  socialLinks: [],
 };

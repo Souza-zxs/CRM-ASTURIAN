@@ -8,8 +8,8 @@ export const PARTNER_APPLICATION_COPY = {
   submit: msg`Submit application`,
   submitInFlight: msg`Submitting…`,
   successTitle: msg`Thanks, you're in.\n*Now book your intro call.*`,
-  bookIntroSubtitle: msg`Grab 30 minutes so we can get to know your team.`,
-  bookLater: msg`I'll book later →`,
+  successSubtitle: msg`Our team will reach out using the email you provided.`,
+  dismiss: msg`Close →`,
   stepProgressLabel: (current: number, total: number) =>
     msg`Step ${current} of ${total}`,
   validation: {

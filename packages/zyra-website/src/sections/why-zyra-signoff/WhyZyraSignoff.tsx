@@ -2,6 +2,7 @@ import { msg } from '@lingui/core/macro';
 
 import { getServerI18n } from '@/platform/i18n/get-server-i18n';
 import { Button, Signoff } from '@/ui';
+import { SITE_URLS } from '@/platform/site-urls';
 
 export function WhyZyraSignoff() {
   const i18n = getServerI18n();
@@ -14,7 +15,7 @@ export function WhyZyraSignoff() {
       scheme="dark"
     >
       <Button
-        href="https://app.zyra.com/welcome"
+        href={SITE_URLS.appSignUp}
         label={i18n._(msg`Começar agora`)}
       />
     </Signoff>

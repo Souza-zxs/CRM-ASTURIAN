@@ -56,6 +56,10 @@ export default defineConfig({
     'process.env.NEXT_PUBLIC_APP_URL': JSON.stringify(
       process.env.NEXT_PUBLIC_APP_URL ?? '',
     ),
+    // getDocsUrl() (src/platform/site-urls.ts) — same inlining reason as above.
+    'process.env.NEXT_PUBLIC_DOCS_URL': JSON.stringify(
+      process.env.NEXT_PUBLIC_DOCS_URL ?? '',
+    ),
   },
 
   resolve: {
