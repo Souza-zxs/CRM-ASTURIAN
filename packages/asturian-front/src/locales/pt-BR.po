@@ -1355,14 +1355,14 @@ msgstr "Adicionar visualização"
 #: src/modules/page-layout/widgets/components/DashboardWidgetPlaceholder.tsx
 #: src/modules/page-layout/widgets/components/RecordPageAddWidgetSection.tsx
 msgid "Add widget"
-msgstr "Adicionar widget"
+msgstr "Adicionar item"
 
 #. js-lingui-id: iRpDWj
 #: src/modules/page-layout/widgets/components/DashboardWidgetPlaceholder.tsx
 #: src/modules/page-layout/widgets/widget-card/components/WidgetCardHeader.tsx
 #: src/modules/side-panel/pages/page-layout/utils/getPageLayoutPageTitle.ts
 msgid "Add Widget"
-msgstr "Adicionar Widget"
+msgstr "Adicionar item"
 
 #. js-lingui-id: 8zCitC
 #: src/modules/side-panel/pages/page-layout/components/WidgetSettingsPlacementSection.tsx
@@ -1579,7 +1579,7 @@ msgstr "Agentes"
 #: src/modules/page-layout/utils/getWidgetTitle.ts
 #: src/modules/side-panel/pages/page-layout/constants/GraphTypeInformation.ts
 msgid "Aggregate Chart"
-msgstr "Gráfico agregado"
+msgstr "Número (KPI)"
 
 #. js-lingui-id: jsQZMk
 #: src/modules/settings/admin-panel/components/SettingsAdminContent.tsx
@@ -3641,7 +3641,7 @@ msgstr "Clique na marca de seleção para aplicar suas alterações."
 #. js-lingui-id: WTlZnA
 #: src/modules/page-layout/widgets/components/DashboardWidgetPlaceholder.tsx
 msgid "Click to add your first widget"
-msgstr "Clique para adicionar o seu primeiro widget"
+msgstr "Clique aqui para adicionar seu primeiro gráfico, número ou tabela"
 
 #. js-lingui-id: d0rtA5
 #: src/modules/page-layout/widgets/graph/components/GraphWidgetTooltip.tsx
@@ -5241,7 +5241,7 @@ msgstr "Modelo de dados - Configurações"
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Data on display"
-msgstr "Dados em exibição"
+msgstr "O que medir"
 
 #. js-lingui-id: Ix/CMz
 #: src/modules/settings/ai/components/SettingsAiModelHoverCard.tsx
@@ -5306,7 +5306,7 @@ msgstr "Formato da Data"
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Date granularity"
-msgstr "Granularidade da Data"
+msgstr "Agrupar datas por"
 
 #. js-lingui-id: dhHZTJ
 #: src/modules/side-panel/pages/page-layout/utils/__tests__/shouldHideChartSetting.test.ts
@@ -9124,7 +9124,7 @@ msgstr "Se você perdeu essa chave, pode gerá-la novamente, mas saiba que qualq
 #. js-lingui-id: KDMdBi
 #: src/modules/side-panel/pages/page-layout/components/SidePanelPageLayoutDashboardWidgetTypeSelect.tsx
 msgid "iFrame"
-msgstr "iFrame"
+msgstr "Página externa (iFrame)"
 
 #. js-lingui-id: 28sfnx
 #: src/modules/page-layout/utils/getWidgetTitle.ts
@@ -12720,7 +12720,7 @@ msgstr "ol"
 #. js-lingui-id: +rvV4v
 #: src/modules/side-panel/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
 msgid "Omit zero values"
-msgstr "Omitir valores zero"
+msgstr "Ocultar valores zerados"
 
 #. js-lingui-id: UCQiqt
 #. placeholder {0}: appObject.labelSingular
@@ -16296,7 +16296,7 @@ msgstr "Acelere as leituras nos campos que você mais filtra ou ordena. Cada ín
 #: src/modules/side-panel/pages/page-layout/utils/__tests__/shouldHideChartSetting.test.ts
 #: src/modules/side-panel/pages/page-layout/utils/__tests__/shouldHideChartSetting.test.ts
 msgid "Split multiple values"
-msgstr "Dividir vários valores"
+msgstr "Separar valores múltiplos"
 
 #. js-lingui-id: vnS6Rf
 #: src/modules/settings/security/components/SettingsSecuritySettings.tsx
@@ -19460,7 +19460,7 @@ msgstr "Widget"
 #: src/modules/side-panel/pages/page-layout/components/SidePanelPageLayoutDashboardWidgetTypeSelect.tsx
 #: src/modules/side-panel/pages/page-layout/components/SidePanelPageLayoutRecordPageWidgetTypeSelect.tsx
 msgid "Widget type"
-msgstr "Tipo de Widget"
+msgstr "O que você quer adicionar?"
 
 #. js-lingui-id: YR3K7M
 #: src/pages/settings/applications/SettingsAvailableApplicationDetails.tsx
