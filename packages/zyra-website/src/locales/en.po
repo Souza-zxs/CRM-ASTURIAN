@@ -23,6 +23,11 @@ msgstr "-33% off"
 msgid "...with AI that actually helps you *work faster*"
 msgstr "...with AI that actually helps you *work faster*"
 
+#. js-lingui-id: +kQqib
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "(11) 91234-5678"
+msgstr "(11) 91234-5678"
+
 #. js-lingui-id: J/hVSQ
 #. placeholder {0}: LATEST_RELEASE.title
 #: src/sections/menu/menu.data.ts
@@ -691,11 +696,6 @@ msgstr "Cape Verde 🇨🇻"
 msgid "carousel"
 msgstr "carousel"
 
-#. js-lingui-id: w4S/7t
-#: src/contact-cal/ContactCalModal.tsx
-msgid "Carregando formulário…"
-msgstr "Carregando formulário…"
-
 #. js-lingui-id: M1RLfx
 #: src/partners-marketplace/spoken-language-labels.ts
 msgid "Catalan"
@@ -722,11 +722,6 @@ msgstr "Central de Add-ons Salesfarce"
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Central de ajuda"
 msgstr "Central de ajuda"
-
-#. js-lingui-id: AOQ7cj
-#: src/sections/footer/footer.data.ts
-msgid "Central de Confiança"
-msgstr "Central de Confiança"
 
 #. js-lingui-id: iI3Dq9
 #: src/partner-application/data/partner-country-options.ts
@@ -785,6 +780,11 @@ msgstr "Clear filters"
 #: src/sections/menu/menu.data.ts
 msgid "Clientes"
 msgstr "Clientes"
+
+#. js-lingui-id: quF6Vp
+#: src/partner-application/partner-application-copy.ts
+msgid "Close →"
+msgstr "Close →"
 
 #. js-lingui-id: cu6iol
 #: src/sections/pricing-salesfarce/SalesfarceWrongChoicePopup.tsx
@@ -1247,6 +1247,11 @@ msgstr "Drag-and-drop deals between stages"
 msgid "Dutch"
 msgstr "Dutch"
 
+#. js-lingui-id: 5Sa1Ss
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "E-mail"
+msgstr "E-mail"
+
 #. js-lingui-id: RxjT3B
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "E-mail e Chat"
@@ -1359,6 +1364,16 @@ msgstr "Enter a valid URL (starting with http:// or https://)."
 #: src/sections/menu/MenuDrawer.tsx
 msgid "Entrar"
 msgstr "Entrar"
+
+#. js-lingui-id: SsoLsy
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Enviando…"
+msgstr "Enviando…"
+
+#. js-lingui-id: i7HxDI
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Enviar"
+msgstr "Enviar"
 
 #. js-lingui-id: OpxzMM
 #: src/app-preview/terminal/TerminalSendButton.tsx
@@ -1617,11 +1632,6 @@ msgstr "Ghana 🇬🇭"
 msgid "Go the extra mile *with no-code*"
 msgstr "Go the extra mile *with no-code*"
 
-#. js-lingui-id: Zh0acB
-#: src/partner-application/partner-application-copy.ts
-msgid "Grab 30 minutes so we can get to know your team."
-msgstr "Grab 30 minutes so we can get to know your team."
-
 #. js-lingui-id: asVLwU
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Grátis pra você!"
@@ -1738,11 +1748,6 @@ msgstr "How Zyra collects, uses, and protects your data — our GDPR- and CCPA-c
 #: src/partner-application/data/partner-country-options.ts
 msgid "Hungary 🇭🇺"
 msgstr "Hungary 🇭🇺"
-
-#. js-lingui-id: T6wyby
-#: src/partner-application/partner-application-copy.ts
-msgid "I'll book later →"
-msgstr "I'll book later →"
 
 #. js-lingui-id: kf1xrG
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -2091,17 +2096,6 @@ msgstr "Liechtenstein 🇱🇮"
 msgid "Limite de usuários"
 msgstr "Limite de usuários"
 
-#. js-lingui-id: gggTBm
-#: src/sections/footer/footer.data.ts
-msgid "LinkedIn"
-msgstr "LinkedIn"
-
-#. js-lingui-id: 2pGxS2
-#: src/sections/footer/footer.data.ts
-#: src/sections/menu/menu.data.ts
-msgid "LinkedIn (abre em nova aba)"
-msgstr "LinkedIn (abre em nova aba)"
-
 #. js-lingui-id: Gg69LR
 #: src/partner-application/partner-application-copy.ts
 msgid "LinkedIn URL"
@@ -2353,6 +2347,11 @@ msgstr "Na terça seu time descobre que negócios com um patrocinador técnico f
 msgid "Namibia 🇳🇦"
 msgstr "Namibia 🇳🇦"
 
+#. js-lingui-id: jj4Ksi
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Não foi possível enviar agora. Tente novamente em alguns minutos."
+msgstr "Não foi possível enviar agora. Tente novamente em alguns minutos."
+
 #. js-lingui-id: WJTnKT
 #: src/sections/faq/faq.data.ts
 msgid "Não. Dá pra criar objetos, campos, views e automações sem código, direto nas configurações — sem limite e sem custo extra."
@@ -2429,6 +2428,7 @@ msgid "No releases published yet — check back soon."
 msgstr "No releases published yet — check back soon."
 
 #. js-lingui-id: lEvWAd
+#: src/contact-cal/ContactLeadForm.tsx
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Nome"
 msgstr "Nome"
@@ -2542,6 +2542,11 @@ msgstr ""
 #: src/sections/faq/faq.data.ts
 msgid "Os planos variam conforme o tamanho do time e as necessidades da operação. Fale com a gente pra montar uma proposta sob medida."
 msgstr "Os planos variam conforme o tamanho do time e as necessidades da operação. Fale com a gente pra montar uma proposta sob medida."
+
+#. js-lingui-id: l/YuJg
+#: src/partner-application/partner-application-copy.ts
+msgid "Our team will reach out using the email you provided."
+msgstr "Our team will reach out using the email you provided."
 
 #. js-lingui-id: F8yiiv
 #: src/platform/routing/static-website-routes.ts
@@ -2924,6 +2929,11 @@ msgstr "Real customer stories from teams running their business on Zyra: how the
 msgid "Real-time data"
 msgstr "Real-time data"
 
+#. js-lingui-id: HfeibS
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Recebemos o seu contato. Em breve nossa equipe fala com você."
+msgstr "Recebemos o seu contato. Em breve nossa equipe fala com você."
+
 #. js-lingui-id: 7W22l0
 #: src/sections/menu/menu.data.ts
 msgid "Recursos"
@@ -3148,6 +3158,11 @@ msgstr "Serbia 🇷🇸"
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Servidor MCP"
 msgstr "Servidor MCP"
+
+#. js-lingui-id: QN43rN
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Seu nome"
+msgstr "Seu nome"
 
 #. js-lingui-id: 62gxWx
 #: src/partner-application/data/partner-country-options.ts
@@ -3837,6 +3852,11 @@ msgstr "Visualize seus clientes num mapa!"
 msgid "Você não compra seu pipeline de deploy pronto. Você não aluga seu data warehouse de um fornecedor que decide o schema. Você constrói, você é dono, você itera toda semana. O CRM está indo pelo mesmo caminho. Os times que tratarem isso como infraestrutura própria vão acumular vantagem a cada trimestre."
 msgstr "Você não compra seu pipeline de deploy pronto. Você não aluga seu data warehouse de um fornecedor que decide o schema. Você constrói, você é dono, você itera toda semana. O CRM está indo pelo mesmo caminho. Os times que tratarem isso como infraestrutura própria vão acumular vantagem a cada trimestre."
 
+#. js-lingui-id: /YT+fG
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "voce@empresa.com"
+msgstr "voce@empresa.com"
+
 #. js-lingui-id: 8CHatv
 #: src/partner-application/partner-application-copy.ts
 msgid "We could not submit your application. Please try again in a moment."
@@ -3877,6 +3897,11 @@ msgstr "What they do"
 msgid "What you cover *"
 msgstr "What you cover *"
 
+#. js-lingui-id: 2+ExvJ
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
 #. js-lingui-id: 2O07UN
 #: src/partners-marketplace/PartnerProfile.tsx
 msgid "Where & how"
@@ -3906,12 +3931,6 @@ msgstr "Workspace"
 #: src/partner-application/partner-application-copy.ts
 msgid "Workspace URL, customer references, relevant links…"
 msgstr "Workspace URL, customer references, relevant links…"
-
-#. js-lingui-id: DQzuW4
-#: src/sections/footer/footer.data.ts
-#: src/sections/menu/menu.data.ts
-msgid "X (abre em nova aba)"
-msgstr "X (abre em nova aba)"
 
 #. js-lingui-id: S6izIJ
 #: src/partner-application/data/partner-country-options.ts

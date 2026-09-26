@@ -28,6 +28,11 @@ msgstr "-33 % de réduction"
 msgid "...with AI that actually helps you *work faster*"
 msgstr "...avec une IA qui vous aide vraiment à *travailler plus vite*"
 
+#. js-lingui-id: +kQqib
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "(11) 91234-5678"
+msgstr ""
+
 #. js-lingui-id: J/hVSQ
 #. placeholder {0}: LATEST_RELEASE.title
 #: src/sections/menu/menu.data.ts
@@ -687,11 +692,6 @@ msgstr "Cap-Vert 🇨🇻"
 msgid "carousel"
 msgstr "carrousel"
 
-#. js-lingui-id: w4S/7t
-#: src/contact-cal/ContactCalModal.tsx
-msgid "Carregando formulário…"
-msgstr ""
-
 #. js-lingui-id: M1RLfx
 #: src/partners-marketplace/spoken-language-labels.ts
 msgid "Catalan"
@@ -717,11 +717,6 @@ msgstr ""
 #. js-lingui-id: xV+o7t
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Central de ajuda"
-msgstr ""
-
-#. js-lingui-id: AOQ7cj
-#: src/sections/footer/footer.data.ts
-msgid "Central de Confiança"
 msgstr ""
 
 #. js-lingui-id: iI3Dq9
@@ -780,6 +775,11 @@ msgstr "Effacer les filtres"
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 msgid "Clientes"
+msgstr ""
+
+#. js-lingui-id: quF6Vp
+#: src/partner-application/partner-application-copy.ts
+msgid "Close →"
 msgstr ""
 
 #. js-lingui-id: cu6iol
@@ -1239,6 +1239,11 @@ msgstr "Glissez-déposez les opportunités entre les étapes"
 msgid "Dutch"
 msgstr "Néerlandais"
 
+#. js-lingui-id: 5Sa1Ss
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "E-mail"
+msgstr ""
+
 #. js-lingui-id: RxjT3B
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "E-mail e Chat"
@@ -1350,6 +1355,16 @@ msgstr "Saisissez une URL valide (commençant par http:// ou https://)."
 #: src/sections/menu/Menu.tsx
 #: src/sections/menu/MenuDrawer.tsx
 msgid "Entrar"
+msgstr ""
+
+#. js-lingui-id: SsoLsy
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Enviando…"
+msgstr ""
+
+#. js-lingui-id: i7HxDI
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Enviar"
 msgstr ""
 
 #. js-lingui-id: OpxzMM
@@ -1609,11 +1624,6 @@ msgstr "Ghana 🇬🇭"
 msgid "Go the extra mile *with no-code*"
 msgstr "Allez plus loin *avec le no-code*"
 
-#. js-lingui-id: Zh0acB
-#: src/partner-application/partner-application-copy.ts
-msgid "Grab 30 minutes so we can get to know your team."
-msgstr "Réservez 30 minutes pour que nous puissions faire connaissance avec votre équipe."
-
 #. js-lingui-id: asVLwU
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Grátis pra você!"
@@ -1728,11 +1738,6 @@ msgstr "Comment Zyra collecte, utilise et protège vos données — notre politi
 #: src/partner-application/data/partner-country-options.ts
 msgid "Hungary 🇭🇺"
 msgstr "Hongrie 🇭🇺"
-
-#. js-lingui-id: T6wyby
-#: src/partner-application/partner-application-copy.ts
-msgid "I'll book later →"
-msgstr "Je réserverai plus tard →"
 
 #. js-lingui-id: kf1xrG
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -2081,17 +2086,6 @@ msgstr "Liechtenstein 🇱🇮"
 msgid "Limite de usuários"
 msgstr ""
 
-#. js-lingui-id: gggTBm
-#: src/sections/footer/footer.data.ts
-msgid "LinkedIn"
-msgstr "LinkedIn"
-
-#. js-lingui-id: 2pGxS2
-#: src/sections/footer/footer.data.ts
-#: src/sections/menu/menu.data.ts
-msgid "LinkedIn (abre em nova aba)"
-msgstr ""
-
 #. js-lingui-id: Gg69LR
 #: src/partner-application/partner-application-copy.ts
 msgid "LinkedIn URL"
@@ -2343,6 +2337,11 @@ msgstr ""
 msgid "Namibia 🇳🇦"
 msgstr "Namibie 🇳🇦"
 
+#. js-lingui-id: jj4Ksi
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Não foi possível enviar agora. Tente novamente em alguns minutos."
+msgstr ""
+
 #. js-lingui-id: WJTnKT
 #: src/sections/faq/faq.data.ts
 msgid "Não. Dá pra criar objetos, campos, views e automações sem código, direto nas configurações — sem limite e sem custo extra."
@@ -2419,6 +2418,7 @@ msgid "No releases published yet — check back soon."
 msgstr ""
 
 #. js-lingui-id: lEvWAd
+#: src/contact-cal/ContactLeadForm.tsx
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Nome"
 msgstr ""
@@ -2529,6 +2529,11 @@ msgstr ""
 #. js-lingui-id: joZotM
 #: src/sections/faq/faq.data.ts
 msgid "Os planos variam conforme o tamanho do time e as necessidades da operação. Fale com a gente pra montar uma proposta sob medida."
+msgstr ""
+
+#. js-lingui-id: l/YuJg
+#: src/partner-application/partner-application-copy.ts
+msgid "Our team will reach out using the email you provided."
 msgstr ""
 
 #. js-lingui-id: F8yiiv
@@ -2905,6 +2910,11 @@ msgstr "De vraies histoires clients d’équipes qui font tourner leur activité
 msgid "Real-time data"
 msgstr "Données en temps réel"
 
+#. js-lingui-id: HfeibS
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Recebemos o seu contato. Em breve nossa equipe fala com você."
+msgstr ""
+
 #. js-lingui-id: 7W22l0
 #: src/sections/menu/menu.data.ts
 msgid "Recursos"
@@ -3128,6 +3138,11 @@ msgstr "Serbie 🇷🇸"
 #. js-lingui-id: kmLu+M
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Servidor MCP"
+msgstr ""
+
+#. js-lingui-id: QN43rN
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "Seu nome"
 msgstr ""
 
 #. js-lingui-id: 62gxWx
@@ -3818,6 +3833,11 @@ msgstr ""
 msgid "Você não compra seu pipeline de deploy pronto. Você não aluga seu data warehouse de um fornecedor que decide o schema. Você constrói, você é dono, você itera toda semana. O CRM está indo pelo mesmo caminho. Os times que tratarem isso como infraestrutura própria vão acumular vantagem a cada trimestre."
 msgstr ""
 
+#. js-lingui-id: /YT+fG
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "voce@empresa.com"
+msgstr ""
+
 #. js-lingui-id: 8CHatv
 #: src/partner-application/partner-application-copy.ts
 msgid "We could not submit your application. Please try again in a moment."
@@ -3858,6 +3878,11 @@ msgstr "Ce qu’ils font"
 msgid "What you cover *"
 msgstr "Ce que vous couvrez *"
 
+#. js-lingui-id: 2+ExvJ
+#: src/contact-cal/ContactLeadForm.tsx
+msgid "WhatsApp"
+msgstr ""
+
 #. js-lingui-id: 2O07UN
 #: src/partners-marketplace/PartnerProfile.tsx
 msgid "Where & how"
@@ -3887,12 +3912,6 @@ msgstr "Espace de travail"
 #: src/partner-application/partner-application-copy.ts
 msgid "Workspace URL, customer references, relevant links…"
 msgstr "URL de l’espace de travail, références clients, liens pertinents…"
-
-#. js-lingui-id: DQzuW4
-#: src/sections/footer/footer.data.ts
-#: src/sections/menu/menu.data.ts
-msgid "X (abre em nova aba)"
-msgstr ""
 
 #. js-lingui-id: S6izIJ
 #: src/partner-application/data/partner-country-options.ts
