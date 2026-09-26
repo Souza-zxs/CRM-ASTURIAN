@@ -1,0 +1,44 @@
+---
+title: WhatsApp channel and AI agent
+description: Connect a WhatsApp number to Zyra and configure an AI agent that replies to inbound messages.
+---
+
+Zyra lets you manage connected WhatsApp numbers and attach an AI agent that answers incoming WhatsApp messages on behalf of a number.
+
+## Before you start
+
+- The WhatsApp features must be enabled on your instance. If you do not see the WhatsApp cards under **Accounts**, ask your administrator.
+- You need at least one connected WhatsApp number. How numbers are connected depends on your setup, so ask your administrator if the list is empty.
+
+## Set up the AI agent
+
+1. Open **Settings** and go to **User > Accounts**.
+2. Open the **WhatsApp AI Agent** card.
+3. Click to create a new agent (**New WhatsApp agent**).
+4. Fill in the form:
+   - **Name** and **WhatsApp number** (the number the agent will answer for).
+   - **Greeting message**.
+   - **System prompt**: the persona, goal and tone of voice.
+   - **Qualification criteria**: what makes a lead qualified.
+   - **Forbidden phrases**: a comma-separated list the agent must never use.
+   - **Handoff instructions**: when the agent should pass the conversation to a human.
+   - **Model**: the AI model name (the default is `gpt-4.1-mini`).
+5. Click **Create agent**.
+
+To review connected numbers, open **Settings > User > Accounts > WhatsApp**.
+
+## How it works
+
+The agent auto-replies to inbound WhatsApp messages for its number. There is one agent per WhatsApp number. Each agent has an active flag, which is on by default.
+
+When the model decides a person should take over, the conversation is flagged for a human and AI replies are switched off for that conversation.
+
+## Good to know
+
+<Note>
+The model default is described in the code as a low-cost placeholder, not a vetted choice. Confirm the right model with your administrator.
+</Note>
+
+- Forbidden phrases are matched case-insensitively, and the model is instructed to avoid them.
+- Deleting a WhatsApp number also removes its agent.
+- To message contacts outside the 24-hour window, use [approved templates](/user-guide/channels/whatsapp-templates).

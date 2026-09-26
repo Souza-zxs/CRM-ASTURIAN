@@ -71,6 +71,16 @@
                 ]
               },
               {
+                "group": "Channels & Automation",
+                "pages": [
+                  "user-guide/channels/whatsapp",
+                  "user-guide/channels/whatsapp-templates",
+                  "user-guide/channels/instagram",
+                  "user-guide/channels/voice-agent",
+                  "user-guide/channels/funnel-pages"
+                ]
+              },
+              {
                 "group": "Data Model",
                 "icon": "database",
                 "pages": [
@@ -3737,6 +3747,16 @@
                 "group": "Visão Geral",
                 "pages": [
                   "l/pt/user-guide/introduction"
+                ]
+              },
+              {
+                "group": "Canais e automação",
+                "pages": [
+                  "l/pt/user-guide/channels/whatsapp",
+                  "l/pt/user-guide/channels/whatsapp-templates",
+                  "l/pt/user-guide/channels/instagram",
+                  "l/pt/user-guide/channels/voice-agent",
+                  "l/pt/user-guide/channels/funnel-pages"
                 ]
               },
               {

@@ -1,0 +1,35 @@
+---
+title: Páginas de funil
+description: Publique páginas públicas que capturam leads direto no seu CRM.
+---
+
+As páginas de funil são páginas públicas, como inscrição, workshop e vendas, que qualquer pessoa abre sem fazer login. Quem preenche o formulário de inscrição é criado no CRM automaticamente.
+
+## Antes de começar
+
+- Você precisa de acesso às configurações do workspace.
+- Planeje suas páginas e seus slugs antes, porque as páginas se ligam por slug.
+- Opcional: o Meta Pixel só funciona se o administrador tiver configurado um Pixel ID na compilação do app. Consulte o seu administrador.
+
+## Passo a passo
+
+1. Abra **Configurações** e vá em **Workspace > Funil**.
+2. Em **Páginas do funil**, clique em **Nova página**.
+3. Escolha o **Tipo de página**: inscrição (SIGNUP), workshop (WORKSHOP), vendas (SALES) ou confirmação (CONFIRMATION).
+4. Defina o **Slug** e, se quiser, o título e a descrição de SEO.
+5. Preencha os campos do tipo escolhido:
+   - Inscrição: título, subtítulo, tópicos, texto do botão e o slug de redirecionamento após o sucesso.
+   - Workshop: URL do vídeo, chat simulado ligado ou desligado, texto do botão e slug da página de oferta. Também dá para definir horários das sessões diárias, fuso em minutos em relação ao UTC (Brasília é -180) e minutos mínimos antes da sessão.
+   - Vendas: título, pilha de valor, preço, garantia, perguntas frequentes, texto do botão e URL de checkout.
+   - Confirmação: variante, mensagem, texto do próximo passo e URL ou slug.
+6. Clique em **Criar página** e depois publique pela lista (**Publicar**).
+
+## Como funciona
+
+Uma página publicada fica disponível em `/w/<slug>` no app. Páginas em rascunho (DRAFT) não são exibidas; só as publicadas (PUBLISHED). Quando alguém envia o formulário de inscrição, o servidor cria (ou localiza) uma Pessoa e cria uma Oportunidade no estágio NEW. Quando o lead abre a página do workshop, uma Oportunidade ainda em NEW passa para MEETING. Com agenda configurada, cada lead entra na próxima sessão diária e o vídeo fica bloqueado até lá.
+
+## Vale saber
+
+- Os endereços públicos têm limite de requisições por hora (por exemplo, 20 envios de lead).
+- Com o Meta Pixel configurado, as páginas exibem um aviso de consentimento de rastreamento.
+- Os redirecionamentos usam slugs, então crie e publique a página de destino antes de divulgar.

@@ -1,0 +1,52 @@
+---
+title: Templates de WhatsApp
+description: Crie templates de WhatsApp, envie-os para aprovação da Meta e use-os em um workflow.
+---
+
+Templates são mensagens pré-escritas que precisam ser aprovadas pela Meta. Eles são necessários para enviar mensagens a contatos fora da janela de 24 horas.
+
+## Antes de começar
+
+- Um número de WhatsApp conectado (veja [Canal WhatsApp e agente de IA](/l/pt/user-guide/channels/whatsapp)).
+- Os recursos de WhatsApp habilitados na instância. Se o card não aparecer, fale com o administrador.
+
+## Crie e envie um template
+
+1. Abra **Configurações > Usuário > Contas** e escolha **Templates de WhatsApp**.
+2. Clique para criar um template (**Novo template de WhatsApp**).
+3. Preencha o formulário:
+   - **Número de WhatsApp**
+   - **Nome**: somente letras minúsculas, números e sublinhados. É o identificador interno na Meta.
+   - **Categoria**: Marketing, Utility ou Authentication.
+   - **Idioma**, por exemplo `pt_BR`.
+   - **Cabeçalho** e **Rodapé** (ambos opcionais).
+   - **Corpo**: use `{{1}}`, `{{2}}` para variáveis, por exemplo: `Oi {{1}}, sua sessão libera em {{2}} minutos.`
+   - **Botões** (opcional): use **Adicionar botão** e informe o texto, além de URL ou telefone quando aplicável.
+4. Clique em **Criar template**. Ele é salvo como rascunho.
+5. Na linha do template, clique em **Enviar para aprovação**. O template passa a Pendente.
+6. Depois, clique em **Atualizar status** para buscar a decisão da Meta.
+
+## Use em um workflow
+
+Em um workflow, adicione a ação que envia um template de WhatsApp e defina:
+
+- o template a enviar;
+- **to** (destinatário): texto livre ou uma variável como `{{trigger.phones.primaryPhoneNumber}}`;
+- **parâmetros do corpo**: valores para `{{1}}`, `{{2}}`... na ordem.
+
+## Como funciona
+
+Ao enviar, o template segue para a Meta pelo número conectado. Ao atualizar, o Zyra lê o status atual na Meta e guarda o motivo da rejeição, se houver.
+
+## Bom saber
+
+| Status | Significado |
+| --- | --- |
+| Rascunho (Draft) | Criado, ainda não enviado. Editável. |
+| Pendente (Pending) | Enviado, aguardando a Meta. Não editável. |
+| Aprovado (Approved) | Pronto para envio. |
+| Rejeitado (Rejected) | Recusado pela Meta. Editável e pode ser reenviado. |
+
+- Só templates em rascunho ou rejeitados podem ser editados ou enviados. Editar um rejeitado o devolve a rascunho.
+- O passo do workflow falha se o template não estiver aprovado.
+- A exclusão de um template é permanente.

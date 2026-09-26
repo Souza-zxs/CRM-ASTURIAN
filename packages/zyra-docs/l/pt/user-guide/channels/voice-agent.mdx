@@ -1,0 +1,33 @@
+---
+title: Agente de voz
+description: Configure um agente de IA que atende as ligações da sua empresa e guarda o histórico de cada chamada.
+---
+
+O Agente de voz é um assistente de IA que atende as ligações feitas para um número de telefone que você configura. Ele conversa com quem ligou em tempo real, segue as suas instruções e cada chamada fica registrada no histórico, com status e resumo.
+
+## Antes de começar
+
+- O recurso precisa estar ativado na sua instalação, pela configuração de servidor `IS_VOICE_AGENT_ENABLED` (desligada por padrão). Se a página não aparecer, fale com o seu administrador.
+- O administrador precisa ter configurado no servidor as credenciais da Twilio (`TWILIO_ACCOUNT_SID` e `TWILIO_AUTH_TOKEN`) e a `OPENAI_API_KEY`.
+- Você precisa de um número de telefone da Twilio para o agente.
+
+## Passo a passo
+
+1. Abra **Configurações** e vá em **Usuário > Contas > Agente de IA de voz**.
+2. Crie um novo agente.
+3. Preencha **Nome** e **Prompt do sistema** (obrigatórios). O prompt descreve a personalidade, o objetivo e o tom de voz.
+4. Informe o **Número de telefone** em formato internacional, por exemplo `+5511999999999`, e escolha a **Voz** (Alloy, Verse, Aria ou Sage).
+5. Se quiser, preencha **Mensagem de boas-vindas**, **Critérios de qualificação** (o que torna um lead qualificado), **Frases proibidas** (separadas por vírgula) e **Instruções de transferência** (quando passar para uma pessoa).
+6. Se usar transferência, informe o **Número de telefone para transferência**.
+7. Clique em **Criar agente**. Ao editar depois, use **Salvar alterações**.
+
+## Como funciona
+
+A Twilio envia cada ligação recebida ao servidor, que confere a assinatura da Twilio e conecta o áudio da chamada à API Realtime da OpenAI. O agente fala seguindo o seu prompt e as suas configurações. Cada chamada aparece em **Histórico de chamadas** com data, direção (recebida ou realizada), duração, status (Em andamento, Concluída, Falhou, Sem resposta) e resumo. O sistema também guarda a transcrição e uma agenda semanal de disponibilidade do agente.
+
+## Vale saber
+
+- A lista de vozes do formulário é apenas ilustrativa e pode não incluir todas as vozes da OpenAI.
+- A disponibilidade semanal é uma informação que o agente consulta durante a chamada. No código, ela não bloqueia o atendimento.
+- O número padrão da Twilio só é usado em futuras ligações de saída. Para receber ligações basta o número de cada agente.
+- O endereço público do servidor precisa ser alcançável pela Twilio. Peça ao seu administrador para confirmar a configuração.

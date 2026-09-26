@@ -67,3 +67,5 @@ screenshots/
 
 # Cache local do CLI do Supabase
 supabase/.temp/
+
+packages/zyra-docs/dist-static

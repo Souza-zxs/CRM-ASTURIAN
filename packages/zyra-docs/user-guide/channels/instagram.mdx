@@ -1,0 +1,52 @@
+---
+title: Instagram channel
+description: Connect an Instagram account to Zyra and run comment-to-DM campaigns with follower reporting.
+---
+
+Zyra can connect to an Instagram account so you can reply automatically to comments with a direct message (DM) and track how your follower count evolves.
+
+## Before you start
+
+- You need access to your workspace **Settings**.
+- You need the Instagram account you want to connect and permission to authorize it when Instagram asks.
+- The Instagram connection must be configured on your server. If you see "Instagram connection is not configured on this server", ask your administrator.
+
+## Connect your account
+
+1. Open **Settings**.
+2. Go to **Accounts** and choose **Instagram**.
+3. If no account is connected yet, use the option to add a new account, then click **Connect with Instagram**.
+4. Sign in and authorize on Instagram. You are sent back to Zyra when it finishes.
+
+If the connection fails, Zyra shows "Failed to connect the Instagram account." Try again, or ask your administrator.
+
+## How it works
+
+Once connected, the Instagram page has three tabs: **Campaigns**, **Reports** and **Diagnostics**.
+
+### Campaigns (comment to DM)
+
+A campaign sends a direct message when someone comments one of your keywords.
+
+1. In **Campaigns**, click **New campaign**, or start from a ready-made template (or **Start from scratch**).
+2. Fill in the **Campaign name**, the **Keywords**, and the **Direct message reply**. You can also add **Public reply variations**.
+3. Choose a **Post**, or turn on **Attach automatically to the next Reel**.
+4. Optionally require the person to follow the account before receiving the DM, and add a **Follow-up message** with a **Follow-up delay (minutes)**.
+5. Click **Create campaign**.
+
+You can enable or disable, edit, duplicate or delete each campaign. **Import CSV** creates several campaigns at once, using the columns `keywords` and `replyMessage` (separate keywords with `;` or `|`).
+
+### Reports
+
+**Reports** shows how your follower count changes over time. You can turn on **Share report publicly** and use **Copy public report link** to share it.
+
+### Diagnostics
+
+**Diagnostics** shows the health of the connection: access token status (Valid, Expiring soon, Expired or Unknown), last webhook received, last reconciliation, and pending and failed jobs.
+
+## Good to know
+
+- Follower data appears only after it has been captured. Until then you will see "No follower data captured yet".
+- If the token is expiring or expired, reconnect the account from the same page.
+- Anyone with the public report link can view the report, so share it carefully.
+- This page does not say how received messages are stored in the CRM. Ask your administrator if you need that.

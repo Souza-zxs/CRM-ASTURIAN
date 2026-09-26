@@ -1,0 +1,52 @@
+---
+title: WhatsApp message templates
+description: Create WhatsApp templates, submit them to Meta for approval and send them from a workflow.
+---
+
+Templates are pre-written messages that Meta must approve. They are required to message contacts outside the 24-hour window.
+
+## Before you start
+
+- A connected WhatsApp number (see [WhatsApp channel and AI agent](/user-guide/channels/whatsapp)).
+- The WhatsApp features enabled on your instance. If the card is missing, ask your administrator.
+
+## Create and submit a template
+
+1. Open **Settings > User > Accounts** and choose **WhatsApp Templates**.
+2. Click to create a template (**New WhatsApp template**).
+3. Fill in the form:
+   - **WhatsApp number**
+   - **Name**: lowercase letters, digits and underscores only. This is Meta's internal identifier.
+   - **Category**: Marketing, Utility or Authentication.
+   - **Language**, for example `pt_BR`.
+   - **Header** and **Footer** (both optional).
+   - **Body**: use `{{1}}`, `{{2}}` for variables, for example: `Hi {{1}}, your session opens in {{2}} minutes.`
+   - **Buttons** (optional): use **Add button** and set a label, plus a URL or phone number where applicable.
+4. Click **Create template**. It is saved as a draft.
+5. In the template row, click **Submit for approval**. The template becomes Pending.
+6. Later, click **Refresh status** to fetch Meta's decision.
+
+## Use it in a workflow
+
+In a workflow, add the action that sends a WhatsApp template and set:
+
+- the template to send;
+- **to**: free text or a variable such as `{{trigger.phones.primaryPhoneNumber}}`;
+- **body parameters**: values for `{{1}}`, `{{2}}`... in order.
+
+## How it works
+
+Submitting sends the template to Meta through your connected number. Refreshing reads the current status from Meta and stores any rejection reason.
+
+## Good to know
+
+| Status | Meaning |
+| --- | --- |
+| Draft | Created, not yet submitted. Editable. |
+| Pending | Submitted, waiting for Meta. Not editable. |
+| Approved | Ready to send. |
+| Rejected | Refused by Meta. Editable and can be resubmitted. |
+
+- Only Draft and Rejected templates can be edited or submitted. Editing a rejected one returns it to Draft.
+- A workflow step fails if the template is not Approved.
+- Deleting a template is permanent.

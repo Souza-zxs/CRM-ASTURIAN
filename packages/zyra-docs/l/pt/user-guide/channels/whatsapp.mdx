@@ -1,0 +1,44 @@
+---
+title: Canal WhatsApp e agente de IA
+description: Conecte um número de WhatsApp ao Zyra e configure um agente de IA que responde às mensagens recebidas.
+---
+
+O Zyra permite gerenciar números de WhatsApp conectados e associar a eles um agente de IA que responde às mensagens recebidas em nome do número.
+
+## Antes de começar
+
+- Os recursos de WhatsApp precisam estar habilitados na sua instância. Se você não vê os cards de WhatsApp em **Contas**, fale com o administrador.
+- É preciso ter ao menos um número de WhatsApp conectado. A forma de conectar depende da sua configuração; se a lista estiver vazia, fale com o administrador.
+
+## Configure o agente de IA
+
+1. Abra as **Configurações** e vá em **Usuário > Contas**.
+2. Abra o card **Agente de IA do WhatsApp**.
+3. Clique para criar um agente (**Novo agente de WhatsApp**).
+4. Preencha o formulário:
+   - **Nome** e **Número de WhatsApp** (o número pelo qual o agente responde).
+   - **Mensagem de boas-vindas**.
+   - **Prompt do sistema**: persona, objetivo e tom de voz.
+   - **Critérios de qualificação**: o que torna um lead qualificado.
+   - **Frases proibidas**: lista separada por vírgulas que o agente nunca deve usar.
+   - **Instruções de transferência**: quando o agente deve passar a conversa para uma pessoa.
+   - **Modelo**: nome do modelo de IA (o padrão é `gpt-4.1-mini`).
+5. Clique em **Criar agente**.
+
+Para ver os números conectados, abra **Configurações > Usuário > Contas > WhatsApp**.
+
+## Como funciona
+
+O agente responde automaticamente às mensagens recebidas no seu número. Há um agente por número de WhatsApp. Cada agente tem um indicador de ativo, ligado por padrão.
+
+Quando o modelo decide que uma pessoa deve assumir, a conversa é sinalizada para atendimento humano e as respostas de IA são desligadas nessa conversa.
+
+## Bom saber
+
+<Note>
+No código, o modelo padrão é descrito como um valor de custo baixo provisório, não uma escolha validada. Confirme o modelo ideal com o administrador.
+</Note>
+
+- As frases proibidas são comparadas sem diferenciar maiúsculas e minúsculas, e o modelo é instruído a evitá-las.
+- Excluir um número de WhatsApp também remove o agente dele.
+- Para falar com contatos fora da janela de 24 horas, use [templates aprovados](/l/pt/user-guide/channels/whatsapp-templates).

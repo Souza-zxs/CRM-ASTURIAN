@@ -1,0 +1,52 @@
+---
+title: Canal do Instagram
+description: Conecte uma conta do Instagram ao Zyra e use campanhas de comentário para DM com relatório de seguidores.
+---
+
+O Zyra pode se conectar a uma conta do Instagram para responder automaticamente a comentários com uma mensagem direta (DM) e acompanhar a evolução do número de seguidores.
+
+## Antes de começar
+
+- Você precisa de acesso às **Configurações** do seu workspace.
+- Tenha em mãos a conta do Instagram que deseja conectar e autorize quando o Instagram solicitar.
+- A conexão com o Instagram precisa estar configurada no servidor. Se aparecer "A conexão com o Instagram não está configurada neste servidor.", fale com o seu administrador.
+
+## Conectar sua conta
+
+1. Abra **Configurações**.
+2. Vá em **Contas** e escolha **Instagram**.
+3. Se ainda não houver conta conectada, adicione uma nova conta e clique em **Conectar com o Instagram**.
+4. Entre e autorize no Instagram. Ao terminar, você volta para o Zyra.
+
+Se der erro, o Zyra mostra "Falha ao conectar a conta do Instagram." Tente novamente ou fale com o administrador.
+
+## Como funciona
+
+Depois de conectada, a página do Instagram tem três abas: **Campanhas**, **Relatórios** e **Diagnóstico**.
+
+### Campanhas (comentário para DM)
+
+Uma campanha envia uma mensagem direta quando alguém comenta uma das suas palavras-chave.
+
+1. Em **Campanhas**, clique em **Nova campanha**, ou parta de um modelo pronto (ou **Começar do zero**).
+2. Preencha o **Nome da campanha**, as **Palavras-chave** e a **Resposta por mensagem direta**. Você também pode adicionar **Variações de resposta pública**.
+3. Escolha uma **Publicação** ou ative **Anexar automaticamente ao próximo Reel**.
+4. Se quiser, exija que a pessoa siga a conta antes de receber a DM e adicione uma **Mensagem de follow-up** com o **Atraso do follow-up (minutos)**.
+5. Clique em **Criar campanha**.
+
+Cada campanha pode ser ativada ou desativada, editada, duplicada ou excluída. **Importar CSV** cria várias campanhas de uma vez, com as colunas `keywords` e `replyMessage` (separe várias palavras-chave com `;` ou `|`).
+
+### Relatórios
+
+**Relatórios** mostra a evolução do número de seguidores. Você pode ativar **Compartilhar relatório publicamente** e usar **Copiar link público do relatório** para compartilhá-lo.
+
+### Diagnóstico
+
+**Diagnóstico** mostra a saúde da conexão: status do token de acesso (Válido, Expirando em breve, Expirado ou Desconhecido), último webhook recebido, última reconciliação e jobs pendentes e com falha.
+
+## Bom saber
+
+- Os dados de seguidores só aparecem depois de capturados. Até lá você verá "Nenhum dado de seguidores capturado ainda".
+- Se o token estiver expirando ou expirado, reconecte a conta na mesma página.
+- Qualquer pessoa com o link público do relatório pode vê-lo, então compartilhe com cuidado.
+- Esta página não informa como as mensagens recebidas ficam guardadas no CRM. Consulte o seu administrador se precisar disso.

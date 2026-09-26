@@ -1,0 +1,35 @@
+---
+title: Funnel pages
+description: Publish public landing pages that capture leads straight into your CRM.
+---
+
+Funnel pages are public web pages, such as a signup page, a workshop page and a sales page, that anyone can open without logging in. Leads who fill in the signup form are created in your CRM automatically.
+
+## Before you start
+
+- You need access to your workspace settings.
+- Plan your pages and their slugs first, because pages link to each other by slug.
+- Optional: the Meta Pixel is enabled only if your administrator configured a Pixel ID when the app was built. Ask your administrator.
+
+## Steps
+
+1. Open **Settings** and go to **Workspace > Funnel**.
+2. In **Funnel pages**, click **New page**.
+3. Choose the **Page type**: signup (SIGNUP), workshop (WORKSHOP), sales (SALES) or confirmation (CONFIRMATION).
+4. Set the **Slug**, and optionally the **SEO title** and **SEO description**.
+5. Fill in the fields for the type:
+   - Signup: headline, subheadline, bullets, button label and the slug to redirect to after success.
+   - Workshop: video URL, simulated chat on or off, button label, and the offer page slug. You can also set daily session times, time zone offset in minutes (Brasília is -180) and minimum minutes before a session.
+   - Sales: headline, value stack, price, guarantee, FAQ, button label and checkout URL.
+   - Confirmation: variant, message, next step label and URL or slug.
+6. Click **Create page**, then publish it from the list (**Publish**).
+
+## How it works
+
+A published page is served at `/w/<slug>` in the app. Pages in DRAFT are not served; only PUBLISHED pages are. When a visitor submits the signup form, the server creates (or finds) a Person and creates an Opportunity in stage NEW. When the lead opens the workshop page, an Opportunity still in NEW moves to MEETING. With a schedule, each lead is placed in the next daily session and the video is locked until then.
+
+## Good to know
+
+- The public endpoints are rate limited per hour (for example, 20 lead submissions).
+- When a Meta Pixel is configured, the pages show a tracking consent notice.
+- Redirect fields use slugs, so create and publish the destination page before sending traffic.

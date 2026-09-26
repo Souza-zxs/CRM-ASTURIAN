@@ -1,0 +1,33 @@
+---
+title: Voice Agent
+description: Set up an AI agent that answers phone calls for your company and keeps a history of every call.
+---
+
+The Voice Agent is an AI assistant that answers calls made to a phone number you configure. It talks to the caller in real time, follows your instructions, and every call is recorded in a call history with a status and a summary.
+
+## Before you start
+
+- The feature must be turned on for your installation. It is controlled by the `IS_VOICE_AGENT_ENABLED` server setting (off by default). If you do not see the page, ask your administrator.
+- Your administrator must have configured the Twilio credentials (`TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN`) and an `OPENAI_API_KEY` on the server.
+- You need a phone number from Twilio for the agent.
+
+## Steps
+
+1. Open **Settings** and go to **User > Accounts > Voice AI Agent**.
+2. Create a new agent.
+3. Fill in **Name** and **System prompt** (both are required). The system prompt describes the persona, goal and tone of voice.
+4. Enter the **Phone number** in international format, for example `+15551234567`, and choose a **Voice** (Alloy, Verse, Aria or Sage).
+5. Optionally set a **Greeting message**, **Qualification criteria** (what makes a lead qualified), **Forbidden phrases** (separated by commas) and **Handoff instructions** (when to transfer to a human).
+6. If you use handoff, fill in **Transfer phone number**.
+7. Click **Create agent**. Use **Save changes** when editing later.
+
+## How it works
+
+Twilio sends each incoming call to the server, which checks the Twilio signature and connects the call audio to the OpenAI Realtime API. The agent speaks using your prompt and settings. Each call appears under **Call history** with date, direction (inbound or outbound), duration, status (In progress, Completed, Failed, No answer) and a summary. The data model also stores a transcript and a weekly availability schedule for the agent.
+
+## Good to know
+
+- The voice list in the form is illustrative and may not match every voice supported by OpenAI.
+- Weekly availability is read by the agent as information during the call. The code notes it is not enforced as a hard block.
+- The default Twilio number setting is only used for future outbound calls. Receiving calls only needs the number set on each agent.
+- The server address must be publicly reachable by Twilio. Ask your administrator to confirm the setup.
