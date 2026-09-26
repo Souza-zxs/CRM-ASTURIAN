@@ -7,7 +7,7 @@
   --t-icon-size-lg: 20;
   --t-icon-size-xl: 24;
   --t-icon-stroke-sm: 1.6;
-  --t-icon-stroke-md: 2;
+  --t-icon-stroke-md: 1.75;
   --t-icon-stroke-lg: 2.5;
   --t-modal-size-sm-width: 300px;
   --t-modal-size-md-width: 400px;
@@ -135,7 +135,7 @@
   --t-border-color-transparent-strong: color(display-p3 1 1 1 / 0.071);
   --t-border-radius-xs: 2px;
   --t-border-radius-sm: 4px;
-  --t-border-radius-md: 8px;
+  --t-border-radius-md: 10px;
   --t-border-radius-xl: 20px;
   --t-border-radius-xxl: 40px;
   --t-border-radius-pill: 999px;
