@@ -28,7 +28,7 @@ Gatilhos de Webhook permitem que serviços externos iniciem seus fluxos de traba
 2. Selecione **Webhook**
 3. Você receberá uma URL de webhook exclusiva, como:
    ```
-   https://api.zyra.com/webhooks/workflow/abc123...
+   https://zyra-api.179-199-135-212.sslip.io/webhooks/workflow/abc123...
    ```
 4. Copie esta URL—você vai precisar dela no seu serviço externo
 
@@ -75,7 +75,7 @@ Antes de ativar, teste o seu webhook:
 **Usando cURL**:
 
 ```bash
-curl -X POST https://api.zyra.com/webhooks/workflow/abc123... \
+curl -X POST https://zyra-api.179-199-135-212.sslip.io/webhooks/workflow/abc123... \
   -H "Content-Type: application/json" \
   -d '{"firstName":"Test","lastName":"User","email":"test@example.com"}'
 ```

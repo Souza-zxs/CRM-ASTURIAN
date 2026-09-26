@@ -13,7 +13,7 @@ Use your **workspace URL** (the URL you use to access Zyra) as the MCP endpoint.
 
 | Environment | MCP Endpoint |
 |-------------|-------------|
-| **Cloud** | `https://{your-workspace-url}/mcp` (e.g. `https://mycompany.zyra.com/mcp`) |
+| **Cloud** | `https://{your-workspace-url}/mcp` (e.g. `https://zyra-api.179-199-135-212.sslip.io/mcp`) |
 
 ## Authentication Methods
 
@@ -27,7 +27,7 @@ With OAuth, your MCP client opens a browser window for you to log in. No secrets
 OAuth requires an MCP client that supports the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization). Claude Desktop, Claude Code, Cursor, and ChatGPT support it.
 </Note>
 
-Add this to your MCP client configuration, replacing `{your-workspace-url}` with your workspace host (e.g. `mycompany.zyra.com`):
+Add this to your MCP client configuration, replacing `{your-workspace-url}` with your workspace host (e.g. `zyra-api.179-199-135-212.sslip.io`):
 
 ```json
 {

@@ -18,8 +18,8 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Try Zyra",
-      "href": "https://app.zyra.com/welcome"
+      "label": "Abrir o CRM",
+      "href": "https://workshop-os-app.vercel.app/login"
     }
   },
   "styling": {
@@ -27,7 +27,7 @@
   },
   "seo": {
     "metatags": {
-      "canonical": "https://docs.zyra.com"
+      "canonical": "https://workshop-os-docs.vercel.app"
     }
   },
   "navigation": {
@@ -5813,11 +5813,7 @@
       }
     ]
   },
-  "footer": {
-    "socials": {
-      "twitter": "https://twitter.com/zyracrm"
-    }
-  },
+  "footer": {},
   "redirects": [
     {
       "source": "/developers/extend/apps/getting-started",

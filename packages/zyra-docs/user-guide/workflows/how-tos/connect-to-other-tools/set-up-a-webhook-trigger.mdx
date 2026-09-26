@@ -28,7 +28,7 @@ Webhook triggers allow external services to start your workflows by sending data
 2. Select **Webhook**
 3. You'll receive a unique webhook URL like:
    ```
-   https://api.zyra.com/webhooks/workflow/abc123...
+   https://zyra-api.179-199-135-212.sslip.io/webhooks/workflow/abc123...
    ```
 4. Copy this URL—you'll need it for your external service
 
@@ -74,7 +74,7 @@ Before activating, test your webhook:
 
 **Using cURL**:
 ```bash
-curl -X POST https://api.zyra.com/webhooks/workflow/abc123... \
+curl -X POST https://zyra-api.179-199-135-212.sslip.io/webhooks/workflow/abc123... \
   -H "Content-Type: application/json" \
   -d '{"firstName":"Test","lastName":"User","email":"test@example.com"}'
 ```
