@@ -31,4 +31,4 @@ cd my-zyra-app
 yarn zyra dev
 \`\`\`
 
-See the [Getting Started guide](${DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](${DOCUMENTATION_BASE_URL}/developers/extend/apps/building) for the \`defineApplication\` / \`defineEntity\` APIs.`;
+See the [Getting Started guide](${DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps](${DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the \`defineApplication\` / \`defineEntity\` APIs.`;
