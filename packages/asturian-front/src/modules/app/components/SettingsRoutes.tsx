@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { SettingsMultiWorkspaceOnlyRoute } from '@/app/components/SettingsMultiWorkspaceOnlyRoute';
 import { SettingsProtectedRouteWrapper } from '@/settings/components/SettingsProtectedRouteWrapper';
 import { SettingsSkeletonLoader } from '@/settings/components/SettingsSkeletonLoader';
 import { SettingPublicDomain } from '@/settings/domains/components/SettingPublicDomain';
@@ -751,11 +752,19 @@ export const SettingsRoutes = ({ isAdminPageEnabled }: SettingsRoutesProps) => (
         />
         <Route
           path={SettingsPath.Subdomain}
-          element={<SettingsSubdomainPage />}
+          element={
+            <SettingsMultiWorkspaceOnlyRoute>
+              <SettingsSubdomainPage />
+            </SettingsMultiWorkspaceOnlyRoute>
+          }
         />
         <Route
           path={SettingsPath.CustomDomain}
-          element={<SettingsCustomDomainPage />}
+          element={
+            <SettingsMultiWorkspaceOnlyRoute>
+              <SettingsCustomDomainPage />
+            </SettingsMultiWorkspaceOnlyRoute>
+          }
         />
         <Route
           path={SettingsPath.PublicDomain}

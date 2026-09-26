@@ -4,6 +4,7 @@ import { useAuth } from '@/auth/hooks/useAuth';
 import { availableWorkspacesState } from '@/auth/states/availableWorkspacesState';
 import { currentWorkspaceState } from '@/auth/states/currentWorkspaceState';
 import { countAvailableWorkspaces } from '@/auth/utils/availableWorkspacesUtils';
+import { isMultiWorkspaceEnabledState } from '@/client-config/states/isMultiWorkspaceEnabledState';
 import { supportChatState } from '@/client-config/states/supportChatState';
 import { useBuildWorkspaceUrl } from '@/domain-manager/hooks/useBuildWorkspaceUrl';
 import { useRedirectToDefaultDomain } from '@/domain-manager/hooks/useRedirectToDefaultDomain';
@@ -64,6 +65,9 @@ export const MultiWorkspaceDropdownDefaultComponents = () => {
   const { closeDropdown } = useCloseDropdown();
   const { signOut } = useAuth();
   const { colorScheme, colorSchemeList } = useColorScheme();
+  const isMultiWorkspaceEnabled = useAtomStateValue(
+    isMultiWorkspaceEnabledState,
+  );
   const supportChat = useAtomStateValue(supportChatState);
   const isSupportChatConfigured =
     supportChat?.supportDriver === 'FRONT' &&
@@ -121,11 +125,13 @@ export const MultiWorkspaceDropdownDefaultComponents = () => {
             dropdownComponents={
               <DropdownContent>
                 <DropdownMenuItemsContainer>
-                  <MenuItem
-                    LeftIcon={IconPlus}
-                    text={t`Create Workspace`}
-                    onClick={createWorkspace}
-                  />
+                  {isMultiWorkspaceEnabled && (
+                    <MenuItem
+                      LeftIcon={IconPlus}
+                      text={t`Create Workspace`}
+                      onClick={createWorkspace}
+                    />
+                  )}
                   <MenuItem
                     LeftIcon={IconLogout}
                     text={t`Log out`}
@@ -139,7 +145,7 @@ export const MultiWorkspaceDropdownDefaultComponents = () => {
       >
         {currentWorkspace?.displayName}
       </DropdownMenuHeader>
-      {availableWorkspacesCount > 1 && (
+      {isMultiWorkspaceEnabled && availableWorkspacesCount > 1 && (
         <>
           <DropdownMenuItemsContainer>
             {[
