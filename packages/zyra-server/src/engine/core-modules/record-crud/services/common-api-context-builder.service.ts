@@ -9,6 +9,7 @@ import { type CommonSelectedFields } from 'src/engine/api/common/types/common-se
 import { ApiKeyRoleService } from 'src/engine/core-modules/api-key/services/api-key-role.service';
 import { isApiKeyAuthContext } from 'src/engine/core-modules/auth/guards/is-api-key-auth-context.guard';
 import { isApplicationAuthContext } from 'src/engine/core-modules/auth/guards/is-application-auth-context.guard';
+import { isSystemAuthContext } from 'src/engine/core-modules/auth/guards/is-system-auth-context.guard';
 import { isUserAuthContext } from 'src/engine/core-modules/auth/guards/is-user-auth-context.guard';
 import { type WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspace-auth-context.type';
 import {
@@ -122,6 +123,13 @@ export class CommonApiContextBuilderService {
   ): Promise<ObjectsPermissions> {
     const workspaceId = authContext.workspace.id;
     let roleId: string;
+
+    // Internal operations (e.g. the public funnel writing leads into the CRM)
+    // run with a system context that bypasses role checks (see
+    // resolveRolePermissionConfig), so there are no per-role restrictions to load.
+    if (isSystemAuthContext(authContext)) {
+      return {};
+    }
 
     if (isApiKeyAuthContext(authContext)) {
       roleId = await this.apiKeyRoleService.getRoleIdForApiKeyId(
