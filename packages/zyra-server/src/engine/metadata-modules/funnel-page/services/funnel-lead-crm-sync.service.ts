@@ -10,6 +10,7 @@ import { UpdateRecordService } from 'src/engine/core-modules/record-crud/service
 import { type CreateFunnelLeadInput } from 'src/engine/metadata-modules/funnel-page/dtos/create-funnel-lead.input';
 import { parseFunnelLeadName } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-name.util';
 import { parseFunnelLeadPhone } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-phone.util';
+import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { buildSystemAuthContext } from 'src/engine/zyra-orm/utils/build-system-auth-context.util';
 
 // The visitor has no session, so records are attributed to the public form
@@ -20,6 +21,11 @@ const FUNNEL_ACTOR: ActorMetadata = {
   name: 'Funil',
   context: {},
 };
+
+// The record services put the real cause in `error` and a generic summary in
+// `message`; logging only the summary is what hid this failure before.
+const describeFailure = (result: { message: string; error?: string }) =>
+  isDefined(result.error) ? `${result.message} (${result.error})` : result.message;
 
 const getRecordId = (record: unknown): string | null => {
   if (
@@ -42,6 +48,7 @@ export class FunnelLeadCrmSyncService {
     private readonly findRecordsService: FindRecordsService,
     private readonly createRecordService: CreateRecordService,
     private readonly updateRecordService: UpdateRecordService,
+    private readonly globalWorkspaceOrmManager: GlobalWorkspaceOrmManager,
   ) {}
 
   // Never throws: the lead is already saved in funnelLead by the time this
@@ -55,9 +62,20 @@ export class FunnelLeadCrmSyncService {
   }): Promise<void> {
     try {
       const authContext = buildSystemAuthContext(workspaceId);
-      const personId = await this.findOrCreatePersonId({ authContext, lead });
 
-      await this.createOpportunity({ authContext, personId, lead });
+      // The record services read the ORM workspace context from async
+      // storage; a public request never opens one, so it is opened here.
+      await this.globalWorkspaceOrmManager.executeInWorkspaceContext(
+        async () => {
+          const personId = await this.findOrCreatePersonId({
+            authContext,
+            lead,
+          });
+
+          await this.createOpportunity({ authContext, personId, lead });
+        },
+        authContext,
+      );
     } catch (error) {
       // Not logging the lead's email/phone (LGPD): the message alone is enough.
       this.logger.error(
@@ -80,38 +98,49 @@ export class FunnelLeadCrmSyncService {
   }): Promise<void> {
     try {
       const authContext = buildSystemAuthContext(workspaceId);
-      const personId = await this.findPersonId({ authContext, email });
 
-      if (!isDefined(personId)) {
-        return;
-      }
+      await this.globalWorkspaceOrmManager.executeInWorkspaceContext(
+        async () => {
+          const personId = await this.findPersonId({ authContext, email });
 
-      const newOpportunities = await this.findRecordsService.execute({
-        objectName: 'opportunity',
-        filter: { pointOfContactId: { eq: personId }, stage: { eq: 'NEW' } },
-        limit: 1,
+          if (!isDefined(personId)) {
+            return;
+          }
+
+          const newOpportunities = await this.findRecordsService.execute({
+            objectName: 'opportunity',
+            filter: {
+              pointOfContactId: { eq: personId },
+              stage: { eq: 'NEW' },
+            },
+            limit: 1,
+            authContext,
+            shouldBuildEffectiveSelectFields: false,
+          });
+
+          const opportunityId = getRecordId(
+            newOpportunities.result?.records[0],
+          );
+
+          if (!isDefined(opportunityId)) {
+            return;
+          }
+
+          const updatedOpportunity = await this.updateRecordService.execute({
+            objectName: 'opportunity',
+            objectRecordId: opportunityId,
+            objectRecord: { stage: 'MEETING' },
+            authContext,
+          });
+
+          if (!updatedOpportunity.success) {
+            throw new Error(
+              `Could not update opportunity: ${describeFailure(updatedOpportunity)}`,
+            );
+          }
+        },
         authContext,
-        shouldBuildEffectiveSelectFields: false,
-      });
-
-      const opportunityId = getRecordId(newOpportunities.result?.records[0]);
-
-      if (!isDefined(opportunityId)) {
-        return;
-      }
-
-      const updatedOpportunity = await this.updateRecordService.execute({
-        objectName: 'opportunity',
-        objectRecordId: opportunityId,
-        objectRecord: { stage: 'MEETING' },
-        authContext,
-      });
-
-      if (!updatedOpportunity.success) {
-        throw new Error(
-          `Could not update opportunity: ${updatedOpportunity.message}`,
-        );
-      }
+      );
     } catch (error) {
       this.logger.error(
         `Failed to mark funnel lead as attendee in workspace ${workspaceId}: ${
@@ -172,7 +201,9 @@ export class FunnelLeadCrmSyncService {
     const createdPersonId = getRecordId(createdPerson.result);
 
     if (!createdPerson.success || !isDefined(createdPersonId)) {
-      throw new Error(`Could not create person: ${createdPerson.message}`);
+      throw new Error(
+        `Could not create person: ${describeFailure(createdPerson)}`,
+      );
     }
 
     return createdPersonId;
@@ -201,7 +232,7 @@ export class FunnelLeadCrmSyncService {
 
     if (!createdOpportunity.success) {
       throw new Error(
-        `Could not create opportunity: ${createdOpportunity.message}`,
+        `Could not create opportunity: ${describeFailure(createdOpportunity)}`,
       );
     }
   }

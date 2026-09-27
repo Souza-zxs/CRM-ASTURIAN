@@ -14,12 +14,18 @@ describe('FunnelLeadCrmSyncService', () => {
   const findRecordsService = { execute: jest.fn() };
   const createRecordService = { execute: jest.fn() };
   const updateRecordService = { execute: jest.fn() };
+  const globalWorkspaceOrmManager = {
+    executeInWorkspaceContext: jest.fn(async (fn: () => Promise<unknown>) =>
+      fn(),
+    ),
+  };
 
   const buildService = () =>
     new FunnelLeadCrmSyncService(
       findRecordsService as never,
       createRecordService as never,
       updateRecordService as never,
+      globalWorkspaceOrmManager as never,
     );
 
   beforeEach(() => {
@@ -59,6 +65,34 @@ describe('FunnelLeadCrmSyncService', () => {
           stage: 'NEW',
           pointOfContactId: 'person-1',
         }),
+      }),
+    );
+  });
+
+  it('should run the CRM writes inside a workspace context built from a system auth context', async () => {
+    findRecordsService.execute.mockResolvedValue({
+      success: true,
+      result: { records: [], count: 0 },
+    });
+    createRecordService.execute
+      .mockResolvedValueOnce({ success: true, result: { id: 'person-1' } })
+      .mockResolvedValueOnce({
+        success: true,
+        result: { id: 'opportunity-1' },
+      });
+
+    await buildService().syncLeadToCrm({ workspaceId: WORKSPACE_ID, lead });
+
+    expect(
+      globalWorkspaceOrmManager.executeInWorkspaceContext,
+    ).toHaveBeenCalledTimes(1);
+    expect(
+      globalWorkspaceOrmManager.executeInWorkspaceContext,
+    ).toHaveBeenCalledWith(
+      expect.any(Function),
+      expect.objectContaining({
+        type: 'system',
+        workspace: expect.objectContaining({ id: WORKSPACE_ID }),
       }),
     );
   });
