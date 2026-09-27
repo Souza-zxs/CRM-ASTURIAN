@@ -1,38 +1,12 @@
-import {
-  CONTACT_LEAD_API_URL,
-  CONTACT_LEAD_PAGE_SLUG,
-  CONTACT_LEAD_UTM_SOURCE,
-  CONTACT_LEAD_WORKSPACE_ID,
-} from './contact-lead-config';
-
-export type ContactLeadInput = {
-  email: string;
-  name: string;
-  whatsapp: string;
-};
+import { CONTACT_LEAD_CONFIG } from './contact-lead-config';
+import { type ContactLeadInput } from './contact-lead-input';
+import { isContactLeadValid } from './is-contact-lead-valid';
+import { normalizeContactLead } from './normalize-contact-lead';
 
 export type ContactLeadResult =
   | { status: 'sent' }
   | { status: 'unavailable' }
   | { status: 'invalid'; message: string };
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export const normalizeContactLead = (input: ContactLeadInput) => ({
-  email: input.email.trim().toLowerCase(),
-  name: input.name.trim(),
-  whatsapp: input.whatsapp.trim(),
-});
-
-export const isContactLeadValid = (input: ContactLeadInput): boolean => {
-  const { email, name, whatsapp } = normalizeContactLead(input);
-
-  return (
-    name.length > 0 &&
-    EMAIL_PATTERN.test(email) &&
-    whatsapp.replace(/\D/g, '').length >= 8
-  );
-};
 
 // The lead lands in the CRM through the same public funnel endpoints the
 // funnel pages use: the published "contact" page is looked up by slug (its
@@ -46,11 +20,11 @@ export const submitContactLead = async (
     return { status: 'invalid', message: 'invalid-input' };
   }
 
-  const baseUrl = `${CONTACT_LEAD_API_URL}/funnel/${CONTACT_LEAD_WORKSPACE_ID}`;
+  const baseUrl = `${CONTACT_LEAD_CONFIG.apiUrl}/funnel/${CONTACT_LEAD_CONFIG.workspaceId}`;
 
   try {
     const pageResponse = await fetchImplementation(
-      `${baseUrl}/${encodeURIComponent(CONTACT_LEAD_PAGE_SLUG)}`,
+      `${baseUrl}/${encodeURIComponent(CONTACT_LEAD_CONFIG.pageSlug)}`,
     );
 
     if (!pageResponse.ok) {
@@ -71,7 +45,7 @@ export const submitContactLead = async (
       body: JSON.stringify({
         ...normalizeContactLead(input),
         funnelPageId,
-        utmSource: CONTACT_LEAD_UTM_SOURCE,
+        utmSource: CONTACT_LEAD_CONFIG.utmSource,
       }),
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',

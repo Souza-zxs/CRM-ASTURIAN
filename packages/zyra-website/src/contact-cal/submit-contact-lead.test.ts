@@ -1,4 +1,5 @@
-import { isContactLeadValid, submitContactLead } from './submit-contact-lead';
+import { isContactLeadValid } from './is-contact-lead-valid';
+import { submitContactLead } from './submit-contact-lead';
 
 const validInput = {
   email: '  Maria@Example.com ',

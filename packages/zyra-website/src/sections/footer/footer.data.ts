@@ -51,7 +51,7 @@ export const FOOTER: {
         { label: msg`Início`, href: '/' },
         { label: msg`Preços`, href: '/pricing' },
         { label: msg`Clientes`, href: '/customers' },
-        { label: msg`Parceiros`, href: '/partners' },
+        { label: msg`Quem criou o Zyra`, href: '/partners' },
         { label: msg`Por que a Zyra`, href: '/why-zyra' },
       ],
     },

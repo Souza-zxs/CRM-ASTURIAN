@@ -6,8 +6,6 @@ export type WebsiteRouteId =
   | 'halftone'
   | 'home'
   | 'partners'
-  | 'partnersApply'
-  | 'partnersList'
   | 'pricing'
   | 'privacyPolicy'
   | 'product'

@@ -2,6 +2,7 @@ import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { msg } from '@lingui/core/macro';
 
+import { TalkToUsButton } from '@/contact-cal';
 import { getServerI18n } from '@/platform/i18n/get-server-i18n';
 import {
   buildSchemeDeclarations,
@@ -10,7 +11,7 @@ import {
   radius,
   spacing,
 } from '@/tokens';
-import { Body, Button, Heading, Image, SectionShell } from '@/ui';
+import { Body, Heading, Image, SectionShell } from '@/ui';
 
 const Band = styled.div`
   ${buildSchemeDeclarations('light')}
@@ -117,16 +118,12 @@ export function PricingEngagementBand() {
             </Heading>
             <Body muted size="sm">
               {i18n._(
-                msg`Encontre o parceiro certo para implementar, customizar e adaptar a Zyra ao seu time.`,
+                msg`Fale diretamente com a nossa equipe para implementar, customizar e adaptar o Zyra ao seu time.`,
               )}
             </Body>
           </Copy>
           <Actions>
-            <Button
-              href="/partners/list"
-              label={i18n._(msg`Encontrar um parceiro`)}
-              variant="outlined"
-            />
+            <TalkToUsButton label={msg`Falar com a gente`} variant="outlined" />
           </Actions>
         </Content>
       </Band>

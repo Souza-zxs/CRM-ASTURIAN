@@ -32,32 +32,12 @@ export const STATIC_WEBSITE_ROUTES: readonly WebsiteRoute[] = [
   },
   {
     changeFrequency: 'monthly',
-    description: msg`Find a certified Zyra partner to migrate, customise, and operate your CRM, or join the ecosystem and grow your practice with us.`,
+    description: msg`Conheça quem criou o Zyra e fale com a nossa equipe para implementar o CRM na sua empresa.`,
     id: 'partners',
     indexed: true,
     path: '/partners',
     priority: 0.7,
-    title: msg`Zyra Partners — Certified Zyra CRM Implementers`,
-  },
-  {
-    changeFrequency: 'weekly',
-    description: msg`Browse Zyra's certified partners — the agencies and individuals who migrate, customise, host, and support Zyra across regions, languages, and deployment models.`,
-    id: 'partnersList',
-    indexed: true,
-    path: '/partners/list',
-    priority: 0.6,
-    title: msg`Find a Zyra Partner — Zyra CRM Marketplace`,
-  },
-  {
-    // The application form: noindex (a utility route, excluded from the
-    // sitemap by getIndexedWebsiteRoutes), reachable from the partner CTAs.
-    changeFrequency: 'yearly',
-    description: msg`Apply to join the Zyra partner ecosystem and grow your practice with Zyra.`,
-    id: 'partnersApply',
-    indexed: false,
-    path: '/partners/apply',
-    priority: 0.3,
-    title: msg`Become a Zyra Partner — Apply`,
+    title: msg`Quem criou o Zyra — Sobre nós`,
   },
   {
     changeFrequency: 'monthly',

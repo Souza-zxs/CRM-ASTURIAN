@@ -194,46 +194,6 @@ const VISUALS = {
     interactive: true,
     settle: { cardReveal: true },
   },
-  // The partner hero halftone: stone dashes (#959595) at rest are hueless;
-  // the cursor turns nearby dashes blue and shifts the band (interactive).
-  'partner-hero': {
-    slotSelector: '[data-illustration="partner-hero"]',
-    path: '/partners',
-    hueRangeDegrees: null,
-    minCoverage: 0.02,
-    animated: false,
-    interactive: true,
-  },
-  // The promo mic: iron dashes (#777) at rest are hueless on the light panel;
-  // the hover light brightens the dashes near the cursor (interactive).
-  'promo-mic': {
-    slotSelector: '[data-illustration="promo-mic"]',
-    path: '/partners',
-    hueRangeDegrees: null,
-    minCoverage: 0.02,
-    animated: false,
-    interactive: true,
-  },
-  // The testimonial author portrait: white dashes (hueless) on the dark panel;
-  // the cursor shifts the band and adds a light (interactive).
-  'partner-portrait': {
-    slotSelector: '[data-illustration="partner-portrait"]',
-    path: '/partners',
-    hueRangeDegrees: null,
-    minCoverage: 0.02,
-    animated: false,
-    interactive: true,
-  },
-  // The decorative quote-mark GLB behind the text: blue (#4a38f5) band
-  // halftone with a slow breathe; desktop-only + aria-hidden.
-  'partner-quote': {
-    slotSelector: '[data-illustration="partner-quote"]',
-    path: '/partners',
-    hueRangeDegrees: [200, 260],
-    minCoverage: 0.01,
-    animated: false,
-    interactive: false,
-  },
 };
 
 const MOTION_DIFF_FLOOR = 0.005;

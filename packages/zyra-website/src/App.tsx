@@ -1,13 +1,10 @@
 import { type ReactNode } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { CustomersPage } from './routes/CustomersPage';
 import { HalftonePage } from './routes/HalftonePage';
 import { HomePage } from './routes/HomePage';
 import { NotFoundPage } from './routes/NotFoundPage';
-import { PartnerApplyPage } from './routes/PartnerApplyPage';
-import { PartnerProfilePage } from './routes/PartnerProfilePage';
-import { PartnersListPage } from './routes/PartnersListPage';
 import { PartnersPage } from './routes/PartnersPage';
 import { PricingPage } from './routes/PricingPage';
 import { PrivacyPolicyPage } from './routes/PrivacyPolicyPage';
@@ -31,8 +28,7 @@ const renderSiteRoutes = (): ReactNode => (
       <Route element={<HomePage />} index />
       <Route element={<CustomersPage />} path="customers" />
       <Route element={<PartnersPage />} path="partners" />
-      <Route element={<PartnersListPage />} path="partners/list" />
-      <Route element={<PartnerProfilePage />} path="partners/profile/:slug" />
+      <Route element={<Navigate replace to="/partners" />} path="partners/*" />
       <Route element={<PricingPage />} path="pricing" />
       <Route element={<PrivacyPolicyPage />} path="privacy-policy" />
       <Route element={<ProductPage />} path="product" />
@@ -40,7 +36,6 @@ const renderSiteRoutes = (): ReactNode => (
       <Route element={<TermsPage />} path="terms" />
       <Route element={<WhyZyraPage />} path="why-zyra" />
     </Route>
-    <Route element={<PartnerApplyPage />} path="partners/apply" />
     <Route element={<HalftonePage />} path="halftone" />
   </>
 );

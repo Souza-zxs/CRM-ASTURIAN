@@ -15,11 +15,9 @@ import {
 } from '@/tokens';
 import { Button } from '@/ui';
 
-import {
-  isContactLeadValid,
-  submitContactLead,
-  type ContactLeadInput,
-} from './submit-contact-lead';
+import { type ContactLeadInput } from './contact-lead-input';
+import { isContactLeadValid } from './is-contact-lead-valid';
+import { submitContactLead } from './submit-contact-lead';
 
 const Form = styled.form`
   display: flex;
@@ -68,7 +66,6 @@ const Feedback = styled.p`
   color: ${color('white-60')};
   font-family: ${fontFamily('sans')};
   font-size: ${fontSize(4)};
-  margin: 0;
 `;
 
 const ErrorText = styled(Feedback)`

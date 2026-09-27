@@ -101,9 +101,32 @@ if (process.platform === 'win32') {
   });
 }
 
+// Section roots have no page of their own in the export, so send them to the
+// section introduction.
+const SECTION_ROOTS = ['getting-started', 'user-guide', 'developers'];
+const redirects = [
+  {
+    source: '/l/pt',
+    destination: '/l/pt/getting-started/introduction',
+    permanent: false,
+  },
+  ...SECTION_ROOTS.flatMap((section) => [
+    {
+      source: `/${section}`,
+      destination: `/${section}/introduction`,
+      permanent: false,
+    },
+    {
+      source: `/l/pt/${section}`,
+      destination: `/l/pt/${section}/introduction`,
+      permanent: false,
+    },
+  ]),
+];
+
 writeFileSync(
   join(OUTPUT_DIR, 'vercel.json'),
-  `${JSON.stringify({ cleanUrls: true, trailingSlash: false }, null, 2)}\n`,
+  `${JSON.stringify({ cleanUrls: true, trailingSlash: false, redirects }, null, 2)}\n`,
 );
 
 rmSync(stage, { force: true, recursive: true });

@@ -41,7 +41,6 @@ const VITE_ENTRY_FILES = new Set(['main.tsx', 'entry-server.tsx']);
 // the equivalent of the old app/[locale]/layout.tsx's globals.css).
 const VALUE_EXPORT_ALLOWLIST = new Set([
   'src/platform/i18n/get-server-i18n.ts',
-  'src/platform/ssg/PreloadedPartnersContext.tsx',
   'src/funnel/config.ts',
   'src/routes/global-styles.ts',
 ]);
@@ -121,8 +120,6 @@ const ROW_GAP_MULTI_AXIS_FILES = new Set([
   'sections/releases-feed/ReleasesFeed.tsx',
   'sections/stepper/ProductStepper.tsx',
   'sections/stepper/Stepper.tsx',
-  'sections/testimonials/PartnerTestimonialsCarousel.tsx',
-  'sections/testimonials/TestimonialsCarousel.tsx',
   'sections/trusted-by/TrustedBy.tsx',
   'sections/why-zyra-editorial/Editorial.tsx',
 ]);
@@ -241,8 +238,6 @@ function walk(directory) {
         relativePath.startsWith('case-studies' + path.sep) ||
         relativePath.startsWith('app-preview' + path.sep) ||
         relativePath.startsWith('contact-cal' + path.sep) ||
-        relativePath.startsWith('partner-application' + path.sep) ||
-        relativePath.startsWith('partners-marketplace' + path.sep) ||
         relativePath.startsWith('pricing-state' + path.sep)) &&
       /(?:aria-label|ariaLabel|aria-roledescription|placeholder|alt)="[A-Za-z]/.test(
         content,
@@ -274,8 +269,6 @@ function walk(directory) {
       'app-preview',
       'case-studies',
       'contact-cal',
-      'partner-application',
-      'partners-marketplace',
       'pricing-state',
     ].find((layer) => relativePath.startsWith(layer + path.sep));
     if (sharedLayer) {

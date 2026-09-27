@@ -10,7 +10,6 @@ import { fileURLToPath } from 'node:url';
 
 import {
   buildPageMetadata,
-  fetchLiveMarketplacePartners,
   getIndexedWebsiteRoutes,
   getRobotsDisallowedRoutePaths,
   getSiteUrl,
@@ -108,23 +107,9 @@ const writePage = ({ locale, routePath, metadata, bodyHtml }) => {
   writeFileSync(filePath, html);
 };
 
-const truncateDescription = (text, max = 160) => {
-  const cleaned = text.replace(/\s+/g, ' ').trim();
-  return cleaned.length <= max ? cleaned : `${cleaned.slice(0, max - 1)}…`;
-};
-
 const prerenderStaticRoutes = async () => {
   for (const route of STATIC_WEBSITE_ROUTES) {
     const locales = route.localeMode === 'source' ? [SOURCE_LOCALE] : undefined;
-    // One-off build script, not a hot path: at most one route in this list
-    // matches 'partnersList', so there's nothing to parallelize with
-    // Promise.all — this fires (or doesn't) once per prerender run.
-    const preloadedPartners =
-      route.id === 'partnersList'
-        ? // eslint-disable-next-line no-await-in-loop
-          await fetchLiveMarketplacePartners()
-        : null;
-
     for (const locale of WEBSITE_LOCALE_LIST) {
       const metadata = buildPageMetadata({
         description: route.description,
@@ -135,28 +120,10 @@ const prerenderStaticRoutes = async () => {
         path: route.path,
         title: route.title,
       });
-      const bodyHtml = render(publicUrl(locale, route.path), preloadedPartners);
+      const bodyHtml = render(publicUrl(locale, route.path));
       writePage({ locale, routePath: route.path, metadata, bodyHtml });
     }
   }
-};
-
-const prerenderPartnerProfiles = async () => {
-  const partners = await fetchLiveMarketplacePartners();
-  for (const partner of partners) {
-    const routePath = `/partners/profile/${partner.slug}`;
-    for (const locale of WEBSITE_LOCALE_LIST) {
-      const metadata = buildPageMetadata({
-        description: truncateDescription(partner.introduction),
-        locale,
-        path: routePath,
-        title: `${partner.name} — Zyra Partner`,
-      });
-      const bodyHtml = render(publicUrl(locale, routePath), partners);
-      writePage({ locale, routePath, metadata, bodyHtml });
-    }
-  }
-  return partners.length;
 };
 
 const writeRobotsTxt = () => {
@@ -199,8 +166,7 @@ const writeSitemapXml = () => {
   }
 
   // WEBSITE_ROUTE_FAMILY_LIST is empty today (no dynamic content family is
-  // indexed yet — partner profiles aren't in the sitemap in the Next version
-  // either), so there is nothing else to add here until one registers.
+  // indexed yet), so there is nothing else to add here until one registers.
 
   const xml =
     '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -212,17 +178,14 @@ const writeSitemapXml = () => {
 
 const main = async () => {
   await prerenderStaticRoutes();
-  const partnerCount = await prerenderPartnerProfiles();
   writeRobotsTxt();
   writeSitemapXml();
   rmSync(path.join(ROOT_DIR, 'dist-ssr'), { recursive: true, force: true });
 
-  const pageCount =
-    STATIC_WEBSITE_ROUTES.length * WEBSITE_LOCALE_LIST.length +
-    partnerCount * WEBSITE_LOCALE_LIST.length;
+  const pageCount = STATIC_WEBSITE_ROUTES.length * WEBSITE_LOCALE_LIST.length;
   // eslint-disable-next-line no-console
   console.log(
-    `[prerender] wrote ${pageCount} pages (${partnerCount} partner profiles) + robots.txt + sitemap.xml`,
+    `[prerender] wrote ${pageCount} pages + robots.txt + sitemap.xml`,
   );
 };
 

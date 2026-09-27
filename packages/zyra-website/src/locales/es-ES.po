@@ -39,34 +39,11 @@ msgstr ""
 msgid "{0}"
 msgstr ""
 
-#. js-lingui-id: fqZm1a
-#. placeholder {0}: partner.name
-#: src/routes/PartnerProfilePage.tsx
-msgid "{0} — Zyra Partner"
-msgstr "{0} — socio de Zyra"
-
 #. js-lingui-id: sGt3Jm
 #. placeholder {0}: i18n._(card.attribution.company)
 #: src/sections/three-cards/IllustrationCard.tsx
 msgid "{0} case study"
 msgstr "Caso práctico de {0}"
-
-#. js-lingui-id: NSO/FI
-#: src/partners-marketplace/PartnerMoneyRow.tsx
-#: src/partners-marketplace/PartnerRatesPanel.tsx
-msgid "{hourly}/hr"
-msgstr "{hourly}/h"
-
-#. js-lingui-id: rAP+km
-#: src/partners-marketplace/FilterDropdown.tsx
-msgid "{labelText} filter"
-msgstr "Filtro de {labelText}"
-
-#. js-lingui-id: 7hlEpj
-#. placeholder {0}: selected.size
-#: src/partners-marketplace/FilterDropdown.tsx
-msgid "{labelText} filter, {0} selected"
-msgstr "Filtro de {labelText}, {0} seleccionados"
 
 #. js-lingui-id: MocgDt
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -87,16 +64,6 @@ msgstr ""
 #: src/sections/footer/FooterBottom.tsx
 msgid "© {year} – Zyra"
 msgstr "© {year} – Zyra"
-
-#. js-lingui-id: 2ygf/L
-#: src/partner-application/partner-application-copy.ts
-msgid "← Back"
-msgstr "← Volver"
-
-#. js-lingui-id: d/fCs+
-#: src/partners-marketplace/BackToMarketplaceLink.tsx
-msgid "← Zyra partners"
-msgstr "← Socios de Zyra"
 
 #. js-lingui-id: qvPHIS
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -152,11 +119,6 @@ msgid ""
 "permissão"
 msgstr ""
 
-#. js-lingui-id: 2szX5S
-#: src/partner-application/partner-application-copy.ts
-msgid "150"
-msgstr "150"
-
 #. js-lingui-id: Wy6PPv
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "2 anos de contrato"
@@ -185,11 +147,6 @@ msgstr "30+"
 msgid "5 créditos de workflow/mês incluídos"
 msgstr ""
 
-#. js-lingui-id: hIKxCy
-#: src/partner-application/partner-application-copy.ts
-msgid "5,000"
-msgstr "5,000"
-
 #. js-lingui-id: 45OC21
 #: src/sections/pricing-plans/plans-data.ts
 msgid "50 créditos de workflow/ano incluídos"
@@ -214,6 +171,11 @@ msgstr "Un CRM para equipos que *se mueven rápido*"
 #: src/sections/product-demo/ProductDemo.tsx
 msgid "A demo worth a *thousand words*"
 msgstr "Una demo que vale *más que mil palabras*"
+
+#. js-lingui-id: j9WFae
+#: src/sections/creators/Creators.tsx
+msgid "A implementação é feita diretamente com a nossa equipe. Deixe seus dados e entramos em contato para agendar uma call ou conversar pelo WhatsApp."
+msgstr ""
 
 #. js-lingui-id: uNIo/j
 #: src/sections/three-cards/ProductThreeCards.tsx
@@ -250,11 +212,6 @@ msgstr ""
 msgid "Acompanhe cada lançamento com changelogs, destaques e demonstrações dos recursos mais novos."
 msgstr ""
 
-#. js-lingui-id: Yyn/dP
-#: src/partners-marketplace/ActiveFilterPills.tsx
-msgid "Active filters"
-msgstr "Filtros activos"
-
 #. js-lingui-id: woOp+c
 #: src/sections/stepper/product-stepper-data.ts
 msgid "Add objects and fields"
@@ -264,27 +221,6 @@ msgstr "Añade objetos y campos"
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Add-ons"
 msgstr "Complementos"
-
-#. js-lingui-id: 2050Pj
-#: src/partner-application/data/partner-scope-options.ts
-#: src/partners-marketplace/partner-scope-labels.ts
-msgid "Advisory & Discovery"
-msgstr "Asesoría y descubrimiento"
-
-#. js-lingui-id: QjSFuI
-#: src/partner-application/data/partner-country-options.ts
-msgid "Afghanistan 🇦🇫"
-msgstr "Afganistán 🇦🇫"
-
-#. js-lingui-id: StqEz0
-#: src/partners-marketplace/served-geo-labels.ts
-msgid "Africa"
-msgstr "África"
-
-#. js-lingui-id: NmHsVh
-#: src/partner-application/data/partner-team-type-options.ts
-msgid "Agency"
-msgstr "Agencia"
 
 #. js-lingui-id: o5/Z6Z
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -322,60 +258,15 @@ msgstr "Chat de IA, ajustes y registros en paneles laterales para un acceso ráp
 msgid "Ajuda"
 msgstr ""
 
-#. js-lingui-id: 7xlBwk
-#: src/partner-application/data/partner-country-options.ts
-msgid "Albania 🇦🇱"
-msgstr "Albania 🇦🇱"
-
-#. js-lingui-id: EszGq4
-#: src/partner-application/data/partner-country-options.ts
-msgid "Algeria 🇩🇿"
-msgstr "Argelia 🇩🇿"
-
 #. js-lingui-id: 5v8Qga
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Ambientes"
 msgstr ""
 
-#. js-lingui-id: Sbiivs
-#: src/partner-application/data/partner-country-options.ts
-msgid "Andorra 🇦🇩"
-msgstr "Andorra 🇦🇩"
-
-#. js-lingui-id: Uv5eaJ
-#: src/partner-application/data/partner-country-options.ts
-msgid "Angola 🇦🇴"
-msgstr "Angola 🇦🇴"
-
-#. js-lingui-id: qKANz3
-#: src/partner-application/data/partner-country-options.ts
-msgid "Antigua & Barbuda 🇦🇬"
-msgstr "Antigua y Barbuda 🇦🇬"
-
 #. js-lingui-id: VDJEyp
 #: src/sections/pricing-plans/BillingToggle.tsx
 msgid "Anual"
 msgstr ""
-
-#. js-lingui-id: lgSvgF
-#: src/partner-application/partner-application-copy.ts
-msgid "Anything else we should know?"
-msgstr "¿Hay algo más que debamos saber?"
-
-#. js-lingui-id: pkMjbA
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Anything that needs a developer."
-msgstr "Cualquier cosa que necesite un desarrollador."
-
-#. js-lingui-id: dYZUP3
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Anything that needs devops skills."
-msgstr "Cualquier cosa que necesite habilidades de DevOps."
-
-#. js-lingui-id: AfiWqP
-#: src/partners-marketplace/served-geo-labels.ts
-msgid "APAC"
-msgstr "APAC"
 
 #. js-lingui-id: of6x5c
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -392,20 +283,6 @@ msgstr ""
 msgid "APIs, SDKs e webhooks para estender a Zyra e lançar aplicativos sobre os dados do seu CRM."
 msgstr ""
 
-#. js-lingui-id: k8I7/G
-#: src/partner-application/partner-application-copy.ts
-msgid ""
-"Apply to build\n"
-"*the future of CRM*"
-msgstr ""
-"Postúlate para construir\n"
-"*el futuro del CRM*"
-
-#. js-lingui-id: 7mJ3/Z
-#: src/platform/routing/static-website-routes.ts
-msgid "Apply to join the Zyra partner ecosystem and grow your practice with Zyra."
-msgstr ""
-
 #. js-lingui-id: idWTdy
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Apps customizados"
@@ -415,22 +292,6 @@ msgstr ""
 #: src/sections/menu/menu.data.ts
 msgid "Aprenda a usar a Zyra"
 msgstr ""
-
-#. js-lingui-id: 8HV3WN
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Arabic"
-msgstr "Árabe"
-
-#. js-lingui-id: fT9xVz
-#: src/partner-application/data/partner-country-options.ts
-msgid "Argentina 🇦🇷"
-msgstr "Argentina 🇦🇷"
-
-#. js-lingui-id: 3KxGep
-#: src/partner-application/data/partner-country-options.ts
-msgid "Armenia 🇦🇲"
-msgstr "Armenia 🇦🇲"
 
 #. js-lingui-id: S+Q+1d
 #: src/sections/product-hero/ProductHero.tsx
@@ -467,16 +328,6 @@ msgstr ""
 msgid "Atualizações em tempo real estão indisponíveis, o que é quase mais honesto."
 msgstr ""
 
-#. js-lingui-id: tw0/s1
-#: src/partner-application/data/partner-country-options.ts
-msgid "Australia 🇦🇺"
-msgstr "Australia 🇦🇺"
-
-#. js-lingui-id: 4cf5s+
-#: src/partner-application/data/partner-country-options.ts
-msgid "Austria 🇦🇹"
-msgstr "Austria 🇦🇹"
-
 #. js-lingui-id: fng8L1
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Autenticação de dois fatores"
@@ -487,135 +338,10 @@ msgstr ""
 msgid "Automation"
 msgstr "Automatización"
 
-#. js-lingui-id: 8d+jRc
-#: src/partner-application/data/partner-country-options.ts
-msgid "Azerbaijan 🇦🇿"
-msgstr "Azerbaiyán 🇦🇿"
-
-#. js-lingui-id: wIoAQo
-#: src/partner-application/data/partner-country-options.ts
-msgid "Bahamas 🇧🇸"
-msgstr "Bahamas 🇧🇸"
-
-#. js-lingui-id: Rhju1T
-#: src/partner-application/data/partner-country-options.ts
-msgid "Bahrain 🇧🇭"
-msgstr "Baréin 🇧🇭"
-
-#. js-lingui-id: LxzgmZ
-#: src/partner-application/data/partner-country-options.ts
-msgid "Bangladesh 🇧🇩"
-msgstr "Bangladés 🇧🇩"
-
-#. js-lingui-id: rtcPS0
-#: src/partner-application/data/partner-country-options.ts
-msgid "Barbados 🇧🇧"
-msgstr "Barbados 🇧🇧"
-
-#. js-lingui-id: RownlY
-#: src/partners-marketplace/PartnerFactsList.tsx
-msgid "Based in"
-msgstr "Con sede en"
-
-#. js-lingui-id: kWm0dC
-#: src/sections/partner-hero/PartnerHero.tsx
-msgid ""
-"Become\n"
-"*our partner*"
-msgstr ""
-"Conviértete en\n"
-"*nuestro partner*"
-
-#. js-lingui-id: 6ZCRfT
-#: src/sections/partner-hero/PartnerHero.tsx
-#: src/sections/partner-signoff/PartnerSignoff.tsx
-msgid "Become a partner"
-msgstr "Conviértete en socio"
-
-#. js-lingui-id: oW1Pps
-#: src/platform/routing/static-website-routes.ts
-msgid "Become a Zyra Partner — Apply"
-msgstr "Conviértete en partner de Zyra — Postúlate"
-
-#. js-lingui-id: 0TCnEf
-#: src/partner-application/data/partner-country-options.ts
-msgid "Belarus 🇧🇾"
-msgstr "Bielorrusia 🇧🇾"
-
-#. js-lingui-id: qblg4t
-#: src/partner-application/data/partner-country-options.ts
-msgid "Belgium 🇧🇪"
-msgstr "Bélgica 🇧🇪"
-
-#. js-lingui-id: pSF7xM
-#: src/partner-application/data/partner-country-options.ts
-msgid "Belize 🇧🇿"
-msgstr "Belice 🇧🇿"
-
-#. js-lingui-id: Hds3Bq
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Bengali"
-msgstr "Bengalí"
-
-#. js-lingui-id: cTWkw3
-#: src/partner-application/data/partner-country-options.ts
-msgid "Benin 🇧🇯"
-msgstr "Benín 🇧🇯"
-
-#. js-lingui-id: SYfuGP
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Benjamin Reynolds"
-msgstr "Benjamin Reynolds"
-
-#. js-lingui-id: YfjrMq
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Bertrams"
-msgstr "Bertrams"
-
-#. js-lingui-id: OPnz/X
-#: src/partner-application/data/partner-country-options.ts
-msgid "Bhutan 🇧🇹"
-msgstr "Bután 🇧🇹"
-
 #. js-lingui-id: CDT57j
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Boa escolha!"
 msgstr ""
-
-#. js-lingui-id: TVJDFA
-#: src/partner-application/data/partner-country-options.ts
-msgid "Bolivia 🇧🇴"
-msgstr "Bolivia 🇧🇴"
-
-#. js-lingui-id: MkvsWx
-#: src/partners-marketplace/PartnerProfileCtas.tsx
-msgid "Book a call"
-msgstr "Reservar una llamada"
-
-#. js-lingui-id: Wzdd8u
-#: src/partner-application/data/partner-country-options.ts
-msgid "Bosnia & Herzegovina 🇧🇦"
-msgstr "Bosnia y Herzegovina 🇧🇦"
-
-#. js-lingui-id: wtNsrt
-#: src/partner-application/data/partner-country-options.ts
-msgid "Botswana 🇧🇼"
-msgstr "Botsuana 🇧🇼"
-
-#. js-lingui-id: yCaNfF
-#: src/partner-application/data/partner-country-options.ts
-msgid "Brazil 🇧🇷"
-msgstr "Brasil 🇧🇷"
-
-#. js-lingui-id: u4Gd8D
-#: src/platform/routing/static-website-routes.ts
-msgid "Browse Zyra's certified partners — the agencies and individuals who migrate, customise, host, and support Zyra across regions, languages, and deployment models."
-msgstr ""
-
-#. js-lingui-id: VX4eI/
-#: src/partner-application/data/partner-country-options.ts
-msgid "Brunei 🇧🇳"
-msgstr "Brunéi 🇧🇳"
 
 #. js-lingui-id: sbr0X/
 #: src/sections/product-hero/ai-hero-tabs.ts
@@ -637,36 +363,6 @@ msgstr "Crea paneles personalizados a partir de datos de CRM en tiempo real. Agr
 msgid "Built for speed"
 msgstr "Construido para la velocidad"
 
-#. js-lingui-id: sdItv6
-#: src/partner-application/data/partner-country-options.ts
-msgid "Bulgaria 🇧🇬"
-msgstr "Bulgaria 🇧🇬"
-
-#. js-lingui-id: dNnRlc
-#: src/partner-application/data/partner-country-options.ts
-msgid "Burkina Faso 🇧🇫"
-msgstr "Burkina Faso 🇧🇫"
-
-#. js-lingui-id: jtdtLa
-#: src/partner-application/data/partner-country-options.ts
-msgid "Burundi 🇧🇮"
-msgstr "Burundi 🇧🇮"
-
-#. js-lingui-id: L40Ae7
-#: src/partner-application/partner-application-copy.ts
-msgid "Calendar / booking link"
-msgstr "Enlace de calendario / reservas"
-
-#. js-lingui-id: 4yFkf9
-#: src/partner-application/data/partner-country-options.ts
-msgid "Cambodia 🇰🇭"
-msgstr "Camboya 🇰🇭"
-
-#. js-lingui-id: AvRzYu
-#: src/partner-application/data/partner-country-options.ts
-msgid "Cameroon 🇨🇲"
-msgstr "Camerún 🇨🇲"
-
 #. js-lingui-id: yEm5aw
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Caminho rápido pra ação"
@@ -677,38 +373,6 @@ msgstr ""
 msgid "Campos customizados"
 msgstr ""
 
-#. js-lingui-id: nEOTNi
-#: src/partner-application/data/partner-country-options.ts
-msgid "Canada 🇨🇦"
-msgstr "Canadá 🇨🇦"
-
-#. js-lingui-id: hRO6uK
-#: src/partner-application/data/partner-country-options.ts
-msgid "Cape Verde 🇨🇻"
-msgstr "Cabo Verde 🇨🇻"
-
-#. js-lingui-id: qLBo3s
-#: src/sections/testimonials/PartnerTestimonialsCarousel.tsx
-msgid "carousel"
-msgstr "carrusel"
-
-#. js-lingui-id: M1RLfx
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Catalan"
-msgstr "Catalán"
-
-#. js-lingui-id: NUrY9o
-#: src/partners-marketplace/FilterBar.tsx
-#: src/partners-marketplace/PartnerCard.tsx
-#: src/partners-marketplace/PartnerFactsList.tsx
-msgid "Categories"
-msgstr "Categorías"
-
-#. js-lingui-id: dBApoS
-#: src/partner-application/data/partner-country-options.ts
-msgid "Central African Republic 🇨🇫"
-msgstr "República Centroafricana 🇨🇫"
-
 #. js-lingui-id: WvFcPS
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Central de Add-ons Salesfarce"
@@ -718,11 +382,6 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Central de ajuda"
 msgstr ""
-
-#. js-lingui-id: iI3Dq9
-#: src/partner-application/data/partner-country-options.ts
-msgid "Chad 🇹🇩"
-msgstr "Chad 🇹🇩"
 
 #. js-lingui-id: o84F1r
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -739,47 +398,15 @@ msgstr ""
 msgid "Chega de escolher entre pronto e sob medida."
 msgstr ""
 
-#. js-lingui-id: 2BY3So
-#: src/partner-application/data/partner-country-options.ts
-msgid "Chile 🇨🇱"
-msgstr "Chile 🇨🇱"
-
-#. js-lingui-id: zG6t8U
-#: src/partner-application/data/partner-country-options.ts
-msgid "China 🇨🇳"
-msgstr "China 🇨🇳"
-
-#. js-lingui-id: h1IXFK
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Chinese"
-msgstr "Chino"
-
-#. js-lingui-id: lAAXeW
-#: src/partner-application/partner-application-copy.ts
-msgid "City *"
-msgstr "Ciudad *"
-
 #. js-lingui-id: uQVSty
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Clássico nunca morre. Só ganha mais uma prorrogação."
 msgstr ""
 
-#. js-lingui-id: u8JHrO
-#: src/partners-marketplace/EmptyState.tsx
-#: src/partners-marketplace/FilterBar.tsx
-msgid "Clear filters"
-msgstr "Borrar filtros"
-
 #. js-lingui-id: 14Ki+k
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 msgid "Clientes"
-msgstr ""
-
-#. js-lingui-id: quF6Vp
-#: src/partner-application/partner-application-copy.ts
-msgid "Close →"
 msgstr ""
 
 #. js-lingui-id: cu6iol
@@ -791,11 +418,6 @@ msgstr "Cerrar diálogo"
 #: src/sections/pricing-salesfarce/SalesfarceWindow.tsx
 msgid "Close pricing window"
 msgstr "Cerrar ventana de precios"
-
-#. js-lingui-id: dcLsG5
-#: src/partner-application/data/partner-country-options.ts
-msgid "Colombia 🇨🇴"
-msgstr "Colombia 🇨🇴"
 
 #. js-lingui-id: b5bnuN
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -835,21 +457,6 @@ msgid ""
 "sem cartão de crédito."
 msgstr ""
 
-#. js-lingui-id: OnPROL
-#: src/partner-application/partner-application-copy.ts
-msgid "Commercials"
-msgstr "Condiciones comerciales"
-
-#. js-lingui-id: RxpseA
-#: src/partner-application/data/partner-country-options.ts
-msgid "Comoros 🇰🇲"
-msgstr "Comoras 🇰🇲"
-
-#. js-lingui-id: SHjhDC
-#: src/partner-application/partner-application-copy.ts
-msgid "Company or brand *"
-msgstr "Empresa o marca *"
-
 #. js-lingui-id: mXw6PH
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Compartilhamento de e-mail"
@@ -881,14 +488,14 @@ msgstr ""
 msgid "Confie no CRM n°1, *ou não!*"
 msgstr ""
 
-#. js-lingui-id: 2DQw7/
-#: src/partner-application/data/partner-country-options.ts
-msgid "Congo 🇨🇬"
-msgstr "Congo 🇨🇬"
-
-#. js-lingui-id: QRIz3l
+#. js-lingui-id: H6uqe2
 #: src/sections/menu/menu.data.ts
-msgid "Conheça as agências e consultores certificados que implementam a Zyra para equipes no mundo todo."
+msgid "Conheça a nossa equipe"
+msgstr ""
+
+#. js-lingui-id: bxCW8H
+#: src/platform/routing/static-website-routes.ts
+msgid "Conheça quem criou o Zyra e fale com a nossa equipe para implementar o CRM na sua empresa."
 msgstr ""
 
 #. js-lingui-id: 90KBr0
@@ -917,11 +524,6 @@ msgid ""
 "Construa um CRM que seus\n"
 "concorrentes *não conseguem comprar.*"
 msgstr ""
-
-#. js-lingui-id: GsUBlG
-#: src/partners-marketplace/PartnerProfileCtas.tsx
-msgid "Contact {partnerName}"
-msgstr "Contactar a {partnerName}"
 
 #. js-lingui-id: Oii3vg
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -958,16 +560,6 @@ msgstr ""
 msgid "Core Features"
 msgstr "Funciones básicas"
 
-#. js-lingui-id: Al/blj
-#: src/partner-application/data/partner-country-options.ts
-msgid "Costa Rica 🇨🇷"
-msgstr "Costa Rica 🇨🇷"
-
-#. js-lingui-id: cRA2/z
-#: src/partner-application/partner-application-copy.ts
-msgid "Country *"
-msgstr "País *"
-
 #. js-lingui-id: Xn2Nlq
 #: src/sections/stepper/product-stepper-data.ts
 msgid "Create a workflow"
@@ -999,11 +591,6 @@ msgstr ""
 msgid "Criptografe seus dados"
 msgstr ""
 
-#. js-lingui-id: NLgmM4
-#: src/partner-application/data/partner-scope-options.ts
-msgid "CRM audit · Requirements · Process mapping · ROI · RevOps · Vendor selection"
-msgstr "Auditoría de CRM · Requisitos · Mapeo de procesos · ROI · RevOps · Selección de proveedores"
-
 #. js-lingui-id: SC4PMB
 #: src/sections/why-zyra-hero/WhyZyraHero.tsx
 msgid "CRM era um banco de dados que você preenchia às sextas. A IA transformou isso no sistema que roda seu go-to-market. Pra se diferenciar, você precisa construir o que seus concorrentes não conseguem comprar."
@@ -1013,11 +600,6 @@ msgstr ""
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "CRM era um livro-caixa. *A IA transformou isso num sistema operacional.*"
 msgstr ""
-
-#. js-lingui-id: OACAVp
-#: src/partner-application/data/partner-country-options.ts
-msgid "Croatia 🇭🇷"
-msgstr "Croacia 🇭🇷"
 
 #. js-lingui-id: I6FFSA
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1029,16 +611,6 @@ msgstr "Exportación CSV en cualquier momento"
 msgid "CSV import flow"
 msgstr "Flujo de importación CSV"
 
-#. js-lingui-id: O2UtEV
-#: src/partner-application/data/partner-country-options.ts
-msgid "Cuba 🇨🇺"
-msgstr "Cuba 🇨🇺"
-
-#. js-lingui-id: TcUCTv
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Custom Apps · Scripts · AI/agent integrations"
-msgstr "Aplicaciones personalizadas · Scripts · Integraciones de IA/agentes"
-
 #. js-lingui-id: yBSEtR
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Custom deal stages for your process"
@@ -1048,12 +620,6 @@ msgstr "Etapas de negociación personalizadas para tu proceso"
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Custom deal stages, drag-and-drop boards, and real-time tracking so your pipeline reflects reality."
 msgstr "Etapas de acuerdos personalizadas, tableros de arrastrar y soltar y seguimiento en tiempo real para que tu pipeline refleje la realidad."
-
-#. js-lingui-id: DUnke3
-#: src/partner-application/data/partner-scope-options.ts
-#: src/partners-marketplace/partner-scope-labels.ts
-msgid "Custom Development"
-msgstr "Desarrollo personalizado"
 
 #. js-lingui-id: U1RB/7
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1081,21 +647,6 @@ msgstr ""
 msgid "Customization"
 msgstr "Personalización"
 
-#. js-lingui-id: Pj5fGG
-#: src/partner-application/data/partner-country-options.ts
-msgid "Cyprus 🇨🇾"
-msgstr "Chipre 🇨🇾"
-
-#. js-lingui-id: w9VTXG
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Czech"
-msgstr "Checo"
-
-#. js-lingui-id: xkuHM6
-#: src/partner-application/data/partner-country-options.ts
-msgid "Czech Republic 🇨🇿"
-msgstr "República Checa 🇨🇿"
-
 #. js-lingui-id: /y+hgv
 #: src/sections/faq/faq.data.ts
 msgid "Dá pra migrar do Salesforce ou do HubSpot?"
@@ -1105,11 +656,6 @@ msgstr ""
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Dados em tempo real, com IA embutida"
 msgstr ""
-
-#. js-lingui-id: Fo2vDn
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Danish"
-msgstr "Danés"
 
 #. js-lingui-id: V0kvgB
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1121,11 +667,6 @@ msgstr "Importación de datos"
 msgid "Data model"
 msgstr "Modelo de datos"
 
-#. js-lingui-id: iq2WTm
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Data modeling · Migrations · No-code workflows · Dashboards · SSO/SCIM · Integrations"
-msgstr "Modelado de datos · Migraciones · Flujos de trabajo sin código · Paneles · SSO/SCIM · Integraciones"
-
 #. js-lingui-id: /TlpVf
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Deals that move themselves."
@@ -1135,11 +676,6 @@ msgstr "Acuerdos que se mueven solos."
 #: src/sections/feature-cards/FeatureCards.tsx
 msgid "Deixe seu time comercial feliz *com um CRM que dá gosto de usar*"
 msgstr ""
-
-#. js-lingui-id: H1UtjM
-#: src/partner-application/data/partner-country-options.ts
-msgid "Denmark 🇩🇰"
-msgstr "Dinamarca 🇩🇰"
 
 #. js-lingui-id: 9l+QDJ
 #: src/sections/faq/faq.data.ts
@@ -1188,25 +724,10 @@ msgstr ""
 msgid "Disponível no YouTube!"
 msgstr ""
 
-#. js-lingui-id: rHLwDO
-#: src/partner-application/data/partner-country-options.ts
-msgid "Djibouti 🇩🇯"
-msgstr "Yibuti 🇩🇯"
-
 #. js-lingui-id: v4l9JK
 #: src/sections/menu/menu.data.ts
 msgid "Domine cada detalhe da Zyra"
 msgstr ""
-
-#. js-lingui-id: bMDnQR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Dominica 🇩🇲"
-msgstr "Dominica 🇩🇲"
-
-#. js-lingui-id: ufcRA6
-#: src/partner-application/data/partner-country-options.ts
-msgid "Dominican Republic 🇩🇴"
-msgstr "República Dominicana 🇩🇴"
 
 #. js-lingui-id: KJrcOj
 #: src/sections/pricing-plans/plans-data.ts
@@ -1218,11 +739,6 @@ msgstr ""
 msgid "Domínio próprio (crm.suaempresa.com)"
 msgstr ""
 
-#. js-lingui-id: HDR0en
-#: src/partner-application/data/partner-country-options.ts
-msgid "DR Congo 🇨🇩"
-msgstr "R. D. del Congo 🇨🇩"
-
 #. js-lingui-id: mzedFr
 #: src/sections/product-hero/ai-hero-tabs.ts
 msgid "Draft a workflow for an email sequence"
@@ -1232,12 +748,6 @@ msgstr "Crea un flujo de trabajo para una secuencia de correos electrónicos"
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Drag-and-drop deals between stages"
 msgstr "Arrastra y suelta acuerdos entre etapas"
-
-#. js-lingui-id: KIjvtr
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Dutch"
-msgstr "Neerlandés"
 
 #. js-lingui-id: 5Sa1Ss
 #: src/contact-cal/ContactLeadForm.tsx
@@ -1253,31 +763,6 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "E-mails e Calendário"
 msgstr ""
-
-#. js-lingui-id: FJ+YsO
-#: src/partner-application/partner-application-copy.ts
-msgid "e.g. n8n, Shopify, Real estate…"
-msgstr "p. ej., n8n, Shopify, Bienes raíces…"
-
-#. js-lingui-id: oqq/lN
-#: src/sections/menu/menu.data.ts
-msgid "Ecossistema de parceiros Zyra"
-msgstr ""
-
-#. js-lingui-id: hEtClO
-#: src/partner-application/data/partner-country-options.ts
-msgid "Ecuador 🇪🇨"
-msgstr "Ecuador 🇪🇨"
-
-#. js-lingui-id: OAdXUT
-#: src/partner-application/data/partner-country-options.ts
-msgid "Egypt 🇪🇬"
-msgstr "Egipto 🇪🇬"
-
-#. js-lingui-id: 2xK+An
-#: src/partner-application/data/partner-country-options.ts
-msgid "El Salvador 🇸🇻"
-msgstr "El Salvador 🇸🇻"
 
 #. js-lingui-id: JvHSde
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -1315,42 +800,6 @@ msgstr "Correos y eventos vinculados a registros del CRM"
 msgid "empty"
 msgstr "vacío"
 
-#. js-lingui-id: FN3fYY
-#: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
-msgid "Encontrar um parceiro"
-msgstr ""
-
-#. js-lingui-id: ikctIB
-#: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
-msgid "Encontre o parceiro certo para implementar, customizar e adaptar a Zyra ao seu time."
-msgstr ""
-
-#. js-lingui-id: KzK8/a
-#: src/sections/menu/menu.data.ts
-msgid "Encontre um parceiro Zyra"
-msgstr ""
-
-#. js-lingui-id: lYGfRP
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "English"
-msgstr "Inglés"
-
-#. js-lingui-id: y3l1fN
-#: src/partner-application/partner-application-copy.ts
-msgid "Enter a valid amount using numbers only."
-msgstr "Introduce una cantidad válida usando solo números."
-
-#. js-lingui-id: xoqD/n
-#: src/partner-application/partner-application-copy.ts
-msgid "Enter a valid email address."
-msgstr "Introduce una dirección de correo válida."
-
-#. js-lingui-id: /OVUD6
-#: src/partner-application/partner-application-copy.ts
-msgid "Enter a valid URL (starting with http:// or https://)."
-msgstr "Introduce una URL válida (que comience por http:// o https://)."
-
 #. js-lingui-id: 8Cqk2V
 #: src/sections/menu/Menu.tsx
 #: src/sections/menu/MenuDrawer.tsx
@@ -1372,40 +821,15 @@ msgstr ""
 msgid "Enviar mensagem"
 msgstr ""
 
-#. js-lingui-id: c0nqfC
-#: src/partner-application/data/partner-country-options.ts
-msgid "Equatorial Guinea 🇬🇶"
-msgstr "Guinea Ecuatorial 🇬🇶"
-
-#. js-lingui-id: 4DIpFY
-#: src/partner-application/data/partner-country-options.ts
-msgid "Eritrea 🇪🇷"
-msgstr "Eritrea 🇪🇷"
+#. js-lingui-id: w/yHEO
+#: src/sections/menu/menu.data.ts
+msgid "Equipe por trás do Zyra"
+msgstr ""
 
 #. js-lingui-id: I1HGuS
 #: src/sections/footer/LocaleSwitcher.tsx
 msgid "Escolha um idioma"
 msgstr ""
-
-#. js-lingui-id: JIhNLR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Estonia 🇪🇪"
-msgstr "Estonia 🇪🇪"
-
-#. js-lingui-id: 8yXuJ9
-#: src/partner-application/data/partner-country-options.ts
-msgid "Eswatini 🇸🇿"
-msgstr "Esuatini 🇸🇿"
-
-#. js-lingui-id: rktGGp
-#: src/partner-application/data/partner-country-options.ts
-msgid "Ethiopia 🇪🇹"
-msgstr "Etiopía 🇪🇹"
-
-#. js-lingui-id: rQqP1P
-#: src/partners-marketplace/served-geo-labels.ts
-msgid "Europe"
-msgstr "Europa"
 
 #. js-lingui-id: EJN4az
 #: src/platform/routing/static-website-routes.ts
@@ -1427,15 +851,12 @@ msgstr "Todo lo que necesitas, *desde el primer momento*"
 msgid "Experimente a granularidade enterprise, começando com a 11ª permissão."
 msgstr ""
 
-#. js-lingui-id: uZRQi+
-#: src/partner-application/partner-application-copy.ts
-msgid "Expertise & experience"
-msgstr "Experiencia y trayectoria"
-
 #. js-lingui-id: 7iRq8G
+#: src/sections/creators/Creators.tsx
 #: src/sections/customers-catalog-signoff/CustomersCatalogSignoff.tsx
 #: src/sections/faq/Faq.tsx
 #: src/sections/home-hero/HomeHero.tsx
+#: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
 #: src/sections/pricing-plans/PlanCard.tsx
 msgid "Falar com a gente"
 msgstr ""
@@ -1446,10 +867,15 @@ msgstr ""
 msgid "Fale conosco"
 msgstr ""
 
-#. js-lingui-id: gKNP7S
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Farsi"
-msgstr "Farsi"
+#. js-lingui-id: r39TsB
+#: src/sections/menu/menu.data.ts
+msgid "Fale diretamente com a equipe, por call agendada ou WhatsApp, para implementar o Zyra na sua empresa."
+msgstr ""
+
+#. js-lingui-id: iR1mAF
+#: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
+msgid "Fale diretamente com a nossa equipe para implementar, customizar e adaptar o Zyra ao seu time."
+msgstr ""
 
 #. js-lingui-id: +LREeu
 #: src/sections/pricing-plan-table/plan-table-visible-rows.test.ts
@@ -1471,56 +897,15 @@ msgstr ""
 msgid "Fidelização"
 msgstr ""
 
-#. js-lingui-id: z+q1Th
-#: src/partner-application/data/partner-country-options.ts
-msgid "Fiji 🇫🇯"
-msgstr "Fiyi 🇫🇯"
-
 #. js-lingui-id: sER+bs
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Files"
 msgstr "Archivos"
 
-#. js-lingui-id: bOidm7
-#: src/partners-marketplace/FilterBar.tsx
-msgid "Filter partners"
-msgstr "Filtrar socios"
-
 #. js-lingui-id: iabLgo
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Filtered metrics from any object"
 msgstr "Métricas filtradas de cualquier objeto"
-
-#. js-lingui-id: mMCcW0
-#: src/platform/routing/static-website-routes.ts
-msgid "Find a certified Zyra partner to migrate, customise, and operate your CRM, or join the ecosystem and grow your practice with us."
-msgstr ""
-
-#. js-lingui-id: TJ7HQl
-#: src/sections/partner-hero/PartnerHero.tsx
-#: src/sections/partner-signoff/PartnerSignoff.tsx
-msgid "Find a partner"
-msgstr "Encuentra un socio"
-
-#. js-lingui-id: kEvD2c
-#: src/platform/routing/static-website-routes.ts
-msgid "Find a Zyra Partner — Zyra CRM Marketplace"
-msgstr ""
-
-#. js-lingui-id: KU0OLl
-#: src/partners-marketplace/MarketplaceHeader.tsx
-msgid "Find your *Zyra partner*"
-msgstr "Encuentra a tu *socio de Zyra*"
-
-#. js-lingui-id: 9V48qi
-#: src/partner-application/data/partner-country-options.ts
-msgid "Finland 🇫🇮"
-msgstr "Finlandia 🇫🇮"
-
-#. js-lingui-id: USZ2N6
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Finnish"
-msgstr "Finés"
 
 #. js-lingui-id: 54CSvo
 #: src/sections/stepper/stepper.data.ts
@@ -1531,32 +916,6 @@ msgstr ""
 #: src/sections/three-cards/product-three-cards-data.ts
 msgid "Fly through your workspace with shortcuts and short load times."
 msgstr "Vuela por tu espacio de trabajo con atajos y tiempos de carga cortos."
-
-#. js-lingui-id: UCoxP5
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Founder, Nine Dots Ventures"
-msgstr "Fundador, Nine Dots Ventures"
-
-#. js-lingui-id: IPaRlc
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Founder, Wintactix"
-msgstr "Fundador, Wintactix"
-
-#. js-lingui-id: 671GY5
-#: src/partner-application/data/partner-country-options.ts
-msgid "France 🇫🇷"
-msgstr "Francia 🇫🇷"
-
-#. js-lingui-id: nLC6tu
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "French"
-msgstr "Francés"
-
-#. js-lingui-id: weRlb1
-#: src/partners-marketplace/PartnerMoneyRow.tsx
-msgid "from {minBudget}"
-msgstr "desde {minBudget}"
 
 #. js-lingui-id: Iuxc00
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1573,51 +932,20 @@ msgstr "Historial de comunicación completo en un solo lugar"
 msgid "Funciona até certo ponto — depois disso, cada pessoa nova no time é mais uma versão diferente da \"verdade\" sobre um cliente."
 msgstr ""
 
-#. js-lingui-id: //hrfs
-#: src/partner-application/data/partner-country-options.ts
-msgid "Gabon 🇬🇦"
-msgstr "Gabón 🇬🇦"
-
-#. js-lingui-id: yau9J6
-#: src/partner-application/data/partner-country-options.ts
-msgid "Gambia 🇬🇲"
-msgstr "Gambia 🇬🇲"
-
 #. js-lingui-id: S84RWl
 #: src/sections/product-hero/ai-hero-tabs.ts
 msgid "Generate tasks for my top 10 accounts"
 msgstr "Genera tareas para mis 10 principales cuentas"
-
-#. js-lingui-id: GOmD9p
-#: src/partner-application/data/partner-country-options.ts
-msgid "Georgia 🇬🇪"
-msgstr "Georgia 🇬🇪"
 
 #. js-lingui-id: TzZSAq
 #: src/sections/footer/footer.data.ts
 msgid "Gerador de halftone"
 msgstr ""
 
-#. js-lingui-id: DDcvSo
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "German"
-msgstr "Alemán"
-
-#. js-lingui-id: XcPIuI
-#: src/partner-application/data/partner-country-options.ts
-msgid "Germany 🇩🇪"
-msgstr "Alemania 🇩🇪"
-
 #. js-lingui-id: ZDIydz
 #: src/sections/product-hero/ProductHero.tsx
 msgid "Get started"
 msgstr "Comenzar"
-
-#. js-lingui-id: xyKSqi
-#: src/partner-application/data/partner-country-options.ts
-msgid "Ghana 🇬🇭"
-msgstr "Ghana 🇬🇭"
 
 #. js-lingui-id: n8waaJ
 #: src/sections/stepper/ProductStepperContent.tsx
@@ -1628,26 +956,6 @@ msgstr "Llega más lejos *con no-code*"
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Grátis pra você!"
 msgstr ""
-
-#. js-lingui-id: +tDN2S
-#: src/partner-application/data/partner-country-options.ts
-msgid "Greece 🇬🇷"
-msgstr "Grecia 🇬🇷"
-
-#. js-lingui-id: CZXzs4
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Greek"
-msgstr "Griego"
-
-#. js-lingui-id: DDgHcm
-#: src/partner-application/data/partner-country-options.ts
-msgid "Grenada 🇬🇩"
-msgstr "Granada 🇬🇩"
-
-#. js-lingui-id: M/8CC1
-#: src/partner-application/data/partner-country-options.ts
-msgid "Guatemala 🇬🇹"
-msgstr "Guatemala 🇬🇹"
 
 #. js-lingui-id: YCclfp
 #: src/sections/footer/footer.data.ts
@@ -1660,26 +968,6 @@ msgstr ""
 msgid "Guias passo a passo e manuais para ajudar seu time a aproveitar ao máximo o workspace."
 msgstr ""
 
-#. js-lingui-id: UZbq7J
-#: src/partner-application/data/partner-country-options.ts
-msgid "Guinea 🇬🇳"
-msgstr "Guinea 🇬🇳"
-
-#. js-lingui-id: vtpxPx
-#: src/partner-application/data/partner-country-options.ts
-msgid "Guinea-Bissau 🇬🇼"
-msgstr "Guinea-Bisáu 🇬🇼"
-
-#. js-lingui-id: GT8Ua2
-#: src/partner-application/data/partner-country-options.ts
-msgid "Guyana 🇬🇾"
-msgstr "Guyana 🇬🇾"
-
-#. js-lingui-id: 5BLiJj
-#: src/partner-application/data/partner-country-options.ts
-msgid "Haiti 🇭🇹"
-msgstr "Haití 🇭🇹"
-
 #. js-lingui-id: h3BKZA
 #: src/platform/routing/static-website-routes.ts
 msgid "Halftone Generator | Zyra"
@@ -1690,17 +978,6 @@ msgstr "Generador de Semitonos | Zyra"
 msgid "Help"
 msgstr "Ayuda"
 
-#. js-lingui-id: LiWOgh
-#: src/partners-marketplace/PartnerProfileCtas.tsx
-msgid "Hey, I'm interested in meeting. Here's my project:"
-msgstr "Hola, estoy interesado en reunirnos. Aquí está mi proyecto:"
-
-#. js-lingui-id: tGjibo
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Hindi"
-msgstr "Hindi"
-
 #. js-lingui-id: cxKTeQ
 #: src/sections/customers-hero/CustomersHero.tsx
 msgid ""
@@ -1708,36 +985,10 @@ msgid ""
 "constrói *com o Zyra*"
 msgstr ""
 
-#. js-lingui-id: zbfmqm
-#: src/partner-application/data/partner-country-options.ts
-msgid "Honduras 🇭🇳"
-msgstr "Honduras 🇭🇳"
-
-#. js-lingui-id: mqX9AX
-#: src/partner-application/data/partner-scope-options.ts
-#: src/partners-marketplace/partner-scope-labels.ts
-msgid "Hosting & Infrastructure"
-msgstr "Hosting e infraestructura"
-
-#. js-lingui-id: SHZNBm
-#: src/partners-marketplace/PartnerRatesPanel.tsx
-msgid "Hourly"
-msgstr "Por hora"
-
-#. js-lingui-id: +puxRS
-#: src/partner-application/partner-application-copy.ts
-msgid "Hourly rate *"
-msgstr "Tarifa por hora *"
-
 #. js-lingui-id: rvZAYZ
 #: src/platform/routing/static-website-routes.ts
 msgid "How Zyra collects, uses, and protects your data — our GDPR- and CCPA-compliant privacy policy."
 msgstr "Cómo Zyra recopila, usa y protege tus datos: nuestra política de privacidad compatible con el RGPD y la CCPA."
-
-#. js-lingui-id: htrFcw
-#: src/partner-application/data/partner-country-options.ts
-msgid "Hungary 🇭🇺"
-msgstr "Hungría 🇭🇺"
 
 #. js-lingui-id: kf1xrG
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -1753,16 +1004,6 @@ msgstr ""
 #: src/sections/three-cards/three-cards.data.ts
 msgid "IA para iterar rápido"
 msgstr ""
-
-#. js-lingui-id: RYDa0v
-#: src/partner-application/data/partner-country-options.ts
-msgid "Iceland 🇮🇸"
-msgstr "Islandia 🇮🇸"
-
-#. js-lingui-id: ePYQjq
-#: src/partner-application/partner-application-copy.ts
-msgid "Identity"
-msgstr "Identidad"
 
 #. js-lingui-id: frUGhT
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -1803,6 +1044,11 @@ msgstr ""
 msgid "Ilustração azul de desenvolvedor com setas ramificadas"
 msgstr ""
 
+#. js-lingui-id: CqzwA2
+#: src/sections/menu/menu.data.ts
+msgid "Implemente o Zyra com a nossa equipe"
+msgstr ""
+
 #. js-lingui-id: ZAKTS6
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Import your data with field mapping, including relations. Export anytime — your data is always yours."
@@ -1830,26 +1076,11 @@ msgstr "Vista previa en la app para los tipos de archivo compatibles (cuando est
 msgid "Incluso!"
 msgstr ""
 
-#. js-lingui-id: /c4yUr
-#: src/partner-application/data/partner-country-options.ts
-msgid "India 🇮🇳"
-msgstr "India 🇮🇳"
-
 #. js-lingui-id: VW4bvs
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Indisponível"
 msgstr ""
-
-#. js-lingui-id: iEJqDi
-#: src/partner-application/data/partner-country-options.ts
-msgid "Indonesia 🇮🇩"
-msgstr "Indonesia 🇮🇩"
-
-#. js-lingui-id: BQukYF
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Indonesian"
-msgstr "Indonesio"
 
 #. js-lingui-id: Zwtq3/
 #: src/sections/footer/footer.data.ts
@@ -1867,87 +1098,10 @@ msgstr ""
 msgid "Interactive halftone generator exported from Zyra."
 msgstr "Generador de semitonos interactivo exportado desde Zyra."
 
-#. js-lingui-id: +83cJG
-#: src/partners-marketplace/PartnerProfileCtas.tsx
-msgid "Interested in meeting {partnerName}"
-msgstr "Interesado en reunirte con {partnerName}"
-
 #. js-lingui-id: TAdMuD
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Interface simples, sem curva de aprendizado"
 msgstr ""
-
-#. js-lingui-id: FtgjCv
-#: src/partner-application/data/partner-country-options.ts
-msgid "Iran 🇮🇷"
-msgstr "Irán 🇮🇷"
-
-#. js-lingui-id: 8yynyz
-#: src/partner-application/data/partner-country-options.ts
-msgid "Iraq 🇮🇶"
-msgstr "Irak 🇮🇶"
-
-#. js-lingui-id: s7XmoY
-#: src/partner-application/data/partner-country-options.ts
-msgid "Ireland 🇮🇪"
-msgstr "Irlanda 🇮🇪"
-
-#. js-lingui-id: SdtpDP
-#: src/partner-application/data/partner-country-options.ts
-msgid "Israel 🇮🇱"
-msgstr "Israel 🇮🇱"
-
-#. js-lingui-id: Lj7sBL
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Italian"
-msgstr "Italiano"
-
-#. js-lingui-id: OSTD8d
-#: src/partner-application/data/partner-country-options.ts
-msgid "Italy 🇮🇹"
-msgstr "Italia 🇮🇹"
-
-#. js-lingui-id: 0BTIQi
-#: src/partner-application/data/partner-country-options.ts
-msgid "Ivory Coast 🇨🇮"
-msgstr "Costa de Marfil 🇨🇮"
-
-#. js-lingui-id: W6o2Pv
-#: src/partner-application/data/partner-country-options.ts
-msgid "Jamaica 🇯🇲"
-msgstr "Jamaica 🇯🇲"
-
-#. js-lingui-id: kpk6mj
-#: src/partner-application/data/partner-country-options.ts
-msgid "Japan 🇯🇵"
-msgstr "Japón 🇯🇵"
-
-#. js-lingui-id: dFtidv
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Japanese"
-msgstr "Japonés"
-
-#. js-lingui-id: 3dKxDH
-#: src/partner-application/partner-application-copy.ts
-msgid "Join our ecosystem and help businesses take control of their customer data with a CRM built to adapt to them."
-msgstr ""
-
-#. js-lingui-id: 1qiriB
-#: src/sections/testimonials/PartnerTestimonialsCarousel.tsx
-msgid "Join our growing partner ecosystem"
-msgstr "Únete a nuestro ecosistema de socios en crecimiento"
-
-#. js-lingui-id: VQIurp
-#: src/sections/partner-signoff/PartnerSignoff.tsx
-msgid "Join our partner ecosystem and help businesses take control of their CRM."
-msgstr "Únete a nuestro ecosistema de socios y ayuda a las empresas a tomar el control de su CRM."
-
-#. js-lingui-id: QbxNys
-#: src/partner-application/data/partner-country-options.ts
-msgid "Jordan 🇯🇴"
-msgstr "Jordania 🇯🇴"
 
 #. js-lingui-id: Z/Jr+h
 #: src/sections/customers-catalog-signoff/CustomersCatalogSignoff.tsx
@@ -1959,45 +1113,10 @@ msgstr ""
 msgid "Jurídico"
 msgstr ""
 
-#. js-lingui-id: r1cFAW
-#: src/partner-application/data/partner-country-options.ts
-msgid "Kazakhstan 🇰🇿"
-msgstr "Kazajistán 🇰🇿"
-
-#. js-lingui-id: kEahsE
-#: src/partner-application/data/partner-country-options.ts
-msgid "Kenya 🇰🇪"
-msgstr "Kenia 🇰🇪"
-
 #. js-lingui-id: TLanjj
 #: src/sections/pricing-plan-table/plan-table-visible-rows.test.ts
 msgid "kept"
 msgstr "mantenido"
-
-#. js-lingui-id: IxBSi8
-#: src/partner-application/data/partner-country-options.ts
-msgid "Kiribati 🇰🇮"
-msgstr "Kiribati 🇰🇮"
-
-#. js-lingui-id: h6S9Yz
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Korean"
-msgstr "Coreano"
-
-#. js-lingui-id: PqhUrP
-#: src/partner-application/data/partner-country-options.ts
-msgid "Kosovo 🇽🇰"
-msgstr "Kosovo 🇽🇰"
-
-#. js-lingui-id: 3+TwF3
-#: src/partner-application/data/partner-country-options.ts
-msgid "Kuwait 🇰🇼"
-msgstr "Kuwait 🇰🇼"
-
-#. js-lingui-id: e9zZkH
-#: src/partner-application/data/partner-country-options.ts
-msgid "Kyrgyzstan 🇰🇬"
-msgstr "Kirguistán 🇰🇬"
 
 #. js-lingui-id: QjFZTZ
 #: src/sections/menu/menu.data.ts
@@ -2010,28 +1129,6 @@ msgstr ""
 msgid "Lançamentos da Zyra — {0}"
 msgstr ""
 
-#. js-lingui-id: GAmD3h
-#: src/partners-marketplace/FilterBar.tsx
-#: src/partners-marketplace/PartnerCard.tsx
-#: src/partners-marketplace/PartnerFactsList.tsx
-msgid "Languages"
-msgstr "Idiomas"
-
-#. js-lingui-id: u6jooT
-#: src/partner-application/partner-application-copy.ts
-msgid "Languages spoken"
-msgstr "Idiomas hablados"
-
-#. js-lingui-id: YHacTY
-#: src/partner-application/data/partner-country-options.ts
-msgid "Laos 🇱🇦"
-msgstr "Laos 🇱🇦"
-
-#. js-lingui-id: 2lrGbG
-#: src/partners-marketplace/served-geo-labels.ts
-msgid "LATAM"
-msgstr "LATAM"
-
 #. js-lingui-id: WvrtRi
 #: src/sections/releases-hero/ReleasesHero.tsx
 msgid ""
@@ -2040,11 +1137,6 @@ msgid ""
 msgstr ""
 "Últimos\n"
 "*lanzamientos*"
-
-#. js-lingui-id: 7OHfcc
-#: src/partner-application/data/partner-country-options.ts
-msgid "Latvia 🇱🇻"
-msgstr "Letonia 🇱🇻"
 
 #. js-lingui-id: rdU729
 #: src/sections/stepper/product-stepper-data.ts
@@ -2056,50 +1148,10 @@ msgstr "Diseño"
 msgid "Layout customizado"
 msgstr ""
 
-#. js-lingui-id: wB0DGn
-#: src/partner-application/data/partner-country-options.ts
-msgid "Lebanon 🇱🇧"
-msgstr "Líbano 🇱🇧"
-
-#. js-lingui-id: UqdHpG
-#: src/partner-application/data/partner-country-options.ts
-msgid "Lesotho 🇱🇸"
-msgstr "Lesoto 🇱🇸"
-
-#. js-lingui-id: rJargy
-#: src/partner-application/data/partner-country-options.ts
-msgid "Liberia 🇱🇷"
-msgstr "Liberia 🇱🇷"
-
-#. js-lingui-id: Lzw0kM
-#: src/partner-application/data/partner-country-options.ts
-msgid "Libya 🇱🇾"
-msgstr "Libia 🇱🇾"
-
-#. js-lingui-id: K41WYc
-#: src/partner-application/data/partner-country-options.ts
-msgid "Liechtenstein 🇱🇮"
-msgstr "Liechtenstein 🇱🇮"
-
 #. js-lingui-id: k7SBwf
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Limite de usuários"
 msgstr ""
-
-#. js-lingui-id: Gg69LR
-#: src/partner-application/partner-application-copy.ts
-msgid "LinkedIn URL"
-msgstr "URL de LinkedIn"
-
-#. js-lingui-id: 2WIZYd
-#: src/partner-application/data/partner-country-options.ts
-msgid "Lithuania 🇱🇹"
-msgstr "Lituania 🇱🇹"
-
-#. js-lingui-id: Pwqkdw
-#: src/partner-application/PartnerApplicationModal.tsx
-msgid "Loading…"
-msgstr "Cargando…"
 
 #. js-lingui-id: jhUkLf
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -2112,75 +1164,15 @@ msgstr ""
 msgid "Logs de auditoria"
 msgstr ""
 
-#. js-lingui-id: J13skq
-#: src/partner-application/data/partner-country-options.ts
-msgid "Luxembourg 🇱🇺"
-msgstr "Luxemburgo 🇱🇺"
-
-#. js-lingui-id: nRYQC8
-#: src/partner-application/data/partner-country-options.ts
-msgid "Madagascar 🇲🇬"
-msgstr "Madagascar 🇲🇬"
-
 #. js-lingui-id: 9299So
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Mais opções disponíveis!"
 msgstr ""
 
-#. js-lingui-id: qHvKxh
-#: src/partner-application/data/partner-country-options.ts
-msgid "Malawi 🇲🇼"
-msgstr "Malaui 🇲🇼"
-
-#. js-lingui-id: tF97tn
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Malay"
-msgstr "Malayo"
-
-#. js-lingui-id: DIOh5g
-#: src/partner-application/data/partner-country-options.ts
-msgid "Malaysia 🇲🇾"
-msgstr "Malasia 🇲🇾"
-
-#. js-lingui-id: 62/ScF
-#: src/partner-application/data/partner-country-options.ts
-msgid "Maldives 🇲🇻"
-msgstr "Maldivas 🇲🇻"
-
-#. js-lingui-id: wc5E/3
-#: src/partner-application/data/partner-country-options.ts
-msgid "Mali 🇲🇱"
-msgstr "Malí 🇲🇱"
-
-#. js-lingui-id: 04fjhR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Malta 🇲🇹"
-msgstr "Malta 🇲🇹"
-
 #. js-lingui-id: OZSrL9
 #: src/sections/footer/footer.data.ts
 msgid "Mapa do site"
 msgstr ""
-
-#. js-lingui-id: Zt5PUS
-#: src/partners-marketplace/MarketplaceHeader.tsx
-msgid "Marketplace"
-msgstr "Marketplace"
-
-#. js-lingui-id: 2jVbnO
-#: src/partner-application/data/partner-country-options.ts
-msgid "Marshall Islands 🇲🇭"
-msgstr "Islas Marshall 🇲🇭"
-
-#. js-lingui-id: HG/EUg
-#: src/partner-application/data/partner-country-options.ts
-msgid "Mauritania 🇲🇷"
-msgstr "Mauritania 🇲🇷"
-
-#. js-lingui-id: YDiaY/
-#: src/partner-application/data/partner-country-options.ts
-msgid "Mauritius 🇲🇺"
-msgstr "Mauricio 🇲🇺"
 
 #. js-lingui-id: 2cNamF
 #: src/app-preview/stage/TrafficLights.tsx
@@ -2191,11 +1183,6 @@ msgstr ""
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Melhor que Liquid Glass!"
 msgstr ""
-
-#. js-lingui-id: CQ9M36
-#: src/partners-marketplace/served-geo-labels.ts
-msgid "MENA"
-msgstr "MENA"
 
 #. js-lingui-id: B7Dx7t
 #: src/sections/pricing-plans/BillingToggle.tsx
@@ -2227,30 +1214,10 @@ msgstr ""
 msgid "Metrics you can actually trust."
 msgstr "Métricas en las que realmente puedes confiar."
 
-#. js-lingui-id: YBLFQZ
-#: src/partner-application/data/partner-country-options.ts
-msgid "Mexico 🇲🇽"
-msgstr "México 🇲🇽"
-
-#. js-lingui-id: KBirDR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Micronesia 🇫🇲"
-msgstr "Micronesia 🇫🇲"
-
-#. js-lingui-id: izddzp
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Mike Babiy"
-msgstr "Mike Babiy"
-
 #. js-lingui-id: XT1ca+
 #: src/app-preview/stage/TrafficLights.tsx
 msgid "Minimizar"
 msgstr ""
-
-#. js-lingui-id: 5IvRfo
-#: src/partner-application/partner-application-copy.ts
-msgid "Minimum project budget *"
-msgstr "Presupuesto mínimo del proyecto *"
 
 #. js-lingui-id: nMhsoZ
 #: src/sections/three-cards/three-cards.data.ts
@@ -2262,35 +1229,10 @@ msgstr ""
 msgid "Modo do terminal"
 msgstr ""
 
-#. js-lingui-id: 6m8rMT
-#: src/partner-application/data/partner-country-options.ts
-msgid "Moldova 🇲🇩"
-msgstr "Moldavia 🇲🇩"
-
-#. js-lingui-id: qRRmSe
-#: src/partner-application/data/partner-country-options.ts
-msgid "Monaco 🇲🇨"
-msgstr "Mónaco 🇲🇨"
-
-#. js-lingui-id: G+EV+A
-#: src/partner-application/data/partner-country-options.ts
-msgid "Mongolia 🇲🇳"
-msgstr "Mongolia 🇲🇳"
-
 #. js-lingui-id: XWauFO
 #: src/sections/three-cards/ThreeCards.tsx
 msgid "Monte, ajuste e adapte um CRM robusto, *sem perder velocidade*"
 msgstr ""
-
-#. js-lingui-id: 9VDoNp
-#: src/partner-application/data/partner-country-options.ts
-msgid "Montenegro 🇲🇪"
-msgstr "Montenegro 🇲🇪"
-
-#. js-lingui-id: LAFO4Y
-#: src/partner-application/data/partner-country-options.ts
-msgid "Morocco 🇲🇦"
-msgstr "Marruecos 🇲🇦"
 
 #. js-lingui-id: JQvOrI
 #: src/app-preview/terminal/diff/DiffPill.tsx
@@ -2301,11 +1243,6 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Mostrar menos"
 msgstr ""
-
-#. js-lingui-id: EwJDrS
-#: src/partner-application/data/partner-country-options.ts
-msgid "Mozambique 🇲🇿"
-msgstr "Mozambique 🇲🇿"
 
 #. js-lingui-id: 8K+4YA
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -2322,20 +1259,10 @@ msgstr ""
 msgid "Multi-file upload on records"
 msgstr "Carga de múltiples archivos en los registros"
 
-#. js-lingui-id: QGWbbv
-#: src/partner-application/data/partner-country-options.ts
-msgid "Myanmar 🇲🇲"
-msgstr "Myanmar 🇲🇲"
-
 #. js-lingui-id: Z4kUMl
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Na terça seu time descobre que negócios com um patrocinador técnico fecham 3x mais rápido. Na quarta você adiciona o campo, liga a pontuação, ajusta o workflow. Na quinta seus agentes já estão agindo em cima disso. Esse ciclo de feedback é a vantagem. E só funciona se o CRM for seu."
 msgstr ""
-
-#. js-lingui-id: yYmxee
-#: src/partner-application/data/partner-country-options.ts
-msgid "Namibia 🇳🇦"
-msgstr "Namibia 🇳🇦"
 
 #. js-lingui-id: jj4Ksi
 #: src/contact-cal/ContactLeadForm.tsx
@@ -2347,70 +1274,15 @@ msgstr ""
 msgid "Não. Dá pra criar objetos, campos, views e automações sem código, direto nas configurações — sem limite e sem custo extra."
 msgstr ""
 
-#. js-lingui-id: zVOV14
-#: src/partner-application/data/partner-country-options.ts
-msgid "Nauru 🇳🇷"
-msgstr "Nauru 🇳🇷"
-
 #. js-lingui-id: LfNsfa
 #: src/sections/stepper/ProductStepperContent.tsx
 msgid "Need a quick change? Skip the engineering ticket. Customize your workspace in minutes."
 msgstr "¿Necesitas un cambio rápido? Omite el ticket a ingeniería. Personaliza tu espacio de trabajo en minutos."
 
-#. js-lingui-id: LNVNNE
-#: src/partner-application/data/partner-country-options.ts
-msgid "Nepal 🇳🇵"
-msgstr "Nepal 🇳🇵"
-
-#. js-lingui-id: g60EgR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Netherlands 🇳🇱"
-msgstr "Países Bajos 🇳🇱"
-
-#. js-lingui-id: /DTtCF
-#: src/partner-application/data/partner-country-options.ts
-msgid "New Zealand 🇳🇿"
-msgstr "Nueva Zelanda 🇳🇿"
-
-#. js-lingui-id: GY6uSc
-#: src/partner-application/partner-application-copy.ts
-msgid "Next →"
-msgstr "Siguiente →"
-
-#. js-lingui-id: awYrJD
-#: src/sections/testimonials/PartnerTestimonialsCarousel.tsx
-msgid "Next testimonial"
-msgstr "Siguiente testimonio"
-
-#. js-lingui-id: iBOZv7
-#: src/partner-application/data/partner-country-options.ts
-msgid "Nicaragua 🇳🇮"
-msgstr "Nicaragua 🇳🇮"
-
-#. js-lingui-id: 61NU7V
-#: src/partner-application/data/partner-country-options.ts
-msgid "Niger 🇳🇪"
-msgstr "Níger 🇳🇪"
-
-#. js-lingui-id: +2NLII
-#: src/partner-application/data/partner-country-options.ts
-msgid "Nigeria 🇳🇬"
-msgstr "Nigeria 🇳🇬"
-
 #. js-lingui-id: 1UzENP
 #: src/sections/pricing-plan-table/PlanTableContent.tsx
 msgid "No"
 msgstr "No"
-
-#. js-lingui-id: 6tRXQ4
-#: src/partner-application/partner-application-copy.ts
-msgid "No matching country."
-msgstr "Ningún país coincide."
-
-#. js-lingui-id: UxK4so
-#: src/partners-marketplace/EmptyState.tsx
-msgid "No partners match your filters"
-msgstr "Ningún socio coincide con tus filtros"
 
 #. js-lingui-id: AgVOEf
 #: src/sections/releases-feed/ReleasesFeed.tsx
@@ -2422,26 +1294,6 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Nome"
 msgstr ""
-
-#. js-lingui-id: 096JXI
-#: src/partner-application/data/partner-country-options.ts
-msgid "North Korea 🇰🇵"
-msgstr "Corea del Norte 🇰🇵"
-
-#. js-lingui-id: IwF7aJ
-#: src/partner-application/data/partner-country-options.ts
-msgid "North Macedonia 🇲🇰"
-msgstr "Macedonia del Norte 🇲🇰"
-
-#. js-lingui-id: sZwk4U
-#: src/partner-application/data/partner-country-options.ts
-msgid "Norway 🇳🇴"
-msgstr "Noruega 🇳🇴"
-
-#. js-lingui-id: 1IipHp
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Norwegian"
-msgstr "Noruego"
 
 #. js-lingui-id: Lkqs6T
 #: src/sections/footer/footer.data.ts
@@ -2473,6 +1325,11 @@ msgstr ""
 msgid "O problema."
 msgstr ""
 
+#. js-lingui-id: xmsMbG
+#: src/sections/creators/Creators.tsx
+msgid "O produto reúne em um só lugar CRM, dashboards, WhatsApp, Instagram, agente de voz e páginas de funil."
+msgstr ""
+
 #. js-lingui-id: guuQ/h
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "O que isso significa"
@@ -2481,6 +1338,11 @@ msgstr ""
 #. js-lingui-id: 2S3OUc
 #: src/sections/home-hero/HomeHero.tsx
 msgid "O Zyra dá ao seu time a flexibilidade de montar um CRM sob medida para o negócio — sem depender de um desenvolvedor a cada mudança de processo."
+msgstr ""
+
+#. js-lingui-id: shiqRJ
+#: src/sections/creators/Creators.tsx
+msgid "O Zyra é criado e mantido pela Horizon, uma empresa de tecnologia que desenvolve software para equipes comerciais venderem com mais organização e menos trabalho manual."
 msgstr ""
 
 #. js-lingui-id: vuER7p
@@ -2503,16 +1365,6 @@ msgstr ""
 msgid "Ocultar alterações"
 msgstr ""
 
-#. js-lingui-id: BdShAR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Oman 🇴🇲"
-msgstr "Omán 🇴🇲"
-
-#. js-lingui-id: jxC7HY
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Onboarding · Documentation · Change management · L1/L2 support · Managed services"
-msgstr "Onboarding · Documentación · Gestión del cambio · Soporte L1/L2 · Servicios gestionados"
-
 #. js-lingui-id: ucgZ0o
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plans/plans-data.ts
@@ -2529,11 +1381,6 @@ msgstr ""
 #. js-lingui-id: joZotM
 #: src/sections/faq/faq.data.ts
 msgid "Os planos variam conforme o tamanho do time e as necessidades da operação. Fale com a gente pra montar uma proposta sob medida."
-msgstr ""
-
-#. js-lingui-id: l/YuJg
-#: src/partner-application/partner-application-copy.ts
-msgid "Our team will reach out using the email you provided."
 msgstr ""
 
 #. js-lingui-id: F8yiiv
@@ -2556,66 +1403,15 @@ msgstr ""
 msgid "Paginação constrói caráter."
 msgstr ""
 
-#. js-lingui-id: sW3DaS
-#: src/partner-application/data/partner-country-options.ts
-msgid "Pakistan 🇵🇰"
-msgstr "Pakistán 🇵🇰"
-
-#. js-lingui-id: cvRU36
-#: src/partner-application/data/partner-country-options.ts
-msgid "Palau 🇵🇼"
-msgstr "Palaos 🇵🇼"
-
-#. js-lingui-id: u2htNd
-#: src/partner-application/data/partner-country-options.ts
-msgid "Palestine 🇵🇸"
-msgstr "Palestina 🇵🇸"
-
-#. js-lingui-id: pWLp16
-#: src/partner-application/data/partner-country-options.ts
-msgid "Panama 🇵🇦"
-msgstr "Panamá 🇵🇦"
-
 #. js-lingui-id: PXObId
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Papéis de usuário"
-msgstr ""
-
-#. js-lingui-id: xOR4tu
-#: src/partner-application/data/partner-country-options.ts
-msgid "Papua New Guinea 🇵🇬"
-msgstr "Papúa Nueva Guinea 🇵🇬"
-
-#. js-lingui-id: kb3PhK
-#: src/partner-application/data/partner-country-options.ts
-msgid "Paraguay 🇵🇾"
-msgstr "Paraguay 🇵🇾"
-
-#. js-lingui-id: KVxOAN
-#: src/sections/footer/footer.data.ts
-#: src/sections/menu/menu.data.ts
-msgid "Parceiros"
 msgstr ""
 
 #. js-lingui-id: Cupkzj
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Parceiros de implementação"
 msgstr ""
-
-#. js-lingui-id: cLitIC
-#: src/partner-application/PartnerApplicationModal.tsx
-msgid "Partner application"
-msgstr "Solicitud de socio"
-
-#. js-lingui-id: mYGIvm
-#: src/partners-marketplace/PartnerProfile.tsx
-msgid "Partner facts and contact"
-msgstr "Datos y contacto del socio"
-
-#. js-lingui-id: dRIK0d
-#: src/sections/testimonials/PartnerTestimonialsCarousel.tsx
-msgid "Partner testimonials"
-msgstr "Testimonios de socios"
 
 #. js-lingui-id: QmGWtV
 #: src/app-preview/terminal/ThinkingIndicator.tsx
@@ -2658,21 +1454,6 @@ msgstr ""
 msgid "Personificar usuários"
 msgstr ""
 
-#. js-lingui-id: OzAIDr
-#: src/partner-application/data/partner-country-options.ts
-msgid "Peru 🇵🇪"
-msgstr "Perú 🇵🇪"
-
-#. js-lingui-id: LqRs8D
-#: src/partner-application/data/partner-country-options.ts
-msgid "Philippines 🇵🇭"
-msgstr "Filipinas 🇵🇭"
-
-#. js-lingui-id: we6gj5
-#: src/partner-application/partner-application-copy.ts
-msgid "Pick every category that applies."
-msgstr "Elige todas las categorías que correspondan."
-
 #. js-lingui-id: FFkjaT
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Pipeline Management"
@@ -2682,21 +1463,6 @@ msgstr "Gestión de pipeline"
 #: src/platform/routing/static-website-routes.ts
 msgid "Pipelines, custom objects, AI assistants, and a native API on top of Postgres. Zyra is the CRM with the modern UX teams actually want to use."
 msgstr ""
-
-#. js-lingui-id: z7gnI9
-#: src/partner-application/partner-application-copy.ts
-msgid "Please complete all required fields before continuing."
-msgstr "Completa todos los campos obligatorios antes de continuar."
-
-#. js-lingui-id: AFr2a5
-#: src/partner-application/data/partner-country-options.ts
-msgid "Poland 🇵🇱"
-msgstr "Polonia 🇵🇱"
-
-#. js-lingui-id: trnWaw
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Polish"
-msgstr "Polaco"
 
 #. js-lingui-id: 06LUsi
 #: src/sections/footer/footer.data.ts
@@ -2723,22 +1489,6 @@ msgstr ""
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Porque, aparentemente, privacidade fica mais premium com sobretaxa."
 msgstr ""
-
-#. js-lingui-id: /LAeug
-#: src/sections/testimonials/PartnerTestimonialsCarousel.tsx
-msgid "Portrait of {authorName}"
-msgstr "Retrato de {authorName}"
-
-#. js-lingui-id: 8BrmUs
-#: src/partner-application/data/partner-country-options.ts
-msgid "Portugal 🇵🇹"
-msgstr "Portugal 🇵🇹"
-
-#. js-lingui-id: MOERNx
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Portuguese"
-msgstr "Portugués"
 
 #. js-lingui-id: 4fxq7S
 #: src/sections/faq/faq.data.ts
@@ -2778,26 +1528,11 @@ msgstr ""
 msgid "Prévia do guia do usuário da Zyra"
 msgstr ""
 
-#. js-lingui-id: LZoO8F
-#: src/sections/testimonials/PartnerTestimonialsCarousel.tsx
-msgid "Previous testimonial"
-msgstr "Testimonio anterior"
-
-#. js-lingui-id: aHCEmh
-#: src/partners-marketplace/PartnerMoneyRow.tsx
-msgid "Pricing"
-msgstr "Precios"
-
 #. js-lingui-id: q0XvFe
 #: src/sections/menu/MenuDrawer.tsx
 #: src/sections/menu/MenuNav.tsx
 msgid "Principal"
 msgstr ""
-
-#. js-lingui-id: kXBQYM
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Principal and Founder, Alternative Partners"
-msgstr "Director y fundador, Alternative Partners"
 
 #. js-lingui-id: LcET2C
 #: src/routes/PrivacyPolicyPage.tsx
@@ -2814,16 +1549,6 @@ msgstr "Política de Privacidad | Zyra"
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Pro"
 msgstr "Pro"
-
-#. js-lingui-id: vERlcd
-#: src/partner-application/partner-application-copy.ts
-msgid "Profile"
-msgstr "Perfil"
-
-#. js-lingui-id: PaHxQd
-#: src/partners-marketplace/PartnerRatesPanel.tsx
-msgid "Project minimum"
-msgstr "Mínimo del proyecto"
 
 #. js-lingui-id: RsiMqd
 #: src/sections/customers-catalog-signoff/CustomersCatalogSignoff.tsx
@@ -2842,16 +1567,6 @@ msgstr ""
 msgid "Prorrogado!"
 msgstr ""
 
-#. js-lingui-id: u9RZ7+
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Punjabi"
-msgstr "Punyabí"
-
-#. js-lingui-id: tFx+ES
-#: src/partner-application/data/partner-country-options.ts
-msgid "Qatar 🇶🇦"
-msgstr "Catar 🇶🇦"
-
 #. js-lingui-id: 2DSPla
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Qualidade de produção"
@@ -2867,6 +1582,29 @@ msgstr ""
 msgid "Quanto tempo leva pra colocar o Zyra no ar?"
 msgstr ""
 
+#. js-lingui-id: 7jFB1x
+#: src/sections/creators/Creators.tsx
+msgid "Quem criou o *Zyra*"
+msgstr ""
+
+#. js-lingui-id: aY43wn
+#: src/sections/footer/footer.data.ts
+#: src/sections/menu/menu.data.ts
+msgid "Quem criou o Zyra"
+msgstr ""
+
+#. js-lingui-id: NukXDt
+#: src/platform/routing/static-website-routes.ts
+msgid "Quem criou o Zyra — Sobre nós"
+msgstr ""
+
+#. js-lingui-id: yUi7VA
+#: src/sections/creators/Creators.tsx
+msgid ""
+"Quer implementar o Zyra\n"
+"*na sua empresa?*"
+msgstr ""
+
 #. js-lingui-id: q6aHNm
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid ""
@@ -2879,25 +1617,6 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "R$120"
 msgstr ""
-
-#. js-lingui-id: 3XOwjg
-#: src/partners-marketplace/PartnerRatesPanel.tsx
-msgid "Rates"
-msgstr "Tarifas"
-
-#. js-lingui-id: DnWJal
-#: src/partners-marketplace/PartnerProfileCtas.tsx
-msgid "Reach out"
-msgstr "Contactar"
-
-#. js-lingui-id: s6DT5A
-#: src/sections/partner-signoff/PartnerSignoff.tsx
-msgid ""
-"Ready to grow\n"
-"*with Zyra?*"
-msgstr ""
-"¿Listo para crecer\n"
-"*con Zyra?*"
 
 #. js-lingui-id: HUfa94
 #: src/platform/routing/static-website-routes.ts
@@ -2925,12 +1644,6 @@ msgstr ""
 msgid "Redes sociais"
 msgstr ""
 
-#. js-lingui-id: q45OlW
-#: src/partners-marketplace/FilterBar.tsx
-#: src/partners-marketplace/PartnerCard.tsx
-msgid "Regions"
-msgstr "Regiones"
-
 #. js-lingui-id: xdyy6Y
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Registros"
@@ -2951,17 +1664,6 @@ msgstr ""
 #: src/sections/releases-feed/ReleasesFeed.tsx
 msgid "Releases"
 msgstr "Lanzamientos"
-
-#. js-lingui-id: BkBq/5
-#. placeholder {0}: pill.text
-#: src/partners-marketplace/ActiveFilterPills.tsx
-msgid "Remove {0} filter"
-msgstr "Quitar el filtro {0}"
-
-#. js-lingui-id: OY7BZk
-#: src/partner-application/partner-application-copy.ts
-msgid "Remove {skill}"
-msgstr "Eliminar {skill}"
 
 #. js-lingui-id: a/aGHe
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -2998,51 +1700,10 @@ msgstr ""
 msgid "Rode auto-hospedado, sem risco de fornecedor e sem migração forçada quando o seu processo muda."
 msgstr ""
 
-#. js-lingui-id: mLp5AP
-#: src/partner-application/data/partner-country-options.ts
-msgid "Romania 🇷🇴"
-msgstr "Rumanía 🇷🇴"
-
-#. js-lingui-id: uJc01W
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Romanian"
-msgstr "Rumano"
-
 #. js-lingui-id: eHx1Y3
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Rotação de chave de criptografia"
 msgstr ""
-
-#. js-lingui-id: T1ut28
-#: src/partner-application/data/partner-country-options.ts
-msgid "Russia 🇷🇺"
-msgstr "Rusia 🇷🇺"
-
-#. js-lingui-id: nji0/X
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Russian"
-msgstr "Ruso"
-
-#. js-lingui-id: dw8D3T
-#: src/partner-application/data/partner-country-options.ts
-msgid "Rwanda 🇷🇼"
-msgstr "Ruanda 🇷🇼"
-
-#. js-lingui-id: niLOap
-#: src/partner-application/data/partner-country-options.ts
-msgid "Saint Kitts & Nevis 🇰🇳"
-msgstr "San Cristóbal y Nieves 🇰🇳"
-
-#. js-lingui-id: zCHzF/
-#: src/partner-application/data/partner-country-options.ts
-msgid "Saint Lucia 🇱🇨"
-msgstr "Santa Lucía 🇱🇨"
-
-#. js-lingui-id: Md/8iQ
-#: src/partner-application/data/partner-country-options.ts
-msgid "Saint Vincent 🇻🇨"
-msgstr "San Vicente 🇻🇨"
 
 #. js-lingui-id: J10WrX
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -3054,26 +1715,6 @@ msgstr ""
 msgid "Salesfarce Pro"
 msgstr "Salesfarce Pro"
 
-#. js-lingui-id: R38ZPo
-#: src/partner-application/data/partner-country-options.ts
-msgid "Samoa 🇼🇸"
-msgstr "Samoa 🇼🇸"
-
-#. js-lingui-id: fK288K
-#: src/partner-application/data/partner-country-options.ts
-msgid "San Marino 🇸🇲"
-msgstr "San Marino 🇸🇲"
-
-#. js-lingui-id: KDcBQd
-#: src/partner-application/data/partner-country-options.ts
-msgid "São Tomé & Príncipe 🇸🇹"
-msgstr "Santo Tomé y Príncipe 🇸🇹"
-
-#. js-lingui-id: /BK0Nl
-#: src/partner-application/data/partner-country-options.ts
-msgid "Saudi Arabia 🇸🇦"
-msgstr "Arabia Saudí 🇸🇦"
-
 #. js-lingui-id: rrNjTP
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Scroll infinito"
@@ -3083,11 +1724,6 @@ msgstr ""
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Scroll infinito ainda está a caminho, ao contrário da fatura."
 msgstr ""
-
-#. js-lingui-id: vk6sVR
-#: src/partner-application/partner-application-copy.ts
-msgid "Search a country…"
-msgstr "Buscar un país…"
 
 #. js-lingui-id: JDp1bg
 #: src/sections/three-cards/product-three-cards-data.ts
@@ -3110,30 +1746,10 @@ msgstr "Seleccionar {0}"
 msgid "Select all"
 msgstr "Seleccionar todo"
 
-#. js-lingui-id: 6p/m5q
-#: src/partner-application/partner-application-copy.ts
-msgid "Select your country"
-msgstr "Selecciona tu país"
-
-#. js-lingui-id: QFK/45
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Self-hosted (Docker/K8s) · Cloud architecture · Scaling · Security · Monitoring"
-msgstr "Self-hosted (Docker/K8s) · Arquitectura en la nube · Escalado · Seguridad · Monitorización"
-
 #. js-lingui-id: cBhJcg
 #: src/sections/feature-cards/FeatureCards.tsx
 msgid "Sem a interface travada que \"sob medida\" costuma trazer."
 msgstr ""
-
-#. js-lingui-id: D50Vyu
-#: src/partner-application/data/partner-country-options.ts
-msgid "Senegal 🇸🇳"
-msgstr "Senegal 🇸🇳"
-
-#. js-lingui-id: eEJlq0
-#: src/partner-application/data/partner-country-options.ts
-msgid "Serbia 🇷🇸"
-msgstr "Serbia 🇷🇸"
 
 #. js-lingui-id: kmLu+M
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -3144,26 +1760,6 @@ msgstr ""
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "Seu nome"
 msgstr ""
-
-#. js-lingui-id: 62gxWx
-#: src/partner-application/data/partner-country-options.ts
-msgid "Seychelles 🇸🇨"
-msgstr "Seychelles 🇸🇨"
-
-#. js-lingui-id: RhU4bB
-#: src/partners-marketplace/FilterBar.tsx
-msgid "Showing {visibleCount} of {totalCount} partners"
-msgstr "Mostrando {visibleCount} de {totalCount} socios"
-
-#. js-lingui-id: I89wN/
-#: src/partners-marketplace/FilterBar.tsx
-msgid "Showing all {totalCount} partners"
-msgstr "Mostrando todos los {totalCount} socios"
-
-#. js-lingui-id: yhyNch
-#: src/partner-application/data/partner-country-options.ts
-msgid "Sierra Leone 🇸🇱"
-msgstr "Sierra Leona 🇸🇱"
 
 #. js-lingui-id: rW+r/W
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -3229,26 +1825,6 @@ msgstr ""
 msgid "Simple, transparent pricing that scales with your team."
 msgstr ""
 
-#. js-lingui-id: 0eG5g+
-#: src/partner-application/data/partner-country-options.ts
-msgid "Singapore 🇸🇬"
-msgstr "Singapur 🇸🇬"
-
-#. js-lingui-id: PCSkw2
-#: src/partners-marketplace/PartnerProfile.tsx
-msgid "Skills"
-msgstr "Habilidades"
-
-#. js-lingui-id: U7keXg
-#: src/partner-application/data/partner-country-options.ts
-msgid "Slovakia 🇸🇰"
-msgstr "Eslovaquia 🇸🇰"
-
-#. js-lingui-id: o1VTTF
-#: src/partner-application/data/partner-country-options.ts
-msgid "Slovenia 🇸🇮"
-msgstr "Eslovenia 🇸🇮"
-
 #. js-lingui-id: S70M6P
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Só R$5 pelo SSO. Praticamente um programa de caridade."
@@ -3261,67 +1837,15 @@ msgstr ""
 msgid "Sob consulta"
 msgstr ""
 
+#. js-lingui-id: Rq3p8e
+#: src/sections/creators/Creators.tsx
+msgid "Sobre nós"
+msgstr ""
+
 #. js-lingui-id: yaNwoI
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Sobreviveu a todo redesign desde 2004."
 msgstr ""
-
-#. js-lingui-id: 6sKjjx
-#: src/partner-application/data/partner-team-type-options.ts
-msgid "Solo"
-msgstr "Independiente"
-
-#. js-lingui-id: FX2oa1
-#: src/partner-application/partner-application-copy.ts
-msgid "Solo or agency?"
-msgstr "¿Independiente o agencia?"
-
-#. js-lingui-id: TcZtfs
-#: src/partner-application/data/partner-country-options.ts
-msgid "Solomon Islands 🇸🇧"
-msgstr "Islas Salomón 🇸🇧"
-
-#. js-lingui-id: TvdMI3
-#: src/partner-application/data/partner-scope-options.ts
-#: src/partners-marketplace/partner-scope-labels.ts
-msgid "Solutioning"
-msgstr "Diseño de soluciones"
-
-#. js-lingui-id: t1E06j
-#: src/partner-application/data/partner-country-options.ts
-msgid "Somalia 🇸🇴"
-msgstr "Somalia 🇸🇴"
-
-#. js-lingui-id: zHJB/O
-#: src/partner-application/data/partner-country-options.ts
-msgid "South Africa 🇿🇦"
-msgstr "Sudáfrica 🇿🇦"
-
-#. js-lingui-id: 7MdTKh
-#: src/partner-application/data/partner-country-options.ts
-msgid "South Korea 🇰🇷"
-msgstr "Corea del Sur 🇰🇷"
-
-#. js-lingui-id: a4jo+V
-#: src/partner-application/data/partner-country-options.ts
-msgid "South Sudan 🇸🇸"
-msgstr "Sudán del Sur 🇸🇸"
-
-#. js-lingui-id: Kv3C8d
-#: src/partner-application/data/partner-country-options.ts
-msgid "Spain 🇪🇸"
-msgstr "España 🇪🇸"
-
-#. js-lingui-id: 65A04M
-#: src/partner-application/data/partner-language-options.ts
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Spanish"
-msgstr "Español"
-
-#. js-lingui-id: 00jcbn
-#: src/partner-application/data/partner-country-options.ts
-msgid "Sri Lanka 🇱🇰"
-msgstr "Sri Lanka 🇱🇰"
 
 #. js-lingui-id: vnS6Rf
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -3339,11 +1863,6 @@ msgstr ""
 msgid "Stay in Flow"
 msgstr "Mantente en Flow"
 
-#. js-lingui-id: GdGiNi
-#: src/partner-application/partner-application-copy.ts
-msgid "Step {current} of {total}"
-msgstr "Paso {current} de {total}"
-
 #. js-lingui-id: UCLArd
 #: src/sections/three-cards/ProductThreeCards.tsx
 msgid "Stop settling for trade-offs."
@@ -3353,21 +1872,6 @@ msgstr "Deja de conformarte con compromisos."
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Subdomínio (suaempresa.zyra.com)"
 msgstr ""
-
-#. js-lingui-id: H5/rZQ
-#: src/partner-application/partner-application-copy.ts
-msgid "Submit application"
-msgstr "Enviar solicitud"
-
-#. js-lingui-id: MDqQmP
-#: src/partner-application/partner-application-copy.ts
-msgid "Submitting…"
-msgstr "Enviando…"
-
-#. js-lingui-id: 8Z1557
-#: src/partner-application/data/partner-country-options.ts
-msgid "Sudan 🇸🇩"
-msgstr "Sudán 🇸🇩"
 
 #. js-lingui-id: ql6u94
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -3386,86 +1890,26 @@ msgstr ""
 msgid "Suporte prioritário"
 msgstr ""
 
-#. js-lingui-id: Aq66kg
-#: src/partner-application/data/partner-country-options.ts
-msgid "Suriname 🇸🇷"
-msgstr "Surinam 🇸🇷"
-
-#. js-lingui-id: Yz+oFV
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Swahili"
-msgstr "Suajili"
-
-#. js-lingui-id: b2//Ip
-#: src/partner-application/data/partner-country-options.ts
-msgid "Sweden 🇸🇪"
-msgstr "Suecia 🇸🇪"
-
-#. js-lingui-id: UaISq3
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Swedish"
-msgstr "Sueco"
-
-#. js-lingui-id: IImT5c
-#: src/partner-application/data/partner-country-options.ts
-msgid "Switzerland 🇨🇭"
-msgstr "Suiza 🇨🇭"
-
-#. js-lingui-id: sjuSub
-#: src/partner-application/data/partner-country-options.ts
-msgid "Syria 🇸🇾"
-msgstr "Siria 🇸🇾"
-
 #. js-lingui-id: yJGiNr
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Tabela, Kanban, Calendário"
 msgstr ""
 
-#. js-lingui-id: ISVD3+
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Tagalog"
-msgstr "Tagalo"
-
 #. js-lingui-id: 9M02G5
 #: src/sections/stepper/product-stepper-data.ts
 msgid "Tailor record pages, menus, and views"
 msgstr "Adapta páginas de registro, menús y vistas"
-
-#. js-lingui-id: boABlR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Taiwan 🇹🇼"
-msgstr "Taiwán 🇹🇼"
-
-#. js-lingui-id: XJspRJ
-#: src/partner-application/data/partner-country-options.ts
-msgid "Tajikistan 🇹🇯"
-msgstr "Tayikistán 🇹🇯"
 
 #. js-lingui-id: JAKtcG
 #: src/sections/product-hero/ProductHero.tsx
 msgid "Talk to us"
 msgstr "Habla con nosotros"
 
-#. js-lingui-id: fb427h
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Tamil"
-msgstr "Tamil"
-
-#. js-lingui-id: ri1l89
-#: src/partner-application/data/partner-country-options.ts
-msgid "Tanzania 🇹🇿"
-msgstr "Tanzania 🇹🇿"
-
 #. js-lingui-id: GWMpL3
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Tasks & Activities"
 msgstr "Tareas y Actividades"
-
-#. js-lingui-id: y+bLyB
-#: src/partner-application/partner-application-copy.ts
-msgid "Technical skills"
-msgstr "Habilidades técnicas"
 
 #. js-lingui-id: wc5uGh
 #: src/sections/problem/problem.data.ts
@@ -3502,34 +1946,10 @@ msgstr "Términos del Servicio"
 msgid "Terms of Service | Zyra"
 msgstr "Términos del Servicio | Zyra"
 
-#. js-lingui-id: SUr44j
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Thai"
-msgstr "Tailandés"
-
-#. js-lingui-id: 6t7gpr
-#: src/partner-application/data/partner-country-options.ts
-msgid "Thailand 🇹🇭"
-msgstr "Tailandia 🇹🇭"
-
-#. js-lingui-id: Pa/Y6/
-#: src/partner-application/partner-application-copy.ts
-msgid ""
-"Thanks, you're in.\n"
-"*Now book your intro call.*"
-msgstr ""
-"Gracias, ya estás dentro.\n"
-"*Ahora reserva tu llamada de presentación.*"
-
 #. js-lingui-id: fH0Erl
 #: src/platform/routing/static-website-routes.ts
 msgid "The CRM that adapts to how you sell. Modular, scalable, and built to fit your business."
 msgstr ""
-
-#. js-lingui-id: kCUcnD
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "The flexibility is just amazing. Literally, there's nothing you cannot do. You can create objects, access everything through the API, pull notes and send them to the portal. Try doing that in HubSpot. No way. It's the true ability to build exactly what's actually needed."
-msgstr "La flexibilidad es simplemente increíble. Literalmente, no hay nada que no puedas hacer. Puedes crear objetos, acceder a todo a través de la API, extraer notas y enviarlas al portal. Intenta hacer eso en HubSpot. De ninguna manera. Es la verdadera capacidad de construir exactamente lo que realmente se necesita."
 
 #. js-lingui-id: zEqK2w
 #: src/routes/NotFoundPage.tsx
@@ -3541,30 +1961,10 @@ msgstr ""
 msgid "The terms governing your use of Zyra and its CRM services."
 msgstr ""
 
-#. js-lingui-id: 6f8QUY
-#: src/partner-application/data/partner-country-options.ts
-msgid "Timor-Leste 🇹🇱"
-msgstr "Timor Oriental 🇹🇱"
-
 #. js-lingui-id: JSDWy/
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Tipos de view"
 msgstr ""
-
-#. js-lingui-id: DeTupk
-#: src/partner-application/data/partner-country-options.ts
-msgid "Togo 🇹🇬"
-msgstr "Togo 🇹🇬"
-
-#. js-lingui-id: CocxTO
-#: src/partner-application/data/partner-country-options.ts
-msgid "Tonga 🇹🇴"
-msgstr "Tonga 🇹🇴"
-
-#. js-lingui-id: H9QaNY
-#: src/partner-application/partner-application-copy.ts
-msgid "Tools, technologies and industries you specialize in. Press Enter or comma to add."
-msgstr "Herramientas, tecnologías e industrias en las que te especializas. Pulsa Intro o coma para añadir."
 
 #. js-lingui-id: NJmllB
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -3577,11 +1977,6 @@ msgstr ""
 msgid "Totalmente customizável"
 msgstr ""
 
-#. js-lingui-id: 5p7sc7
-#: src/sections/menu/menu.data.ts
-msgid "Trabalhe com um especialista Zyra"
-msgstr ""
-
 #. js-lingui-id: hmu++i
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Track amount and close date"
@@ -3592,30 +1987,10 @@ msgstr "Sigue el importe y la fecha de cierre"
 msgid "Track relationships, manage pipelines, and take action quickly with an intuitive CRM that helps your team move faster from day one with confidence."
 msgstr "Sigue relaciones, gestiona pipelines y actúa rápido con un CRM intuitivo que ayuda a tu equipo a moverse más rápido desde el primer día con confianza."
 
-#. js-lingui-id: xwWQ9Q
-#: src/partners-marketplace/partner-scope-labels.ts
-msgid "Training & Adoption"
-msgstr "Formación y adopción"
-
-#. js-lingui-id: MtCqjl
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Training, Adoption & Support"
-msgstr "Formación, adopción y soporte"
-
-#. js-lingui-id: /ga9kq
-#: src/partner-application/data/partner-country-options.ts
-msgid "Trinidad & Tobago 🇹🇹"
-msgstr "Trinidad y Tobago 🇹🇹"
-
 #. js-lingui-id: eslLQF
 #: src/sections/product-demo/ProductDemo.tsx
 msgid "Try it live"
 msgstr "Pruébalo en vivo"
-
-#. js-lingui-id: qhmtws
-#: src/partners-marketplace/EmptyState.tsx
-msgid "Try removing some filters or browse all partners."
-msgstr "Prueba a quitar algunos filtros o navega por todos los socios."
 
 #. js-lingui-id: TjKd0N
 #: src/sections/product-demo/ProductDemo.tsx
@@ -3632,70 +2007,10 @@ msgstr ""
 msgid "Tudo do Pro"
 msgstr ""
 
-#. js-lingui-id: y4UxlS
-#: src/partner-application/data/partner-country-options.ts
-msgid "Tunisia 🇹🇳"
-msgstr "Túnez 🇹🇳"
-
-#. js-lingui-id: UIDKnJ
-#: src/partner-application/data/partner-country-options.ts
-msgid "Turkey 🇹🇷"
-msgstr "Turquía 🇹🇷"
-
-#. js-lingui-id: Kz91g/
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Turkish"
-msgstr "Turco"
-
-#. js-lingui-id: kdJl4v
-#: src/partner-application/data/partner-country-options.ts
-msgid "Turkmenistan 🇹🇲"
-msgstr "Turkmenistán 🇹🇲"
-
 #. js-lingui-id: Fn+14P
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Tutoriais APEX"
 msgstr ""
-
-#. js-lingui-id: tSc/a3
-#: src/partner-application/data/partner-country-options.ts
-msgid "Tuvalu 🇹🇻"
-msgstr "Tuvalu 🇹🇻"
-
-#. js-lingui-id: O+vc/1
-#: src/partner-application/partner-application-copy.ts
-msgid "Type of team *"
-msgstr "Tipo de equipo *"
-
-#. js-lingui-id: P+R1Lc
-#: src/partners-marketplace/PartnerRatesPanel.tsx
-msgid "Typical project"
-msgstr "Proyecto típico"
-
-#. js-lingui-id: HqFilh
-#: src/partner-application/data/partner-country-options.ts
-msgid "UAE 🇦🇪"
-msgstr "EAU 🇦🇪"
-
-#. js-lingui-id: +WNTxL
-#: src/partner-application/data/partner-country-options.ts
-msgid "Uganda 🇺🇬"
-msgstr "Uganda 🇺🇬"
-
-#. js-lingui-id: tNfmmF
-#: src/partner-application/data/partner-country-options.ts
-msgid "UK 🇬🇧"
-msgstr "Reino Unido 🇬🇧"
-
-#. js-lingui-id: z7UkhA
-#: src/partner-application/data/partner-country-options.ts
-msgid "Ukraine 🇺🇦"
-msgstr "Ucrania 🇺🇦"
-
-#. js-lingui-id: V9+2pH
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Ukrainian"
-msgstr "Ucraniano"
 
 #. js-lingui-id: eMBQNb
 #: src/sections/why-zyra-editorial/editorials.data.ts
@@ -3717,60 +2032,10 @@ msgstr ""
 msgid "Unified timeline (emails, events, tasks, notes, files)"
 msgstr "Cronología unificada (correos electrónicos, eventos, tareas, notas, archivos)"
 
-#. js-lingui-id: SPdRRU
-#: src/partner-application/data/partner-scope-options.ts
-msgid "Upfront consulting, scoping, strategy."
-msgstr "Consultoría inicial, definición de alcance y estrategia."
-
 #. js-lingui-id: 2vanwz
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Upload, rename, preview, and manage files directly on records. Everything stays where it belongs."
 msgstr "Sube, renombra, previsualiza y gestiona archivos directamente en los registros. Todo se mantiene donde corresponde."
-
-#. js-lingui-id: tmwuH9
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Urdu"
-msgstr "Urdu"
-
-#. js-lingui-id: huOaG8
-#: src/partner-application/data/partner-country-options.ts
-msgid "Uruguay 🇺🇾"
-msgstr "Uruguay 🇺🇾"
-
-#. js-lingui-id: RCOibx
-#: src/partners-marketplace/served-geo-labels.ts
-msgid "US"
-msgstr "EE. UU."
-
-#. js-lingui-id: LXHEIS
-#: src/partner-application/data/partner-country-options.ts
-msgid "USA 🇺🇸"
-msgstr "EE. UU. 🇺🇸"
-
-#. js-lingui-id: UCUX2+
-#: src/partner-application/data/partner-scope-options.ts
-msgid "User-side rollout & ongoing support."
-msgstr "Despliegue del lado del usuario y soporte continuo."
-
-#. js-lingui-id: FOOEtP
-#: src/partner-application/data/partner-country-options.ts
-msgid "Uzbekistan 🇺🇿"
-msgstr "Uzbekistán 🇺🇿"
-
-#. js-lingui-id: CRXL2j
-#: src/partner-application/data/partner-country-options.ts
-msgid "Vanuatu 🇻🇺"
-msgstr "Vanuatu 🇻🇺"
-
-#. js-lingui-id: NNeEYO
-#: src/partner-application/data/partner-country-options.ts
-msgid "Vatican 🇻🇦"
-msgstr "Vaticano 🇻🇦"
-
-#. js-lingui-id: BWzac4
-#: src/partner-application/data/partner-country-options.ts
-msgid "Venezuela 🇻🇪"
-msgstr "Venezuela 🇻🇪"
 
 #. js-lingui-id: dtzzjY
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -3781,32 +2046,6 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Ver mais recursos"
 msgstr ""
-
-#. js-lingui-id: FlQ1vR
-#: src/partner-application/data/partner-country-options.ts
-msgid "Vietnam 🇻🇳"
-msgstr "Vietnam 🇻🇳"
-
-#. js-lingui-id: fROFIL
-#: src/partners-marketplace/spoken-language-labels.ts
-msgid "Vietnamese"
-msgstr "Vietnamita"
-
-#. js-lingui-id: BRBSny
-#. placeholder {0}: partner.name
-#: src/partners-marketplace/PartnerCard.tsx
-msgid "View {0} on LinkedIn"
-msgstr "Ver {0} en LinkedIn"
-
-#. js-lingui-id: ITdNGt
-#: src/partners-marketplace/PartnerProfileCtas.tsx
-msgid "View on LinkedIn"
-msgstr "Ver en LinkedIn"
-
-#. js-lingui-id: 73lp8c
-#: src/partners-marketplace/PartnerCard.tsx
-msgid "View profile"
-msgstr "Ver perfil"
 
 #. js-lingui-id: m+ZD6c
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -3838,16 +2077,6 @@ msgstr ""
 msgid "voce@empresa.com"
 msgstr ""
 
-#. js-lingui-id: 8CHatv
-#: src/partner-application/partner-application-copy.ts
-msgid "We could not submit your application. Please try again in a moment."
-msgstr "No pudimos enviar tu solicitud. Inténtalo de nuevo en un momento."
-
-#. js-lingui-id: sx45tX
-#: src/sections/partner-hero/PartnerHero.tsx
-msgid "We're building the CRM teams actually want to use, but we can't do it alone. Join our partner ecosystem and grow with us."
-msgstr ""
-
 #. js-lingui-id: v1kQyJ
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Webhooks"
@@ -3858,45 +2087,15 @@ msgstr "Webhooks"
 msgid "Webhooks (Change Data Capture)"
 msgstr "Webhooks (Captura de cambios de datos)"
 
-#. js-lingui-id: 7kkV4O
-#: src/partner-application/partner-application-copy.ts
-msgid "Website or GitHub *"
-msgstr "Sitio web o GitHub *"
-
-#. js-lingui-id: Lx0cVD
-#: src/partner-application/data/partner-scope-options.ts
-msgid "What an admin can do without writing code."
-msgstr "Lo que un administrador puede hacer sin escribir código."
-
-#. js-lingui-id: kRfFDB
-#: src/partners-marketplace/PartnerProfile.tsx
-msgid "What they do"
-msgstr "Qué hacen"
-
-#. js-lingui-id: QCHIzm
-#: src/partner-application/partner-application-copy.ts
-msgid "What you cover *"
-msgstr "Qué cubres *"
-
 #. js-lingui-id: 2+ExvJ
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "WhatsApp"
 msgstr ""
 
-#. js-lingui-id: 2O07UN
-#: src/partners-marketplace/PartnerProfile.tsx
-msgid "Where & how"
-msgstr "Dónde y cómo"
-
 #. js-lingui-id: gao+Wv
 #: src/platform/routing/static-website-routes.ts
 msgid "Why Zyra — A CRM Built to Be Customised"
 msgstr ""
-
-#. js-lingui-id: OX5bbs
-#: src/partner-application/partner-application-copy.ts
-msgid "Work email *"
-msgstr "Correo electrónico de trabajo *"
 
 #. js-lingui-id: woYYQq
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -3908,50 +2107,20 @@ msgstr "Flujos de trabajo"
 msgid "Workspace"
 msgstr "Espacio de trabajo"
 
-#. js-lingui-id: bwECg/
-#: src/partner-application/partner-application-copy.ts
-msgid "Workspace URL, customer references, relevant links…"
-msgstr "URL del espacio de trabajo, referencias de clientes, enlaces relevantes…"
-
-#. js-lingui-id: S6izIJ
-#: src/partner-application/data/partner-country-options.ts
-msgid "Yemen 🇾🇪"
-msgstr "Yemen 🇾🇪"
-
 #. js-lingui-id: l75CjT
 #: src/sections/pricing-plan-table/PlanTableContent.tsx
 msgid "Yes"
 msgstr "Sí"
-
-#. js-lingui-id: pEQiCY
-#: src/partner-application/partner-application-copy.ts
-msgid "Your name *"
-msgstr "Tu nombre *"
 
 #. js-lingui-id: fQATWn
 #: src/sections/product-feature/data/feature-tiles.ts
 msgid "Your network, fully mapped."
 msgstr "Tu red, completamente mapeada."
 
-#. js-lingui-id: CgGN5T
-#: src/partner-application/data/partner-country-options.ts
-msgid "Zambia 🇿🇲"
-msgstr "Zambia 🇿🇲"
-
-#. js-lingui-id: TT3YXb
-#: src/partner-application/data/partner-country-options.ts
-msgid "Zimbabwe 🇿🇼"
-msgstr "Zimbabue 🇿🇼"
-
 #. js-lingui-id: bjc0f0
 #: src/platform/routing/static-website-routes.ts
 msgid "Zyra | The CRM That Adapts to How You Sell"
 msgstr ""
-
-#. js-lingui-id: KtsjPF
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Zyra Apps opens the door to building products, not just implementations. For example, we're developing a WhatsApp Business integration that any Zyra's client could get. That's a recurring revenue stream we wouldn't have if we were just configuring someone else's platform."
-msgstr "Zyra Apps abre la puerta a crear productos, no solo implementaciones. Por ejemplo, estamos desarrollando una integración de WhatsApp Business que cualquier cliente de Zyra podría obtener. Es una fuente de ingresos recurrentes que no tendríamos si solo estuviéramos configurando la plataforma de otra empresa."
 
 #. js-lingui-id: XXMZwi
 #: src/platform/routing/static-website-routes.ts
@@ -3968,22 +2137,7 @@ msgstr "Precios de Zyra CRM — Planes desde 9 $ por usuario al mes"
 msgid "Zyra Customers — How Modern Teams Run Their CRM"
 msgstr "Clientes de Zyra — Cómo los equipos modernos gestionan su CRM"
 
-#. js-lingui-id: eCDrOG
-#: src/sections/testimonials/partner-testimonials.data.ts
-msgid "Zyra gives you the kind of flexibility that actually changes what you can offer your clients. The dev experience is clean, the APIs are open, and when something needs to be customized, you can just do it. There's no fighting the platform."
-msgstr "Zyra te da el tipo de flexibilidad que realmente cambia lo que puedes ofrecer a tus clientes. La experiencia de desarrollo es limpia, las APIs son abiertas y, cuando algo necesita personalizarse, simplemente puedes hacerlo. No hay que pelearse con la plataforma."
-
-#. js-lingui-id: EyZ635
-#: src/platform/routing/static-website-routes.ts
-msgid "Zyra Partners — Certified Zyra CRM Implementers"
-msgstr ""
-
 #. js-lingui-id: jZ6MjZ
 #: src/platform/routing/static-website-routes.ts
 msgid "Zyra Releases — What's New in Zyra"
-msgstr ""
-
-#. js-lingui-id: u4MeyA
-#: src/partners-marketplace/MarketplaceHeader.tsx
-msgid "Zyra's certified partners help teams migrate, customise, and operate Zyra across regions, languages, and deployment models. Browse profiles and book a call."
 msgstr ""

@@ -83,16 +83,16 @@ export const MENU: {
           },
         },
         {
-          label: msg`Parceiros`,
-          description: msg`Encontre um parceiro Zyra`,
+          label: msg`Quem criou o Zyra`,
+          description: msg`Conheça a nossa equipe`,
           href: '/partners',
           icon: IconUsers,
           preview: {
             image: '/images/menu/partners.webp',
-            imageAlt: msg`Ecossistema de parceiros Zyra`,
+            imageAlt: msg`Equipe por trás do Zyra`,
             imagePosition: 'center',
-            title: msg`Trabalhe com um especialista Zyra`,
-            description: msg`Conheça as agências e consultores certificados que implementam a Zyra para equipes no mundo todo.`,
+            title: msg`Implemente o Zyra com a nossa equipe`,
+            description: msg`Fale diretamente com a equipe, por call agendada ou WhatsApp, para implementar o Zyra na sua empresa.`,
           },
         },
         {
