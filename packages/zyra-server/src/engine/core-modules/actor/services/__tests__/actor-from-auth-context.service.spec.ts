@@ -147,9 +147,51 @@ describe('ActorFromAuthContextService', () => {
       ]);
     });
 
-    it('should throw error when no valid actor information is found', async () => {
+    it('should build a system actor and keep a createdBy the caller already named', async () => {
       const authContext = {
         type: 'system',
+        workspace: { id: 'workspace-id' },
+      } as unknown as WorkspaceAuthContext;
+
+      const result = await service.injectCreatedBy({
+        records: [
+          {},
+          {
+            createdBy: {
+              source: FieldActorSource.WEBHOOK,
+              workspaceMemberId: null,
+              name: 'Funil',
+              context: {},
+            },
+          },
+        ],
+        objectMetadataNameSingular: 'person',
+        authContext,
+      });
+
+      expect(result).toEqual<ExpectedResult>([
+        {
+          createdBy: {
+            source: FieldActorSource.SYSTEM,
+            workspaceMemberId: null,
+            name: 'System',
+            context: {},
+          },
+        },
+        {
+          createdBy: {
+            source: FieldActorSource.WEBHOOK,
+            workspaceMemberId: null,
+            name: 'Funil',
+            context: {},
+          },
+        },
+      ]);
+    });
+
+    it('should throw error when no valid actor information is found', async () => {
+      const authContext = {
+        type: 'unknown',
         workspace: { id: 'workspace-id' },
       } as unknown as WorkspaceAuthContext;
 

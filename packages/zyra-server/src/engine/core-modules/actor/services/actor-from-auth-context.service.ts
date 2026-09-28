@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 
-import { type ActorMetadata } from 'zyra-shared/types';
+import { type ActorMetadata, FieldActorSource } from 'zyra-shared/types';
 import { isDefined } from 'zyra-shared/utils';
 
 import { buildCreatedByFromApiKey } from 'src/engine/core-modules/actor/utils/build-created-by-from-api-key.util';
@@ -8,6 +8,7 @@ import { buildCreatedByFromApplication } from 'src/engine/core-modules/actor/uti
 import { buildCreatedByFromFullNameMetadata } from 'src/engine/core-modules/actor/utils/build-created-by-from-full-name-metadata.util';
 import { isApiKeyAuthContext } from 'src/engine/core-modules/auth/guards/is-api-key-auth-context.guard';
 import { isApplicationAuthContext } from 'src/engine/core-modules/auth/guards/is-application-auth-context.guard';
+import { isSystemAuthContext } from 'src/engine/core-modules/auth/guards/is-system-auth-context.guard';
 import { isUserAuthContext } from 'src/engine/core-modules/auth/guards/is-user-auth-context.guard';
 import { type WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspace-auth-context.type';
 import { WorkspaceManyOrAllFlatEntityMapsCacheService } from 'src/engine/metadata-modules/flat-entity/services/workspace-many-or-all-flat-entity-maps-cache.service';
@@ -173,6 +174,17 @@ export class ActorFromAuthContextService {
       return buildCreatedByFromApplication({
         application: authContext.application,
       });
+    }
+
+    // Jobs and public endpoints (funnel leads) write records with no session;
+    // callers that know the real origin pass their own createdBy.
+    if (isSystemAuthContext(authContext)) {
+      return {
+        source: FieldActorSource.SYSTEM,
+        workspaceMemberId: null,
+        name: 'System',
+        context: {},
+      };
     }
 
     throw new Error(
