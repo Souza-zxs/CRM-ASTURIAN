@@ -65,6 +65,19 @@ const PortraitFrame = styled.div`
   width: 100%;
 `;
 
+const InitialsMark = styled.div`
+  ${typeRampDeclarations('headingMd')}
+  align-items: center;
+  border: 1px solid ${semanticColor.lineStrong};
+  border-radius: ${radius(2)};
+  display: flex;
+  font-family: ${fontFamily('sans')};
+  font-weight: ${FONT_WEIGHT.light};
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+`;
+
 const AuthorMeta = styled.div`
   max-width: 253px;
 `;
@@ -204,6 +217,14 @@ const NavGroup = styled.div`
   justify-content: start;
 `;
 
+const getInitials = (fullName: string) => {
+  const words = fullName.split(' ').filter((word) => word !== '');
+  const first = words.at(0) ?? '';
+  const last = words.length > 1 ? (words.at(-1) ?? '') : '';
+
+  return `${first.charAt(0)}${last.charAt(0)}`.toUpperCase();
+};
+
 export function FoundersCarousel({
   founders,
 }: {
@@ -227,10 +248,14 @@ export function FoundersCarousel({
       <LeftColumn>
         <AuthorCard>
           <PortraitFrame>
-            <FounderPortrait
-              alt={i18n._(msg`Retrato de ${authorName}`)}
-              src={current.portraitSrc}
-            />
+            {current.portraitSrc ? (
+              <FounderPortrait
+                alt={i18n._(msg`Retrato de ${authorName}`)}
+                src={current.portraitSrc}
+              />
+            ) : (
+              <InitialsMark aria-hidden>{getInitials(authorName)}</InitialsMark>
+            )}
           </PortraitFrame>
           <AuthorMeta>
             <NameRow>
