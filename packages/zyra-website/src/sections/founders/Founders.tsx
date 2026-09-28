@@ -10,7 +10,9 @@ import { FOUNDERS } from './founders.data';
 // its notch reveals the white surface behind it (seamless with the white
 // section above). The carousel sits on the card, so it adopts the dark scheme
 // — its text, divider, and nav resolve to light inks while the section stays
-// white through the notch.
+// white through the notch. keepsTopRhythm stops the hero above (also light)
+// from collapsing this section's top padding, which would butt the eyebrow
+// against the notch.
 const DarkPanel = styled.div`
   ${buildSchemeContext('dark')}
 `;
@@ -20,6 +22,7 @@ export function Founders() {
     <SectionShell
       background={<NotchedCardShape cardScheme="dark" />}
       fullBleedBackground
+      keepsTopRhythm
       rhythm="spacious"
       scheme="light"
     >
