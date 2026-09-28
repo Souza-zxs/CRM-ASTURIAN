@@ -74,6 +74,12 @@ export const FunnelPage = () => {
         return <SalesPageView content={funnelPage.content} />;
       case 'CONFIRMATION':
         return <ConfirmationPageView content={funnelPage.content} />;
+      default:
+        // A page's `content.type` can only diverge from its `type` column
+        // through a direct API call the backend failed to reject (the admin
+        // form always keeps them in sync) — treat it the same as a missing
+        // page instead of rendering nothing.
+        return <NotFound />;
     }
   };
 

@@ -8,6 +8,8 @@ import { UpdateFunnelPageInput } from 'src/engine/metadata-modules/funnel-page/d
 import { FunnelLeadEntity } from 'src/engine/metadata-modules/funnel-page/entities/funnel-lead.entity';
 import { FunnelPageEntity } from 'src/engine/metadata-modules/funnel-page/entities/funnel-page.entity';
 import { FunnelLeadCrmSyncService } from 'src/engine/metadata-modules/funnel-page/services/funnel-lead-crm-sync.service';
+import { assertFunnelPageContentIsPublishable } from 'src/engine/metadata-modules/funnel-page/utils/assert-funnel-page-content-is-publishable.util';
+import { assertFunnelPageContentMatchesType } from 'src/engine/metadata-modules/funnel-page/utils/assert-funnel-page-content-matches-type.util';
 import { InjectWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/inject-workspace-scoped-repository.decorator';
 import { WorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/workspace-scoped-repository';
 
@@ -52,6 +54,8 @@ export class FunnelPageMetadataService {
     workspaceId: string;
     input: CreateFunnelPageInput;
   }): Promise<FunnelPageEntity> {
+    assertFunnelPageContentMatchesType(input.type, input.content);
+
     return this.funnelPageRepository.save(workspaceId, {
       ...input,
       seoTitle: input.seoTitle ?? null,
@@ -69,6 +73,11 @@ export class FunnelPageMetadataService {
     input: UpdateFunnelPageInput;
   }): Promise<FunnelPageEntity> {
     const funnelPage = await this.findOneForWorkspace({ id, workspaceId });
+
+    assertFunnelPageContentMatchesType(
+      input.type ?? funnelPage.type,
+      input.content ?? funnelPage.content,
+    );
 
     const { id: _inputId, ...updatableFields } = input;
 
@@ -97,6 +106,9 @@ export class FunnelPageMetadataService {
     workspaceId: string;
   }): Promise<FunnelPageEntity> {
     const funnelPage = await this.findOneForWorkspace({ id, workspaceId });
+
+    assertFunnelPageContentIsPublishable(funnelPage.type, funnelPage.content);
+
     const updatedAt = new Date();
 
     await this.funnelPageRepository.update(
