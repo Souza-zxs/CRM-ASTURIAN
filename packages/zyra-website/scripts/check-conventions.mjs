@@ -115,6 +115,7 @@ const ROW_GAP_MULTI_AXIS_FILES = new Set([
   'sections/case-study-detail/CaseStudyHero.tsx',
   'sections/faq/Faq.tsx',
   'sections/faq/FaqItems.tsx',
+  'sections/founders/FoundersCarousel.tsx',
   'sections/pricing-plans/PricingBoard.tsx',
   'sections/problem/Problem.tsx',
   'sections/releases-feed/ReleasesFeed.tsx',

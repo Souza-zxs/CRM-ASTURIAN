@@ -373,6 +373,11 @@ msgstr ""
 msgid "Campos customizados"
 msgstr ""
 
+#. js-lingui-id: /TxP5w
+#: src/sections/founders/FoundersCarousel.tsx
+msgid "carrossel"
+msgstr ""
+
 #. js-lingui-id: WvFcPS
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Central de Add-ons Salesfarce"
@@ -381,6 +386,11 @@ msgstr ""
 #. js-lingui-id: xV+o7t
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Central de ajuda"
+msgstr ""
+
+#. js-lingui-id: bITCu+
+#: src/sections/founders/founders.data.ts
+msgid "CEO e fundador, Horizon"
 msgstr ""
 
 #. js-lingui-id: o84F1r
@@ -555,6 +565,11 @@ msgstr ""
 msgid "Controles da janela"
 msgstr ""
 
+#. js-lingui-id: xxwOD3
+#: src/sections/founders/founders.data.ts
+msgid "COO e cofundador, Horizon"
+msgstr ""
+
 #. js-lingui-id: FapWIq
 #: src/sections/product-feature/ProductFeature.tsx
 msgid "Core Features"
@@ -655,6 +670,16 @@ msgstr ""
 #. js-lingui-id: 1GJU1V
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Dados em tempo real, com IA embutida"
+msgstr ""
+
+#. js-lingui-id: ZWYoXi
+#: src/sections/founders/founders.data.ts
+msgid "Daniel imaginou o Zyra e o levou de uma ideia a um produto completo. Como CEO da Horizon, une visão de produto, cuidado obsessivo com cada detalhe e a coragem de construir do zero um CRM pensado para equipes que querem vender mais com menos trabalho manual."
+msgstr ""
+
+#. js-lingui-id: y67ldj
+#: src/sections/founders/founders.data.ts
+msgid "Daniel Lucas Souza"
 msgstr ""
 
 #. js-lingui-id: V0kvgB
@@ -855,6 +880,7 @@ msgstr ""
 #: src/sections/creators/Creators.tsx
 #: src/sections/customers-catalog-signoff/CustomersCatalogSignoff.tsx
 #: src/sections/faq/Faq.tsx
+#: src/sections/founders-hero/FoundersHero.tsx
 #: src/sections/home-hero/HomeHero.tsx
 #: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
 #: src/sections/pricing-plans/PlanCard.tsx
@@ -930,6 +956,16 @@ msgstr "Historique complet des communications en un seul endroit"
 #. js-lingui-id: oHdOkx
 #: src/sections/problem/problem.data.ts
 msgid "Funciona até certo ponto — depois disso, cada pessoa nova no time é mais uma versão diferente da \"verdade\" sobre um cliente."
+msgstr ""
+
+#. js-lingui-id: /eFw46
+#: src/sections/founders/FoundersCarousel.tsx
+msgid "Fundador anterior"
+msgstr ""
+
+#. js-lingui-id: ltYQ83
+#: src/sections/founders/FoundersCarousel.tsx
+msgid "Fundadores"
 msgstr ""
 
 #. js-lingui-id: S84RWl
@@ -1325,11 +1361,6 @@ msgstr ""
 msgid "O problema."
 msgstr ""
 
-#. js-lingui-id: xmsMbG
-#: src/sections/creators/Creators.tsx
-msgid "O produto reúne em um só lugar CRM, dashboards, WhatsApp, Instagram, agente de voz e páginas de funil."
-msgstr ""
-
 #. js-lingui-id: guuQ/h
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "O que isso significa"
@@ -1340,11 +1371,6 @@ msgstr ""
 msgid "O Zyra dá ao seu time a flexibilidade de montar um CRM sob medida para o negócio — sem depender de um desenvolvedor a cada mudança de processo."
 msgstr ""
 
-#. js-lingui-id: shiqRJ
-#: src/sections/creators/Creators.tsx
-msgid "O Zyra é criado e mantido pela Horizon, uma empresa de tecnologia que desenvolve software para equipes comerciais venderem com mais organização e menos trabalho manual."
-msgstr ""
-
 #. js-lingui-id: vuER7p
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "O Zyra é direto ao ponto: limpo, intuitivo, feito pra parecer familiar desde o primeiro acesso."
@@ -1353,6 +1379,11 @@ msgstr ""
 #. js-lingui-id: wC2aUc
 #: src/sections/faq/faq.data.ts
 msgid "O Zyra funciona com Claude, ChatGPT e Cursor?"
+msgstr ""
+
+#. js-lingui-id: 7EzJzY
+#: src/sections/founders-hero/FoundersHero.tsx
+msgid "O Zyra nasceu na Horizon, uma empresa de tecnologia feita por quem vive vendas: um CRM que as equipes realmente querem usar, com WhatsApp, dashboards e funil no mesmo lugar."
 msgstr ""
 
 #. js-lingui-id: S1kQf4
@@ -1406,6 +1437,11 @@ msgstr ""
 #. js-lingui-id: PXObId
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Papéis de usuário"
+msgstr ""
+
+#. js-lingui-id: 2PoBSL
+#: src/sections/founders/founders.data.ts
+msgid "Parceiro da Horizon e sócio do Zyra"
 msgstr ""
 
 #. js-lingui-id: Cupkzj
@@ -1567,6 +1603,11 @@ msgstr ""
 msgid "Prorrogado!"
 msgstr ""
 
+#. js-lingui-id: Uyhf6F
+#: src/sections/founders/FoundersCarousel.tsx
+msgid "Próximo fundador"
+msgstr ""
+
 #. js-lingui-id: 2DSPla
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Qualidade de produção"
@@ -1582,9 +1623,11 @@ msgstr ""
 msgid "Quanto tempo leva pra colocar o Zyra no ar?"
 msgstr ""
 
-#. js-lingui-id: 7jFB1x
-#: src/sections/creators/Creators.tsx
-msgid "Quem criou o *Zyra*"
+#. js-lingui-id: +kCdxv
+#: src/sections/founders-hero/FoundersHero.tsx
+msgid ""
+"Quem criou\n"
+"*o Zyra*"
 msgstr ""
 
 #. js-lingui-id: aY43wn
@@ -1596,6 +1639,11 @@ msgstr ""
 #. js-lingui-id: NukXDt
 #: src/platform/routing/static-website-routes.ts
 msgid "Quem criou o Zyra — Sobre nós"
+msgstr ""
+
+#. js-lingui-id: ExW6kg
+#: src/sections/founders/FoundersCarousel.tsx
+msgid "Quem está por trás do Zyra"
 msgstr ""
 
 #. js-lingui-id: yUi7VA
@@ -1675,6 +1723,11 @@ msgstr "Renommer, télécharger et supprimer des pièces jointes"
 msgid "Reports & Dashboards"
 msgstr "Rapports et tableaux de bord"
 
+#. js-lingui-id: ririu2
+#: src/sections/founders/FoundersCarousel.tsx
+msgid "Retrato de {authorName}"
+msgstr ""
+
 #. js-lingui-id: 0s7Zla
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Retrô 2015"
@@ -1698,6 +1751,16 @@ msgstr ""
 #. js-lingui-id: bfLBah
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Rode auto-hospedado, sem risco de fornecedor e sem migração forçada quando o seu processo muda."
+msgstr ""
+
+#. js-lingui-id: PSKsFY
+#: src/sections/founders/founders.data.ts
+msgid "Rodrigo Asturian"
+msgstr ""
+
+#. js-lingui-id: DNJuA6
+#: src/sections/founders/founders.data.ts
+msgid "Rodrigo Asturian é advogado e CEO da Asturian Associates, escritório internacional de advocacia especializado em proteção patrimonial e internacionalização de empresas. Parceiro da Horizon, é um dos donos do Zyra."
 msgstr ""
 
 #. js-lingui-id: eHx1Y3
@@ -1837,11 +1900,6 @@ msgstr ""
 msgid "Sob consulta"
 msgstr ""
 
-#. js-lingui-id: Rq3p8e
-#: src/sections/creators/Creators.tsx
-msgid "Sobre nós"
-msgstr ""
-
 #. js-lingui-id: yaNwoI
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Sobreviveu a todo redesign desde 2004."
@@ -1959,6 +2017,16 @@ msgstr ""
 #. js-lingui-id: yirHrH
 #: src/platform/routing/static-website-routes.ts
 msgid "The terms governing your use of Zyra and its CRM services."
+msgstr ""
+
+#. js-lingui-id: OzNa5s
+#: src/sections/founders/founders.data.ts
+msgid "Thulio é cofundador e COO da Horizon e contribuiu diretamente para o desenvolvimento do Zyra. Cuida para que a operação da empresa acompanhe a qualidade do produto, do primeiro contato à implementação na sua equipe."
+msgstr ""
+
+#. js-lingui-id: IpSAea
+#: src/sections/founders/founders.data.ts
+msgid "Thulio Leal"
 msgstr ""
 
 #. js-lingui-id: JSDWy/

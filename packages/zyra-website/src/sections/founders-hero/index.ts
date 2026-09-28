@@ -1,0 +1,1 @@
+export { FoundersHero } from './FoundersHero';
