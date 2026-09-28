@@ -27,6 +27,13 @@ const FUNNEL_ACTOR: ActorMetadata = {
 const describeFailure = (result: { message: string; error?: string }) =>
   isDefined(result.error) ? `${result.message} (${result.error})` : result.message;
 
+// The site's contact form posts to this page; every other funnel page is the
+// workshop signup.
+const CONTACT_PAGE_SLUG = 'contato';
+
+const getOpportunityPrefix = (pageSlug: string | undefined) =>
+  pageSlug === CONTACT_PAGE_SLUG ? 'Contato' : 'Workshop';
+
 const getRecordId = (record: unknown): string | null => {
   if (
     typeof record === 'object' &&
@@ -56,9 +63,11 @@ export class FunnelLeadCrmSyncService {
   async syncLeadToCrm({
     workspaceId,
     lead,
+    pageSlug,
   }: {
     workspaceId: string;
     lead: CreateFunnelLeadInput;
+    pageSlug?: string;
   }): Promise<void> {
     try {
       const authContext = buildSystemAuthContext(workspaceId);
@@ -72,7 +81,12 @@ export class FunnelLeadCrmSyncService {
             lead,
           });
 
-          await this.createOpportunity({ authContext, personId, lead });
+          await this.createOpportunity({
+            authContext,
+            personId,
+            lead,
+            pageSlug,
+          });
         },
         authContext,
       );
@@ -213,15 +227,17 @@ export class FunnelLeadCrmSyncService {
     authContext,
     personId,
     lead,
+    pageSlug,
   }: {
     authContext: WorkspaceAuthContext;
     personId: string;
     lead: CreateFunnelLeadInput;
+    pageSlug?: string;
   }): Promise<void> {
     const createdOpportunity = await this.createRecordService.execute({
       objectName: 'opportunity',
       objectRecord: {
-        name: `Workshop - ${lead.name}`,
+        name: `${getOpportunityPrefix(pageSlug)} - ${lead.name}`,
         stage: 'NEW',
         pointOfContactId: personId,
       },

@@ -69,6 +69,35 @@ describe('FunnelLeadCrmSyncService', () => {
     );
   });
 
+  it('should name the opportunity after the page the lead came from', async () => {
+    findRecordsService.execute.mockResolvedValue({
+      success: true,
+      result: { records: [], count: 0 },
+    });
+    createRecordService.execute
+      .mockResolvedValueOnce({ success: true, result: { id: 'person-1' } })
+      .mockResolvedValueOnce({
+        success: true,
+        result: { id: 'opportunity-1' },
+      });
+
+    await buildService().syncLeadToCrm({
+      workspaceId: WORKSPACE_ID,
+      lead,
+      pageSlug: 'contato',
+    });
+
+    expect(createRecordService.execute).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({
+        objectName: 'opportunity',
+        objectRecord: expect.objectContaining({
+          name: `Contato - ${lead.name}`,
+        }),
+      }),
+    );
+  });
+
   it('should run the CRM writes inside a workspace context built from a system auth context', async () => {
     findRecordsService.execute.mockResolvedValue({
       success: true,

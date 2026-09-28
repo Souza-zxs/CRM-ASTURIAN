@@ -193,6 +193,7 @@ export class FunnelPageMetadataService {
     await this.funnelLeadCrmSyncService.syncLeadToCrm({
       workspaceId,
       lead: input,
+      pageSlug: funnelPage.slug,
     });
 
     return funnelLead;
