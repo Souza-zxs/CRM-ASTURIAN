@@ -150,12 +150,14 @@ describe('CreateCompanyAndPersonService', () => {
       ).toContain('jane.smith@company.com');
     });
 
-    it('should match an existing person by phone number for a phone-shaped handle', () => {
+    it('should match an existing person by additional phone number for a phone-shaped handle', () => {
       const existingPersonByPhone = {
         id: 'person-whatsapp-1',
         phones: {
-          primaryPhoneNumber: '5511999999999',
-          additionalPhones: null,
+          primaryPhoneNumber: '11000000000',
+          additionalPhones: [
+            { number: '11999999999', countryCode: 'BR', callingCode: '+55' },
+          ],
         },
         deletedAt: null,
       } as unknown as PersonWorkspaceEntity;
@@ -173,6 +175,36 @@ describe('CreateCompanyAndPersonService', () => {
       expect(
         result.shouldCreateOrRestorePeopleByHandleMap.get('5511999999999'),
       ).toEqual({ existingPerson: existingPersonByPhone });
+    });
+
+    it('should match an existing person whose stored phone number has the Brazilian country-code prefix stripped, against a raw handle that still has it', () => {
+      // formatPeopleToCreateFromContacts stores primaryPhoneNumber via
+      // parseFunnelLeadPhone, which strips a leading '55' - so an existing
+      // Person's stored number never has it, while a fresh WhatsApp handle
+      // for the same contact always does. Matching must normalize the raw
+      // handle the same way before comparing, or this Person is never found.
+      const existingPersonByNormalizedPhone = {
+        id: 'person-whatsapp-normalized',
+        phones: {
+          primaryPhoneNumber: '11999999999',
+          additionalPhones: null,
+        },
+        deletedAt: null,
+      } as unknown as PersonWorkspaceEntity;
+
+      const result =
+        service.computeContactsThatNeedPersonCreateAndRestoreAndWorkDomainNamesToCreate(
+          [{ handle: '5511999999999', displayName: 'WhatsApp Contact' }],
+          [existingPersonByNormalizedPhone],
+          FieldActorSource.WHATSAPP,
+          mockConnectedAccount,
+          null,
+        );
+
+      expect(result.contactsThatNeedPersonCreate).toHaveLength(0);
+      expect(
+        result.shouldCreateOrRestorePeopleByHandleMap.get('5511999999999'),
+      ).toEqual({ existingPerson: existingPersonByNormalizedPhone });
     });
 
     it('should mark a phone-shaped handle with no existing match for person creation', () => {

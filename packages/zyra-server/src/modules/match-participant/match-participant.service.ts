@@ -13,6 +13,7 @@ import { addPersonEmailFiltersToQueryBuilder } from 'src/modules/match-participa
 import { addPersonPhoneFiltersToQueryBuilder } from 'src/modules/match-participant/utils/add-person-phone-filters-to-query-builder';
 import { findPersonByPrimaryOrAdditionalEmail } from 'src/modules/match-participant/utils/find-person-by-primary-or-additional-email';
 import { findPersonByPrimaryOrAdditionalPhoneNumber } from 'src/modules/match-participant/utils/find-person-by-primary-or-additional-phone-number';
+import { normalizePhoneHandleForMatching } from 'src/modules/match-participant/utils/normalize-phone-handle-for-matching';
 import { type MessageParticipantWorkspaceEntity } from 'src/modules/messaging/common/standard-objects/message-participant.workspace-entity';
 import { type PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
@@ -123,9 +124,9 @@ export class MatchParticipantService<
       const emailHandles = uniqueParticipantsHandles.filter((handle) =>
         handle.includes('@'),
       );
-      const phoneHandles = uniqueParticipantsHandles.filter(
-        (handle) => handle.length > 0 && !handle.includes('@'),
-      );
+      const phoneHandles = uniqueParticipantsHandles
+        .filter((handle) => handle.length > 0 && !handle.includes('@'))
+        .map(normalizePhoneHandleForMatching);
 
       const peopleMatchedByEmail =
         emailHandles.length > 0
@@ -171,7 +172,9 @@ export class MatchParticipantService<
               })
             : findPersonByPrimaryOrAdditionalPhoneNumber({
                 people,
-                phoneNumber: participant.handle,
+                phoneNumber: normalizePhoneHandleForMatching(
+                  participant.handle,
+                ),
               });
 
           const workspaceMember = workspaceMembers.find(

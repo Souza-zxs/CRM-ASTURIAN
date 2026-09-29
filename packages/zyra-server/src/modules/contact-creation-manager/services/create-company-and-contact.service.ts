@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { isNonEmptyString, isNull } from '@sniptt/guards';
+import { type CountryCode } from 'libphonenumber-js';
 import chunk from 'lodash.chunk';
 import compact from 'lodash.compact';
 import {
@@ -30,6 +31,7 @@ import { getUniqueContactsAndHandles } from 'src/modules/contact-creation-manage
 import { addPersonEmailFiltersToQueryBuilder } from 'src/modules/match-participant/utils/add-person-email-filters-to-query-builder';
 import { addPersonPhoneFiltersToQueryBuilder } from 'src/modules/match-participant/utils/add-person-phone-filters-to-query-builder';
 import { findPersonByPrimaryOrAdditionalPhoneNumber } from 'src/modules/match-participant/utils/find-person-by-primary-or-additional-phone-number';
+import { normalizePhoneHandleForMatching } from 'src/modules/match-participant/utils/normalize-phone-handle-for-matching';
 import { parseFunnelLeadPhone } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-phone.util';
 import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
@@ -106,9 +108,9 @@ export class CreateCompanyAndPersonService {
         const emailHandles = uniqueHandles.filter((handle) =>
           handle.includes('@'),
         );
-        const phoneHandles = uniqueHandles.filter(
-          (handle) => !handle.includes('@'),
-        );
+        const phoneHandles = uniqueHandles
+          .filter((handle) => !handle.includes('@'))
+          .map(normalizePhoneHandleForMatching);
 
         const alreadyCreatedPeopleByEmail =
           emailHandles.length > 0
@@ -273,7 +275,7 @@ export class CreateCompanyAndPersonService {
         const existingPersonByPhoneNumber =
           findPersonByPrimaryOrAdditionalPhoneNumber({
             people: alreadyCreatedPeople,
-            phoneNumber: contact.handle,
+            phoneNumber: normalizePhoneHandleForMatching(contact.handle),
           });
 
         if (isDefined(existingPersonByPhoneNumber)) {
@@ -501,10 +503,14 @@ export class CreateCompanyAndPersonService {
           id,
           phones: {
             primaryPhoneNumber: parsedPhone?.primaryPhoneNumber ?? handle,
-            primaryPhoneCallingCode:
-              parsedPhone?.primaryPhoneCallingCode ?? null,
+            primaryPhoneCallingCode: parsedPhone?.primaryPhoneCallingCode ?? '',
+            // CountryCode is a strict ISO-code union with no "unknown" member;
+            // '' is the codebase's existing convention for "no calling/country
+            // code could be parsed" (see generate-column-definitions.util.spec.ts),
+            // so the cast is safe here — this only happens for WhatsApp handles
+            // parseFunnelLeadPhone couldn't parse a country code for.
             primaryPhoneCountryCode:
-              parsedPhone?.primaryPhoneCountryCode ?? null,
+              parsedPhone?.primaryPhoneCountryCode ?? ('' as CountryCode),
             additionalPhones: null,
           },
           name: {
