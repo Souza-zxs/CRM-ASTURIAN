@@ -8,6 +8,7 @@ import { getWorkspaceScopedRepositoryToken } from 'src/engine/zyra-orm/workspace
 import { MessagingMessageOutboundService } from 'src/modules/messaging/message-outbound-manager/services/messaging-message-outbound.service';
 import { SendWhatsappMessageService } from 'src/modules/messaging/message-outbound-manager/services/send-whatsapp-message.service';
 import { SentMessagePersistenceService } from 'src/modules/messaging/message-outbound-manager/services/sent-message-persistence.service';
+import { WhatsappAgentManualSendHandoffService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-manual-send-handoff.service';
 
 describe('SendWhatsappMessageService', () => {
   let service: SendWhatsappMessageService;
@@ -15,12 +16,18 @@ describe('SendWhatsappMessageService', () => {
   let sentMessagePersistenceService: { persistSentMessage: jest.Mock };
   let connectedAccountRepository: { findOne: jest.Mock };
   let whatsappChannelRepository: { findOne: jest.Mock };
+  let whatsappAgentManualSendHandoffService: {
+    disableAiIfConversationExists: jest.Mock;
+  };
 
   beforeEach(async () => {
     messagingMessageOutboundService = { sendMessage: jest.fn() };
     sentMessagePersistenceService = { persistSentMessage: jest.fn() };
     connectedAccountRepository = { findOne: jest.fn() };
     whatsappChannelRepository = { findOne: jest.fn() };
+    whatsappAgentManualSendHandoffService = {
+      disableAiIfConversationExists: jest.fn(),
+    };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -40,6 +47,10 @@ describe('SendWhatsappMessageService', () => {
         {
           provide: getWorkspaceScopedRepositoryToken(WhatsappChannelEntity),
           useValue: whatsappChannelRepository,
+        },
+        {
+          provide: WhatsappAgentManualSendHandoffService,
+          useValue: whatsappAgentManualSendHandoffService,
         },
       ],
     }).compile();
@@ -89,6 +100,13 @@ describe('SendWhatsappMessageService', () => {
         workspaceId: 'workspace-1',
       }),
     );
+    expect(
+      whatsappAgentManualSendHandoffService.disableAiIfConversationExists,
+    ).toHaveBeenCalledWith({
+      connectedAccountId: 'connected-account-1',
+      contactPhoneNumber: '5511999999999',
+      workspaceId: 'workspace-1',
+    });
   });
 
   it('returns a typed error when the outbound send fails (e.g. 24h window closed)', async () => {

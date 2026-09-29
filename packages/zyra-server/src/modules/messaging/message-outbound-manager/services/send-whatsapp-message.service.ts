@@ -9,6 +9,7 @@ import { InjectWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-s
 import { WorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/workspace-scoped-repository';
 import { MessagingMessageOutboundService } from 'src/modules/messaging/message-outbound-manager/services/messaging-message-outbound.service';
 import { SentMessagePersistenceService } from 'src/modules/messaging/message-outbound-manager/services/sent-message-persistence.service';
+import { WhatsappAgentManualSendHandoffService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-manual-send-handoff.service';
 
 export type SendWhatsappMessageParams = {
   connectedAccountId: string;
@@ -32,6 +33,7 @@ export class SendWhatsappMessageService {
     private readonly connectedAccountRepository: WorkspaceScopedRepository<ConnectedAccountEntity>,
     @InjectWorkspaceScopedRepository(WhatsappChannelEntity)
     private readonly whatsappChannelRepository: WorkspaceScopedRepository<WhatsappChannelEntity>,
+    private readonly whatsappAgentManualSendHandoffService: WhatsappAgentManualSendHandoffService,
   ) {}
 
   async sendWhatsappMessage(
@@ -82,6 +84,14 @@ export class SendWhatsappMessageService {
         parentThreadExternalId: params.to,
         workspaceId: workspace.id,
       });
+
+      await this.whatsappAgentManualSendHandoffService.disableAiIfConversationExists(
+        {
+          connectedAccountId: connectedAccount.id,
+          contactPhoneNumber: params.to,
+          workspaceId: workspace.id,
+        },
+      );
 
       return { success: true };
     } catch (error) {

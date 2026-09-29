@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ZyraConfigModule } from 'src/engine/core-modules/zyra-config/zyra-config.module';
 import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
+import { WhatsappAgentMetadataModule } from 'src/engine/metadata-modules/whatsapp-agent/whatsapp-agent-metadata.module';
 import { WhatsappAgentConversationEntity } from 'src/engine/metadata-modules/whatsapp-agent/entities/whatsapp-agent-conversation.entity';
 import { WhatsappAgentMessageEntity } from 'src/engine/metadata-modules/whatsapp-agent/entities/whatsapp-agent-message.entity';
 import { WhatsappAgentEntity } from 'src/engine/metadata-modules/whatsapp-agent/entities/whatsapp-agent.entity';
@@ -11,6 +12,7 @@ import { provideWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-
 import { MessagingSendManagerModule } from 'src/modules/messaging/message-outbound-manager/messaging-send-manager.module';
 import { WhatsappAgentResponderJob } from 'src/modules/whatsapp-agent/jobs/whatsapp-agent-responder.job';
 import { WhatsappAgentInstructionsBuilderService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-instructions-builder.service';
+import { WhatsappAgentManualSendHandoffService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-manual-send-handoff.service';
 import { WhatsappAgentOpenAiClientService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-openai-client.service';
 import { WhatsappAgentResponderService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-responder.service';
 import { WhatsappAgentTriggerService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-trigger.service';
@@ -20,11 +22,13 @@ import { WhatsappAgentTriggerService } from 'src/modules/whatsapp-agent/services
 // same split as the voice agent's engine/metadata-modules/voice-agent vs
 // modules/voice-agent. Only WhatsappAgentTriggerService is exported: that's
 // the one thing WhatsappWebhooksModule needs to hook into after an inbound
-// message is saved.
+// message is saved, plus WhatsappAgentManualSendHandoffService, used by the
+// manual sendWhatsappMessage mutation.
 @Module({
   imports: [
     ZyraConfigModule,
     MessagingSendManagerModule,
+    WhatsappAgentMetadataModule,
     TypeOrmModule.forFeature([
       WhatsappAgentEntity,
       WhatsappAgentConversationEntity,
@@ -38,12 +42,13 @@ import { WhatsappAgentTriggerService } from 'src/modules/whatsapp-agent/services
     WhatsappAgentResponderService,
     WhatsappAgentResponderJob,
     WhatsappAgentInstructionsBuilderService,
+    WhatsappAgentManualSendHandoffService,
     WhatsappAgentOpenAiClientService,
     provideWorkspaceScopedRepository(WhatsappAgentEntity),
     provideWorkspaceScopedRepository(WhatsappAgentConversationEntity),
     provideWorkspaceScopedRepository(WhatsappAgentMessageEntity),
     provideWorkspaceScopedRepository(WhatsappChannelEntity),
   ],
-  exports: [WhatsappAgentTriggerService],
+  exports: [WhatsappAgentTriggerService, WhatsappAgentManualSendHandoffService],
 })
 export class WhatsappAgentModule {}
