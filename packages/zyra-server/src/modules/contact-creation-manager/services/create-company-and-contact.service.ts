@@ -28,6 +28,9 @@ import { getDomainNameFromHandle } from 'src/modules/contact-creation-manager/ut
 import { getFirstNameAndLastNameFromHandleAndDisplayName } from 'src/modules/contact-creation-manager/utils/get-first-name-and-last-name-from-handle-and-display-name.util';
 import { getUniqueContactsAndHandles } from 'src/modules/contact-creation-manager/utils/get-unique-contacts-and-handles.util';
 import { addPersonEmailFiltersToQueryBuilder } from 'src/modules/match-participant/utils/add-person-email-filters-to-query-builder';
+import { addPersonPhoneFiltersToQueryBuilder } from 'src/modules/match-participant/utils/add-person-phone-filters-to-query-builder';
+import { findPersonByPrimaryOrAdditionalPhoneNumber } from 'src/modules/match-participant/utils/find-person-by-primary-or-additional-phone-number';
+import { parseFunnelLeadPhone } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-phone.util';
 import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
 import { computeDisplayName } from 'src/utils/compute-display-name';
@@ -100,15 +103,39 @@ export class CreateCompanyAndPersonService {
           return [];
         }
 
-        const queryBuilder = addPersonEmailFiltersToQueryBuilder({
-          queryBuilder: personRepository.createQueryBuilder('person'),
-          emails: uniqueHandles,
-        });
+        const emailHandles = uniqueHandles.filter((handle) =>
+          handle.includes('@'),
+        );
+        const phoneHandles = uniqueHandles.filter(
+          (handle) => !handle.includes('@'),
+        );
 
-        const alreadyCreatedPeople = await queryBuilder
-          .orderBy('person.createdAt', 'ASC')
-          .withDeleted()
-          .getMany();
+        const alreadyCreatedPeopleByEmail =
+          emailHandles.length > 0
+            ? await addPersonEmailFiltersToQueryBuilder({
+                queryBuilder: personRepository.createQueryBuilder('person'),
+                emails: emailHandles,
+              })
+                .orderBy('person.createdAt', 'ASC')
+                .withDeleted()
+                .getMany()
+            : [];
+
+        const alreadyCreatedPeopleByPhone =
+          phoneHandles.length > 0
+            ? await addPersonPhoneFiltersToQueryBuilder({
+                queryBuilder: personRepository.createQueryBuilder('person'),
+                phoneNumbers: phoneHandles,
+              })
+                .orderBy('person.createdAt', 'ASC')
+                .withDeleted()
+                .getMany()
+            : [];
+
+        const alreadyCreatedPeople = [
+          ...alreadyCreatedPeopleByEmail,
+          ...alreadyCreatedPeopleByPhone,
+        ];
 
         const {
           contactsThatNeedPersonCreate,
@@ -243,6 +270,19 @@ export class CreateCompanyAndPersonService {
 
     for (const contact of uniqueContacts) {
       if (!contact.handle.includes('@')) {
+        const existingPersonByPhoneNumber =
+          findPersonByPrimaryOrAdditionalPhoneNumber({
+            people: alreadyCreatedPeople,
+            phoneNumber: contact.handle,
+          });
+
+        if (isDefined(existingPersonByPhoneNumber)) {
+          shouldCreateOrRestorePeopleByHandleMap.set(
+            contact.handle.toLowerCase(),
+            { existingPerson: existingPersonByPhoneNumber },
+          );
+        }
+
         continue;
       }
 
@@ -447,6 +487,34 @@ export class CreateCompanyAndPersonService {
         getFirstNameAndLastNameFromHandleAndDisplayName(handle, displayName);
       const createdByName = computeDisplayName(createdBy.workspaceMember?.name);
 
+      const createdBySnapshot = {
+        source: createdBy.source,
+        workspaceMemberId: createdBy.workspaceMember?.id ?? null,
+        name: createdByName,
+        context: createdBy.context,
+      };
+
+      if (!handle.includes('@')) {
+        const parsedPhone = parseFunnelLeadPhone(handle);
+
+        return {
+          id,
+          phones: {
+            primaryPhoneNumber: parsedPhone?.primaryPhoneNumber ?? handle,
+            primaryPhoneCallingCode:
+              parsedPhone?.primaryPhoneCallingCode ?? null,
+            primaryPhoneCountryCode:
+              parsedPhone?.primaryPhoneCountryCode ?? null,
+            additionalPhones: null,
+          },
+          name: {
+            firstName,
+            lastName,
+          },
+          createdBy: createdBySnapshot,
+        };
+      }
+
       const companyId = companiesMap[getDomainNameFromHandle(handle)];
 
       return {
@@ -460,12 +528,7 @@ export class CreateCompanyAndPersonService {
           lastName,
         },
         companyId,
-        createdBy: {
-          source: createdBy.source,
-          workspaceMemberId: createdBy.workspaceMember?.id ?? null,
-          name: createdByName,
-          context: createdBy.context,
-        },
+        createdBy: createdBySnapshot,
       };
     });
   }
@@ -497,7 +560,9 @@ export class CreateCompanyAndPersonService {
       if (!isDefined(existingPerson) || isNull(existingPerson.deletedAt))
         continue;
 
-      const companyId = companiesMap[getDomainNameFromHandle(handle)];
+      const companyId = handle.includes('@')
+        ? companiesMap[getDomainNameFromHandle(handle)]
+        : undefined;
 
       peopleToRestore.push({
         personId: existingPerson.id,

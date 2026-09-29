@@ -150,6 +150,72 @@ describe('CreateCompanyAndPersonService', () => {
       ).toContain('jane.smith@company.com');
     });
 
+    it('should match an existing person by phone number for a phone-shaped handle', () => {
+      const existingPersonByPhone = {
+        id: 'person-whatsapp-1',
+        phones: {
+          primaryPhoneNumber: '5511999999999',
+          additionalPhones: null,
+        },
+        deletedAt: null,
+      } as unknown as PersonWorkspaceEntity;
+
+      const result =
+        service.computeContactsThatNeedPersonCreateAndRestoreAndWorkDomainNamesToCreate(
+          [{ handle: '5511999999999', displayName: 'WhatsApp Contact' }],
+          [existingPersonByPhone],
+          FieldActorSource.WHATSAPP,
+          mockConnectedAccount,
+          null,
+        );
+
+      expect(result.contactsThatNeedPersonCreate).toHaveLength(0);
+      expect(
+        result.shouldCreateOrRestorePeopleByHandleMap.get('5511999999999'),
+      ).toEqual({ existingPerson: existingPersonByPhone });
+    });
+
+    it('should mark a phone-shaped handle with no existing match for person creation', () => {
+      const result =
+        service.computeContactsThatNeedPersonCreateAndRestoreAndWorkDomainNamesToCreate(
+          [{ handle: '5511999999999', displayName: 'New WhatsApp Contact' }],
+          [],
+          FieldActorSource.WHATSAPP,
+          mockConnectedAccount,
+          null,
+        );
+
+      expect(result.contactsThatNeedPersonCreate).toHaveLength(1);
+      expect(result.contactsThatNeedPersonCreate[0].handle).toBe(
+        '5511999999999',
+      );
+      expect(result.workDomainNamesToCreate).toEqual([]);
+    });
+
+    it('should format a new person from a phone-shaped contact using phones, not emails', () => {
+      const formatted = service.formatPeopleToCreateFromContacts({
+        contactsToCreate: [
+          { handle: '5511999999999', displayName: 'WhatsApp Contact' },
+        ],
+        createdBy: {
+          source: FieldActorSource.WHATSAPP,
+          context: { provider: mockConnectedAccount.provider },
+        },
+        companiesMap: {},
+      });
+
+      expect(formatted[0].emails).toBeUndefined();
+      // parseFunnelLeadPhone keeps the DDD attached to primaryPhoneNumber
+      // (see its own spec: '+55 83 99999-9999' -> '83999999999'), so only
+      // the leading '55' country code digits are stripped here.
+      expect(formatted[0].phones).toEqual({
+        primaryPhoneNumber: '11999999999',
+        primaryPhoneCallingCode: '+55',
+        primaryPhoneCountryCode: 'BR',
+        additionalPhones: null,
+      });
+    });
+
     describe('peopleToEnrichNames', () => {
       const contact: Contact = {
         handle: 'felix@zyra.com',

@@ -10,7 +10,9 @@ import { buildSystemAuthContext } from 'src/engine/zyra-orm/utils/build-system-a
 import { WorkspaceEventEmitter } from 'src/engine/workspace-event-emitter/workspace-event-emitter';
 import { type CalendarEventParticipantWorkspaceEntity } from 'src/modules/calendar/common/standard-objects/calendar-event-participant.workspace-entity';
 import { addPersonEmailFiltersToQueryBuilder } from 'src/modules/match-participant/utils/add-person-email-filters-to-query-builder';
+import { addPersonPhoneFiltersToQueryBuilder } from 'src/modules/match-participant/utils/add-person-phone-filters-to-query-builder';
 import { findPersonByPrimaryOrAdditionalEmail } from 'src/modules/match-participant/utils/find-person-by-primary-or-additional-email';
+import { findPersonByPrimaryOrAdditionalPhoneNumber } from 'src/modules/match-participant/utils/find-person-by-primary-or-additional-phone-number';
 import { type MessageParticipantWorkspaceEntity } from 'src/modules/messaging/common/standard-objects/message-participant.workspace-entity';
 import { type PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
@@ -118,14 +120,34 @@ export class MatchParticipantService<
         ...new Set(participants.map((participant) => participant.handle)),
       ].filter(isDefined);
 
-      const queryBuilder = addPersonEmailFiltersToQueryBuilder({
-        queryBuilder: personRepository.createQueryBuilder('person'),
-        emails: uniqueParticipantsHandles,
-      });
+      const emailHandles = uniqueParticipantsHandles.filter((handle) =>
+        handle.includes('@'),
+      );
+      const phoneHandles = uniqueParticipantsHandles.filter(
+        (handle) => handle.length > 0 && !handle.includes('@'),
+      );
 
-      const people = await queryBuilder
-        .orderBy('person.createdAt', 'ASC')
-        .getMany();
+      const peopleMatchedByEmail =
+        emailHandles.length > 0
+          ? await addPersonEmailFiltersToQueryBuilder({
+              queryBuilder: personRepository.createQueryBuilder('person'),
+              emails: emailHandles,
+            })
+              .orderBy('person.createdAt', 'ASC')
+              .getMany()
+          : [];
+
+      const peopleMatchedByPhone =
+        phoneHandles.length > 0
+          ? await addPersonPhoneFiltersToQueryBuilder({
+              queryBuilder: personRepository.createQueryBuilder('person'),
+              phoneNumbers: phoneHandles,
+            })
+              .orderBy('person.createdAt', 'ASC')
+              .getMany()
+          : [];
+
+      const people = [...peopleMatchedByEmail, ...peopleMatchedByPhone];
 
       const workspaceMembers = await workspaceMemberRepository.find(
         {
@@ -142,10 +164,15 @@ export class MatchParticipantService<
           handle: participant.handle ?? '',
         }))
         .map((participant) => {
-          const person = findPersonByPrimaryOrAdditionalEmail({
-            people,
-            email: participant.handle,
-          });
+          const person = participant.handle.includes('@')
+            ? findPersonByPrimaryOrAdditionalEmail({
+                people,
+                email: participant.handle,
+              })
+            : findPersonByPrimaryOrAdditionalPhoneNumber({
+                people,
+                phoneNumber: participant.handle,
+              });
 
           const workspaceMember = workspaceMembers.find(
             (workspaceMember) =>
