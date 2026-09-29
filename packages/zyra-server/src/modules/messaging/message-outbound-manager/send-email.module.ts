@@ -1,11 +1,17 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { FileEmailAttachmentModule } from 'src/engine/core-modules/file/file-email-attachment/file-email-attachment.module';
 import { ToolModule } from 'src/engine/core-modules/tool/tool.module';
 import { ConnectedAccountMetadataModule } from 'src/engine/metadata-modules/connected-account/connected-account-metadata.module';
+import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { WhatsappChannelEntity } from 'src/engine/metadata-modules/whatsapp-channel/entities/whatsapp-channel.entity';
+import { provideWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/provide-workspace-scoped-repository';
 import { SendEmailResolver } from 'src/modules/messaging/message-outbound-manager/resolvers/send-email.resolver';
 import { MessagingSendManagerModule } from 'src/modules/messaging/message-outbound-manager/messaging-send-manager.module';
+import { SendWhatsappMessageResolver } from 'src/modules/messaging/message-outbound-manager/resolvers/send-whatsapp-message.resolver';
+import { SendWhatsappMessageService } from 'src/modules/messaging/message-outbound-manager/services/send-whatsapp-message.service';
 
 @Module({
   imports: [
@@ -14,7 +20,14 @@ import { MessagingSendManagerModule } from 'src/modules/messaging/message-outbou
     MessagingSendManagerModule,
     ConnectedAccountMetadataModule,
     PermissionsModule,
+    TypeOrmModule.forFeature([ConnectedAccountEntity, WhatsappChannelEntity]),
   ],
-  providers: [SendEmailResolver],
+  providers: [
+    SendEmailResolver,
+    SendWhatsappMessageService,
+    SendWhatsappMessageResolver,
+    provideWorkspaceScopedRepository(ConnectedAccountEntity),
+    provideWorkspaceScopedRepository(WhatsappChannelEntity),
+  ],
 })
 export class SendEmailModule {}
