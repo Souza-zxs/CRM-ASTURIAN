@@ -49,6 +49,7 @@ import { TimelineMessagingModule } from 'src/engine/core-modules/messaging/timel
 import { MessagingWebhooksModule } from 'src/modules/messaging-webhooks/messaging-webhooks.module';
 import { WhatsappModule } from 'src/modules/whatsapp/whatsapp.module';
 import { WhatsappInboxModule } from 'src/modules/whatsapp-inbox/whatsapp-inbox.module';
+import { PaymentsModule } from 'src/modules/payments/payments.module';
 import { WhatsappWebhooksModule } from 'src/modules/whatsapp-webhooks/whatsapp-webhooks.module';
 import { InstagramModule } from 'src/modules/instagram/instagram.module';
 import { InstagramWebhooksModule } from 'src/modules/instagram-webhooks/instagram-webhooks.module';
@@ -100,6 +101,7 @@ import { FileModule } from './file/file.module';
     WhatsappModule,
     WhatsappWebhooksModule,
     WhatsappInboxModule,
+    PaymentsModule,
     InstagramModule,
     InstagramWebhooksModule,
     InstagramCronsModule,
