@@ -509,8 +509,8 @@ export class CreateCompanyAndPersonService {
             // code could be parsed" (see generate-column-definitions.util.spec.ts),
             // so the cast is safe here — this only happens for WhatsApp handles
             // parseFunnelLeadPhone couldn't parse a country code for.
-            primaryPhoneCountryCode:
-              parsedPhone?.primaryPhoneCountryCode ?? ('' as CountryCode),
+            primaryPhoneCountryCode: (parsedPhone?.primaryPhoneCountryCode ??
+              '') as CountryCode,
             additionalPhones: null,
           },
           name: {
