@@ -7,6 +7,7 @@ export type WhatsappAgent = {
   greetingMessage: string | null;
   forbiddenPhrases: string[] | null;
   qualificationCriteria: string | null;
+  knowledgeBase: string | null;
   handoffInstructions: string | null;
   model: string;
   createdAt: string;

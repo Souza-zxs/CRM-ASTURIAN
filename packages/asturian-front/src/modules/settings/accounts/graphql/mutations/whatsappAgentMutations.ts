@@ -11,6 +11,7 @@ export const CREATE_WHATSAPP_AGENT = gql`
       greetingMessage
       forbiddenPhrases
       qualificationCriteria
+      knowledgeBase
       handoffInstructions
       model
       createdAt
@@ -30,6 +31,7 @@ export const UPDATE_WHATSAPP_AGENT = gql`
       greetingMessage
       forbiddenPhrases
       qualificationCriteria
+      knowledgeBase
       handoffInstructions
       model
       updatedAt

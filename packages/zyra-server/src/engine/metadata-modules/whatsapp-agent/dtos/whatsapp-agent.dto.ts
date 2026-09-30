@@ -56,6 +56,11 @@ export class WhatsappAgentDTO {
   @IsString()
   @IsOptional()
   @Field(() => String, { nullable: true })
+  knowledgeBase: string | null;
+
+  @IsString()
+  @IsOptional()
+  @Field(() => String, { nullable: true })
   handoffInstructions: string | null;
 
   @IsString()

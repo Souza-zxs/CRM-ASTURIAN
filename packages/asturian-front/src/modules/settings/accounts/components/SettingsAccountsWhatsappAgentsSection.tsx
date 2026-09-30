@@ -78,6 +78,7 @@ export const SettingsAccountsWhatsappAgentsSection = () => {
         greetingMessage: values.greetingMessage,
         forbiddenPhrases: values.forbiddenPhrases,
         qualificationCriteria: values.qualificationCriteria,
+        knowledgeBase: values.knowledgeBase,
         handoffInstructions: values.handoffInstructions,
         model: values.model,
       });

@@ -14,6 +14,7 @@ import { WhatsappAgentResponderJob } from 'src/modules/whatsapp-agent/jobs/whats
 import { WhatsappAgentInstructionsBuilderService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-instructions-builder.service';
 import { WhatsappAgentManualSendHandoffService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-manual-send-handoff.service';
 import { WhatsappAgentOpenAiClientService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-openai-client.service';
+import { WhatsappAgentQualificationOpportunityUpdaterService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-qualification-opportunity-updater.service';
 import { WhatsappAgentResponderService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-responder.service';
 import { WhatsappAgentTriggerService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-trigger.service';
 
@@ -44,6 +45,7 @@ import { WhatsappAgentTriggerService } from 'src/modules/whatsapp-agent/services
     WhatsappAgentInstructionsBuilderService,
     WhatsappAgentManualSendHandoffService,
     WhatsappAgentOpenAiClientService,
+    WhatsappAgentQualificationOpportunityUpdaterService,
     provideWorkspaceScopedRepository(WhatsappAgentEntity),
     provideWorkspaceScopedRepository(WhatsappAgentConversationEntity),
     provideWorkspaceScopedRepository(WhatsappAgentMessageEntity),

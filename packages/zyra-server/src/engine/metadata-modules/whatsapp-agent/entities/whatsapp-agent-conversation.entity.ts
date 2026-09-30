@@ -50,6 +50,19 @@ export class WhatsappAgentConversationEntity extends WorkspaceRelatedEntity {
   @Column({ type: 'text', nullable: true })
   qualificationSummary: string | null;
 
+  @Column({ type: 'integer', nullable: true })
+  qualificationScore: number | null;
+
+  // One of Opportunity.stage's SELECT values (NEW/SCREENING/MEETING/
+  // PROPOSAL only — the model is never allowed to set CUSTOMER, that only
+  // comes from a real purchase webhook). See
+  // WhatsappAgentQualificationOpportunityUpdaterService.
+  @Column({ type: 'varchar', nullable: true })
+  qualificationStage: string | null;
+
+  @Column({ type: 'boolean', nullable: true })
+  qualificationIsQualified: boolean | null;
+
   @Column({ type: 'timestamptz', nullable: true })
   lastMessageAt: Date | null;
 

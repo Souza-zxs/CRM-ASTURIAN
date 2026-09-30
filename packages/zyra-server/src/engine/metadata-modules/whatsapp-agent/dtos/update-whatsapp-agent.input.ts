@@ -52,6 +52,11 @@ export class UpdateWhatsappAgentInput {
   @IsString()
   @IsOptional()
   @Field(() => String, { nullable: true })
+  knowledgeBase?: string;
+
+  @IsString()
+  @IsOptional()
+  @Field(() => String, { nullable: true })
   handoffInstructions?: string;
 
   @IsString()

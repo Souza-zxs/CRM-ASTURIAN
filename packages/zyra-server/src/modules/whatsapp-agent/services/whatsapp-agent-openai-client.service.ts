@@ -8,6 +8,7 @@ import {
   type OpenAiResponsesPayload,
   type WhatsappAgentQualificationResult,
 } from 'src/modules/whatsapp-agent/types/whatsapp-agent-qualification-result.type';
+import { OPPORTUNITY_STAGE_VALUES_ASSIGNABLE_BY_AI } from 'src/modules/whatsapp-agent/utils/opportunity-stage-order.constant';
 
 export type WhatsappAgentHistoryMessage = {
   direction: WhatsappAgentMessageDirection;
@@ -34,8 +35,22 @@ const QUALIFICATION_JSON_SCHEMA = {
   ],
   properties: {
     reply: { type: 'string' },
-    score: { type: 'integer', minimum: 0, maximum: 100 },
-    stage: { type: 'string' },
+    score: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 100,
+      description: 'How qualified/interested this lead seems, 0-100.',
+    },
+    // Constrained to the Opportunity pipeline's own stage values (minus
+    // CUSTOMER) so WhatsappAgentQualificationOpportunityUpdaterService can
+    // write it straight into Opportunity.stage without a lossy free-text ->
+    // enum translation step.
+    stage: {
+      type: 'string',
+      enum: OPPORTUNITY_STAGE_VALUES_ASSIGNABLE_BY_AI,
+      description:
+        'This CRM opportunity pipeline stage the lead is at based on this conversation alone: NEW (just started talking), SCREENING (answering basic qualification questions), MEETING (agreed to a meeting/call or attending the workshop), PROPOSAL (actively discussing price/offer, ready to buy). Never CUSTOMER — that is only set once a real payment is confirmed.',
+    },
     summary: { type: 'string' },
     isQualified: { type: 'boolean' },
     wantsHumanHandoff: { type: 'boolean' },
@@ -152,7 +167,11 @@ export class WhatsappAgentOpenAiClientService {
         ? value.reply
         : 'Desculpe, não consegui processar sua mensagem agora. Um de nossos atendentes vai te responder em breve.',
       score: Math.max(0, Math.min(100, Number(value.score ?? 0))),
-      stage: isNonEmptyString(value.stage) ? value.stage : 'qualifying',
+      stage: (
+        OPPORTUNITY_STAGE_VALUES_ASSIGNABLE_BY_AI as readonly string[]
+      ).includes(value.stage ?? '')
+        ? (value.stage as string)
+        : 'NEW',
       summary: isNonEmptyString(value.summary) ? value.summary : '',
       isQualified: Boolean(value.isQualified),
       wantsHumanHandoff: Boolean(value.wantsHumanHandoff),

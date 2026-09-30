@@ -52,6 +52,13 @@ export class WhatsappAgentEntity extends WorkspaceRelatedEntity {
   @Column({ type: 'text', nullable: true })
   qualificationCriteria: string | null;
 
+  // Free-text business knowledge (offers, prices, FAQ, policies) injected
+  // into the model's instructions ahead of qualificationCriteria — the
+  // agent's per-workspace knowledge base (see
+  // WhatsappAgentInstructionsBuilderService).
+  @Column({ type: 'text', nullable: true })
+  knowledgeBase: string | null;
+
   // Free-text instructions telling the model when to stop responding and
   // flag the conversation for a human (see WhatsappAgentResponderService,
   // which also flips WhatsappAgentConversationEntity.isAiEnabled to false

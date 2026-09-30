@@ -36,6 +36,12 @@ export class WhatsappAgentInstructionsBuilderService {
       );
     }
 
+    if (isNonEmptyString(whatsappAgent.knowledgeBase)) {
+      sections.push(
+        `Base de conhecimento do negócio (use para responder dúvidas, nunca invente informação fora dela):\n${whatsappAgent.knowledgeBase.trim()}`,
+      );
+    }
+
     if (isNonEmptyString(whatsappAgent.qualificationCriteria)) {
       sections.push(
         `Critérios para considerar este lead qualificado: ${whatsappAgent.qualificationCriteria.trim()}`,

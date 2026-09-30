@@ -11,6 +11,7 @@ export const GET_MY_WHATSAPP_AGENTS = gql`
       greetingMessage
       forbiddenPhrases
       qualificationCriteria
+      knowledgeBase
       handoffInstructions
       model
       createdAt

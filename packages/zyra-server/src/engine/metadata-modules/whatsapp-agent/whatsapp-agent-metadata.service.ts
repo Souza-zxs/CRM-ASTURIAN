@@ -18,6 +18,7 @@ export type CreateWhatsappAgentData = {
   greetingMessage: string | null;
   forbiddenPhrases: string[] | null;
   qualificationCriteria: string | null;
+  knowledgeBase: string | null;
   handoffInstructions: string | null;
   model: string | null;
 };
@@ -29,6 +30,7 @@ export type UpdateWhatsappAgentData = {
   greetingMessage?: string | null;
   forbiddenPhrases?: string[] | null;
   qualificationCriteria?: string | null;
+  knowledgeBase?: string | null;
   handoffInstructions?: string | null;
   model?: string;
 };
@@ -114,6 +116,7 @@ export class WhatsappAgentMetadataService {
       greetingMessage: data.greetingMessage,
       forbiddenPhrases: data.forbiddenPhrases,
       qualificationCriteria: data.qualificationCriteria,
+      knowledgeBase: data.knowledgeBase,
       handoffInstructions: data.handoffInstructions,
       model: data.model ?? DEFAULT_MODEL,
       isActive: true,

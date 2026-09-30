@@ -18,6 +18,7 @@ import { SentMessagePersistenceService } from 'src/modules/messaging/message-out
 import { type SendMessageResult } from 'src/modules/messaging/message-outbound-manager/types/send-message-result.type';
 import { WhatsappAgentInstructionsBuilderService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-instructions-builder.service';
 import { WhatsappAgentOpenAiClientService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-openai-client.service';
+import { WhatsappAgentQualificationOpportunityUpdaterService } from 'src/modules/whatsapp-agent/services/whatsapp-agent-qualification-opportunity-updater.service';
 
 export type WhatsappAgentRespondInput = {
   workspaceId: string;
@@ -60,6 +61,7 @@ export class WhatsappAgentResponderService {
     private readonly openAiClientService: WhatsappAgentOpenAiClientService,
     private readonly messagingMessageOutboundService: MessagingMessageOutboundService,
     private readonly sentMessagePersistenceService: SentMessagePersistenceService,
+    private readonly qualificationOpportunityUpdaterService: WhatsappAgentQualificationOpportunityUpdaterService,
   ) {}
 
   async respond({
@@ -147,11 +149,23 @@ export class WhatsappAgentResponderService {
       { id: conversation.id },
       {
         qualificationSummary: qualification.summary || null,
+        qualificationScore: qualification.score,
+        qualificationStage: qualification.stage,
+        qualificationIsQualified: qualification.isQualified,
         lastMessageAt: new Date(),
         // Once the model itself asks for a human handoff, stop auto-replying
         // — otherwise the agent could keep talking after telling the contact
         // it's transferring them.
         ...(qualification.wantsHumanHandoff ? { isAiEnabled: false } : {}),
+      },
+    );
+
+    // Best-effort: never blocks sending the reply back to the contact.
+    await this.qualificationOpportunityUpdaterService.advanceOpportunityStageFromQualification(
+      {
+        workspaceId,
+        contactPhoneNumber,
+        stage: qualification.stage,
       },
     );
 

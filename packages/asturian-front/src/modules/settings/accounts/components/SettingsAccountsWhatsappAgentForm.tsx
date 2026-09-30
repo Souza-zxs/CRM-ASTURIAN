@@ -19,6 +19,7 @@ export type WhatsappAgentFormValues = {
   greetingMessage: string | null;
   forbiddenPhrases: string[] | null;
   qualificationCriteria: string | null;
+  knowledgeBase: string | null;
   handoffInstructions: string | null;
   model: string | null;
 };
@@ -77,6 +78,9 @@ export const SettingsAccountsWhatsappAgentForm = ({
   const [qualificationCriteria, setQualificationCriteria] = useState(
     whatsappAgent?.qualificationCriteria ?? '',
   );
+  const [knowledgeBase, setKnowledgeBase] = useState(
+    whatsappAgent?.knowledgeBase ?? '',
+  );
   const [forbiddenPhrasesInput, setForbiddenPhrasesInput] = useState(
     whatsappAgent?.forbiddenPhrases?.join(', ') ?? '',
   );
@@ -109,6 +113,9 @@ export const SettingsAccountsWhatsappAgentForm = ({
         forbiddenPhrases: parseForbiddenPhrases(forbiddenPhrasesInput),
         qualificationCriteria: isNonEmptyString(qualificationCriteria.trim())
           ? qualificationCriteria.trim()
+          : null,
+        knowledgeBase: isNonEmptyString(knowledgeBase.trim())
+          ? knowledgeBase.trim()
           : null,
         handoffInstructions: isNonEmptyString(handoffInstructions.trim())
           ? handoffInstructions.trim()
@@ -173,6 +180,14 @@ export const SettingsAccountsWhatsappAgentForm = ({
           value={systemPrompt}
           onChange={setSystemPrompt}
           placeholder={t`Describe the persona, goal and tone of voice the agent should use when replying to messages.`}
+          minRows={5}
+        />
+        <TextArea
+          textAreaId="whatsapp-agent-knowledge-base"
+          label={t`Knowledge base`}
+          value={knowledgeBase}
+          onChange={setKnowledgeBase}
+          placeholder={t`Offers, prices, FAQ, policies — anything the agent should know to answer questions accurately.`}
           minRows={5}
         />
         <TextArea
