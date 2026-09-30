@@ -102,6 +102,12 @@ const StandalonePageLayoutPage = lazy(() =>
   })),
 );
 
+const WhatsappInboxPage = lazy(() =>
+  import('~/pages/whatsapp-inbox/WhatsappInboxPage').then((module) => ({
+    default: module.WhatsappInboxPage,
+  })),
+);
+
 const NotFound = lazy(() =>
   import('~/pages/not-found/NotFound').then((module) => ({
     default: module.NotFound,
@@ -256,6 +262,14 @@ export const useCreateAppRouter = (
               element={
                 <LazyRoute>
                   <StandalonePageLayoutPage />
+                </LazyRoute>
+              }
+            />
+            <Route
+              path={AppPath.WhatsappInbox}
+              element={
+                <LazyRoute>
+                  <WhatsappInboxPage />
                 </LazyRoute>
               }
             />

@@ -1,9 +1,11 @@
 import { useLingui } from '@lingui/react/macro';
-import { SettingsPath } from 'zyra-shared/types';
-import { IconHelpCircle, IconSettings } from 'zyra-ui/icon';
+import { useMatch } from 'react-router-dom';
+import { AppPath, SettingsPath } from 'zyra-shared/types';
+import { IconBrandWhatsapp, IconHelpCircle, IconSettings } from 'zyra-ui/icon';
 import { AnimatedExpandableContainer } from 'zyra-ui/layout';
 
 import { currentWorkspaceMemberState } from '@/auth/states/currentWorkspaceMemberState';
+import { isWhatsappMessagingEnabledState } from '@/client-config/states/isWhatsappMessagingEnabledState';
 import { getDocumentationUrl } from '@/support/utils/getDocumentationUrl';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
 
@@ -20,6 +22,10 @@ export const NavigationDrawerOtherSection = () => {
   const { t } = useLingui();
   const navigateSettings = useNavigateSettings();
   const currentWorkspaceMember = useAtomStateValue(currentWorkspaceMemberState);
+  const isWhatsappMessagingEnabled = useAtomStateValue(
+    isWhatsappMessagingEnabledState,
+  );
+  const isWhatsappInboxActive = useMatch(AppPath.WhatsappInbox) !== null;
 
   const { toggleNavigationSection } = useNavigationSection('Other');
   const isNavigationSectionOpen = useAtomFamilyStateValue(
@@ -47,6 +53,14 @@ export const NavigationDrawerOtherSection = () => {
         containAnimation
         initial={false}
       >
+        {isWhatsappMessagingEnabled && (
+          <NavigationDrawerItem
+            label={t`WhatsApp Inbox`}
+            to={AppPath.WhatsappInbox}
+            active={isWhatsappInboxActive}
+            Icon={IconBrandWhatsapp}
+          />
+        )}
         <NavigationDrawerItem
           label={t`Settings`}
           Icon={IconSettings}
