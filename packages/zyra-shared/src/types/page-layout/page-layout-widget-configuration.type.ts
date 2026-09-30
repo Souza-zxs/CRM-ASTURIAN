@@ -149,6 +149,10 @@ export type EmailsConfiguration = {
   configurationType: 'EMAILS';
 };
 
+export type WhatsappConfiguration = {
+  configurationType: 'WHATSAPP';
+};
+
 export type EmailThreadConfiguration = {
   configurationType: 'EMAIL_THREAD';
 };
@@ -187,6 +191,7 @@ export type PageLayoutWidgetConfiguration =
   | NotesConfiguration
   | FilesConfiguration
   | EmailsConfiguration
+  | WhatsappConfiguration
   | CalendarConfiguration
   | WorkflowConfiguration
   | WorkflowVersionConfiguration

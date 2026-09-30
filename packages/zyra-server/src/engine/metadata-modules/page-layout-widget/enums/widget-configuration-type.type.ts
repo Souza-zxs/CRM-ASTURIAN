@@ -19,6 +19,7 @@ export enum WidgetConfigurationType {
   NOTES = 'NOTES',
   FILES = 'FILES',
   EMAILS = 'EMAILS',
+  WHATSAPP = 'WHATSAPP',
   CALENDAR = 'CALENDAR',
   FIELD_RICH_TEXT = 'FIELD_RICH_TEXT',
   WORKFLOW = 'WORKFLOW',

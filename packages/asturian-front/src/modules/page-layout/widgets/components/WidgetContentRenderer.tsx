@@ -17,6 +17,7 @@ import { WorkflowRunWidget } from '@/page-layout/widgets/workflow/components/Wor
 import { WorkflowVersionWidget } from '@/page-layout/widgets/workflow/components/WorkflowVersionWidget';
 import { RecordTableWidgetRenderer } from '@/page-layout/widgets/record-table/components/RecordTableWidgetRenderer';
 import { WorkflowWidget } from '@/page-layout/widgets/workflow/components/WorkflowWidget';
+import { WhatsappWidget } from '@/page-layout/widgets/whatsapp/components/WhatsappWidget';
 import { WidgetType } from '~/generated-metadata/graphql';
 
 type WidgetContentRendererProps = {
@@ -56,6 +57,9 @@ export const WidgetContentRenderer = ({
 
     case WidgetType.EMAILS:
       return <EmailWidget widget={widget} />;
+
+    case WidgetType.WHATSAPP:
+      return <WhatsappWidget widget={widget} />;
 
     case WidgetType.CALENDAR:
       return <CalendarWidget widget={widget} />;

@@ -74,6 +74,9 @@ export class FlatPageLayoutWidgetTypeValidatorService {
       EMAILS: validateSimpleRecordPageWidgetForCreation(
         WidgetConfigurationType.EMAILS,
       ),
+      WHATSAPP: validateSimpleRecordPageWidgetForCreation(
+        WidgetConfigurationType.WHATSAPP,
+      ),
       CALENDAR: validateSimpleRecordPageWidgetForCreation(
         WidgetConfigurationType.CALENDAR,
       ),
@@ -127,6 +130,9 @@ export class FlatPageLayoutWidgetTypeValidatorService {
       ),
       EMAILS: validateSimpleRecordPageWidgetForUpdate(
         WidgetConfigurationType.EMAILS,
+      ),
+      WHATSAPP: validateSimpleRecordPageWidgetForUpdate(
+        WidgetConfigurationType.WHATSAPP,
       ),
       CALENDAR: validateSimpleRecordPageWidgetForUpdate(
         WidgetConfigurationType.CALENDAR,

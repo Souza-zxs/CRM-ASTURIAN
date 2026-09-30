@@ -25,6 +25,8 @@ export const getWidgetTitle = (
       }
     case WidgetConfigurationType.LINE_CHART:
       return `${t`Line Chart`} ${index + 1}`;
+    case WidgetConfigurationType.WHATSAPP:
+      return `${t`WhatsApp`} ${index + 1}`;
     case WidgetConfigurationType.IFRAME:
       return `${t`Iframe`} ${index + 1}`;
     case WidgetConfigurationType.STANDALONE_RICH_TEXT:

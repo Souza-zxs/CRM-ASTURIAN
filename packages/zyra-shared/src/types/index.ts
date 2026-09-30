@@ -209,6 +209,7 @@ export type {
   NotesConfiguration,
   FilesConfiguration,
   EmailsConfiguration,
+  WhatsappConfiguration,
   EmailThreadConfiguration,
   CalendarConfiguration,
   WorkflowConfiguration,

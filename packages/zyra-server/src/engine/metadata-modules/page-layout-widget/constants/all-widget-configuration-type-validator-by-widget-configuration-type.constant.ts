@@ -3,6 +3,7 @@ import { EmailThreadConfigurationDTO } from 'src/engine/metadata-modules/page-la
 import { BarChartConfigurationDTO } from 'src/engine/metadata-modules/page-layout-widget/dtos/bar-chart-configuration.dto';
 import { CalendarConfigurationDTO } from 'src/engine/metadata-modules/page-layout-widget/dtos/calendar-configuration.dto';
 import { EmailsConfigurationDTO } from 'src/engine/metadata-modules/page-layout-widget/dtos/emails-configuration.dto';
+import { WhatsappConfigurationDTO } from 'src/engine/metadata-modules/page-layout-widget/dtos/whatsapp-configuration.dto';
 import { FieldConfigurationDTO } from 'src/engine/metadata-modules/page-layout-widget/dtos/field-configuration.dto';
 import { FieldRichTextConfigurationDTO } from 'src/engine/metadata-modules/page-layout-widget/dtos/field-rich-text-configuration.dto';
 import { FieldsConfigurationDTO } from 'src/engine/metadata-modules/page-layout-widget/dtos/fields-configuration.dto';
@@ -34,6 +35,7 @@ export const ALL_WIDGET_CONFIGURATION_TYPE_VALIDATOR_BY_WIDGET_CONFIGURATION_TYP
     CALENDAR: CalendarConfigurationDTO,
     FRONT_COMPONENT: FrontComponentConfigurationDTO,
     EMAILS: EmailsConfigurationDTO,
+    WHATSAPP: WhatsappConfigurationDTO,
     EMAIL_THREAD: EmailThreadConfigurationDTO,
     FIELD: FieldConfigurationDTO,
     FIELD_RICH_TEXT: FieldRichTextConfigurationDTO,

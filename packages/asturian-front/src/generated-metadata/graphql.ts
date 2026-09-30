@@ -6108,6 +6108,7 @@ export enum WidgetConfigurationType {
   TASKS = 'TASKS',
   TIMELINE = 'TIMELINE',
   VIEW = 'VIEW',
+  WHATSAPP = 'WHATSAPP',
   WORKFLOW = 'WORKFLOW',
   WORKFLOW_RUN = 'WORKFLOW_RUN',
   WORKFLOW_VERSION = 'WORKFLOW_VERSION'
@@ -6130,6 +6131,7 @@ export enum WidgetType {
   TASKS = 'TASKS',
   TIMELINE = 'TIMELINE',
   VIEW = 'VIEW',
+  WHATSAPP = 'WHATSAPP',
   WORKFLOW = 'WORKFLOW',
   WORKFLOW_RUN = 'WORKFLOW_RUN',
   WORKFLOW_VERSION = 'WORKFLOW_VERSION'
@@ -6339,6 +6341,24 @@ export type SendEmailMutationVariables = Exact<{
 
 
 export type SendEmailMutation = { __typename?: 'Mutation', sendEmail: { __typename?: 'SendEmailOutput', success: boolean, error?: string | null } };
+
+export type SendWhatsappMessageInput = {
+  body: Scalars['String']['input'];
+  connectedAccountId: Scalars['String']['input'];
+  to: Scalars['String']['input'];
+};
+
+export type SendWhatsappMessageMutationVariables = Exact<{
+  input: SendWhatsappMessageInput;
+}>;
+
+
+export type SendWhatsappMessageMutation = { __typename?: 'Mutation', sendWhatsappMessage: { __typename?: 'SendWhatsappMessageOutput', success: boolean, error?: string | null } };
+
+export type GetWhatsappConversationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetWhatsappConversationsQuery = { __typename?: 'Query', getWhatsappConversations: Array<{ __typename?: 'WhatsappConversation', messageThreadId: string, contactPhoneNumber: string, contactDisplayName: string, personId?: string | null, lastMessageBody: string, lastMessageReceivedAt: string }> };
 
 export type SendMessageCampaignMutationVariables = Exact<{
   input: SendMessageCampaignInput;
