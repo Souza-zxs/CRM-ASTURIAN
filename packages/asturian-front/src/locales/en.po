@@ -3861,7 +3861,6 @@ msgid "Comment-to-DM campaigns currently running on your Instagram account."
 msgstr "Comment-to-DM campaigns currently running on your Instagram account."
 
 #. js-lingui-id: chL5IG
-#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/community/SettingsCommunity.tsx
 #: src/pages/settings/community/SettingsCommunity.tsx
 msgid "Community"
@@ -7786,6 +7785,12 @@ msgstr "Failed to send campaign"
 msgid "Failed to send email"
 msgstr "Failed to send email"
 
+#. js-lingui-id: sH2EWf
+#: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
+#: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
+msgid "Failed to send message"
+msgstr "Failed to send message"
+
 #. js-lingui-id: aj02T8
 #: src/modules/settings/admin-panel/health-status/maintenance-mode/components/SettingsAdminMaintenanceMode.tsx
 msgid "Failed to set maintenance mode."
@@ -8893,7 +8898,7 @@ msgstr "Home"
 msgid "Horizontal Bar Chart"
 msgstr "Horizontal Bar Chart"
 
-#. js-lingui-id: EsmAbl
+#. js-lingui-id: KMto8T
 #: src/pages/settings/applications/utils/getCustomApplicationDescription.ts
 msgid ""
 "Host your workspace's customizations and overrides.\n"
@@ -8918,7 +8923,7 @@ msgid ""
 "npx create-zyra-app@latest my-zyra-app\n"
 "```\n"
 "\n"
-"See the [Getting Started guide](https://zyra.com/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](https://zyra.com/developers/extend/apps/building) for the `defineApplication` / `defineEntity` APIs."
+"See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
 "Host your workspace's customizations and overrides.\n"
 "\n"
@@ -8942,7 +8947,7 @@ msgstr ""
 "npx create-zyra-app@latest my-zyra-app\n"
 "```\n"
 "\n"
-"See the [Getting Started guide](https://zyra.com/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](https://zyra.com/developers/extend/apps/building) for the `defineApplication` / `defineEntity` APIs."
+"See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 
 #. js-lingui-id: yY8wAv
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
@@ -9885,6 +9890,11 @@ msgstr "Keyboard shortcuts"
 msgid "Keywords"
 msgstr "Keywords"
 
+#. js-lingui-id: x6IJvs
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+msgid "Knowledge base"
+msgstr "Knowledge base"
+
 #. js-lingui-id: h6S9Yz
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
 msgid "Korean"
@@ -10409,7 +10419,13 @@ msgstr "Loading calls..."
 msgid "Loading campaigns..."
 msgstr "Loading campaigns..."
 
+#. js-lingui-id: +ABtFt
+#: src/modules/activities/whatsapp/components/WhatsappCard.tsx
+msgid "Loading conversation..."
+msgstr "Loading conversation..."
+
 #. js-lingui-id: aZczPx
+#: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentConversationsList.tsx
 msgid "Loading conversations..."
 msgstr "Loading conversations..."
@@ -10896,6 +10912,11 @@ msgstr "Message"
 #: src/modules/activities/timeline-activities/rows/message/components/EventCardMessage.tsx
 msgid "Message not found"
 msgstr "Message not found"
+
+#. js-lingui-id: 7/9d5t
+#: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
+msgid "Message sent"
+msgstr "Message sent"
 
 #. js-lingui-id: elpx6r
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminConnectedAccountHealthStatus.tsx
@@ -12346,6 +12367,16 @@ msgstr "No voice agent configured yet"
 msgid "No WhatsApp agent configured yet"
 msgstr "No WhatsApp agent configured yet"
 
+#. js-lingui-id: TAdzo9
+#: src/modules/activities/whatsapp/components/WhatsappCard.tsx
+msgid "No WhatsApp conversation yet"
+msgstr "No WhatsApp conversation yet"
+
+#. js-lingui-id: 0NSdNm
+#: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
+msgid "No WhatsApp conversations yet"
+msgstr "No WhatsApp conversations yet"
+
 #. js-lingui-id: RequV7
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
 msgid "No WhatsApp template created yet"
@@ -12696,6 +12727,11 @@ msgstr "of"
 #: src/pages/not-found/NotFound.tsx
 msgid "Off the beaten path"
 msgstr "Off the beaten path"
+
+#. js-lingui-id: aUsi2A
+#: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
+msgid "Offers, prices, FAQ, policies — anything the agent should know to answer questions accurately."
+msgstr "Offers, prices, FAQ, policies — anything the agent should know to answer questions accurately."
 
 #. js-lingui-id: Zd5vVt
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
@@ -15404,6 +15440,11 @@ msgstr "Select 1 {fieldTypeLabelLowercase} field"
 msgid "Select 1 field"
 msgstr "Select 1 field"
 
+#. js-lingui-id: ZGNQwg
+#: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
+msgid "Select a conversation"
+msgstr "Select a conversation"
+
 #. js-lingui-id: OMoA3j
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
 msgid "Select a date"
@@ -15604,6 +15645,7 @@ msgid "Select your preferred language"
 msgstr "Select your preferred language"
 
 #. js-lingui-id: JlFcis
+#: src/modules/activities/whatsapp/components/WhatsappConversationPanel.tsx
 #: src/modules/page-layout/widgets/email-thread/components/EmailThreadComposer.tsx
 #: src/modules/side-panel/pages/compose-email/components/SidePanelComposeEmailPage.tsx
 msgid "Send"
@@ -16995,7 +17037,7 @@ msgstr "The API endpoint for your OpenAI-compatible provider"
 msgid "The AWS region for Bedrock"
 msgstr "The AWS region for Bedrock"
 
-#. js-lingui-id: vfR5Uy
+#. js-lingui-id: 0O8Xs5
 #: src/pages/settings/applications/utils/getStandardApplicationDescription.ts
 msgid ""
 "The base data model every Zyra workspace runs on.\n"
@@ -17027,7 +17069,7 @@ msgid ""
 "yarn zyra dev\n"
 "```\n"
 "\n"
-"See the [Getting Started guide](https://zyra.com/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](https://zyra.com/developers/extend/apps/building) for the `defineApplication` / `defineEntity` APIs."
+"See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
 "The base data model every Zyra workspace runs on.\n"
 "\n"
@@ -17058,7 +17100,7 @@ msgstr ""
 "yarn zyra dev\n"
 "```\n"
 "\n"
-"See the [Getting Started guide](https://zyra.com/developers/extend/apps/getting-started) for the full walkthrough, and [Building Apps](https://zyra.com/developers/extend/apps/building) for the `defineApplication` / `defineEntity` APIs."
+"See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 
 #. js-lingui-id: n+CCXl
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx
@@ -18008,6 +18050,12 @@ msgstr "Type '/' for commands, '@' for mentions"
 #: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
 msgid "Type a number or pick a variable"
 msgstr "Type a number or pick a variable"
+
+#. js-lingui-id: jYi/xi
+#: src/modules/activities/whatsapp/components/WhatsappConversationPanel.tsx
+#: src/modules/activities/whatsapp/components/WhatsappConversationPanel.tsx
+msgid "Type a reply..."
+msgstr "Type a reply..."
 
 #. js-lingui-id: hzt+K/
 #: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
@@ -19345,9 +19393,11 @@ msgid "What's installed and being used in your workspace"
 msgstr "What's installed and being used in your workspace"
 
 #. js-lingui-id: 2+ExvJ
+#: src/modules/page-layout/utils/getWidgetTitle.ts
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
 #: src/pages/settings/accounts/SettingsAccountsWhatsapp.tsx
+#: src/pages/whatsapp-inbox/WhatsappInboxPage.tsx
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
@@ -19367,6 +19417,11 @@ msgstr "WhatsApp AI Agent"
 #: src/modules/settings/accounts/hooks/useConnectWhatsappNumber.ts
 msgid "WhatsApp connection is not configured on this server."
 msgstr "WhatsApp connection is not configured on this server."
+
+#. js-lingui-id: TblUsE
+#: src/modules/navigation/components/NavigationDrawerOtherSection.tsx
+msgid "WhatsApp Inbox"
+msgstr "WhatsApp Inbox"
 
 #. js-lingui-id: zLJh7i
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
