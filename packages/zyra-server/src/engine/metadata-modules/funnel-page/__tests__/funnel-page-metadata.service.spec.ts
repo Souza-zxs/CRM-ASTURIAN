@@ -178,4 +178,97 @@ describe('FunnelPageMetadataService', () => {
       );
     });
   });
+
+  describe('createLead', () => {
+    const SIGNUP_PAGE_ID = '22222222-2222-4222-8222-222222222222';
+    const signupPage = {
+      id: SIGNUP_PAGE_ID,
+      workspaceId: WORKSPACE_ID,
+      type: FunnelPageType.SIGNUP,
+      slug: 'inscricao',
+      status: FunnelPageStatus.PUBLISHED,
+      content: {
+        type: FunnelPageType.SIGNUP as const,
+        headline: 'Inscreva-se',
+        subheadline: '',
+        bullets: [],
+        ctaLabel: 'Entrar',
+        formSuccessRedirectSlug: 'workshop',
+      },
+      seoTitle: null,
+      seoDescription: null,
+    } as FunnelPageEntity;
+
+    const leadInput = {
+      funnelPageId: SIGNUP_PAGE_ID,
+      name: 'Maria da Silva',
+      email: 'maria@example.com',
+      whatsapp: '(83) 99999-9999',
+      utmSource: 'instagram',
+      utmMedium: 'paid',
+      utmCampaign: 'workshop-outubro',
+    };
+
+    beforeEach(() => {
+      funnelPageRepository.findOne.mockResolvedValue(signupPage);
+      funnelLeadRepository.save.mockImplementation(
+        async (_workspaceId: string, data: unknown) => data,
+      );
+    });
+
+    it('computes and stores the next workshop session when the workspace has a scheduled workshop page', async () => {
+      funnelPageRepository.find.mockResolvedValue([
+        {
+          ...existingWorkshopPage,
+          content: {
+            ...workshopContent,
+            schedule: {
+              timesOfDay: ['20:00'],
+              utcOffsetMinutes: -180,
+              minLeadMinutes: 0,
+            },
+          },
+        },
+      ]);
+
+      const result = await service.createLead({
+        workspaceId: WORKSPACE_ID,
+        input: leadInput,
+      });
+
+      expect(result.sessionScheduledAt).toBeInstanceOf(Date);
+      expect(funnelLeadCrmSyncService.syncLeadToCrm).toHaveBeenCalledWith(
+        expect.objectContaining({
+          lead: expect.objectContaining({
+            sessionScheduledAt: result.sessionScheduledAt,
+            utmSource: 'instagram',
+            utmMedium: 'paid',
+            utmCampaign: 'workshop-outubro',
+          }),
+        }),
+      );
+    });
+
+    it('stores a null session when no workshop page has a schedule configured', async () => {
+      funnelPageRepository.find.mockResolvedValue([existingWorkshopPage]);
+
+      const result = await service.createLead({
+        workspaceId: WORKSPACE_ID,
+        input: leadInput,
+      });
+
+      expect(result.sessionScheduledAt).toBeNull();
+    });
+
+    it('stores a null session when the workspace has no workshop page at all', async () => {
+      funnelPageRepository.find.mockResolvedValue([]);
+
+      const result = await service.createLead({
+        workspaceId: WORKSPACE_ID,
+        input: leadInput,
+      });
+
+      expect(result.sessionScheduledAt).toBeNull();
+    });
+  });
 });

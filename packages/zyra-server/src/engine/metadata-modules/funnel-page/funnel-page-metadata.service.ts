@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
-import { FunnelPageStatus } from 'zyra-shared/types';
+import { FunnelPageStatus, FunnelPageType } from 'zyra-shared/types';
+import { computeNextWorkshopSession, isDefined } from 'zyra-shared/utils';
 
 import { CreateFunnelLeadInput } from 'src/engine/metadata-modules/funnel-page/dtos/create-funnel-lead.input';
 import { CreateFunnelPageInput } from 'src/engine/metadata-modules/funnel-page/dtos/create-funnel-page.input';
@@ -192,6 +193,8 @@ export class FunnelPageMetadataService {
       throw new NotFoundException('Funnel page not found for this workspace');
     }
 
+    const signupAt = new Date();
+
     const funnelLead = await this.funnelLeadRepository.save(workspaceId, {
       funnelPageId: input.funnelPageId,
       name: input.name,
@@ -200,15 +203,51 @@ export class FunnelPageMetadataService {
       utmSource: input.utmSource ?? null,
       utmMedium: input.utmMedium ?? null,
       utmCampaign: input.utmCampaign ?? null,
+      sessionScheduledAt: await this.computeSessionScheduledAt({
+        workspaceId,
+        signupAt,
+      }),
     });
 
     await this.funnelLeadCrmSyncService.syncLeadToCrm({
       workspaceId,
-      lead: input,
+      lead: funnelLead,
       pageSlug: funnelPage.slug,
     });
 
     return funnelLead;
+  }
+
+  // Every lead is placed in the workspace's single workshop's next daily
+  // session (see computeNextWorkshopSession) — null when there is no
+  // WORKSHOP-type page yet, or it has no schedule configured (evergreen).
+  private async computeSessionScheduledAt({
+    workspaceId,
+    signupAt,
+  }: {
+    workspaceId: string;
+    signupAt: Date;
+  }): Promise<Date | null> {
+    const workshopPages = await this.funnelPageRepository.find(workspaceId, {
+      where: { type: FunnelPageType.WORKSHOP },
+    });
+
+    const workshopPageWithSchedule = workshopPages.find(
+      (page) =>
+        page.content.type === FunnelPageType.WORKSHOP &&
+        isDefined(page.content.schedule),
+    );
+
+    const schedule =
+      workshopPageWithSchedule?.content.type === FunnelPageType.WORKSHOP
+        ? workshopPageWithSchedule.content.schedule
+        : undefined;
+
+    if (!isDefined(schedule)) {
+      return null;
+    }
+
+    return computeNextWorkshopSession({ signupAt, schedule });
   }
 
   // The public workshop page needs the signup instant to work out which daily

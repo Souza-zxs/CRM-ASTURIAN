@@ -43,6 +43,12 @@ export class FunnelLeadEntity extends WorkspaceRelatedEntity {
   @Column({ type: 'varchar', nullable: true })
   utmCampaign: string | null;
 
+  // Computed at signup via computeNextWorkshopSession (zyra-shared) from the
+  // workspace's WORKSHOP-type funnel page schedule — null when that page has
+  // no schedule configured (evergreen/on-demand workshop).
+  @Column({ type: 'timestamptz', nullable: true })
+  sessionScheduledAt: Date | null;
+
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
 }

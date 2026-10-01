@@ -84,6 +84,7 @@ import { AddInstagramCampaignAndReportingEntitiesFastInstanceCommand } from 'src
 import { CreateFunnelTablesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1791000000000-create-funnel-tables';
 import { AddWhatsappAgentQualificationFieldsFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1800000000000-add-whatsapp-agent-qualification-fields';
 import { CreatePaymentsTablesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1801000000000-create-payments-tables';
+import { AddFunnelLeadSessionScheduledAtFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1802000000000-add-funnel-lead-session-scheduled-at';
 
 export const INSTANCE_COMMANDS = [
   AddViewFieldGroupIdIndexOnViewFieldFastInstanceCommand,
@@ -170,4 +171,5 @@ export const INSTANCE_COMMANDS = [
   CreateFunnelTablesFastInstanceCommand,
   AddWhatsappAgentQualificationFieldsFastInstanceCommand,
   CreatePaymentsTablesFastInstanceCommand,
+  AddFunnelLeadSessionScheduledAtFastInstanceCommand,
 ];

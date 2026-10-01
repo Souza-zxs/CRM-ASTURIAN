@@ -1,13 +1,25 @@
-import { type CreateFunnelLeadInput } from 'src/engine/metadata-modules/funnel-page/dtos/create-funnel-lead.input';
+import { type FunnelLeadEntity } from 'src/engine/metadata-modules/funnel-page/entities/funnel-lead.entity';
 import { FunnelLeadCrmSyncService } from 'src/engine/metadata-modules/funnel-page/services/funnel-lead-crm-sync.service';
 
 const WORKSPACE_ID = 'f7a7d81f-b6b3-42f3-8bba-51e74e90af90';
 
-const lead: CreateFunnelLeadInput = {
-  funnelPageId: '11111111-1111-4111-8111-111111111111',
+const lead: Pick<
+  FunnelLeadEntity,
+  | 'name'
+  | 'email'
+  | 'whatsapp'
+  | 'utmSource'
+  | 'utmMedium'
+  | 'utmCampaign'
+  | 'sessionScheduledAt'
+> = {
   name: 'Maria da Silva',
   email: 'maria@example.com',
   whatsapp: '(83) 99999-9999',
+  utmSource: null,
+  utmMedium: null,
+  utmCampaign: null,
+  sessionScheduledAt: null,
 };
 
 describe('FunnelLeadCrmSyncService', () => {
@@ -144,6 +156,56 @@ describe('FunnelLeadCrmSyncService', () => {
         objectName: 'opportunity',
         objectRecord: expect.objectContaining({
           pointOfContactId: 'existing-person',
+        }),
+      }),
+    );
+  });
+
+  it('should copy UTMs to both Person and Opportunity, and the workshop session to the Opportunity', async () => {
+    findRecordsService.execute.mockResolvedValue({
+      success: true,
+      result: { records: [], count: 0 },
+    });
+    createRecordService.execute
+      .mockResolvedValueOnce({ success: true, result: { id: 'person-1' } })
+      .mockResolvedValueOnce({
+        success: true,
+        result: { id: 'opportunity-1' },
+      });
+
+    const sessionScheduledAt = new Date('2026-10-01T20:00:00Z');
+
+    await buildService().syncLeadToCrm({
+      workspaceId: WORKSPACE_ID,
+      lead: {
+        ...lead,
+        utmSource: 'instagram',
+        utmMedium: 'paid',
+        utmCampaign: 'workshop-outubro',
+        sessionScheduledAt,
+      },
+    });
+
+    expect(createRecordService.execute).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({
+        objectName: 'person',
+        objectRecord: expect.objectContaining({
+          utmSource: 'instagram',
+          utmMedium: 'paid',
+          utmCampaign: 'workshop-outubro',
+        }),
+      }),
+    );
+    expect(createRecordService.execute).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({
+        objectName: 'opportunity',
+        objectRecord: expect.objectContaining({
+          utmSource: 'instagram',
+          utmMedium: 'paid',
+          utmCampaign: 'workshop-outubro',
+          workshopSessionScheduledAt: sessionScheduledAt,
         }),
       }),
     );

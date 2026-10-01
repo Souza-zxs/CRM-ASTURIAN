@@ -7,7 +7,7 @@ import { type WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/wo
 import { CreateRecordService } from 'src/engine/core-modules/record-crud/services/create-record.service';
 import { FindRecordsService } from 'src/engine/core-modules/record-crud/services/find-records.service';
 import { UpdateRecordService } from 'src/engine/core-modules/record-crud/services/update-record.service';
-import { type CreateFunnelLeadInput } from 'src/engine/metadata-modules/funnel-page/dtos/create-funnel-lead.input';
+import { type FunnelLeadEntity } from 'src/engine/metadata-modules/funnel-page/entities/funnel-lead.entity';
 import { parseFunnelLeadName } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-name.util';
 import { parseFunnelLeadPhone } from 'src/engine/metadata-modules/funnel-page/utils/parse-funnel-lead-phone.util';
 import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
@@ -33,6 +33,17 @@ const CONTACT_PAGE_SLUG = 'contato';
 
 const getOpportunityPrefix = (pageSlug: string | undefined) =>
   pageSlug === CONTACT_PAGE_SLUG ? 'Contato' : 'Workshop';
+
+type SyncableFunnelLead = Pick<
+  FunnelLeadEntity,
+  | 'name'
+  | 'email'
+  | 'whatsapp'
+  | 'utmSource'
+  | 'utmMedium'
+  | 'utmCampaign'
+  | 'sessionScheduledAt'
+>;
 
 const getRecordId = (record: unknown): string | null => {
   if (
@@ -66,7 +77,7 @@ export class FunnelLeadCrmSyncService {
     pageSlug,
   }: {
     workspaceId: string;
-    lead: CreateFunnelLeadInput;
+    lead: SyncableFunnelLead;
     pageSlug?: string;
   }): Promise<void> {
     try {
@@ -189,7 +200,7 @@ export class FunnelLeadCrmSyncService {
     lead,
   }: {
     authContext: WorkspaceAuthContext;
-    lead: CreateFunnelLeadInput;
+    lead: SyncableFunnelLead;
   }): Promise<string> {
     const existingPersonId = await this.findPersonId({
       authContext,
@@ -206,6 +217,9 @@ export class FunnelLeadCrmSyncService {
         name: parseFunnelLeadName(lead.name),
         emails: { primaryEmail: lead.email },
         phones: parseFunnelLeadPhone(lead.whatsapp) ?? undefined,
+        utmSource: lead.utmSource,
+        utmMedium: lead.utmMedium,
+        utmCampaign: lead.utmCampaign,
       },
       authContext,
       createdBy: FUNNEL_ACTOR,
@@ -231,7 +245,7 @@ export class FunnelLeadCrmSyncService {
   }: {
     authContext: WorkspaceAuthContext;
     personId: string;
-    lead: CreateFunnelLeadInput;
+    lead: SyncableFunnelLead;
     pageSlug?: string;
   }): Promise<void> {
     const createdOpportunity = await this.createRecordService.execute({
@@ -240,6 +254,10 @@ export class FunnelLeadCrmSyncService {
         name: `${getOpportunityPrefix(pageSlug)} - ${lead.name}`,
         stage: 'NEW',
         pointOfContactId: personId,
+        utmSource: lead.utmSource,
+        utmMedium: lead.utmMedium,
+        utmCampaign: lead.utmCampaign,
+        workshopSessionScheduledAt: lead.sessionScheduledAt,
       },
       authContext,
       createdBy: FUNNEL_ACTOR,

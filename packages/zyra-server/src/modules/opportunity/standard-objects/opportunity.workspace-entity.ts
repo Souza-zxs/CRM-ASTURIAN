@@ -26,6 +26,10 @@ export class OpportunityWorkspaceEntity extends BaseWorkspaceEntity {
   amount: CurrencyMetadata | null;
   closeDate: Date | null;
   stage: string;
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
+  workshopSessionScheduledAt: Date | null;
   position: number;
   createdBy: ActorMetadata;
   updatedBy: ActorMetadata;

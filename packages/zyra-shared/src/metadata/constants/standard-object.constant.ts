@@ -1754,6 +1754,12 @@ export const STANDARD_OBJECTS = {
       searchVector: {
         universalIdentifier: '428a0da5-4b2e-4ce3-b695-89a8b384e6e3',
       },
+      utmSource: { universalIdentifier: '703aa062-08a2-4d9b-b176-28f3010942da' },
+      utmMedium: { universalIdentifier: '47bdea4c-6898-4429-bb50-87eff6e1e5c0' },
+      utmCampaign: { universalIdentifier: '843599d6-5bd9-4699-ae1c-1c0730854d49' },
+      workshopSessionScheduledAt: {
+        universalIdentifier: '194e134f-81bb-4865-ba85-2d476598a50f',
+      },
     },
     indexes: {
       pointOfContactIdIndex: {
@@ -1912,6 +1918,9 @@ export const STANDARD_OBJECTS = {
         universalIdentifier: '20202020-f1af-48f7-893b-2007a73dd508',
       },
       jobTitle: { universalIdentifier: '20202020-b0d0-415a-bef9-640a26dacd9b' },
+      utmSource: { universalIdentifier: '51cf567b-b88b-4320-abcb-94459e71f63e' },
+      utmMedium: { universalIdentifier: 'bf0dfed3-c9cc-4694-bc18-dbb9fb814c66' },
+      utmCampaign: { universalIdentifier: '08e0df98-d26e-4640-8b33-656b2796d129' },
       phones: { universalIdentifier: '20202020-0638-448e-8825-439134618022' },
       avatarUrl: {
         universalIdentifier: '20202020-b8a6-40df-961c-373dc5d2ec21',

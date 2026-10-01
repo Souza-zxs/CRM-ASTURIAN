@@ -38,6 +38,9 @@ export class PersonWorkspaceEntity extends BaseWorkspaceEntity {
   emails: EmailsMetadata;
   linkedinLink: LinksMetadata | null;
   jobTitle: string | null;
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
   /** @deprecated Use `phones` field instead */
   phone: string | null;
   phones: PhonesMetadata;
