@@ -45,10 +45,10 @@ function resolveFrameTune() {
   };
 }
 
-// The hero bridge: sunset-orange dashes (João Pessoa's Cabo Branco sunset)
-// grown from the artwork's DARK areas, full horizontal span at every
-// width, hover light fading toward the top and bottom edges. The copy
-// block opts out via [data-halftone-exclude].
+// The hero bridge: brand blue/violet dashes grown from the artwork's
+// DARK areas, full horizontal span at every width, hover light fading
+// toward the top and bottom edges. The copy block opts out via
+// [data-halftone-exclude].
 export const HERO_BACKDROP: Pick<
   HalftoneImageBackdropProps,
   'imageUrl' | 'settings'
@@ -65,8 +65,8 @@ export const HERO_BACKDROP: Pick<
       power: -0.07,
       width: 0.34,
       minimumTone: 0,
-      dashColor: paletteColorNumber('sunset'),
-      hoverDashColor: paletteColorNumber('sunset'),
+      dashColor: paletteColorNumber('blue'),
+      hoverDashColor: paletteColorNumber('blue'),
     },
     hover: {
       halftoneEnabled: false,

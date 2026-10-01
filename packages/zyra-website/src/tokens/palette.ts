@@ -16,8 +16,7 @@ export type PaletteToken =
   | 'charcoal'
   | 'stone'
   | 'iron'
-  | 'chalk'
-  | 'sunset';
+  | 'chalk';
 
 // The illustration accents and artwork grays are the RATIFIED authored
 // halftone palette (2026-06-11): dash colors of the WebGL artwork.
@@ -47,6 +46,4 @@ export const PALETTE: Record<PaletteToken, string> = {
   iron: '#777777',
   // release-notes milestone halftone dash
   chalk: '#f3f3f3',
-  // home hero halftone dash — João Pessoa sunset over Cabo Branco
-  sunset: '#ff7a45',
 };
