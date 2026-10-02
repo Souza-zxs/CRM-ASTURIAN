@@ -16,9 +16,11 @@ export class CreateWorkspacePlanGrandfatherTableFastInstanceCommand implements F
         CONSTRAINT "IDX_WORKSPACE_PLAN_GRANDFATHER_WORKSPACE_ID_UNIQUE" UNIQUE ("workspaceId")
       )
     `);
+    await queryRunner.query('ALTER TABLE "core"."workspacePlanGrandfather" ADD CONSTRAINT "FK_WORKSPACE_PLAN_GRANDFATHER_WORKSPACE_ID" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('ALTER TABLE "core"."workspacePlanGrandfather" DROP CONSTRAINT "FK_WORKSPACE_PLAN_GRANDFATHER_WORKSPACE_ID"');
     await queryRunner.query(`DROP TABLE "core"."workspacePlanGrandfather"`);
   }
 }
