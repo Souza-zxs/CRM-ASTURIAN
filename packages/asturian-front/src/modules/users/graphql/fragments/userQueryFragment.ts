@@ -79,6 +79,7 @@ export const USER_QUERY_FRAGMENT = gql`
         key
         value
       }
+      planTier
       metadataVersion
       currentBillingSubscription {
         ...CurrentBillingSubscriptionFragment

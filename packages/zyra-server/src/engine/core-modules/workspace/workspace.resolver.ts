@@ -34,6 +34,8 @@ import { FeatureFlagService } from 'src/engine/core-modules/feature-flag/service
 import { FileUrlService } from 'src/engine/core-modules/file/file-url/file-url.service';
 import { PreventNestToAutoLogGraphqlErrorsFilter } from 'src/engine/core-modules/graphql/filters/prevent-nest-to-auto-log-graphql-errors.filter';
 import { ResolverValidationPipe } from 'src/engine/core-modules/graphql/pipes/resolver-validation.pipe';
+import { WorkspacePlanTier } from 'src/engine/core-modules/plan-tier/enums/workspace-plan-tier.enum';
+import { WorkspacePlanTierService } from 'src/engine/core-modules/plan-tier/services/workspace-plan-tier.service';
 import { ZyraConfigService } from 'src/engine/core-modules/zyra-config/zyra-config.service';
 import { UserWorkspaceService } from 'src/engine/core-modules/user-workspace/user-workspace.service';
 import { ActivateWorkspaceInput } from 'src/engine/core-modules/workspace/dtos/activate-workspace-input';
@@ -100,6 +102,7 @@ export class WorkspaceResolver {
     private readonly customDomainManagerService: CustomDomainManagerService,
     private readonly applicationService: ApplicationService,
     private readonly enterprisePlanService: EnterprisePlanService,
+    private readonly workspacePlanTierService: WorkspacePlanTierService,
   ) {}
 
   @Query(() => WorkspaceEntity)
@@ -165,6 +168,13 @@ export class WorkspaceResolver {
     return featureFlags.filter((flag) =>
       Object.values(FeatureFlagKey).includes(flag.key),
     );
+  }
+
+  @ResolveField(() => WorkspacePlanTier)
+  async planTier(
+    @Parent() workspace: WorkspaceEntity,
+  ): Promise<WorkspacePlanTier> {
+    return this.workspacePlanTierService.getWorkspacePlanTier(workspace.id);
   }
 
   @Mutation(() => WorkspaceEntity)
