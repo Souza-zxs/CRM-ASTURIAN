@@ -19,7 +19,7 @@ jobs:
     with:
       files: |
         package.json
-        yarn.lock
+        package-lock.json
         packages/zyra-server/**
         packages/asturian-front/src/generated/**
         packages/asturian-front/src/generated-metadata/**
