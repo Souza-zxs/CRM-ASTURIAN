@@ -3582,6 +3582,11 @@ msgstr "Choose what happens when you click an email"
 msgid "Choose which profile fields users with the Edit Profile permission can modify"
 msgstr "Choose which profile fields users with the Edit Profile permission can modify"
 
+#. js-lingui-id: VloUwG
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "Choose your language"
+msgstr "Choose your language"
+
 #. js-lingui-id: 9qP96p
 #: src/pages/onboarding/internal/ChooseYourPlanContent.tsx
 msgid "Choose your Trial"
@@ -4293,6 +4298,7 @@ msgstr "Context window"
 #. js-lingui-id: xGVfLh
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithCredentials.tsx
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/modules/spreadsheet-import/components/StepNavigationButton.tsx
@@ -5947,6 +5953,7 @@ msgid "Develop"
 msgstr "Develop"
 
 #. js-lingui-id: 7aDnUb
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
 msgid "Developer"
 msgstr "Developer"
@@ -8692,6 +8699,11 @@ msgstr "Group name"
 #: src/modules/object-record/record-group/components/RecordGroupReorderConfirmationModal.tsx
 msgid "Group sorting"
 msgstr "Group sorting"
+
+#. js-lingui-id: IAq/yr
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+msgid "Growth"
+msgstr "Growth"
 
 #. js-lingui-id: ieUt/q
 #: src/modules/funnel/components/SettingsFunnelPageForm.tsx
@@ -19868,6 +19880,11 @@ msgstr "You already belong to this workspace"
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "You are not allowed to create records for this object"
 msgstr "You are not allowed to create records for this object"
+
+#. js-lingui-id: 79xNkx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "You can change this later in Settings."
+msgstr "You can change this later in Settings."
 
 #. js-lingui-id: iibZbD
 #: src/pages/settings/applications/tabs/SettingsApplicationsDeveloperTab.tsx

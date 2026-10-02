@@ -3587,6 +3587,11 @@ msgstr "이메일 주소를 클릭할 때 수행할 작업을 선택하세요"
 msgid "Choose which profile fields users with the Edit Profile permission can modify"
 msgstr ""
 
+#. js-lingui-id: VloUwG
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "Choose your language"
+msgstr ""
+
 #. js-lingui-id: 9qP96p
 #: src/pages/onboarding/internal/ChooseYourPlanContent.tsx
 msgid "Choose your Trial"
@@ -4298,6 +4303,7 @@ msgstr "컨텍스트 윈도우"
 #. js-lingui-id: xGVfLh
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithCredentials.tsx
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/modules/spreadsheet-import/components/StepNavigationButton.tsx
@@ -5952,6 +5958,7 @@ msgid "Develop"
 msgstr ""
 
 #. js-lingui-id: 7aDnUb
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
 msgid "Developer"
 msgstr "개발자"
@@ -8697,6 +8704,11 @@ msgstr "그룹 이름"
 #: src/modules/object-record/record-group/components/RecordGroupReorderConfirmationModal.tsx
 msgid "Group sorting"
 msgstr "그룹 정렬"
+
+#. js-lingui-id: IAq/yr
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+msgid "Growth"
+msgstr ""
 
 #. js-lingui-id: ieUt/q
 #: src/modules/funnel/components/SettingsFunnelPageForm.tsx
@@ -19818,6 +19830,11 @@ msgstr "귀하는 이미 이 작업 공간에 속해 있습니다"
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "You are not allowed to create records for this object"
 msgstr "이 개체에 기록을 생성할 수 있는 권한이 없습니다"
+
+#. js-lingui-id: 79xNkx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "You can change this later in Settings."
+msgstr ""
 
 #. js-lingui-id: iibZbD
 #: src/pages/settings/applications/tabs/SettingsApplicationsDeveloperTab.tsx

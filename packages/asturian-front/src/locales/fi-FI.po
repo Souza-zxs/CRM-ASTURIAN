@@ -3587,6 +3587,11 @@ msgstr "Valitse, mitä tapahtuu, kun napsautat sähköpostiosoitetta"
 msgid "Choose which profile fields users with the Edit Profile permission can modify"
 msgstr ""
 
+#. js-lingui-id: VloUwG
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "Choose your language"
+msgstr ""
+
 #. js-lingui-id: 9qP96p
 #: src/pages/onboarding/internal/ChooseYourPlanContent.tsx
 msgid "Choose your Trial"
@@ -4298,6 +4303,7 @@ msgstr "Konteksti-ikkuna"
 #. js-lingui-id: xGVfLh
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithCredentials.tsx
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/modules/spreadsheet-import/components/StepNavigationButton.tsx
@@ -5952,6 +5958,7 @@ msgid "Develop"
 msgstr ""
 
 #. js-lingui-id: 7aDnUb
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
 msgid "Developer"
 msgstr "Kehittäjä"
@@ -8697,6 +8704,11 @@ msgstr "Ryhmän nimi"
 #: src/modules/object-record/record-group/components/RecordGroupReorderConfirmationModal.tsx
 msgid "Group sorting"
 msgstr "Lajitteluryhmä"
+
+#. js-lingui-id: IAq/yr
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+msgid "Growth"
+msgstr ""
 
 #. js-lingui-id: ieUt/q
 #: src/modules/funnel/components/SettingsFunnelPageForm.tsx
@@ -19818,6 +19830,11 @@ msgstr "Kuulut jo tähän työtilaan"
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "You are not allowed to create records for this object"
 msgstr "Et voi luoda tietueita tälle objektille"
+
+#. js-lingui-id: 79xNkx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "You can change this later in Settings."
+msgstr ""
 
 #. js-lingui-id: iibZbD
 #: src/pages/settings/applications/tabs/SettingsApplicationsDeveloperTab.tsx

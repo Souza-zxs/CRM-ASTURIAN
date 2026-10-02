@@ -3587,6 +3587,11 @@ msgstr "Escolha o que acontece quando você clica em um endereço de e-mail"
 msgid "Choose which profile fields users with the Edit Profile permission can modify"
 msgstr "Escolha quais campos de perfil os usuários com a permissão Editar Perfil podem alterar"
 
+#. js-lingui-id: VloUwG
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "Choose your language"
+msgstr "Escolha seu idioma"
+
 #. js-lingui-id: 9qP96p
 #: src/pages/onboarding/internal/ChooseYourPlanContent.tsx
 msgid "Choose your Trial"
@@ -4298,6 +4303,7 @@ msgstr "Janela de contexto"
 #. js-lingui-id: xGVfLh
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithCredentials.tsx
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/modules/spreadsheet-import/components/StepNavigationButton.tsx
@@ -5952,6 +5958,7 @@ msgid "Develop"
 msgstr "Desenvolver"
 
 #. js-lingui-id: 7aDnUb
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
 msgid "Developer"
 msgstr "Desenvolvedor"
@@ -7794,7 +7801,7 @@ msgstr "Falha ao enviar e-mail"
 #: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
 #: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
 msgid "Failed to send message"
-msgstr ""
+msgstr "Falha ao enviar mensagem"
 
 #. js-lingui-id: aj02T8
 #: src/modules/settings/admin-panel/health-status/maintenance-mode/components/SettingsAdminMaintenanceMode.tsx
@@ -8698,6 +8705,11 @@ msgstr "Nome do grupo}]}``` }}} code block? Wait. We messed up. Actually we must
 msgid "Group sorting"
 msgstr "Ordenação de grupo"
 
+#. js-lingui-id: IAq/yr
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+msgid "Growth"
+msgstr "Crescimento"
+
 #. js-lingui-id: ieUt/q
 #: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 msgid "Guarantee"
@@ -8930,6 +8942,29 @@ msgid ""
 "\n"
 "See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
+"Hospede as personalizações e substituições do seu workspace.\n"
+"\n"
+"#### O que inclui\n"
+"Toda extensão que você cria sobre o aplicativo padrão fica agrupada em Personalizado. Ele mantém em um só lugar as mudanças de esquema, de interface e a lógica específica do workspace.\n"
+"\n"
+"- Objetos e campos personalizados para o seu próprio modelo de dados\n"
+"- Visualizações, itens de navegação e layouts de registro que moldam o trabalho da sua equipe\n"
+"- Funções de lógica, componentes de front-end e agentes que automatizam ou estendem o workspace\n"
+"\n"
+"#### Por que existe\n"
+"Use este aplicativo para personalizações específicas do workspace que devem ficar locais a este workspace.\n"
+"\n"
+"Se você está moldando um workspace para um negócio, mantenha aqui. Se está criando um aplicativo de negócio reutilizável, com modelo de dados, interface e automação próprios, que deve ser versionado, compartilhado ou instalado em vários workspaces, crie um aplicativo dedicado.\n"
+"\n"
+"#### Crie seu próprio aplicativo\n"
+"\n"
+"Crie a estrutura de um novo aplicativo com um comando:\n"
+"\n"
+"```bash\n"
+"npx create-zyra-app@latest my-zyra-app\n"
+"```\n"
+"\n"
+"Veja o [guia de primeiros passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo e o [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
 
 #. js-lingui-id: yY8wAv
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
@@ -9875,7 +9910,7 @@ msgstr "Palavras-chave"
 #. js-lingui-id: x6IJvs
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Knowledge base"
-msgstr ""
+msgstr "Base de conhecimento"
 
 #. js-lingui-id: h6S9Yz
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
@@ -10404,7 +10439,7 @@ msgstr "Carregando campanhas..."
 #. js-lingui-id: +ABtFt
 #: src/modules/activities/whatsapp/components/WhatsappCard.tsx
 msgid "Loading conversation..."
-msgstr ""
+msgstr "Carregando conversa..."
 
 #. js-lingui-id: aZczPx
 #: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
@@ -10898,7 +10933,7 @@ msgstr "Mensagem não encontrada"
 #. js-lingui-id: 7/9d5t
 #: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
 msgid "Message sent"
-msgstr ""
+msgstr "Mensagem enviada"
 
 #. js-lingui-id: elpx6r
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminConnectedAccountHealthStatus.tsx
@@ -12352,12 +12387,12 @@ msgstr "Nenhum agente de WhatsApp configurado ainda"
 #. js-lingui-id: TAdzo9
 #: src/modules/activities/whatsapp/components/WhatsappCard.tsx
 msgid "No WhatsApp conversation yet"
-msgstr ""
+msgstr "Nenhuma conversa do WhatsApp ainda"
 
 #. js-lingui-id: 0NSdNm
 #: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
 msgid "No WhatsApp conversations yet"
-msgstr ""
+msgstr "Nenhuma conversa do WhatsApp ainda"
 
 #. js-lingui-id: RequV7
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
@@ -12713,7 +12748,7 @@ msgstr "Fora do caminho comum"
 #. js-lingui-id: aUsi2A
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Offers, prices, FAQ, policies — anything the agent should know to answer questions accurately."
-msgstr ""
+msgstr "Ofertas, preços, perguntas frequentes, políticas — qualquer coisa que o agente precise saber para responder com precisão."
 
 #. js-lingui-id: Zd5vVt
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
@@ -15425,7 +15460,7 @@ msgstr "Selecionar 1 campo"
 #. js-lingui-id: ZGNQwg
 #: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
 msgid "Select a conversation"
-msgstr ""
+msgstr "Selecione uma conversa"
 
 #. js-lingui-id: OMoA3j
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
@@ -17053,6 +17088,36 @@ msgid ""
 "\n"
 "See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
+"A base do modelo de dados sobre a qual todo workspace Zyra funciona.\n"
+"\n"
+"#### O que significa \"fundação\"\n"
+"\n"
+"Todo workspace Zyra começa com este conjunto de objetos. Eles definem a forma do seu CRM, incluindo relacionamentos, atividades e relatórios. Todo o resto, incluindo aplicativos do marketplace, agentes de IA e objetos personalizados, se conecta a eles.\n"
+"\n"
+"#### Objetos incluídos\n"
+"- **Pessoas e Empresas**: registros de contatos e contas\n"
+"- **Oportunidades**: seu funil de vendas\n"
+"- **Notas e Tarefas**: atividades e follow-ups\n"
+"- **Workflows e Dashboards**: automação e relatórios\n"
+"\n"
+"Se você remover este aplicativo, o resto do Zyra fica sem base.\n"
+"\n"
+"#### Crie seu próprio aplicativo\n"
+"\n"
+"Estenda o Zyra com seus próprios objetos, campos, funções de lógica ou skills de IA. Crie a estrutura de um novo aplicativo com um comando:\n"
+"\n"
+"```bash\n"
+"npx create-zyra-app@latest my-zyra-app\n"
+"```\n"
+"\n"
+"Depois, dentro da pasta:\n"
+"\n"
+"```bash\n"
+"cd my-zyra-app\n"
+"yarn zyra dev\n"
+"```\n"
+"\n"
+"Veja o [guia de primeiros passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo e o [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
 
 #. js-lingui-id: n+CCXl
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx
@@ -18005,7 +18070,7 @@ msgstr "Digite um número ou escolha uma variável"
 #: src/modules/activities/whatsapp/components/WhatsappConversationPanel.tsx
 #: src/modules/activities/whatsapp/components/WhatsappConversationPanel.tsx
 msgid "Type a reply..."
-msgstr ""
+msgstr "Digite uma resposta..."
 
 #. js-lingui-id: hzt+K/
 #: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
@@ -19371,7 +19436,7 @@ msgstr "A conexão com o WhatsApp não está configurada neste servidor."
 #. js-lingui-id: TblUsE
 #: src/modules/navigation/components/NavigationDrawerOtherSection.tsx
 msgid "WhatsApp Inbox"
-msgstr ""
+msgstr "Caixa de entrada do WhatsApp"
 
 #. js-lingui-id: zLJh7i
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
@@ -19818,6 +19883,11 @@ msgstr "Você já pertence a este workspace"
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "You are not allowed to create records for this object"
 msgstr "Você não está autorizado a criar registros para este objeto"
+
+#. js-lingui-id: 79xNkx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "You can change this later in Settings."
+msgstr "Você pode mudar isso depois em Configurações."
 
 #. js-lingui-id: iibZbD
 #: src/pages/settings/applications/tabs/SettingsApplicationsDeveloperTab.tsx
