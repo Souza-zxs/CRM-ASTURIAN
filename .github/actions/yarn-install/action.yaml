@@ -43,7 +43,17 @@ runs:
       if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' && steps.cache-node-modules.outputs.cache-matched-key == '' }}
       shell: ${{ steps.globals.outputs.ACTION_SHELL }}
       run: |
-        npm install
+        npm ci
+    # package-lock.json is generated on Windows dev machines, and npm has a
+    # known bug (npm/cli#4828) where it then omits other platforms' optional
+    # native bindings from the lockfile entirely - npm ci/install on Linux CI
+    # never even attempts to fetch them. Runs unconditionally (not gated on
+    # cache-hit) so a cache restored from before this fix still gets patched.
+    - name: Work around missing Linux optional native bindings in the lockfile
+      if: runner.os == 'Linux'
+      shell: bash
+      run: |
+        npm install --no-save @rolldown/binding-linux-x64-gnu@1.0.3
     # Fork PRs on pull_request already can't write to the base repo's cache (GitHub built-in).
     # The fork guard is defense-in-depth for pull_request_target, which does have write access.
     - name: Save cache
