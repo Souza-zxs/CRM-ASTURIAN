@@ -245,8 +245,8 @@ export const SettingsDevelopersApiKeyDetail = () => {
           title={apiKey.name || t`Unnamed API Key`}
           links={[
             {
-              children: t`Workspace`,
-              href: getSettingsPath(SettingsPath.General),
+              children: t`Developer`,
+              href: getSettingsPath(SettingsPath.ApiWebhooks),
             },
             {
               children: t`APIs & Webhooks`,

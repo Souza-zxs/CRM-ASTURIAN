@@ -27,8 +27,8 @@ export const SettingsRestPlayground = () => {
       exitFullScreen={handleExitFullScreen}
       links={[
         {
-          children: <Trans>Workspace</Trans>,
-          href: getSettingsPath(SettingsPath.General),
+          children: <Trans>Developer</Trans>,
+          href: getSettingsPath(SettingsPath.ApiWebhooks),
         },
         {
           children: <Trans>APIs & Webhooks</Trans>,

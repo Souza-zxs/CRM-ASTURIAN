@@ -19,8 +19,8 @@ export const SettingsBilling = () => {
       title={t`Billing`}
       links={[
         {
-          children: <Trans>Workspace</Trans>,
-          href: getSettingsPath(SettingsPath.General),
+          children: <Trans>Developer</Trans>,
+          href: getSettingsPath(SettingsPath.ApiWebhooks),
         },
         { children: <Trans>Billing</Trans> },
       ]}

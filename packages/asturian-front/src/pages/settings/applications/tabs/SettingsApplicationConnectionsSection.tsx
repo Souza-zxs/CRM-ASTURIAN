@@ -14,12 +14,7 @@ import { TableHeader } from '@/ui/layout/table/components/TableHeader';
 import { TableRow } from '@/ui/layout/table/components/TableRow';
 import { Status } from 'zyra-ui/data-display';
 import { Info } from 'zyra-ui/feedback';
-import {
-  IconChevronRight,
-  IconPlus,
-  IconUser,
-  IconUsers,
-} from 'zyra-ui/icon';
+import { IconChevronRight, IconPlus, IconUser, IconUsers } from 'zyra-ui/icon';
 import { H2Title } from 'zyra-ui/typography';
 import { Button } from 'zyra-ui/input';
 import { Section } from 'zyra-ui/layout';

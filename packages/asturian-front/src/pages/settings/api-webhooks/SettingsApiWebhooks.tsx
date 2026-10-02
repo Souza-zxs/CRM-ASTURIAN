@@ -92,13 +92,7 @@ export const SettingsApiWebhooks = () => {
           componentInstanceId={SETTINGS_API_WEBHOOKS_TABS.COMPONENT_INSTANCE_ID}
         />
       }
-      links={[
-        {
-          children: t`Workspace`,
-          href: getSettingsPath(SettingsPath.General),
-        },
-        { children: t`APIs & Webhooks` },
-      ]}
+      links={[{ children: t`Developer` }, { children: t`APIs & Webhooks` }]}
     >
       <SettingsPageContainer>
         <Section>

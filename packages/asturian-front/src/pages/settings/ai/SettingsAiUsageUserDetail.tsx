@@ -37,8 +37,8 @@ export const SettingsAiUsageUserDetail = () => {
 
   const breadcrumbLinks = [
     {
-      children: <Trans>Workspace</Trans>,
-      href: getSettingsPath(SettingsPath.General),
+      children: <Trans>Growth</Trans>,
+      href: getSettingsPath(SettingsPath.Funnel),
     },
     {
       children: <Trans>AI</Trans>,

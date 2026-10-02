@@ -1,8 +1,4 @@
-import {
-  IconBrandDocker,
-  IconChartBar,
-  IconStatusChange,
-} from 'zyra-ui/icon';
+import { IconBrandDocker, IconChartBar, IconStatusChange } from 'zyra-ui/icon';
 import { H2Title } from 'zyra-ui/typography';
 import { useLingui } from '@lingui/react/macro';
 import { SettingsTableCard } from '@/settings/components/SettingsTableCard';
