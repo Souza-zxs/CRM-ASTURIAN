@@ -69,3 +69,6 @@ screenshots/
 supabase/.temp/
 
 packages/zyra-docs/dist-static
+
+.worktrees/
+.superpowers/
