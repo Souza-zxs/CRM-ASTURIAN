@@ -20,9 +20,14 @@ import { InstagramDiagnosticsService } from 'src/engine/metadata-modules/instagr
 import { InstagramFollowerSnapshotMetadataService } from 'src/engine/metadata-modules/instagram-channel/instagram-follower-snapshot-metadata.service';
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { InstagramGraphApiService } from 'src/modules/instagram/services/instagram-graph-api.service';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => InstagramChannelDTO)
 export class InstagramChannelResolver {
   constructor(
@@ -37,6 +42,7 @@ export class InstagramChannelResolver {
 
   @Query(() => [InstagramChannelDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async myInstagramChannels(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @AuthUserWorkspaceId() userWorkspaceId: string,
@@ -50,19 +56,18 @@ export class InstagramChannelResolver {
   // Backs the post-picker in the "new automation rule" form.
   @Query(() => [InstagramMediaSummaryDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async instagramRecentMedia(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,
     @AuthWorkspace() workspace: WorkspaceEntity,
     @AuthUserWorkspaceId() userWorkspaceId: string,
   ): Promise<InstagramMediaSummaryDTO[]> {
-    const channel = await this.instagramChannelMetadataService.findByIdForUser(
-      {
-        id: instagramChannelId,
-        userWorkspaceId,
-        workspaceId: workspace.id,
-      },
-    );
+    const channel = await this.instagramChannelMetadataService.findByIdForUser({
+      id: instagramChannelId,
+      userWorkspaceId,
+      workspaceId: workspace.id,
+    });
 
     const connectedAccount = await this.connectedAccountRepository.findOneBy({
       id: channel.connectedAccountId,
@@ -96,6 +101,7 @@ export class InstagramChannelResolver {
   // for how the underlying rows are populated (once daily, per channel).
   @Query(() => [InstagramFollowerSnapshotDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async instagramFollowerHistory(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,
@@ -111,6 +117,7 @@ export class InstagramChannelResolver {
 
   @Query(() => InstagramDiagnosticsDTO)
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async instagramDiagnostics(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,

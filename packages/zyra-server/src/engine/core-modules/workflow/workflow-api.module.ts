@@ -13,6 +13,7 @@ import { ConnectedAccountMetadataModule } from 'src/engine/metadata-modules/conn
 import { WorkspaceManyOrAllFlatEntityMapsCacheModule } from 'src/engine/metadata-modules/flat-entity/services/workspace-many-or-all-flat-entity-maps-cache.module';
 import { LogicFunctionModule } from 'src/engine/metadata-modules/logic-function/logic-function.module';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { WorkflowCommonModule } from 'src/modules/workflow/common/workflow-common.module';
 import { WorkflowBuilderModule } from 'src/modules/workflow/workflow-builder/workflow-builder.module';
 import { CodeStepBuildModule } from 'src/modules/workflow/workflow-builder/workflow-version-step/code-step/code-step-build.module';
@@ -31,6 +32,7 @@ import { WorkflowTriggerModule } from 'src/modules/workflow/workflow-trigger/wor
     WorkflowRunModule,
     WorkflowRunnerModule,
     PermissionsModule,
+    PlanTierModule,
     ToolModule,
     LogicFunctionModule,
     CodeStepBuildModule,

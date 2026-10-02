@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { VoiceAgentEntity } from 'src/engine/metadata-modules/voice-agent/entities/voice-agent.entity';
 import { VoiceCallEntity } from 'src/engine/metadata-modules/voice-agent/entities/voice-call.entity';
 import { VoiceAgentResolver } from 'src/engine/metadata-modules/voice-agent/resolvers/voice-agent.resolver';
@@ -14,6 +15,7 @@ import { provideWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-
   imports: [
     TypeOrmModule.forFeature([VoiceAgentEntity, VoiceCallEntity]),
     PermissionsModule,
+    PlanTierModule,
   ],
   providers: [
     VoiceAgentMetadataService,

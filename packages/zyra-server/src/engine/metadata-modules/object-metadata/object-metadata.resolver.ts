@@ -20,6 +20,11 @@ import { type IDataloaders } from 'src/engine/dataloaders/dataloader.interface';
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { FieldMetadataDTO } from 'src/engine/metadata-modules/field-metadata/dtos/field-metadata.dto';
 import { fromFlatObjectMetadataToObjectMetadataDto } from 'src/engine/metadata-modules/flat-object-metadata/utils/from-flat-object-metadata-to-object-metadata-dto.util';
 import { IndexMetadataDTO } from 'src/engine/metadata-modules/index-metadata/dtos/index-metadata.dto';
@@ -34,7 +39,7 @@ import { objectMetadataGraphqlApiExceptionHandler } from 'src/engine/metadata-mo
 import { resolveObjectMetadataStandardOverride } from 'src/engine/metadata-modules/object-metadata/utils/resolve-object-metadata-standard-override.util';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => ObjectMetadataDTO)
 @UsePipes(ResolverValidationPipe)
 @UseFilters(
@@ -162,6 +167,7 @@ export class ObjectMetadataResolver {
   }
 
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.DATA_MODEL))
+  @RequirePlanGatedFeature(PlanGatedFeature.CUSTOM_APPS)
   @Mutation(() => ObjectMetadataDTO)
   async createOneObject(
     @Args('input') input: CreateOneObjectInput,

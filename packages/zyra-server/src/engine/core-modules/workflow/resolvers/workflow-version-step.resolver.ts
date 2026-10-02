@@ -24,6 +24,11 @@ import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorat
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { UserAuthGuard } from 'src/engine/guards/user-auth.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { ConnectedAccountMetadataService } from 'src/engine/metadata-modules/connected-account/connected-account-metadata.service';
 import { ConnectedAccountHandleDTO } from 'src/engine/metadata-modules/connected-account/dtos/connected-account-handle.dto';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
@@ -36,6 +41,7 @@ import { WorkflowRunnerWorkspaceService } from 'src/modules/workflow/workflow-ru
 @UseGuards(
   WorkspaceAuthGuard,
   UserAuthGuard,
+  WorkspacePlanTierGuard,
   SettingsPermissionGuard(PermissionFlagType.WORKFLOWS),
 )
 @UseFilters(
@@ -54,6 +60,7 @@ export class WorkflowVersionStepResolver {
 
   // Related to https://github.com/zyrahq/private-issues/issues/478
   @Query(() => ConnectedAccountHandleDTO, { nullable: true })
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async workflowStepConnectedAccountHandle(
     @Args('connectedAccountId', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
@@ -75,6 +82,7 @@ export class WorkflowVersionStepResolver {
   }
 
   @Mutation(() => WorkflowVersionStepChangesDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async createWorkflowVersionStep(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')
@@ -87,6 +95,7 @@ export class WorkflowVersionStepResolver {
   }
 
   @Mutation(() => WorkflowActionDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async updateWorkflowVersionStep(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')
@@ -100,6 +109,7 @@ export class WorkflowVersionStepResolver {
   }
 
   @Mutation(() => WorkflowVersionStepChangesDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async deleteWorkflowVersionStep(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')
@@ -113,6 +123,7 @@ export class WorkflowVersionStepResolver {
   }
 
   @Mutation(() => Boolean)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async submitFormStep(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')
@@ -129,6 +140,7 @@ export class WorkflowVersionStepResolver {
   }
 
   @Mutation(() => WorkflowActionDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async updateWorkflowRunStep(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')
@@ -144,6 +156,7 @@ export class WorkflowVersionStepResolver {
   }
 
   @Mutation(() => WorkflowVersionStepChangesDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async duplicateWorkflowVersionStep(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')
@@ -159,6 +172,7 @@ export class WorkflowVersionStepResolver {
   }
 
   @Mutation(() => TestHttpRequestDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async testHttpRequest(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @Args('input')

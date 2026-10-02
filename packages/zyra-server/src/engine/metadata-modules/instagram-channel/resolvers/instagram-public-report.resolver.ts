@@ -13,8 +13,13 @@ import { MetadataResolver } from 'src/engine/api/graphql/graphql-config/decorato
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => InstagramPublicReportDTO)
 export class InstagramPublicReportResolver {
   constructor(
@@ -23,6 +28,7 @@ export class InstagramPublicReportResolver {
 
   @Query(() => InstagramPublicReportDTO, { nullable: true })
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async instagramPublicReport(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,
@@ -38,6 +44,7 @@ export class InstagramPublicReportResolver {
 
   @Mutation(() => InstagramPublicReportDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async enableInstagramPublicReport(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,
@@ -53,6 +60,7 @@ export class InstagramPublicReportResolver {
 
   @Mutation(() => InstagramPublicReportDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async disableInstagramPublicReport(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,

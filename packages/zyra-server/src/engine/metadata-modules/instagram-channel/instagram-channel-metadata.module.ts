@@ -18,6 +18,7 @@ import { InstagramAutomationRuleResolver } from 'src/engine/metadata-modules/ins
 import { InstagramChannelResolver } from 'src/engine/metadata-modules/instagram-channel/resolvers/instagram-channel.resolver';
 import { InstagramPublicReportResolver } from 'src/engine/metadata-modules/instagram-channel/resolvers/instagram-public-report.resolver';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { InstagramModule } from 'src/modules/instagram/instagram.module';
 
 @Module({
@@ -33,6 +34,7 @@ import { InstagramModule } from 'src/modules/instagram/instagram.module';
     PermissionsModule,
     ConnectedAccountMetadataModule,
     ConnectedAccountTokenEncryptionModule,
+    PlanTierModule,
     InstagramModule,
   ],
   providers: [

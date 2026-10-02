@@ -7,10 +7,15 @@ import { MetadataResolver } from 'src/engine/api/graphql/graphql-config/decorato
 import { AuthGraphqlApiExceptionFilter } from 'src/engine/core-modules/auth/filters/auth-graphql-api-exception.filter';
 import { ResolverValidationPipe } from 'src/engine/core-modules/graphql/pipes/resolver-validation.pipe';
 import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { AuthUserWorkspaceId } from 'src/engine/decorators/auth/auth-user-workspace-id.decorator';
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
 import { ConnectInstagramAccountOutputDTO } from 'src/modules/instagram/dtos/connect-instagram-account-output.dto';
 import { ConnectInstagramAccountInput } from 'src/modules/instagram/dtos/connect-instagram-account.input';
 import { InstagramLoginService } from 'src/modules/instagram/services/instagram-login.service';
@@ -20,16 +25,16 @@ import { InstagramLoginService } from 'src/modules/instagram/services/instagram-
 @UseFilters(AuthGraphqlApiExceptionFilter)
 @UseGuards(
   WorkspaceAuthGuard,
+  WorkspacePlanTierGuard,
   SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS),
 )
 export class ConnectInstagramAccountResolver {
   private readonly logger = new Logger(ConnectInstagramAccountResolver.name);
 
-  constructor(
-    private readonly instagramLoginService: InstagramLoginService,
-  ) {}
+  constructor(private readonly instagramLoginService: InstagramLoginService) {}
 
   @Mutation(() => ConnectInstagramAccountOutputDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.INSTAGRAM)
   async connectInstagramAccount(
     @Args('input') input: ConnectInstagramAccountInput,
     @AuthWorkspace() workspace: WorkspaceEntity,

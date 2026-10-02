@@ -10,10 +10,15 @@ import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorat
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { WhatsappAgentConversationDTO } from 'src/engine/metadata-modules/whatsapp-agent/dtos/whatsapp-agent-conversation.dto';
 import { WhatsappAgentConversationMetadataService } from 'src/engine/metadata-modules/whatsapp-agent/whatsapp-agent-conversation-metadata.service';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => WhatsappAgentConversationDTO)
 export class WhatsappAgentConversationResolver {
   constructor(
@@ -22,6 +27,7 @@ export class WhatsappAgentConversationResolver {
 
   @Query(() => [WhatsappAgentConversationDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async whatsappAgentConversations(
     @Args('whatsappAgentId', { type: () => UUIDScalarType })
     whatsappAgentId: string,
@@ -34,6 +40,7 @@ export class WhatsappAgentConversationResolver {
 
   @Mutation(() => WhatsappAgentConversationDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async setWhatsappAgentConversationAiEnabled(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @Args('isAiEnabled', { type: () => Boolean }) isAiEnabled: boolean,
