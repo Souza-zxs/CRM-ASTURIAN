@@ -4,6 +4,89 @@ Status: approved (self-approved under explicit autonomous-operation instruction 
 Supersedes the open questions left in `2026-09-30-workshop-automation-design.md` for Part A, and
 starts the plan-tier gating project referenced only in memory until now.
 
+## Status — 2026-10-02 (o que falta desta task)
+
+**Feito, em PR aberta ([#4](https://github.com/Souza-zxs/CRM-ASTURIAN/pull/4)):**
+- Backend do plan-tier gating completo: `WorkspacePlanGrandfatherEntity` + migração (commitados
+  antes desta PR), `WorkspacePlanTierService`, guard `WorkspacePlanTierGuard` +
+  `@RequirePlanGatedFeature(...)` (equivalente ao `PlanFeatureGuard` do spec original, espelhando o
+  `FeatureFlagGuard` já existente em vez do `SettingsPermissionGuard` — mesmo efeito, nome/padrão
+  diferente do que o spec previu).
+- Guard aplicado em **todos** os métodos dos resolvers de WhatsApp, Instagram, Voice Agent e
+  Workflows (o spec original listava só os pontos de entrada principais — ex. só a mutation de
+  ativação do Workflow; na implementação real optei por gatear cada método de cada resolver, mais
+  abrangente do que o spec pedia).
+- `createOneObject` gateado (criação de objeto customizado); `updateOneObject`/`deleteOneObject`
+  **não** foram gateados de propósito — também operam sobre objetos padrão do plano básico.
+- Campo `planTier` exposto em `WorkspaceResolver` (em vez de uma query dedicada
+  `currentWorkspacePlanTier` — usei a opção "campo na query existente" que o spec já deixava em
+  aberto) + hook `useWorkspacePlanTier()` no front.
+- Correção de CI não relacionada, mas que bloqueava qualquer PR: action de install ainda rodava
+  `yarn` num repo migrado pra npm, e o `package-lock.json` (gerado no Windows) está faltando
+  binários nativos de Linux pra algumas dependências (rolldown corrigido; outras podem aparecer
+  ainda, ex. `@typescript/native-preview`) — detalhes no comentário da PR #4.
+
+**Não implementado ainda:**
+- **Navegação simplificada (nav fixa + esconder itens do plano básico)** — a seção "Design —
+  Plan-tier gating → Frontend" abaixo (linhas da versão original) está **superada** pela nova
+  seção "Design — Navegação fixa (2026-10-02)" mais abaixo neste arquivo. Mudou bastante desde
+  ontem: não é mais um reskin nem só um filtro no sistema de nav customizável existente — a decisão
+  de hoje é **desativar** o sistema de pastas/criação de item customizado (estilo Notion) e voltar
+  pra uma navegação fixa, mantendo só reordenação e favoritos (que já funcionam do jeito certo sem
+  mudança nenhuma). Nada disso tem código ainda — só o design, aprovado nesta conversa.
+- **Parte A (automações WhatsApp do workshop)** — spec completo mais abaixo neste arquivo, **0%
+  implementado**. Nada foi começado: nem a entidade de configurações, nem o scheduler, nem a tela
+  de Settings.
+- A página de upsell "Desbloquear recursos Pro" mencionada no spec original — não decidida ainda
+  se entra nesta leva (não foi discutida na sessão de hoje).
+
+## Design — Navegação fixa (2026-10-02, supera a seção de nav abaixo)
+
+Decisão de hoje, numa sessão de brainstorm separada: ao invés de só filtrar o sistema de navegação
+customizável existente (`navigation-menu-item/`, que já tem drag-and-drop, pastas e páginas
+customizadas, estilo Notion), a decisão foi **desativar a criação de itens novos** (pastas, links,
+páginas customizadas) e voltar pra uma navegação que se parece com um CRM comum — referência visual
+apontada: o sidebar do projeto `hdm-web` (`D:\Projetos\hdm-web\src\components\layout\Sidebar\index.tsx`).
+
+**Mantém sem alteração:**
+- Reordenar itens (drag-and-drop) — usuário só pode mudar a **posição** do que já tem acesso, não
+  criar coisa nova. Reaproveita o mecanismo de posição já existente (`NavigationMenuItem.position`).
+- Seção de Favoritos (`FavoritesSection.tsx`) — já se comporta exatamente como o esperado hoje
+  (sempre arrastável, "+" só adiciona algo que já existe aos favoritos, não cria do zero). **Zero
+  mudança necessária aqui.**
+
+**Remove:**
+- Botão de adicionar item de menu (pasta/link/página customizada) em `WorkspaceSection.tsx`.
+- O "modo de customização de layout" (`isLayoutCustomizationModeEnabledState`) deixa de existir pra
+  essa seção — confirmado que esse flag só é usado dentro do próprio módulo `navigation-menu-item`,
+  sem efeito colateral em outras partes do app.
+- `WorkspaceSectionContainer.tsx` para de alternar entre lista somente-leitura e lista arrastável
+  por modo — passa a ser sempre arrastável, sem lógica de pastas.
+- `NavigationDrawerOpenedSection.tsx` ("Opened") — removido, fica redundante quando a lista sempre
+  mostra tudo que o usuário tem acesso.
+
+**Reset na virada:** no primeiro carregamento após o deploy, qualquer pasta existente se desmonta —
+os itens voltam pro nível principal, na ordem canônica (objetos padrão em ordem fixa, depois
+customizados em ordem alfabética). A partir daí, o usuário reordena livremente e isso persiste.
+Itens do tipo `FOLDER`, `LINK`, `VIEW` ou `RECORD` manualmente criados antes passam a ser ignorados
+na renderização (representam "coisa adicionada", que não existe mais nesse modelo).
+
+**Filtro de plano:** aplicado como uma camada simples sobre a lista final de objetos — se o
+workspace é plano básico, o objeto `Workflow` nunca entra na lista (nem reordenado, nem
+favoritável). Mesmo padrão de "flag adicional ao lado do que já existe" usado em
+`SettingsAccountsSettingsSection.tsx` (cards de WhatsApp/Instagram/Voice/WhatsApp AI Agent, hoje
+gateados só por flags globais de instância) e `NavigationDrawerOtherSection.tsx` (item "WhatsApp
+Inbox") — ambos ganham a checagem de `useWorkspacePlanTier()` ao lado do flag existente, sem mudança
+estrutural.
+
+**Edge cases:** objeto customizado novo/excluído aparece/some automaticamente (vem direto de
+`objectMetadataItemsSelector`, não de registro manual); dados de um workspace básico com Workflow em
+uso antes do gating continuam no banco, só o acesso via nav some (suporte acessa via admin);
+reordenação ignora posições salvas de itens que não existem mais ou foram escondidos pelo plano.
+
+**Testes:** unitário pra função que monta a lista fixa (ordem canônica + customizados + filtro de
+plano); unitário pra persistência de reorder (mock do hook existente, não precisa recriar).
+
 ## Context
 
 Two independent initiatives, bundled into one spec because they share a theme (make the product
