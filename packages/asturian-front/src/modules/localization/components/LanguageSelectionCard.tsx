@@ -98,7 +98,7 @@ export const LanguageSelectionCard = () => {
         />
       </StyledCenteredTitle>
       <StyledSubtitle>{t`You can change this later in Settings.`}</StyledSubtitle>
-      <LocalePicker />
+      <LocalePicker isDropdownInModal />
       <StyledButtonContainer>
         <Button
           onClick={handleDismiss}
