@@ -130,12 +130,6 @@ const useSettingsNavigationItems = (): SettingsNavigationSection[] => {
           isHidden: !permissionMap[PermissionFlagType.DATA_MODEL],
         },
         {
-          label: t`Funnel`,
-          path: SettingsPath.Funnel,
-          Icon: IconRocket,
-          isHidden: !permissionMap[PermissionFlagType.WORKSPACE],
-        },
-        {
           label: t`Layout`,
           path: SettingsPath.Layout,
           Icon: IconLayout,
@@ -147,13 +141,11 @@ const useSettingsNavigationItems = (): SettingsNavigationSection[] => {
           Icon: IconUsers,
           isHidden: !permissionMap[PermissionFlagType.WORKSPACE_MEMBERS],
         },
-        {
-          label: t`Billing`,
-          path: SettingsPath.Billing,
-          Icon: IconCurrencyDollar,
-          isHidden:
-            !isBillingEnabled || !permissionMap[PermissionFlagType.WORKSPACE],
-        },
+      ],
+    },
+    {
+      label: t`Developer`,
+      items: [
         {
           label: t`APIs & Webhooks`,
           path: SettingsPath.ApiWebhooks,
@@ -172,6 +164,24 @@ const useSettingsNavigationItems = (): SettingsNavigationSection[] => {
           path: SettingsPath.Applications,
           Icon: IconPlug,
           isHidden: !permissionMap[PermissionFlagType.APPLICATIONS],
+        },
+        {
+          label: t`Billing`,
+          path: SettingsPath.Billing,
+          Icon: IconCurrencyDollar,
+          isHidden:
+            !isBillingEnabled || !permissionMap[PermissionFlagType.WORKSPACE],
+        },
+      ],
+    },
+    {
+      label: t`Growth`,
+      items: [
+        {
+          label: t`Funnel`,
+          path: SettingsPath.Funnel,
+          Icon: IconRocket,
+          isHidden: !permissionMap[PermissionFlagType.WORKSPACE],
         },
         {
           label: t`AI`,
