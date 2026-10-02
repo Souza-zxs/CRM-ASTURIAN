@@ -28,8 +28,7 @@ export const createStandardNavigationMenuItemFolderFlatMetadata = ({
   type: NavigationMenuItemType.FOLDER,
   universalIdentifier,
   applicationId: zyraStandardApplicationId,
-  applicationUniversalIdentifier:
-    ZYRA_STANDARD_APPLICATION.universalIdentifier,
+  applicationUniversalIdentifier: ZYRA_STANDARD_APPLICATION.universalIdentifier,
   workspaceId,
   userWorkspaceId: null,
   targetRecordId: null,
@@ -59,6 +58,7 @@ export const createStandardNavigationMenuItemFolderItemFlatMetadata = ({
   navigationMenuItemId,
   workspaceId,
   zyraStandardApplicationId,
+  color,
   dependencyFlatEntityMaps: { flatViewMaps },
   now,
 }: {
@@ -70,6 +70,7 @@ export const createStandardNavigationMenuItemFolderItemFlatMetadata = ({
   navigationMenuItemId: string;
   workspaceId: string;
   zyraStandardApplicationId: string;
+  color?: string | null;
   dependencyFlatEntityMaps: {
     flatViewMaps: FlatEntityMaps<FlatView>;
   };
@@ -108,7 +109,7 @@ export const createStandardNavigationMenuItemFolderItemFlatMetadata = ({
     name: null,
     link: null,
     icon: null,
-    color: 'gray',
+    color: color ?? 'gray',
     position,
     createdAt: now,
     updatedAt: now,
