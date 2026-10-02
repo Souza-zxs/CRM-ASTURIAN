@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import { ConnectedAccountTokenEncryptionModule } from 'src/engine/metadata-modules/connected-account/services/connected-account-token-encryption.module';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { WhatsappChannelEntity } from 'src/engine/metadata-modules/whatsapp-channel/entities/whatsapp-channel.entity';
 import { WhatsappTemplateEntity } from 'src/engine/metadata-modules/whatsapp-template/entities/whatsapp-template.entity';
 import { WhatsappTemplateResolver } from 'src/engine/metadata-modules/whatsapp-template/resolvers/whatsapp-template.resolver';
@@ -15,6 +16,7 @@ import { WhatsappModule } from 'src/modules/whatsapp/whatsapp.module';
     WhatsappModule,
     ConnectedAccountTokenEncryptionModule,
     PermissionsModule,
+    PlanTierModule,
     TypeOrmModule.forFeature([
       WhatsappTemplateEntity,
       WhatsappChannelEntity,

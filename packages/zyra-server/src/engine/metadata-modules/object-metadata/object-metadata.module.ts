@@ -29,6 +29,7 @@ import { ObjectMetadataService } from 'src/engine/metadata-modules/object-metada
 import { ObjectRecordCountService } from 'src/engine/metadata-modules/object-metadata/object-record-count.service';
 import { ObjectMetadataToolsFactory } from 'src/engine/metadata-modules/object-metadata/tools/object-metadata-tools.factory';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
 import { ViewFieldModule } from 'src/engine/metadata-modules/view-field/view-field.module';
 import { ViewEntity } from 'src/engine/metadata-modules/view/entities/view.entity';
@@ -45,6 +46,7 @@ import { WorkspaceMigrationModule } from 'src/engine/workspace-manager/workspace
     TokenModule,
     WorkspaceCacheStorageModule,
     FeatureFlagModule,
+    PlanTierModule,
     ApplicationModule,
     NestjsQueryGraphQLModule.forFeature({
       imports: [

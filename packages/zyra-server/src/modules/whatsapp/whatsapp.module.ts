@@ -5,6 +5,7 @@ import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-ac
 import { ConnectedAccountTokenEncryptionModule } from 'src/engine/metadata-modules/connected-account/services/connected-account-token-encryption.module';
 import { MessageChannelEntity } from 'src/engine/metadata-modules/message-channel/entities/message-channel.entity';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { ZyraConfigModule } from 'src/engine/core-modules/zyra-config/zyra-config.module';
 import { WhatsappChannelEntity } from 'src/engine/metadata-modules/whatsapp-channel/entities/whatsapp-channel.entity';
 import { ConnectWhatsappNumberResolver } from 'src/modules/whatsapp/resolvers/connect-whatsapp-number.resolver';
@@ -16,6 +17,7 @@ import { WhatsappGraphApiService } from 'src/modules/whatsapp/services/whatsapp-
     ZyraConfigModule,
     ConnectedAccountTokenEncryptionModule,
     PermissionsModule,
+    PlanTierModule,
     TypeOrmModule.forFeature([
       ConnectedAccountEntity,
       MessageChannelEntity,

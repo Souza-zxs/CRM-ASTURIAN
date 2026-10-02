@@ -16,7 +16,7 @@ jobs:
     with:
       files: |
         package.json
-        yarn.lock
+        package-lock.json
         packages/zyra-front-component-renderer/**
         packages/zyra-sdk/**
         packages/zyra-shared/**

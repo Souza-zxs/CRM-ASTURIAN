@@ -10,12 +10,17 @@ import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorat
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { CreateWhatsappAgentInput } from 'src/engine/metadata-modules/whatsapp-agent/dtos/create-whatsapp-agent.input';
 import { UpdateWhatsappAgentInput } from 'src/engine/metadata-modules/whatsapp-agent/dtos/update-whatsapp-agent.input';
 import { WhatsappAgentDTO } from 'src/engine/metadata-modules/whatsapp-agent/dtos/whatsapp-agent.dto';
 import { WhatsappAgentMetadataService } from 'src/engine/metadata-modules/whatsapp-agent/whatsapp-agent-metadata.service';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => WhatsappAgentDTO)
 export class WhatsappAgentResolver {
   constructor(
@@ -24,6 +29,7 @@ export class WhatsappAgentResolver {
 
   @Query(() => [WhatsappAgentDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async myWhatsappAgents(
     @AuthWorkspace() workspace: WorkspaceEntity,
   ): Promise<WhatsappAgentDTO[]> {
@@ -34,6 +40,7 @@ export class WhatsappAgentResolver {
 
   @Mutation(() => WhatsappAgentDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async createWhatsappAgent(
     @Args('input') input: CreateWhatsappAgentInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -56,6 +63,7 @@ export class WhatsappAgentResolver {
 
   @Mutation(() => WhatsappAgentDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async updateWhatsappAgent(
     @Args('input') input: UpdateWhatsappAgentInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -79,6 +87,7 @@ export class WhatsappAgentResolver {
 
   @Mutation(() => WhatsappAgentDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async deleteWhatsappAgent(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() workspace: WorkspaceEntity,

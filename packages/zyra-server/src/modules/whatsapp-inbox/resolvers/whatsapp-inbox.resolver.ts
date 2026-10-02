@@ -7,15 +7,21 @@ import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.ent
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { WhatsappConversationDTO } from 'src/modules/whatsapp-inbox/dtos/whatsapp-conversation.dto';
 import { WhatsappInboxService } from 'src/modules/whatsapp-inbox/services/whatsapp-inbox.service';
 
-@UseGuards(WorkspaceAuthGuard, NoPermissionGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard, NoPermissionGuard)
 @MetadataResolver(() => WhatsappConversationDTO)
 export class WhatsappInboxResolver {
   constructor(private readonly whatsappInboxService: WhatsappInboxService) {}
 
   @Query(() => String, { nullable: true })
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async getWhatsappThreadIdForPerson(
     @Args('personId', { type: () => UUIDScalarType }) personId: string,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -27,6 +33,7 @@ export class WhatsappInboxResolver {
   }
 
   @Query(() => [WhatsappConversationDTO])
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async getWhatsappConversations(
     @AuthWorkspace() workspace: WorkspaceEntity,
   ): Promise<WhatsappConversationDTO[]> {

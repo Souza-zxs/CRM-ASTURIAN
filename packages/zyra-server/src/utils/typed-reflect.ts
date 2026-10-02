@@ -5,6 +5,7 @@ import { type Gate } from 'src/engine/zyra-orm/interfaces/gate.interface';
 
 import { type WorkspaceEntityDuplicateCriteria } from 'src/engine/api/graphql/workspace-query-builder/types/workspace-entity-duplicate-criteria.type';
 import { type ConfigVariablesMetadataMap } from 'src/engine/core-modules/zyra-config/decorators/config-variables-metadata.decorator';
+import { type PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 
 export interface ReflectMetadataTypeMap {
   ['workspace:is-nullable-metadata-args']: true;
@@ -20,6 +21,7 @@ export interface ReflectMetadataTypeMap {
   ['config-variables']: ConfigVariablesMetadataMap;
   ['workspace:is-searchable-metadata-args']: boolean;
   ['feature-flag-metadata-args']: FeatureFlagKey;
+  ['plan-gated-feature-metadata-args']: PlanGatedFeature;
 }
 
 export class TypedReflect {

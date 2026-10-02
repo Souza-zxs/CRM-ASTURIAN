@@ -85,6 +85,7 @@ import { CreateFunnelTablesFastInstanceCommand } from 'src/database/commands/upg
 import { AddWhatsappAgentQualificationFieldsFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1800000000000-add-whatsapp-agent-qualification-fields';
 import { CreatePaymentsTablesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1801000000000-create-payments-tables';
 import { AddFunnelLeadSessionScheduledAtFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1802000000000-add-funnel-lead-session-scheduled-at';
+import { CreateWorkspacePlanGrandfatherTableFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1803100000000-create-workspace-plan-grandfather-table';
 
 export const INSTANCE_COMMANDS = [
   AddViewFieldGroupIdIndexOnViewFieldFastInstanceCommand,
@@ -172,4 +173,5 @@ export const INSTANCE_COMMANDS = [
   AddWhatsappAgentQualificationFieldsFastInstanceCommand,
   CreatePaymentsTablesFastInstanceCommand,
   AddFunnelLeadSessionScheduledAtFastInstanceCommand,
+  CreateWorkspacePlanGrandfatherTableFastInstanceCommand,
 ];

@@ -24,6 +24,11 @@ import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorat
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { UserAuthGuard } from 'src/engine/guards/user-auth.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
 import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { buildSystemAuthContext } from 'src/engine/zyra-orm/utils/build-system-auth-context.util';
@@ -34,6 +39,7 @@ import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/sta
 @UseGuards(
   WorkspaceAuthGuard,
   UserAuthGuard,
+  WorkspacePlanTierGuard,
   SettingsPermissionGuard(PermissionFlagType.WORKFLOWS),
 )
 @UsePipes(ResolverValidationPipe)
@@ -49,6 +55,7 @@ export class WorkflowTriggerResolver {
   ) {}
 
   @Mutation(() => Boolean)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async activateWorkflowVersion(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @Args('workflowVersionId', { type: () => UUIDScalarType })
@@ -61,6 +68,7 @@ export class WorkflowTriggerResolver {
   }
 
   @Mutation(() => Boolean)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async deactivateWorkflowVersion(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @Args('workflowVersionId', { type: () => UUIDScalarType })
@@ -73,6 +81,7 @@ export class WorkflowTriggerResolver {
   }
 
   @Mutation(() => RunWorkflowVersionDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async runWorkflowVersion(
     @AuthUser() user: AuthContextUser,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -123,6 +132,7 @@ export class WorkflowTriggerResolver {
   }
 
   @Mutation(() => WorkflowRunDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async stopWorkflowRun(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @Args('workflowRunId', { type: () => UUIDScalarType })
@@ -135,6 +145,7 @@ export class WorkflowTriggerResolver {
   }
 
   @Mutation(() => WorkflowRunDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async retryWorkflowRun(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @Args('workflowRunId', { type: () => UUIDScalarType })
