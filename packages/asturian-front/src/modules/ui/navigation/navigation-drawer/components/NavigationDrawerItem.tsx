@@ -14,7 +14,11 @@ import { type JSX, type ReactNode, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { isDefined } from 'zyra-shared/utils';
 import { Pill, TintedIconTile } from 'zyra-ui/data-display';
-import { type IconComponent, type TablerIconsProps } from 'zyra-ui/icon';
+import {
+  IconLock,
+  type IconComponent,
+  type TablerIconsProps,
+} from 'zyra-ui/icon';
 import {
   AppTooltip,
   OverflowingTextWithTooltip,
@@ -36,9 +40,7 @@ const DEFAULT_INDENTATION_LEVEL = 1;
 export type NavigationDrawerItemIndentationLevel = 1 | 2;
 
 export type NavigationDrawerItemModifier =
-  | 'soon'
-  | 'new'
-  | { keyboard: string[] };
+  'soon' | 'new' | 'locked' | { keyboard: string[] };
 
 export type NavigationDrawerItemProps = {
   className?: string;
@@ -73,6 +75,7 @@ type StyledItemProps = Pick<
   | 'variant'
 > & {
   isSoon: boolean;
+  isLocked: boolean;
   isNavigationDrawerExpanded: boolean;
   hasRightOptions: boolean;
   href?: string;
@@ -90,14 +93,14 @@ const StyledItem = styled.button<StyledItemProps>`
       : '1px solid transparent'};
   border-radius: ${themeCssVariables.border.radius.sm};
   box-sizing: border-box;
-  color: ${({ active, isSoon, variant }) => {
+  color: ${({ active, isSoon, isLocked, variant }) => {
     if (variant === 'tertiary') {
       return themeCssVariables.font.color.tertiary;
     }
     if (active === true) {
       return themeCssVariables.font.color.primary;
     }
-    if (isSoon) {
+    if (isSoon || isLocked) {
       return themeCssVariables.font.color.light;
     }
     return themeCssVariables.font.color.secondary;
@@ -279,6 +282,7 @@ export const NavigationDrawerItem = ({
 
   const isSoon = modifier === 'soon';
   const isNew = modifier === 'new';
+  const isLocked = modifier === 'locked';
   const keyboardKeys =
     isDefined(modifier) && typeof modifier === 'object'
       ? modifier.keyboard
@@ -332,6 +336,7 @@ export const NavigationDrawerItem = ({
         active={active}
         aria-selected={active}
         isSoon={isSoon}
+        isLocked={isLocked}
         variant={variant}
         indentationLevel={indentationLevel}
         isNavigationDrawerExpanded={isExpanded}
@@ -419,6 +424,12 @@ export const NavigationDrawerItem = ({
           {isNew && (
             <NavigationDrawerAnimatedCollapseWrapper>
               <Pill label={t`New`} />
+            </NavigationDrawerAnimatedCollapseWrapper>
+          )}
+
+          {isLocked && (
+            <NavigationDrawerAnimatedCollapseWrapper>
+              <Pill Icon={IconLock} label={t`Bloqueado`} />
             </NavigationDrawerAnimatedCollapseWrapper>
           )}
 
