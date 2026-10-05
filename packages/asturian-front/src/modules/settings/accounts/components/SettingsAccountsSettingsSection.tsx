@@ -7,14 +7,18 @@ import { isWhatsappAiAgentEnabledState } from '@/client-config/states/isWhatsapp
 import { isWhatsappMessagingEnabledState } from '@/client-config/states/isWhatsappMessagingEnabledState';
 import { SettingsCard } from '@/settings/components/SettingsCard';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
+import { ModuleLimitBlockedModal } from '@/workspace/components/ModuleLimitBlockedModal';
+import { useModuleAccessGate } from '@/workspace/hooks/useModuleAccessGate';
 import { useLingui } from '@lingui/react/macro';
 import { SettingsPath } from 'zyra-shared/types';
 import { getSettingsPath } from 'zyra-shared/utils';
+import { Pill } from 'zyra-ui/data-display';
 import {
   IconBrandInstagram,
   IconBrandWhatsapp,
   IconCalendarEvent,
   IconFileText,
+  IconLock,
   IconMailCog,
   IconPhone,
   IconRobot,
@@ -56,6 +60,14 @@ export const SettingsAccountsSettingsSection = () => {
   const isWhatsappAiAgentEnabled = useAtomStateValue(
     isWhatsappAiAgentEnabledState,
   );
+
+  const whatsappGate = useModuleAccessGate('WHATSAPP');
+  const manychatLikeGate = useModuleAccessGate('MANYCHAT_LIKE');
+  const voiceAgentGate = useModuleAccessGate('VOICE_AGENT');
+  const aiAgentGate = useModuleAccessGate('AI_AGENT');
+
+  const lockedStatus = <Pill Icon={IconLock} label={t`Bloqueado`} />;
+
   return (
     <Section>
       <H2Title
@@ -93,9 +105,7 @@ export const SettingsAccountsSettingsSection = () => {
         </StyledCardLinkSlot>
         {isWhatsappMessagingEnabled && (
           <StyledCardLinkSlot>
-            <UndecoratedLink
-              to={getSettingsPath(SettingsPath.AccountsWhatsapp)}
-            >
+            {whatsappGate.isLocked ? (
               <SettingsCard
                 Icon={
                   <IconBrandWhatsapp
@@ -105,15 +115,30 @@ export const SettingsAccountsSettingsSection = () => {
                 }
                 title={t`WhatsApp`}
                 description={t`Manage your connected WhatsApp numbers.`}
+                Status={lockedStatus}
+                onClick={whatsappGate.openUpsellModal}
               />
-            </UndecoratedLink>
+            ) : (
+              <UndecoratedLink
+                to={getSettingsPath(SettingsPath.AccountsWhatsapp)}
+              >
+                <SettingsCard
+                  Icon={
+                    <IconBrandWhatsapp
+                      size={theme.icon.size.lg}
+                      stroke={theme.icon.stroke.sm}
+                    />
+                  }
+                  title={t`WhatsApp`}
+                  description={t`Manage your connected WhatsApp numbers.`}
+                />
+              </UndecoratedLink>
+            )}
           </StyledCardLinkSlot>
         )}
         {isWhatsappMessagingEnabled && (
           <StyledCardLinkSlot>
-            <UndecoratedLink
-              to={getSettingsPath(SettingsPath.AccountsWhatsappTemplates)}
-            >
+            {whatsappGate.isLocked ? (
               <SettingsCard
                 Icon={
                   <IconFileText
@@ -123,15 +148,36 @@ export const SettingsAccountsSettingsSection = () => {
                 }
                 title={t`WhatsApp Templates`}
                 description={t`Create and submit message templates for Meta's approval.`}
+                Status={lockedStatus}
+                onClick={whatsappGate.openUpsellModal}
               />
-            </UndecoratedLink>
+            ) : (
+              <UndecoratedLink
+                to={getSettingsPath(SettingsPath.AccountsWhatsappTemplates)}
+              >
+                <SettingsCard
+                  Icon={
+                    <IconFileText
+                      size={theme.icon.size.lg}
+                      stroke={theme.icon.stroke.sm}
+                    />
+                  }
+                  title={t`WhatsApp Templates`}
+                  description={t`Create and submit message templates for Meta's approval.`}
+                />
+              </UndecoratedLink>
+            )}
           </StyledCardLinkSlot>
+        )}
+        {isWhatsappMessagingEnabled && (
+          <ModuleLimitBlockedModal
+            modalInstanceId={whatsappGate.modalInstanceId}
+            featureName={t`WhatsApp`}
+          />
         )}
         {isInstagramMessagingEnabled && (
           <StyledCardLinkSlot>
-            <UndecoratedLink
-              to={getSettingsPath(SettingsPath.AccountsInstagram)}
-            >
+            {manychatLikeGate.isLocked ? (
               <SettingsCard
                 Icon={
                   <IconBrandInstagram
@@ -141,15 +187,34 @@ export const SettingsAccountsSettingsSection = () => {
                 }
                 title={t`Instagram`}
                 description={t`Manage comment-to-DM automation rules.`}
+                Status={lockedStatus}
+                onClick={manychatLikeGate.openUpsellModal}
               />
-            </UndecoratedLink>
+            ) : (
+              <UndecoratedLink
+                to={getSettingsPath(SettingsPath.AccountsInstagram)}
+              >
+                <SettingsCard
+                  Icon={
+                    <IconBrandInstagram
+                      size={theme.icon.size.lg}
+                      stroke={theme.icon.stroke.sm}
+                    />
+                  }
+                  title={t`Instagram`}
+                  description={t`Manage comment-to-DM automation rules.`}
+                />
+              </UndecoratedLink>
+            )}
+            <ModuleLimitBlockedModal
+              modalInstanceId={manychatLikeGate.modalInstanceId}
+              featureName={t`Instagram`}
+            />
           </StyledCardLinkSlot>
         )}
         {isVoiceAgentEnabled && (
           <StyledCardLinkSlot>
-            <UndecoratedLink
-              to={getSettingsPath(SettingsPath.AccountsVoiceAgent)}
-            >
+            {voiceAgentGate.isLocked ? (
               <SettingsCard
                 Icon={
                   <IconPhone
@@ -159,15 +224,34 @@ export const SettingsAccountsSettingsSection = () => {
                 }
                 title={t`Voice AI Agent`}
                 description={t`Configure AI agents to answer and make phone calls.`}
+                Status={lockedStatus}
+                onClick={voiceAgentGate.openUpsellModal}
               />
-            </UndecoratedLink>
+            ) : (
+              <UndecoratedLink
+                to={getSettingsPath(SettingsPath.AccountsVoiceAgent)}
+              >
+                <SettingsCard
+                  Icon={
+                    <IconPhone
+                      size={theme.icon.size.lg}
+                      stroke={theme.icon.stroke.sm}
+                    />
+                  }
+                  title={t`Voice AI Agent`}
+                  description={t`Configure AI agents to answer and make phone calls.`}
+                />
+              </UndecoratedLink>
+            )}
+            <ModuleLimitBlockedModal
+              modalInstanceId={voiceAgentGate.modalInstanceId}
+              featureName={t`Voice AI Agent`}
+            />
           </StyledCardLinkSlot>
         )}
         {isWhatsappAiAgentEnabled && (
           <StyledCardLinkSlot>
-            <UndecoratedLink
-              to={getSettingsPath(SettingsPath.AccountsWhatsappAgent)}
-            >
+            {aiAgentGate.isLocked ? (
               <SettingsCard
                 Icon={
                   <IconRobot
@@ -177,8 +261,29 @@ export const SettingsAccountsSettingsSection = () => {
                 }
                 title={t`WhatsApp AI Agent`}
                 description={t`Configure AI agents to automatically reply to WhatsApp messages.`}
+                Status={lockedStatus}
+                onClick={aiAgentGate.openUpsellModal}
               />
-            </UndecoratedLink>
+            ) : (
+              <UndecoratedLink
+                to={getSettingsPath(SettingsPath.AccountsWhatsappAgent)}
+              >
+                <SettingsCard
+                  Icon={
+                    <IconRobot
+                      size={theme.icon.size.lg}
+                      stroke={theme.icon.stroke.sm}
+                    />
+                  }
+                  title={t`WhatsApp AI Agent`}
+                  description={t`Configure AI agents to automatically reply to WhatsApp messages.`}
+                />
+              </UndecoratedLink>
+            )}
+            <ModuleLimitBlockedModal
+              modalInstanceId={aiAgentGate.modalInstanceId}
+              featureName={t`WhatsApp AI Agent`}
+            />
           </StyledCardLinkSlot>
         )}
       </StyledCardsContainer>
