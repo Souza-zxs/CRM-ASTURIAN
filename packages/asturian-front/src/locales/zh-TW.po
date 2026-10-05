@@ -1006,7 +1006,9 @@ msgid "Add \"{trimmedName}\" to options"
 msgstr "將 \"{trimmedName}\" 添加到選項中"
 
 #. js-lingui-id: 9CHcSG
+#: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateNoGroupNoRecordAtAll.tsx
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateNoRecordFoundForFilter.tsx
+#: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "Add a {objectLabelSingular}"
 msgstr "新增一個 {objectLabelSingular}"
 
