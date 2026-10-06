@@ -9,8 +9,11 @@ export const useModuleAccessGate = (module: WorkspaceModule) => {
   const { hasModule, loading } = useWorkspaceModules();
   const { openModal } = useModal();
 
-  const hasAccess = loading || hasModule(module);
-  const isLocked = !hasAccess;
+  const hasAccess = hasModule(module);
+  // Don't flash a lock badge before the entitlement query resolves — treat
+  // a still-loading workspace as not-yet-locked rather than reporting a
+  // module the workspace may not actually have as accessible.
+  const isLocked = !loading && !hasAccess;
   const modalInstanceId = getModuleAccessGateModalId(module);
 
   const openUpsellModal = () => {

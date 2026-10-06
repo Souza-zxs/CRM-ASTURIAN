@@ -77,10 +77,12 @@ export const NavigationDrawerOtherSection = () => {
                 Icon={IconBrandWhatsapp}
               />
             )}
-            <ModuleLimitBlockedModal
-              modalInstanceId={whatsappModalInstanceId}
-              featureName={t`WhatsApp`}
-            />
+            {isWhatsappLocked && (
+              <ModuleLimitBlockedModal
+                modalInstanceId={whatsappModalInstanceId}
+                featureName={t`WhatsApp`}
+              />
+            )}
           </>
         )}
         <NavigationDrawerItem

@@ -6,6 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { NavigationDrawerOtherSection } from '@/navigation/components/NavigationDrawerOtherSection';
 import { isWhatsappMessagingEnabledState } from '@/client-config/states/isWhatsappMessagingEnabledState';
+import { type WorkspaceModule } from '@/workspace/types/WorkspaceModuleEntitlement';
 import { getJestMetadataAndApolloMocksWrapper } from '~/testing/jest/getJestMetadataAndApolloMocksWrapper';
 
 // getJestMetadataAndApolloMocksWrapper doesn't provide an I18nProvider, but
@@ -17,10 +18,15 @@ const mockOpenUpsellModal = jest.fn();
 let mockIsLocked = false;
 
 jest.mock('@/workspace/hooks/useModuleAccessGate', () => ({
-  useModuleAccessGate: () => ({
+  useModuleAccessGate: (module: WorkspaceModule) => ({
     hasAccess: !mockIsLocked,
     isLocked: mockIsLocked,
-    modalInstanceId: 'module-access-gate-WHATSAPP',
+    // Use the real id helper so a change to the id format breaks this test.
+    modalInstanceId: jest
+      .requireActual<typeof import('@/workspace/hooks/useModuleAccessGate')>(
+        '@/workspace/hooks/useModuleAccessGate',
+      )
+      .getModuleAccessGateModalId(module),
     openUpsellModal: mockOpenUpsellModal,
   }),
 }));

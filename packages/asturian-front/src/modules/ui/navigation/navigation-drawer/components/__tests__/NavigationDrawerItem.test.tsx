@@ -28,6 +28,8 @@ describe('NavigationDrawerItem', () => {
     );
 
     expect(screen.getByText('Bloqueado')).toBeVisible();
+    // A locked item must never navigate — it only opens the upsell modal.
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
 
     await user.click(screen.getByText('WhatsApp Inbox'));
 
