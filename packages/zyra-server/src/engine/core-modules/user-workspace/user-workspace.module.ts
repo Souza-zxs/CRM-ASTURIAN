@@ -33,6 +33,7 @@ import { WorkspaceDataSourceModule } from 'src/engine/workspace-datasource/works
     PlanTierModule,
     NestjsQueryGraphQLModule.forFeature({
       imports: [
+        PlanTierModule,
         NestjsQueryTypeOrmModule.forFeature([
           UserEntity,
           UserWorkspaceEntity,
