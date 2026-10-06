@@ -24,7 +24,7 @@ jobs:
     with:
       files: |
         package.json
-        yarn.lock
+        package-lock.json
         packages/asturian-front/**
         packages/zyra-front-component-renderer/**
         packages/zyra-ui/**

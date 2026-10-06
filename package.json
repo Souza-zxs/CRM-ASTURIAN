@@ -15,7 +15,6 @@
     "nx": "22.7.5",
     "oxfmt": "0.50.0",
     "patch-package": "^8.0.0",
-    "postinstall-postinstall": "^2.1.0",
     "railway": "^3.5.10",
     "tsx": "^4.17.0",
     "verdaccio": "^6.3.1"

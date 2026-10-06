@@ -1,4 +1,4 @@
-name: Yarn Install
+name: Install Dependencies
 inputs:
   node-version:
     required: false
@@ -12,7 +12,7 @@ runs:
       shell: bash
       run: |
         # Default GitHub images ship large SDKs this repo does not use; removing
-        # them avoids ENOSPC when restoring or linking a full Yarn node_modules.
+        # them avoids ENOSPC when restoring or linking a full node_modules.
         sudo rm -rf /usr/share/dotnet
         sudo rm -rf /usr/local/lib/android
         sudo rm -rf /opt/ghc
@@ -23,12 +23,12 @@ runs:
       shell: bash
       run: |
         echo "ACTION_SHELL=bash" >> "${GITHUB_OUTPUT}"
-        echo "CACHE_KEY_PREFIX=node_modules-cache-node-${{ inputs.node-version }}-${{ hashFiles('yarn.lock') }}"  >> "${GITHUB_OUTPUT}"
+        echo "CACHE_KEY_PREFIX=node_modules-cache-node-${{ inputs.node-version }}-${{ hashFiles('package-lock.json') }}"  >> "${GITHUB_OUTPUT}"
         echo 'PATH_TO_CACHE<<EOF' >> $GITHUB_OUTPUT
         echo "node_modules" >> $GITHUB_OUTPUT
         echo "packages/*/node_modules" >> $GITHUB_OUTPUT
         echo 'EOF' >> $GITHUB_OUTPUT
-    - name: Setup Node.js and get yarn cache
+    - name: Setup Node.js
       uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       with:
         node-version: ${{ inputs.node-version }}
@@ -43,9 +43,33 @@ runs:
       if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' && steps.cache-node-modules.outputs.cache-matched-key == '' }}
       shell: ${{ steps.globals.outputs.ACTION_SHELL }}
       run: |
-        yarn config set enableHardenedMode true
-        yarn config set enableScripts false
-        yarn --immutable --check-cache
+        npm ci
+    # package-lock.json is generated on Windows dev machines, and npm has a
+    # known bug (npm/cli#4828) where it then omits other platforms' optional
+    # native bindings from the lockfile entirely - npm ci/install on Linux CI
+    # never even attempts to fetch them. Runs unconditionally (not gated on
+    # cache-hit) so a cache restored from before this fix still gets patched.
+    - name: Work around missing Linux optional native bindings in the lockfile
+      if: runner.os == 'Linux'
+      shell: bash
+      run: |
+        npm install --no-save \
+          @rolldown/binding-linux-x64-gnu@1.0.3 \
+          @typescript/native-preview-linux-x64@7.0.0-dev.20260116.1 \
+          @swc/core-linux-x64-gnu@1.15.18 \
+          @oxlint/binding-linux-x64-gnu@1.53.0 \
+          @oxfmt/binding-linux-x64-gnu@0.50.0 \
+          @nx/nx-linux-x64-gnu@22.7.5 \
+          @rollup/rollup-linux-x64-gnu@4.59.0 \
+          @rspack/binding-linux-x64-gnu@1.6.8 \
+          @unrs/resolver-binding-linux-x64-gnu@1.11.1 \
+          @next/swc-linux-x64-gnu@16.2.6 \
+          @napi-rs/nice-linux-x64-gnu@1.1.1 \
+          lightningcss-linux-x64-gnu@1.32.0 \
+          @img/sharp-linux-x64@0.34.5 \
+          @img/sharp-libvips-linux-x64@1.2.4 \
+          @parcel/watcher-linux-x64-glibc@2.5.6 \
+          sass-embedded-linux-x64@1.100.0
     # Fork PRs on pull_request already can't write to the base repo's cache (GitHub built-in).
     # The fork guard is defense-in-depth for pull_request_target, which does have write access.
     - name: Save cache

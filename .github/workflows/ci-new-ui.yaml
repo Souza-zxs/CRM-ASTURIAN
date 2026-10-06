@@ -19,7 +19,7 @@ jobs:
     with:
       files: |
         package.json
-        yarn.lock
+        package-lock.json
         packages/zyra-ui/**
         packages/zyra-shared/**
   new-ui-task:
