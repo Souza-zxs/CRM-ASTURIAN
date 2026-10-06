@@ -64,6 +64,7 @@ screenshots/
 
 .vercel
 .env*
+!**/.env.example
 
 # Cache local do CLI do Supabase
 supabase/.temp/
