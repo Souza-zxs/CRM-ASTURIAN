@@ -83,6 +83,10 @@ const LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_EMAIL = 5;
 const LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_IP = 20;
 const LOGIN_RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 
+const SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS_PER_EMAIL = 3;
+const SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS_PER_IP = 10;
+const SIGN_UP_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+
 @Injectable()
 // oxlint-disable-next-line zyra/inject-workspace-repository
 export class AuthService {
@@ -156,6 +160,24 @@ export class AuthService {
         userFriendlyMessage: msg`User is not a member of the workspace.`,
       },
     );
+  }
+
+  async throttleSignUpAttempt(email: string, ipAddress?: string) {
+    await this.throttlerService.tokenBucketThrottleOrThrow(
+      `signup:email:${email.toLowerCase()}`,
+      1,
+      SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS_PER_EMAIL,
+      SIGN_UP_RATE_LIMIT_WINDOW_MS,
+    );
+
+    if (ipAddress) {
+      await this.throttlerService.tokenBucketThrottleOrThrow(
+        `signup:ip:${ipAddress}`,
+        1,
+        SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS_PER_IP,
+        SIGN_UP_RATE_LIMIT_WINDOW_MS,
+      );
+    }
   }
 
   async validateLoginWithPassword(

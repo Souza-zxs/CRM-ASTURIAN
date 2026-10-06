@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react';
+import { WorkspacePlanTier } from '~/generated-metadata/graphql';
 
 import {
   AUTO_SELECT_FAST_MODEL_ID,
@@ -75,6 +76,7 @@ describe('useColumnDefinitionsFromObjectMetadata', () => {
       enabledAiModelIds: [],
       useRecommendedModels: true,
       isInternalMessagesImportEnabled: false,
+      planTier: WorkspacePlanTier.BASIC,
     });
 
     const companyObjectMetadata = getTestEnrichedObjectMetadataItemsMock().find(

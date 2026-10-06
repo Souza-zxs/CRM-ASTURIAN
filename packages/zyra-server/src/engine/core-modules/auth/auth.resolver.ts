@@ -400,7 +400,13 @@ export class AuthResolver {
   @UseGuards(CaptchaGuard, PublicEndpointGuard, NoPermissionGuard)
   async signUp(
     @Args() signUpInput: UserCredentialsInput,
+    @Context() context: { req: { ip?: string } },
   ): Promise<AvailableWorkspacesAndAccessTokensDTO> {
+    await this.authService.throttleSignUpAttempt(
+      signUpInput.email,
+      context.req.ip,
+    );
+
     const user = await this.signInUpService.signUpWithoutWorkspace(
       {
         email: signUpInput.email,
@@ -454,7 +460,13 @@ export class AuthResolver {
   async signUpInWorkspace(
     @Args() signUpInput: SignUpInput,
     @AuthProvider() authProvider: AuthProviderEnum,
+    @Context() context: { req: { ip?: string } },
   ): Promise<SignUpDTO> {
+    await this.authService.throttleSignUpAttempt(
+      signUpInput.email,
+      context.req.ip,
+    );
+
     const currentWorkspace = await this.authService.findWorkspaceForSignInUp({
       workspaceInviteHash: signUpInput.workspaceInviteHash,
       authProvider: AuthProviderEnum.Password,

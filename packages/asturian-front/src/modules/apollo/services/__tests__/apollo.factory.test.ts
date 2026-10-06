@@ -8,7 +8,10 @@ import {
   AUTO_SELECT_FAST_MODEL_ID,
   AUTO_SELECT_SMART_MODEL_ID,
 } from 'zyra-shared/constants';
-import { WorkspaceActivationStatus } from '~/generated-metadata/graphql';
+import {
+  WorkspaceActivationStatus,
+  WorkspacePlanTier,
+} from '~/generated-metadata/graphql';
 
 enableFetchMocks();
 
@@ -85,6 +88,7 @@ const mockWorkspace = {
   enabledAiModelIds: [],
   useRecommendedModels: true,
   isInternalMessagesImportEnabled: false,
+  planTier: WorkspacePlanTier.BASIC,
   workspaceCustomApplication: CUSTOM_WORKSPACE_APPLICATION_MOCK,
   workspaceCustomApplicationId: CUSTOM_WORKSPACE_APPLICATION_MOCK.id,
   installedApplications: [],
