@@ -14,11 +14,6 @@ import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorat
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { UserAuthGuard } from 'src/engine/guards/user-auth.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
-import {
-  RequirePlanGatedFeature,
-  WorkspacePlanTierGuard,
-} from 'src/engine/guards/workspace-plan-tier.guard';
-import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
 import { WorkflowVersionEdgeWorkspaceService } from 'src/modules/workflow/workflow-builder/workflow-version-edge/workflow-version-edge.workspace-service';
 
@@ -27,7 +22,6 @@ import { WorkflowVersionEdgeWorkspaceService } from 'src/modules/workflow/workfl
 @UseGuards(
   WorkspaceAuthGuard,
   UserAuthGuard,
-  WorkspacePlanTierGuard,
   SettingsPermissionGuard(PermissionFlagType.WORKFLOWS),
 )
 @UseFilters(
@@ -41,7 +35,6 @@ export class WorkflowVersionEdgeResolver {
   ) {}
 
   @Mutation(() => WorkflowVersionStepChangesDTO)
-  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async createWorkflowVersionEdge(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')
@@ -62,7 +55,6 @@ export class WorkflowVersionEdgeResolver {
   }
 
   @Mutation(() => WorkflowVersionStepChangesDTO)
-  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async deleteWorkflowVersionEdge(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input')

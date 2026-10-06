@@ -14,11 +14,6 @@ import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorat
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { UserAuthGuard } from 'src/engine/guards/user-auth.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
-import {
-  RequirePlanGatedFeature,
-  WorkspacePlanTierGuard,
-} from 'src/engine/guards/workspace-plan-tier.guard';
-import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
 import { type OutputSchema } from 'src/modules/workflow/workflow-builder/workflow-schema/types/output-schema.type';
 import { WorkflowSchemaWorkspaceService } from 'src/modules/workflow/workflow-builder/workflow-schema/workflow-schema.workspace-service';
@@ -27,7 +22,6 @@ import { WorkflowSchemaWorkspaceService } from 'src/modules/workflow/workflow-bu
 @UseGuards(
   WorkspaceAuthGuard,
   UserAuthGuard,
-  WorkspacePlanTierGuard,
   SettingsPermissionGuard(PermissionFlagType.WORKFLOWS),
 )
 @UsePipes(ResolverValidationPipe)
@@ -42,7 +36,6 @@ export class WorkflowBuilderResolver {
   ) {}
 
   @Mutation(() => graphqlTypeJson)
-  @RequirePlanGatedFeature(PlanGatedFeature.WORKFLOWS)
   async computeStepOutputSchema(
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
     @Args('input') { step, workflowVersionId }: ComputeStepOutputSchemaInput,

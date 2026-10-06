@@ -61,7 +61,7 @@ export class WorkspacePlanTierGuard implements CanActivate {
 
     if (!hasAccess) {
       throw new ForbiddenException(
-        `Feature "${feature}" requires the Pro plan`,
+        `This feature requires the "${feature}" module to be contracted.`,
       );
     }
 

@@ -12,6 +12,7 @@ import { ApiKeyRoleService } from 'src/engine/core-modules/api-key/services/api-
 import { ApiKeyService } from 'src/engine/core-modules/api-key/services/api-key.service';
 import { JwtTokenTypeEnum } from 'src/engine/core-modules/auth/types/jwt-token-type.enum';
 import { JwtWrapperService } from 'src/engine/core-modules/jwt/services/jwt-wrapper.service';
+import { WorkspacePlanTierService } from 'src/engine/core-modules/plan-tier/services/workspace-plan-tier.service';
 import { RoleTargetEntity } from 'src/engine/metadata-modules/role-target/role-target.entity';
 import { RoleTargetService } from 'src/engine/metadata-modules/role-target/services/role-target.service';
 import { getWorkspaceScopedRepositoryToken } from 'src/engine/zyra-orm/workspace-scoped-repository/get-workspace-scoped-repository-token.util';
@@ -25,6 +26,7 @@ describe('ApiKeyService', () => {
   let mockApiKeyRoleService: any;
   let mockRoleTargetService: any;
   let mockDataSource: any;
+  let mockWorkspacePlanTierService: any;
 
   const mockWorkspaceId = 'workspace-123';
   const mockApiKeyId = 'api-key-456';
@@ -85,6 +87,10 @@ describe('ApiKeyService', () => {
       transaction: jest.fn(),
     };
 
+    mockWorkspacePlanTierService = {
+      hasAccessToFeature: jest.fn().mockResolvedValue(true),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ApiKeyService,
@@ -117,6 +123,10 @@ describe('ApiKeyService', () => {
           useValue: {
             invalidateAndRecompute: jest.fn(),
           },
+        },
+        {
+          provide: WorkspacePlanTierService,
+          useValue: mockWorkspacePlanTierService,
         },
       ],
     }).compile();
@@ -190,6 +200,21 @@ describe('ApiKeyService', () => {
         mockWorkspaceId,
         { id: mockApiKey.id },
       );
+    });
+
+    it('should throw and never save if the workspace lacks the API Access module', async () => {
+      mockWorkspacePlanTierService.hasAccessToFeature.mockResolvedValue(false);
+
+      const apiKeyData = {
+        name: 'New API Key',
+        expiresAt: new Date('2025-12-31'),
+        workspaceId: mockWorkspaceId,
+        roleId: 'mock-role-id',
+      };
+
+      await expect(service.create(apiKeyData)).rejects.toThrow();
+
+      expect(mockApiKeyRepository.save).not.toHaveBeenCalled();
     });
 
     it('should handle save failures gracefully', async () => {

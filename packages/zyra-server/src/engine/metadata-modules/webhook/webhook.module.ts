@@ -7,6 +7,7 @@ import { TokenModule } from 'src/engine/core-modules/auth/token/token.module';
 import { WorkspaceManyOrAllFlatEntityMapsCacheModule } from 'src/engine/metadata-modules/flat-entity/services/workspace-many-or-all-flat-entity-maps-cache.module';
 import { FlatWebhookModule } from 'src/engine/metadata-modules/flat-webhook/flat-webhook.module';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { WebhookController } from 'src/engine/metadata-modules/webhook/controllers/webhook.controller';
 import { WebhookEntity } from 'src/engine/metadata-modules/webhook/entities/webhook.entity';
 import { WebhookGraphqlApiExceptionInterceptor } from 'src/engine/metadata-modules/webhook/interceptors/webhook-graphql-api-exception.interceptor';
@@ -28,6 +29,7 @@ import { WorkspaceMigrationModule } from 'src/engine/workspace-manager/workspace
     TokenModule,
     PermissionsModule,
     FlatWebhookModule,
+    PlanTierModule,
   ],
   controllers: [WebhookController],
   providers: [

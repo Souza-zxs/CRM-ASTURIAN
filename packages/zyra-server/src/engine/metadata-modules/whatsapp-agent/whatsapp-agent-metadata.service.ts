@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { isDefined } from 'zyra-shared/utils';
 
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { WhatsappAgentEntity } from 'src/engine/metadata-modules/whatsapp-agent/entities/whatsapp-agent.entity';
 import {
   WhatsappAgentException,
@@ -44,6 +45,7 @@ export class WhatsappAgentMetadataService {
     private readonly whatsappAgentRepository: WorkspaceScopedRepository<WhatsappAgentEntity>,
     @InjectWorkspaceScopedRepository(WhatsappChannelEntity)
     private readonly whatsappChannelRepository: WorkspaceScopedRepository<WhatsappChannelEntity>,
+    private readonly planLimitService: PlanLimitService,
   ) {}
 
   async findByWorkspaceId({
@@ -108,6 +110,17 @@ export class WhatsappAgentMetadataService {
         WhatsappAgentExceptionCode.WHATSAPP_AGENT_ALREADY_EXISTS_FOR_CHANNEL,
       );
     }
+
+    const currentAgentCount = await this.whatsappAgentRepository.count(
+      workspaceId,
+      {},
+    );
+
+    await this.planLimitService.assertWithinLimit(
+      workspaceId,
+      'maxAIAgents',
+      currentAgentCount,
+    );
 
     return this.whatsappAgentRepository.save(workspaceId, {
       whatsappChannelId: data.whatsappChannelId,

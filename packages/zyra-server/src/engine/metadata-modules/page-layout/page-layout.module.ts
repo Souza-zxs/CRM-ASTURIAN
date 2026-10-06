@@ -17,6 +17,7 @@ import { PageLayoutResetService } from 'src/engine/metadata-modules/page-layout/
 import { PageLayoutUpdateService } from 'src/engine/metadata-modules/page-layout/services/page-layout-update.service';
 import { PageLayoutService } from 'src/engine/metadata-modules/page-layout/services/page-layout.service';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { ViewModule } from 'src/engine/metadata-modules/view/view.module';
 import { ZyraORMModule } from 'src/engine/zyra-orm/zyra-orm.module';
 import { WorkspaceCacheStorageModule } from 'src/engine/workspace-cache-storage/workspace-cache-storage.module';
@@ -40,6 +41,7 @@ import { DashboardSyncModule } from 'src/modules/dashboard-sync/dashboard-sync.m
     ApplicationModule,
     DashboardSyncModule,
     ViewModule,
+    PlanTierModule,
   ],
   controllers: [PageLayoutController],
   providers: [

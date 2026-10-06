@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 
+import { MoreThanOrEqual } from 'typeorm';
 import { QUERY_MAX_RECORDS } from 'zyra-shared/constants';
 
 import { InjectMessageQueue } from 'src/engine/core-modules/message-queue/decorators/message-queue.decorator';
@@ -7,6 +8,7 @@ import { MessageQueue } from 'src/engine/core-modules/message-queue/message-queu
 import { MessageQueueService } from 'src/engine/core-modules/message-queue/services/message-queue.service';
 import { MetricsService } from 'src/engine/core-modules/metrics/metrics.service';
 import { MetricsKeys } from 'src/engine/core-modules/metrics/types/metrics-keys.type';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { buildSystemAuthContext } from 'src/engine/zyra-orm/utils/build-system-auth-context.util';
 import {
@@ -27,6 +29,7 @@ export class WorkflowRunEnqueueWorkspaceService {
     @InjectMessageQueue(MessageQueue.workflowQueue)
     private readonly messageQueueService: MessageQueueService,
     private readonly metricsService: MetricsService,
+    private readonly planLimitService: PlanLimitService,
   ) {}
 
   async enqueueRunsForWorkspace({
@@ -77,6 +80,36 @@ export class WorkflowRunEnqueueWorkspaceService {
             await this.workflowThrottlingWorkspaceService.getRemainingRunsToEnqueueCount(
               workspaceId,
             );
+
+          // Monthly plan limit, separate from the short-window throttle
+          // above (that one protects infra/cost right now, this one is the
+          // commercial "N executions included this month"). Soft cap, not a
+          // thrown exception — this is a background cron, not a user
+          // action; runs that don't fit stay NOT_STARTED and get picked up
+          // next month (or immediately if the workspace adds the module).
+          const startOfMonth = new Date();
+
+          startOfMonth.setDate(1);
+          startOfMonth.setHours(0, 0, 0, 0);
+
+          const monthlyRunCount = await workflowRunRepository.count({
+            where: { createdAt: MoreThanOrEqual(startOfMonth.toISOString()) },
+          });
+
+          const monthlyExecutionLimit = await this.planLimitService.resolveLimit(
+            workspaceId,
+            'maxWorkflowExecutionsMonthly',
+          );
+
+          const remainingMonthlyAllowance = Math.max(
+            0,
+            monthlyExecutionLimit - monthlyRunCount,
+          );
+
+          remainingWorkflowRunToEnqueueCount = Math.min(
+            remainingWorkflowRunToEnqueueCount,
+            remainingMonthlyAllowance,
+          );
 
           let totalEnqueuedCount = 0;
 

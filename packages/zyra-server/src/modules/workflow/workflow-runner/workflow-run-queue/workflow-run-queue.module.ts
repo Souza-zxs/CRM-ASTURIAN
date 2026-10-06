@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CacheStorageModule } from 'src/engine/core-modules/cache-storage/cache-storage.module';
 import { MessageQueueModule } from 'src/engine/core-modules/message-queue/message-queue.module';
 import { MetricsModule } from 'src/engine/core-modules/metrics/metrics.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { ThrottlerModule } from 'src/engine/core-modules/throttler/throttler.module';
 import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
 import { WorkspaceDataSourceModule } from 'src/engine/workspace-datasource/workspace-datasource.module';
@@ -29,6 +30,7 @@ import { WorkflowThrottlingWorkspaceService } from 'src/modules/workflow/workflo
     WorkspaceDataSourceModule,
     MetricsModule,
     ThrottlerModule,
+    PlanTierModule,
   ],
   providers: [
     WorkflowThrottlingWorkspaceService,

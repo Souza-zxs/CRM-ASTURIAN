@@ -7,8 +7,13 @@ import { UUIDScalarType } from 'src/engine/api/graphql/workspace-schema-builder/
 import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { MetadataResolver } from 'src/engine/api/graphql/graphql-config/decorators/metadata-resolver.decorator';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
 import { CreateWebhookInput } from 'src/engine/metadata-modules/webhook/dtos/create-webhook.input';
 import { UpdateWebhookInput } from 'src/engine/metadata-modules/webhook/dtos/update-webhook.input';
 import { WebhookDTO } from 'src/engine/metadata-modules/webhook/dtos/webhook.dto';
@@ -16,7 +21,7 @@ import { WebhookGraphqlApiExceptionInterceptor } from 'src/engine/metadata-modul
 import { WebhookService } from 'src/engine/metadata-modules/webhook/webhook.service';
 import { WorkspaceMigrationGraphqlApiExceptionInterceptor } from 'src/engine/workspace-manager/workspace-migration/interceptors/workspace-migration-graphql-api-exception.interceptor';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @UseInterceptors(
   WorkspaceMigrationGraphqlApiExceptionInterceptor,
   WebhookGraphqlApiExceptionInterceptor,
@@ -44,6 +49,7 @@ export class WebhookResolver {
 
   @Mutation(() => WebhookDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.API_KEYS_AND_WEBHOOKS))
+  @RequirePlanGatedFeature(PlanGatedFeature.INTEGRATIONS)
   async createWebhook(
     @Args('input') input: CreateWebhookInput,
     @AuthWorkspace() workspace: WorkspaceEntity,

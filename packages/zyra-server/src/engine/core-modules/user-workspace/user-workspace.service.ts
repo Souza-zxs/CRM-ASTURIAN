@@ -37,6 +37,7 @@ import {
 import { RoleTargetEntity } from 'src/engine/metadata-modules/role-target/role-target.entity';
 import { RoleValidationService } from 'src/engine/metadata-modules/role-validation/services/role-validation.service';
 import { UserRoleService } from 'src/engine/metadata-modules/user-role/user-role.service';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { buildSystemAuthContext } from 'src/engine/zyra-orm/utils/build-system-auth-context.util';
 import { type WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
@@ -66,6 +67,7 @@ export class UserWorkspaceService extends TypeOrmQueryService<UserWorkspaceEntit
     private readonly fileUrlService: FileUrlService,
     private readonly onboardingService: OnboardingService,
     private readonly coreEntityCacheService: CoreEntityCacheService,
+    private readonly planLimitService: PlanLimitService,
   ) {
     super(userWorkspaceRepository);
   }
@@ -202,6 +204,22 @@ export class UserWorkspaceService extends TypeOrmQueryService<UserWorkspaceEntit
     if (existingUserWorkspace) {
       return;
     }
+
+    // Only this path — joining a workspace that already exists (invite
+    // acceptance) — is gated. The brand-new-workspace signup flow
+    // (signUpOnNewWorkspace) calls UserWorkspaceService.create() directly
+    // and never goes through here, specifically so the very first user of a
+    // workspace that has no base subscription yet is never blocked by this
+    // check (chicken-and-egg: you need a user to set up billing).
+    const currentMemberCount = await this.userWorkspaceRepository.count({
+      where: { workspaceId: workspace.id },
+    });
+
+    await this.planLimitService.assertWithinLimit(
+      workspace.id,
+      'maxUsers',
+      currentMemberCount,
+    );
 
     const resolvedRoleId = await this.resolveRoleIdForNewMember(
       roleId,

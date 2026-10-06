@@ -1,20 +1,26 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { WorkspacePlanGrandfatherEntity } from 'src/engine/core-modules/plan-tier/entities/workspace-plan-grandfather.entity';
+import { BillingSubscriptionItemEntity } from 'src/engine/core-modules/billing/entities/billing-subscription-item.entity';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
+import { WorkspaceModuleGrandfatherEntity } from 'src/engine/core-modules/plan-tier/entities/workspace-module-grandfather.entity';
 import { WorkspacePlanTierService } from 'src/engine/core-modules/plan-tier/services/workspace-plan-tier.service';
 import { WorkspaceCacheModule } from 'src/engine/workspace-cache/workspace-cache.module';
 import { provideWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/provide-workspace-scoped-repository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([WorkspacePlanGrandfatherEntity]),
+    TypeOrmModule.forFeature([
+      WorkspaceModuleGrandfatherEntity,
+      BillingSubscriptionItemEntity,
+    ]),
     WorkspaceCacheModule,
   ],
   providers: [
     WorkspacePlanTierService,
-    provideWorkspaceScopedRepository(WorkspacePlanGrandfatherEntity),
+    PlanLimitService,
+    provideWorkspaceScopedRepository(WorkspaceModuleGrandfatherEntity),
   ],
-  exports: [WorkspacePlanTierService],
+  exports: [WorkspacePlanTierService, PlanLimitService],
 })
 export class PlanTierModule {}

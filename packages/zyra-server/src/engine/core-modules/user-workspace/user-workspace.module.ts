@@ -12,6 +12,7 @@ import { EnterpriseModule } from 'src/engine/core-modules/enterprise/enterprise.
 import { FeatureFlagModule } from 'src/engine/core-modules/feature-flag/feature-flag.module';
 import { FileModule } from 'src/engine/core-modules/file/file.module';
 import { OnboardingModule } from 'src/engine/core-modules/onboarding/onboarding.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { UserWorkspaceEntityCacheProviderService } from 'src/engine/core-modules/user-workspace/services/user-workspace-entity-cache-provider.service';
 import { UserWorkspaceEntity } from 'src/engine/core-modules/user-workspace/user-workspace.entity';
 import { UserWorkspaceService } from 'src/engine/core-modules/user-workspace/user-workspace.service';
@@ -29,6 +30,7 @@ import { WorkspaceDataSourceModule } from 'src/engine/workspace-datasource/works
 
 @Module({
   imports: [
+    PlanTierModule,
     NestjsQueryGraphQLModule.forFeature({
       imports: [
         NestjsQueryTypeOrmModule.forFeature([

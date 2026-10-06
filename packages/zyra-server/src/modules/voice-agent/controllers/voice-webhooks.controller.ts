@@ -3,6 +3,7 @@ import {
   ForbiddenException,
   Header,
   HttpCode,
+  Logger,
   Post,
   Req,
   UseGuards,
@@ -13,6 +14,7 @@ import { type Request } from 'express';
 import { Repository } from 'typeorm';
 import { isDefined } from 'zyra-shared/utils';
 
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { ZyraConfigService } from 'src/engine/core-modules/zyra-config/zyra-config.service';
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { PublicEndpointGuard } from 'src/engine/guards/public-endpoint.guard';
@@ -42,9 +44,12 @@ const TERMINAL_STATUS_BY_TWILIO_STATUS: Partial<
 
 @Controller('webhooks/voice')
 export class VoiceWebhooksController {
+  private readonly logger = new Logger(VoiceWebhooksController.name);
+
   constructor(
     private readonly zyraConfigService: ZyraConfigService,
     private readonly twilioSignatureVerifierService: TwilioSignatureVerifierService,
+    private readonly planLimitService: PlanLimitService,
     // Twilio's webhooks identify calls by phone number / CallSid, not
     // workspace — the workspace is only discovered by looking these up, so
     // these repositories can't be workspace-scoped up front.
@@ -122,6 +127,41 @@ export class VoiceWebhooksController {
         : voiceCall.durationSeconds,
       recordingUrl: body.RecordingUrl ?? voiceCall.recordingUrl,
     });
+
+    await this.logIfMonthlyVoiceMinutesLimitExceeded(voiceCall.workspaceId);
+  }
+
+  // Soft log only, same reasoning as maxAIMessagesMonthly — this fires
+  // after a call has already ended (Twilio's status callback), so there is
+  // nothing left to block. It exists purely so overage is visible in logs
+  // for ops/billing follow-up. Denying a *new* call before it connects is a
+  // real option for later (see the spec's "fora de escopo") but isn't this.
+  private async logIfMonthlyVoiceMinutesLimitExceeded(
+    workspaceId: string,
+  ): Promise<void> {
+    const startOfMonth = new Date();
+
+    startOfMonth.setDate(1);
+    startOfMonth.setHours(0, 0, 0, 0);
+
+    const { sum } = (await this.voiceCallRepository
+      .createQueryBuilder('voiceCall')
+      .select('SUM(voiceCall.durationSeconds)', 'sum')
+      .where('voiceCall.workspaceId = :workspaceId', { workspaceId })
+      .andWhere('voiceCall.createdAt >= :startOfMonth', { startOfMonth })
+      .getRawOne()) ?? { sum: 0 };
+
+    const monthlyMinutesUsed = Math.floor(Number(sum ?? 0) / 60);
+    const monthlyMinutesLimit = await this.planLimitService.resolveLimit(
+      workspaceId,
+      'maxVoiceMinutesMonthly',
+    );
+
+    if (monthlyMinutesUsed >= monthlyMinutesLimit) {
+      this.logger.warn(
+        `Workspace ${workspaceId} is over its monthly voice minutes limit (${monthlyMinutesUsed}/${monthlyMinutesLimit} min) — contract an additional module or follow up for overage billing`,
+      );
+    }
   }
 
   private assertValidSignature(request: Request, path: string): void {
