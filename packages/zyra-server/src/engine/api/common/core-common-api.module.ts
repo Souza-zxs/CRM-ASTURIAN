@@ -15,6 +15,7 @@ import { ApiKeyModule } from 'src/engine/core-modules/api-key/api-key.module';
 import { FeatureFlagModule } from 'src/engine/core-modules/feature-flag/feature-flag.module';
 import { FileModule } from 'src/engine/core-modules/file/file.module';
 import { MetricsModule } from 'src/engine/core-modules/metrics/metrics.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { RecordPositionModule } from 'src/engine/core-modules/record-position/record-position.module';
 import { RecordTransformerModule } from 'src/engine/core-modules/record-transformer/record-transformer.module';
 import { ThrottlerModule } from 'src/engine/core-modules/throttler/throttler.module';
@@ -44,6 +45,7 @@ import { WorkspaceCacheModule } from 'src/engine/workspace-cache/workspace-cache
     RecordTransformerModule,
     FeatureFlagModule,
     WorkspaceCacheModule,
+    PlanTierModule,
   ],
   providers: [
     ProcessNestedRelationsHelper,

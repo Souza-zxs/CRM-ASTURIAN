@@ -1,9 +1,10 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { Repository } from 'typeorm';
+import { MoreThanOrEqual, Repository } from 'typeorm';
 import { isDefined } from 'zyra-shared/utils';
 
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { ZyraConfigService } from 'src/engine/core-modules/zyra-config/zyra-config.service';
 import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import { WhatsappAgentConversationEntity } from 'src/engine/metadata-modules/whatsapp-agent/entities/whatsapp-agent-conversation.entity';
@@ -62,6 +63,7 @@ export class WhatsappAgentResponderService {
     private readonly messagingMessageOutboundService: MessagingMessageOutboundService,
     private readonly sentMessagePersistenceService: SentMessagePersistenceService,
     private readonly qualificationOpportunityUpdaterService: WhatsappAgentQualificationOpportunityUpdaterService,
+    private readonly planLimitService: PlanLimitService,
   ) {}
 
   async respond({
@@ -106,6 +108,38 @@ export class WhatsappAgentResponderService {
     if (!isWhatsappAiAgentEnabled || !isDefined(openAiApiKey)) {
       this.logger.warn(
         `Whatsapp AI agent ${whatsappAgent.id} is disabled or OPENAI_API_KEY is not configured — the inbound message was saved but no automated reply will be sent`,
+      );
+
+      return;
+    }
+
+    // Soft block, not assertWithinLimit — this runs mid-conversation with a
+    // real lead on the other end. Throwing here would be the worst possible
+    // UX (a contact's message just vanishes); instead the inbound message
+    // stays saved and visible in the CRM inbox for a human to pick up,
+    // exactly like the disabled-agent path above.
+    const startOfMonth = new Date();
+
+    startOfMonth.setDate(1);
+    startOfMonth.setHours(0, 0, 0, 0);
+
+    const monthlyOutboundMessageCount = await this.messageRepository.count(
+      workspaceId,
+      {
+        where: {
+          direction: WhatsappAgentMessageDirection.OUTBOUND,
+          createdAt: MoreThanOrEqual(startOfMonth),
+        },
+      },
+    );
+    const monthlyMessageLimit = await this.planLimitService.resolveLimit(
+      workspaceId,
+      'maxAIMessagesMonthly',
+    );
+
+    if (monthlyOutboundMessageCount >= monthlyMessageLimit) {
+      this.logger.warn(
+        `Whatsapp AI agent ${whatsappAgent.id} reached its monthly message limit (${monthlyOutboundMessageCount}/${monthlyMessageLimit}) — the inbound message was saved but no automated reply will be sent`,
       );
 
       return;

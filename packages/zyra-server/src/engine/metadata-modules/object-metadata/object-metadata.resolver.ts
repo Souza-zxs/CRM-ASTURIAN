@@ -7,7 +7,9 @@ import {
   Query,
   ResolveField,
 } from '@nestjs/graphql';
+import { InjectRepository } from '@nestjs/typeorm';
 
+import { Not, Repository } from 'typeorm';
 import { PermissionFlagType } from 'zyra-shared/constants';
 
 import { MetadataResolver } from 'src/engine/api/graphql/graphql-config/decorators/metadata-resolver.decorator';
@@ -20,6 +22,12 @@ import { type IDataloaders } from 'src/engine/dataloaders/dataloader.interface';
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { FieldMetadataDTO } from 'src/engine/metadata-modules/field-metadata/dtos/field-metadata.dto';
 import { fromFlatObjectMetadataToObjectMetadataDto } from 'src/engine/metadata-modules/flat-object-metadata/utils/from-flat-object-metadata-to-object-metadata-dto.util';
 import { IndexMetadataDTO } from 'src/engine/metadata-modules/index-metadata/dtos/index-metadata.dto';
@@ -28,13 +36,14 @@ import { DeleteOneObjectInput } from 'src/engine/metadata-modules/object-metadat
 import { ObjectMetadataDTO } from 'src/engine/metadata-modules/object-metadata/dtos/object-metadata.dto';
 import { ObjectRecordCountDTO } from 'src/engine/metadata-modules/object-metadata/dtos/object-record-count.dto';
 import { UpdateOneObjectInput } from 'src/engine/metadata-modules/object-metadata/dtos/update-object.input';
+import { ObjectMetadataEntity } from 'src/engine/metadata-modules/object-metadata/object-metadata.entity';
 import { ObjectMetadataService } from 'src/engine/metadata-modules/object-metadata/object-metadata.service';
 import { ObjectRecordCountService } from 'src/engine/metadata-modules/object-metadata/object-record-count.service';
 import { objectMetadataGraphqlApiExceptionHandler } from 'src/engine/metadata-modules/object-metadata/utils/object-metadata-graphql-api-exception-handler.util';
 import { resolveObjectMetadataStandardOverride } from 'src/engine/metadata-modules/object-metadata/utils/resolve-object-metadata-standard-override.util';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => ObjectMetadataDTO)
 @UsePipes(ResolverValidationPipe)
 @UseFilters(
@@ -46,6 +55,9 @@ export class ObjectMetadataResolver {
     private readonly objectMetadataService: ObjectMetadataService,
     private readonly objectRecordCountService: ObjectRecordCountService,
     private readonly i18nService: I18nService,
+    private readonly planLimitService: PlanLimitService,
+    @InjectRepository(ObjectMetadataEntity)
+    private readonly objectMetadataRepository: Repository<ObjectMetadataEntity>,
   ) {}
 
   @ResolveField(() => Boolean, {
@@ -162,12 +174,28 @@ export class ObjectMetadataResolver {
   }
 
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.DATA_MODEL))
+  @RequirePlanGatedFeature(PlanGatedFeature.CUSTOM_OBJECTS)
   @Mutation(() => ObjectMetadataDTO)
   async createOneObject(
     @Args('input') input: CreateOneObjectInput,
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
+    @Context() context: { loaders: IDataloaders },
   ) {
     try {
+      const standardApplicationId =
+        await context.loaders.standardApplicationIdLoader.load({
+          workspaceId,
+        });
+      const customObjectCount = await this.objectMetadataRepository.count({
+        where: { workspaceId, applicationId: Not(standardApplicationId) },
+      });
+
+      await this.planLimitService.assertWithinLimit(
+        workspaceId,
+        'maxCustomObjects',
+        customObjectCount,
+      );
+
       const flatobjectMetadata =
         await this.objectMetadataService.createOneObject({
           createObjectInput: input.object,

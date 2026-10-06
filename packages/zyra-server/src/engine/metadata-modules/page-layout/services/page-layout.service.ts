@@ -29,6 +29,7 @@ import {
 } from 'src/engine/metadata-modules/page-layout/exceptions/page-layout.exception';
 import { fromFlatPageLayoutToPageLayoutDto } from 'src/engine/metadata-modules/page-layout/utils/from-flat-page-layout-to-page-layout-dto.util';
 import { fromFlatPageLayoutWithTabsAndWidgetsToPageLayoutDto } from 'src/engine/metadata-modules/page-layout/utils/from-flat-page-layout-with-tabs-and-widgets-to-page-layout-dto.util';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { GlobalWorkspaceOrmManager } from 'src/engine/zyra-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { buildSystemAuthContext } from 'src/engine/zyra-orm/utils/build-system-auth-context.util';
 import { WorkspaceMigrationBuilderException } from 'src/engine/workspace-manager/workspace-migration/exceptions/workspace-migration-builder-exception';
@@ -43,6 +44,7 @@ export class PageLayoutService {
     private readonly workspaceManyOrAllFlatEntityMapsCacheService: WorkspaceManyOrAllFlatEntityMapsCacheService,
     private readonly applicationService: ApplicationService,
     private readonly dashboardSyncService: DashboardSyncService,
+    private readonly planLimitService: PlanLimitService,
   ) {}
 
   async findByWorkspaceId(workspaceId: string): Promise<PageLayoutDTO[]> {
@@ -190,13 +192,29 @@ export class PageLayoutService {
         { workspaceId },
       );
 
-    const { flatObjectMetadataMaps: existingFlatObjectMetadataMaps } =
-      await this.workspaceManyOrAllFlatEntityMapsCacheService.getOrRecomputeManyOrAllFlatEntityMaps(
-        {
-          workspaceId,
-          flatMapsKeys: ['flatObjectMetadataMaps'],
-        },
+    const {
+      flatObjectMetadataMaps: existingFlatObjectMetadataMaps,
+      flatPageLayoutMaps: existingFlatPageLayoutMaps,
+    } = await this.workspaceManyOrAllFlatEntityMapsCacheService.getOrRecomputeManyOrAllFlatEntityMaps(
+      {
+        workspaceId,
+        flatMapsKeys: ['flatObjectMetadataMaps', 'flatPageLayoutMaps'],
+      },
+    );
+
+    if (createPageLayoutInput.type === PageLayoutType.DASHBOARD) {
+      const currentDashboardCount = Object.values(
+        existingFlatPageLayoutMaps.byUniversalIdentifier,
+      ).filter(
+        (pageLayout) => pageLayout?.type === PageLayoutType.DASHBOARD,
+      ).length;
+
+      await this.planLimitService.assertWithinLimit(
+        workspaceId,
+        'maxDashboards',
+        currentDashboardCount,
       );
+    }
 
     const flatPageLayoutToCreate =
       fromCreatePageLayoutInputToFlatPageLayoutToCreate({

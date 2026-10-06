@@ -1,6 +1,8 @@
 import { UseFilters, UseGuards, UsePipes } from '@nestjs/common';
 import { Args, Context, Mutation, Parent, ResolveField } from '@nestjs/graphql';
+import { InjectRepository } from '@nestjs/typeorm';
 
+import { Not, Repository } from 'typeorm';
 import { PermissionFlagType } from 'zyra-shared/constants';
 import { isDefined } from 'zyra-shared/utils';
 
@@ -13,6 +15,12 @@ import { I18nContext } from 'src/engine/core-modules/i18n/types/i18n-context.typ
 import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
 import { type IDataloaders } from 'src/engine/dataloaders/dataloader.interface';
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
 import { CreateOneFieldMetadataInput } from 'src/engine/metadata-modules/field-metadata/dtos/create-field.input';
@@ -23,6 +31,7 @@ import { UpdateOneFieldMetadataInput } from 'src/engine/metadata-modules/field-m
 import { FieldMetadataService } from 'src/engine/metadata-modules/field-metadata/services/field-metadata.service';
 import { fieldMetadataGraphqlApiExceptionHandler } from 'src/engine/metadata-modules/field-metadata/utils/field-metadata-graphql-api-exception-handler.util';
 import { resolveFieldMetadataStandardOverride } from 'src/engine/metadata-modules/field-metadata/utils/resolve-field-metadata-standard-override.util';
+import { FieldMetadataEntity } from 'src/engine/metadata-modules/field-metadata/field-metadata.entity';
 import { fromFlatFieldMetadataToFieldMetadataDto } from 'src/engine/metadata-modules/flat-field-metadata/utils/from-flat-field-metadata-to-field-metadata-dto.util';
 import { PermissionsGraphqlApiExceptionFilter } from 'src/engine/metadata-modules/permissions/utils/permissions-graphql-api-exception.filter';
 
@@ -44,6 +53,9 @@ export class FieldMetadataResolver {
   constructor(
     private readonly fieldMetadataService: FieldMetadataService,
     private readonly i18nService: I18nService,
+    private readonly planLimitService: PlanLimitService,
+    @InjectRepository(FieldMetadataEntity)
+    private readonly fieldMetadataRepository: Repository<FieldMetadataEntity>,
   ) {}
 
   @ResolveField(() => Boolean, {
@@ -118,13 +130,32 @@ export class FieldMetadataResolver {
     );
   }
 
-  @UseGuards(SettingsPermissionGuard(PermissionFlagType.DATA_MODEL))
+  @UseGuards(
+    SettingsPermissionGuard(PermissionFlagType.DATA_MODEL),
+    WorkspacePlanTierGuard,
+  )
+  @RequirePlanGatedFeature(PlanGatedFeature.CUSTOM_FIELDS)
   @Mutation(() => FieldMetadataDTO)
   async createOneField(
     @Args('input') input: CreateOneFieldMetadataInput,
     @AuthWorkspace() { id: workspaceId }: WorkspaceEntity,
+    @Context() context: { loaders: IDataloaders },
   ) {
     try {
+      const standardApplicationId =
+        await context.loaders.standardApplicationIdLoader.load({
+          workspaceId,
+        });
+      const customFieldCount = await this.fieldMetadataRepository.count({
+        where: { workspaceId, applicationId: Not(standardApplicationId) },
+      });
+
+      await this.planLimitService.assertWithinLimit(
+        workspaceId,
+        'maxCustomFields',
+        customFieldCount,
+      );
+
       const flatFieldMetadata = await this.fieldMetadataService.createOneField({
         createFieldInput: input.field,
         workspaceId,

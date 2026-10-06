@@ -13,6 +13,7 @@ export type CurrentWorkspace = Pick<
   | 'displayName'
   | 'allowImpersonation'
   | 'featureFlags'
+  | 'planTier'
   | 'activationStatus'
   | 'billingSubscriptions'
   | 'billingEntitlements'

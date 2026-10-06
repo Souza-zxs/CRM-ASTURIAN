@@ -15,6 +15,7 @@ import { FileStorageService } from 'src/engine/core-modules/file-storage/file-st
 import { FileCorePictureService } from 'src/engine/core-modules/file/file-core-picture/services/file-core-picture.service';
 import { FileUrlService } from 'src/engine/core-modules/file/file-url/file-url.service';
 import { OnboardingService } from 'src/engine/core-modules/onboarding/onboarding.service';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { UserWorkspaceEntity } from 'src/engine/core-modules/user-workspace/user-workspace.entity';
 import { UserWorkspaceService } from 'src/engine/core-modules/user-workspace/user-workspace.service';
 import { UserEntity } from 'src/engine/core-modules/user/user.entity';
@@ -49,6 +50,7 @@ describe('UserWorkspaceService', () => {
             save: jest.fn(),
             findOneBy: jest.fn(),
             countBy: jest.fn(),
+            count: jest.fn().mockResolvedValue(0),
             exists: jest.fn(),
             findOne: jest.fn(),
             findOneOrFail: jest.fn(),
@@ -153,6 +155,12 @@ describe('UserWorkspaceService', () => {
           provide: FeatureFlagService,
           useValue: {
             isFeatureEnabled: jest.fn(),
+          },
+        },
+        {
+          provide: PlanLimitService,
+          useValue: {
+            assertWithinLimit: jest.fn().mockResolvedValue(undefined),
           },
         },
       ],

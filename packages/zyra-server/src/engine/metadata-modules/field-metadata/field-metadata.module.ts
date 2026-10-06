@@ -25,6 +25,7 @@ import { IndexMetadataModule } from 'src/engine/metadata-modules/index-metadata/
 import { ObjectMetadataEntity } from 'src/engine/metadata-modules/object-metadata/object-metadata.entity';
 import { ObjectMetadataModule } from 'src/engine/metadata-modules/object-metadata/object-metadata.module';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { ViewFieldModule } from 'src/engine/metadata-modules/view-field/view-field.module';
 import { ViewFilterModule } from 'src/engine/metadata-modules/view-filter/view-filter.module';
 import { ViewGroupModule } from 'src/engine/metadata-modules/view-group/view-group.module';
@@ -45,6 +46,7 @@ import { UpdateFieldInput } from './dtos/update-field.input';
     TokenModule,
     WorkspaceCacheStorageModule,
     FeatureFlagModule,
+    PlanTierModule,
     NestjsQueryGraphQLModule.forFeature({
       imports: [
         NestjsQueryTypeOrmModule.forFeature([

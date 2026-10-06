@@ -1,0 +1,33 @@
+---
+title: Agente de voz
+description: Configura un agente de IA que atiende llamadas telefónicas de tu empresa y guarda un historial de cada llamada.
+---
+
+El Agente de voz es un asistente de IA que atiende llamadas realizadas a un número de teléfono que configures. Habla con quien llama en tiempo real, sigue tus instrucciones, y cada llamada queda registrada en un historial con un estado y un resumen.
+
+## Antes de empezar
+
+- La función debe estar activada en tu instalación. Se controla con el ajuste de servidor `IS_VOICE_AGENT_ENABLED` (desactivado por defecto). Si no ves la página, pídeselo a tu administrador.
+- Tu administrador debe haber configurado las credenciales de Twilio (`TWILIO_ACCOUNT_SID` y `TWILIO_AUTH_TOKEN`) y una `OPENAI_API_KEY` en el servidor.
+- Necesitas un número de teléfono de Twilio para el agente.
+
+## Pasos
+
+1. Abre **Configuración** y ve a **Usuario > Cuentas > Agente de voz IA**.
+2. Crea un agente nuevo.
+3. Completa **Nombre** y **Prompt del sistema** (ambos obligatorios). El prompt del sistema describe la personalidad, el objetivo y el tono de voz.
+4. Ingresa el **Número de teléfono** en formato internacional, por ejemplo `+15551234567`, y elige una **Voz** (Alloy, Verse, Aria o Sage).
+5. Opcionalmente define un **Mensaje de bienvenida**, **Criterios de calificación** (qué hace que un lead esté calificado), **Frases prohibidas** (separadas por comas) e **Instrucciones de traspaso** (cuándo transferir a una persona).
+6. Si usas el traspaso, completa el **Número de teléfono de transferencia**.
+7. Haz clic en **Crear agente**. Usa **Guardar cambios** al editarlo más tarde.
+
+## Cómo funciona
+
+Twilio envía cada llamada entrante al servidor, que verifica la firma de Twilio y conecta el audio de la llamada a la API de OpenAI Realtime. El agente habla usando tu prompt y configuración. Cada llamada aparece en **Historial de llamadas** con fecha, dirección (entrante o saliente), duración, estado (En curso, Completada, Fallida, Sin respuesta) y un resumen. El modelo de datos también guarda una transcripción y un horario de disponibilidad semanal para el agente.
+
+## Es bueno saber
+
+- La lista de voces del formulario es ilustrativa y puede no coincidir con todas las voces que admite OpenAI.
+- La disponibilidad semanal es leída por el agente como información durante la llamada. El código indica que no se aplica como un bloqueo estricto.
+- El número de Twilio predeterminado solo se usa para futuras llamadas salientes. Para recibir llamadas basta con el número configurado en cada agente.
+- La dirección del servidor debe ser accesible públicamente por Twilio. Pídele a tu administrador que confirme la configuración.

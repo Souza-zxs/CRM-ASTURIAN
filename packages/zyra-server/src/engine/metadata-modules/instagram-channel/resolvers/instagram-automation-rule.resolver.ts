@@ -17,8 +17,13 @@ import { MetadataResolver } from 'src/engine/api/graphql/graphql-config/decorato
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => InstagramAutomationRuleDTO)
 export class InstagramAutomationRuleResolver {
   constructor(
@@ -27,6 +32,7 @@ export class InstagramAutomationRuleResolver {
 
   @Query(() => [InstagramAutomationRuleDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.MANYCHAT_LIKE)
   async instagramAutomationRules(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,
@@ -50,6 +56,7 @@ export class InstagramAutomationRuleResolver {
 
   @Mutation(() => InstagramAutomationRuleDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.MANYCHAT_LIKE)
   async createInstagramAutomationRule(
     @Args('input') input: CreateInstagramAutomationRuleInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -77,6 +84,7 @@ export class InstagramAutomationRuleResolver {
 
   @Mutation(() => InstagramAutomationRuleDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.MANYCHAT_LIKE)
   async updateInstagramAutomationRule(
     @Args('input') input: UpdateInstagramAutomationRuleInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -101,6 +109,7 @@ export class InstagramAutomationRuleResolver {
 
   @Mutation(() => InstagramAutomationRuleDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.MANYCHAT_LIKE)
   async deleteInstagramAutomationRule(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -115,6 +124,7 @@ export class InstagramAutomationRuleResolver {
 
   @Mutation(() => InstagramAutomationRuleDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.MANYCHAT_LIKE)
   async duplicateInstagramAutomationRule(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -129,6 +139,7 @@ export class InstagramAutomationRuleResolver {
 
   @Mutation(() => [InstagramAutomationRuleDTO])
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.MANYCHAT_LIKE)
   async importInstagramAutomationRulesFromCsv(
     @Args('instagramChannelId', { type: () => UUIDScalarType })
     instagramChannelId: string,

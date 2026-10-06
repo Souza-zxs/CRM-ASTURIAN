@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { ZyraConfigModule } from 'src/engine/core-modules/zyra-config/zyra-config.module';
 import { VoiceAgentEntity } from 'src/engine/metadata-modules/voice-agent/entities/voice-agent.entity';
 import { VoiceCallEntity } from 'src/engine/metadata-modules/voice-agent/entities/voice-call.entity';
@@ -15,6 +16,7 @@ import { provideWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-
   imports: [
     ZyraConfigModule,
     TypeOrmModule.forFeature([VoiceAgentEntity, VoiceCallEntity]),
+    PlanTierModule,
   ],
   controllers: [VoiceWebhooksController],
   providers: [

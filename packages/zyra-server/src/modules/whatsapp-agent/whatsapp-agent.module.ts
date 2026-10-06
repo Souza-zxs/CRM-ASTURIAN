@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { ZyraConfigModule } from 'src/engine/core-modules/zyra-config/zyra-config.module';
 import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import { WhatsappAgentMetadataModule } from 'src/engine/metadata-modules/whatsapp-agent/whatsapp-agent-metadata.module';
@@ -30,6 +31,7 @@ import { WhatsappAgentTriggerService } from 'src/modules/whatsapp-agent/services
     ZyraConfigModule,
     MessagingSendManagerModule,
     WhatsappAgentMetadataModule,
+    PlanTierModule,
     TypeOrmModule.forFeature([
       WhatsappAgentEntity,
       WhatsappAgentConversationEntity,

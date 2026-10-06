@@ -1,0 +1,52 @@
+---
+title: Plantillas de mensajes de WhatsApp
+description: Crea plantillas de WhatsApp, envíalas a Meta para su aprobación y mándalas desde un workflow.
+---
+
+Las plantillas son mensajes preescritos que Meta debe aprobar. Son necesarias para enviar mensajes a contactos fuera de la ventana de 24 horas.
+
+## Antes de empezar
+
+- Un número de WhatsApp conectado (consulta [Canal de WhatsApp y agente de IA](/l/es/user-guide/channels/whatsapp)).
+- Las funciones de WhatsApp habilitadas en tu instancia. Si falta la tarjeta, pídeselo a tu administrador.
+
+## Crear y enviar una plantilla
+
+1. Abre **Configuración > Usuario > Cuentas** y elige **Plantillas de WhatsApp**.
+2. Haz clic para crear una plantilla (**Nueva plantilla de WhatsApp**).
+3. Completa el formulario:
+   - **Número de WhatsApp**
+   - **Nombre**: solo letras minúsculas, dígitos y guiones bajos. Es el identificador interno de Meta.
+   - **Categoría**: Marketing, Utilidad o Autenticación.
+   - **Idioma**, por ejemplo `es_ES`.
+   - **Encabezado** y **Pie de página** (ambos opcionales).
+   - **Cuerpo**: usa `{{1}}`, `{{2}}` para variables, por ejemplo: `Hola {{1}}, tu sesión empieza en {{2}} minutos.`
+   - **Botones** (opcional): usa **Agregar botón** y define una etiqueta, además de una URL o número de teléfono según corresponda.
+4. Haz clic en **Crear plantilla**. Se guarda como borrador.
+5. En la fila de la plantilla, haz clic en **Enviar para aprobación**. La plantilla pasa a estado Pendiente.
+6. Más tarde, haz clic en **Actualizar estado** para obtener la decisión de Meta.
+
+## Usarla en un workflow
+
+En un workflow, agrega la acción que envía una plantilla de WhatsApp y define:
+
+- la plantilla a enviar;
+- **para**: texto libre o una variable como `{{trigger.phones.primaryPhoneNumber}}`;
+- **parámetros del cuerpo**: valores para `{{1}}`, `{{2}}`... en orden.
+
+## Cómo funciona
+
+Enviar la plantilla la manda a Meta a través de tu número conectado. Actualizar el estado consulta el estado actual en Meta y guarda cualquier motivo de rechazo.
+
+## Es bueno saber
+
+| Estado | Significado |
+| --- | --- |
+| Borrador | Creada, aún no enviada. Editable. |
+| Pendiente | Enviada, esperando a Meta. No editable. |
+| Aprobada | Lista para enviar. |
+| Rechazada | Rechazada por Meta. Editable y se puede volver a enviar. |
+
+- Solo las plantillas en Borrador y Rechazada se pueden editar o enviar. Editar una rechazada la vuelve a Borrador.
+- Un paso del workflow falla si la plantilla no está Aprobada.
+- Eliminar una plantilla es permanente.

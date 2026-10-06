@@ -7,6 +7,7 @@ import { isDefined } from 'zyra-shared/utils';
 import { FindOptionsRelations, In, InsertResult, ObjectLiteral } from 'typeorm';
 
 import { CommonBaseQueryRunnerService } from 'src/engine/api/common/common-query-runners/common-base-query-runner.service';
+import { PlanLimitKey } from 'src/engine/core-modules/plan-tier/constants/module-catalog.constant';
 import { type ConflictingFieldGroup } from 'src/engine/api/common/common-query-runners/common-create-many-query-runner/types/conflicting-field-group.type';
 import { PartialObjectRecordWithId } from 'src/engine/api/common/common-query-runners/common-create-many-query-runner/types/partial-object-record-with-id.type';
 import { buildWhereConditions } from 'src/engine/api/common/common-query-runners/common-create-many-query-runner/utils/build-where-conditions.util';
@@ -42,6 +43,18 @@ import { GlobalWorkspaceDataSource } from 'src/engine/zyra-orm/global-workspace-
 import { WorkspaceRepository } from 'src/engine/zyra-orm/repository/workspace.repository';
 import { RolePermissionConfig } from 'src/engine/zyra-orm/types/role-permission-config';
 
+// Only Person/Company count against a plan limit today — every other
+// object (standard or custom) is unlimited at the record-count level. Keyed
+// by nameSingular (confirmed as the literal 'person'/'company' strings used
+// throughout this codebase's own test fixtures), checked once per call so
+// every other object type pays zero extra cost on its hot path.
+const PLAN_LIMIT_KEY_BY_OBJECT_NAME_SINGULAR: Partial<
+  Record<string, PlanLimitKey>
+> = {
+  person: 'maxContacts',
+  company: 'maxCompanies',
+};
+
 @Injectable()
 export class CommonCreateManyQueryRunnerService extends CommonBaseQueryRunnerService<
   CreateManyQueryArgs,
@@ -49,6 +62,9 @@ export class CommonCreateManyQueryRunnerService extends CommonBaseQueryRunnerSer
 > {
   protected readonly operationName = CommonQueryNames.CREATE_MANY;
 
+  // planLimitService is inherited from CommonBaseQueryRunnerService (used
+  // there for the API rate-limit check) — reused here for maxContacts/
+  // maxCompanies instead of injecting a second copy.
   constructor(private readonly recordPositionService: RecordPositionService) {
     super();
   }
@@ -76,6 +92,29 @@ export class CommonCreateManyQueryRunnerService extends CommonBaseQueryRunnerSer
       flatFieldMetadataMaps,
       workspaceDataSource,
     } = queryRunnerContext;
+
+    const planLimitKey =
+      PLAN_LIMIT_KEY_BY_OBJECT_NAME_SINGULAR[flatObjectMetadata.nameSingular];
+
+    if (isDefined(planLimitKey)) {
+      // Single shared entry point for every creation path: the manual
+      // "+ New" UI button, CSV import, and any programmatic upsert (e.g.
+      // funnel lead sync) all go through createMany/upsert here — one check
+      // covers all three instead of three separate call sites to keep in
+      // sync. Conservative on upsert batches: counts the whole batch as new
+      // inserts even though some rows might turn out to be updates to
+      // existing records (only known after categorizeRecords runs, later)
+      // — occasionally blocks a batch that was mostly updates rather than
+      // risk undercounting, acceptable given how rarely a batch sits
+      // exactly on the limit boundary.
+      const currentCount = await repository.count();
+
+      await this.planLimitService.assertWithinLimit(
+        authContext.workspace.id,
+        planLimitKey,
+        currentCount + args.data.length - 1,
+      );
+    }
 
     const objectRecords = await this.insertOrUpsertRecords({
       repository,

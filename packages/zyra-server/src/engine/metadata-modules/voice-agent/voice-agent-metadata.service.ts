@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
 
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { VoiceAgentEntity } from 'src/engine/metadata-modules/voice-agent/entities/voice-agent.entity';
 import { type VoiceAgentWeeklyAvailability } from 'src/engine/metadata-modules/voice-agent/types/weekly-availability.type';
 import {
@@ -52,6 +53,7 @@ export class VoiceAgentMetadataService {
     // eslint-disable-next-line zyra/prefer-workspace-scoped-repository
     @InjectRepository(VoiceAgentEntity)
     private readonly voiceAgentRepositoryUnscoped: Repository<VoiceAgentEntity>,
+    private readonly planLimitService: PlanLimitService,
   ) {}
 
   async findByWorkspaceId({
@@ -90,6 +92,17 @@ export class VoiceAgentMetadataService {
     { workspaceId }: { workspaceId: string },
   ): Promise<VoiceAgentEntity> {
     await this.assertPhoneNumberIsAvailable(data.phoneNumber);
+
+    const currentVoiceAgentCount = await this.voiceAgentRepository.count(
+      workspaceId,
+      {},
+    );
+
+    await this.planLimitService.assertWithinLimit(
+      workspaceId,
+      'maxVoiceAgents',
+      currentVoiceAgentCount,
+    );
 
     return this.voiceAgentRepository.save(workspaceId, {
       ...data,

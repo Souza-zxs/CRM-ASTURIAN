@@ -6,6 +6,7 @@ import { ConnectedAccountTokenEncryptionModule } from 'src/engine/metadata-modul
 import { InstagramChannelEntity } from 'src/engine/metadata-modules/instagram-channel/entities/instagram-channel.entity';
 import { MessageChannelEntity } from 'src/engine/metadata-modules/message-channel/entities/message-channel.entity';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { ZyraConfigModule } from 'src/engine/core-modules/zyra-config/zyra-config.module';
 import { InstagramTokenRefreshCronCommand } from 'src/modules/instagram/crons/commands/instagram-token-refresh.cron.command';
 import { InstagramTokenRefreshCronJob } from 'src/modules/instagram/crons/jobs/instagram-token-refresh.cron.job';
@@ -18,6 +19,7 @@ import { InstagramLoginService } from 'src/modules/instagram/services/instagram-
     ZyraConfigModule,
     ConnectedAccountTokenEncryptionModule,
     PermissionsModule,
+    PlanTierModule,
     TypeOrmModule.forFeature([
       ConnectedAccountEntity,
       MessageChannelEntity,

@@ -9,6 +9,11 @@ import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.ent
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { SendWhatsappMessageOutputDTO } from 'src/modules/messaging/message-outbound-manager/dtos/send-whatsapp-message-output.dto';
 import { SendWhatsappMessageInput } from 'src/modules/messaging/message-outbound-manager/dtos/send-whatsapp-message.input';
 import { SendWhatsappMessageService } from 'src/modules/messaging/message-outbound-manager/services/send-whatsapp-message.service';
@@ -17,6 +22,7 @@ import { SendWhatsappMessageService } from 'src/modules/messaging/message-outbou
 @UseFilters(AuthGraphqlApiExceptionFilter)
 @UseGuards(
   WorkspaceAuthGuard,
+  WorkspacePlanTierGuard,
   SettingsPermissionGuard(PermissionFlagType.SEND_EMAIL_TOOL),
 )
 export class SendWhatsappMessageResolver {
@@ -25,6 +31,7 @@ export class SendWhatsappMessageResolver {
   ) {}
 
   @Mutation(() => SendWhatsappMessageOutputDTO)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async sendWhatsappMessage(
     @Args('input') input: SendWhatsappMessageInput,
     @AuthWorkspace() workspace: WorkspaceEntity,

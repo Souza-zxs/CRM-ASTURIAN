@@ -15794,6 +15794,12 @@ msgstr "As variáveis de servidor são aplicadas a todas as instalações do wor
 msgid "Service Provider Details"
 msgstr "Detalhes do Provedor de Serviço"
 
+#. js-lingui-id: 9hH7Uv
+#. placeholder {0}: formatSessionStart(session.startsAt, i18n.locale)
+#: src/modules/funnel/components/WorkshopPageView.tsx
+msgid "Session on {0}. Keep this page open: the video unlocks automatically once the countdown reaches zero."
+msgstr "Sessão de {0}. Mantenha esta página aberta: o vídeo libera sozinho quando a contagem chegar a zero."
+
 #. js-lingui-id: iNv0Mi
 #: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
 msgid "Session times (HH:mm, separated by commas)"
@@ -17151,6 +17157,11 @@ msgstr ""
 "```\n"
 "\n"
 "Veja o [guia de primeiros passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo e o [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
+
+#. js-lingui-id: aXzQ65
+#: src/modules/ai/components/AiChatCompactionIndicator.tsx
+msgid "The conversation has been compacted"
+msgstr "A conversa foi compactada"
 
 #. js-lingui-id: n+CCXl
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx
@@ -19328,7 +19339,8 @@ msgid ""
 "We're waiting for a confirmation from our payment provider (Stripe).\n"
 "Please try again in a few seconds, sorry."
 msgstr ""
-"Estamos aguardando a confirmação do nosso provedor de pagamentos (Stripe).\n"
+"Estamos aguardando a confirmação do nosso provedor de pagamento (Stripe).\n"
+"Por favor, tente novamente em alguns segundos. Desculpe o transtorno.Estamos aguardando a confirmação do nosso provedor de pagamentos (Stripe).\n"
 "Tente novamente em alguns segundos, por favor."
 
 #. js-lingui-id: LnnVIT
@@ -19984,6 +19996,7 @@ msgid ""
 "Reach to our support team to upgrade."
 msgstr ""
 "Você atingiu seu limite de uso. \n"
+"Entre em contato com nosso time de suporte para fazer upgrade.Você atingiu seu limite de uso. \n"
 "Entre em contato com nossa equipe de suporte para fazer upgrade."
 
 #. js-lingui-id: NTyvVW
@@ -19995,7 +20008,8 @@ msgid ""
 "You've hit your usage limit. \n"
 "Upgrade to {0} credits for ${1}/{2}."
 msgstr ""
-"Você atingiu o seu limite de uso. \n"
+"Você atingiu seu limite de uso. \n"
+"Faça upgrade para {0} créditos por ${1}/{2}.Você atingiu o seu limite de uso. \n"
 "Faça upgrade para {0} créditos por ${1}/{2}."
 
 #. js-lingui-id: yZ0wRS
@@ -20113,6 +20127,11 @@ msgstr "Seu período de teste acabará e "
 msgid "Your trial period will end, and you will be charged ${yearlyPrice} per user per year billed annually. A prorata with your current subscription will be applied."
 msgstr "Seu período de teste acabará e você será cobrado ${yearlyPrice} por usuário por ano cobrado anualmente. Um pró-rata com sua assinatura atual será aplicado."
 
+#. js-lingui-id: 0UadSc
+#: src/modules/funnel/components/WorkshopPageView.tsx
+msgid "Your workshop starts in"
+msgstr "Seu workshop começa em"
+
 #. js-lingui-id: oC6WBs
 #: src/modules/information-banner/components/billing/InformationBannerNoBillingSubscription.tsx
 msgid "Your workspace doesn't have an active subscription."
@@ -20132,3 +20151,4 @@ msgstr "Seu workspace será desativado"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx
 msgid "Zyra fields"
 msgstr "Campos do Zyra"
+

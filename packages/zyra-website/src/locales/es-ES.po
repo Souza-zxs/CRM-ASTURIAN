@@ -31,13 +31,13 @@ msgstr "...con una IA que realmente te ayuda a *trabajar más rápido*"
 #. js-lingui-id: +kQqib
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "(11) 91234-5678"
-msgstr ""
+msgstr "(91) 234 56 78"
 
 #. js-lingui-id: J/hVSQ
 #. placeholder {0}: LATEST_RELEASE.title
 #: src/sections/menu/menu.data.ts
 msgid "{0}"
-msgstr ""
+msgstr "{0}"
 
 #. js-lingui-id: sGt3Jm
 #. placeholder {0}: i18n._(card.attribution.company)
@@ -48,17 +48,17 @@ msgstr "Caso práctico de {0}"
 #. js-lingui-id: MocgDt
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "/ assento / mês - cobrado anualmente"
-msgstr ""
+msgstr "/ puesto / mes - facturado anualmente"
 
 #. js-lingui-id: 9Pf7VL
 #: src/sections/pricing-plans/plans-data.ts
 msgid "/usuário/ano"
-msgstr ""
+msgstr "/usuario/año"
 
 #. js-lingui-id: Fx9OU0
 #: src/sections/pricing-plans/plans-data.ts
 msgid "/usuário/mês"
-msgstr ""
+msgstr "/usuario/mes"
 
 #. js-lingui-id: VD6ZBE
 #: src/sections/footer/FooterBottom.tsx
@@ -72,26 +72,29 @@ msgid ""
 "+R$75/usuário por mês\n"
 "Migre para o enterprise!"
 msgstr ""
+"+20 % del gasto neto\n"
+"+R$75/usuario al mes\n"
+"¡Pásate a enterprise!"
 
 #. js-lingui-id: k2TVll
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "+R$105/usuário por mês"
-msgstr ""
+msgstr "+R$105/usuario al mes"
 
 #. js-lingui-id: ujNlDH
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "+R$35/usuário por mês"
-msgstr ""
+msgstr "+R$35/usuario al mes"
 
 #. js-lingui-id: 66ll3y
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "+R$5/usuário por mês"
-msgstr ""
+msgstr "+R$5/usuario al mes"
 
 #. js-lingui-id: 9NMzLE
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "+R$7000/org por mês"
-msgstr ""
+msgstr "+R$7000/organización al mes"
 
 #. js-lingui-id: u8oyjP
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -101,16 +104,18 @@ msgid ""
 "+R$75/usuário por mês\n"
 "Migre para o enterprise!"
 msgstr ""
+"+R$75/usuario al mes\n"
+"¡Pásate a enterprise!"
 
 #. js-lingui-id: OhcXPb
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "0800‑SIM‑SOFTWARE"
-msgstr ""
+msgstr "900‑SI‑SOFTWARE"
 
 #. js-lingui-id: zdLIdf
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "100 por minuto"
-msgstr ""
+msgstr "100 por minuto"
 
 #. js-lingui-id: ICFkfg
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -118,11 +123,13 @@ msgid ""
 "11 grupos de\n"
 "permissão"
 msgstr ""
+"11 grupos de\n"
+"permisos"
 
 #. js-lingui-id: Wy6PPv
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "2 anos de contrato"
-msgstr ""
+msgstr "2 años de contrato"
 
 #. js-lingui-id: PJgfBS
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -135,6 +142,8 @@ msgid ""
 "3 2 anos de contrato\n"
 "-33% off"
 msgstr ""
+"3 2 años de contrato\n"
+"-33 % de descuento"
 
 #. js-lingui-id: 7SJhyh
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -145,17 +154,17 @@ msgstr "30+"
 #. js-lingui-id: Q/zTZl
 #: src/sections/pricing-plans/plans-data.ts
 msgid "5 créditos de workflow/mês incluídos"
-msgstr ""
+msgstr "5 créditos de flujo de trabajo al mes incluidos"
 
 #. js-lingui-id: 45OC21
 #: src/sections/pricing-plans/plans-data.ts
 msgid "50 créditos de workflow/ano incluídos"
-msgstr ""
+msgstr "50 créditos de flujo de trabajo al año incluidos"
 
 #. js-lingui-id: my+kuJ
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "50 por minuto"
-msgstr ""
+msgstr "50 por minuto"
 
 #. js-lingui-id: tZvajW
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -175,7 +184,7 @@ msgstr "Una demo que vale *más que mil palabras*"
 #. js-lingui-id: j9WFae
 #: src/sections/creators/Creators.tsx
 msgid "A implementação é feita diretamente com a nossa equipe. Deixe seus dados e entramos em contato para agendar uma call ou conversar pelo WhatsApp."
-msgstr ""
+msgstr "La implementación se realiza directamente con nuestro equipo. Déjanos tus datos y nos pondremos en contacto para agendar una llamada o hablar por WhatsApp."
 
 #. js-lingui-id: uNIo/j
 #: src/sections/three-cards/ProductThreeCards.tsx
@@ -185,32 +194,32 @@ msgstr "Un CRM moderno con *una interfaz intuitiva*"
 #. js-lingui-id: lsnwaf
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "A oportunidade"
-msgstr ""
+msgstr "La oportunidad"
 
 #. js-lingui-id: j9Lkf0
 #: src/sections/problem/problem.data.ts
 msgid "A planilha que virou sistema"
-msgstr ""
+msgstr "La hoja de cálculo que se convirtió en sistema"
 
 #. js-lingui-id: fw+shO
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "A virada"
-msgstr ""
+msgstr "El punto de inflexión"
 
 #. js-lingui-id: rpn5tS
 #: src/sections/menu/Menu.tsx
 msgid "Abrir menu"
-msgstr ""
+msgstr "Abrir menú"
 
 #. js-lingui-id: vycfrF
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Acesso à API"
-msgstr ""
+msgstr "Acceso a la API"
 
 #. js-lingui-id: juHKFZ
 #: src/sections/menu/menu.data.ts
 msgid "Acompanhe cada lançamento com changelogs, destaques e demonstrações dos recursos mais novos."
-msgstr ""
+msgstr "Sigue cada lanzamiento con registros de cambios, aspectos destacados y demostraciones de las funciones más recientes."
 
 #. js-lingui-id: woOp+c
 #: src/sections/stepper/product-stepper-data.ts
@@ -225,18 +234,18 @@ msgstr "Complementos"
 #. js-lingui-id: o5/Z6Z
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Agentes de IA"
-msgstr ""
+msgstr "Agentes de IA"
 
 #. js-lingui-id: wEnX7H
 #: src/sections/pricing-plans/plans-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Agentes de IA com skills customizadas"
-msgstr ""
+msgstr "Agentes de IA con habilidades personalizadas"
 
 #. js-lingui-id: Bth1pS
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Agentes de IA estão começando a rascunhar prospecção, pontuar leads, pesquisar contas, escrever follow-ups, atualizar estágios de negócio. Cada uma dessas ações lê e escreve no CRM. O placar virou o playbook. O banco de dados virou o cérebro."
-msgstr ""
+msgstr "Los agentes de IA ya empiezan a redactar prospección, puntuar leads, investigar cuentas, escribir seguimientos y actualizar las etapas de las oportunidades. Cada una de estas acciones lee y escribe en el CRM. El marcador se convirtió en el manual de juego. La base de datos se convirtió en el cerebro."
 
 #. js-lingui-id: vZKKhf
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -246,7 +255,7 @@ msgstr "Widgets de agregación, de barras, de líneas y de pastel"
 #. js-lingui-id: wrDFWz
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Agora um desenvolvedor pode descrever o que quer pro Claude Code e ter um app funcionando numa tarde. Um objeto customizado, um workflow de pontuação, uma view nova, uma integração. O gargalo não é mais construir. É se a sua plataforma deixa."
-msgstr ""
+msgstr "Ahora un desarrollador puede describirle a Claude Code lo que necesita y tener una aplicación funcionando en una tarde. Un objeto personalizado, un flujo de puntuación, una vista nueva, una integración. El cuello de botella ya no es construir. Es si tu plataforma te lo permite."
 
 #. js-lingui-id: TfV/y9
 #: src/sections/three-cards/product-three-cards-data.ts
@@ -256,42 +265,42 @@ msgstr "Chat de IA, ajustes y registros en paneles laterales para un acceso ráp
 #. js-lingui-id: kOXQnN
 #: src/sections/footer/footer.data.ts
 msgid "Ajuda"
-msgstr ""
+msgstr "Ayuda"
 
 #. js-lingui-id: 5v8Qga
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Ambientes"
-msgstr ""
+msgstr "Entornos"
 
 #. js-lingui-id: VDJEyp
 #: src/sections/pricing-plans/BillingToggle.tsx
 msgid "Anual"
-msgstr ""
+msgstr "Anual"
 
 #. js-lingui-id: of6x5c
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "API REST e GraphQL"
-msgstr ""
+msgstr "API REST y GraphQL"
 
 #. js-lingui-id: jDnA+A
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "APIs são à parte. Simplicidade tem seu preço."
-msgstr ""
+msgstr "Las API son aparte. La simplicidad tiene su precio."
 
 #. js-lingui-id: 4EgczH
 #: src/sections/menu/menu.data.ts
 msgid "APIs, SDKs e webhooks para estender a Zyra e lançar aplicativos sobre os dados do seu CRM."
-msgstr ""
+msgstr "API, SDK y webhooks para ampliar Zyra y lanzar aplicaciones sobre los datos de tu CRM."
 
 #. js-lingui-id: idWTdy
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Apps customizados"
-msgstr ""
+msgstr "Aplicaciones personalizadas"
 
 #. js-lingui-id: TBYSu+
 #: src/sections/menu/menu.data.ts
 msgid "Aprenda a usar a Zyra"
-msgstr ""
+msgstr "Aprende a usar Zyra"
 
 #. js-lingui-id: S+Q+1d
 #: src/sections/product-hero/ProductHero.tsx
@@ -306,12 +315,12 @@ msgstr "Asigna responsables y fechas de vencimiento"
 #. js-lingui-id: 2/6+3D
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Atalhos, padrões inteligentes e layouts pensados pra deixar as tarefas do dia a dia mais rápidas de executar."
-msgstr ""
+msgstr "Atajos, valores predeterminados inteligentes y diseños pensados para que las tareas del día a día sean más rápidas de realizar."
 
 #. js-lingui-id: HVZNCu
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Até o material de treinamento é um recurso digno de comemoração."
-msgstr ""
+msgstr "Hasta el material de formación es un logro digno de celebrar."
 
 #. js-lingui-id: fxL/Km
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -321,17 +330,17 @@ msgstr "Archivos adjuntos sin caos."
 #. js-lingui-id: Oa82RS
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Atualizações em tempo real"
-msgstr ""
+msgstr "Actualizaciones en tiempo real"
 
 #. js-lingui-id: kqpU8v
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Atualizações em tempo real estão indisponíveis, o que é quase mais honesto."
-msgstr ""
+msgstr "Las actualizaciones en tiempo real no están disponibles, lo cual es casi más honesto."
 
 #. js-lingui-id: fng8L1
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Autenticação de dois fatores"
-msgstr ""
+msgstr "Autenticación de dos factores"
 
 #. js-lingui-id: FFv0Vh
 #: src/sections/stepper/product-stepper-data.ts
@@ -341,7 +350,7 @@ msgstr "Automatización"
 #. js-lingui-id: CDT57j
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Boa escolha!"
-msgstr ""
+msgstr "¡Buena elección!"
 
 #. js-lingui-id: sbr0X/
 #: src/sections/product-hero/ai-hero-tabs.ts
@@ -366,58 +375,58 @@ msgstr "Construido para la velocidad"
 #. js-lingui-id: yEm5aw
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Caminho rápido pra ação"
-msgstr ""
+msgstr "Camino rápido hacia la acción"
 
 #. js-lingui-id: tISmXY
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Campos customizados"
-msgstr ""
+msgstr "Campos personalizados"
 
 #. js-lingui-id: /TxP5w
 #: src/sections/founders/FoundersCarousel.tsx
 msgid "carrossel"
-msgstr ""
+msgstr "carrusel"
 
 #. js-lingui-id: WvFcPS
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Central de Add-ons Salesfarce"
-msgstr ""
+msgstr "Central de complementos Salesfarce"
 
 #. js-lingui-id: xV+o7t
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Central de ajuda"
-msgstr ""
+msgstr "Centro de ayuda"
 
 #. js-lingui-id: bITCu+
 #: src/sections/founders/founders.data.ts
 msgid "CEO e fundador, Horizon"
-msgstr ""
+msgstr "CEO y fundador, Horizon"
 
 #. js-lingui-id: o84F1r
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Chamadas de API"
-msgstr ""
+msgstr "Llamadas a la API"
 
 #. js-lingui-id: O41WqG
 #: src/sections/faq/Faq.tsx
 msgid "Chega de brigar com o \"sob medida\". *Comece a construir com o Zyra*"
-msgstr ""
+msgstr "Basta de pelear con lo \"a medida\". *Empieza a construir con Zyra*"
 
 #. js-lingui-id: 1AYcMY
 #: src/sections/three-cards/ThreeCards.tsx
 msgid "Chega de escolher entre pronto e sob medida."
-msgstr ""
+msgstr "Basta de elegir entre lo preconfigurado y lo a medida."
 
 #. js-lingui-id: uQVSty
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Clássico nunca morre. Só ganha mais uma prorrogação."
-msgstr ""
+msgstr "Lo clásico nunca muere. Solo consigue una prórroga más."
 
 #. js-lingui-id: 14Ki+k
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 msgid "Clientes"
-msgstr ""
+msgstr "Clientes"
 
 #. js-lingui-id: cu6iol
 #: src/sections/pricing-salesfarce/SalesfarceWrongChoicePopup.tsx
@@ -443,22 +452,22 @@ msgstr "Asignación de columna a campo (incluyendo relaciones)"
 #: src/sections/menu/Menu.tsx
 #: src/sections/why-zyra-signoff/WhyZyraSignoff.tsx
 msgid "Começar agora"
-msgstr ""
+msgstr "Empezar ahora"
 
 #. js-lingui-id: pT9MQS
 #: src/sections/pricing-plans/PlanCard.tsx
 msgid "Começar grátis"
-msgstr ""
+msgstr "Empezar gratis"
 
 #. js-lingui-id: 83/Isj
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Comece a automatizar em grande escala!"
-msgstr ""
+msgstr "¡Empieza a automatizar a gran escala!"
 
 #. js-lingui-id: 7o0MP0
 #: src/sections/stepper/stepper.data.ts
 msgid "Comece com *blocos prontos* de verdade"
-msgstr ""
+msgstr "Empieza con *bloques ya hechos* de verdad"
 
 #. js-lingui-id: 0v8AKp
 #: src/sections/pricing-plans/PricingIntro.tsx
@@ -466,47 +475,49 @@ msgid ""
 "Comece seu teste grátis hoje\n"
 "sem cartão de crédito."
 msgstr ""
+"Empieza tu prueba gratuita hoy\n"
+"sin tarjeta de crédito."
 
 #. js-lingui-id: mXw6PH
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Compartilhamento de e-mail"
-msgstr ""
+msgstr "Uso compartido de correo electrónico"
 
 #. js-lingui-id: oFHAm6
 #: src/sections/three-cards/ThreeCards.tsx
 msgid "Componha seu CRM e seus apps internos com um único conjunto de ferramentas de extensão."
-msgstr ""
+msgstr "Compón tu CRM y tus aplicaciones internas con un único conjunto de herramientas de extensión."
 
 #. js-lingui-id: lSbyl5
 #: src/sections/stepper/stepper.data.ts
 msgid "Componha seu CRM e seus apps internos com um único conjunto de ferramentas. Modelo de dados, layout e automação, já no lugar."
-msgstr ""
+msgstr "Compón tu CRM y tus aplicaciones internas con un único conjunto de herramientas. Modelo de datos, diseño y automatización, ya listos."
 
 #. js-lingui-id: Xz4z/N
 #: src/sections/menu/MenuSocial.tsx
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Comunidade"
-msgstr ""
+msgstr "Comunidad"
 
 #. js-lingui-id: iFzjPO
 #: src/sections/footer/footer.data.ts
 msgid "Conecte-se"
-msgstr ""
+msgstr "Conéctate"
 
 #. js-lingui-id: QkEpUr
 #: src/sections/pricing-salesfarce/PricingSalesfarce.tsx
 msgid "Confie no CRM n°1, *ou não!*"
-msgstr ""
+msgstr "Confía en el CRM n.º 1, *¡o no!*"
 
 #. js-lingui-id: H6uqe2
 #: src/sections/menu/menu.data.ts
 msgid "Conheça a nossa equipe"
-msgstr ""
+msgstr "Conoce a nuestro equipo"
 
 #. js-lingui-id: bxCW8H
 #: src/platform/routing/static-website-routes.ts
 msgid "Conheça quem criou o Zyra e fale com a nossa equipe para implementar o CRM na sua empresa."
-msgstr ""
+msgstr "Conoce a quienes crearon Zyra y habla con nuestro equipo para implementar el CRM en tu empresa."
 
 #. js-lingui-id: 90KBr0
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -521,12 +532,12 @@ msgstr "Conecta cuentas de Google o Microsoft y ve automáticamente los correos 
 #. js-lingui-id: PBv/5y
 #: src/sections/menu/menu.data.ts
 msgid "Construa em uma plataforma aberta"
-msgstr ""
+msgstr "Construye sobre una plataforma abierta"
 
 #. js-lingui-id: BBusiU
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Construa numa tarde. *A IA deixou essa distância pequena assim.*"
-msgstr ""
+msgstr "Constrúyelo en una tarde. *La IA acortó tanto esa distancia.*"
 
 #. js-lingui-id: /LjvrP
 #: src/sections/why-zyra-signoff/WhyZyraSignoff.tsx
@@ -534,6 +545,8 @@ msgid ""
 "Construa um CRM que seus\n"
 "concorrentes *não conseguem comprar.*"
 msgstr ""
+"Construye un CRM que tus\n"
+"competidores *no pueden comprar.*"
 
 #. js-lingui-id: Oii3vg
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -543,7 +556,7 @@ msgstr "Contactos y Empresas"
 #. js-lingui-id: z7oGZY
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Contas de e-mail por usuário"
-msgstr ""
+msgstr "Cuentas de correo electrónico por usuario"
 
 #. js-lingui-id: 24qVhV
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -553,22 +566,22 @@ msgstr "El contexto vive con el registro."
 #. js-lingui-id: +DAIIs
 #: src/sections/stepper/stepper.data.ts
 msgid "Continue ajustando *sem fricção*"
-msgstr ""
+msgstr "Sigue ajustando *sin fricción*"
 
 #. js-lingui-id: ElMSj6
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Controle sem travar o time"
-msgstr ""
+msgstr "Control sin frenar al equipo"
 
 #. js-lingui-id: 6SqMz3
 #: src/app-preview/stage/TrafficLights.tsx
 msgid "Controles da janela"
-msgstr ""
+msgstr "Controles de la ventana"
 
 #. js-lingui-id: xxwOD3
 #: src/sections/founders/founders.data.ts
 msgid "COO e cofundador, Horizon"
-msgstr ""
+msgstr "COO y cofundador, Horizon"
 
 #. js-lingui-id: FapWIq
 #: src/sections/product-feature/ProductFeature.tsx
@@ -593,28 +606,28 @@ msgstr "Crea tareas, asigna responsables y adjunta notas detalladas directamente
 #. js-lingui-id: CXZsif
 #: src/sections/menu/menu.data.ts
 msgid "Crie aplicativos na Zyra"
-msgstr ""
+msgstr "Crea aplicaciones en Zyra"
 
 #. js-lingui-id: vqW43m
 #: src/sections/pricing-plans/plans-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Crie apps customizados"
-msgstr ""
+msgstr "Crea aplicaciones personalizadas"
 
 #. js-lingui-id: mnKdXu
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Criptografe seus dados"
-msgstr ""
+msgstr "Cifra tus datos"
 
 #. js-lingui-id: SC4PMB
 #: src/sections/why-zyra-hero/WhyZyraHero.tsx
 msgid "CRM era um banco de dados que você preenchia às sextas. A IA transformou isso no sistema que roda seu go-to-market. Pra se diferenciar, você precisa construir o que seus concorrentes não conseguem comprar."
-msgstr ""
+msgstr "El CRM era una base de datos que rellenabas los viernes. La IA lo transformó en el sistema que impulsa tu estrategia de salida al mercado. Para diferenciarte, necesitas construir lo que tus competidores no pueden comprar."
 
 #. js-lingui-id: ScEz11
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "CRM era um livro-caixa. *A IA transformou isso num sistema operacional.*"
-msgstr ""
+msgstr "El CRM era un libro de caja. *La IA lo transformó en un sistema operativo.*"
 
 #. js-lingui-id: I6FFSA
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -649,13 +662,13 @@ msgstr "Campos personalizados, relaciones y una cronología unificada para cada 
 #. js-lingui-id: sUyoMh
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Customização"
-msgstr ""
+msgstr "Personalización"
 
 #. js-lingui-id: EYdLwI
 #: src/sections/pricing-plans/plans-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Customização completa"
-msgstr ""
+msgstr "Personalización completa"
 
 #. js-lingui-id: qqLY+j
 #: src/sections/stepper/ProductStepperContent.tsx
@@ -665,22 +678,22 @@ msgstr "Personalización"
 #. js-lingui-id: /y+hgv
 #: src/sections/faq/faq.data.ts
 msgid "Dá pra migrar do Salesforce ou do HubSpot?"
-msgstr ""
+msgstr "¿Se puede migrar desde Salesforce o HubSpot?"
 
 #. js-lingui-id: 1GJU1V
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Dados em tempo real, com IA embutida"
-msgstr ""
+msgstr "Datos en tiempo real, con IA integrada"
 
 #. js-lingui-id: ZWYoXi
 #: src/sections/founders/founders.data.ts
 msgid "Daniel imaginou o Zyra e o levou de uma ideia a um produto completo. Como CEO da Horizon, une visão de produto, cuidado obsessivo com cada detalhe e a coragem de construir do zero um CRM pensado para equipes que querem vender mais com menos trabalho manual."
-msgstr ""
+msgstr "Daniel imaginó Zyra y lo llevó de una idea a un producto completo. Como CEO de Horizon, combina visión de producto, un cuidado obsesivo por cada detalle y la valentía de construir desde cero un CRM pensado para equipos que quieren vender más con menos trabajo manual."
 
 #. js-lingui-id: y67ldj
 #: src/sections/founders/founders.data.ts
 msgid "Daniel Lucas Souza"
-msgstr ""
+msgstr "Daniel Lucas Souza"
 
 #. js-lingui-id: V0kvgB
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -700,69 +713,69 @@ msgstr "Acuerdos que se mueven solos."
 #. js-lingui-id: RVu6Ud
 #: src/sections/feature-cards/FeatureCards.tsx
 msgid "Deixe seu time comercial feliz *com um CRM que dá gosto de usar*"
-msgstr ""
+msgstr "Haz feliz a tu equipo comercial *con un CRM que da gusto usar*"
 
 #. js-lingui-id: 9l+QDJ
 #: src/sections/faq/faq.data.ts
 msgid "Depende do tamanho da operação, mas o setup inicial é rápido — em poucos dias o seu time já consegue estar usando o Zyra no dia a dia."
-msgstr ""
+msgstr "Depende del tamaño de la operación, pero la configuración inicial es rápida: en pocos días tu equipo ya puede estar usando Zyra en el día a día."
 
 #. js-lingui-id: azVLLr
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Descreva o que precisa em português e deixe a IA montar campos, views e automações — o que levaria semanas de configuração vira minutos."
-msgstr ""
+msgstr "Describe lo que necesitas en español y deja que la IA cree campos, vistas y automatizaciones: lo que llevaría semanas de configuración se convierte en minutos."
 
 #. js-lingui-id: neWlC8
 #: src/sections/menu/menu.data.ts
 msgid "Descubra as novidades"
-msgstr ""
+msgstr "Descubre las novedades"
 
 #. js-lingui-id: f0RQ5q
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Desenvolvedores"
-msgstr ""
+msgstr "Desarrolladores"
 
 #. js-lingui-id: KDuA7S
 #: src/sections/faq/faq.data.ts
 msgid "Desenvolvedores conseguem estender o Zyra com código?"
-msgstr ""
+msgstr "¿Los desarrolladores pueden ampliar Zyra con código?"
 
 #. js-lingui-id: oGX76w
 #: src/app-preview/stage/FlyingTrafficLights.tsx
 msgid "Devolver botão da janela"
-msgstr ""
+msgstr "Restaurar botón de la ventana"
 
 #. js-lingui-id: ur7V4G
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Diferenciação agora *mora no código que você é dono.*"
-msgstr ""
+msgstr "La diferenciación ahora *vive en el código del que eres dueño.*"
 
 #. js-lingui-id: hWl0/H
 #: src/sections/releases-hero/ReleasesHero.tsx
 msgid "Discover the newest features and improvements in Zyra."
-msgstr ""
+msgstr "Descubre las funciones y mejoras más recientes de Zyra."
 
 #. js-lingui-id: XKRy06
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Disponível no YouTube!"
-msgstr ""
+msgstr "¡Disponible en YouTube!"
 
 #. js-lingui-id: v4l9JK
 #: src/sections/menu/menu.data.ts
 msgid "Domine cada detalhe da Zyra"
-msgstr ""
+msgstr "Domina cada detalle de Zyra"
 
 #. js-lingui-id: KJrcOj
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Domínio próprio"
-msgstr ""
+msgstr "Dominio propio"
 
 #. js-lingui-id: bBWbrY
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Domínio próprio (crm.suaempresa.com)"
-msgstr ""
+msgstr "Dominio propio (crm.tuempresa.com)"
 
 #. js-lingui-id: mzedFr
 #: src/sections/product-hero/ai-hero-tabs.ts
@@ -777,33 +790,33 @@ msgstr "Arrastra y suelta acuerdos entre etapas"
 #. js-lingui-id: 5Sa1Ss
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "E-mail"
-msgstr ""
+msgstr "Correo electrónico"
 
 #. js-lingui-id: RxjT3B
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "E-mail e Chat"
-msgstr ""
+msgstr "Correo electrónico y chat"
 
 #. js-lingui-id: Pz/25J
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "E-mails e Calendário"
-msgstr ""
+msgstr "Correos electrónicos y calendario"
 
 #. js-lingui-id: JvHSde
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Eles chamam de lealdade do cliente. Nós chamamos de jaula bem carinhosa."
-msgstr ""
+msgstr "Ellos lo llaman lealtad del cliente. Nosotros lo llamamos una jaula con mucho cariño."
 
 #. js-lingui-id: bhDJFb
 #: src/sections/customers-hero/CustomersHero.tsx
 msgid "Em breve: casos reais de times que adaptaram o Zyra ao próprio jeito de vender e cresceram com isso."
-msgstr ""
+msgstr "Próximamente: casos reales de equipos que adaptaron Zyra a su propia forma de vender y crecieron con ello."
 
 #. js-lingui-id: uQpntr
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Em breve!"
-msgstr ""
+msgstr "¡Próximamente!"
 
 #. js-lingui-id: FNyrb0
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -829,37 +842,37 @@ msgstr "vacío"
 #: src/sections/menu/Menu.tsx
 #: src/sections/menu/MenuDrawer.tsx
 msgid "Entrar"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #. js-lingui-id: SsoLsy
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "Enviando…"
-msgstr ""
+msgstr "Enviando…"
 
 #. js-lingui-id: i7HxDI
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "Enviar"
-msgstr ""
+msgstr "Enviar"
 
 #. js-lingui-id: OpxzMM
 #: src/app-preview/terminal/TerminalSendButton.tsx
 msgid "Enviar mensagem"
-msgstr ""
+msgstr "Enviar mensaje"
 
 #. js-lingui-id: w/yHEO
 #: src/sections/menu/menu.data.ts
 msgid "Equipe por trás do Zyra"
-msgstr ""
+msgstr "El equipo detrás de Zyra"
 
 #. js-lingui-id: I1HGuS
 #: src/sections/footer/LocaleSwitcher.tsx
 msgid "Escolha um idioma"
-msgstr ""
+msgstr "Elige un idioma"
 
 #. js-lingui-id: EJN4az
 #: src/platform/routing/static-website-routes.ts
 msgid "Every new release of Zyra, with changelogs, demos, and the highlights teams care about most."
-msgstr ""
+msgstr "Cada nuevo lanzamiento de Zyra, con registros de cambios, demostraciones y las novedades que más importan a los equipos."
 
 #. js-lingui-id: rkZTD7
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -874,7 +887,7 @@ msgstr "Todo lo que necesitas, *desde el primer momento*"
 #. js-lingui-id: B8/sY0
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Experimente a granularidade enterprise, começando com a 11ª permissão."
-msgstr ""
+msgstr "Prueba la granularidad enterprise, empezando por el permiso número 11."
 
 #. js-lingui-id: 7iRq8G
 #: src/sections/creators/Creators.tsx
@@ -885,23 +898,23 @@ msgstr ""
 #: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
 #: src/sections/pricing-plans/PlanCard.tsx
 msgid "Falar com a gente"
-msgstr ""
+msgstr "Habla con nosotros"
 
 #. js-lingui-id: WFUV5g
 #: src/contact-cal/ContactCalModal.tsx
 #: src/sections/footer/footer.data.ts
 msgid "Fale conosco"
-msgstr ""
+msgstr "Contacta con nosotros"
 
 #. js-lingui-id: r39TsB
 #: src/sections/menu/menu.data.ts
 msgid "Fale diretamente com a equipe, por call agendada ou WhatsApp, para implementar o Zyra na sua empresa."
-msgstr ""
+msgstr "Habla directamente con el equipo, mediante una llamada programada o WhatsApp, para implementar Zyra en tu empresa."
 
 #. js-lingui-id: iR1mAF
 #: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
 msgid "Fale diretamente com a nossa equipe para implementar, customizar e adaptar o Zyra ao seu time."
-msgstr ""
+msgstr "Habla directamente con nuestro equipo para implementar, personalizar y adaptar Zyra a tu equipo."
 
 #. js-lingui-id: +LREeu
 #: src/sections/pricing-plan-table/plan-table-visible-rows.test.ts
@@ -911,17 +924,17 @@ msgstr "función"
 #. js-lingui-id: Dke/BZ
 #: src/app-preview/stage/TrafficLights.tsx
 msgid "Fechar"
-msgstr ""
+msgstr "Cerrar"
 
 #. js-lingui-id: Lo5KUA
 #: src/sections/menu/Menu.tsx
 msgid "Fechar menu"
-msgstr ""
+msgstr "Cerrar menú"
 
 #. js-lingui-id: kfu1hY
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Fidelização"
-msgstr ""
+msgstr "Fidelización"
 
 #. js-lingui-id: sER+bs
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -936,7 +949,7 @@ msgstr "Métricas filtradas de cualquier objeto"
 #. js-lingui-id: 54CSvo
 #: src/sections/stepper/stepper.data.ts
 msgid "Fique no controle, *sem depender de um único fornecedor*"
-msgstr ""
+msgstr "Mantén el control, *sin depender de un único proveedor*"
 
 #. js-lingui-id: obrJBN
 #: src/sections/three-cards/product-three-cards-data.ts
@@ -956,17 +969,17 @@ msgstr "Historial de comunicación completo en un solo lugar"
 #. js-lingui-id: oHdOkx
 #: src/sections/problem/problem.data.ts
 msgid "Funciona até certo ponto — depois disso, cada pessoa nova no time é mais uma versão diferente da \"verdade\" sobre um cliente."
-msgstr ""
+msgstr "Funciona hasta cierto punto; a partir de ahí, cada persona nueva en el equipo es una versión distinta más de la \"verdad\" sobre un cliente."
 
 #. js-lingui-id: /eFw46
 #: src/sections/founders/FoundersCarousel.tsx
 msgid "Fundador anterior"
-msgstr ""
+msgstr "Exfundador"
 
 #. js-lingui-id: ltYQ83
 #: src/sections/founders/FoundersCarousel.tsx
 msgid "Fundadores"
-msgstr ""
+msgstr "Fundadores"
 
 #. js-lingui-id: S84RWl
 #: src/sections/product-hero/ai-hero-tabs.ts
@@ -976,7 +989,7 @@ msgstr "Genera tareas para mis 10 principales cuentas"
 #. js-lingui-id: TzZSAq
 #: src/sections/footer/footer.data.ts
 msgid "Gerador de halftone"
-msgstr ""
+msgstr "Generador de semitonos"
 
 #. js-lingui-id: ZDIydz
 #: src/sections/product-hero/ProductHero.tsx
@@ -991,18 +1004,18 @@ msgstr "Llega más lejos *con no-code*"
 #. js-lingui-id: asVLwU
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Grátis pra você!"
-msgstr ""
+msgstr "¡Gratis para ti!"
 
 #. js-lingui-id: YCclfp
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 msgid "Guia do usuário"
-msgstr ""
+msgstr "Guía del usuario"
 
 #. js-lingui-id: AkA1L6
 #: src/sections/menu/menu.data.ts
 msgid "Guias passo a passo e manuais para ajudar seu time a aproveitar ao máximo o workspace."
-msgstr ""
+msgstr "Guías paso a paso y manuales para ayudar a tu equipo a aprovechar al máximo el espacio de trabajo."
 
 #. js-lingui-id: h3BKZA
 #: src/platform/routing/static-website-routes.ts
@@ -1020,6 +1033,8 @@ msgid ""
 "Histórias de quem\n"
 "constrói *com o Zyra*"
 msgstr ""
+"Historias de quienes\n"
+"construyen *con Zyra*"
 
 #. js-lingui-id: rvZAYZ
 #: src/platform/routing/static-website-routes.ts
@@ -1029,22 +1044,22 @@ msgstr "Cómo Zyra recopila, usa y protege tus datos: nuestra política de priva
 #. js-lingui-id: kf1xrG
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "IA (Einstein)"
-msgstr ""
+msgstr "IA (Einstein)"
 
 #. js-lingui-id: epxLRG
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "IA e Automações"
-msgstr ""
+msgstr "IA y automatizaciones"
 
 #. js-lingui-id: xC9GG8
 #: src/sections/three-cards/three-cards.data.ts
 msgid "IA para iterar rápido"
-msgstr ""
+msgstr "IA para iterar rápido"
 
 #. js-lingui-id: frUGhT
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Idiomas"
-msgstr ""
+msgstr "Idiomas"
 
 #. js-lingui-id: Rb7L6L
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -1073,17 +1088,17 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Ilimitado"
-msgstr ""
+msgstr "Ilimitado"
 
 #. js-lingui-id: MOVMKO
 #: src/sections/menu/menu.data.ts
 msgid "Ilustração azul de desenvolvedor com setas ramificadas"
-msgstr ""
+msgstr "Ilustración azul de un desarrollador con flechas ramificadas"
 
 #. js-lingui-id: CqzwA2
 #: src/sections/menu/menu.data.ts
 msgid "Implemente o Zyra com a nossa equipe"
-msgstr ""
+msgstr "Implementa Zyra con nuestro equipo"
 
 #. js-lingui-id: ZAKTS6
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1093,12 +1108,12 @@ msgstr "Importa tus datos con asignación de campos, incluidas las relaciones. E
 #. js-lingui-id: +yYg87
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Importação de pastas/etiquetas"
-msgstr ""
+msgstr "Importación de carpetas/etiquetas"
 
 #. js-lingui-id: M+eIEP
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Importação e exportação de CSV"
-msgstr ""
+msgstr "Importación y exportación de CSV"
 
 #. js-lingui-id: Sqb+jp
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1110,24 +1125,24 @@ msgstr "Vista previa en la app para los tipos de archivo compatibles (cuando est
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Incluso!"
-msgstr ""
+msgstr "¡Incluido!"
 
 #. js-lingui-id: VW4bvs
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Indisponível"
-msgstr ""
+msgstr "No disponible"
 
 #. js-lingui-id: Zwtq3/
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/Menu.tsx
 msgid "Início"
-msgstr ""
+msgstr "Inicio"
 
 #. js-lingui-id: Kh4fxu
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Instalar app via tarball"
-msgstr ""
+msgstr "Instalar aplicación mediante tarball"
 
 #. js-lingui-id: gF06Xo
 #: src/platform/routing/static-website-routes.ts
@@ -1137,17 +1152,17 @@ msgstr "Generador de semitonos interactivo exportado desde Zyra."
 #. js-lingui-id: TAdMuD
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Interface simples, sem curva de aprendizado"
-msgstr ""
+msgstr "Interfaz sencilla, sin curva de aprendizaje"
 
 #. js-lingui-id: Z/Jr+h
 #: src/sections/customers-catalog-signoff/CustomersCatalogSignoff.tsx
 msgid "Junte-se aos times que decidiram ser donos do próprio CRM. Comece a construir com o Zyra hoje."
-msgstr ""
+msgstr "Únete a los equipos que decidieron ser dueños de su propio CRM. Empieza a construir con Zyra hoy."
 
 #. js-lingui-id: 9ddIIn
 #: src/sections/footer/footer.data.ts
 msgid "Jurídico"
-msgstr ""
+msgstr "Legal"
 
 #. js-lingui-id: TLanjj
 #: src/sections/pricing-plan-table/plan-table-visible-rows.test.ts
@@ -1157,13 +1172,13 @@ msgstr "mantenido"
 #. js-lingui-id: QjFZTZ
 #: src/sections/menu/menu.data.ts
 msgid "Lançamentos"
-msgstr ""
+msgstr "Lanzamientos"
 
 #. js-lingui-id: M/X7fo
 #. placeholder {0}: LATEST_RELEASE.title
 #: src/sections/menu/menu.data.ts
 msgid "Lançamentos da Zyra — {0}"
-msgstr ""
+msgstr "Lanzamientos de Zyra — {0}"
 
 #. js-lingui-id: WvrtRi
 #: src/sections/releases-hero/ReleasesHero.tsx
@@ -1182,68 +1197,68 @@ msgstr "Diseño"
 #. js-lingui-id: 0Nnveg
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Layout customizado"
-msgstr ""
+msgstr "Diseño personalizado"
 
 #. js-lingui-id: k7SBwf
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Limite de usuários"
-msgstr ""
+msgstr "Límite de usuarios"
 
 #. js-lingui-id: jhUkLf
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Local, Produção"
-msgstr ""
+msgstr "Local, producción"
 
 #. js-lingui-id: qesesq
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Logs de auditoria"
-msgstr ""
+msgstr "Registros de auditoría"
 
 #. js-lingui-id: 9299So
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Mais opções disponíveis!"
-msgstr ""
+msgstr "¡Más opciones disponibles!"
 
 #. js-lingui-id: OZSrL9
 #: src/sections/footer/footer.data.ts
 msgid "Mapa do site"
-msgstr ""
+msgstr "Mapa del sitio"
 
 #. js-lingui-id: 2cNamF
 #: src/app-preview/stage/TrafficLights.tsx
 msgid "Maximizar"
-msgstr ""
+msgstr "Maximizar"
 
 #. js-lingui-id: rTqsBA
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Melhor que Liquid Glass!"
-msgstr ""
+msgstr "¡Mejor que Liquid Glass!"
 
 #. js-lingui-id: B7Dx7t
 #: src/sections/pricing-plans/BillingToggle.tsx
 msgid "Mensal"
-msgstr ""
+msgstr "Mensual"
 
 #. js-lingui-id: RpVpJL
 #: src/sections/menu/MenuDrawer.tsx
 msgid "Menu de navegação"
-msgstr ""
+msgstr "Menú de navegación"
 
 #. js-lingui-id: +ov82l
 #: src/sections/why-zyra-marquee/WhyZyraMarquee.tsx
 msgid "Mesma entrega"
-msgstr ""
+msgstr "Misma entrega"
 
 #. js-lingui-id: bqlxaS
 #: src/sections/why-zyra-marquee/WhyZyraMarquee.tsx
 msgid "Mesmo CRM"
-msgstr ""
+msgstr "Mismo CRM"
 
 #. js-lingui-id: ua/5VD
 #: src/sections/why-zyra-marquee/WhyZyraMarquee.tsx
 msgid "Mesmo resultado"
-msgstr ""
+msgstr "Mismo resultado"
 
 #. js-lingui-id: briyJf
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1253,42 +1268,42 @@ msgstr "Métricas en las que realmente puedes confiar."
 #. js-lingui-id: XT1ca+
 #: src/app-preview/stage/TrafficLights.tsx
 msgid "Minimizar"
-msgstr ""
+msgstr "Minimizar"
 
 #. js-lingui-id: nMhsoZ
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Modelo de dados, permissões, autenticação e motor de automação prontos para operar em escala, sem gambiarra por trás."
-msgstr ""
+msgstr "Modelo de datos, permisos, autenticación y motor de automatización listos para operar a escala, sin parches improvisados por detrás."
 
 #. js-lingui-id: z0EMsk
 #: src/app-preview/terminal/TerminalToggle.tsx
 msgid "Modo do terminal"
-msgstr ""
+msgstr "Modo terminal"
 
 #. js-lingui-id: XWauFO
 #: src/sections/three-cards/ThreeCards.tsx
 msgid "Monte, ajuste e adapte um CRM robusto, *sem perder velocidade*"
-msgstr ""
+msgstr "Monta, ajusta y adapta un CRM robusto, *sin perder velocidad*"
 
 #. js-lingui-id: JQvOrI
 #: src/app-preview/terminal/diff/DiffPill.tsx
 msgid "Mostrar alterações"
-msgstr ""
+msgstr "Mostrar cambios"
 
 #. js-lingui-id: k7ckwO
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Mostrar menos"
-msgstr ""
+msgstr "Mostrar menos"
 
 #. js-lingui-id: 8K+4YA
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Mudanças em tempo real? Isso vai ser uma surpresa premium."
-msgstr ""
+msgstr "¿Cambios en tiempo real? Eso va a ser una sorpresa premium."
 
 #. js-lingui-id: lHX980
 #: src/sections/footer/LocaleSwitcher.tsx
 msgid "Mudar idioma"
-msgstr ""
+msgstr "Cambiar idioma"
 
 #. js-lingui-id: dlKkNL
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1298,17 +1313,17 @@ msgstr "Carga de múltiples archivos en los registros"
 #. js-lingui-id: Z4kUMl
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Na terça seu time descobre que negócios com um patrocinador técnico fecham 3x mais rápido. Na quarta você adiciona o campo, liga a pontuação, ajusta o workflow. Na quinta seus agentes já estão agindo em cima disso. Esse ciclo de feedback é a vantagem. E só funciona se o CRM for seu."
-msgstr ""
+msgstr "El martes tu equipo descubre que los negocios con un patrocinador técnico se cierran 3 veces más rápido. El miércoles añades el campo, activas la puntuación, ajustas el flujo de trabajo. El jueves tus agentes ya están actuando en consecuencia. Ese ciclo de feedback es la ventaja. Y solo funciona si el CRM es tuyo."
 
 #. js-lingui-id: jj4Ksi
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "Não foi possível enviar agora. Tente novamente em alguns minutos."
-msgstr ""
+msgstr "No se ha podido enviar ahora. Inténtalo de nuevo en unos minutos."
 
 #. js-lingui-id: WJTnKT
 #: src/sections/faq/faq.data.ts
 msgid "Não. Dá pra criar objetos, campos, views e automações sem código, direto nas configurações — sem limite e sem custo extra."
-msgstr ""
+msgstr "No. Puedes crear objetos, campos, vistas y automatizaciones sin código, directamente desde los ajustes, sin límites y sin coste adicional."
 
 #. js-lingui-id: LfNsfa
 #: src/sections/stepper/ProductStepperContent.tsx
@@ -1323,78 +1338,78 @@ msgstr "No"
 #. js-lingui-id: AgVOEf
 #: src/sections/releases-feed/ReleasesFeed.tsx
 msgid "No releases published yet — check back soon."
-msgstr ""
+msgstr "No releases published yet — check back soon."
 
 #. js-lingui-id: lEvWAd
 #: src/contact-cal/ContactLeadForm.tsx
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Nome"
-msgstr ""
+msgstr "Nombre"
 
 #. js-lingui-id: Lkqs6T
 #: src/sections/footer/footer.data.ts
 msgid "Notas de versão"
-msgstr ""
+msgstr "Notas de la versión"
 
 #. js-lingui-id: SgldkO
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Número de dashboards"
-msgstr ""
+msgstr "Número de paneles"
 
 #. js-lingui-id: 30rW/g
 #: src/sections/problem/problem.data.ts
 msgid "O CRM engessado"
-msgstr ""
+msgstr "El CRM rígido"
 
 #. js-lingui-id: OH7QDX
 #: src/sections/home-hero/HomeHero.tsx
 msgid "O CRM que se adapta *ao seu jeito de vender*"
-msgstr ""
+msgstr "El CRM que se adapta *a tu forma de vender*"
 
 #. js-lingui-id: 9TAWZU
 #: src/sections/why-zyra-hero/WhyZyraHero.tsx
 msgid "O futuro do CRM se constrói, *não se compra.*"
-msgstr ""
+msgstr "El futuro del CRM se construye, *no se compra.*"
 
 #. js-lingui-id: AE1R/r
 #: src/sections/problem/Problem.tsx
 msgid "O problema."
-msgstr ""
+msgstr "El problema."
 
 #. js-lingui-id: guuQ/h
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "O que isso significa"
-msgstr ""
+msgstr "Qué significa esto"
 
 #. js-lingui-id: 2S3OUc
 #: src/sections/home-hero/HomeHero.tsx
 msgid "O Zyra dá ao seu time a flexibilidade de montar um CRM sob medida para o negócio — sem depender de um desenvolvedor a cada mudança de processo."
-msgstr ""
+msgstr "Zyra le da a tu equipo la flexibilidad de montar un CRM a medida para el negocio, sin depender de un desarrollador cada vez que cambia un proceso."
 
 #. js-lingui-id: vuER7p
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "O Zyra é direto ao ponto: limpo, intuitivo, feito pra parecer familiar desde o primeiro acesso."
-msgstr ""
+msgstr "Zyra va directo al grano: limpio, intuitivo, pensado para resultar familiar desde el primer acceso."
 
 #. js-lingui-id: wC2aUc
 #: src/sections/faq/faq.data.ts
 msgid "O Zyra funciona com Claude, ChatGPT e Cursor?"
-msgstr ""
+msgstr "¿Zyra funciona con Claude, ChatGPT y Cursor?"
 
 #. js-lingui-id: 7EzJzY
 #: src/sections/founders-hero/FoundersHero.tsx
 msgid "O Zyra nasceu na Horizon, uma empresa de tecnologia feita por quem vive vendas: um CRM que as equipes realmente querem usar, com WhatsApp, dashboards e funil no mesmo lugar."
-msgstr ""
+msgstr "Zyra nació en Horizon, una empresa de tecnología creada por gente que vive de las ventas: un CRM que los equipos realmente quieren usar, con WhatsApp, paneles y embudo en un mismo lugar."
 
 #. js-lingui-id: S1kQf4
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Objetos customizados"
-msgstr ""
+msgstr "Objetos personalizados"
 
 #. js-lingui-id: uEMqLW
 #: src/app-preview/terminal/diff/DiffPill.tsx
 msgid "Ocultar alterações"
-msgstr ""
+msgstr "Ocultar cambios"
 
 #. js-lingui-id: ucgZ0o
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -1408,87 +1423,89 @@ msgid ""
 "Orquestração\n"
 "de flows"
 msgstr ""
+"Orquestación\n"
+"de flujos"
 
 #. js-lingui-id: joZotM
 #: src/sections/faq/faq.data.ts
 msgid "Os planos variam conforme o tamanho do time e as necessidades da operação. Fale com a gente pra montar uma proposta sob medida."
-msgstr ""
+msgstr "Los planes varían según el tamaño del equipo y las necesidades de la operación. Habla con nosotros para preparar una propuesta a medida."
 
 #. js-lingui-id: F8yiiv
 #: src/platform/routing/static-website-routes.ts
 msgid "Packaged CRMs make every company look the same. Zyra is the CRM teams shape around their workflow, with a modern UI and a developer-first platform."
-msgstr ""
+msgstr "Los CRM empaquetados hacen que todas las empresas parezcan iguales. Zyra es el CRM que los equipos moldean en torno a su flujo de trabajo, con una interfaz moderna y una plataforma pensada ante todo para desarrolladores."
 
 #. js-lingui-id: oH0sno
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Pacotes de onboarding"
-msgstr ""
+msgstr "Paquetes de onboarding"
 
 #. js-lingui-id: 8F1i42
 #: src/routes/NotFoundPage.tsx
 msgid "Page not found"
-msgstr ""
+msgstr "Página no encontrada"
 
 #. js-lingui-id: Bfkhw5
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Paginação constrói caráter."
-msgstr ""
+msgstr "La paginación forja el carácter."
 
 #. js-lingui-id: PXObId
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Papéis de usuário"
-msgstr ""
+msgstr "Roles de usuario"
 
 #. js-lingui-id: 2PoBSL
 #: src/sections/founders/founders.data.ts
 msgid "Parceiro da Horizon e sócio do Zyra"
-msgstr ""
+msgstr "Socio de Horizon y copropietario de Zyra"
 
 #. js-lingui-id: Cupkzj
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Parceiros de implementação"
-msgstr ""
+msgstr "Partners de implementación"
 
 #. js-lingui-id: QmGWtV
 #: src/app-preview/terminal/ThinkingIndicator.tsx
 msgid "Pensando"
-msgstr ""
+msgstr "Pensando"
 
 #. js-lingui-id: Gz6N/L
 #: src/sections/faq/Faq.tsx
 msgid "Perguntas frequentes"
-msgstr ""
+msgstr "Preguntas frecuentes"
 
 #. js-lingui-id: bqCRaJ
 #: src/sections/pricing-plans/BillingToggle.tsx
 msgid "Período de cobrança"
-msgstr ""
+msgstr "Periodo de facturación"
 
 #. js-lingui-id: K6vUpq
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Permissões de leitura/edição/exclusão"
-msgstr ""
+msgstr "Permisos de lectura/edición/eliminación"
 
 #. js-lingui-id: nm6j7r
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Permissões por campo"
-msgstr ""
+msgstr "Permisos por campo"
 
 #. js-lingui-id: dSuPJZ
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Permissões por linha"
-msgstr ""
+msgstr "Permisos por fila"
 
 #. js-lingui-id: r6RxZz
 #: src/sections/stepper/stepper.data.ts
 msgid "Personalize sem limite usando as ferramentas de IA que você já usa no dia a dia. Adapte o CRM no ritmo em que o seu negócio muda."
-msgstr ""
+msgstr "Personaliza sin límites usando las herramientas de IA que ya usas cada día. Adapta el CRM al ritmo al que cambia tu negocio."
 
 #. js-lingui-id: SzWKzc
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Personificar usuários"
-msgstr ""
+msgstr "Suplantar usuarios"
 
 #. js-lingui-id: FFkjaT
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1498,59 +1515,59 @@ msgstr "Gestión de pipeline"
 #. js-lingui-id: IwRtn7
 #: src/platform/routing/static-website-routes.ts
 msgid "Pipelines, custom objects, AI assistants, and a native API on top of Postgres. Zyra is the CRM with the modern UX teams actually want to use."
-msgstr ""
+msgstr "Pipelines, objetos personalizados, asistentes de IA y una API nativa sobre Postgres. Zyra es el CRM con la experiencia moderna que los equipos realmente quieren usar."
 
 #. js-lingui-id: 06LUsi
 #: src/sections/footer/footer.data.ts
 msgid "Política de Privacidade"
-msgstr ""
+msgstr "Política de Privacidad"
 
 #. js-lingui-id: i8dGEG
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 msgid "Por que a Zyra"
-msgstr ""
+msgstr "Por qué Zyra"
 
 #. js-lingui-id: Uc2BA0
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Por vinte anos, CRM significou sempre a mesma coisa: um lugar pra registrar ligações, acompanhar negócios e tirar relatórios na sexta-feira. O trabalho de verdade acontecia na cabeça das pessoas, em threads do Slack, em conversas de corredor. O CRM só marcava o placar. Ninguém esperava mais do que isso."
-msgstr ""
+msgstr "Durante veinte años, CRM significó siempre lo mismo: un lugar para registrar llamadas, hacer seguimiento de negocios y sacar informes los viernes. El trabajo de verdad ocurría en la cabeza de las personas, en hilos de Slack, en conversaciones de pasillo. El CRM solo llevaba el marcador. Nadie esperaba más que eso."
 
 #. js-lingui-id: JmPMNz
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Porque orquestração de verdade é botar um cifrão em cada entrada dramática."
-msgstr ""
+msgstr "Porque la orquestación de verdad consiste en ponerle un signo de dólar a cada entrada dramática."
 
 #. js-lingui-id: yRPwvX
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Porque, aparentemente, privacidade fica mais premium com sobretaxa."
-msgstr ""
+msgstr "Porque, al parecer, la privacidad se vuelve más premium con un recargo."
 
 #. js-lingui-id: 4fxq7S
 #: src/sections/faq/faq.data.ts
 msgid "Posso rodar o Zyra na minha própria infraestrutura?"
-msgstr ""
+msgstr "¿Puedo ejecutar Zyra en mi propia infraestructura?"
 
 #. js-lingui-id: N25DzA
 #: src/sections/pricing-engagement-band/PricingEngagementBand.tsx
 msgid "Precisa de ajuda com customização?"
-msgstr ""
+msgstr "¿Necesitas ayuda con la personalización?"
 
 #. js-lingui-id: Od/ANV
 #: src/sections/faq/faq.data.ts
 msgid "Preciso de um desenvolvedor pra customizar o Zyra?"
-msgstr ""
+msgstr "¿Necesito un desarrollador para personalizar Zyra?"
 
 #. js-lingui-id: 1xR04G
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Preço"
-msgstr ""
+msgstr "Precio"
 
 #. js-lingui-id: /oWnDW
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 msgid "Preços"
-msgstr ""
+msgstr "Precios"
 
 #. js-lingui-id: A+K5ST
 #: src/sections/pricing-plans/PricingIntro.tsx
@@ -1558,17 +1575,19 @@ msgid ""
 "Preços\n"
 "*simples*"
 msgstr ""
+"Precios\n"
+"*sencillos*"
 
 #. js-lingui-id: T9v7dX
 #: src/sections/menu/menu.data.ts
 msgid "Prévia do guia do usuário da Zyra"
-msgstr ""
+msgstr "Vista previa de la guía de usuario de Zyra"
 
 #. js-lingui-id: q0XvFe
 #: src/sections/menu/MenuDrawer.tsx
 #: src/sections/menu/MenuNav.tsx
 msgid "Principal"
-msgstr ""
+msgstr "Principal"
 
 #. js-lingui-id: LcET2C
 #: src/routes/PrivacyPolicyPage.tsx
@@ -1592,36 +1611,38 @@ msgid ""
 "Pronto pra construir\n"
 "*a sua própria história?*"
 msgstr ""
+"¿Listo para construir\n"
+"*tu propia historia?*"
 
 #. js-lingui-id: z9V0H5
 #: src/sections/why-zyra-signoff/WhyZyraSignoff.tsx
 msgid "Pronto pra IA, e seu pra moldar."
-msgstr ""
+msgstr "Listo para la IA, y tuyo para moldear."
 
 #. js-lingui-id: vJ0jYO
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Prorrogado!"
-msgstr ""
+msgstr "¡Prorrogado!"
 
 #. js-lingui-id: Uyhf6F
 #: src/sections/founders/FoundersCarousel.tsx
 msgid "Próximo fundador"
-msgstr ""
+msgstr "Próximo fundador"
 
 #. js-lingui-id: 2DSPla
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Qualidade de produção"
-msgstr ""
+msgstr "Calidad de producción"
 
 #. js-lingui-id: HNWAWW
 #: src/sections/faq/faq.data.ts
 msgid "Quanto custa o Zyra?"
-msgstr ""
+msgstr "¿Cuánto cuesta Zyra?"
 
 #. js-lingui-id: aq+I5T
 #: src/sections/faq/faq.data.ts
 msgid "Quanto tempo leva pra colocar o Zyra no ar?"
-msgstr ""
+msgstr "¿Cuánto tiempo se tarda en poner Zyra en marcha?"
 
 #. js-lingui-id: +kCdxv
 #: src/sections/founders-hero/FoundersHero.tsx
@@ -1629,22 +1650,24 @@ msgid ""
 "Quem criou\n"
 "*o Zyra*"
 msgstr ""
+"Quién creó\n"
+"*Zyra*"
 
 #. js-lingui-id: aY43wn
 #: src/sections/footer/footer.data.ts
 #: src/sections/menu/menu.data.ts
 msgid "Quem criou o Zyra"
-msgstr ""
+msgstr "Quién creó Zyra"
 
 #. js-lingui-id: NukXDt
 #: src/platform/routing/static-website-routes.ts
 msgid "Quem criou o Zyra — Sobre nós"
-msgstr ""
+msgstr "Quién creó Zyra — Sobre nosotros"
 
 #. js-lingui-id: ExW6kg
 #: src/sections/founders/FoundersCarousel.tsx
 msgid "Quem está por trás do Zyra"
-msgstr ""
+msgstr "Quién está detrás de Zyra"
 
 #. js-lingui-id: yUi7VA
 #: src/sections/creators/Creators.tsx
@@ -1652,6 +1675,8 @@ msgid ""
 "Quer implementar o Zyra\n"
 "*na sua empresa?*"
 msgstr ""
+"¿Quieres implementar Zyra\n"
+"*en tu empresa?*"
 
 #. js-lingui-id: q6aHNm
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -1660,11 +1685,14 @@ msgid ""
 "+R$75/usuário por mês\n"
 "Migre para o enterprise!"
 msgstr ""
+"1 €/ejecución de orquestación/org\n"
+"+75 €/usuario al mes\n"
+"¡Pásate a la versión enterprise!"
 
 #. js-lingui-id: hjD0dF
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "R$120"
-msgstr ""
+msgstr "120 €"
 
 #. js-lingui-id: HUfa94
 #: src/platform/routing/static-website-routes.ts
@@ -1680,32 +1708,32 @@ msgstr "Datos en tiempo real"
 #. js-lingui-id: HfeibS
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "Recebemos o seu contato. Em breve nossa equipe fala com você."
-msgstr ""
+msgstr "Hemos recibido tu mensaje. Pronto nuestro equipo se pondrá en contacto contigo."
 
 #. js-lingui-id: 7W22l0
 #: src/sections/menu/menu.data.ts
 msgid "Recursos"
-msgstr ""
+msgstr "Recursos"
 
 #. js-lingui-id: kvBbwJ
 #: src/sections/footer/FooterBottom.tsx
 msgid "Redes sociais"
-msgstr ""
+msgstr "Redes sociales"
 
 #. js-lingui-id: xdyy6Y
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Registros"
-msgstr ""
+msgstr "Registros"
 
 #. js-lingui-id: BzOUDf
 #: src/app-preview/terminal/TerminalSendButton.tsx
 msgid "Reiniciar conversa"
-msgstr ""
+msgstr "Reiniciar conversación"
 
 #. js-lingui-id: YPPMC8
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Relatórios"
-msgstr ""
+msgstr "Informes"
 
 #. js-lingui-id: 5icoS1
 #: src/sections/releases-feed/ReleasesFeed.tsx
@@ -1726,12 +1754,12 @@ msgstr "Informes y Paneles"
 #. js-lingui-id: ririu2
 #: src/sections/founders/FoundersCarousel.tsx
 msgid "Retrato de {authorName}"
-msgstr ""
+msgstr "Retrato de {authorName}"
 
 #. js-lingui-id: 0s7Zla
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Retrô 2015"
-msgstr ""
+msgstr "Retro 2015"
 
 #. js-lingui-id: frqduN
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -1741,37 +1769,37 @@ msgstr "Notas enriquecidas adjuntas a los registros"
 #. js-lingui-id: M7HH49
 #: src/sections/footer/FooterNav.tsx
 msgid "Rodapé"
-msgstr ""
+msgstr "Pie de página"
 
 #. js-lingui-id: tkVVnp
 #: src/sections/stepper/stepper.data.ts
 msgid "Rode auto-hospedado se quiser: setup local, dados reais, testes ao vivo, sem ferramenta proprietária te prendendo."
-msgstr ""
+msgstr "Ejecútalo autoalojado si quieres: configuración local, datos reales, pruebas en vivo, sin una herramienta propietaria que te ate."
 
 #. js-lingui-id: bfLBah
 #: src/sections/three-cards/three-cards.data.ts
 msgid "Rode auto-hospedado, sem risco de fornecedor e sem migração forçada quando o seu processo muda."
-msgstr ""
+msgstr "Ejecútalo autoalojado, sin riesgo de dependencia de proveedor y sin migraciones forzadas cuando tu proceso cambia."
 
 #. js-lingui-id: PSKsFY
 #: src/sections/founders/founders.data.ts
 msgid "Rodrigo Asturian"
-msgstr ""
+msgstr "Rodrigo Asturian"
 
 #. js-lingui-id: DNJuA6
 #: src/sections/founders/founders.data.ts
 msgid "Rodrigo Asturian é advogado e CEO da Asturian Associates, escritório internacional de advocacia especializado em proteção patrimonial e internacionalização de empresas. Parceiro da Horizon, é um dos donos do Zyra."
-msgstr ""
+msgstr "Rodrigo Asturian es abogado y CEO de Asturian Associates, bufete internacional especializado en protección patrimonial e internacionalización de empresas. Socio de Horizon, es uno de los propietarios de Zyra."
 
 #. js-lingui-id: eHx1Y3
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Rotação de chave de criptografia"
-msgstr ""
+msgstr "Rotación de claves de cifrado"
 
 #. js-lingui-id: J10WrX
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Salesfarce Classic"
-msgstr ""
+msgstr "Salesfarce Classic"
 
 #. js-lingui-id: xTfEgV
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
@@ -1781,12 +1809,12 @@ msgstr "Salesfarce Pro"
 #. js-lingui-id: rrNjTP
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Scroll infinito"
-msgstr ""
+msgstr "Scroll infinito"
 
 #. js-lingui-id: O0PGUT
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Scroll infinito ainda está a caminho, ao contrário da fatura."
-msgstr ""
+msgstr "El scroll infinito todavía está en camino, a diferencia de la factura."
 
 #. js-lingui-id: JDp1bg
 #: src/sections/three-cards/product-three-cards-data.ts
@@ -1796,7 +1824,7 @@ msgstr "Ve las actualizaciones a medida que suceden. Trabaja con tu equipo y age
 #. js-lingui-id: rKSWUj
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Segurança"
-msgstr ""
+msgstr "Seguridad"
 
 #. js-lingui-id: 02ePaq
 #. placeholder {0}: company.name
@@ -1812,17 +1840,17 @@ msgstr "Seleccionar todo"
 #. js-lingui-id: cBhJcg
 #: src/sections/feature-cards/FeatureCards.tsx
 msgid "Sem a interface travada que \"sob medida\" costuma trazer."
-msgstr ""
+msgstr "Sin la interfaz rígida que el \"a medida\" suele traer."
 
 #. js-lingui-id: kmLu+M
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Servidor MCP"
-msgstr ""
+msgstr "Servidor MCP"
 
 #. js-lingui-id: QN43rN
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "Seu nome"
-msgstr ""
+msgstr "Tu nombre"
 
 #. js-lingui-id: rW+r/W
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -1861,49 +1889,49 @@ msgstr ""
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Sim"
-msgstr ""
+msgstr "Sí"
 
 #. js-lingui-id: MWSqJO
 #: src/sections/faq/faq.data.ts
 msgid "Sim, com o nosso framework de Apps. Crie uma extensão com `npx create-zyra-app` e publique objetos customizados, funções server-side, componentes React que renderizam dentro da interface do Zyra, skills e agentes de IA, views e navegação — tudo em TypeScript, com deploy pra qualquer workspace."
-msgstr ""
+msgstr "Sí, con nuestro framework de Apps. Crea una extensión con `npx create-zyra-app` y publica objetos personalizados, funciones del lado del servidor, componentes React que se renderizan dentro de la interfaz de Zyra, skills y agentes de IA, vistas y navegación, todo en TypeScript, con despliegue a cualquier workspace."
 
 #. js-lingui-id: JYT9BV
 #: src/sections/faq/faq.data.ts
 msgid "Sim. Todo workspace conta com um servidor MCP nativo. Conecte seu assistente de IA via OAuth e ele consegue ler e escrever dados do CRM em linguagem natural."
-msgstr ""
+msgstr "Sí. Cada workspace cuenta con un servidor MCP nativo. Conecta tu asistente de IA mediante OAuth y podrá leer y escribir datos del CRM en lenguaje natural."
 
 #. js-lingui-id: Kn2rns
 #: src/sections/faq/faq.data.ts
 msgid "Sim. Você pode auto-hospedar o Zyra e manter controle total sobre seus dados e sua infraestrutura, sem depender de nuvem de terceiros."
-msgstr ""
+msgstr "Sí. Puedes autoalojar Zyra y mantener el control total sobre tus datos y tu infraestructura, sin depender de la nube de terceros."
 
 #. js-lingui-id: dZSHMb
 #: src/sections/faq/faq.data.ts
 msgid "Sim. Você pode importar seus dados via CSV ou usar nossa API para bases maiores."
-msgstr ""
+msgstr "Sí. Puedes importar tus datos mediante CSV o usar nuestra API para bases de datos más grandes."
 
 #. js-lingui-id: gYSLc3
 #: src/platform/routing/static-website-routes.ts
 msgid "Simple, transparent pricing that scales with your team."
-msgstr ""
+msgstr "Precios simples y transparentes que crecen con tu equipo."
 
 #. js-lingui-id: S70M6P
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Só R$5 pelo SSO. Praticamente um programa de caridade."
-msgstr ""
+msgstr "Solo 5 € por el SSO. Prácticamente un programa benéfico."
 
 #. js-lingui-id: m0D4Q9
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Sob consulta"
-msgstr ""
+msgstr "Bajo consulta"
 
 #. js-lingui-id: yaNwoI
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Sobreviveu a todo redesign desde 2004."
-msgstr ""
+msgstr "Ha sobrevivido a todos los rediseños desde 2004."
 
 #. js-lingui-id: vnS6Rf
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -1914,7 +1942,7 @@ msgstr "SSO"
 #. js-lingui-id: z01b1p
 #: src/sections/pricing-plans/plans-data.ts
 msgid "SSO via SAML/OIDC"
-msgstr ""
+msgstr "SSO vía SAML/OIDC"
 
 #. js-lingui-id: j9c8rb
 #: src/sections/three-cards/product-three-cards-data.ts
@@ -1929,30 +1957,30 @@ msgstr "Deja de conformarte con compromisos."
 #. js-lingui-id: I/kOhA
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Subdomínio (suaempresa.zyra.com)"
-msgstr ""
+msgstr "Subdominio (tuempresa.zyra.com)"
 
 #. js-lingui-id: ql6u94
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Suporte"
-msgstr ""
+msgstr "Soporte"
 
 #. js-lingui-id: L++8r3
 #: src/sections/pricing-plans/plans-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Suporte padrão"
-msgstr ""
+msgstr "Soporte estándar"
 
 #. js-lingui-id: EAP8oF
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Suporte prioritário"
-msgstr ""
+msgstr "Soporte prioritario"
 
 #. js-lingui-id: yJGiNr
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Tabela, Kanban, Calendário"
-msgstr ""
+msgstr "Tabla, Kanban, Calendario"
 
 #. js-lingui-id: 9M02G5
 #: src/sections/stepper/product-stepper-data.ts
@@ -1972,27 +2000,27 @@ msgstr "Tareas y Actividades"
 #. js-lingui-id: wc5uGh
 #: src/sections/problem/problem.data.ts
 msgid "Telas prontas que não batem com o seu processo, campos que você não pode mudar e uma fila de suporte pra qualquer ajuste simples."
-msgstr ""
+msgstr "Pantallas prediseñadas que no encajan con tu proceso, campos que no puedes cambiar y una cola de soporte para cualquier ajuste sencillo."
 
 #. js-lingui-id: +/PRKX
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Tem quem chame isso de preço enterprise. Nós preferimos um CRM em que acesso à API, webhooks e workflows não aparecem como add-on surpresa."
-msgstr ""
+msgstr "Hay quien llama a esto precio enterprise. Nosotros preferimos un CRM en el que el acceso a la API, los webhooks y los workflows no aparecen como un complemento sorpresa."
 
 #. js-lingui-id: qYP1OQ
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Tema da interface"
-msgstr ""
+msgstr "Tema de la interfaz"
 
 #. js-lingui-id: +ragy0
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Tempo real é um estado de espírito, não um recurso."
-msgstr ""
+msgstr "El tiempo real es un estado de ánimo, no una función."
 
 #. js-lingui-id: nua8bU
 #: src/sections/footer/footer.data.ts
 msgid "Termos e Condições"
-msgstr ""
+msgstr "Términos y Condiciones"
 
 #. js-lingui-id: xowcRf
 #: src/routes/TermsPage.tsx
@@ -2007,43 +2035,43 @@ msgstr "Términos del Servicio | Zyra"
 #. js-lingui-id: fH0Erl
 #: src/platform/routing/static-website-routes.ts
 msgid "The CRM that adapts to how you sell. Modular, scalable, and built to fit your business."
-msgstr ""
+msgstr "El CRM que se adapta a tu forma de vender. Modular, escalable y diseñado para encajar con tu negocio."
 
 #. js-lingui-id: zEqK2w
 #: src/routes/NotFoundPage.tsx
 msgid "The page you're looking for doesn't exist."
-msgstr ""
+msgstr "La página que buscas no existe."
 
 #. js-lingui-id: yirHrH
 #: src/platform/routing/static-website-routes.ts
 msgid "The terms governing your use of Zyra and its CRM services."
-msgstr ""
+msgstr "Los términos que rigen el uso de Zyra y sus servicios de CRM."
 
 #. js-lingui-id: OzNa5s
 #: src/sections/founders/founders.data.ts
 msgid "Thulio é cofundador e COO da Horizon e contribuiu diretamente para o desenvolvimento do Zyra. Cuida para que a operação da empresa acompanhe a qualidade do produto, do primeiro contato à implementação na sua equipe."
-msgstr ""
+msgstr "Thulio es cofundador y COO de Horizon, y contribuyó directamente al desarrollo de Zyra. Se asegura de que la operación de la empresa esté a la altura de la calidad del producto, desde el primer contacto hasta la implementación en tu equipo."
 
 #. js-lingui-id: IpSAea
 #: src/sections/founders/founders.data.ts
 msgid "Thulio Leal"
-msgstr ""
+msgstr "Thulio Leal"
 
 #. js-lingui-id: JSDWy/
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Tipos de view"
-msgstr ""
+msgstr "Tipos de vista"
 
 #. js-lingui-id: NJmllB
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "total por mês com custo fixo"
-msgstr ""
+msgstr "total al mes con coste fijo"
 
 #. js-lingui-id: OCmNVU
 #: src/sections/pricing-plan-table/plan-table-data.ts
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Totalmente customizável"
-msgstr ""
+msgstr "Totalmente personalizable"
 
 #. js-lingui-id: hmu++i
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -2068,32 +2096,32 @@ msgstr "Prueba Zyra Cloud"
 #. js-lingui-id: zwa4HR
 #: src/sections/feature-cards/feature-cards.data.ts
 msgid "Tudo atualiza na hora, com um chat de IA sempre à mão pra te ajudar a trabalhar mais rápido."
-msgstr ""
+msgstr "Todo se actualiza al instante, con un chat de IA siempre a mano para ayudarte a trabajar más rápido."
 
 #. js-lingui-id: 0RVN+q
 #: src/sections/pricing-plans/plans-data.ts
 msgid "Tudo do Pro"
-msgstr ""
+msgstr "Todo lo del Pro"
 
 #. js-lingui-id: Fn+14P
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Tutoriais APEX"
-msgstr ""
+msgstr "Tutoriales APEX"
 
 #. js-lingui-id: eMBQNb
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Um ano atrás, customizar seu CRM significava contratar um consultor de Salesforce, aprender Apex, esperar meses. A distância entre \"eu quero isso\" e \"está no ar\" era medida em trimestres e faturas. Então as pessoas se conformavam. Elas dobravam o processo pra caber na ferramenta e chamavam isso de adoção."
-msgstr ""
+msgstr "Hace un año, personalizar tu CRM significaba contratar a un consultor de Salesforce, aprender Apex, esperar meses. La distancia entre \"quiero esto\" y \"ya está en marcha\" se medía en trimestres y facturas. Así que la gente se resignaba. Doblaban el proceso para que encajara en la herramienta y lo llamaban adopción."
 
 #. js-lingui-id: tjJ9tC
 #: src/sections/problem/Problem.tsx
 msgid "Um CRM sob medida dá vantagem competitiva, *mas montar um do zero* vem com *tradeoffs*"
-msgstr ""
+msgstr "Un CRM a medida da ventaja competitiva, *pero montarlo desde cero* conlleva *contrapartidas*"
 
 #. js-lingui-id: Xf1YKU
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Um tema retrô como add-on pago é de alguma forma a parte mais acreditável."
-msgstr ""
+msgstr "Un tema retro como complemento de pago es, de alguna forma, la parte más creíble."
 
 #. js-lingui-id: Hix/m6
 #: src/sections/product-feature/data/feature-tiles.ts
@@ -2108,42 +2136,42 @@ msgstr "Sube, renombra, previsualiza y gestiona archivos directamente en los reg
 #. js-lingui-id: dtzzjY
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Ver mais add-ons"
-msgstr ""
+msgstr "Ver más complementos"
 
 #. js-lingui-id: MlR8hg
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Ver mais recursos"
-msgstr ""
+msgstr "Ver más funciones"
 
 #. js-lingui-id: m+ZD6c
 #: src/sections/pricing-plan-table/plan-table-data.ts
 msgid "Views customizadas"
-msgstr ""
+msgstr "Vistas personalizadas"
 
 #. js-lingui-id: K1Gzrc
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "vire um gênio!"
-msgstr ""
+msgstr "¡conviértete en un genio!"
 
 #. js-lingui-id: 2iAoW6
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Visualização em mapa"
-msgstr ""
+msgstr "Visualización en mapa"
 
 #. js-lingui-id: 3U1WG0
 #: src/sections/pricing-salesfarce/salesfarce-data.ts
 msgid "Visualize seus clientes num mapa!"
-msgstr ""
+msgstr "¡Visualiza tus clientes en un mapa!"
 
 #. js-lingui-id: Ww4hZQ
 #: src/sections/why-zyra-editorial/editorials.data.ts
 msgid "Você não compra seu pipeline de deploy pronto. Você não aluga seu data warehouse de um fornecedor que decide o schema. Você constrói, você é dono, você itera toda semana. O CRM está indo pelo mesmo caminho. Os times que tratarem isso como infraestrutura própria vão acumular vantagem a cada trimestre."
-msgstr ""
+msgstr "No compras tu pipeline de despliegue ya hecho. No alquilas tu data warehouse a un proveedor que decide el esquema. Lo construyes, eres el dueño, iteras cada semana. El CRM va por el mismo camino. Los equipos que lo traten como infraestructura propia acumularán ventaja cada trimestre."
 
 #. js-lingui-id: /YT+fG
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "voce@empresa.com"
-msgstr ""
+msgstr "tu@empresa.com"
 
 #. js-lingui-id: v1kQyJ
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -2158,12 +2186,12 @@ msgstr "Webhooks (Captura de cambios de datos)"
 #. js-lingui-id: 2+ExvJ
 #: src/contact-cal/ContactLeadForm.tsx
 msgid "WhatsApp"
-msgstr ""
+msgstr "WhatsApp"
 
 #. js-lingui-id: gao+Wv
 #: src/platform/routing/static-website-routes.ts
 msgid "Why Zyra — A CRM Built to Be Customised"
-msgstr ""
+msgstr "Por qué Zyra — Un CRM diseñado para personalizarse"
 
 #. js-lingui-id: woYYQq
 #: src/sections/pricing-plan-table/plan-table-data.ts
@@ -2188,12 +2216,12 @@ msgstr "Tu red, completamente mapeada."
 #. js-lingui-id: bjc0f0
 #: src/platform/routing/static-website-routes.ts
 msgid "Zyra | The CRM That Adapts to How You Sell"
-msgstr ""
+msgstr "Zyra | El CRM que se adapta a tu forma de vender"
 
 #. js-lingui-id: XXMZwi
 #: src/platform/routing/static-website-routes.ts
 msgid "Zyra CRM Features — A Modern, Customisable CRM Platform"
-msgstr ""
+msgstr "Funciones de Zyra CRM — Una plataforma CRM moderna y personalizable"
 
 #. js-lingui-id: mGGuXu
 #: src/platform/routing/static-website-routes.ts
@@ -2208,4 +2236,5 @@ msgstr "Clientes de Zyra — Cómo los equipos modernos gestionan su CRM"
 #. js-lingui-id: jZ6MjZ
 #: src/platform/routing/static-website-routes.ts
 msgid "Zyra Releases — What's New in Zyra"
-msgstr ""
+msgstr "Novedades de Zyra — Qué hay de nuevo en Zyra"
+

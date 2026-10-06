@@ -85,6 +85,12 @@ import { CreateFunnelTablesFastInstanceCommand } from 'src/database/commands/upg
 import { AddWhatsappAgentQualificationFieldsFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1800000000000-add-whatsapp-agent-qualification-fields';
 import { CreatePaymentsTablesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1801000000000-create-payments-tables';
 import { AddFunnelLeadSessionScheduledAtFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1802000000000-add-funnel-lead-session-scheduled-at';
+import { CreateWorkspacePlanGrandfatherTableFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1803100000000-create-workspace-plan-grandfather-table';
+import { CreateWorkspaceModuleGrandfatherTableFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1803200000000-create-workspace-module-grandfather-table';
+import { BackfillWorkspaceModuleGrandfatherSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-slow-1803300000000-backfill-workspace-module-grandfather';
+import { GrantHorizonWorkspaceAllModulesSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-slow-1803400000000-grant-horizon-workspace-all-modules';
+import { GrandfatherManychatLikeAndIntegrationsByUsageSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-slow-1803600000000-grandfather-manychat-like-and-integrations-by-usage';
+import { GrantHorizonWorkspaceManychatLikeModuleSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-slow-1803700000000-grant-horizon-workspace-manychat-like-module';
 
 export const INSTANCE_COMMANDS = [
   AddViewFieldGroupIdIndexOnViewFieldFastInstanceCommand,
@@ -172,4 +178,10 @@ export const INSTANCE_COMMANDS = [
   AddWhatsappAgentQualificationFieldsFastInstanceCommand,
   CreatePaymentsTablesFastInstanceCommand,
   AddFunnelLeadSessionScheduledAtFastInstanceCommand,
+  CreateWorkspacePlanGrandfatherTableFastInstanceCommand,
+  CreateWorkspaceModuleGrandfatherTableFastInstanceCommand,
+  BackfillWorkspaceModuleGrandfatherSlowInstanceCommand,
+  GrantHorizonWorkspaceAllModulesSlowInstanceCommand,
+  GrandfatherManychatLikeAndIntegrationsByUsageSlowInstanceCommand,
+  GrantHorizonWorkspaceManychatLikeModuleSlowInstanceCommand,
 ];

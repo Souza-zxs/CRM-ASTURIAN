@@ -6,6 +6,7 @@ import { ToolModule } from 'src/engine/core-modules/tool/tool.module';
 import { ConnectedAccountMetadataModule } from 'src/engine/metadata-modules/connected-account/connected-account-metadata.module';
 import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { WhatsappChannelEntity } from 'src/engine/metadata-modules/whatsapp-channel/entities/whatsapp-channel.entity';
 import { WhatsappAgentModule } from 'src/modules/whatsapp-agent/whatsapp-agent.module';
 import { provideWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/provide-workspace-scoped-repository';
@@ -21,6 +22,7 @@ import { SendWhatsappMessageService } from 'src/modules/messaging/message-outbou
     MessagingSendManagerModule,
     ConnectedAccountMetadataModule,
     PermissionsModule,
+    PlanTierModule,
     WhatsappAgentModule,
     TypeOrmModule.forFeature([ConnectedAccountEntity, WhatsappChannelEntity]),
   ],

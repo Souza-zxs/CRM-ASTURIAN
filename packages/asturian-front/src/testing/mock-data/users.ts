@@ -13,6 +13,7 @@ import {
   type User,
   type Workspace,
   WorkspaceActivationStatus,
+  WorkspacePlanTier,
   WorkspaceMemberDateFormatEnum,
   WorkspaceMemberTimeFormatEnum,
 } from '~/generated-metadata/graphql';
@@ -84,6 +85,7 @@ export const mockCurrentWorkspace = {
     subdomainUrl: 'zyra.zyra.com',
   },
   featureFlags: [],
+  planTier: WorkspacePlanTier.PRO,
   createdAt: '2023-04-26T10:23:42.33625+00:00',
   updatedAt: '2023-04-26T10:23:42.33625+00:00',
   metadataVersion: 1,

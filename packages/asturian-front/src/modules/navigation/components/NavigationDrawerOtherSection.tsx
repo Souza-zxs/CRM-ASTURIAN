@@ -8,6 +8,8 @@ import { currentWorkspaceMemberState } from '@/auth/states/currentWorkspaceMembe
 import { isWhatsappMessagingEnabledState } from '@/client-config/states/isWhatsappMessagingEnabledState';
 import { getDocumentationUrl } from '@/support/utils/getDocumentationUrl';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
+import { ModuleLimitBlockedModal } from '@/workspace/components/ModuleLimitBlockedModal';
+import { useModuleAccessGate } from '@/workspace/hooks/useModuleAccessGate';
 
 import { NavigationDrawerAnimatedCollapseWrapper } from '@/ui/navigation/navigation-drawer/components/NavigationDrawerAnimatedCollapseWrapper';
 import { NavigationDrawerItem } from '@/ui/navigation/navigation-drawer/components/NavigationDrawerItem';
@@ -26,6 +28,11 @@ export const NavigationDrawerOtherSection = () => {
     isWhatsappMessagingEnabledState,
   );
   const isWhatsappInboxActive = useMatch(AppPath.WhatsappInbox) !== null;
+  const {
+    isLocked: isWhatsappLocked,
+    modalInstanceId: whatsappModalInstanceId,
+    openUpsellModal: openWhatsappUpsellModal,
+  } = useModuleAccessGate('WHATSAPP');
 
   const { toggleNavigationSection } = useNavigationSection('Other');
   const isNavigationSectionOpen = useAtomFamilyStateValue(
@@ -54,12 +61,29 @@ export const NavigationDrawerOtherSection = () => {
         initial={false}
       >
         {isWhatsappMessagingEnabled && (
-          <NavigationDrawerItem
-            label={t`WhatsApp Inbox`}
-            to={AppPath.WhatsappInbox}
-            active={isWhatsappInboxActive}
-            Icon={IconBrandWhatsapp}
-          />
+          <>
+            {isWhatsappLocked ? (
+              <NavigationDrawerItem
+                label={t`WhatsApp Inbox`}
+                modifier="locked"
+                Icon={IconBrandWhatsapp}
+                onClick={openWhatsappUpsellModal}
+              />
+            ) : (
+              <NavigationDrawerItem
+                label={t`WhatsApp Inbox`}
+                to={AppPath.WhatsappInbox}
+                active={isWhatsappInboxActive}
+                Icon={IconBrandWhatsapp}
+              />
+            )}
+            {isWhatsappLocked && (
+              <ModuleLimitBlockedModal
+                modalInstanceId={whatsappModalInstanceId}
+                featureName={t`WhatsApp`}
+              />
+            )}
+          </>
         )}
         <NavigationDrawerItem
           label={t`Settings`}

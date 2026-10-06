@@ -10,6 +10,7 @@ import { WorkspaceApiKeyMapCacheService } from 'src/engine/core-modules/api-key/
 import { TokenModule } from 'src/engine/core-modules/auth/token/token.module';
 import { FeatureFlagModule } from 'src/engine/core-modules/feature-flag/feature-flag.module';
 import { JwtModule } from 'src/engine/core-modules/jwt/jwt.module';
+import { PlanTierModule } from 'src/engine/core-modules/plan-tier/plan-tier.module';
 import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
 import { PermissionsModule } from 'src/engine/metadata-modules/permissions/permissions.module';
 import { RoleTargetEntity } from 'src/engine/metadata-modules/role-target/role-target.entity';
@@ -36,6 +37,7 @@ import { ApiKeyController } from './controllers/api-key.controller';
     RoleTargetModule,
     TokenModule,
     PermissionsModule,
+    PlanTierModule,
   ],
   providers: [
     ApiKeyService,

@@ -40,6 +40,7 @@ import { WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspa
 import { FeatureFlagService } from 'src/engine/core-modules/feature-flag/services/feature-flag.service';
 import { MetricsService } from 'src/engine/core-modules/metrics/metrics.service';
 import { MetricsKeys } from 'src/engine/core-modules/metrics/types/metrics-keys.type';
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { ThrottlerService } from 'src/engine/core-modules/throttler/throttler.service';
 import { ZyraConfigService } from 'src/engine/core-modules/zyra-config/zyra-config.service';
 import { FlatEntityMaps } from 'src/engine/metadata-modules/flat-entity/types/flat-entity-maps.type';
@@ -93,6 +94,8 @@ export abstract class CommonBaseQueryRunnerService<
   protected readonly metricsService: MetricsService;
   @Inject()
   protected readonly featureFlagService: FeatureFlagService;
+  @Inject()
+  protected readonly planLimitService: PlanLimitService;
 
   protected abstract readonly operationName: CommonQueryNames;
 
@@ -383,6 +386,25 @@ export abstract class CommonBaseQueryRunnerService<
         1,
         longConfig.maxTokens,
         longConfig.timeWindow,
+      );
+
+      // Commercial per-plan cap, separate from the two infra/cost-protection
+      // buckets above (those stay instance-wide env config, unchanged).
+      // apiRateLimitPerMinute comes from the API_ACCESS module's included
+      // limit (module-catalog.constant.ts) — a workspace without that
+      // module resolves to 0, so this also doubles as a hard stop for API
+      // traffic from a workspace whose module lapsed, without needing a
+      // separate guard in the auth layer.
+      const planRateLimit = await this.planLimitService.resolveLimit(
+        workspaceId,
+        'apiRateLimitPerMinute',
+      );
+
+      await this.throttlerService.tokenBucketThrottleOrThrow(
+        `api:throttler:${workspaceId}-plan-limit`,
+        1,
+        planRateLimit,
+        60_000,
       );
     } catch (error) {
       await this.metricsService.incrementCounterForEvent({

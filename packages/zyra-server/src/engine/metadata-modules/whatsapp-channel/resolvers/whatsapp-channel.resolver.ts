@@ -7,10 +7,15 @@ import { AuthUserWorkspaceId } from 'src/engine/decorators/auth/auth-user-worksp
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { WhatsappChannelDTO } from 'src/engine/metadata-modules/whatsapp-channel/dtos/whatsapp-channel.dto';
 import { WhatsappChannelMetadataService } from 'src/engine/metadata-modules/whatsapp-channel/whatsapp-channel-metadata.service';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => WhatsappChannelDTO)
 export class WhatsappChannelResolver {
   constructor(
@@ -19,6 +24,7 @@ export class WhatsappChannelResolver {
 
   @Query(() => [WhatsappChannelDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async myWhatsappChannels(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @AuthUserWorkspaceId() userWorkspaceId: string,

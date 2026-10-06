@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 
 import { msg } from '@lingui/core/macro';
 import { IsNull } from 'typeorm';
@@ -12,6 +12,8 @@ import {
 import { type ApiKeyToken } from 'src/engine/core-modules/auth/dto/api-key-token.dto';
 import { JwtTokenTypeEnum } from 'src/engine/core-modules/auth/types/jwt-token-type.enum';
 import { JwtWrapperService } from 'src/engine/core-modules/jwt/services/jwt-wrapper.service';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
+import { WorkspacePlanTierService } from 'src/engine/core-modules/plan-tier/services/workspace-plan-tier.service';
 import { RoleTargetService } from 'src/engine/metadata-modules/role-target/services/role-target.service';
 import { InjectWorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/inject-workspace-scoped-repository.decorator';
 import { WorkspaceScopedRepository } from 'src/engine/zyra-orm/workspace-scoped-repository/workspace-scoped-repository';
@@ -25,12 +27,28 @@ export class ApiKeyService {
     private readonly jwtWrapperService: JwtWrapperService,
     private readonly roleTargetService: RoleTargetService,
     private readonly workspaceCacheService: WorkspaceCacheService,
+    private readonly workspacePlanTierService: WorkspacePlanTierService,
   ) {}
 
   async create(
     apiKeyData: Partial<ApiKeyEntity> & { roleId: string; workspaceId: string },
   ): Promise<ApiKeyEntity> {
     const { roleId, workspaceId, ...apiKeyFields } = apiKeyData;
+
+    const hasApiAccess = await this.workspacePlanTierService.hasAccessToFeature(
+      workspaceId,
+      PlanGatedFeature.API_ACCESS,
+    );
+
+    if (!hasApiAccess) {
+      // Not an ApiKeyException: those codes describe the state of an
+      // existing key (not found/revoked/expired); this is a plan/module
+      // gate, reported the same way WorkspacePlanTierGuard does elsewhere.
+      throw new ForbiddenException(
+        `This feature requires the "${PlanGatedFeature.API_ACCESS}" module to be contracted.`,
+      );
+    }
+
     const savedApiKey = await this.apiKeyRepository.save(
       workspaceId,
       apiKeyFields,

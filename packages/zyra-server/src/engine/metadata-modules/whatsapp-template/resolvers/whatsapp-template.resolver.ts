@@ -7,12 +7,17 @@ import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.ent
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { CreateWhatsappTemplateInput } from 'src/engine/metadata-modules/whatsapp-template/dtos/create-whatsapp-template.input';
 import { UpdateWhatsappTemplateInput } from 'src/engine/metadata-modules/whatsapp-template/dtos/update-whatsapp-template.input';
 import { WhatsappTemplateDTO } from 'src/engine/metadata-modules/whatsapp-template/dtos/whatsapp-template.dto';
 import { WhatsappTemplateMetadataService } from 'src/engine/metadata-modules/whatsapp-template/whatsapp-template-metadata.service';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => WhatsappTemplateDTO)
 export class WhatsappTemplateResolver {
   constructor(
@@ -21,6 +26,7 @@ export class WhatsappTemplateResolver {
 
   @Query(() => [WhatsappTemplateDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async myWhatsappTemplates(
     @AuthWorkspace() workspace: WorkspaceEntity,
   ): Promise<WhatsappTemplateDTO[]> {
@@ -31,6 +37,7 @@ export class WhatsappTemplateResolver {
 
   @Mutation(() => WhatsappTemplateDTO)
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async createWhatsappTemplate(
     @Args('input') input: CreateWhatsappTemplateInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -43,6 +50,7 @@ export class WhatsappTemplateResolver {
 
   @Mutation(() => WhatsappTemplateDTO)
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async updateWhatsappTemplate(
     @Args('input') input: UpdateWhatsappTemplateInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -55,6 +63,7 @@ export class WhatsappTemplateResolver {
 
   @Mutation(() => Boolean)
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async deleteWhatsappTemplate(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -67,6 +76,7 @@ export class WhatsappTemplateResolver {
 
   @Mutation(() => WhatsappTemplateDTO)
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async submitWhatsappTemplateForApproval(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -79,6 +89,7 @@ export class WhatsappTemplateResolver {
 
   @Mutation(() => WhatsappTemplateDTO)
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.WHATSAPP)
   async refreshWhatsappTemplateStatus(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() workspace: WorkspaceEntity,

@@ -1,0 +1,35 @@
+---
+title: Páginas de funil
+description: Publica landing pages públicas que capturan leads directamente en tu CRM.
+---
+
+Las páginas de funil son páginas web públicas, como una página de registro, una página de taller (workshop) y una página de ventas, que cualquiera puede abrir sin iniciar sesión. Los leads que completan el formulario de registro se crean automáticamente en tu CRM.
+
+## Antes de empezar
+
+- Necesitas acceso a la configuración de tu espacio de trabajo.
+- Planifica tus páginas y sus slugs primero, porque las páginas se enlazan entre sí por slug.
+- Opcional: el Meta Pixel solo se activa si tu administrador configuró un Pixel ID al compilar la app. Pregúntale a tu administrador.
+
+## Pasos
+
+1. Abre **Configuración** y ve a **Espacio de trabajo > Funil**.
+2. En **Páginas de funil**, haz clic en **Nueva página**.
+3. Elige el **Tipo de página**: registro (SIGNUP), taller (WORKSHOP), ventas (SALES) o confirmación (CONFIRMATION).
+4. Define el **Slug**, y opcionalmente el **Título SEO** y la **Descripción SEO**.
+5. Completa los campos según el tipo:
+   - Registro: titular, subtitular, viñetas, etiqueta del botón y el slug al que redirigir tras el éxito.
+   - Taller: URL del video, chat simulado activado o desactivado, etiqueta del botón, y el slug de la página de oferta. También puedes definir horarios de sesión diarios, el desfase horario en minutos (Brasilia es -180) y los minutos mínimos antes de una sesión.
+   - Ventas: titular, lista de valor, precio, garantía, preguntas frecuentes, etiqueta del botón y URL de pago.
+   - Confirmación: variante, mensaje, etiqueta del siguiente paso y URL o slug.
+6. Haz clic en **Crear página** y luego publícala desde la lista (**Publicar**).
+
+## Cómo funciona
+
+Una página publicada se sirve en `/w/<slug>` dentro de la app. Las páginas en estado BORRADOR no se sirven; solo se sirven las PUBLICADAS. Cuando un visitante envía el formulario de registro, el servidor crea (o encuentra) una Persona y crea una Oportunidad en la etapa NEW. Cuando el lead abre la página del taller, una Oportunidad que sigue en NEW pasa a MEETING. Con un horario configurado, cada lead se asigna a la próxima sesión diaria y el video queda bloqueado hasta ese momento.
+
+## Es bueno saber
+
+- Los endpoints públicos tienen un límite de solicitudes por hora (por ejemplo, 20 envíos de leads).
+- Cuando hay un Meta Pixel configurado, las páginas muestran un aviso de consentimiento de seguimiento.
+- Los campos de redirección usan slugs, así que crea y publica la página de destino antes de enviar tráfico.

@@ -10,12 +10,17 @@ import { MetadataResolver } from 'src/engine/api/graphql/graphql-config/decorato
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { SettingsPermissionGuard } from 'src/engine/guards/settings-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import {
+  RequirePlanGatedFeature,
+  WorkspacePlanTierGuard,
+} from 'src/engine/guards/workspace-plan-tier.guard';
+import { PlanGatedFeature } from 'src/engine/core-modules/plan-tier/enums/plan-gated-feature.enum';
 import { CreateVoiceAgentInput } from 'src/engine/metadata-modules/voice-agent/dtos/create-voice-agent.input';
 import { UpdateVoiceAgentInput } from 'src/engine/metadata-modules/voice-agent/dtos/update-voice-agent.input';
 import { VoiceAgentDTO } from 'src/engine/metadata-modules/voice-agent/dtos/voice-agent.dto';
 import { VoiceAgentMetadataService } from 'src/engine/metadata-modules/voice-agent/voice-agent-metadata.service';
 
-@UseGuards(WorkspaceAuthGuard)
+@UseGuards(WorkspaceAuthGuard, WorkspacePlanTierGuard)
 @MetadataResolver(() => VoiceAgentDTO)
 export class VoiceAgentResolver {
   constructor(
@@ -24,6 +29,7 @@ export class VoiceAgentResolver {
 
   @Query(() => [VoiceAgentDTO])
   @UseGuards(NoPermissionGuard)
+  @RequirePlanGatedFeature(PlanGatedFeature.VOICE_AGENT)
   async myVoiceAgents(
     @AuthWorkspace() workspace: WorkspaceEntity,
   ): Promise<VoiceAgentDTO[]> {
@@ -34,6 +40,7 @@ export class VoiceAgentResolver {
 
   @Mutation(() => VoiceAgentDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.VOICE_AGENT)
   async createVoiceAgent(
     @Args('input') input: CreateVoiceAgentInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -57,6 +64,7 @@ export class VoiceAgentResolver {
 
   @Mutation(() => VoiceAgentDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.VOICE_AGENT)
   async updateVoiceAgent(
     @Args('input') input: UpdateVoiceAgentInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
@@ -82,6 +90,7 @@ export class VoiceAgentResolver {
 
   @Mutation(() => VoiceAgentDTO)
   @UseGuards(SettingsPermissionGuard(PermissionFlagType.CONNECTED_ACCOUNTS))
+  @RequirePlanGatedFeature(PlanGatedFeature.VOICE_AGENT)
   async deleteVoiceAgent(
     @Args('id', { type: () => UUIDScalarType }) id: string,
     @AuthWorkspace() workspace: WorkspaceEntity,

@@ -1,0 +1,44 @@
+---
+title: Canal de WhatsApp y agente de IA
+description: Conecta un número de WhatsApp a Zyra y configura un agente de IA que responde a los mensajes entrantes.
+---
+
+Zyra te permite gestionar números de WhatsApp conectados y asignarles un agente de IA que responde a los mensajes entrantes de WhatsApp en nombre de un número.
+
+## Antes de empezar
+
+- Las funciones de WhatsApp deben estar habilitadas en tu instancia. Si no ves las tarjetas de WhatsApp en **Cuentas**, pídeselo a tu administrador.
+- Necesitas al menos un número de WhatsApp conectado. Cómo se conectan los números depende de tu configuración, así que pregunta a tu administrador si la lista está vacía.
+
+## Configurar el agente de IA
+
+1. Abre **Configuración** y ve a **Usuario > Cuentas**.
+2. Abre la tarjeta **Agente de IA de WhatsApp**.
+3. Haz clic para crear un agente nuevo (**Nuevo agente de WhatsApp**).
+4. Completa el formulario:
+   - **Nombre** y **Número de WhatsApp** (el número que responderá el agente).
+   - **Mensaje de bienvenida**.
+   - **Prompt del sistema**: la personalidad, el objetivo y el tono de voz.
+   - **Criterios de calificación**: qué hace que un lead esté calificado.
+   - **Frases prohibidas**: una lista separada por comas que el agente nunca debe usar.
+   - **Instrucciones de traspaso**: cuándo el agente debe pasar la conversación a una persona.
+   - **Modelo**: el nombre del modelo de IA (el valor predeterminado es `gpt-4.1-mini`).
+5. Haz clic en **Crear agente**.
+
+Para revisar los números conectados, abre **Configuración > Usuario > Cuentas > WhatsApp**.
+
+## Cómo funciona
+
+El agente responde automáticamente a los mensajes entrantes de WhatsApp de su número. Hay un agente por número de WhatsApp. Cada agente tiene un indicador de actividad, que está activado de forma predeterminada.
+
+Cuando el modelo decide que una persona debe intervenir, la conversación se marca para un humano y las respuestas de la IA se desactivan para esa conversación.
+
+## Es bueno saber
+
+<Note>
+El modelo predeterminado se describe en el código como una opción provisional de bajo costo, no una elección validada. Confirma el modelo adecuado con tu administrador.
+</Note>
+
+- Las frases prohibidas se comparan sin distinguir mayúsculas y minúsculas, y se indica al modelo que las evite.
+- Eliminar un número de WhatsApp también elimina su agente.
+- Para enviar mensajes a contactos fuera de la ventana de 24 horas, usa [plantillas aprobadas](/l/es/user-guide/channels/whatsapp-templates).

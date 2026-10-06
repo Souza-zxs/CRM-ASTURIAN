@@ -4,6 +4,7 @@ import { type AppLocale } from 'zyra-shared/translations';
 import { messages as enMessages } from '@/locales/generated/en';
 import { messages as esMessages } from '@/locales/generated/es-ES';
 import { messages as frMessages } from '@/locales/generated/fr-FR';
+import { messages as ptMessages } from '@/locales/generated/pt-BR';
 
 import { WEBSITE_LOCALE_LIST } from './website-locale-list';
 
@@ -11,6 +12,7 @@ const CATALOGS: Partial<Record<AppLocale, Messages>> = {
   en: enMessages,
   'es-ES': esMessages,
   'fr-FR': frMessages,
+  'pt-BR': ptMessages,
 };
 
 // Fail at module load if a locale was added to WEBSITE_LOCALE_LIST without

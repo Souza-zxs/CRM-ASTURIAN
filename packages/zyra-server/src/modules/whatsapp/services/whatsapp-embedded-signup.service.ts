@@ -13,6 +13,7 @@ import {
   MessageFolderImportPolicy,
 } from 'zyra-shared/types';
 
+import { PlanLimitService } from 'src/engine/core-modules/plan-tier/services/plan-limit.service';
 import { type PlaintextString } from 'src/engine/core-modules/secret-encryption/branded-strings/plaintext-string.type';
 import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import { ConnectedAccountTokenEncryptionService } from 'src/engine/metadata-modules/connected-account/services/connected-account-token-encryption.service';
@@ -47,6 +48,7 @@ export class WhatsappEmbeddedSignupService {
     private readonly messageChannelRepository: Repository<MessageChannelEntity>,
     @InjectRepository(WhatsappChannelEntity)
     private readonly whatsappChannelRepository: Repository<WhatsappChannelEntity>,
+    private readonly planLimitService: PlanLimitService,
   ) {}
 
   async connectNumber(
@@ -123,6 +125,16 @@ export class WhatsappEmbeddedSignupService {
         syncStatus: MessageChannelSyncStatus.ACTIVE,
       };
     }
+
+    const currentWhatsappNumberCount = await this.whatsappChannelRepository.count({
+      where: { workspaceId },
+    });
+
+    await this.planLimitService.assertWithinLimit(
+      workspaceId,
+      'maxWhatsAppNumbers',
+      currentWhatsappNumberCount,
+    );
 
     const connectedAccount = await this.connectedAccountRepository.save({
       workspaceId,

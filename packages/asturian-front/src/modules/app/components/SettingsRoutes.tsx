@@ -430,6 +430,13 @@ const SettingsUsage = lazy(() =>
     default: module.SettingsUsage,
   })),
 );
+const SettingsPlanModules = lazy(() =>
+  import('~/pages/settings/plan-modules/SettingsPlanModules').then(
+    (module) => ({
+      default: module.SettingsPlanModules,
+    }),
+  ),
+);
 
 const SettingsUsageUserDetail = lazy(() =>
   import('~/pages/settings/billing/SettingsUsageUserDetail').then((module) => ({
@@ -746,6 +753,10 @@ export const SettingsRoutes = ({ isAdminPageEnabled }: SettingsRoutesProps) => (
         />
         <Route path={SettingsPath.Billing} element={<SettingsBilling />} />
         <Route path={SettingsPath.Usage} element={<SettingsUsage />} />
+        <Route
+          path={SettingsPath.PlanModules}
+          element={<SettingsPlanModules />}
+        />
         <Route
           path={SettingsPath.UsageUserDetail}
           element={<SettingsUsageUserDetail />}
