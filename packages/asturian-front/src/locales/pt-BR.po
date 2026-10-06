@@ -1384,7 +1384,7 @@ msgstr "Adicione seu cartão de crédito"
 #. js-lingui-id: m2qDV8
 #: src/modules/object-record/record-table/empty-state/utils/getEmptyStateTitle.ts
 msgid "Add your first {objectLabel}"
-msgstr "Adicione seu primeiro {objectLabel}"
+msgstr "Comece adicionando {objectLabel}"
 
 #. js-lingui-id: vLO+NG
 #: src/modules/ui/layout/show-page/components/ShowPageSummaryCard.tsx
@@ -18763,7 +18763,7 @@ msgstr "Use apenas letras, números, sublinhados, pontos ou hifens (máximo de 6
 #. js-lingui-id: c6uZUV
 #: src/modules/object-record/record-table/empty-state/utils/getEmptyStateSubTitle.ts
 msgid "Use our API or add your first {objectLabel} manually"
-msgstr "Use nossa API ou adicione seu primeiro {objectLabel} manualmente"
+msgstr "Use nossa API ou adicione {objectLabel} manualmente"
 
 #. js-lingui-id: 664z2C
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx

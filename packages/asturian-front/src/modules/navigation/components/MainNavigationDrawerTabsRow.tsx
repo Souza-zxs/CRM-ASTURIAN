@@ -99,8 +99,11 @@ const StyledNewChatButtonWrapper = styled.div<{ isExpanded: boolean }>`
   transition:
     height calc(${themeCssVariables.animation.duration.normal} * 1s) ease,
     padding calc(${themeCssVariables.animation.duration.normal} * 1s) ease;
-  width: ${({ isExpanded }) =>
+  max-width: 100%;
+  min-width: ${({ isExpanded }) =>
     isExpanded ? '103px' : themeCssVariables.spacing[6]};
+  width: ${({ isExpanded }) =>
+    isExpanded ? 'auto' : themeCssVariables.spacing[6]};
 `;
 
 const StyledNewChatButton = styled.div`

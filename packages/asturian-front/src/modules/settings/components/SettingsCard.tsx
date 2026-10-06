@@ -63,10 +63,12 @@ const StyledTitle = styled.div<{ disabled?: boolean }>`
       ? themeCssVariables.font.color.extraLight
       : themeCssVariables.font.color.secondary};
   display: flex;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   font-weight: ${themeCssVariables.font.weight.medium};
   gap: ${themeCssVariables.spacing[2]};
   justify-content: flex-start;
+  min-width: 0;
+  overflow-wrap: anywhere;
 `;
 
 const StyledIconChevronRightContainer = styled.span`
