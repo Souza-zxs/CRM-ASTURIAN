@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react';
 
-import { type ReactNode, useContext } from 'react';
+import { type KeyboardEvent, type ReactNode, useContext } from 'react';
 import { t } from '@lingui/core/macro';
 import { Card, CardContent } from 'zyra-ui/surfaces';
 import { IconChevronRight } from 'zyra-ui/icon';
@@ -109,13 +109,34 @@ export const SettingsCard = ({
 }: SettingsCardProps) => {
   const { theme } = useContext(ThemeContext);
 
+  // A clickable Card renders a plain div, so it needs explicit button
+  // semantics to stay reachable by keyboard and screen readers.
+  const isKeyboardOperable = isDefined(onClick) && !disabled;
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+
+    // Space would otherwise scroll the page.
+    event.preventDefault();
+    onClick?.();
+  };
+
   return (
     <StyledCardWrapper
       disabled={disabled}
       clickable={!!onClick}
       className={className}
     >
-      <Card onClick={disabled ? undefined : onClick} rounded={true} fullWidth>
+      <Card
+        onClick={disabled ? undefined : onClick}
+        role={isKeyboardOperable ? 'button' : undefined}
+        tabIndex={isKeyboardOperable ? 0 : undefined}
+        onKeyDown={isKeyboardOperable ? handleKeyDown : undefined}
+        rounded={true}
+        fullWidth
+      >
         <StyledCardContentContainer>
           <CardContent>
             <StyledHeader>

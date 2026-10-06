@@ -18,6 +18,7 @@ export enum SettingsPath {
   Funnel = 'funnel',
   Billing = 'billing',
   Usage = 'billing/usage',
+  PlanModules = 'billing/modules',
   UsageUserDetail = 'billing/usage/user/:userWorkspaceId',
   Enterprise = 'enterprise',
   Objects = 'objects',
