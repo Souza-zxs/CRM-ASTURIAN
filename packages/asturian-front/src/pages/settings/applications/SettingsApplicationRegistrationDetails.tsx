@@ -8,12 +8,7 @@ import { useLingui } from '@lingui/react/macro';
 import { Avatar, Tag } from 'zyra-ui/data-display';
 import { TabList } from '@/ui/layout/tab-list/components/TabList';
 import { SettingsPageContainer } from '@/settings/components/SettingsPageContainer';
-import {
-  IconInfoCircle,
-  IconKey,
-  IconSettings,
-  IconWorld,
-} from 'zyra-ui/icon';
+import { IconInfoCircle, IconKey, IconSettings, IconWorld } from 'zyra-ui/icon';
 import { SettingsApplicationRegistrationConfigTab } from '~/pages/settings/applications/tabs/SettingsApplicationRegistrationConfigTab';
 import { SettingsApplicationRegistrationOAuthTab } from '~/pages/settings/applications/tabs/SettingsApplicationRegistrationOAuthTab';
 import { SettingsApplicationRegistrationDistributionTab } from '~/pages/settings/applications/tabs/SettingsApplicationRegistrationDistributionTab';
@@ -110,8 +105,8 @@ export const SettingsApplicationRegistrationDetails = () => {
       tag={<Tag text={t`Owner`} color={'gray'} />}
       links={[
         {
-          children: t`Workspace`,
-          href: getSettingsPath(SettingsPath.General),
+          children: t`Developer`,
+          href: getSettingsPath(SettingsPath.ApiWebhooks),
         },
         {
           children: t`Applications - Developer`,

@@ -9,7 +9,7 @@ export const SettingsFunnel = () => {
   return (
     <SettingsPageLayout
       title={t`Funnel`}
-      links={[{ children: t`Workspace` }, { children: t`Funnel` }]}
+      links={[{ children: t`Growth` }, { children: t`Funnel` }]}
     >
       <SettingsPageContainer>
         <SettingsFunnelPagesSection />

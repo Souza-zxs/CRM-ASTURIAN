@@ -76,8 +76,8 @@ export const SettingsWorkspaceNewUnsubscribeTopic = () => {
       title={t`New Unsubscribe Topic`}
       links={[
         {
-          children: t`Workspace`,
-          href: getSettingsPath(SettingsPath.General),
+          children: t`Growth`,
+          href: getSettingsPath(SettingsPath.Funnel),
         },
         {
           children: t`Email`,

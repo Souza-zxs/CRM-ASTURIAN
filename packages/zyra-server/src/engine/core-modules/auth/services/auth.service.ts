@@ -71,8 +71,17 @@ import { AuthProviderEnum } from 'src/engine/core-modules/workspace/types/worksp
 import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
 import { workspaceValidator } from 'src/engine/core-modules/workspace/workspace.validate';
 import { PermissionsService } from 'src/engine/metadata-modules/permissions/permissions.service';
+import { ThrottlerService } from 'src/engine/core-modules/throttler/throttler.service';
 import { getDomainFromEmail } from 'src/utils/get-domain-from-email';
 // import { DEFAULT_FEATURE_FLAGS } from 'src/engine/workspace-manager/workspace-migration/constant/default-feature-flags';
+
+// Login has no captcha protection unless a captcha driver is configured, so
+// this is the only brute-force guard in place — keyed on both email (stop
+// credential stuffing on one account) and IP (stop password spraying across
+// many accounts from one source).
+const LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_EMAIL = 5;
+const LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_IP = 20;
+const LOGIN_RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 
 @Injectable()
 // oxlint-disable-next-line zyra/inject-workspace-repository
@@ -104,6 +113,7 @@ export class AuthService {
     private readonly applicationRegistrationService: ApplicationRegistrationService,
     private readonly featureFlagService: FeatureFlagService,
     private readonly createSSOConnectedAccountService: CreateSSOConnectedAccountService,
+    private readonly throttlerService: ThrottlerService,
   ) {}
 
   private async checkAccessAndUseInvitationOrThrow(
@@ -151,7 +161,37 @@ export class AuthService {
   async validateLoginWithPassword(
     input: UserCredentialsInput,
     targetWorkspace?: WorkspaceEntity,
+    ipAddress?: string,
   ) {
+    await this.throttlerService.tokenBucketThrottleOrThrow(
+      `login:email:${input.email.toLowerCase()}`,
+      1,
+      LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_EMAIL,
+      LOGIN_RATE_LIMIT_WINDOW_MS,
+    );
+
+    if (ipAddress) {
+      await this.throttlerService.tokenBucketThrottleOrThrow(
+        `login:ip:${ipAddress}`,
+        1,
+        LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_IP,
+        LOGIN_RATE_LIMIT_WINDOW_MS,
+      );
+    }
+
+    // Deliberately the same exception for "no such user", "wrong password"
+    // and "no password set" below — distinguishing them tells an attacker
+    // which emails have an account (and how they authenticate), which is
+    // exactly what a login form should never leak.
+    const invalidCredentialsException = () =>
+      new AuthException(
+        'Invalid credentials',
+        AuthExceptionCode.FORBIDDEN_EXCEPTION,
+        {
+          userFriendlyMessage: msg`Invalid email or password.`,
+        },
+      );
+
     const user = await this.userRepository.findOne({
       where: {
         email: input.email,
@@ -160,10 +200,7 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new AuthException(
-        'User not found',
-        AuthExceptionCode.USER_NOT_FOUND,
-      );
+      throw invalidCredentialsException();
     }
 
     if (targetWorkspace && !targetWorkspace.isPasswordAuthEnabled) {
@@ -186,25 +223,13 @@ export class AuthService {
     }
 
     if (!user.passwordHash) {
-      throw new AuthException(
-        'Incorrect login method',
-        AuthExceptionCode.INVALID_INPUT,
-        {
-          userFriendlyMessage: msg`User was not created with email/password`,
-        },
-      );
+      throw invalidCredentialsException();
     }
 
     const isValid = await compareHash(input.password, user.passwordHash);
 
     if (!isValid) {
-      throw new AuthException(
-        'Wrong password',
-        AuthExceptionCode.FORBIDDEN_EXCEPTION,
-        {
-          userFriendlyMessage: msg`Wrong password.`,
-        },
-      );
+      throw invalidCredentialsException();
     }
 
     await this.checkIsEmailVerified(user.isEmailVerified);

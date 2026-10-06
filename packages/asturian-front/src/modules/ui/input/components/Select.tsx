@@ -54,6 +54,10 @@ export type SelectProps<Value extends SelectValue> = {
   dropdownOffset?: DropdownOffset;
   hasRightElement?: boolean;
   showContextualTextInControl?: boolean;
+  // The dropdown portals to a fixed z-index band of its own; pass this when
+  // the Select itself is rendered inside a Modal, or the options list opens
+  // visually behind it. See RootStackingContextZIndices.
+  isDropdownInModal?: boolean;
 };
 
 const StyledContainer = styled.div<{ fullWidth?: boolean }>`
@@ -95,6 +99,7 @@ export const Select = <Value extends SelectValue>({
   dropdownOffset,
   hasRightElement,
   showContextualTextInControl = true,
+  isDropdownInModal,
 }: SelectProps<Value>) => {
   const selectContainerRef = useRef<HTMLDivElement>(null);
 
@@ -201,6 +206,7 @@ export const Select = <Value extends SelectValue>({
           dropdownId={dropdownId}
           dropdownPlacement="bottom-start"
           dropdownOffset={dropdownOffset}
+          isDropdownInModal={isDropdownInModal}
           onOpen={handleDropdownOpen}
           clickableComponent={
             <SelectControl

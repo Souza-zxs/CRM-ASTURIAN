@@ -1006,7 +1006,9 @@ msgid "Add \"{trimmedName}\" to options"
 msgstr "Adicionar \"{trimmedName}\" às opções"
 
 #. js-lingui-id: 9CHcSG
+#: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateNoGroupNoRecordAtAll.tsx
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateNoRecordFoundForFilter.tsx
+#: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "Add a {objectLabelSingular}"
 msgstr "Adicionar um {objectLabelSingular}"
 
@@ -3587,6 +3589,11 @@ msgstr "Escolha o que acontece quando você clica em um endereço de e-mail"
 msgid "Choose which profile fields users with the Edit Profile permission can modify"
 msgstr "Escolha quais campos de perfil os usuários com a permissão Editar Perfil podem alterar"
 
+#. js-lingui-id: VloUwG
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "Choose your language"
+msgstr "Escolha seu idioma"
+
 #. js-lingui-id: 9qP96p
 #: src/pages/onboarding/internal/ChooseYourPlanContent.tsx
 msgid "Choose your Trial"
@@ -4298,6 +4305,7 @@ msgstr "Janela de contexto"
 #. js-lingui-id: xGVfLh
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithCredentials.tsx
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/modules/spreadsheet-import/components/StepNavigationButton.tsx
@@ -5952,7 +5960,25 @@ msgid "Develop"
 msgstr "Desenvolver"
 
 #. js-lingui-id: 7aDnUb
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+#: src/pages/settings/api-webhooks/SettingsApiWebhooks.tsx
+#: src/pages/settings/applications/components/SettingsApplicationRegistrationConfigVariableDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationCommandMenuItemDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationConnectionDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationDetails.tsx
+#: src/pages/settings/applications/SettingsApplicationFrontComponentDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationRegistrationDetails.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
+#: src/pages/settings/applications/SettingsApplications.tsx
+#: src/pages/settings/applications/SettingsAvailableApplicationDetails.tsx
+#: src/pages/settings/billing/SettingsBilling.tsx
+#: src/pages/settings/billing/SettingsUsage.tsx
+#: src/pages/settings/billing/SettingsUsageUserDetail.tsx
+#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
+#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeysNew.tsx
+#: src/pages/settings/developers/playground/SettingsGraphQLPlayground.tsx
+#: src/pages/settings/developers/playground/SettingsRestPlayground.tsx
+#: src/pages/settings/developers/webhooks/components/SettingsWebhooks.tsx
 msgid "Developer"
 msgstr "Desenvolvedor"
 
@@ -8698,6 +8724,25 @@ msgstr "Nome do grupo}]}``` }}} code block? Wait. We messed up. Actually we must
 msgid "Group sorting"
 msgstr "Ordenação de grupo"
 
+#. js-lingui-id: IAq/yr
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
+#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
+#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
+#: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAiPrompts.tsx
+#: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
+#: src/pages/settings/ai/SettingsSkillForm.tsx
+#: src/pages/settings/ai/SettingsToolDetail.tsx
+#: src/pages/settings/email/SettingsWorkspaceEmail.tsx
+#: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
+#: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
+#: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
+msgid "Growth"
+msgstr "Crescimento"
+
 #. js-lingui-id: ieUt/q
 #: src/modules/funnel/components/SettingsFunnelPageForm.tsx
 msgid "Guarantee"
@@ -8930,29 +8975,29 @@ msgid ""
 "\n"
 "See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
-"Hospeda as personalizações e substituições do seu espaço de trabalho.\n"
+"Hospede as personalizações e substituições do seu workspace.\n"
 "\n"
 "#### O que inclui\n"
-"Toda extensão que você cria sobre o app padrão é agrupada em Custom. Isso mantém suas mudanças de schema, mudanças de interface e lógica específica do espaço de trabalho em um só lugar.\n"
+"Toda extensão que você cria sobre o aplicativo padrão fica agrupada em Personalizado. Ele mantém em um só lugar as mudanças de esquema, de interface e a lógica específica do workspace.\n"
 "\n"
 "- Objetos e campos personalizados para o seu próprio modelo de dados\n"
-"- Views, itens de navegação e layouts de registro que moldam como sua equipe trabalha\n"
-"- Funções de lógica, componentes de front-end e agentes que automatizam ou estendem o espaço de trabalho\n"
+"- Visualizações, itens de navegação e layouts de registro que moldam o trabalho da sua equipe\n"
+"- Funções de lógica, componentes de front-end e agentes que automatizam ou estendem o workspace\n"
 "\n"
 "#### Por que existe\n"
-"Use este app para personalizações específicas do espaço de trabalho que devem permanecer locais a ele.\n"
+"Use este aplicativo para personalizações específicas do workspace que devem ficar locais a este workspace.\n"
 "\n"
-"Se você está moldando um espaço de trabalho para um único negócio, mantenha tudo aqui. Se você está construindo um app de negócio reutilizável com seu próprio modelo de dados, interface e automação que deve ser versionado, compartilhado ou instalado em vários espaços de trabalho, crie um app dedicado.\n"
+"Se você está moldando um workspace para um negócio, mantenha aqui. Se está criando um aplicativo de negócio reutilizável, com modelo de dados, interface e automação próprios, que deve ser versionado, compartilhado ou instalado em vários workspaces, crie um aplicativo dedicado.\n"
 "\n"
-"#### Crie seu próprio app\n"
+"#### Crie seu próprio aplicativo\n"
 "\n"
-"Crie um novo app com um único comando:\n"
+"Crie a estrutura de um novo aplicativo com um comando:\n"
 "\n"
 "```bash\n"
 "npx create-zyra-app@latest my-zyra-app\n"
 "```\n"
 "\n"
-"Veja o [guia de Primeiros Passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo, e [Criando Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
+"Veja o [guia de primeiros passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo e o [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
 
 #. js-lingui-id: yY8wAv
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
@@ -12380,7 +12425,7 @@ msgstr "Nenhuma conversa do WhatsApp ainda"
 #. js-lingui-id: 0NSdNm
 #: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
 msgid "No WhatsApp conversations yet"
-msgstr "Ainda não há conversas do WhatsApp"
+msgstr "Nenhuma conversa do WhatsApp ainda"
 
 #. js-lingui-id: RequV7
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
@@ -12736,7 +12781,7 @@ msgstr "Fora do caminho comum"
 #. js-lingui-id: aUsi2A
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Offers, prices, FAQ, policies — anything the agent should know to answer questions accurately."
-msgstr "Ofertas, preços, perguntas frequentes, políticas — tudo o que o agente precisa saber para responder com precisão."
+msgstr "Ofertas, preços, perguntas frequentes, políticas — qualquer coisa que o agente precise saber para responder com precisão."
 
 #. js-lingui-id: Zd5vVt
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
@@ -17082,11 +17127,11 @@ msgid ""
 "\n"
 "See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
-"O modelo de dados base sobre o qual todo espaço de trabalho Zyra funciona.\n"
+"A base do modelo de dados sobre a qual todo workspace Zyra funciona.\n"
 "\n"
-"#### O que \"foundation\" significa\n"
+"#### O que significa \"fundação\"\n"
 "\n"
-"Todo espaço de trabalho Zyra começa com este conjunto de objetos. Eles definem a estrutura do seu CRM, incluindo relacionamentos, atividades e relatórios. Tudo o mais, incluindo apps do marketplace, agentes de IA e objetos personalizados, se conecta a eles.\n"
+"Todo workspace Zyra começa com este conjunto de objetos. Eles definem a forma do seu CRM, incluindo relacionamentos, atividades e relatórios. Todo o resto, incluindo aplicativos do marketplace, agentes de IA e objetos personalizados, se conecta a eles.\n"
 "\n"
 "#### Objetos incluídos\n"
 "- **Pessoas e Empresas**: registros de contatos e contas\n"
@@ -17094,11 +17139,11 @@ msgstr ""
 "- **Notas e Tarefas**: atividades e follow-ups\n"
 "- **Workflows e Dashboards**: automação e relatórios\n"
 "\n"
-"Remova este app e o resto do Zyra não terá em que se apoiar.\n"
+"Se você remover este aplicativo, o resto do Zyra fica sem base.\n"
 "\n"
-"#### Crie seu próprio app\n"
+"#### Crie seu próprio aplicativo\n"
 "\n"
-"Estenda o Zyra com seus próprios objetos, campos, funções de lógica ou skills de IA. Crie um novo app com um único comando:\n"
+"Estenda o Zyra com seus próprios objetos, campos, funções de lógica ou skills de IA. Crie a estrutura de um novo aplicativo com um comando:\n"
 "\n"
 "```bash\n"
 "npx create-zyra-app@latest my-zyra-app\n"
@@ -17111,7 +17156,7 @@ msgstr ""
 "yarn zyra dev\n"
 "```\n"
 "\n"
-"Veja o [guia de Primeiros Passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo, e [Criando Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
+"Veja o [guia de primeiros passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo e o [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
 
 #. js-lingui-id: aXzQ65
 #: src/modules/ai/components/AiChatCompactionIndicator.tsx
@@ -19605,27 +19650,6 @@ msgstr "Workflows"
 #: src/modules/sign-in-background-mock/components/BackgroundMockNavigationDrawer.tsx
 #: src/modules/views/view-picker/components/ViewPickerListContent.tsx
 #: src/pages/settings/admin-panel/SettingsAdminWorkspaceChatThread.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
-#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
-#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
-#: src/pages/settings/ai/SettingsAiPrompts.tsx
-#: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
-#: src/pages/settings/ai/SettingsSkillForm.tsx
-#: src/pages/settings/ai/SettingsToolDetail.tsx
-#: src/pages/settings/api-webhooks/SettingsApiWebhooks.tsx
-#: src/pages/settings/applications/components/SettingsApplicationRegistrationConfigVariableDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationCommandMenuItemDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationConnectionDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationDetails.tsx
-#: src/pages/settings/applications/SettingsApplicationFrontComponentDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationRegistrationDetails.tsx
-#: src/pages/settings/applications/SettingsApplications.tsx
-#: src/pages/settings/applications/SettingsAvailableApplicationDetails.tsx
-#: src/pages/settings/billing/SettingsBilling.tsx
-#: src/pages/settings/billing/SettingsUsage.tsx
-#: src/pages/settings/billing/SettingsUsageUserDetail.tsx
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldConfigure.tsx
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldSelect.tsx
 #: src/pages/settings/data-model/new-index/SettingsObjectNewIndex.tsx
@@ -19634,17 +19658,7 @@ msgstr "Workflows"
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx
 #: src/pages/settings/data-model/SettingsObjectOverview.tsx
 #: src/pages/settings/data-model/SettingsObjects.tsx
-#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
-#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeysNew.tsx
-#: src/pages/settings/developers/playground/SettingsGraphQLPlayground.tsx
-#: src/pages/settings/developers/playground/SettingsRestPlayground.tsx
-#: src/pages/settings/developers/webhooks/components/SettingsWebhooks.tsx
-#: src/pages/settings/email/SettingsWorkspaceEmail.tsx
-#: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
-#: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
-#: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/funnel/SettingsFunnel.tsx
 #: src/pages/settings/general/SettingsGeneral.tsx
 #: src/pages/settings/layout/components/SettingsLayoutDetailScaffold.tsx
 #: src/pages/settings/layout/SettingsLayout.tsx
@@ -19883,6 +19897,11 @@ msgstr "Você já pertence a este workspace"
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "You are not allowed to create records for this object"
 msgstr "Você não está autorizado a criar registros para este objeto"
+
+#. js-lingui-id: 79xNkx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "You can change this later in Settings."
+msgstr "Você pode mudar isso depois em Configurações."
 
 #. js-lingui-id: iibZbD
 #: src/pages/settings/applications/tabs/SettingsApplicationsDeveloperTab.tsx

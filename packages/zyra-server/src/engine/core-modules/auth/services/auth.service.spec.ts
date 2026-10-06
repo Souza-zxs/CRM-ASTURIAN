@@ -33,6 +33,11 @@ import { ApplicationRegistrationService } from 'src/engine/core-modules/applicat
 import { CreateSSOConnectedAccountService } from 'src/engine/core-modules/auth/services/create-sso-connected-account.service';
 import { FeatureFlagService } from 'src/engine/core-modules/feature-flag/services/feature-flag.service';
 import { PermissionsService } from 'src/engine/metadata-modules/permissions/permissions.service';
+import { ThrottlerService } from 'src/engine/core-modules/throttler/throttler.service';
+import {
+  ThrottlerException,
+  ThrottlerExceptionCode,
+} from 'src/engine/core-modules/throttler/throttler.exception';
 
 import { AuthService } from './auth.service';
 
@@ -52,6 +57,7 @@ describe('AuthService', () => {
   let signInUpServiceMock: jest.Mocked<
     Pick<SignInUpService, 'validatePassword'>
   >;
+  let throttlerService: ThrottlerService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -190,6 +196,12 @@ describe('AuthService', () => {
               .mockResolvedValue(undefined),
           },
         },
+        {
+          provide: ThrottlerService,
+          useValue: {
+            tokenBucketThrottleOrThrow: jest.fn().mockResolvedValue(0),
+          },
+        },
       ],
     }).compile();
 
@@ -211,6 +223,7 @@ describe('AuthService', () => {
     signInUpServiceMock = module.get(SignInUpService) as jest.Mocked<
       Pick<SignInUpService, 'validatePassword'>
     >;
+    throttlerService = module.get<ThrottlerService>(ThrottlerService);
   });
 
   beforeEach(() => {
@@ -399,6 +412,115 @@ describe('AuthService', () => {
     ).toHaveBeenCalledTimes(1);
     expect(addUserToWorkspaceIfUserNotInWorkspaceSpy).toHaveBeenCalledTimes(1);
     expect(UserFindOneSpy).toHaveBeenCalledTimes(1);
+  });
+
+  describe('validateLoginWithPassword - invalid credentials', () => {
+    const expectGenericInvalidCredentialsError = async (
+      promise: Promise<unknown>,
+    ) => {
+      await expect(promise).rejects.toMatchObject({
+        message: 'Invalid credentials',
+        code: AuthExceptionCode.FORBIDDEN_EXCEPTION,
+      });
+    };
+
+    it('does not reveal that the email is unregistered', async () => {
+      jest.spyOn(userRepository, 'findOne').mockResolvedValueOnce(null);
+
+      await expectGenericInvalidCredentialsError(
+        service.validateLoginWithPassword({
+          email: 'unknown@example.com',
+          password: 'password',
+          captchaToken: 'captcha-token',
+        }),
+      );
+    });
+
+    it('does not reveal that the account has no password set', async () => {
+      jest.spyOn(userRepository, 'findOne').mockResolvedValueOnce({
+        email: 'email',
+        passwordHash: null,
+      } as unknown as UserEntity);
+
+      await expectGenericInvalidCredentialsError(
+        service.validateLoginWithPassword({
+          email: 'email',
+          password: 'password',
+          captchaToken: 'captcha-token',
+        }),
+      );
+    });
+
+    it('does not reveal that the password is wrong', async () => {
+      jest.spyOn(userRepository, 'findOne').mockResolvedValueOnce({
+        email: 'email',
+        passwordHash: 'password-hash',
+      } as unknown as UserEntity);
+      (bcrypt.compare as jest.Mock).mockResolvedValueOnce(false);
+
+      await expectGenericInvalidCredentialsError(
+        service.validateLoginWithPassword({
+          email: 'email',
+          password: 'wrong-password',
+          captchaToken: 'captcha-token',
+        }),
+      );
+    });
+
+    it('rate-limits by email and, when provided, by IP', async () => {
+      jest.spyOn(userRepository, 'findOne').mockResolvedValueOnce(null);
+      const throttleSpy = jest.spyOn(
+        throttlerService,
+        'tokenBucketThrottleOrThrow',
+      );
+
+      await expectGenericInvalidCredentialsError(
+        service.validateLoginWithPassword(
+          {
+            email: 'Email@Example.com',
+            password: 'password',
+            captchaToken: 'captcha-token',
+          },
+          undefined,
+          '203.0.113.1',
+        ),
+      );
+
+      expect(throttleSpy).toHaveBeenCalledWith(
+        'login:email:email@example.com',
+        1,
+        expect.any(Number),
+        expect.any(Number),
+      );
+      expect(throttleSpy).toHaveBeenCalledWith(
+        'login:ip:203.0.113.1',
+        1,
+        expect.any(Number),
+        expect.any(Number),
+      );
+    });
+
+    it('rejects before touching the database when the rate limit is already exhausted', async () => {
+      const findOneSpy = jest.spyOn(userRepository, 'findOne');
+
+      jest
+        .spyOn(throttlerService, 'tokenBucketThrottleOrThrow')
+        .mockRejectedValueOnce(
+          new ThrottlerException(
+            'Limit reached',
+            ThrottlerExceptionCode.LIMIT_REACHED,
+          ),
+        );
+
+      await expect(
+        service.validateLoginWithPassword({
+          email: 'email',
+          password: 'password',
+          captchaToken: 'captcha-token',
+        }),
+      ).rejects.toMatchObject({ code: ThrottlerExceptionCode.LIMIT_REACHED });
+      expect(findOneSpy).not.toHaveBeenCalled();
+    });
   });
 
   describe('checkAccessForSignIn', () => {

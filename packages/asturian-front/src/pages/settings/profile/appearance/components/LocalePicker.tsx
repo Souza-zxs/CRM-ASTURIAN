@@ -23,7 +23,13 @@ const StyledContainer = styled.div`
   gap: ${themeCssVariables.spacing[4]};
 `;
 
-export const LocalePicker = () => {
+type LocalePickerProps = {
+  // Forwarded to the underlying Select — pass true when LocalePicker itself
+  // renders inside a Modal, or the options list opens behind it.
+  isDropdownInModal?: boolean;
+};
+
+export const LocalePicker = ({ isDropdownInModal }: LocalePickerProps) => {
   const { t } = useLingui();
   const store = useStore();
   const [currentWorkspaceMember, setCurrentWorkspaceMember] = useAtomState(
@@ -222,6 +228,7 @@ export const LocalePicker = () => {
         onChange={(value) =>
           handleLocaleChange(value as keyof typeof APP_LOCALES)
         }
+        isDropdownInModal={isDropdownInModal}
       />
     </StyledContainer>
   );

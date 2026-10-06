@@ -17,12 +17,7 @@ import { useAtomComponentStateValue } from '@/ui/utilities/state/jotai/hooks/use
 import { t } from '@lingui/core/macro';
 import { AppPath, SettingsPath } from 'zyra-shared/types';
 import { getSettingsPath, isDefined } from 'zyra-shared/utils';
-import {
-  IconList,
-  IconListCheck,
-  IconLock,
-  IconSettings,
-} from 'zyra-ui/icon';
+import { IconList, IconListCheck, IconLock, IconSettings } from 'zyra-ui/icon';
 import { Section } from 'zyra-ui/layout';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
 import { useMutation, useQuery } from '@apollo/client/react';
@@ -416,8 +411,8 @@ export const SettingsAgentForm = ({ mode }: { mode: 'create' | 'edit' }) => {
         }
         links={[
           {
-            children: t`Workspace`,
-            href: getSettingsPath(SettingsPath.General),
+            children: t`Growth`,
+            href: getSettingsPath(SettingsPath.Funnel),
           },
           { children: t`AI`, href: getSettingsPath(SettingsPath.AI) },
           { children: breadcrumbText },

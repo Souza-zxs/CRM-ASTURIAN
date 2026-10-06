@@ -194,6 +194,7 @@ export class AuthResolver {
     @Args()
     getLoginTokenFromCredentialsInput: UserCredentialsInput,
     @Args('origin') origin: string,
+    @Context() context: { req: { ip?: string } },
   ): Promise<LoginTokenDTO> {
     const workspace =
       await this.workspaceDomainsService.getWorkspaceByOriginOrDefaultWorkspace(
@@ -211,6 +212,7 @@ export class AuthResolver {
     const user = await this.authService.validateLoginWithPassword(
       getLoginTokenFromCredentialsInput,
       workspace,
+      context.req.ip,
     );
 
     const loginToken = await this.loginTokenService.generateLoginToken(
@@ -228,9 +230,13 @@ export class AuthResolver {
   async signIn(
     @Args()
     userCredentials: UserCredentialsInput,
+    @Context() context: { req: { ip?: string } },
   ): Promise<AvailableWorkspacesAndAccessTokensDTO> {
-    const user =
-      await this.authService.validateLoginWithPassword(userCredentials);
+    const user = await this.authService.validateLoginWithPassword(
+      userCredentials,
+      undefined,
+      context.req.ip,
+    );
 
     const availableWorkspaces =
       await this.userWorkspaceService.findAvailableWorkspacesByEmail(

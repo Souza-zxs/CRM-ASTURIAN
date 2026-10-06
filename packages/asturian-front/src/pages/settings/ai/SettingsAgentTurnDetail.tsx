@@ -79,8 +79,8 @@ export const SettingsAgentTurnDetail = () => {
         title={t`Turn Details`}
         links={[
           {
-            children: t`Workspace`,
-            href: getSettingsPath(SettingsPath.General),
+            children: t`Growth`,
+            href: getSettingsPath(SettingsPath.Funnel),
           },
           { children: t`AI`, href: getSettingsPath(SettingsPath.AI) },
           {
@@ -106,8 +106,8 @@ export const SettingsAgentTurnDetail = () => {
         title={t`Turn Not Found`}
         links={[
           {
-            children: t`Workspace`,
-            href: getSettingsPath(SettingsPath.General),
+            children: t`Growth`,
+            href: getSettingsPath(SettingsPath.Funnel),
           },
           { children: t`AI`, href: getSettingsPath(SettingsPath.AI) },
           { children: t`Turn` },
@@ -125,8 +125,8 @@ export const SettingsAgentTurnDetail = () => {
       title={t`Turn Details`}
       links={[
         {
-          children: t`Workspace`,
-          href: getSettingsPath(SettingsPath.General),
+          children: t`Growth`,
+          href: getSettingsPath(SettingsPath.Funnel),
         },
         { children: t`AI`, href: getSettingsPath(SettingsPath.AI) },
         {

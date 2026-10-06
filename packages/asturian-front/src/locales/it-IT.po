@@ -1006,7 +1006,9 @@ msgid "Add \"{trimmedName}\" to options"
 msgstr "Aggiungi \"{trimmedName}\" alle opzioni"
 
 #. js-lingui-id: 9CHcSG
+#: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateNoGroupNoRecordAtAll.tsx
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateNoRecordFoundForFilter.tsx
+#: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "Add a {objectLabelSingular}"
 msgstr "Aggiungi {objectLabelSingular}"
 
@@ -3587,6 +3589,11 @@ msgstr "Scegli cosa accade quando fai clic su un indirizzo email"
 msgid "Choose which profile fields users with the Edit Profile permission can modify"
 msgstr ""
 
+#. js-lingui-id: VloUwG
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "Choose your language"
+msgstr ""
+
 #. js-lingui-id: 9qP96p
 #: src/pages/onboarding/internal/ChooseYourPlanContent.tsx
 msgid "Choose your Trial"
@@ -4298,6 +4305,7 @@ msgstr "Finestra di contesto"
 #. js-lingui-id: xGVfLh
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWithCredentials.tsx
 #: src/modules/auth/sign-in-up/components/internal/SignInUpWorkspaceCreationForm.tsx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
 #: src/modules/settings/billing/components/SubscriptionPaymentForm.tsx
 #: src/modules/settings/enterprise/components/EnterprisePlanModal.tsx
 #: src/modules/spreadsheet-import/components/StepNavigationButton.tsx
@@ -5952,7 +5960,25 @@ msgid "Develop"
 msgstr ""
 
 #. js-lingui-id: 7aDnUb
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+#: src/pages/settings/api-webhooks/SettingsApiWebhooks.tsx
+#: src/pages/settings/applications/components/SettingsApplicationRegistrationConfigVariableDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationCommandMenuItemDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationConnectionDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationDetails.tsx
+#: src/pages/settings/applications/SettingsApplicationFrontComponentDetail.tsx
+#: src/pages/settings/applications/SettingsApplicationRegistrationDetails.tsx
 #: src/pages/settings/applications/SettingsApplications.tsx
+#: src/pages/settings/applications/SettingsApplications.tsx
+#: src/pages/settings/applications/SettingsAvailableApplicationDetails.tsx
+#: src/pages/settings/billing/SettingsBilling.tsx
+#: src/pages/settings/billing/SettingsUsage.tsx
+#: src/pages/settings/billing/SettingsUsageUserDetail.tsx
+#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
+#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeysNew.tsx
+#: src/pages/settings/developers/playground/SettingsGraphQLPlayground.tsx
+#: src/pages/settings/developers/playground/SettingsRestPlayground.tsx
+#: src/pages/settings/developers/webhooks/components/SettingsWebhooks.tsx
 msgid "Developer"
 msgstr "Sviluppatore"
 
@@ -8697,6 +8723,25 @@ msgstr "Nome del gruppo"
 #: src/modules/object-record/record-group/components/RecordGroupReorderConfirmationModal.tsx
 msgid "Group sorting"
 msgstr "Ordinamento di gruppo"
+
+#. js-lingui-id: IAq/yr
+#: src/modules/settings/hooks/useSettingsNavigationItems.tsx
+#: src/pages/settings/ai/SettingsAgentForm.tsx
+#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
+#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
+#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
+#: src/pages/settings/ai/SettingsAI.tsx
+#: src/pages/settings/ai/SettingsAiPrompts.tsx
+#: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
+#: src/pages/settings/ai/SettingsSkillForm.tsx
+#: src/pages/settings/ai/SettingsToolDetail.tsx
+#: src/pages/settings/email/SettingsWorkspaceEmail.tsx
+#: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
+#: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
+#: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
+#: src/pages/settings/funnel/SettingsFunnel.tsx
+msgid "Growth"
+msgstr ""
 
 #. js-lingui-id: ieUt/q
 #: src/modules/funnel/components/SettingsFunnelPageForm.tsx
@@ -19553,27 +19598,6 @@ msgstr "Workflows"
 #: src/modules/sign-in-background-mock/components/BackgroundMockNavigationDrawer.tsx
 #: src/modules/views/view-picker/components/ViewPickerListContent.tsx
 #: src/pages/settings/admin-panel/SettingsAdminWorkspaceChatThread.tsx
-#: src/pages/settings/ai/SettingsAgentForm.tsx
-#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
-#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
-#: src/pages/settings/ai/SettingsAgentTurnDetail.tsx
-#: src/pages/settings/ai/SettingsAI.tsx
-#: src/pages/settings/ai/SettingsAiPrompts.tsx
-#: src/pages/settings/ai/SettingsAiUsageUserDetail.tsx
-#: src/pages/settings/ai/SettingsSkillForm.tsx
-#: src/pages/settings/ai/SettingsToolDetail.tsx
-#: src/pages/settings/api-webhooks/SettingsApiWebhooks.tsx
-#: src/pages/settings/applications/components/SettingsApplicationRegistrationConfigVariableDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationCommandMenuItemDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationConnectionDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationDetails.tsx
-#: src/pages/settings/applications/SettingsApplicationFrontComponentDetail.tsx
-#: src/pages/settings/applications/SettingsApplicationRegistrationDetails.tsx
-#: src/pages/settings/applications/SettingsApplications.tsx
-#: src/pages/settings/applications/SettingsAvailableApplicationDetails.tsx
-#: src/pages/settings/billing/SettingsBilling.tsx
-#: src/pages/settings/billing/SettingsUsage.tsx
-#: src/pages/settings/billing/SettingsUsageUserDetail.tsx
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldConfigure.tsx
 #: src/pages/settings/data-model/new-field/SettingsObjectNewFieldSelect.tsx
 #: src/pages/settings/data-model/new-index/SettingsObjectNewIndex.tsx
@@ -19582,17 +19606,7 @@ msgstr "Workflows"
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx
 #: src/pages/settings/data-model/SettingsObjectOverview.tsx
 #: src/pages/settings/data-model/SettingsObjects.tsx
-#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx
-#: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeysNew.tsx
-#: src/pages/settings/developers/playground/SettingsGraphQLPlayground.tsx
-#: src/pages/settings/developers/playground/SettingsRestPlayground.tsx
-#: src/pages/settings/developers/webhooks/components/SettingsWebhooks.tsx
-#: src/pages/settings/email/SettingsWorkspaceEmail.tsx
-#: src/pages/settings/email/SettingsWorkspaceEmailGroupChannelDetail.tsx
-#: src/pages/settings/email/SettingsWorkspaceNewUnsubscribeTopic.tsx
-#: src/pages/settings/email/SettingsWorkspaceUnsubscribeTopicDetail.tsx
 #: src/pages/settings/enterprise/SettingsEnterprise.tsx
-#: src/pages/settings/funnel/SettingsFunnel.tsx
 #: src/pages/settings/general/SettingsGeneral.tsx
 #: src/pages/settings/layout/components/SettingsLayoutDetailScaffold.tsx
 #: src/pages/settings/layout/SettingsLayout.tsx
@@ -19831,6 +19845,11 @@ msgstr "Appartieni già a questo workspace"
 #: src/modules/object-record/record-table/empty-state/components/RecordTableEmptyStateReadOnly.tsx
 msgid "You are not allowed to create records for this object"
 msgstr "Non sei autorizzato a creare record per questo oggetto"
+
+#. js-lingui-id: 79xNkx
+#: src/modules/localization/components/LanguageSelectionCard.tsx
+msgid "You can change this later in Settings."
+msgstr ""
 
 #. js-lingui-id: iibZbD
 #: src/pages/settings/applications/tabs/SettingsApplicationsDeveloperTab.tsx

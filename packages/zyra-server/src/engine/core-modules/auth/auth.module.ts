@@ -52,6 +52,7 @@ import { MetricsModule } from 'src/engine/core-modules/metrics/metrics.module';
 import { OnboardingModule } from 'src/engine/core-modules/onboarding/onboarding.module';
 import { SecureHttpClientModule } from 'src/engine/core-modules/secure-http-client/secure-http-client.module';
 import { WorkspaceSSOModule } from 'src/engine/core-modules/sso/sso.module';
+import { ThrottlerModule } from 'src/engine/core-modules/throttler/throttler.module';
 import { WorkspaceSSOIdentityProviderEntity } from 'src/engine/core-modules/sso/workspace-sso-identity-provider.entity';
 import { TwoFactorAuthenticationMethodEntity } from 'src/engine/core-modules/two-factor-authentication/entities/two-factor-authentication-method.entity';
 import { TwoFactorAuthenticationModule } from 'src/engine/core-modules/two-factor-authentication/two-factor-authentication.module';
@@ -129,6 +130,7 @@ import { JwtAuthStrategy } from './strategies/jwt.auth.strategy';
     FileModule,
     ConnectedAccountTokenEncryptionModule,
     EmailAliasManagerModule,
+    ThrottlerModule,
   ],
   controllers: [
     GoogleAuthController,
