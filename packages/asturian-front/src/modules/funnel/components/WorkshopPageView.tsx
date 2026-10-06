@@ -3,6 +3,7 @@ import { useWorkshopSession } from '@/funnel/hooks/useWorkshopSession';
 import { type FunnelWorkshopPageContent } from '@/funnel/types/FunnelPage';
 import { formatWorkshopCountdown } from '@/funnel/utils/formatWorkshopCountdown';
 import { styled } from '@linaria/react';
+import { useLingui } from '@lingui/react/macro';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Button } from 'zyra-ui/input';
@@ -72,8 +73,8 @@ type WorkshopPageViewProps = {
   content: FunnelWorkshopPageContent;
 };
 
-const formatSessionStart = (startsAt: Date) =>
-  new Intl.DateTimeFormat('pt-BR', {
+const formatSessionStart = (startsAt: Date, locale: string) =>
+  new Intl.DateTimeFormat(locale, {
     weekday: 'long',
     day: '2-digit',
     month: 'long',
@@ -82,6 +83,7 @@ const formatSessionStart = (startsAt: Date) =>
   }).format(startsAt);
 
 export const WorkshopPageView = ({ content }: WorkshopPageViewProps) => {
+  const { t, i18n } = useLingui();
   const [searchParams] = useSearchParams();
   const leadId = searchParams.get('lead');
   const session = useWorkshopSession({ schedule: content.schedule, leadId });
@@ -109,14 +111,12 @@ export const WorkshopPageView = ({ content }: WorkshopPageViewProps) => {
     return (
       <StyledPage>
         <StyledCountdownCard role="timer" aria-live="off">
-          <StyledCountdownLabel>Seu workshop começa em</StyledCountdownLabel>
+          <StyledCountdownLabel>{t`Your workshop starts in`}</StyledCountdownLabel>
           <StyledCountdownValue>
             {formatWorkshopCountdown(session.secondsLeft)}
           </StyledCountdownValue>
           <StyledCountdownHint>
-            Sessão de {formatSessionStart(session.startsAt)}. Mantenha esta
-            página aberta: o vídeo libera sozinho quando a contagem chegar a
-            zero.
+            {t`Session on ${formatSessionStart(session.startsAt, i18n.locale)}. Keep this page open: the video unlocks automatically once the countdown reaches zero.`}
           </StyledCountdownHint>
         </StyledCountdownCard>
       </StyledPage>
