@@ -7794,7 +7794,7 @@ msgstr "Falha ao enviar e-mail"
 #: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
 #: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
 msgid "Failed to send message"
-msgstr ""
+msgstr "Falha ao enviar mensagem"
 
 #. js-lingui-id: aj02T8
 #: src/modules/settings/admin-panel/health-status/maintenance-mode/components/SettingsAdminMaintenanceMode.tsx
@@ -8930,6 +8930,29 @@ msgid ""
 "\n"
 "See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
+"Hospeda as personalizações e substituições do seu espaço de trabalho.\n"
+"\n"
+"#### O que inclui\n"
+"Toda extensão que você cria sobre o app padrão é agrupada em Custom. Isso mantém suas mudanças de schema, mudanças de interface e lógica específica do espaço de trabalho em um só lugar.\n"
+"\n"
+"- Objetos e campos personalizados para o seu próprio modelo de dados\n"
+"- Views, itens de navegação e layouts de registro que moldam como sua equipe trabalha\n"
+"- Funções de lógica, componentes de front-end e agentes que automatizam ou estendem o espaço de trabalho\n"
+"\n"
+"#### Por que existe\n"
+"Use este app para personalizações específicas do espaço de trabalho que devem permanecer locais a ele.\n"
+"\n"
+"Se você está moldando um espaço de trabalho para um único negócio, mantenha tudo aqui. Se você está construindo um app de negócio reutilizável com seu próprio modelo de dados, interface e automação que deve ser versionado, compartilhado ou instalado em vários espaços de trabalho, crie um app dedicado.\n"
+"\n"
+"#### Crie seu próprio app\n"
+"\n"
+"Crie um novo app com um único comando:\n"
+"\n"
+"```bash\n"
+"npx create-zyra-app@latest my-zyra-app\n"
+"```\n"
+"\n"
+"Veja o [guia de Primeiros Passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo, e [Criando Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
 
 #. js-lingui-id: yY8wAv
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
@@ -9875,7 +9898,7 @@ msgstr "Palavras-chave"
 #. js-lingui-id: x6IJvs
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Knowledge base"
-msgstr ""
+msgstr "Base de conhecimento"
 
 #. js-lingui-id: h6S9Yz
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx
@@ -10404,7 +10427,7 @@ msgstr "Carregando campanhas..."
 #. js-lingui-id: +ABtFt
 #: src/modules/activities/whatsapp/components/WhatsappCard.tsx
 msgid "Loading conversation..."
-msgstr ""
+msgstr "Carregando conversa..."
 
 #. js-lingui-id: aZczPx
 #: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
@@ -10898,7 +10921,7 @@ msgstr "Mensagem não encontrada"
 #. js-lingui-id: 7/9d5t
 #: src/modules/activities/whatsapp/hooks/useSendWhatsappMessage.ts
 msgid "Message sent"
-msgstr ""
+msgstr "Mensagem enviada"
 
 #. js-lingui-id: elpx6r
 #: src/modules/settings/admin-panel/health-status/components/SettingsAdminConnectedAccountHealthStatus.tsx
@@ -12352,12 +12375,12 @@ msgstr "Nenhum agente de WhatsApp configurado ainda"
 #. js-lingui-id: TAdzo9
 #: src/modules/activities/whatsapp/components/WhatsappCard.tsx
 msgid "No WhatsApp conversation yet"
-msgstr ""
+msgstr "Nenhuma conversa do WhatsApp ainda"
 
 #. js-lingui-id: 0NSdNm
 #: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
 msgid "No WhatsApp conversations yet"
-msgstr ""
+msgstr "Ainda não há conversas do WhatsApp"
 
 #. js-lingui-id: RequV7
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappTemplatesSection.tsx
@@ -12713,7 +12736,7 @@ msgstr "Fora do caminho comum"
 #. js-lingui-id: aUsi2A
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
 msgid "Offers, prices, FAQ, policies — anything the agent should know to answer questions accurately."
-msgstr ""
+msgstr "Ofertas, preços, perguntas frequentes, políticas — tudo o que o agente precisa saber para responder com precisão."
 
 #. js-lingui-id: Zd5vVt
 #: src/modules/workflow/workflow-steps/workflow-actions/find-records-action/components/WorkflowEditActionFindRecords.tsx
@@ -15425,7 +15448,7 @@ msgstr "Selecionar 1 campo"
 #. js-lingui-id: ZGNQwg
 #: src/modules/activities/whatsapp/components/WhatsappInbox.tsx
 msgid "Select a conversation"
-msgstr ""
+msgstr "Selecione uma conversa"
 
 #. js-lingui-id: OMoA3j
 #: src/modules/workflow/workflow-steps/workflow-actions/delay-actions/components/WorkflowEditActionDelay.tsx
@@ -15725,6 +15748,12 @@ msgstr "As variáveis de servidor são aplicadas a todas as instalações do wor
 #: src/modules/settings/security/components/SSO/SettingsSSOSAMLForm.tsx
 msgid "Service Provider Details"
 msgstr "Detalhes do Provedor de Serviço"
+
+#. js-lingui-id: 9hH7Uv
+#. placeholder {0}: formatSessionStart(session.startsAt, i18n.locale)
+#: src/modules/funnel/components/WorkshopPageView.tsx
+msgid "Session on {0}. Keep this page open: the video unlocks automatically once the countdown reaches zero."
+msgstr "Sessão de {0}. Mantenha esta página aberta: o vídeo libera sozinho quando a contagem chegar a zero."
 
 #. js-lingui-id: iNv0Mi
 #: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
@@ -17053,6 +17082,41 @@ msgid ""
 "\n"
 "See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
 msgstr ""
+"O modelo de dados base sobre o qual todo espaço de trabalho Zyra funciona.\n"
+"\n"
+"#### O que \"foundation\" significa\n"
+"\n"
+"Todo espaço de trabalho Zyra começa com este conjunto de objetos. Eles definem a estrutura do seu CRM, incluindo relacionamentos, atividades e relatórios. Tudo o mais, incluindo apps do marketplace, agentes de IA e objetos personalizados, se conecta a eles.\n"
+"\n"
+"#### Objetos incluídos\n"
+"- **Pessoas e Empresas**: registros de contatos e contas\n"
+"- **Oportunidades**: seu funil de vendas\n"
+"- **Notas e Tarefas**: atividades e follow-ups\n"
+"- **Workflows e Dashboards**: automação e relatórios\n"
+"\n"
+"Remova este app e o resto do Zyra não terá em que se apoiar.\n"
+"\n"
+"#### Crie seu próprio app\n"
+"\n"
+"Estenda o Zyra com seus próprios objetos, campos, funções de lógica ou skills de IA. Crie um novo app com um único comando:\n"
+"\n"
+"```bash\n"
+"npx create-zyra-app@latest my-zyra-app\n"
+"```\n"
+"\n"
+"Depois, dentro da pasta:\n"
+"\n"
+"```bash\n"
+"cd my-zyra-app\n"
+"yarn zyra dev\n"
+"```\n"
+"\n"
+"Veja o [guia de Primeiros Passos]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) para o passo a passo completo, e [Criando Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) para as APIs `defineApplication` / `defineEntity`."
+
+#. js-lingui-id: aXzQ65
+#: src/modules/ai/components/AiChatCompactionIndicator.tsx
+msgid "The conversation has been compacted"
+msgstr "A conversa foi compactada"
 
 #. js-lingui-id: n+CCXl
 #: src/pages/settings/ai/components/SettingsAiModelsTab.tsx
@@ -18005,7 +18069,7 @@ msgstr "Digite um número ou escolha uma variável"
 #: src/modules/activities/whatsapp/components/WhatsappConversationPanel.tsx
 #: src/modules/activities/whatsapp/components/WhatsappConversationPanel.tsx
 msgid "Type a reply..."
-msgstr ""
+msgstr "Digite uma resposta..."
 
 #. js-lingui-id: hzt+K/
 #: src/modules/workflow/workflow-steps/workflow-actions/send-whatsapp-template-action/components/WorkflowEditActionSendWhatsappTemplate.tsx
@@ -19230,7 +19294,8 @@ msgid ""
 "We're waiting for a confirmation from our payment provider (Stripe).\n"
 "Please try again in a few seconds, sorry."
 msgstr ""
-"Estamos aguardando a confirmação do nosso provedor de pagamentos (Stripe).\n"
+"Estamos aguardando a confirmação do nosso provedor de pagamento (Stripe).\n"
+"Por favor, tente novamente em alguns segundos. Desculpe o transtorno.Estamos aguardando a confirmação do nosso provedor de pagamentos (Stripe).\n"
 "Tente novamente em alguns segundos, por favor."
 
 #. js-lingui-id: LnnVIT
@@ -19371,7 +19436,7 @@ msgstr "A conexão com o WhatsApp não está configurada neste servidor."
 #. js-lingui-id: TblUsE
 #: src/modules/navigation/components/NavigationDrawerOtherSection.tsx
 msgid "WhatsApp Inbox"
-msgstr ""
+msgstr "Caixa de entrada do WhatsApp"
 
 #. js-lingui-id: zLJh7i
 #: src/modules/settings/accounts/components/SettingsAccountsWhatsappAgentForm.tsx
@@ -19912,6 +19977,7 @@ msgid ""
 "Reach to our support team to upgrade."
 msgstr ""
 "Você atingiu seu limite de uso. \n"
+"Entre em contato com nosso time de suporte para fazer upgrade.Você atingiu seu limite de uso. \n"
 "Entre em contato com nossa equipe de suporte para fazer upgrade."
 
 #. js-lingui-id: NTyvVW
@@ -19923,7 +19989,8 @@ msgid ""
 "You've hit your usage limit. \n"
 "Upgrade to {0} credits for ${1}/{2}."
 msgstr ""
-"Você atingiu o seu limite de uso. \n"
+"Você atingiu seu limite de uso. \n"
+"Faça upgrade para {0} créditos por ${1}/{2}.Você atingiu o seu limite de uso. \n"
 "Faça upgrade para {0} créditos por ${1}/{2}."
 
 #. js-lingui-id: yZ0wRS
@@ -20041,6 +20108,11 @@ msgstr "Seu período de teste acabará e "
 msgid "Your trial period will end, and you will be charged ${yearlyPrice} per user per year billed annually. A prorata with your current subscription will be applied."
 msgstr "Seu período de teste acabará e você será cobrado ${yearlyPrice} por usuário por ano cobrado anualmente. Um pró-rata com sua assinatura atual será aplicado."
 
+#. js-lingui-id: 0UadSc
+#: src/modules/funnel/components/WorkshopPageView.tsx
+msgid "Your workshop starts in"
+msgstr "Seu workshop começa em"
+
 #. js-lingui-id: oC6WBs
 #: src/modules/information-banner/components/billing/InformationBannerNoBillingSubscription.tsx
 msgid "Your workspace doesn't have an active subscription."
@@ -20060,3 +20132,4 @@ msgstr "Seu workspace será desativado"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx
 msgid "Zyra fields"
 msgstr "Campos do Zyra"
+

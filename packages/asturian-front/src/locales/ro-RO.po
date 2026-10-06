@@ -15726,6 +15726,12 @@ msgstr ""
 msgid "Service Provider Details"
 msgstr "Detalii Furnizor de Servicii"
 
+#. js-lingui-id: 9hH7Uv
+#. placeholder {0}: formatSessionStart(session.startsAt, i18n.locale)
+#: src/modules/funnel/components/WorkshopPageView.tsx
+msgid "Session on {0}. Keep this page open: the video unlocks automatically once the countdown reaches zero."
+msgstr ""
+
 #. js-lingui-id: iNv0Mi
 #: src/modules/funnel/components/SettingsFunnelWorkshopScheduleFields.tsx
 msgid "Session times (HH:mm, separated by commas)"
@@ -17052,6 +17058,11 @@ msgid ""
 "```\n"
 "\n"
 "See the [Getting Started guide]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/quick-start) for the full walkthrough, and [Building Apps]({DOCUMENTATION_BASE_URL}/developers/extend/apps/getting-started/concepts) for the `defineApplication` / `defineEntity` APIs."
+msgstr ""
+
+#. js-lingui-id: aXzQ65
+#: src/modules/ai/components/AiChatCompactionIndicator.tsx
+msgid "The conversation has been compacted"
 msgstr ""
 
 #. js-lingui-id: n+CCXl
@@ -20036,6 +20047,11 @@ msgstr "Perioada de probă se va încheia și "
 #: src/modules/settings/billing/hooks/useBillingWording.ts
 msgid "Your trial period will end, and you will be charged ${yearlyPrice} per user per year billed annually. A prorata with your current subscription will be applied."
 msgstr "Perioada de probă se va încheia și veți fi taxat cu ${yearlyPrice} pentru fiecare utilizator pe an facturat anual. Se va aplica un prorata cu abonamentul actual."
+
+#. js-lingui-id: 0UadSc
+#: src/modules/funnel/components/WorkshopPageView.tsx
+msgid "Your workshop starts in"
+msgstr ""
 
 #. js-lingui-id: oC6WBs
 #: src/modules/information-banner/components/billing/InformationBannerNoBillingSubscription.tsx
