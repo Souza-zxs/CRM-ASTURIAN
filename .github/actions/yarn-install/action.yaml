@@ -56,7 +56,20 @@ runs:
         npm install --no-save \
           @rolldown/binding-linux-x64-gnu@1.0.3 \
           @typescript/native-preview-linux-x64@7.0.0-dev.20260116.1 \
-          @swc/core-linux-x64-gnu@1.15.18
+          @swc/core-linux-x64-gnu@1.15.18 \
+          @oxlint/binding-linux-x64-gnu@1.53.0 \
+          @oxfmt/binding-linux-x64-gnu@0.50.0 \
+          @nx/nx-linux-x64-gnu@22.7.5 \
+          @rollup/rollup-linux-x64-gnu@4.59.0 \
+          @rspack/binding-linux-x64-gnu@1.6.8 \
+          @unrs/resolver-binding-linux-x64-gnu@1.11.1 \
+          @next/swc-linux-x64-gnu@16.2.6 \
+          @napi-rs/nice-linux-x64-gnu@1.1.1 \
+          lightningcss-linux-x64-gnu@1.32.0 \
+          @img/sharp-linux-x64@0.34.5 \
+          @img/sharp-libvips-linux-x64@1.2.4 \
+          @parcel/watcher-linux-x64-glibc@2.5.6 \
+          sass-embedded-linux-x64@1.100.0
     # Fork PRs on pull_request already can't write to the base repo's cache (GitHub built-in).
     # The fork guard is defense-in-depth for pull_request_target, which does have write access.
     - name: Save cache
