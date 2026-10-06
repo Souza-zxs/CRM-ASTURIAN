@@ -1,0 +1,52 @@
+---
+title: Canal de Instagram
+description: Conecta una cuenta de Instagram a Zyra y ejecuta campañas de comentario a DM con reporte de seguidores.
+---
+
+Zyra puede conectarse a una cuenta de Instagram para que puedas responder automáticamente a comentarios con un mensaje directo (DM) y hacer seguimiento de cómo evoluciona tu número de seguidores.
+
+## Antes de empezar
+
+- Necesitas acceso a la **Configuración** de tu espacio de trabajo.
+- Necesitas la cuenta de Instagram que quieres conectar y permiso para autorizarla cuando Instagram lo solicite.
+- La conexión con Instagram debe estar configurada en tu servidor. Si ves "Instagram connection is not configured on this server", pídeselo a tu administrador.
+
+## Conectar tu cuenta
+
+1. Abre **Configuración**.
+2. Ve a **Cuentas** y elige **Instagram**.
+3. Si todavía no hay ninguna cuenta conectada, usa la opción para agregar una cuenta nueva y haz clic en **Conectar con Instagram**.
+4. Inicia sesión y autoriza en Instagram. Volverás a Zyra automáticamente cuando termine.
+
+Si la conexión falla, Zyra muestra "Failed to connect the Instagram account." Vuelve a intentarlo o pídeselo a tu administrador.
+
+## Cómo funciona
+
+Una vez conectada, la página de Instagram tiene tres pestañas: **Campañas**, **Reportes** y **Diagnóstico**.
+
+### Campañas (comentario a DM)
+
+Una campaña envía un mensaje directo cuando alguien comenta una de tus palabras clave.
+
+1. En **Campañas**, haz clic en **Nueva campaña**, o parte de una plantilla lista (o **Empezar desde cero**).
+2. Completa el **Nombre de la campaña**, las **Palabras clave** y la **Respuesta por mensaje directo**. También puedes agregar **Variaciones de respuesta pública**.
+3. Elige una **Publicación**, o activa **Adjuntar automáticamente al próximo Reel**.
+4. Opcionalmente exige que la persona siga la cuenta antes de recibir el DM, y agrega un **Mensaje de seguimiento** con un **Retraso de seguimiento (minutos)**.
+5. Haz clic en **Crear campaña**.
+
+Puedes activar o desactivar, editar, duplicar o eliminar cada campaña. **Importar CSV** crea varias campañas a la vez, usando las columnas `keywords` y `replyMessage` (separa las palabras clave con `;` o `|`).
+
+### Reportes
+
+**Reportes** muestra cómo cambia tu número de seguidores a lo largo del tiempo. Puedes activar **Compartir reporte públicamente** y usar **Copiar enlace público del reporte** para compartirlo.
+
+### Diagnóstico
+
+**Diagnóstico** muestra el estado de la conexión: estado del token de acceso (Válido, Por expirar, Expirado o Desconocido), último webhook recibido, última reconciliación, y trabajos pendientes y fallidos.
+
+## Es bueno saber
+
+- Los datos de seguidores aparecen solo después de haber sido capturados. Hasta entonces verás "No follower data captured yet".
+- Si el token está por expirar o ya expiró, vuelve a conectar la cuenta desde la misma página.
+- Cualquiera con el enlace público del reporte puede verlo, así que compártelo con cuidado.
+- Esta página no explica cómo se almacenan los mensajes recibidos en el CRM. Pregúntale a tu administrador si lo necesitas.

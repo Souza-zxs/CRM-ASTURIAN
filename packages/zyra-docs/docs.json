@@ -2172,6 +2172,16 @@
                 ]
               },
               {
+                "group": "Canales y automatización",
+                "pages": [
+                  "l/es/user-guide/channels/whatsapp",
+                  "l/es/user-guide/channels/whatsapp-templates",
+                  "l/es/user-guide/channels/instagram",
+                  "l/es/user-guide/channels/voice-agent",
+                  "l/es/user-guide/channels/funnel-pages"
+                ]
+              },
+              {
                 "group": "Modelo de datos",
                 "icon": "database",
                 "pages": [
