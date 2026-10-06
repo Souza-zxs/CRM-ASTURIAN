@@ -5,6 +5,7 @@ const URL_SEGMENT_OVERRIDES: Partial<Record<AppLocale, string>> = {
   en: 'en',
   'fr-FR': 'fr',
   'es-ES': 'es',
+  'pt-BR': 'pt',
 };
 
 export const localeToUrlSegment = (locale: AppLocale): string => {
