@@ -20145,3 +20145,8 @@ msgstr "Your workspace will be disabled"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/components/ColumnGrid.tsx
 msgid "Zyra fields"
 msgstr "Zyra fields"
+
+#. js-lingui-id: JfJ0fL
+#: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
+msgid "Bloqueado"
+msgstr "Locked"

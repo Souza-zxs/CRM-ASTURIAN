@@ -20152,3 +20152,8 @@ msgstr "Seu workspace será desativado"
 msgid "Zyra fields"
 msgstr "Campos do Zyra"
 
+
+#. js-lingui-id: JfJ0fL
+#: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx
+msgid "Bloqueado"
+msgstr "Bloqueado"
