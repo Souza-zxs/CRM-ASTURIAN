@@ -230,10 +230,10 @@ const createWelcomeRichText = ({
       widgetName: 'welcomeRichText',
       title: 'Untitled Rich Text',
       type: WidgetType.STANDALONE_RICH_TEXT,
-      gridPosition: { row: 0, column: 0, rowSpan: 6, columnSpan: 6 },
+      gridPosition: { row: 2, column: 0, rowSpan: 6, columnSpan: 6 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 0,
+        row: 2,
         column: 0,
         rowSpan: 6,
         columnSpan: 6,
@@ -267,10 +267,10 @@ const createDealsByCompany = ({
       widgetName: 'dealsByCompany',
       title: 'Deals by Company',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 0, column: 6, rowSpan: 6, columnSpan: 6 },
+      gridPosition: { row: 2, column: 6, rowSpan: 6, columnSpan: 6 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 0,
+        row: 2,
         column: 6,
         rowSpan: 6,
         columnSpan: 6,
@@ -332,10 +332,10 @@ const createPipelineValueByStage = ({
       widgetName: 'pipelineValueByStage',
       title: 'Pipeline Value by Stage',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 6, column: 0, rowSpan: 6, columnSpan: 6 },
+      gridPosition: { row: 8, column: 0, rowSpan: 6, columnSpan: 6 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 6,
+        row: 8,
         column: 0,
         rowSpan: 6,
         columnSpan: 6,
@@ -410,10 +410,10 @@ const createRevenueTimeline = ({
       widgetName: 'revenueTimeline',
       title: 'Revenue Timeline',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 6, column: 6, rowSpan: 6, columnSpan: 6 },
+      gridPosition: { row: 8, column: 6, rowSpan: 6, columnSpan: 6 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 6,
+        row: 8,
         column: 6,
         rowSpan: 6,
         columnSpan: 6,
@@ -477,13 +477,13 @@ const createOpportunitiesByOwner = ({
       widgetName: 'opportunitiesByOwner',
       title: 'Opportunities by Owner',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 12, column: 0, rowSpan: 6, columnSpan: 6 },
+      gridPosition: { row: 14, column: 0, rowSpan: 6, columnSpan: 12 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 12,
+        row: 14,
         column: 0,
         rowSpan: 6,
-        columnSpan: 6,
+        columnSpan: 12,
       },
       configuration: {
         configurationType: WidgetConfigurationType.BAR_CHART,
@@ -539,42 +539,6 @@ const createOpportunitiesByOwner = ({
   });
 };
 
-const createStockMarketIframe = ({
-  args,
-}: {
-  args: DashboardWidgetBuilderArgs;
-}): FlatPageLayoutWidget => {
-  const configuration = {
-    configurationType: WidgetConfigurationType.IFRAME as const,
-    url: 'https://www.tradingview.com/embed-widget/hotlists/?locale=en',
-  };
-
-  return createStandardPageLayoutWidgetFlatMetadata({
-    ...args,
-    objectMetadataUniversalIdentifier: null,
-    context: {
-      layoutName: 'myFirstDashboard',
-      tabTitle: 'tab1',
-      widgetName: 'stockMarketIframe',
-      title: 'Stock market (Iframe)',
-      type: WidgetType.IFRAME,
-      gridPosition: { row: 12, column: 6, rowSpan: 8, columnSpan: 6 },
-      position: {
-        layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 12,
-        column: 6,
-        rowSpan: 8,
-        columnSpan: 6,
-      },
-      configuration,
-      universalConfiguration: configuration,
-      objectMetadataId: null,
-      conditionalDisplay: null,
-      conditionalAvailabilityExpression: null,
-    },
-  });
-};
-
 const createDealsCreatedThisMonth = ({
   args,
 }: {
@@ -608,13 +572,13 @@ const createDealsCreatedThisMonth = ({
       widgetName: 'dealsCreatedThisMonth',
       title: 'Deals created this month',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 18, column: 0, rowSpan: 2, columnSpan: 3 },
+      gridPosition: { row: 0, column: 0, rowSpan: 2, columnSpan: 6 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 18,
+        row: 0,
         column: 0,
         rowSpan: 2,
-        columnSpan: 3,
+        columnSpan: 6,
       },
       configuration: {
         configurationType: WidgetConfigurationType.AGGREGATE_CHART,
@@ -677,13 +641,13 @@ const createDealValueCreatedThisMonth = ({
       widgetName: 'dealValueCreatedThisMonth',
       title: 'Deal value created this month',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 18, column: 3, rowSpan: 2, columnSpan: 3 },
+      gridPosition: { row: 0, column: 6, rowSpan: 2, columnSpan: 6 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 18,
-        column: 3,
+        row: 0,
+        column: 6,
         rowSpan: 2,
-        columnSpan: 3,
+        columnSpan: 6,
       },
       configuration: {
         configurationType: WidgetConfigurationType.AGGREGATE_CHART,
@@ -717,13 +681,12 @@ export const computeMyFirstDashboardWidgets = (
   args: DashboardWidgetBuilderArgs,
 ): FlatPageLayoutWidget[] => {
   return [
+    createDealsCreatedThisMonth({ args }),
+    createDealValueCreatedThisMonth({ args }),
     createWelcomeRichText({ args }),
     createDealsByCompany({ args }),
     createPipelineValueByStage({ args }),
     createRevenueTimeline({ args }),
     createOpportunitiesByOwner({ args }),
-    createStockMarketIframe({ args }),
-    createDealsCreatedThisMonth({ args }),
-    createDealValueCreatedThisMonth({ args }),
   ];
 };

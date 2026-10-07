@@ -23,6 +23,8 @@ export const STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS = {
           opportunitiesByOwner: {
             universalIdentifier: '20202020-d111-4d11-8d11-da5ab0a11005',
           },
+          // No longer created for new workspaces (unrelated finance demo
+          // widget) — identifier kept per the no-delete rule above.
           stockMarketIframe: {
             universalIdentifier: '20202020-d111-4d11-8d11-da5ab0a11006',
           },

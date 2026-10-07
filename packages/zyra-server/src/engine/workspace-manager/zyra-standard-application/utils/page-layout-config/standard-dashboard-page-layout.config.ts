@@ -42,11 +42,6 @@ const DASHBOARD_PAGE_TABS = {
           STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
             .widgets.opportunitiesByOwner.universalIdentifier,
       },
-      stockMarketIframe: {
-        universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.stockMarketIframe.universalIdentifier,
-      },
       dealsCreatedThisMonth: {
         universalIdentifier:
           STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
