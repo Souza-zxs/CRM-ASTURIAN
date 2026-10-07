@@ -34,6 +34,7 @@ import {
 
 const StyledCardsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: ${themeCssVariables.spacing[4]};
   margin-top: ${themeCssVariables.spacing[6]};
 
@@ -43,8 +44,8 @@ const StyledCardsContainer = styled.div`
 `;
 
 const StyledCardLinkSlot = styled.div`
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 1 1 220px;
+  min-width: 220px;
 `;
 
 export const SettingsAccountsSettingsSection = () => {
