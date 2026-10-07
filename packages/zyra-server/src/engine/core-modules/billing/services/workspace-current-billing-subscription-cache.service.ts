@@ -1,6 +1,6 @@
 /* @license Enterprise */
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 import { isDefined } from 'zyra-shared/utils';
 
@@ -14,6 +14,10 @@ import { WorkspaceCacheProvider } from 'src/engine/workspace-cache/interfaces/wo
 @Injectable()
 @WorkspaceCache('currentBillingSubscription')
 export class WorkspaceCurrentBillingSubscriptionCacheService extends WorkspaceCacheProvider<CurrentBillingSubscription> {
+  private readonly logger = new Logger(
+    WorkspaceCurrentBillingSubscriptionCacheService.name,
+  );
+
   constructor(
     private readonly billingSubscriptionService: BillingSubscriptionService,
   ) {
@@ -23,10 +27,25 @@ export class WorkspaceCurrentBillingSubscriptionCacheService extends WorkspaceCa
   async computeForCache(
     workspaceId: string,
   ): Promise<CurrentBillingSubscription> {
-    const subscription =
-      await this.billingSubscriptionService.getCurrentBillingSubscription({
-        workspaceId,
-      });
+    let subscription;
+
+    try {
+      subscription =
+        await this.billingSubscriptionService.getCurrentBillingSubscription({
+          workspaceId,
+        });
+    } catch (error) {
+      // Billing lookup must never block login/workspace loading — a
+      // workspace with no usable billing subscription data should just
+      // read as "no subscription", not take down the whole currentWorkspace
+      // response.
+      this.logger.error(
+        `Failed to resolve current billing subscription for workspace ${workspaceId}, falling back to NO_BILLING_SUBSCRIPTION`,
+        error,
+      );
+
+      return NO_BILLING_SUBSCRIPTION;
+    }
 
     if (!isDefined(subscription)) {
       return NO_BILLING_SUBSCRIPTION;
