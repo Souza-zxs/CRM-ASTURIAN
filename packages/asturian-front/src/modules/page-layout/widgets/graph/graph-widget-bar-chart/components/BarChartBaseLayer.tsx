@@ -15,6 +15,7 @@ type BarChartBaseLayerProps = {
   valueTickValues: number[];
   showGrid: boolean;
   highlightedLegendId: string | null;
+  hoveredIndexValue: string | null;
   allowDataTransitions: boolean;
 };
 
@@ -36,6 +37,7 @@ export const BarChartBaseLayer = ({
   valueTickValues,
   showGrid,
   highlightedLegendId,
+  hoveredIndexValue,
   allowDataTransitions,
 }: BarChartBaseLayerProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -53,6 +55,7 @@ export const BarChartBaseLayer = ({
         valueTickValues={valueTickValues}
         showGrid={showGrid}
         highlightedLegendId={highlightedLegendId}
+        hoveredIndexValue={hoveredIndexValue}
         allowDataTransitions={allowDataTransitions}
         canvasRef={canvasRef}
       />

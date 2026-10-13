@@ -25,7 +25,8 @@ export const renderGridLayer = ({
 }: RenderGridLayerParams): void => {
   ctx.strokeStyle = gridColor;
   ctx.lineWidth = lineWidth;
-  ctx.setLineDash([dashLength, dashGap]);
+  // A zero dash length means a solid line.
+  ctx.setLineDash(dashLength > 0 ? [dashLength, dashGap] : []);
 
   const range = valueDomain.max - valueDomain.min;
   if (range === 0) {

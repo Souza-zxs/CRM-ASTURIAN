@@ -38,7 +38,6 @@ export const useLineChartTheme = () => {
       line: {
         stroke: theme.border.color.light,
         strokeWidth: 1,
-        strokeDasharray: '4 4',
       },
     },
     crosshair: {

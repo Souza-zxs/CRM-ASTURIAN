@@ -94,6 +94,7 @@ export const BarChartLayers = ({
       <BarChartBaseLayer
         bars={bars}
         highlightedLegendId={highlightedLegendId}
+        hoveredIndexValue={hoveredSlice?.indexValue ?? null}
         showGrid={showGrid}
         valueDomain={valueDomain}
         valueTickValues={valueTickValues}

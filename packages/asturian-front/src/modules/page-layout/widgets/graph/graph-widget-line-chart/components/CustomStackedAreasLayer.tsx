@@ -1,5 +1,6 @@
 import { LineAnimatedAreaPath } from '@/page-layout/widgets/graph/graph-widget-line-chart/components/LineAnimatedAreaPath';
 import { LineAreaGradientDefs } from '@/page-layout/widgets/graph/graph-widget-line-chart/components/LineAreaGradientDefs';
+import { LineAreaHatchPatternDef } from '@/page-layout/widgets/graph/graph-widget-line-chart/components/LineAreaHatchPatternDef';
 import { type LineChartEnrichedSeries } from '@/page-layout/widgets/graph/graph-widget-line-chart/types/LineChartEnrichedSeries';
 import { computeLineAreaPath } from '@/page-layout/widgets/graph/graph-widget-line-chart/utils/computeLineAreaPath';
 import {
@@ -53,6 +54,13 @@ export const CustomStackedAreasLayer = ({
     return Math.max(0, Math.min(scaled, innerHeight));
   }, [innerHeight, yScale]);
 
+  // With a single visible series there is no color to compare against another
+  // series, so the area is filled with a neutral hatch instead of its gradient.
+  const isSingleSeries = enrichedSeries.length === 1;
+  const hatchPatternId = isSingleSeries
+    ? `${enrichedSeries[0].areaFillId}-hatch`
+    : null;
+
   const paths = useMemo(() => {
     if (!enableArea) {
       return [];
@@ -79,13 +87,13 @@ export const CustomStackedAreasLayer = ({
         acc.push({
           id: String(currentSeries.id),
           path,
-          fillId: enriched.areaFillId,
+          fillId: hatchPatternId ?? enriched.areaFillId,
         });
       }
 
       return acc;
     }, initialAreaPathData);
-  }, [enableArea, series, seriesById, baseline, isStacked]);
+  }, [enableArea, series, seriesById, baseline, isStacked, hatchPatternId]);
 
   if (!enableArea) {
     return null;
@@ -94,6 +102,9 @@ export const CustomStackedAreasLayer = ({
   return (
     <g>
       <LineAreaGradientDefs enrichedSeries={enrichedSeries} />
+      {isDefined(hatchPatternId) && (
+        <LineAreaHatchPatternDef id={hatchPatternId} />
+      )}
       {paths.map(({ id, path, fillId }) => (
         <LineAnimatedAreaPath key={id} id={id} path={path} fillId={fillId} />
       ))}

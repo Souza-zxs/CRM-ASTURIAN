@@ -4,6 +4,7 @@ import { renderGridLayer } from '@/page-layout/widgets/graph/chart-core/utils/re
 import { BAR_CHART_CONSTANTS } from '@/page-layout/widgets/graph/graph-widget-bar-chart/constants/BarChartConstants';
 import { type BarPosition } from '@/page-layout/widgets/graph/graph-widget-bar-chart/types/BarPosition';
 import { computeBaselineBar } from '@/page-layout/widgets/graph/graph-widget-bar-chart/utils/computeBaselineBar';
+import { createHatchPattern } from '@/page-layout/widgets/graph/graph-widget-bar-chart/utils/createHatchPattern';
 import { interpolateBars } from '@/page-layout/widgets/graph/graph-widget-bar-chart/utils/interpolateBars';
 import { renderBars } from '@/page-layout/widgets/graph/graph-widget-bar-chart/utils/renderBars';
 import { type ChartMargins } from '@/page-layout/widgets/graph/types/ChartMargins';
@@ -27,6 +28,7 @@ type BarChartBaseLayerEffectProps = {
   valueTickValues: number[];
   showGrid: boolean;
   highlightedLegendId: string | null;
+  hoveredIndexValue: string | null;
   allowDataTransitions: boolean;
   canvasRef: RefObject<HTMLCanvasElement | null>;
 };
@@ -48,13 +50,16 @@ export const BarChartBaseLayerEffect = ({
   valueTickValues,
   showGrid,
   highlightedLegendId,
+  hoveredIndexValue,
   allowDataTransitions,
   canvasRef,
 }: BarChartBaseLayerEffectProps) => {
   const { theme } = useContext(ThemeContext);
 
-  const borderRadius = parseInt(theme.border.radius.sm);
+  const borderRadius = BAR_CHART_CONSTANTS.BAR_BORDER_RADIUS;
   const gridColor = theme.border.color.light;
+  const hatchBackgroundColor = theme.background.transparent.light;
+  const hatchLineColor = theme.border.color.medium;
   const isVertical = layout === BarChartLayout.VERTICAL;
   const durationMs =
     theme.animation.duration.normal *
@@ -180,6 +185,15 @@ export const BarChartBaseLayerEffect = ({
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    const inactiveFill = createHatchPattern({
+      ctx,
+      devicePixelRatio: dpr,
+      backgroundColor: hatchBackgroundColor,
+      lineColor: hatchLineColor,
+      tileSize: BAR_CHART_CONSTANTS.HATCH_TILE_SIZE,
+      lineWidth: BAR_CHART_CONSTANTS.HATCH_LINE_WIDTH,
+    });
+
     const render = (barsToRender: BarPosition[]) => {
       const innerW = chartWidth - margins.left - margins.right;
       const innerH = chartHeight - margins.top - margins.bottom;
@@ -209,6 +223,8 @@ export const BarChartBaseLayerEffect = ({
         borderRadius,
         isVertical,
         highlightedLegendId,
+        hoveredIndexValue,
+        inactiveFill,
       });
 
       ctx.restore();
@@ -256,7 +272,10 @@ export const BarChartBaseLayerEffect = ({
     dpr,
     durationMs,
     gridColor,
+    hatchBackgroundColor,
+    hatchLineColor,
     highlightedLegendId,
+    hoveredIndexValue,
     isVertical,
     margins.bottom,
     margins.left,
