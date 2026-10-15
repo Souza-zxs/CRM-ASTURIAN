@@ -41,43 +41,50 @@ implementada ("vamos mudando aos poucos").
    que `scripts/select-brand.mjs` normalmente regeneraria para uma marca não-`zyra`, mas aqui a
    intenção é redefinir o que a marca `zyra` (o sentinel "não mexer, já é a fonte da verdade")
    *passa a ser*.
-2. **Cor de marca**: `AccentLight.ts`/`AccentDark.ts` hoje importam a escala `violet` do
-   `@radix-ui/colors` — ou seja, o matiz já é roxo/violeta, só não é tão vívido/saturado quanto
-   o roxo do kit. Troca-se para uma escala de 12 tons **gerada via OKLCH** a partir de um hex
-   semente, reaproveitando o algoritmo que `scripts/select-brand.mjs` já implementa para o modo
-   `"generated"` (função `generateScaleSteps`/`oklchToHex`, linhas ~255-417) — não se reescreve a
-   lógica, só se gera a escala com o hex certo e cola-se o resultado (literais `color(display-p3
-   ...)`, mesmo formato que os arquivos já usam) nos arquivos committados.
-   - Hex semente de trabalho: `#6E56CF` (já usado como placeholder em
-     `brands/cliente/brand.config.json`, visualmente próximo ao roxo do kit nas imagens
-     revisadas). Pode ser refinado depois se o usuário conseguir uma amostra exata do Figma
-     (precisa estar com o arquivo aberto no app desktop — a ponte MCP não lê variáveis sem uma
-     camada selecionada ao vivo).
-   - Luz e escuro precisam ser gerados juntos e manter o teste de paridade
-     (`src/theme-constants/__tests__`) passando.
-3. **Raio de borda dos cards**: `WidgetCard.tsx` usa `border.radius.md` (10px) hoje; o kit usa
-   cards bem mais arredondados (~20px). Troca para `border.radius.xl` (20px — token que já
-   existe em `BorderCommon.ts`, nenhum token novo necessário).
-4. **Cor secundária (lime)**: a escala lime do Radix já existe inteira no sistema
-   (`SECONDARY_COLORS_LIGHT.lime1-12` / `SECONDARY_COLORS_DARK`), hoje só usada em tags. Passa a
-   ser a cor de destaque "positivo/secundário" nos lugares onde hoje se usa verde genérico
-   (ex.: indicadores de crescimento) — reaproveitamento de token existente, sem criar nada novo.
+2. **Cor de marca — mecanismo corrigido após investigação**: a ideia original era editar
+   `AccentLight.ts`/`AccentDark.ts` (que importam a escala `violet` do `@radix-ui/colors`).
+   Investigação mostrou que **isso não teria efeito visual no app**: esses arquivos TS só
+   alimentam `ThemeLight.ts`/`ThemeDark.ts`, que por sua vez só é consumido por
+   `zyra-website` (mockups de app-preview da landing — fora de escopo). O app real
+   (`asturian-front`) importa `zyra-ui/theme-light.css` e `zyra-ui/theme-dark.css` diretamente em
+   `packages/asturian-front/src/index.tsx:8-9`, e todo componente lê cor via
+   `ThemeContext`/`themeCssVariables`, que resolve os valores das variáveis CSS **computadas do
+   DOM** (`ThemeProvider.tsx`, função `computeThemeFromCss`) — ou seja, o valor vivo vem só do
+   `.css`. Não existe hoje nenhum passo de build que gere o `.css` a partir do `.ts`, nem teste de
+   paridade entre os dois (o comentário nos arquivos citando um "teste de paridade" em
+   `src/theme-constants/__tests__` não corresponde a nenhum arquivo real encontrado).
+   - **Decisão**: editar diretamente o bloco `--t-accent-*` (18 propriedades: `primary`,
+     `secondary`, `tertiary`, `quaternary`, `accent3570`, `accent4060`, `accent1`-`accent12`) em
+     `theme-light.css` (linhas 74-91) e `theme-dark.css` (linhas 74-91). **Não tocar**
+     `AccentLight.ts`/`AccentDark.ts` nesta etapa — isso ficaria fora do escopo combinado (mudaria
+     visualmente a landing page, que o usuário pediu pra não mexer ainda).
+   - Escala gerada via OKLCH (mesmo algoritmo de `scripts/select-brand.mjs`, função
+     `generateScaleSteps`/`oklchToHex`/`hexToOklch`, linhas ~213-341) a partir do hex semente
+     `#6E56CF` (mesmo valor já usado como placeholder em `brands/cliente/brand.config.json`,
+     visualmente próximo ao roxo do kit). Valores exatos computados e prontos pra colar estão no
+     plano de implementação.
+3. **Raio de borda dos cards**: `WidgetCard.tsx` usa `border.radius.md` (10px) hoje — ver uso em
+   `WidgetCard.tsx:70-76`; o kit usa cards bem mais arredondados (~20px). Troca para
+   `border.radius.xl` (20px — token que já existe em `BorderCommon.ts`, nenhum token novo
+   necessário).
+4. **Cor secundária (lime) — adiado**: investigação não achou nenhum uso atual de "verde
+   genérico = positivo" dentro de `page-layout/widgets` pra trocar por lime. O único uso de verde
+   hoje ali é a paleta categórica de séries de gráfico (`createGraphColorRegistry.ts`), que é um
+   conceito diferente (cor rotativa por série, não semântica de "positivo") e não deve ser tocado.
+   O badge de variação (+/-%) que justificaria essa cor ainda não existe (é item da etapa 2/3).
+   Decisão: lime entra junto quando esse badge for construído, não retroativamente agora.
 5. **Sem mudança funcional nesta etapa** — só tokens visuais. Novos widgets (etapa 3) e chrome
    de card (etapa 2) ficam para specs seguintes.
 
-## Arquivos afetados (esperado)
+## Arquivos afetados
 
-- `packages/zyra-ui/src/theme/constants/AccentLight.ts`
-- `packages/zyra-ui/src/theme/constants/AccentDark.ts`
-- `packages/zyra-ui/src/theme/constants/BorderCommon.ts` (se necessário — provavelmente só
-  reaproveitar `xl` já existente, sem editar)
+- `packages/zyra-ui/src/theme-constants/theme-light.css` (bloco `--t-accent-*`, linhas 74-91)
+- `packages/zyra-ui/src/theme-constants/theme-dark.css` (bloco `--t-accent-*`, linhas 74-91)
 - `packages/asturian-front/src/modules/page-layout/widgets/widget-card/components/WidgetCard.tsx`
-  (troca de `radius.md` para `radius.xl`)
-- `packages/zyra-ui/src/theme-constants/theme-light.css` / `theme-dark.css` (mirror — há um
-  teste de paridade que provavelmente falha se só um lado for editado manualmente; checar como
-  esses CSS são gerados/sincronizados antes de editar à mão)
-- Pontos de uso de verde-como-positivo a localizar e trocar para lime (escopo exato a mapear na
-  fase de implementação — não é uma lista fechada ainda)
+  (linha 75: troca de `themeCssVariables.border.radius.md` para `.xl`)
+
+**Não afetados nesta etapa** (ver decisões 2 e 4): `AccentLight.ts`, `AccentDark.ts`,
+`createGraphColorRegistry.ts`, `BorderCommon.ts` (token `xl` já existe, só reaproveitado).
 
 ## Risco principal
 
