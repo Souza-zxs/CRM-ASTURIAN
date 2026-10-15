@@ -70,9 +70,9 @@
   --t-side-panel-width: 500px;
   --t-clickable-element-background-transition: background 0.1s ease;
   --t-last-layer-z-index: 2147483647;
-  --t-buttons-secondary-text-color: color(display-p3 0.63 0.69 1);
-  --t-accent-primary: color(display-p3 0.565 0.485 0.973);
-  --t-accent-secondary: color(display-p3 0.565 0.485 0.973);
+  --t-buttons-secondary-text-color: color(display-p3 0.704 0.645 1);
+  --t-accent-primary: color(display-p3 0.271 0.182 0.563);
+  --t-accent-secondary: color(display-p3 0.271 0.182 0.563);
   --t-accent-tertiary: color(display-p3 0.152 0.092 0.339);
   --t-accent-quaternary: color(display-p3 0.095 0.055 0.228);
   --t-accent-accent3570: color(display-p3 0.495 0.409 0.89);

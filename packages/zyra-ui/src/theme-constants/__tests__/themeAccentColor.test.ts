@@ -20,7 +20,7 @@ describe('accent color tokens — rebrand to vivid violet (#6E56CF seed)', () =>
       '--t-accent-accent12: color(display-p3 0.124 0.069 0.29);',
     );
     expect(css).toContain(
-      '--t-accent-primary: color(display-p3 0.431 0.337 0.812);',
+      '--t-accent-primary: color(display-p3 0.742 0.718 0.994);',
     );
   });
 
@@ -37,7 +37,7 @@ describe('accent color tokens — rebrand to vivid violet (#6E56CF seed)', () =>
       '--t-accent-accent12: color(display-p3 0.911 0.899 1);',
     );
     expect(css).toContain(
-      '--t-accent-primary: color(display-p3 0.565 0.485 0.973);',
+      '--t-accent-primary: color(display-p3 0.271 0.182 0.563);',
     );
   });
 });
