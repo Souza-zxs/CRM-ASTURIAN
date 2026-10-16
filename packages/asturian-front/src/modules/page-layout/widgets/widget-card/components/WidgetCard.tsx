@@ -72,7 +72,7 @@ const StyledWidgetCard = styled.div<WidgetCardStyledProps>`
     variant === 'standalone' ||
     variant === 'record-page' ||
     isEditable
-      ? themeCssVariables.border.radius.md
+      ? themeCssVariables.border.radius.xl
       : '0'};
 
   box-sizing: border-box;
