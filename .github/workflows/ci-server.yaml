@@ -234,12 +234,7 @@ jobs:
           git config user.email "debug-investigation-bot@users.noreply.github.com"
           git add -A
           git status --porcelain
-          git commit -m "chore(server): generate missing migration, graphql schema and sdk client
-
-Entities for WhatsApp agents, Instagram integration and payment
-tracking were added without running the required generation steps
-(instance command, graphql:generate x3, sdk generate-metadata-client).
-This commit was produced by CI running those exact commands."
+          git commit -m "chore(server): generate missing migration, graphql schema and sdk client"
           git push origin HEAD:refs/heads/generated/missing-codegen-artifacts --force
   server-test:
     needs: server-build
