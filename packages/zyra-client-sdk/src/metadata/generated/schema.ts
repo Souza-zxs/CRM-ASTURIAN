@@ -676,6 +676,9 @@ export interface Workspace {
     routerModel: Scalars['String']
     workspaceCustomApplication?: Application
     featureFlags?: FeatureFlag[]
+    planTier: WorkspacePlanTier
+    workspaceModules: WorkspaceModuleEntitlement[]
+    workspacePlanUsage: PlanLimitUsage[]
     billingSubscriptions: BillingSubscription[]
     installedApplications: Application[]
     currentBillingSubscription?: BillingSubscription
@@ -689,6 +692,10 @@ export interface Workspace {
 }
 
 export type WorkspaceActivationStatus = 'ONGOING_CREATION' | 'PENDING_CREATION' | 'ACTIVE' | 'INACTIVE' | 'SUSPENDED'
+
+
+/** The plan tier gating a workspace feature access */
+export type WorkspacePlanTier = 'BASIC' | 'PRO'
 
 export interface AppToken {
     id: Scalars['UUID']
@@ -730,6 +737,116 @@ export interface User {
 
 /** Onboarding status */
 export type OnboardingStatus = 'PLAN_REQUIRED' | 'WORKSPACE_ACTIVATION' | 'PROFILE_CREATION' | 'SYNC_EMAIL' | 'INVITE_TEAM' | 'BOOK_ONBOARDING' | 'COMPLETED'
+
+export interface BillingProductMetadata {
+    planKey: BillingPlanKey
+    priceUsageBased: BillingUsageType
+    productKey: BillingProductKey
+    __typename: 'BillingProductMetadata'
+}
+
+
+/** The different billing plans available */
+export type BillingPlanKey = 'PRO' | 'ENTERPRISE'
+
+export type BillingUsageType = 'METERED' | 'LICENSED'
+
+
+/** The different billing products available */
+export type BillingProductKey = 'BASE_PRODUCT' | 'RESOURCE_CREDIT' | 'MODULE_WHATSAPP' | 'MODULE_INSTAGRAM' | 'MODULE_AI_AGENT' | 'MODULE_VOICE_AGENT' | 'MODULE_WORKFLOWS_ADVANCED' | 'MODULE_CUSTOM_OBJECTS' | 'MODULE_CUSTOM_FIELDS' | 'MODULE_ROW_LEVEL_PERMISSIONS' | 'MODULE_API_ACCESS' | 'MODULE_MCP'
+
+export interface BillingSubscriptionSchedulePhaseItem {
+    price: Scalars['String']
+    quantity?: Scalars['Float']
+    __typename: 'BillingSubscriptionSchedulePhaseItem'
+}
+
+export interface BillingSubscriptionSchedulePhase {
+    start_date: Scalars['Float']
+    end_date: Scalars['Float']
+    items: BillingSubscriptionSchedulePhaseItem[]
+    __typename: 'BillingSubscriptionSchedulePhase'
+}
+
+export interface BillingPriceLicensed {
+    recurringInterval: SubscriptionInterval
+    unitAmount: Scalars['Float']
+    stripePriceId: Scalars['String']
+    priceUsageType: BillingUsageType
+    creditAmount?: Scalars['Float']
+    __typename: 'BillingPriceLicensed'
+}
+
+export type SubscriptionInterval = 'Month' | 'Year'
+
+export interface BillingPriceTier {
+    upTo?: Scalars['Float']
+    flatAmount?: Scalars['Float']
+    unitAmount?: Scalars['Float']
+    __typename: 'BillingPriceTier'
+}
+
+export interface BillingPriceMetered {
+    tiers: BillingPriceTier[]
+    recurringInterval: SubscriptionInterval
+    stripePriceId: Scalars['String']
+    priceUsageType: BillingUsageType
+    __typename: 'BillingPriceMetered'
+}
+
+export interface BillingProduct {
+    name: Scalars['String']
+    description: Scalars['String']
+    images?: Scalars['String'][]
+    metadata: BillingProductMetadata
+    __typename: 'BillingProduct'
+}
+
+export interface BillingLicensedProduct {
+    name: Scalars['String']
+    description: Scalars['String']
+    images?: Scalars['String'][]
+    metadata: BillingProductMetadata
+    prices?: BillingPriceLicensed[]
+    __typename: 'BillingLicensedProduct'
+}
+
+export interface BillingMeteredProduct {
+    name: Scalars['String']
+    description: Scalars['String']
+    images?: Scalars['String'][]
+    metadata: BillingProductMetadata
+    prices?: BillingPriceMetered[]
+    __typename: 'BillingMeteredProduct'
+}
+
+export interface BillingSubscriptionItem {
+    id: Scalars['UUID']
+    hasReachedCurrentPeriodCap: Scalars['Boolean']
+    quantity?: Scalars['Float']
+    stripePriceId: Scalars['String']
+    billingProduct: BillingProductDTO
+    __typename: 'BillingSubscriptionItem'
+}
+
+export interface BillingCustomer {
+    id: Scalars['UUID']
+    hasPaymentMethod?: Scalars['Boolean']
+    __typename: 'BillingCustomer'
+}
+
+export interface BillingSubscription {
+    id: Scalars['UUID']
+    status: SubscriptionStatus
+    interval?: SubscriptionInterval
+    billingSubscriptionItems?: BillingSubscriptionItem[]
+    currentPeriodEnd?: Scalars['DateTime']
+    metadata: Scalars['JSON']
+    phases: BillingSubscriptionSchedulePhase[]
+    __typename: 'BillingSubscription'
+}
+
+export type SubscriptionStatus = 'Active' | 'Canceled' | 'Incomplete' | 'IncompleteExpired' | 'PastDue' | 'Paused' | 'Trialing' | 'Unpaid'
 
 export interface RatioAggregateConfig {
     fieldMetadataId: Scalars['UUID']
@@ -773,7 +890,7 @@ export interface PageLayoutWidget {
     __typename: 'PageLayoutWidget'
 }
 
-export type WidgetType = 'VIEW' | 'IFRAME' | 'FIELD' | 'FIELDS' | 'GRAPH' | 'STANDALONE_RICH_TEXT' | 'TIMELINE' | 'TASKS' | 'NOTES' | 'FILES' | 'EMAILS' | 'CALENDAR' | 'FIELD_RICH_TEXT' | 'WORKFLOW' | 'WORKFLOW_VERSION' | 'WORKFLOW_RUN' | 'FRONT_COMPONENT' | 'RECORD_TABLE' | 'EMAIL_THREAD'
+export type WidgetType = 'VIEW' | 'IFRAME' | 'FIELD' | 'FIELDS' | 'GRAPH' | 'STANDALONE_RICH_TEXT' | 'TIMELINE' | 'TASKS' | 'NOTES' | 'FILES' | 'EMAILS' | 'WHATSAPP' | 'CALENDAR' | 'FIELD_RICH_TEXT' | 'WORKFLOW' | 'WORKFLOW_VERSION' | 'WORKFLOW_RUN' | 'FRONT_COMPONENT' | 'RECORD_TABLE' | 'EMAIL_THREAD'
 
 export type PageLayoutWidgetPosition = (PageLayoutWidgetGridPosition | PageLayoutWidgetVerticalListPosition | PageLayoutWidgetCanvasPosition) & { __isUnion?: true }
 
@@ -799,7 +916,7 @@ export interface PageLayoutWidgetCanvasPosition {
     __typename: 'PageLayoutWidgetCanvasPosition'
 }
 
-export type WidgetConfiguration = (AggregateChartConfiguration | StandaloneRichTextConfiguration | PieChartConfiguration | LineChartConfiguration | IframeConfiguration | BarChartConfiguration | CalendarConfiguration | FrontComponentConfiguration | EmailsConfiguration | EmailThreadConfiguration | FieldConfiguration | FieldRichTextConfiguration | FieldsConfiguration | FilesConfiguration | NotesConfiguration | TasksConfiguration | TimelineConfiguration | ViewConfiguration | RecordTableConfiguration | WorkflowConfiguration | WorkflowRunConfiguration | WorkflowVersionConfiguration) & { __isUnion?: true }
+export type WidgetConfiguration = (AggregateChartConfiguration | StandaloneRichTextConfiguration | PieChartConfiguration | LineChartConfiguration | IframeConfiguration | BarChartConfiguration | CalendarConfiguration | FrontComponentConfiguration | EmailsConfiguration | WhatsappConfiguration | EmailThreadConfiguration | FieldConfiguration | FieldRichTextConfiguration | FieldsConfiguration | FilesConfiguration | NotesConfiguration | TasksConfiguration | TimelineConfiguration | ViewConfiguration | RecordTableConfiguration | WorkflowConfiguration | WorkflowRunConfiguration | WorkflowVersionConfiguration) & { __isUnion?: true }
 
 export interface AggregateChartConfiguration {
     configurationType: WidgetConfigurationType
@@ -818,7 +935,7 @@ export interface AggregateChartConfiguration {
     __typename: 'AggregateChartConfiguration'
 }
 
-export type WidgetConfigurationType = 'AGGREGATE_CHART' | 'PIE_CHART' | 'BAR_CHART' | 'LINE_CHART' | 'IFRAME' | 'STANDALONE_RICH_TEXT' | 'VIEW' | 'FIELD' | 'FIELDS' | 'TIMELINE' | 'TASKS' | 'NOTES' | 'FILES' | 'EMAILS' | 'CALENDAR' | 'FIELD_RICH_TEXT' | 'WORKFLOW' | 'WORKFLOW_VERSION' | 'WORKFLOW_RUN' | 'FRONT_COMPONENT' | 'RECORD_TABLE' | 'EMAIL_THREAD'
+export type WidgetConfigurationType = 'AGGREGATE_CHART' | 'PIE_CHART' | 'BAR_CHART' | 'LINE_CHART' | 'IFRAME' | 'STANDALONE_RICH_TEXT' | 'VIEW' | 'FIELD' | 'FIELDS' | 'TIMELINE' | 'TASKS' | 'NOTES' | 'FILES' | 'EMAILS' | 'WHATSAPP' | 'CALENDAR' | 'FIELD_RICH_TEXT' | 'WORKFLOW' | 'WORKFLOW_VERSION' | 'WORKFLOW_RUN' | 'FRONT_COMPONENT' | 'RECORD_TABLE' | 'EMAIL_THREAD'
 
 
 /** Format used to display the chart value */
@@ -955,6 +1072,11 @@ export interface FrontComponentConfiguration {
 export interface EmailsConfiguration {
     configurationType: WidgetConfigurationType
     __typename: 'EmailsConfiguration'
+}
+
+export interface WhatsappConfiguration {
+    configurationType: WidgetConfigurationType
+    __typename: 'WhatsappConfiguration'
 }
 
 export interface EmailThreadConfiguration {
@@ -1118,116 +1240,6 @@ export interface FileWithSignedUrl {
     url: Scalars['String']
     __typename: 'FileWithSignedUrl'
 }
-
-export interface BillingSubscriptionSchedulePhaseItem {
-    price: Scalars['String']
-    quantity?: Scalars['Float']
-    __typename: 'BillingSubscriptionSchedulePhaseItem'
-}
-
-export interface BillingSubscriptionSchedulePhase {
-    start_date: Scalars['Float']
-    end_date: Scalars['Float']
-    items: BillingSubscriptionSchedulePhaseItem[]
-    __typename: 'BillingSubscriptionSchedulePhase'
-}
-
-export interface BillingProductMetadata {
-    planKey: BillingPlanKey
-    priceUsageBased: BillingUsageType
-    productKey: BillingProductKey
-    __typename: 'BillingProductMetadata'
-}
-
-
-/** The different billing plans available */
-export type BillingPlanKey = 'PRO' | 'ENTERPRISE'
-
-export type BillingUsageType = 'METERED' | 'LICENSED'
-
-
-/** The different billing products available */
-export type BillingProductKey = 'BASE_PRODUCT' | 'RESOURCE_CREDIT'
-
-export interface BillingPriceLicensed {
-    recurringInterval: SubscriptionInterval
-    unitAmount: Scalars['Float']
-    stripePriceId: Scalars['String']
-    priceUsageType: BillingUsageType
-    creditAmount?: Scalars['Float']
-    __typename: 'BillingPriceLicensed'
-}
-
-export type SubscriptionInterval = 'Month' | 'Year'
-
-export interface BillingPriceTier {
-    upTo?: Scalars['Float']
-    flatAmount?: Scalars['Float']
-    unitAmount?: Scalars['Float']
-    __typename: 'BillingPriceTier'
-}
-
-export interface BillingPriceMetered {
-    tiers: BillingPriceTier[]
-    recurringInterval: SubscriptionInterval
-    stripePriceId: Scalars['String']
-    priceUsageType: BillingUsageType
-    __typename: 'BillingPriceMetered'
-}
-
-export interface BillingProduct {
-    name: Scalars['String']
-    description: Scalars['String']
-    images?: Scalars['String'][]
-    metadata: BillingProductMetadata
-    __typename: 'BillingProduct'
-}
-
-export interface BillingLicensedProduct {
-    name: Scalars['String']
-    description: Scalars['String']
-    images?: Scalars['String'][]
-    metadata: BillingProductMetadata
-    prices?: BillingPriceLicensed[]
-    __typename: 'BillingLicensedProduct'
-}
-
-export interface BillingMeteredProduct {
-    name: Scalars['String']
-    description: Scalars['String']
-    images?: Scalars['String'][]
-    metadata: BillingProductMetadata
-    prices?: BillingPriceMetered[]
-    __typename: 'BillingMeteredProduct'
-}
-
-export interface BillingSubscriptionItem {
-    id: Scalars['UUID']
-    hasReachedCurrentPeriodCap: Scalars['Boolean']
-    quantity?: Scalars['Float']
-    stripePriceId: Scalars['String']
-    billingProduct: BillingProductDTO
-    __typename: 'BillingSubscriptionItem'
-}
-
-export interface BillingCustomer {
-    id: Scalars['UUID']
-    hasPaymentMethod?: Scalars['Boolean']
-    __typename: 'BillingCustomer'
-}
-
-export interface BillingSubscription {
-    id: Scalars['UUID']
-    status: SubscriptionStatus
-    interval?: SubscriptionInterval
-    billingSubscriptionItems?: BillingSubscriptionItem[]
-    currentPeriodEnd?: Scalars['DateTime']
-    metadata: Scalars['JSON']
-    phases: BillingSubscriptionSchedulePhase[]
-    __typename: 'BillingSubscription'
-}
-
-export type SubscriptionStatus = 'Active' | 'Canceled' | 'Incomplete' | 'IncompleteExpired' | 'PastDue' | 'Paused' | 'Trialing' | 'Unpaid'
 
 export interface BillingEndTrialPeriod {
     /** Updated subscription status */
@@ -1557,6 +1569,15 @@ export interface PublicFeatureFlag {
     __typename: 'PublicFeatureFlag'
 }
 
+export interface ClientConfigBrand {
+    productName: Scalars['String']
+    tagline: Scalars['String']
+    logoUrl: Scalars['String']
+    supportEmail: Scalars['String']
+    legalFooterText: Scalars['String']
+    __typename: 'ClientConfigBrand'
+}
+
 export interface ClientConfigMaintenanceMode {
     startAt: Scalars['DateTime']
     endAt: Scalars['DateTime']
@@ -1566,6 +1587,7 @@ export interface ClientConfigMaintenanceMode {
 
 export interface ClientConfig {
     appVersion?: Scalars['String']
+    brand: ClientConfigBrand
     authProviders: AuthProviders
     billing: Billing
     aiModels: ClientAiModelConfig[]
@@ -1586,6 +1608,14 @@ export interface ClientConfig {
     isMicrosoftCalendarEnabled: Scalars['Boolean']
     isGoogleMessagingEnabled: Scalars['Boolean']
     isGoogleCalendarEnabled: Scalars['Boolean']
+    isWhatsappMessagingEnabled: Scalars['Boolean']
+    whatsappAppId?: Scalars['String']
+    whatsappEmbeddedSignupConfigurationId?: Scalars['String']
+    isInstagramMessagingEnabled: Scalars['Boolean']
+    instagramAppId?: Scalars['String']
+    instagramOauthRedirectUri?: Scalars['String']
+    isVoiceAgentEnabled: Scalars['Boolean']
+    isWhatsappAiAgentEnabled: Scalars['Boolean']
     isConfigVariablesInDbEnabled: Scalars['Boolean']
     isImapSmtpCaldavEnabled: Scalars['Boolean']
     isEmailingDomainInDemoMode: Scalars['Boolean']
@@ -1873,6 +1903,25 @@ export interface DomainValidRecords {
     records: DomainRecord[]
     __typename: 'DomainValidRecords'
 }
+
+export interface PlanLimitUsage {
+    key: Scalars['String']
+    used: Scalars['Int']
+    limit: Scalars['Int']
+    __typename: 'PlanLimitUsage'
+}
+
+export interface WorkspaceModuleEntitlement {
+    module: PlanGatedFeature
+    quantity: Scalars['Int']
+    hasAccess: Scalars['Boolean']
+    implemented: Scalars['Boolean']
+    __typename: 'WorkspaceModuleEntitlement'
+}
+
+
+/** An à-la-carte paid module a workspace can contract */
+export type PlanGatedFeature = 'WHATSAPP' | 'INSTAGRAM' | 'AI_AGENT' | 'VOICE_AGENT' | 'WORKFLOWS_ADVANCED' | 'CUSTOM_OBJECTS' | 'CUSTOM_FIELDS' | 'ROW_LEVEL_PERMISSIONS' | 'API_ACCESS' | 'MCP' | 'MANYCHAT_LIKE' | 'INTEGRATIONS'
 
 export interface UpsertRowLevelPermissionPredicatesResult {
     predicates: RowLevelPermissionPredicate[]
@@ -2163,7 +2212,7 @@ export interface MessageChannel {
     pendingGroupEmailsAction: MessageChannelPendingGroupEmailsAction
     isSyncEnabled: Scalars['Boolean']
     syncedAt?: Scalars['DateTime']
-    syncStatus: MessageChannelSyncStatus
+    syncStatus: InstagramChannelSyncStatus
     syncStage: MessageChannelSyncStage
     syncStageStartedAt?: Scalars['DateTime']
     throttleFailureCount: Scalars['Float']
@@ -2177,7 +2226,7 @@ export interface MessageChannel {
 
 export type MessageChannelVisibility = 'METADATA' | 'SUBJECT' | 'SHARE_EVERYTHING'
 
-export type MessageChannelType = 'EMAIL' | 'SMS' | 'EMAIL_GROUP'
+export type MessageChannelType = 'EMAIL' | 'SMS' | 'EMAIL_GROUP' | 'WHATSAPP' | 'INSTAGRAM'
 
 export type MessageChannelContactAutoCreationPolicy = 'SENT_AND_RECEIVED' | 'SENT' | 'NONE'
 
@@ -2185,7 +2234,7 @@ export type MessageFolderImportPolicy = 'ALL_FOLDERS' | 'SELECTED_FOLDERS'
 
 export type MessageChannelPendingGroupEmailsAction = 'GROUP_EMAILS_DELETION' | 'GROUP_EMAILS_IMPORT' | 'NONE'
 
-export type MessageChannelSyncStatus = 'NOT_SYNCED' | 'ONGOING' | 'ACTIVE' | 'FAILED_INSUFFICIENT_PERMISSIONS' | 'FAILED_UNKNOWN'
+export type InstagramChannelSyncStatus = 'NOT_SYNCED' | 'ONGOING' | 'ACTIVE' | 'FAILED_INSUFFICIENT_PERMISSIONS' | 'FAILED_UNKNOWN'
 
 export type MessageChannelSyncStage = 'PENDING_CONFIGURATION' | 'MESSAGE_LIST_FETCH_PENDING' | 'MESSAGE_LIST_FETCH_SCHEDULED' | 'MESSAGE_LIST_FETCH_ONGOING' | 'MESSAGES_IMPORT_PENDING' | 'MESSAGES_IMPORT_SCHEDULED' | 'MESSAGES_IMPORT_ONGOING' | 'FAILED'
 
@@ -2286,6 +2335,56 @@ export interface ImapSmtpCaldavConnectionSuccess {
     success: Scalars['Boolean']
     connectedAccountId: Scalars['String']
     __typename: 'ImapSmtpCaldavConnectionSuccess'
+}
+
+export interface ConnectWhatsappNumberOutput {
+    whatsappChannelId: Scalars['String']
+    displayPhoneNumber: Scalars['String']
+    __typename: 'ConnectWhatsappNumberOutput'
+}
+
+export interface WhatsappConversation {
+    messageThreadId: Scalars['String']
+    contactPhoneNumber: Scalars['String']
+    contactDisplayName: Scalars['String']
+    personId?: Scalars['String']
+    lastMessageBody: Scalars['String']
+    lastMessageReceivedAt: Scalars['DateTime']
+    __typename: 'WhatsappConversation'
+}
+
+export interface WhatsappAgentConversation {
+    id: Scalars['UUID']
+    whatsappAgentId: Scalars['UUID']
+    contactPhoneNumber: Scalars['String']
+    isAiEnabled: Scalars['Boolean']
+    qualificationSummary?: Scalars['String']
+    lastMessageAt?: Scalars['DateTime']
+    createdAt: Scalars['DateTime']
+    __typename: 'WhatsappAgentConversation'
+}
+
+export interface WhatsappAgent {
+    id: Scalars['UUID']
+    name: Scalars['String']
+    whatsappChannelId: Scalars['UUID']
+    isActive: Scalars['Boolean']
+    systemPrompt: Scalars['String']
+    greetingMessage?: Scalars['String']
+    forbiddenPhrases?: Scalars['String'][]
+    qualificationCriteria?: Scalars['String']
+    knowledgeBase?: Scalars['String']
+    handoffInstructions?: Scalars['String']
+    model: Scalars['String']
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'WhatsappAgent'
+}
+
+export interface ConnectInstagramAccountOutput {
+    instagramChannelId: Scalars['String']
+    username: Scalars['String']
+    __typename: 'ConnectInstagramAccountOutput'
 }
 
 export interface Webhook {
@@ -2430,6 +2529,12 @@ export interface SendEmailOutput {
     success: Scalars['Boolean']
     error?: Scalars['String']
     __typename: 'SendEmailOutput'
+}
+
+export interface SendWhatsappMessageOutput {
+    success: Scalars['Boolean']
+    error?: Scalars['String']
+    __typename: 'SendWhatsappMessageOutput'
 }
 
 export interface Analytics {
@@ -2590,6 +2695,23 @@ export type CalendarChannelVisibility = 'METADATA' | 'SHARE_EVERYTHING'
 
 export type CalendarChannelContactAutoCreationPolicy = 'AS_PARTICIPANT_AND_ORGANIZER' | 'AS_PARTICIPANT' | 'AS_ORGANIZER' | 'NONE'
 
+export interface FunnelPage {
+    id: Scalars['UUID']
+    type: FunnelPageType
+    slug: Scalars['String']
+    status: FunnelPageStatus
+    content: Scalars['JSON']
+    seoTitle?: Scalars['String']
+    seoDescription?: Scalars['String']
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'FunnelPage'
+}
+
+export type FunnelPageType = 'SIGNUP' | 'WORKSHOP' | 'SALES' | 'CONFIRMATION'
+
+export type FunnelPageStatus = 'DRAFT' | 'PUBLISHED'
+
 export interface MessageFolder {
     id: Scalars['UUID']
     name?: Scalars['String']
@@ -2642,6 +2764,165 @@ export interface MinimalMetadata {
     collectionHashes: CollectionHash[]
     __typename: 'MinimalMetadata'
 }
+
+export interface InstagramDiagnostics {
+    lastWebhookReceivedAt?: Scalars['DateTime']
+    lastReconciliationAt?: Scalars['DateTime']
+    tokenStatus: InstagramTokenStatus
+    pendingJobsCount: Scalars['Float']
+    failedJobsCount: Scalars['Float']
+    __typename: 'InstagramDiagnostics'
+}
+
+export type InstagramTokenStatus = 'VALID' | 'EXPIRING_SOON' | 'EXPIRED' | 'UNKNOWN'
+
+export interface InstagramAutomationRule {
+    id: Scalars['UUID']
+    instagramChannelId: Scalars['UUID']
+    name?: Scalars['String']
+    igMediaId?: Scalars['String']
+    igMediaCaption?: Scalars['String']
+    igMediaThumbnailUrl?: Scalars['String']
+    igMediaPermalink?: Scalars['String']
+    keywords: Scalars['String'][]
+    replyMessage: Scalars['String']
+    publicReplyVariations?: Scalars['String'][]
+    requiresFollowToReceiveDm: Scalars['Boolean']
+    followUpMessage?: Scalars['String']
+    followUpDelayMinutes?: Scalars['Float']
+    attachToNextReel: Scalars['Boolean']
+    isActive: Scalars['Boolean']
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'InstagramAutomationRule'
+}
+
+export interface InstagramCampaignTemplate {
+    key: Scalars['String']
+    name: Scalars['String']
+    description: Scalars['String']
+    suggestedKeywords: Scalars['String'][]
+    suggestedReplyMessage: Scalars['String']
+    suggestedPublicReplyVariations: Scalars['String'][]
+    suggestedFollowUpMessage?: Scalars['String']
+    __typename: 'InstagramCampaignTemplate'
+}
+
+export interface InstagramChannel {
+    id: Scalars['UUID']
+    connectedAccountId: Scalars['UUID']
+    igBusinessAccountId: Scalars['String']
+    username: Scalars['String']
+    profilePictureUrl?: Scalars['String']
+    isSyncEnabled: Scalars['Boolean']
+    syncStatus: InstagramChannelSyncStatus
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'InstagramChannel'
+}
+
+export interface InstagramFollowerSnapshot {
+    id: Scalars['UUID']
+    instagramChannelId: Scalars['UUID']
+    followerCount: Scalars['Float']
+    capturedAt: Scalars['DateTime']
+    __typename: 'InstagramFollowerSnapshot'
+}
+
+export interface InstagramMediaSummary {
+    id: Scalars['String']
+    caption?: Scalars['String']
+    thumbnailUrl?: Scalars['String']
+    permalink: Scalars['String']
+    __typename: 'InstagramMediaSummary'
+}
+
+export interface InstagramPublicReport {
+    id: Scalars['UUID']
+    instagramChannelId: Scalars['UUID']
+    shareSlug: Scalars['String']
+    isEnabled: Scalars['Boolean']
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'InstagramPublicReport'
+}
+
+export interface VoiceAgent {
+    id: Scalars['UUID']
+    name: Scalars['String']
+    isActive: Scalars['Boolean']
+    phoneNumber?: Scalars['String']
+    voice: Scalars['String']
+    systemPrompt: Scalars['String']
+    greetingMessage?: Scalars['String']
+    forbiddenPhrases?: Scalars['String'][]
+    qualificationCriteria?: Scalars['String']
+    handoffInstructions?: Scalars['String']
+    transferPhoneNumber?: Scalars['String']
+    weeklyAvailability?: Scalars['JSON']
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'VoiceAgent'
+}
+
+export interface VoiceCall {
+    id: Scalars['UUID']
+    voiceAgentId: Scalars['UUID']
+    twilioCallSid: Scalars['String']
+    direction: VoiceCallDirection
+    status: VoiceCallStatus
+    fromNumber: Scalars['String']
+    toNumber: Scalars['String']
+    startedAt?: Scalars['DateTime']
+    endedAt?: Scalars['DateTime']
+    durationSeconds?: Scalars['Float']
+    transcript?: Scalars['String']
+    summary?: Scalars['String']
+    recordingUrl?: Scalars['String']
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'VoiceCall'
+}
+
+export type VoiceCallDirection = 'INBOUND' | 'OUTBOUND'
+
+export type VoiceCallStatus = 'IN_PROGRESS' | 'COMPLETED' | 'FAILED' | 'NO_ANSWER'
+
+export interface WhatsappChannel {
+    id: Scalars['UUID']
+    connectedAccountId: Scalars['UUID']
+    phoneNumberId: Scalars['String']
+    wabaId: Scalars['String']
+    displayPhoneNumber: Scalars['String']
+    isSyncEnabled: Scalars['Boolean']
+    syncStatus: InstagramChannelSyncStatus
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'WhatsappChannel'
+}
+
+export interface WhatsappTemplate {
+    id: Scalars['UUID']
+    whatsappChannelId: Scalars['UUID']
+    name: Scalars['String']
+    category: WhatsappTemplateCategory
+    language: Scalars['String']
+    headerText?: Scalars['String']
+    bodyText: Scalars['String']
+    footerText?: Scalars['String']
+    buttons?: Scalars['JSON']
+    status: WhatsappTemplateStatus
+    metaTemplateId?: Scalars['String']
+    metaTemplateStatus?: Scalars['String']
+    rejectionReason?: Scalars['String']
+    createdAt: Scalars['DateTime']
+    updatedAt: Scalars['DateTime']
+    __typename: 'WhatsappTemplate'
+}
+
+export type WhatsappTemplateCategory = 'MARKETING' | 'UTILITY' | 'AUTHENTICATION'
+
+export type WhatsappTemplateStatus = 'DRAFT' | 'PENDING' | 'APPROVED' | 'REJECTED'
 
 export interface Query {
     navigationMenuItems: NavigationMenuItem[]
@@ -2706,6 +2987,21 @@ export interface Query {
     fields: FieldConnection
     getViewGroups: ViewGroup[]
     getViewGroup?: ViewGroup
+    funnelPages: FunnelPage[]
+    funnelPage: FunnelPage
+    myWhatsappTemplates: WhatsappTemplate[]
+    myWhatsappAgents: WhatsappAgent[]
+    whatsappAgentConversations: WhatsappAgentConversation[]
+    myVoiceAgents: VoiceAgent[]
+    voiceCalls: VoiceCall[]
+    myInstagramChannels: InstagramChannel[]
+    instagramRecentMedia: InstagramMediaSummary[]
+    instagramFollowerHistory: InstagramFollowerSnapshot[]
+    instagramDiagnostics: InstagramDiagnostics
+    instagramAutomationRules: InstagramAutomationRule[]
+    instagramCampaignTemplates: InstagramCampaignTemplate[]
+    instagramPublicReport?: InstagramPublicReport
+    myWhatsappChannels: WhatsappChannel[]
     myMessageFolders: MessageFolder[]
     myCalendarChannels: CalendarChannel[]
     findApplicationRegistrationByClientId?: PublicApplicationRegistration
@@ -2751,6 +3047,8 @@ export interface Query {
     findManyPublicDomains: PublicDomain[]
     findManyMarketplaceApps: MarketplaceApp[]
     findMarketplaceAppDetail: MarketplaceAppDetail
+    getWhatsappThreadIdForPerson?: Scalars['String']
+    getWhatsappConversations: WhatsappConversation[]
     __typename: 'Query'
 }
 
@@ -2858,6 +3156,7 @@ export interface Mutation {
     createFrontComponent: FrontComponent
     updateFrontComponent: FrontComponent
     deleteFrontComponent: FrontComponent
+    connectWhatsappNumber: ConnectWhatsappNumberOutput
     sendEmailViaEmailingDomain: SendEmailViaDomainOutput
     sendMessageCampaign: SendMessageCampaignOutputDTO
     createUnsubscribeTopic: UnsubscribeTopic
@@ -2893,6 +3192,31 @@ export interface Mutation {
     updateManyViewGroups: ViewGroup[]
     deleteViewGroup: ViewGroup
     destroyViewGroup: ViewGroup
+    createFunnelPage: FunnelPage
+    updateFunnelPage: FunnelPage
+    publishFunnelPage: FunnelPage
+    unpublishFunnelPage: FunnelPage
+    deleteFunnelPage: Scalars['Boolean']
+    createWhatsappTemplate: WhatsappTemplate
+    updateWhatsappTemplate: WhatsappTemplate
+    deleteWhatsappTemplate: Scalars['Boolean']
+    submitWhatsappTemplateForApproval: WhatsappTemplate
+    refreshWhatsappTemplateStatus: WhatsappTemplate
+    createWhatsappAgent: WhatsappAgent
+    updateWhatsappAgent: WhatsappAgent
+    deleteWhatsappAgent: WhatsappAgent
+    setWhatsappAgentConversationAiEnabled: WhatsappAgentConversation
+    createVoiceAgent: VoiceAgent
+    updateVoiceAgent: VoiceAgent
+    deleteVoiceAgent: VoiceAgent
+    createInstagramAutomationRule: InstagramAutomationRule
+    updateInstagramAutomationRule: InstagramAutomationRule
+    deleteInstagramAutomationRule: InstagramAutomationRule
+    duplicateInstagramAutomationRule: InstagramAutomationRule
+    importInstagramAutomationRulesFromCsv: InstagramAutomationRule[]
+    enableInstagramPublicReport: InstagramPublicReport
+    disableInstagramPublicReport: InstagramPublicReport
+    connectInstagramAccount: ConnectInstagramAccountOutput
     updateMessageFolder: MessageFolder
     updateMessageFolders: MessageFolder[]
     updateCalendarChannel: CalendarChannel
@@ -2962,6 +3286,7 @@ export interface Mutation {
     duplicateDashboard: DuplicatedDashboard
     impersonate: Impersonate
     sendEmail: SendEmailOutput
+    sendWhatsappMessage: SendWhatsappMessageOutput
     startChannelSync: ChannelSyncSuccess
     saveImapSmtpCaldavAccount: ImapSmtpCaldavConnectionSuccess
     updateLabPublicFeatureFlag: FeatureFlag
@@ -3697,6 +4022,9 @@ export interface WorkspaceGenqlSelection{
     routerModel?: boolean | number
     workspaceCustomApplication?: ApplicationGenqlSelection
     featureFlags?: FeatureFlagGenqlSelection
+    planTier?: boolean | number
+    workspaceModules?: WorkspaceModuleEntitlementGenqlSelection
+    workspacePlanUsage?: PlanLimitUsageGenqlSelection
     billingSubscriptions?: BillingSubscriptionGenqlSelection
     installedApplications?: ApplicationGenqlSelection
     currentBillingSubscription?: BillingSubscriptionGenqlSelection
@@ -3745,6 +4073,114 @@ export interface UserGenqlSelection{
     supportUserHash?: boolean | number
     workspaces?: UserWorkspaceGenqlSelection
     availableWorkspaces?: AvailableWorkspacesGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingProductMetadataGenqlSelection{
+    planKey?: boolean | number
+    priceUsageBased?: boolean | number
+    productKey?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingSubscriptionSchedulePhaseItemGenqlSelection{
+    price?: boolean | number
+    quantity?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingSubscriptionSchedulePhaseGenqlSelection{
+    start_date?: boolean | number
+    end_date?: boolean | number
+    items?: BillingSubscriptionSchedulePhaseItemGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingPriceLicensedGenqlSelection{
+    recurringInterval?: boolean | number
+    unitAmount?: boolean | number
+    stripePriceId?: boolean | number
+    priceUsageType?: boolean | number
+    creditAmount?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingPriceTierGenqlSelection{
+    upTo?: boolean | number
+    flatAmount?: boolean | number
+    unitAmount?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingPriceMeteredGenqlSelection{
+    tiers?: BillingPriceTierGenqlSelection
+    recurringInterval?: boolean | number
+    stripePriceId?: boolean | number
+    priceUsageType?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingProductGenqlSelection{
+    name?: boolean | number
+    description?: boolean | number
+    images?: boolean | number
+    metadata?: BillingProductMetadataGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingLicensedProductGenqlSelection{
+    name?: boolean | number
+    description?: boolean | number
+    images?: boolean | number
+    metadata?: BillingProductMetadataGenqlSelection
+    prices?: BillingPriceLicensedGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingMeteredProductGenqlSelection{
+    name?: boolean | number
+    description?: boolean | number
+    images?: boolean | number
+    metadata?: BillingProductMetadataGenqlSelection
+    prices?: BillingPriceMeteredGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingSubscriptionItemGenqlSelection{
+    id?: boolean | number
+    hasReachedCurrentPeriodCap?: boolean | number
+    quantity?: boolean | number
+    stripePriceId?: boolean | number
+    billingProduct?: BillingProductDTOGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingCustomerGenqlSelection{
+    id?: boolean | number
+    hasPaymentMethod?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface BillingSubscriptionGenqlSelection{
+    id?: boolean | number
+    status?: boolean | number
+    interval?: boolean | number
+    billingSubscriptionItems?: BillingSubscriptionItemGenqlSelection
+    currentPeriodEnd?: boolean | number
+    metadata?: boolean | number
+    phases?: BillingSubscriptionSchedulePhaseGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -3835,6 +4271,7 @@ export interface WidgetConfigurationGenqlSelection{
     on_CalendarConfiguration?:CalendarConfigurationGenqlSelection,
     on_FrontComponentConfiguration?:FrontComponentConfigurationGenqlSelection,
     on_EmailsConfiguration?:EmailsConfigurationGenqlSelection,
+    on_WhatsappConfiguration?:WhatsappConfigurationGenqlSelection,
     on_EmailThreadConfiguration?:EmailThreadConfigurationGenqlSelection,
     on_FieldConfiguration?:FieldConfigurationGenqlSelection,
     on_FieldRichTextConfiguration?:FieldRichTextConfigurationGenqlSelection,
@@ -3985,6 +4422,12 @@ export interface FrontComponentConfigurationGenqlSelection{
 }
 
 export interface EmailsConfigurationGenqlSelection{
+    configurationType?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface WhatsappConfigurationGenqlSelection{
     configurationType?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
@@ -4163,114 +4606,6 @@ export interface FileWithSignedUrlGenqlSelection{
     size?: boolean | number
     createdAt?: boolean | number
     url?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingSubscriptionSchedulePhaseItemGenqlSelection{
-    price?: boolean | number
-    quantity?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingSubscriptionSchedulePhaseGenqlSelection{
-    start_date?: boolean | number
-    end_date?: boolean | number
-    items?: BillingSubscriptionSchedulePhaseItemGenqlSelection
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingProductMetadataGenqlSelection{
-    planKey?: boolean | number
-    priceUsageBased?: boolean | number
-    productKey?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingPriceLicensedGenqlSelection{
-    recurringInterval?: boolean | number
-    unitAmount?: boolean | number
-    stripePriceId?: boolean | number
-    priceUsageType?: boolean | number
-    creditAmount?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingPriceTierGenqlSelection{
-    upTo?: boolean | number
-    flatAmount?: boolean | number
-    unitAmount?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingPriceMeteredGenqlSelection{
-    tiers?: BillingPriceTierGenqlSelection
-    recurringInterval?: boolean | number
-    stripePriceId?: boolean | number
-    priceUsageType?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingProductGenqlSelection{
-    name?: boolean | number
-    description?: boolean | number
-    images?: boolean | number
-    metadata?: BillingProductMetadataGenqlSelection
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingLicensedProductGenqlSelection{
-    name?: boolean | number
-    description?: boolean | number
-    images?: boolean | number
-    metadata?: BillingProductMetadataGenqlSelection
-    prices?: BillingPriceLicensedGenqlSelection
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingMeteredProductGenqlSelection{
-    name?: boolean | number
-    description?: boolean | number
-    images?: boolean | number
-    metadata?: BillingProductMetadataGenqlSelection
-    prices?: BillingPriceMeteredGenqlSelection
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingSubscriptionItemGenqlSelection{
-    id?: boolean | number
-    hasReachedCurrentPeriodCap?: boolean | number
-    quantity?: boolean | number
-    stripePriceId?: boolean | number
-    billingProduct?: BillingProductDTOGenqlSelection
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingCustomerGenqlSelection{
-    id?: boolean | number
-    hasPaymentMethod?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-export interface BillingSubscriptionGenqlSelection{
-    id?: boolean | number
-    status?: boolean | number
-    interval?: boolean | number
-    billingSubscriptionItems?: BillingSubscriptionItemGenqlSelection
-    currentPeriodEnd?: boolean | number
-    metadata?: boolean | number
-    phases?: BillingSubscriptionSchedulePhaseGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -4613,6 +4948,16 @@ export interface PublicFeatureFlagGenqlSelection{
     __scalar?: boolean | number
 }
 
+export interface ClientConfigBrandGenqlSelection{
+    productName?: boolean | number
+    tagline?: boolean | number
+    logoUrl?: boolean | number
+    supportEmail?: boolean | number
+    legalFooterText?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
 export interface ClientConfigMaintenanceModeGenqlSelection{
     startAt?: boolean | number
     endAt?: boolean | number
@@ -4623,6 +4968,7 @@ export interface ClientConfigMaintenanceModeGenqlSelection{
 
 export interface ClientConfigGenqlSelection{
     appVersion?: boolean | number
+    brand?: ClientConfigBrandGenqlSelection
     authProviders?: AuthProvidersGenqlSelection
     billing?: BillingGenqlSelection
     aiModels?: ClientAiModelConfigGenqlSelection
@@ -4643,6 +4989,14 @@ export interface ClientConfigGenqlSelection{
     isMicrosoftCalendarEnabled?: boolean | number
     isGoogleMessagingEnabled?: boolean | number
     isGoogleCalendarEnabled?: boolean | number
+    isWhatsappMessagingEnabled?: boolean | number
+    whatsappAppId?: boolean | number
+    whatsappEmbeddedSignupConfigurationId?: boolean | number
+    isInstagramMessagingEnabled?: boolean | number
+    instagramAppId?: boolean | number
+    instagramOauthRedirectUri?: boolean | number
+    isVoiceAgentEnabled?: boolean | number
+    isWhatsappAiAgentEnabled?: boolean | number
     isConfigVariablesInDbEnabled?: boolean | number
     isImapSmtpCaldavEnabled?: boolean | number
     isEmailingDomainInDemoMode?: boolean | number
@@ -4956,6 +5310,23 @@ export interface DomainValidRecordsGenqlSelection{
     id?: boolean | number
     domain?: boolean | number
     records?: DomainRecordGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface PlanLimitUsageGenqlSelection{
+    key?: boolean | number
+    used?: boolean | number
+    limit?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface WorkspaceModuleEntitlementGenqlSelection{
+    module?: boolean | number
+    quantity?: boolean | number
+    hasAccess?: boolean | number
+    implemented?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -5406,6 +5777,61 @@ export interface ImapSmtpCaldavConnectionSuccessGenqlSelection{
     __scalar?: boolean | number
 }
 
+export interface ConnectWhatsappNumberOutputGenqlSelection{
+    whatsappChannelId?: boolean | number
+    displayPhoneNumber?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface WhatsappConversationGenqlSelection{
+    messageThreadId?: boolean | number
+    contactPhoneNumber?: boolean | number
+    contactDisplayName?: boolean | number
+    personId?: boolean | number
+    lastMessageBody?: boolean | number
+    lastMessageReceivedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface WhatsappAgentConversationGenqlSelection{
+    id?: boolean | number
+    whatsappAgentId?: boolean | number
+    contactPhoneNumber?: boolean | number
+    isAiEnabled?: boolean | number
+    qualificationSummary?: boolean | number
+    lastMessageAt?: boolean | number
+    createdAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface WhatsappAgentGenqlSelection{
+    id?: boolean | number
+    name?: boolean | number
+    whatsappChannelId?: boolean | number
+    isActive?: boolean | number
+    systemPrompt?: boolean | number
+    greetingMessage?: boolean | number
+    forbiddenPhrases?: boolean | number
+    qualificationCriteria?: boolean | number
+    knowledgeBase?: boolean | number
+    handoffInstructions?: boolean | number
+    model?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface ConnectInstagramAccountOutputGenqlSelection{
+    instagramChannelId?: boolean | number
+    username?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
 export interface WebhookGenqlSelection{
     id?: boolean | number
     targetUrl?: boolean | number
@@ -5558,6 +5984,13 @@ export interface DuplicatedDashboardGenqlSelection{
 }
 
 export interface SendEmailOutputGenqlSelection{
+    success?: boolean | number
+    error?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface SendWhatsappMessageOutputGenqlSelection{
     success?: boolean | number
     error?: boolean | number
     __typename?: boolean | number
@@ -5730,6 +6163,20 @@ export interface CalendarChannelGenqlSelection{
     __scalar?: boolean | number
 }
 
+export interface FunnelPageGenqlSelection{
+    id?: boolean | number
+    type?: boolean | number
+    slug?: boolean | number
+    status?: boolean | number
+    content?: boolean | number
+    seoTitle?: boolean | number
+    seoDescription?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
 export interface MessageFolderGenqlSelection{
     id?: boolean | number
     name?: boolean | number
@@ -5780,6 +6227,166 @@ export interface MinimalMetadataGenqlSelection{
     objectMetadataItems?: MinimalObjectMetadataGenqlSelection
     views?: MinimalViewGenqlSelection
     collectionHashes?: CollectionHashGenqlSelection
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface InstagramDiagnosticsGenqlSelection{
+    lastWebhookReceivedAt?: boolean | number
+    lastReconciliationAt?: boolean | number
+    tokenStatus?: boolean | number
+    pendingJobsCount?: boolean | number
+    failedJobsCount?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface InstagramAutomationRuleGenqlSelection{
+    id?: boolean | number
+    instagramChannelId?: boolean | number
+    name?: boolean | number
+    igMediaId?: boolean | number
+    igMediaCaption?: boolean | number
+    igMediaThumbnailUrl?: boolean | number
+    igMediaPermalink?: boolean | number
+    keywords?: boolean | number
+    replyMessage?: boolean | number
+    publicReplyVariations?: boolean | number
+    requiresFollowToReceiveDm?: boolean | number
+    followUpMessage?: boolean | number
+    followUpDelayMinutes?: boolean | number
+    attachToNextReel?: boolean | number
+    isActive?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface InstagramCampaignTemplateGenqlSelection{
+    key?: boolean | number
+    name?: boolean | number
+    description?: boolean | number
+    suggestedKeywords?: boolean | number
+    suggestedReplyMessage?: boolean | number
+    suggestedPublicReplyVariations?: boolean | number
+    suggestedFollowUpMessage?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface InstagramChannelGenqlSelection{
+    id?: boolean | number
+    connectedAccountId?: boolean | number
+    igBusinessAccountId?: boolean | number
+    username?: boolean | number
+    profilePictureUrl?: boolean | number
+    isSyncEnabled?: boolean | number
+    syncStatus?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface InstagramFollowerSnapshotGenqlSelection{
+    id?: boolean | number
+    instagramChannelId?: boolean | number
+    followerCount?: boolean | number
+    capturedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface InstagramMediaSummaryGenqlSelection{
+    id?: boolean | number
+    caption?: boolean | number
+    thumbnailUrl?: boolean | number
+    permalink?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface InstagramPublicReportGenqlSelection{
+    id?: boolean | number
+    instagramChannelId?: boolean | number
+    shareSlug?: boolean | number
+    isEnabled?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface VoiceAgentGenqlSelection{
+    id?: boolean | number
+    name?: boolean | number
+    isActive?: boolean | number
+    phoneNumber?: boolean | number
+    voice?: boolean | number
+    systemPrompt?: boolean | number
+    greetingMessage?: boolean | number
+    forbiddenPhrases?: boolean | number
+    qualificationCriteria?: boolean | number
+    handoffInstructions?: boolean | number
+    transferPhoneNumber?: boolean | number
+    weeklyAvailability?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface VoiceCallGenqlSelection{
+    id?: boolean | number
+    voiceAgentId?: boolean | number
+    twilioCallSid?: boolean | number
+    direction?: boolean | number
+    status?: boolean | number
+    fromNumber?: boolean | number
+    toNumber?: boolean | number
+    startedAt?: boolean | number
+    endedAt?: boolean | number
+    durationSeconds?: boolean | number
+    transcript?: boolean | number
+    summary?: boolean | number
+    recordingUrl?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface WhatsappChannelGenqlSelection{
+    id?: boolean | number
+    connectedAccountId?: boolean | number
+    phoneNumberId?: boolean | number
+    wabaId?: boolean | number
+    displayPhoneNumber?: boolean | number
+    isSyncEnabled?: boolean | number
+    syncStatus?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
+export interface WhatsappTemplateGenqlSelection{
+    id?: boolean | number
+    whatsappChannelId?: boolean | number
+    name?: boolean | number
+    category?: boolean | number
+    language?: boolean | number
+    headerText?: boolean | number
+    bodyText?: boolean | number
+    footerText?: boolean | number
+    buttons?: boolean | number
+    status?: boolean | number
+    metaTemplateId?: boolean | number
+    metaTemplateStatus?: boolean | number
+    rejectionReason?: boolean | number
+    createdAt?: boolean | number
+    updatedAt?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -5865,6 +6472,21 @@ export interface QueryGenqlSelection{
     filter: FieldFilter} })
     getViewGroups?: (ViewGroupGenqlSelection & { __args?: {viewId?: (Scalars['String'] | null)} })
     getViewGroup?: (ViewGroupGenqlSelection & { __args: {id: Scalars['String']} })
+    funnelPages?: FunnelPageGenqlSelection
+    funnelPage?: (FunnelPageGenqlSelection & { __args: {id: Scalars['UUID']} })
+    myWhatsappTemplates?: WhatsappTemplateGenqlSelection
+    myWhatsappAgents?: WhatsappAgentGenqlSelection
+    whatsappAgentConversations?: (WhatsappAgentConversationGenqlSelection & { __args: {whatsappAgentId: Scalars['UUID']} })
+    myVoiceAgents?: VoiceAgentGenqlSelection
+    voiceCalls?: (VoiceCallGenqlSelection & { __args: {voiceAgentId: Scalars['UUID']} })
+    myInstagramChannels?: InstagramChannelGenqlSelection
+    instagramRecentMedia?: (InstagramMediaSummaryGenqlSelection & { __args: {instagramChannelId: Scalars['UUID']} })
+    instagramFollowerHistory?: (InstagramFollowerSnapshotGenqlSelection & { __args: {instagramChannelId: Scalars['UUID']} })
+    instagramDiagnostics?: (InstagramDiagnosticsGenqlSelection & { __args: {instagramChannelId: Scalars['UUID']} })
+    instagramAutomationRules?: (InstagramAutomationRuleGenqlSelection & { __args: {instagramChannelId: Scalars['UUID']} })
+    instagramCampaignTemplates?: InstagramCampaignTemplateGenqlSelection
+    instagramPublicReport?: (InstagramPublicReportGenqlSelection & { __args: {instagramChannelId: Scalars['UUID']} })
+    myWhatsappChannels?: WhatsappChannelGenqlSelection
     myMessageFolders?: (MessageFolderGenqlSelection & { __args?: {messageChannelId?: (Scalars['UUID'] | null)} })
     myCalendarChannels?: (CalendarChannelGenqlSelection & { __args?: {connectedAccountId?: (Scalars['UUID'] | null)} })
     findApplicationRegistrationByClientId?: (PublicApplicationRegistrationGenqlSelection & { __args: {clientId: Scalars['String']} })
@@ -5910,6 +6532,8 @@ export interface QueryGenqlSelection{
     findManyPublicDomains?: PublicDomainGenqlSelection
     findManyMarketplaceApps?: MarketplaceAppGenqlSelection
     findMarketplaceAppDetail?: (MarketplaceAppDetailGenqlSelection & { __args: {universalIdentifier: Scalars['String']} })
+    getWhatsappThreadIdForPerson?: { __args: {personId: Scalars['UUID']} }
+    getWhatsappConversations?: WhatsappConversationGenqlSelection
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -6042,6 +6666,7 @@ export interface MutationGenqlSelection{
     createFrontComponent?: (FrontComponentGenqlSelection & { __args: {input: CreateFrontComponentInput} })
     updateFrontComponent?: (FrontComponentGenqlSelection & { __args: {input: UpdateFrontComponentInput} })
     deleteFrontComponent?: (FrontComponentGenqlSelection & { __args: {id: Scalars['UUID']} })
+    connectWhatsappNumber?: (ConnectWhatsappNumberOutputGenqlSelection & { __args: {input: ConnectWhatsappNumberInput} })
     sendEmailViaEmailingDomain?: (SendEmailViaDomainOutputGenqlSelection & { __args: {input: SendEmailViaDomainInput} })
     sendMessageCampaign?: (SendMessageCampaignOutputDTOGenqlSelection & { __args: {input: SendMessageCampaignInput} })
     createUnsubscribeTopic?: (UnsubscribeTopicGenqlSelection & { __args: {input: CreateUnsubscribeTopicInput} })
@@ -6077,6 +6702,31 @@ export interface MutationGenqlSelection{
     updateManyViewGroups?: (ViewGroupGenqlSelection & { __args: {inputs: UpdateViewGroupInput[]} })
     deleteViewGroup?: (ViewGroupGenqlSelection & { __args: {input: DeleteViewGroupInput} })
     destroyViewGroup?: (ViewGroupGenqlSelection & { __args: {input: DestroyViewGroupInput} })
+    createFunnelPage?: (FunnelPageGenqlSelection & { __args: {input: CreateFunnelPageInput} })
+    updateFunnelPage?: (FunnelPageGenqlSelection & { __args: {input: UpdateFunnelPageInput} })
+    publishFunnelPage?: (FunnelPageGenqlSelection & { __args: {id: Scalars['UUID']} })
+    unpublishFunnelPage?: (FunnelPageGenqlSelection & { __args: {id: Scalars['UUID']} })
+    deleteFunnelPage?: { __args: {id: Scalars['UUID']} }
+    createWhatsappTemplate?: (WhatsappTemplateGenqlSelection & { __args: {input: CreateWhatsappTemplateInput} })
+    updateWhatsappTemplate?: (WhatsappTemplateGenqlSelection & { __args: {input: UpdateWhatsappTemplateInput} })
+    deleteWhatsappTemplate?: { __args: {id: Scalars['UUID']} }
+    submitWhatsappTemplateForApproval?: (WhatsappTemplateGenqlSelection & { __args: {id: Scalars['UUID']} })
+    refreshWhatsappTemplateStatus?: (WhatsappTemplateGenqlSelection & { __args: {id: Scalars['UUID']} })
+    createWhatsappAgent?: (WhatsappAgentGenqlSelection & { __args: {input: CreateWhatsappAgentInput} })
+    updateWhatsappAgent?: (WhatsappAgentGenqlSelection & { __args: {input: UpdateWhatsappAgentInput} })
+    deleteWhatsappAgent?: (WhatsappAgentGenqlSelection & { __args: {id: Scalars['UUID']} })
+    setWhatsappAgentConversationAiEnabled?: (WhatsappAgentConversationGenqlSelection & { __args: {id: Scalars['UUID'], isAiEnabled: Scalars['Boolean']} })
+    createVoiceAgent?: (VoiceAgentGenqlSelection & { __args: {input: CreateVoiceAgentInput} })
+    updateVoiceAgent?: (VoiceAgentGenqlSelection & { __args: {input: UpdateVoiceAgentInput} })
+    deleteVoiceAgent?: (VoiceAgentGenqlSelection & { __args: {id: Scalars['UUID']} })
+    createInstagramAutomationRule?: (InstagramAutomationRuleGenqlSelection & { __args: {input: CreateInstagramAutomationRuleInput} })
+    updateInstagramAutomationRule?: (InstagramAutomationRuleGenqlSelection & { __args: {input: UpdateInstagramAutomationRuleInput} })
+    deleteInstagramAutomationRule?: (InstagramAutomationRuleGenqlSelection & { __args: {id: Scalars['UUID']} })
+    duplicateInstagramAutomationRule?: (InstagramAutomationRuleGenqlSelection & { __args: {id: Scalars['UUID']} })
+    importInstagramAutomationRulesFromCsv?: (InstagramAutomationRuleGenqlSelection & { __args: {instagramChannelId: Scalars['UUID'], csvContent: Scalars['String']} })
+    enableInstagramPublicReport?: (InstagramPublicReportGenqlSelection & { __args: {instagramChannelId: Scalars['UUID']} })
+    disableInstagramPublicReport?: (InstagramPublicReportGenqlSelection & { __args: {instagramChannelId: Scalars['UUID']} })
+    connectInstagramAccount?: (ConnectInstagramAccountOutputGenqlSelection & { __args: {input: ConnectInstagramAccountInput} })
     updateMessageFolder?: (MessageFolderGenqlSelection & { __args: {input: UpdateMessageFolderInput} })
     updateMessageFolders?: (MessageFolderGenqlSelection & { __args: {input: UpdateMessageFoldersInput} })
     updateCalendarChannel?: (CalendarChannelGenqlSelection & { __args: {input: UpdateCalendarChannelInput} })
@@ -6146,6 +6796,7 @@ export interface MutationGenqlSelection{
     duplicateDashboard?: (DuplicatedDashboardGenqlSelection & { __args: {id: Scalars['UUID']} })
     impersonate?: (ImpersonateGenqlSelection & { __args: {userId: Scalars['UUID'], workspaceId: Scalars['UUID']} })
     sendEmail?: (SendEmailOutputGenqlSelection & { __args: {input: SendEmailInput} })
+    sendWhatsappMessage?: (SendWhatsappMessageOutputGenqlSelection & { __args: {input: SendWhatsappMessageInput} })
     startChannelSync?: (ChannelSyncSuccessGenqlSelection & { __args: {connectedAccountId: Scalars['UUID']} })
     saveImapSmtpCaldavAccount?: (ImapSmtpCaldavConnectionSuccessGenqlSelection & { __args: {handle: Scalars['String'], connectionParameters: EmailAccountConnectionParameters, id?: (Scalars['UUID'] | null)} })
     updateLabPublicFeatureFlag?: (FeatureFlagGenqlSelection & { __args: {input: UpdateLabPublicFeatureFlagInput} })
@@ -6396,6 +7047,8 @@ update: UpdateFrontComponentInputUpdates}
 
 export interface UpdateFrontComponentInputUpdates {name?: (Scalars['String'] | null),description?: (Scalars['String'] | null)}
 
+export interface ConnectWhatsappNumberInput {code: Scalars['String'],wabaId: Scalars['String'],phoneNumberId: Scalars['String']}
+
 export interface SendEmailViaDomainInput {emailingDomainId: Scalars['String'],to: Scalars['String'][],cc?: (Scalars['String'][] | null),bcc?: (Scalars['String'][] | null),subject: Scalars['String'],text: Scalars['String'],html?: (Scalars['String'] | null),from: Scalars['String'],replyTo?: (Scalars['String'][] | null)}
 
 export interface SendMessageCampaignInput {listId: Scalars['String'],unsubscribeTopicId?: (Scalars['String'] | null),subject: Scalars['String'],body: Scalars['String'],fromAddress: Scalars['String']}
@@ -6484,6 +7137,28 @@ export interface DestroyViewGroupInput {
 /** The id of the view group to destroy. */
 id: Scalars['UUID']}
 
+export interface CreateFunnelPageInput {type: FunnelPageType,slug: Scalars['String'],content: Scalars['JSON'],seoTitle?: (Scalars['String'] | null),seoDescription?: (Scalars['String'] | null)}
+
+export interface UpdateFunnelPageInput {id: Scalars['UUID'],type?: (FunnelPageType | null),slug?: (Scalars['String'] | null),content?: (Scalars['JSON'] | null),seoTitle?: (Scalars['String'] | null),seoDescription?: (Scalars['String'] | null)}
+
+export interface CreateWhatsappTemplateInput {whatsappChannelId: Scalars['UUID'],name: Scalars['String'],category: WhatsappTemplateCategory,language: Scalars['String'],headerText?: (Scalars['String'] | null),bodyText: Scalars['String'],footerText?: (Scalars['String'] | null),buttons?: (Scalars['JSON'] | null)}
+
+export interface UpdateWhatsappTemplateInput {id: Scalars['UUID'],name?: (Scalars['String'] | null),category?: (WhatsappTemplateCategory | null),language?: (Scalars['String'] | null),headerText?: (Scalars['String'] | null),bodyText?: (Scalars['String'] | null),footerText?: (Scalars['String'] | null),buttons?: (Scalars['JSON'] | null)}
+
+export interface CreateWhatsappAgentInput {whatsappChannelId: Scalars['UUID'],name: Scalars['String'],systemPrompt: Scalars['String'],greetingMessage?: (Scalars['String'] | null),forbiddenPhrases?: (Scalars['String'][] | null),qualificationCriteria?: (Scalars['String'] | null),knowledgeBase?: (Scalars['String'] | null),handoffInstructions?: (Scalars['String'] | null),model?: (Scalars['String'] | null)}
+
+export interface UpdateWhatsappAgentInput {id: Scalars['UUID'],name?: (Scalars['String'] | null),isActive?: (Scalars['Boolean'] | null),systemPrompt?: (Scalars['String'] | null),greetingMessage?: (Scalars['String'] | null),forbiddenPhrases?: (Scalars['String'][] | null),qualificationCriteria?: (Scalars['String'] | null),knowledgeBase?: (Scalars['String'] | null),handoffInstructions?: (Scalars['String'] | null),model?: (Scalars['String'] | null)}
+
+export interface CreateVoiceAgentInput {name: Scalars['String'],systemPrompt: Scalars['String'],phoneNumber?: (Scalars['String'] | null),voice?: (Scalars['String'] | null),greetingMessage?: (Scalars['String'] | null),forbiddenPhrases?: (Scalars['String'][] | null),qualificationCriteria?: (Scalars['String'] | null),handoffInstructions?: (Scalars['String'] | null),transferPhoneNumber?: (Scalars['String'] | null),weeklyAvailability?: (Scalars['JSON'] | null)}
+
+export interface UpdateVoiceAgentInput {id: Scalars['UUID'],name?: (Scalars['String'] | null),isActive?: (Scalars['Boolean'] | null),phoneNumber?: (Scalars['String'] | null),voice?: (Scalars['String'] | null),systemPrompt?: (Scalars['String'] | null),greetingMessage?: (Scalars['String'] | null),forbiddenPhrases?: (Scalars['String'][] | null),qualificationCriteria?: (Scalars['String'] | null),handoffInstructions?: (Scalars['String'] | null),transferPhoneNumber?: (Scalars['String'] | null),weeklyAvailability?: (Scalars['JSON'] | null)}
+
+export interface CreateInstagramAutomationRuleInput {instagramChannelId: Scalars['UUID'],name?: (Scalars['String'] | null),igMediaId?: (Scalars['String'] | null),igMediaCaption?: (Scalars['String'] | null),igMediaThumbnailUrl?: (Scalars['String'] | null),igMediaPermalink?: (Scalars['String'] | null),keywords: Scalars['String'][],replyMessage: Scalars['String'],publicReplyVariations?: (Scalars['String'][] | null),requiresFollowToReceiveDm?: (Scalars['Boolean'] | null),followUpMessage?: (Scalars['String'] | null),followUpDelayMinutes?: (Scalars['Float'] | null),attachToNextReel?: (Scalars['Boolean'] | null)}
+
+export interface UpdateInstagramAutomationRuleInput {id: Scalars['UUID'],name?: (Scalars['String'] | null),keywords?: (Scalars['String'][] | null),replyMessage?: (Scalars['String'] | null),publicReplyVariations?: (Scalars['String'][] | null),requiresFollowToReceiveDm?: (Scalars['Boolean'] | null),followUpMessage?: (Scalars['String'] | null),followUpDelayMinutes?: (Scalars['Float'] | null),isActive?: (Scalars['Boolean'] | null)}
+
+export interface ConnectInstagramAccountInput {code: Scalars['String']}
+
 export interface UpdateMessageFolderInput {id: Scalars['UUID'],update: UpdateMessageFolderInputUpdates}
 
 export interface UpdateMessageFolderInputUpdates {isSynced: Scalars['Boolean']}
@@ -6539,6 +7214,8 @@ export interface EditSsoInput {id: Scalars['UUID'],status: SSOIdentityProviderSt
 export interface SendEmailInput {connectedAccountId: Scalars['String'],to: Scalars['String'],cc?: (Scalars['String'] | null),bcc?: (Scalars['String'] | null),subject: Scalars['String'],body: Scalars['String'],inReplyTo?: (Scalars['String'] | null),files?: (SendEmailAttachmentInput[] | null)}
 
 export interface SendEmailAttachmentInput {id: Scalars['String'],name: Scalars['String']}
+
+export interface SendWhatsappMessageInput {connectedAccountId: Scalars['String'],to: Scalars['String'],body: Scalars['String']}
 
 export interface EmailAccountConnectionParameters {IMAP?: (ConnectionParametersInput | null),SMTP?: (ConnectionParametersInput | null),CALDAV?: (ConnectionParametersInput | null)}
 
@@ -6908,6 +7585,102 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     
 
 
+    const BillingProductMetadata_possibleTypes: string[] = ['BillingProductMetadata']
+    export const isBillingProductMetadata = (obj?: { __typename?: any } | null): obj is BillingProductMetadata => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingProductMetadata"')
+      return BillingProductMetadata_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingSubscriptionSchedulePhaseItem_possibleTypes: string[] = ['BillingSubscriptionSchedulePhaseItem']
+    export const isBillingSubscriptionSchedulePhaseItem = (obj?: { __typename?: any } | null): obj is BillingSubscriptionSchedulePhaseItem => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscriptionSchedulePhaseItem"')
+      return BillingSubscriptionSchedulePhaseItem_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingSubscriptionSchedulePhase_possibleTypes: string[] = ['BillingSubscriptionSchedulePhase']
+    export const isBillingSubscriptionSchedulePhase = (obj?: { __typename?: any } | null): obj is BillingSubscriptionSchedulePhase => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscriptionSchedulePhase"')
+      return BillingSubscriptionSchedulePhase_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingPriceLicensed_possibleTypes: string[] = ['BillingPriceLicensed']
+    export const isBillingPriceLicensed = (obj?: { __typename?: any } | null): obj is BillingPriceLicensed => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingPriceLicensed"')
+      return BillingPriceLicensed_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingPriceTier_possibleTypes: string[] = ['BillingPriceTier']
+    export const isBillingPriceTier = (obj?: { __typename?: any } | null): obj is BillingPriceTier => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingPriceTier"')
+      return BillingPriceTier_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingPriceMetered_possibleTypes: string[] = ['BillingPriceMetered']
+    export const isBillingPriceMetered = (obj?: { __typename?: any } | null): obj is BillingPriceMetered => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingPriceMetered"')
+      return BillingPriceMetered_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingProduct_possibleTypes: string[] = ['BillingProduct']
+    export const isBillingProduct = (obj?: { __typename?: any } | null): obj is BillingProduct => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingProduct"')
+      return BillingProduct_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingLicensedProduct_possibleTypes: string[] = ['BillingLicensedProduct']
+    export const isBillingLicensedProduct = (obj?: { __typename?: any } | null): obj is BillingLicensedProduct => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingLicensedProduct"')
+      return BillingLicensedProduct_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingMeteredProduct_possibleTypes: string[] = ['BillingMeteredProduct']
+    export const isBillingMeteredProduct = (obj?: { __typename?: any } | null): obj is BillingMeteredProduct => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingMeteredProduct"')
+      return BillingMeteredProduct_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingSubscriptionItem_possibleTypes: string[] = ['BillingSubscriptionItem']
+    export const isBillingSubscriptionItem = (obj?: { __typename?: any } | null): obj is BillingSubscriptionItem => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscriptionItem"')
+      return BillingSubscriptionItem_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingCustomer_possibleTypes: string[] = ['BillingCustomer']
+    export const isBillingCustomer = (obj?: { __typename?: any } | null): obj is BillingCustomer => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingCustomer"')
+      return BillingCustomer_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const BillingSubscription_possibleTypes: string[] = ['BillingSubscription']
+    export const isBillingSubscription = (obj?: { __typename?: any } | null): obj is BillingSubscription => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscription"')
+      return BillingSubscription_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
     const RatioAggregateConfig_possibleTypes: string[] = ['RatioAggregateConfig']
     export const isRatioAggregateConfig = (obj?: { __typename?: any } | null): obj is RatioAggregateConfig => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isRatioAggregateConfig"')
@@ -6972,7 +7745,7 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     
 
 
-    const WidgetConfiguration_possibleTypes: string[] = ['AggregateChartConfiguration','StandaloneRichTextConfiguration','PieChartConfiguration','LineChartConfiguration','IframeConfiguration','BarChartConfiguration','CalendarConfiguration','FrontComponentConfiguration','EmailsConfiguration','EmailThreadConfiguration','FieldConfiguration','FieldRichTextConfiguration','FieldsConfiguration','FilesConfiguration','NotesConfiguration','TasksConfiguration','TimelineConfiguration','ViewConfiguration','RecordTableConfiguration','WorkflowConfiguration','WorkflowRunConfiguration','WorkflowVersionConfiguration']
+    const WidgetConfiguration_possibleTypes: string[] = ['AggregateChartConfiguration','StandaloneRichTextConfiguration','PieChartConfiguration','LineChartConfiguration','IframeConfiguration','BarChartConfiguration','CalendarConfiguration','FrontComponentConfiguration','EmailsConfiguration','WhatsappConfiguration','EmailThreadConfiguration','FieldConfiguration','FieldRichTextConfiguration','FieldsConfiguration','FilesConfiguration','NotesConfiguration','TasksConfiguration','TimelineConfiguration','ViewConfiguration','RecordTableConfiguration','WorkflowConfiguration','WorkflowRunConfiguration','WorkflowVersionConfiguration']
     export const isWidgetConfiguration = (obj?: { __typename?: any } | null): obj is WidgetConfiguration => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isWidgetConfiguration"')
       return WidgetConfiguration_possibleTypes.includes(obj.__typename)
@@ -7048,6 +7821,14 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     export const isEmailsConfiguration = (obj?: { __typename?: any } | null): obj is EmailsConfiguration => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isEmailsConfiguration"')
       return EmailsConfiguration_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const WhatsappConfiguration_possibleTypes: string[] = ['WhatsappConfiguration']
+    export const isWhatsappConfiguration = (obj?: { __typename?: any } | null): obj is WhatsappConfiguration => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWhatsappConfiguration"')
+      return WhatsappConfiguration_possibleTypes.includes(obj.__typename)
     }
     
 
@@ -7216,102 +7997,6 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     export const isFileWithSignedUrl = (obj?: { __typename?: any } | null): obj is FileWithSignedUrl => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isFileWithSignedUrl"')
       return FileWithSignedUrl_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingSubscriptionSchedulePhaseItem_possibleTypes: string[] = ['BillingSubscriptionSchedulePhaseItem']
-    export const isBillingSubscriptionSchedulePhaseItem = (obj?: { __typename?: any } | null): obj is BillingSubscriptionSchedulePhaseItem => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscriptionSchedulePhaseItem"')
-      return BillingSubscriptionSchedulePhaseItem_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingSubscriptionSchedulePhase_possibleTypes: string[] = ['BillingSubscriptionSchedulePhase']
-    export const isBillingSubscriptionSchedulePhase = (obj?: { __typename?: any } | null): obj is BillingSubscriptionSchedulePhase => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscriptionSchedulePhase"')
-      return BillingSubscriptionSchedulePhase_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingProductMetadata_possibleTypes: string[] = ['BillingProductMetadata']
-    export const isBillingProductMetadata = (obj?: { __typename?: any } | null): obj is BillingProductMetadata => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingProductMetadata"')
-      return BillingProductMetadata_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingPriceLicensed_possibleTypes: string[] = ['BillingPriceLicensed']
-    export const isBillingPriceLicensed = (obj?: { __typename?: any } | null): obj is BillingPriceLicensed => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingPriceLicensed"')
-      return BillingPriceLicensed_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingPriceTier_possibleTypes: string[] = ['BillingPriceTier']
-    export const isBillingPriceTier = (obj?: { __typename?: any } | null): obj is BillingPriceTier => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingPriceTier"')
-      return BillingPriceTier_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingPriceMetered_possibleTypes: string[] = ['BillingPriceMetered']
-    export const isBillingPriceMetered = (obj?: { __typename?: any } | null): obj is BillingPriceMetered => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingPriceMetered"')
-      return BillingPriceMetered_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingProduct_possibleTypes: string[] = ['BillingProduct']
-    export const isBillingProduct = (obj?: { __typename?: any } | null): obj is BillingProduct => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingProduct"')
-      return BillingProduct_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingLicensedProduct_possibleTypes: string[] = ['BillingLicensedProduct']
-    export const isBillingLicensedProduct = (obj?: { __typename?: any } | null): obj is BillingLicensedProduct => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingLicensedProduct"')
-      return BillingLicensedProduct_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingMeteredProduct_possibleTypes: string[] = ['BillingMeteredProduct']
-    export const isBillingMeteredProduct = (obj?: { __typename?: any } | null): obj is BillingMeteredProduct => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingMeteredProduct"')
-      return BillingMeteredProduct_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingSubscriptionItem_possibleTypes: string[] = ['BillingSubscriptionItem']
-    export const isBillingSubscriptionItem = (obj?: { __typename?: any } | null): obj is BillingSubscriptionItem => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscriptionItem"')
-      return BillingSubscriptionItem_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingCustomer_possibleTypes: string[] = ['BillingCustomer']
-    export const isBillingCustomer = (obj?: { __typename?: any } | null): obj is BillingCustomer => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingCustomer"')
-      return BillingCustomer_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const BillingSubscription_possibleTypes: string[] = ['BillingSubscription']
-    export const isBillingSubscription = (obj?: { __typename?: any } | null): obj is BillingSubscription => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isBillingSubscription"')
-      return BillingSubscription_possibleTypes.includes(obj.__typename)
     }
     
 
@@ -7604,6 +8289,14 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     
 
 
+    const ClientConfigBrand_possibleTypes: string[] = ['ClientConfigBrand']
+    export const isClientConfigBrand = (obj?: { __typename?: any } | null): obj is ClientConfigBrand => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isClientConfigBrand"')
+      return ClientConfigBrand_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
     const ClientConfigMaintenanceMode_possibleTypes: string[] = ['ClientConfigMaintenanceMode']
     export const isClientConfigMaintenanceMode = (obj?: { __typename?: any } | null): obj is ClientConfigMaintenanceMode => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isClientConfigMaintenanceMode"')
@@ -7888,6 +8581,22 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     export const isDomainValidRecords = (obj?: { __typename?: any } | null): obj is DomainValidRecords => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isDomainValidRecords"')
       return DomainValidRecords_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const PlanLimitUsage_possibleTypes: string[] = ['PlanLimitUsage']
+    export const isPlanLimitUsage = (obj?: { __typename?: any } | null): obj is PlanLimitUsage => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isPlanLimitUsage"')
+      return PlanLimitUsage_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const WorkspaceModuleEntitlement_possibleTypes: string[] = ['WorkspaceModuleEntitlement']
+    export const isWorkspaceModuleEntitlement = (obj?: { __typename?: any } | null): obj is WorkspaceModuleEntitlement => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWorkspaceModuleEntitlement"')
+      return WorkspaceModuleEntitlement_possibleTypes.includes(obj.__typename)
     }
     
 
@@ -8308,6 +9017,46 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     
 
 
+    const ConnectWhatsappNumberOutput_possibleTypes: string[] = ['ConnectWhatsappNumberOutput']
+    export const isConnectWhatsappNumberOutput = (obj?: { __typename?: any } | null): obj is ConnectWhatsappNumberOutput => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isConnectWhatsappNumberOutput"')
+      return ConnectWhatsappNumberOutput_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const WhatsappConversation_possibleTypes: string[] = ['WhatsappConversation']
+    export const isWhatsappConversation = (obj?: { __typename?: any } | null): obj is WhatsappConversation => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWhatsappConversation"')
+      return WhatsappConversation_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const WhatsappAgentConversation_possibleTypes: string[] = ['WhatsappAgentConversation']
+    export const isWhatsappAgentConversation = (obj?: { __typename?: any } | null): obj is WhatsappAgentConversation => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWhatsappAgentConversation"')
+      return WhatsappAgentConversation_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const WhatsappAgent_possibleTypes: string[] = ['WhatsappAgent']
+    export const isWhatsappAgent = (obj?: { __typename?: any } | null): obj is WhatsappAgent => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWhatsappAgent"')
+      return WhatsappAgent_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const ConnectInstagramAccountOutput_possibleTypes: string[] = ['ConnectInstagramAccountOutput']
+    export const isConnectInstagramAccountOutput = (obj?: { __typename?: any } | null): obj is ConnectInstagramAccountOutput => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isConnectInstagramAccountOutput"')
+      return ConnectInstagramAccountOutput_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
     const Webhook_possibleTypes: string[] = ['Webhook']
     export const isWebhook = (obj?: { __typename?: any } | null): obj is Webhook => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isWebhook"')
@@ -8416,6 +9165,14 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     export const isSendEmailOutput = (obj?: { __typename?: any } | null): obj is SendEmailOutput => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isSendEmailOutput"')
       return SendEmailOutput_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const SendWhatsappMessageOutput_possibleTypes: string[] = ['SendWhatsappMessageOutput']
+    export const isSendWhatsappMessageOutput = (obj?: { __typename?: any } | null): obj is SendWhatsappMessageOutput => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isSendWhatsappMessageOutput"')
+      return SendWhatsappMessageOutput_possibleTypes.includes(obj.__typename)
     }
     
 
@@ -8548,6 +9305,14 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     
 
 
+    const FunnelPage_possibleTypes: string[] = ['FunnelPage']
+    export const isFunnelPage = (obj?: { __typename?: any } | null): obj is FunnelPage => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isFunnelPage"')
+      return FunnelPage_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
     const MessageFolder_possibleTypes: string[] = ['MessageFolder']
     export const isMessageFolder = (obj?: { __typename?: any } | null): obj is MessageFolder => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isMessageFolder"')
@@ -8584,6 +9349,94 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     export const isMinimalMetadata = (obj?: { __typename?: any } | null): obj is MinimalMetadata => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isMinimalMetadata"')
       return MinimalMetadata_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const InstagramDiagnostics_possibleTypes: string[] = ['InstagramDiagnostics']
+    export const isInstagramDiagnostics = (obj?: { __typename?: any } | null): obj is InstagramDiagnostics => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isInstagramDiagnostics"')
+      return InstagramDiagnostics_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const InstagramAutomationRule_possibleTypes: string[] = ['InstagramAutomationRule']
+    export const isInstagramAutomationRule = (obj?: { __typename?: any } | null): obj is InstagramAutomationRule => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isInstagramAutomationRule"')
+      return InstagramAutomationRule_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const InstagramCampaignTemplate_possibleTypes: string[] = ['InstagramCampaignTemplate']
+    export const isInstagramCampaignTemplate = (obj?: { __typename?: any } | null): obj is InstagramCampaignTemplate => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isInstagramCampaignTemplate"')
+      return InstagramCampaignTemplate_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const InstagramChannel_possibleTypes: string[] = ['InstagramChannel']
+    export const isInstagramChannel = (obj?: { __typename?: any } | null): obj is InstagramChannel => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isInstagramChannel"')
+      return InstagramChannel_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const InstagramFollowerSnapshot_possibleTypes: string[] = ['InstagramFollowerSnapshot']
+    export const isInstagramFollowerSnapshot = (obj?: { __typename?: any } | null): obj is InstagramFollowerSnapshot => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isInstagramFollowerSnapshot"')
+      return InstagramFollowerSnapshot_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const InstagramMediaSummary_possibleTypes: string[] = ['InstagramMediaSummary']
+    export const isInstagramMediaSummary = (obj?: { __typename?: any } | null): obj is InstagramMediaSummary => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isInstagramMediaSummary"')
+      return InstagramMediaSummary_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const InstagramPublicReport_possibleTypes: string[] = ['InstagramPublicReport']
+    export const isInstagramPublicReport = (obj?: { __typename?: any } | null): obj is InstagramPublicReport => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isInstagramPublicReport"')
+      return InstagramPublicReport_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const VoiceAgent_possibleTypes: string[] = ['VoiceAgent']
+    export const isVoiceAgent = (obj?: { __typename?: any } | null): obj is VoiceAgent => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isVoiceAgent"')
+      return VoiceAgent_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const VoiceCall_possibleTypes: string[] = ['VoiceCall']
+    export const isVoiceCall = (obj?: { __typename?: any } | null): obj is VoiceCall => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isVoiceCall"')
+      return VoiceCall_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const WhatsappChannel_possibleTypes: string[] = ['WhatsappChannel']
+    export const isWhatsappChannel = (obj?: { __typename?: any } | null): obj is WhatsappChannel => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWhatsappChannel"')
+      return WhatsappChannel_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
+    const WhatsappTemplate_possibleTypes: string[] = ['WhatsappTemplate']
+    export const isWhatsappTemplate = (obj?: { __typename?: any } | null): obj is WhatsappTemplate => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isWhatsappTemplate"')
+      return WhatsappTemplate_possibleTypes.includes(obj.__typename)
     }
     
 
@@ -8888,6 +9741,11 @@ export const enumWorkspaceActivationStatus = {
    SUSPENDED: 'SUSPENDED' as const
 }
 
+export const enumWorkspacePlanTier = {
+   BASIC: 'BASIC' as const,
+   PRO: 'PRO' as const
+}
+
 export const enumOnboardingStatus = {
    PLAN_REQUIRED: 'PLAN_REQUIRED' as const,
    WORKSPACE_ACTIVATION: 'WORKSPACE_ACTIVATION' as const,
@@ -8896,6 +9754,47 @@ export const enumOnboardingStatus = {
    INVITE_TEAM: 'INVITE_TEAM' as const,
    BOOK_ONBOARDING: 'BOOK_ONBOARDING' as const,
    COMPLETED: 'COMPLETED' as const
+}
+
+export const enumBillingPlanKey = {
+   PRO: 'PRO' as const,
+   ENTERPRISE: 'ENTERPRISE' as const
+}
+
+export const enumBillingUsageType = {
+   METERED: 'METERED' as const,
+   LICENSED: 'LICENSED' as const
+}
+
+export const enumBillingProductKey = {
+   BASE_PRODUCT: 'BASE_PRODUCT' as const,
+   RESOURCE_CREDIT: 'RESOURCE_CREDIT' as const,
+   MODULE_WHATSAPP: 'MODULE_WHATSAPP' as const,
+   MODULE_INSTAGRAM: 'MODULE_INSTAGRAM' as const,
+   MODULE_AI_AGENT: 'MODULE_AI_AGENT' as const,
+   MODULE_VOICE_AGENT: 'MODULE_VOICE_AGENT' as const,
+   MODULE_WORKFLOWS_ADVANCED: 'MODULE_WORKFLOWS_ADVANCED' as const,
+   MODULE_CUSTOM_OBJECTS: 'MODULE_CUSTOM_OBJECTS' as const,
+   MODULE_CUSTOM_FIELDS: 'MODULE_CUSTOM_FIELDS' as const,
+   MODULE_ROW_LEVEL_PERMISSIONS: 'MODULE_ROW_LEVEL_PERMISSIONS' as const,
+   MODULE_API_ACCESS: 'MODULE_API_ACCESS' as const,
+   MODULE_MCP: 'MODULE_MCP' as const
+}
+
+export const enumSubscriptionInterval = {
+   Month: 'Month' as const,
+   Year: 'Year' as const
+}
+
+export const enumSubscriptionStatus = {
+   Active: 'Active' as const,
+   Canceled: 'Canceled' as const,
+   Incomplete: 'Incomplete' as const,
+   IncompleteExpired: 'IncompleteExpired' as const,
+   PastDue: 'PastDue' as const,
+   Paused: 'Paused' as const,
+   Trialing: 'Trialing' as const,
+   Unpaid: 'Unpaid' as const
 }
 
 export const enumWidgetType = {
@@ -8910,6 +9809,7 @@ export const enumWidgetType = {
    NOTES: 'NOTES' as const,
    FILES: 'FILES' as const,
    EMAILS: 'EMAILS' as const,
+   WHATSAPP: 'WHATSAPP' as const,
    CALENDAR: 'CALENDAR' as const,
    FIELD_RICH_TEXT: 'FIELD_RICH_TEXT' as const,
    WORKFLOW: 'WORKFLOW' as const,
@@ -8941,6 +9841,7 @@ export const enumWidgetConfigurationType = {
    NOTES: 'NOTES' as const,
    FILES: 'FILES' as const,
    EMAILS: 'EMAILS' as const,
+   WHATSAPP: 'WHATSAPP' as const,
    CALENDAR: 'CALENDAR' as const,
    FIELD_RICH_TEXT: 'FIELD_RICH_TEXT' as const,
    WORKFLOW: 'WORKFLOW' as const,
@@ -9008,37 +9909,6 @@ export const enumPageLayoutType = {
    RECORD_PAGE: 'RECORD_PAGE' as const,
    DASHBOARD: 'DASHBOARD' as const,
    STANDALONE_PAGE: 'STANDALONE_PAGE' as const
-}
-
-export const enumBillingPlanKey = {
-   PRO: 'PRO' as const,
-   ENTERPRISE: 'ENTERPRISE' as const
-}
-
-export const enumBillingUsageType = {
-   METERED: 'METERED' as const,
-   LICENSED: 'LICENSED' as const
-}
-
-export const enumBillingProductKey = {
-   BASE_PRODUCT: 'BASE_PRODUCT' as const,
-   RESOURCE_CREDIT: 'RESOURCE_CREDIT' as const
-}
-
-export const enumSubscriptionInterval = {
-   Month: 'Month' as const,
-   Year: 'Year' as const
-}
-
-export const enumSubscriptionStatus = {
-   Active: 'Active' as const,
-   Canceled: 'Canceled' as const,
-   Incomplete: 'Incomplete' as const,
-   IncompleteExpired: 'IncompleteExpired' as const,
-   PastDue: 'PastDue' as const,
-   Paused: 'Paused' as const,
-   Trialing: 'Trialing' as const,
-   Unpaid: 'Unpaid' as const
 }
 
 export const enumNavigationMenuItemType = {
@@ -9126,6 +9996,21 @@ export const enumBillingEntitlementKey = {
    AUDIT_LOGS: 'AUDIT_LOGS' as const
 }
 
+export const enumPlanGatedFeature = {
+   WHATSAPP: 'WHATSAPP' as const,
+   INSTAGRAM: 'INSTAGRAM' as const,
+   AI_AGENT: 'AI_AGENT' as const,
+   VOICE_AGENT: 'VOICE_AGENT' as const,
+   WORKFLOWS_ADVANCED: 'WORKFLOWS_ADVANCED' as const,
+   CUSTOM_OBJECTS: 'CUSTOM_OBJECTS' as const,
+   CUSTOM_FIELDS: 'CUSTOM_FIELDS' as const,
+   ROW_LEVEL_PERMISSIONS: 'ROW_LEVEL_PERMISSIONS' as const,
+   API_ACCESS: 'API_ACCESS' as const,
+   MCP: 'MCP' as const,
+   MANYCHAT_LIKE: 'MANYCHAT_LIKE' as const,
+   INTEGRATIONS: 'INTEGRATIONS' as const
+}
+
 export const enumEmailConnectionSecurity = {
    NONE: 'NONE' as const,
    STARTTLS: 'STARTTLS' as const,
@@ -9148,7 +10033,9 @@ export const enumMessageChannelVisibility = {
 export const enumMessageChannelType = {
    EMAIL: 'EMAIL' as const,
    SMS: 'SMS' as const,
-   EMAIL_GROUP: 'EMAIL_GROUP' as const
+   EMAIL_GROUP: 'EMAIL_GROUP' as const,
+   WHATSAPP: 'WHATSAPP' as const,
+   INSTAGRAM: 'INSTAGRAM' as const
 }
 
 export const enumMessageChannelContactAutoCreationPolicy = {
@@ -9168,7 +10055,7 @@ export const enumMessageChannelPendingGroupEmailsAction = {
    NONE: 'NONE' as const
 }
 
-export const enumMessageChannelSyncStatus = {
+export const enumInstagramChannelSyncStatus = {
    NOT_SYNCED: 'NOT_SYNCED' as const,
    ONGOING: 'ONGOING' as const,
    ACTIVE: 'ACTIVE' as const,
@@ -9223,6 +10110,18 @@ export const enumCalendarChannelContactAutoCreationPolicy = {
    NONE: 'NONE' as const
 }
 
+export const enumFunnelPageType = {
+   SIGNUP: 'SIGNUP' as const,
+   WORKSHOP: 'WORKSHOP' as const,
+   SALES: 'SALES' as const,
+   CONFIRMATION: 'CONFIRMATION' as const
+}
+
+export const enumFunnelPageStatus = {
+   DRAFT: 'DRAFT' as const,
+   PUBLISHED: 'PUBLISHED' as const
+}
+
 export const enumMessageFolderPendingSyncAction = {
    FOLDER_DELETION: 'FOLDER_DELETION' as const,
    FOLDER_IMPORT: 'FOLDER_IMPORT' as const,
@@ -9260,6 +10159,38 @@ export const enumAllMetadataName = {
    webhook: 'webhook' as const,
    applicationVariable: 'applicationVariable' as const,
    connectionProvider: 'connectionProvider' as const
+}
+
+export const enumInstagramTokenStatus = {
+   VALID: 'VALID' as const,
+   EXPIRING_SOON: 'EXPIRING_SOON' as const,
+   EXPIRED: 'EXPIRED' as const,
+   UNKNOWN: 'UNKNOWN' as const
+}
+
+export const enumVoiceCallDirection = {
+   INBOUND: 'INBOUND' as const,
+   OUTBOUND: 'OUTBOUND' as const
+}
+
+export const enumVoiceCallStatus = {
+   IN_PROGRESS: 'IN_PROGRESS' as const,
+   COMPLETED: 'COMPLETED' as const,
+   FAILED: 'FAILED' as const,
+   NO_ANSWER: 'NO_ANSWER' as const
+}
+
+export const enumWhatsappTemplateCategory = {
+   MARKETING: 'MARKETING' as const,
+   UTILITY: 'UTILITY' as const,
+   AUTHENTICATION: 'AUTHENTICATION' as const
+}
+
+export const enumWhatsappTemplateStatus = {
+   DRAFT: 'DRAFT' as const,
+   PENDING: 'PENDING' as const,
+   APPROVED: 'APPROVED' as const,
+   REJECTED: 'REJECTED' as const
 }
 
 export const enumEventLogTable = {
