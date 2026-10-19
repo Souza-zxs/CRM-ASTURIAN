@@ -26,7 +26,10 @@ export type ZyraMarkProps = {
   showBackground?: boolean;
 };
 
-export function ZyraMark({ sizePx = 40, showBackground = true }: ZyraMarkProps) {
+export function ZyraMark({
+  sizePx = 40,
+  showBackground = true,
+}: ZyraMarkProps) {
   // The line art always sits on a violet field — either this component's own
   // filled square, or (when showBackground is false) a violet surface the
   // caller already provides — so it stays the light contrast color either way.
