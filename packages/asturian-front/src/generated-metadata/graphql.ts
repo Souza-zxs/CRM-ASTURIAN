@@ -679,6 +679,16 @@ export type BillingProductDto = {
 /** The different billing products available */
 export enum BillingProductKey {
   BASE_PRODUCT = 'BASE_PRODUCT',
+  MODULE_AI_AGENT = 'MODULE_AI_AGENT',
+  MODULE_API_ACCESS = 'MODULE_API_ACCESS',
+  MODULE_CUSTOM_FIELDS = 'MODULE_CUSTOM_FIELDS',
+  MODULE_CUSTOM_OBJECTS = 'MODULE_CUSTOM_OBJECTS',
+  MODULE_INSTAGRAM = 'MODULE_INSTAGRAM',
+  MODULE_MCP = 'MODULE_MCP',
+  MODULE_ROW_LEVEL_PERMISSIONS = 'MODULE_ROW_LEVEL_PERMISSIONS',
+  MODULE_VOICE_AGENT = 'MODULE_VOICE_AGENT',
+  MODULE_WHATSAPP = 'MODULE_WHATSAPP',
+  MODULE_WORKFLOWS_ADVANCED = 'MODULE_WORKFLOWS_ADVANCED',
   RESOURCE_CREDIT = 'RESOURCE_CREDIT'
 }
 
@@ -897,11 +907,14 @@ export type ClientConfig = {
   appVersion?: Maybe<Scalars['String']['output']>;
   authProviders: AuthProviders;
   billing: Billing;
+  brand: ClientConfigBrand;
   calendarBookingPageId?: Maybe<Scalars['String']['output']>;
   canManageFeatureFlags: Scalars['Boolean']['output'];
   captcha: Captcha;
   defaultSubdomain?: Maybe<Scalars['String']['output']>;
   frontDomain: Scalars['String']['output'];
+  instagramAppId?: Maybe<Scalars['String']['output']>;
+  instagramOauthRedirectUri?: Maybe<Scalars['String']['output']>;
   isAttachmentPreviewEnabled: Scalars['Boolean']['output'];
   isClickHouseConfigured: Scalars['Boolean']['output'];
   isCloudflareIntegrationEnabled: Scalars['Boolean']['output'];
@@ -911,15 +924,30 @@ export type ClientConfig = {
   isGoogleCalendarEnabled: Scalars['Boolean']['output'];
   isGoogleMessagingEnabled: Scalars['Boolean']['output'];
   isImapSmtpCaldavEnabled: Scalars['Boolean']['output'];
+  isInstagramMessagingEnabled: Scalars['Boolean']['output'];
   isMicrosoftCalendarEnabled: Scalars['Boolean']['output'];
   isMicrosoftMessagingEnabled: Scalars['Boolean']['output'];
   isMultiWorkspaceEnabled: Scalars['Boolean']['output'];
+  isVoiceAgentEnabled: Scalars['Boolean']['output'];
+  isWhatsappAiAgentEnabled: Scalars['Boolean']['output'];
+  isWhatsappMessagingEnabled: Scalars['Boolean']['output'];
   isWorkspaceSchemaDDLLocked: Scalars['Boolean']['output'];
   maintenance?: Maybe<ClientConfigMaintenanceMode>;
   publicFeatureFlags: Array<PublicFeatureFlag>;
   sentry: Sentry;
   signInPrefilled: Scalars['Boolean']['output'];
   support: Support;
+  whatsappAppId?: Maybe<Scalars['String']['output']>;
+  whatsappEmbeddedSignupConfigurationId?: Maybe<Scalars['String']['output']>;
+};
+
+export type ClientConfigBrand = {
+  __typename?: 'ClientConfigBrand';
+  legalFooterText: Scalars['String']['output'];
+  logoUrl: Scalars['String']['output'];
+  productName: Scalars['String']['output'];
+  supportEmail: Scalars['String']['output'];
+  tagline: Scalars['String']['output'];
 };
 
 export type ClientConfigMaintenanceMode = {
@@ -968,6 +996,28 @@ export enum CommandMenuItemAvailabilityType {
 }
 
 export type CommandMenuItemPayload = ObjectMetadataCommandMenuItemPayload | PathCommandMenuItemPayload;
+
+export type ConnectInstagramAccountInput = {
+  code: Scalars['String']['input'];
+};
+
+export type ConnectInstagramAccountOutput = {
+  __typename?: 'ConnectInstagramAccountOutput';
+  instagramChannelId: Scalars['String']['output'];
+  username: Scalars['String']['output'];
+};
+
+export type ConnectWhatsappNumberInput = {
+  code: Scalars['String']['input'];
+  phoneNumberId: Scalars['String']['input'];
+  wabaId: Scalars['String']['input'];
+};
+
+export type ConnectWhatsappNumberOutput = {
+  __typename?: 'ConnectWhatsappNumberOutput';
+  displayPhoneNumber: Scalars['String']['output'];
+  whatsappChannelId: Scalars['String']['output'];
+};
 
 export type ConnectedAccountPublicDto = {
   __typename?: 'ConnectedAccountPublicDTO';
@@ -1120,6 +1170,14 @@ export type CreateFrontComponentInput = {
   sourceComponentPath: Scalars['String']['input'];
 };
 
+export type CreateFunnelPageInput = {
+  content: Scalars['JSON']['input'];
+  seoDescription?: InputMaybe<Scalars['String']['input']>;
+  seoTitle?: InputMaybe<Scalars['String']['input']>;
+  slug: Scalars['String']['input'];
+  type: FunnelPageType;
+};
+
 export type CreateIndexFieldInput = {
   fieldMetadataId: Scalars['UUID']['input'];
   subFieldName?: InputMaybe<Scalars['String']['input']>;
@@ -1129,6 +1187,22 @@ export type CreateIndexInput = {
   fields: Array<CreateIndexFieldInput>;
   indexType?: IndexType;
   objectMetadataId: Scalars['UUID']['input'];
+};
+
+export type CreateInstagramAutomationRuleInput = {
+  attachToNextReel?: InputMaybe<Scalars['Boolean']['input']>;
+  followUpDelayMinutes?: InputMaybe<Scalars['Float']['input']>;
+  followUpMessage?: InputMaybe<Scalars['String']['input']>;
+  igMediaCaption?: InputMaybe<Scalars['String']['input']>;
+  igMediaId?: InputMaybe<Scalars['String']['input']>;
+  igMediaPermalink?: InputMaybe<Scalars['String']['input']>;
+  igMediaThumbnailUrl?: InputMaybe<Scalars['String']['input']>;
+  instagramChannelId: Scalars['UUID']['input'];
+  keywords: Array<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  publicReplyVariations?: InputMaybe<Array<Scalars['String']['input']>>;
+  replyMessage: Scalars['String']['input'];
+  requiresFollowToReceiveDm?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type CreateLogicFunctionFromSourceInput = {
@@ -1327,12 +1401,48 @@ export type CreateViewSortInput = {
   viewId: Scalars['UUID']['input'];
 };
 
+export type CreateVoiceAgentInput = {
+  forbiddenPhrases?: InputMaybe<Array<Scalars['String']['input']>>;
+  greetingMessage?: InputMaybe<Scalars['String']['input']>;
+  handoffInstructions?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  qualificationCriteria?: InputMaybe<Scalars['String']['input']>;
+  systemPrompt: Scalars['String']['input'];
+  transferPhoneNumber?: InputMaybe<Scalars['String']['input']>;
+  voice?: InputMaybe<Scalars['String']['input']>;
+  weeklyAvailability?: InputMaybe<Scalars['JSON']['input']>;
+};
+
 export type CreateWebhookInput = {
   description?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['UUID']['input']>;
   operations: Array<Scalars['String']['input']>;
   secret?: InputMaybe<Scalars['String']['input']>;
   targetUrl: Scalars['String']['input'];
+};
+
+export type CreateWhatsappAgentInput = {
+  forbiddenPhrases?: InputMaybe<Array<Scalars['String']['input']>>;
+  greetingMessage?: InputMaybe<Scalars['String']['input']>;
+  handoffInstructions?: InputMaybe<Scalars['String']['input']>;
+  knowledgeBase?: InputMaybe<Scalars['String']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  qualificationCriteria?: InputMaybe<Scalars['String']['input']>;
+  systemPrompt: Scalars['String']['input'];
+  whatsappChannelId: Scalars['UUID']['input'];
+};
+
+export type CreateWhatsappTemplateInput = {
+  bodyText: Scalars['String']['input'];
+  buttons?: InputMaybe<Scalars['JSON']['input']>;
+  category: WhatsappTemplateCategory;
+  footerText?: InputMaybe<Scalars['String']['input']>;
+  headerText?: InputMaybe<Scalars['String']['input']>;
+  language: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  whatsappChannelId: Scalars['UUID']['input'];
 };
 
 export type CursorPaging = {
@@ -1938,6 +2048,31 @@ export type FullName = {
   lastName: Scalars['String']['output'];
 };
 
+export type FunnelPage = {
+  __typename?: 'FunnelPage';
+  content: Scalars['JSON']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['UUID']['output'];
+  seoDescription?: Maybe<Scalars['String']['output']>;
+  seoTitle?: Maybe<Scalars['String']['output']>;
+  slug: Scalars['String']['output'];
+  status: FunnelPageStatus;
+  type: FunnelPageType;
+  updatedAt: Scalars['DateTime']['output'];
+};
+
+export enum FunnelPageStatus {
+  DRAFT = 'DRAFT',
+  PUBLISHED = 'PUBLISHED'
+}
+
+export enum FunnelPageType {
+  CONFIRMATION = 'CONFIRMATION',
+  SALES = 'SALES',
+  SIGNUP = 'SIGNUP',
+  WORKSHOP = 'WORKSHOP'
+}
+
 export type GetApiKeyInput = {
   id: Scalars['UUID']['input'];
 };
@@ -2119,6 +2254,101 @@ export type InitiateTwoFactorAuthenticationProvisioning = {
   __typename?: 'InitiateTwoFactorAuthenticationProvisioning';
   uri: Scalars['String']['output'];
 };
+
+export type InstagramAutomationRule = {
+  __typename?: 'InstagramAutomationRule';
+  attachToNextReel: Scalars['Boolean']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  followUpDelayMinutes?: Maybe<Scalars['Float']['output']>;
+  followUpMessage?: Maybe<Scalars['String']['output']>;
+  id: Scalars['UUID']['output'];
+  igMediaCaption?: Maybe<Scalars['String']['output']>;
+  igMediaId?: Maybe<Scalars['String']['output']>;
+  igMediaPermalink?: Maybe<Scalars['String']['output']>;
+  igMediaThumbnailUrl?: Maybe<Scalars['String']['output']>;
+  instagramChannelId: Scalars['UUID']['output'];
+  isActive: Scalars['Boolean']['output'];
+  keywords: Array<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  publicReplyVariations?: Maybe<Array<Scalars['String']['output']>>;
+  replyMessage: Scalars['String']['output'];
+  requiresFollowToReceiveDm: Scalars['Boolean']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+};
+
+export type InstagramCampaignTemplate = {
+  __typename?: 'InstagramCampaignTemplate';
+  description: Scalars['String']['output'];
+  key: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  suggestedFollowUpMessage?: Maybe<Scalars['String']['output']>;
+  suggestedKeywords: Array<Scalars['String']['output']>;
+  suggestedPublicReplyVariations: Array<Scalars['String']['output']>;
+  suggestedReplyMessage: Scalars['String']['output'];
+};
+
+export type InstagramChannel = {
+  __typename?: 'InstagramChannel';
+  connectedAccountId: Scalars['UUID']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['UUID']['output'];
+  igBusinessAccountId: Scalars['String']['output'];
+  isSyncEnabled: Scalars['Boolean']['output'];
+  profilePictureUrl?: Maybe<Scalars['String']['output']>;
+  syncStatus: InstagramChannelSyncStatus;
+  updatedAt: Scalars['DateTime']['output'];
+  username: Scalars['String']['output'];
+};
+
+export enum InstagramChannelSyncStatus {
+  ACTIVE = 'ACTIVE',
+  FAILED_INSUFFICIENT_PERMISSIONS = 'FAILED_INSUFFICIENT_PERMISSIONS',
+  FAILED_UNKNOWN = 'FAILED_UNKNOWN',
+  NOT_SYNCED = 'NOT_SYNCED',
+  ONGOING = 'ONGOING'
+}
+
+export type InstagramDiagnostics = {
+  __typename?: 'InstagramDiagnostics';
+  failedJobsCount: Scalars['Float']['output'];
+  lastReconciliationAt?: Maybe<Scalars['DateTime']['output']>;
+  lastWebhookReceivedAt?: Maybe<Scalars['DateTime']['output']>;
+  pendingJobsCount: Scalars['Float']['output'];
+  tokenStatus: InstagramTokenStatus;
+};
+
+export type InstagramFollowerSnapshot = {
+  __typename?: 'InstagramFollowerSnapshot';
+  capturedAt: Scalars['DateTime']['output'];
+  followerCount: Scalars['Float']['output'];
+  id: Scalars['UUID']['output'];
+  instagramChannelId: Scalars['UUID']['output'];
+};
+
+export type InstagramMediaSummary = {
+  __typename?: 'InstagramMediaSummary';
+  caption?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  permalink: Scalars['String']['output'];
+  thumbnailUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type InstagramPublicReport = {
+  __typename?: 'InstagramPublicReport';
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['UUID']['output'];
+  instagramChannelId: Scalars['UUID']['output'];
+  isEnabled: Scalars['Boolean']['output'];
+  shareSlug: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+};
+
+export enum InstagramTokenStatus {
+  EXPIRED = 'EXPIRED',
+  EXPIRING_SOON = 'EXPIRING_SOON',
+  UNKNOWN = 'UNKNOWN',
+  VALID = 'VALID'
+}
 
 export type InvalidatePassword = {
   __typename?: 'InvalidatePassword';
@@ -2316,7 +2546,7 @@ export type MessageChannel = {
   pendingGroupEmailsAction: MessageChannelPendingGroupEmailsAction;
   syncStage: MessageChannelSyncStage;
   syncStageStartedAt?: Maybe<Scalars['DateTime']['output']>;
-  syncStatus: MessageChannelSyncStatus;
+  syncStatus: InstagramChannelSyncStatus;
   syncedAt?: Maybe<Scalars['DateTime']['output']>;
   throttleFailureCount: Scalars['Float']['output'];
   throttleRetryAfter?: Maybe<Scalars['DateTime']['output']>;
@@ -2348,18 +2578,12 @@ export enum MessageChannelSyncStage {
   PENDING_CONFIGURATION = 'PENDING_CONFIGURATION'
 }
 
-export enum MessageChannelSyncStatus {
-  ACTIVE = 'ACTIVE',
-  FAILED_INSUFFICIENT_PERMISSIONS = 'FAILED_INSUFFICIENT_PERMISSIONS',
-  FAILED_UNKNOWN = 'FAILED_UNKNOWN',
-  NOT_SYNCED = 'NOT_SYNCED',
-  ONGOING = 'ONGOING'
-}
-
 export enum MessageChannelType {
   EMAIL = 'EMAIL',
   EMAIL_GROUP = 'EMAIL_GROUP',
-  SMS = 'SMS'
+  INSTAGRAM = 'INSTAGRAM',
+  SMS = 'SMS',
+  WHATSAPP = 'WHATSAPP'
 }
 
 export enum MessageChannelVisibility {
@@ -2461,6 +2685,8 @@ export type Mutation = {
   checkCustomDomainValidRecords?: Maybe<DomainValidRecords>;
   checkPublicDomainValidRecords?: Maybe<DomainValidRecords>;
   checkoutSession: BillingSession;
+  connectInstagramAccount: ConnectInstagramAccountOutput;
+  connectWhatsappNumber: ConnectWhatsappNumberOutput;
   createApiKey: ApiKey;
   createApplicationRegistration: CreateApplicationRegistration;
   createApplicationRegistrationVariable: ApplicationRegistrationVariable;
@@ -2471,6 +2697,8 @@ export type Mutation = {
   createEmailGroupChannel: CreateEmailGroupChannelOutput;
   createEmailingDomain: EmailingDomain;
   createFrontComponent: FrontComponent;
+  createFunnelPage: FunnelPage;
+  createInstagramAutomationRule: InstagramAutomationRule;
   createManyNavigationMenuItems: Array<NavigationMenuItem>;
   createManyViewFieldGroups: Array<ViewFieldGroup>;
   createManyViewFields: Array<ViewField>;
@@ -2500,7 +2728,10 @@ export type Mutation = {
   createViewFilterGroup: ViewFilterGroup;
   createViewGroup: ViewGroup;
   createViewSort: ViewSort;
+  createVoiceAgent: VoiceAgent;
   createWebhook: Webhook;
+  createWhatsappAgent: WhatsappAgent;
+  createWhatsappTemplate: WhatsappTemplate;
   deactivateSkill: Skill;
   deleteApplicationRegistration: Scalars['Boolean']['output'];
   deleteApplicationRegistrationVariable: Scalars['Boolean']['output'];
@@ -2512,6 +2743,8 @@ export type Mutation = {
   deleteEmailGroupChannel: MessageChannel;
   deleteEmailingDomain: Scalars['Boolean']['output'];
   deleteFrontComponent: FrontComponent;
+  deleteFunnelPage: Scalars['Boolean']['output'];
+  deleteInstagramAutomationRule: InstagramAutomationRule;
   deleteManyNavigationMenuItems: Array<NavigationMenuItem>;
   deleteNavigationMenuItem: NavigationMenuItem;
   deleteOneAgent: Agent;
@@ -2535,7 +2768,10 @@ export type Mutation = {
   deleteViewFilterGroup: Scalars['Boolean']['output'];
   deleteViewGroup: ViewGroup;
   deleteViewSort: Scalars['Boolean']['output'];
+  deleteVoiceAgent: VoiceAgent;
   deleteWebhook: Webhook;
+  deleteWhatsappAgent: WhatsappAgent;
+  deleteWhatsappTemplate: Scalars['Boolean']['output'];
   deleteWorkspaceInvitation: Scalars['String']['output'];
   destroyPageLayout: Scalars['Boolean']['output'];
   destroyPageLayoutTab: Scalars['Boolean']['output'];
@@ -2547,9 +2783,12 @@ export type Mutation = {
   destroyViewFilterGroup: Scalars['Boolean']['output'];
   destroyViewGroup: ViewGroup;
   destroyViewSort: Scalars['Boolean']['output'];
+  disableInstagramPublicReport: InstagramPublicReport;
   duplicateDashboard: DuplicatedDashboard;
+  duplicateInstagramAutomationRule: InstagramAutomationRule;
   editSSOIdentityProvider: EditSso;
   emailPasswordResetLink: EmailPasswordResetLink;
+  enableInstagramPublicReport: InstagramPublicReport;
   endSubscriptionTrialPeriod: BillingEndTrialPeriod;
   evaluateAgentTurn: AgentTurnEvaluation;
   executeOneLogicFunction: LogicFunctionExecutionResult;
@@ -2562,12 +2801,15 @@ export type Mutation = {
   getAuthorizationUrlForSSO: GetAuthorizationUrlForSso;
   getLoginTokenFromCredentials: LoginToken;
   impersonate: Impersonate;
+  importInstagramAutomationRulesFromCsv: Array<InstagramAutomationRule>;
   initiateOTPProvisioning: InitiateTwoFactorAuthenticationProvisioning;
   initiateOTPProvisioningForAuthenticatedUser: InitiateTwoFactorAuthenticationProvisioning;
   installApplication: Application;
   /** @deprecated Use installApplication instead */
   installMarketplaceApp: Scalars['Boolean']['output'];
+  publishFunnelPage: FunnelPage;
   refreshEnterpriseValidityToken: Scalars['Boolean']['output'];
+  refreshWhatsappTemplateStatus: WhatsappTemplate;
   removeQueryFromEventStream: Scalars['Boolean']['output'];
   removeRoleFromAgent: Scalars['Boolean']['output'];
   renameChatThread: AgentChatThread;
@@ -2590,8 +2832,10 @@ export type Mutation = {
   sendEmailViaEmailingDomain: SendEmailViaDomainOutput;
   sendInvitations: SendInvitations;
   sendMessageCampaign: SendMessageCampaignOutputDto;
+  sendWhatsappMessage: SendWhatsappMessageOutput;
   setEnterpriseKey: EnterpriseLicenseInfoDto;
   setResourceCreditSubscriptionPrice: BillingUpdate;
+  setWhatsappAgentConversationAiEnabled: WhatsappAgentConversation;
   signIn: AvailableWorkspacesAndAccessTokens;
   signUp: AvailableWorkspacesAndAccessTokens;
   signUpInNewWorkspace: SignUp;
@@ -2600,6 +2844,7 @@ export type Mutation = {
   skipSyncEmailOnboardingStep: OnboardingStepSuccess;
   startChannelSync: ChannelSyncSuccess;
   stopAgentChatStream: Scalars['Boolean']['output'];
+  submitWhatsappTemplateForApproval: WhatsappTemplate;
   switchBillingPlan: BillingUpdate;
   switchSubscriptionInterval: BillingUpdate;
   syncApplication: WorkspaceMigration;
@@ -2608,12 +2853,15 @@ export type Mutation = {
   transferApplicationRegistrationOwnership: ApplicationRegistration;
   unarchiveChatThread: AgentChatThread;
   uninstallApplication: Scalars['Boolean']['output'];
+  unpublishFunnelPage: FunnelPage;
   updateApiKey?: Maybe<ApiKey>;
   updateApplicationRegistration: ApplicationRegistration;
   updateApplicationRegistrationVariable: ApplicationRegistrationVariable;
   updateCalendarChannel: CalendarChannel;
   updateCommandMenuItem: CommandMenuItem;
   updateFrontComponent: FrontComponent;
+  updateFunnelPage: FunnelPage;
+  updateInstagramAutomationRule: InstagramAutomationRule;
   updateLabPublicFeatureFlag: FeatureFlag;
   updateManyNavigationMenuItems: Array<NavigationMenuItem>;
   updateManyViewGroups: Array<ViewGroup>;
@@ -2643,7 +2891,10 @@ export type Mutation = {
   updateViewFilterGroup: ViewFilterGroup;
   updateViewGroup: ViewGroup;
   updateViewSort: ViewSort;
+  updateVoiceAgent: VoiceAgent;
   updateWebhook: Webhook;
+  updateWhatsappAgent: WhatsappAgent;
+  updateWhatsappTemplate: WhatsappTemplate;
   updateWorkspace: Workspace;
   updateWorkspaceMemberRole: WorkspaceMember;
   updateWorkspaceMemberSettings: Scalars['Boolean']['output'];
@@ -2726,6 +2977,16 @@ export type MutationCheckoutSessionArgs = {
 };
 
 
+export type MutationConnectInstagramAccountArgs = {
+  input: ConnectInstagramAccountInput;
+};
+
+
+export type MutationConnectWhatsappNumberArgs = {
+  input: ConnectWhatsappNumberInput;
+};
+
+
 export type MutationCreateApiKeyArgs = {
   input: CreateApiKeyInput;
 };
@@ -2769,6 +3030,16 @@ export type MutationCreateEmailingDomainArgs = {
 
 export type MutationCreateFrontComponentArgs = {
   input: CreateFrontComponentInput;
+};
+
+
+export type MutationCreateFunnelPageArgs = {
+  input: CreateFunnelPageInput;
+};
+
+
+export type MutationCreateInstagramAutomationRuleArgs = {
+  input: CreateInstagramAutomationRuleInput;
 };
 
 
@@ -2925,8 +3196,23 @@ export type MutationCreateViewSortArgs = {
 };
 
 
+export type MutationCreateVoiceAgentArgs = {
+  input: CreateVoiceAgentInput;
+};
+
+
 export type MutationCreateWebhookArgs = {
   input: CreateWebhookInput;
+};
+
+
+export type MutationCreateWhatsappAgentArgs = {
+  input: CreateWhatsappAgentInput;
+};
+
+
+export type MutationCreateWhatsappTemplateArgs = {
+  input: CreateWhatsappTemplateInput;
 };
 
 
@@ -2976,6 +3262,16 @@ export type MutationDeleteEmailingDomainArgs = {
 
 
 export type MutationDeleteFrontComponentArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
+export type MutationDeleteFunnelPageArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
+export type MutationDeleteInstagramAutomationRuleArgs = {
   id: Scalars['UUID']['input'];
 };
 
@@ -3090,7 +3386,22 @@ export type MutationDeleteViewSortArgs = {
 };
 
 
+export type MutationDeleteVoiceAgentArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
 export type MutationDeleteWebhookArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
+export type MutationDeleteWhatsappAgentArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
+export type MutationDeleteWhatsappTemplateArgs = {
   id: Scalars['UUID']['input'];
 };
 
@@ -3150,7 +3461,17 @@ export type MutationDestroyViewSortArgs = {
 };
 
 
+export type MutationDisableInstagramPublicReportArgs = {
+  instagramChannelId: Scalars['UUID']['input'];
+};
+
+
 export type MutationDuplicateDashboardArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
+export type MutationDuplicateInstagramAutomationRuleArgs = {
   id: Scalars['UUID']['input'];
 };
 
@@ -3163,6 +3484,11 @@ export type MutationEditSsoIdentityProviderArgs = {
 export type MutationEmailPasswordResetLinkArgs = {
   email: Scalars['String']['input'];
   workspaceId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+
+export type MutationEnableInstagramPublicReportArgs = {
+  instagramChannelId: Scalars['UUID']['input'];
 };
 
 
@@ -3222,6 +3548,12 @@ export type MutationImpersonateArgs = {
 };
 
 
+export type MutationImportInstagramAutomationRulesFromCsvArgs = {
+  csvContent: Scalars['String']['input'];
+  instagramChannelId: Scalars['UUID']['input'];
+};
+
+
 export type MutationInitiateOtpProvisioningArgs = {
   loginToken: Scalars['String']['input'];
   origin: Scalars['String']['input'];
@@ -3237,6 +3569,16 @@ export type MutationInstallApplicationArgs = {
 export type MutationInstallMarketplaceAppArgs = {
   universalIdentifier: Scalars['String']['input'];
   version?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type MutationPublishFunnelPageArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
+export type MutationRefreshWhatsappTemplateStatusArgs = {
+  id: Scalars['UUID']['input'];
 };
 
 
@@ -3361,6 +3703,11 @@ export type MutationSendMessageCampaignArgs = {
 };
 
 
+export type MutationSendWhatsappMessageArgs = {
+  input: SendWhatsappMessageInput;
+};
+
+
 export type MutationSetEnterpriseKeyArgs = {
   enterpriseKey: Scalars['String']['input'];
 };
@@ -3368,6 +3715,12 @@ export type MutationSetEnterpriseKeyArgs = {
 
 export type MutationSetResourceCreditSubscriptionPriceArgs = {
   priceId: Scalars['String']['input'];
+};
+
+
+export type MutationSetWhatsappAgentConversationAiEnabledArgs = {
+  id: Scalars['UUID']['input'];
+  isAiEnabled: Scalars['Boolean']['input'];
 };
 
 
@@ -3416,6 +3769,11 @@ export type MutationStopAgentChatStreamArgs = {
 };
 
 
+export type MutationSubmitWhatsappTemplateForApprovalArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
 export type MutationSyncApplicationArgs = {
   dryRun?: InputMaybe<Scalars['Boolean']['input']>;
   manifest: Scalars['JSON']['input'];
@@ -3446,6 +3804,11 @@ export type MutationUninstallApplicationArgs = {
 };
 
 
+export type MutationUnpublishFunnelPageArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
 export type MutationUpdateApiKeyArgs = {
   input: UpdateApiKeyInput;
 };
@@ -3473,6 +3836,16 @@ export type MutationUpdateCommandMenuItemArgs = {
 
 export type MutationUpdateFrontComponentArgs = {
   input: UpdateFrontComponentInput;
+};
+
+
+export type MutationUpdateFunnelPageArgs = {
+  input: UpdateFunnelPageInput;
+};
+
+
+export type MutationUpdateInstagramAutomationRuleArgs = {
+  input: UpdateInstagramAutomationRuleInput;
 };
 
 
@@ -3632,8 +4005,23 @@ export type MutationUpdateViewSortArgs = {
 };
 
 
+export type MutationUpdateVoiceAgentArgs = {
+  input: UpdateVoiceAgentInput;
+};
+
+
 export type MutationUpdateWebhookArgs = {
   input: UpdateWebhookInput;
+};
+
+
+export type MutationUpdateWhatsappAgentArgs = {
+  input: UpdateWhatsappAgentInput;
+};
+
+
+export type MutationUpdateWhatsappTemplateArgs = {
+  input: UpdateWhatsappTemplateInput;
 };
 
 
@@ -4189,6 +4577,29 @@ export type PlaceDetailsResult = {
   street?: Maybe<Scalars['String']['output']>;
 };
 
+/** An à-la-carte paid module a workspace can contract */
+export enum PlanGatedFeature {
+  AI_AGENT = 'AI_AGENT',
+  API_ACCESS = 'API_ACCESS',
+  CUSTOM_FIELDS = 'CUSTOM_FIELDS',
+  CUSTOM_OBJECTS = 'CUSTOM_OBJECTS',
+  INSTAGRAM = 'INSTAGRAM',
+  INTEGRATIONS = 'INTEGRATIONS',
+  MANYCHAT_LIKE = 'MANYCHAT_LIKE',
+  MCP = 'MCP',
+  ROW_LEVEL_PERMISSIONS = 'ROW_LEVEL_PERMISSIONS',
+  VOICE_AGENT = 'VOICE_AGENT',
+  WHATSAPP = 'WHATSAPP',
+  WORKFLOWS_ADVANCED = 'WORKFLOWS_ADVANCED'
+}
+
+export type PlanLimitUsage = {
+  __typename?: 'PlanLimitUsage';
+  key: Scalars['String']['output'];
+  limit: Scalars['Int']['output'];
+  used: Scalars['Int']['output'];
+};
+
 export type PreviewMessageCampaignAudienceInput = {
   listId: Scalars['String']['input'];
   unsubscribeTopicId?: InputMaybe<Scalars['String']['input']>;
@@ -4305,6 +4716,8 @@ export type Query = {
   findWorkspaceInvitations: Array<WorkspaceInvitation>;
   frontComponent?: Maybe<FrontComponent>;
   frontComponents: Array<FrontComponent>;
+  funnelPage: FunnelPage;
+  funnelPages: Array<FunnelPage>;
   getAddressDetails: PlaceDetailsResult;
   getAiSystemPromptPreview: AiSystemPromptPreview;
   getApprovedAccessDomains: Array<ApprovedAccessDomain>;
@@ -4342,16 +4755,29 @@ export type Query = {
   getViewSort?: Maybe<ViewSort>;
   getViewSorts: Array<ViewSort>;
   getViews: Array<View>;
+  getWhatsappConversations: Array<WhatsappConversation>;
+  getWhatsappThreadIdForPerson?: Maybe<Scalars['String']['output']>;
   getWorkspaceCreationDefaults: WorkspaceCreationDefaultsDto;
   index: Index;
   indexMetadatas: IndexConnection;
+  instagramAutomationRules: Array<InstagramAutomationRule>;
+  instagramCampaignTemplates: Array<InstagramCampaignTemplate>;
+  instagramDiagnostics: InstagramDiagnostics;
+  instagramFollowerHistory: Array<InstagramFollowerSnapshot>;
+  instagramPublicReport?: Maybe<InstagramPublicReport>;
+  instagramRecentMedia: Array<InstagramMediaSummary>;
   lineChartData: LineChartData;
   listPlans: Array<BillingPlan>;
   minimalMetadata: MinimalMetadata;
   myCalendarChannels: Array<CalendarChannel>;
   myConnectedAccounts: Array<ConnectedAccountPublicDto>;
+  myInstagramChannels: Array<InstagramChannel>;
   myMessageChannels: Array<MessageChannel>;
   myMessageFolders: Array<MessageFolder>;
+  myVoiceAgents: Array<VoiceAgent>;
+  myWhatsappAgents: Array<WhatsappAgent>;
+  myWhatsappChannels: Array<WhatsappChannel>;
+  myWhatsappTemplates: Array<WhatsappTemplate>;
   navigationMenuItem?: Maybe<NavigationMenuItem>;
   navigationMenuItems: Array<NavigationMenuItem>;
   object: Object;
@@ -4364,8 +4790,10 @@ export type Query = {
   unsubscribePagePreviewUrl: Scalars['String']['output'];
   unsubscribeTopics: Array<UnsubscribeTopic>;
   validatePasswordResetToken: ValidatePasswordResetToken;
+  voiceCalls: Array<VoiceCall>;
   webhook?: Maybe<Webhook>;
   webhooks: Array<Webhook>;
+  whatsappAgentConversations: Array<WhatsappAgentConversation>;
 };
 
 
@@ -4528,6 +4956,11 @@ export type QueryFrontComponentArgs = {
 };
 
 
+export type QueryFunnelPageArgs = {
+  id: Scalars['UUID']['input'];
+};
+
+
 export type QueryGetAddressDetailsArgs = {
   placeId: Scalars['String']['input'];
   token: Scalars['String']['input'];
@@ -4679,6 +5112,11 @@ export type QueryGetViewsArgs = {
 };
 
 
+export type QueryGetWhatsappThreadIdForPersonArgs = {
+  personId: Scalars['UUID']['input'];
+};
+
+
 export type QueryIndexArgs = {
   id: Scalars['UUID']['input'];
 };
@@ -4687,6 +5125,31 @@ export type QueryIndexArgs = {
 export type QueryIndexMetadatasArgs = {
   filter?: IndexFilter;
   paging?: CursorPaging;
+};
+
+
+export type QueryInstagramAutomationRulesArgs = {
+  instagramChannelId: Scalars['UUID']['input'];
+};
+
+
+export type QueryInstagramDiagnosticsArgs = {
+  instagramChannelId: Scalars['UUID']['input'];
+};
+
+
+export type QueryInstagramFollowerHistoryArgs = {
+  instagramChannelId: Scalars['UUID']['input'];
+};
+
+
+export type QueryInstagramPublicReportArgs = {
+  instagramChannelId: Scalars['UUID']['input'];
+};
+
+
+export type QueryInstagramRecentMediaArgs = {
+  instagramChannelId: Scalars['UUID']['input'];
 };
 
 
@@ -4746,8 +5209,18 @@ export type QueryValidatePasswordResetTokenArgs = {
 };
 
 
+export type QueryVoiceCallsArgs = {
+  voiceAgentId: Scalars['UUID']['input'];
+};
+
+
 export type QueryWebhookArgs = {
   id: Scalars['UUID']['input'];
+};
+
+
+export type QueryWhatsappAgentConversationsArgs = {
+  whatsappAgentId: Scalars['UUID']['input'];
 };
 
 export type RatioAggregateConfig = {
@@ -5016,6 +5489,18 @@ export type SendMessageCampaignOutputDto = {
   campaignId: Scalars['String']['output'];
   queuedCount: Scalars['Int']['output'];
   skipped: CampaignSkippedRecipientsDto;
+};
+
+export type SendWhatsappMessageInput = {
+  body: Scalars['String']['input'];
+  connectedAccountId: Scalars['String']['input'];
+  to: Scalars['String']['input'];
+};
+
+export type SendWhatsappMessageOutput = {
+  __typename?: 'SendWhatsappMessageOutput';
+  error?: Maybe<Scalars['String']['output']>;
+  success: Scalars['Boolean']['output'];
 };
 
 export type Sentry = {
@@ -5318,6 +5803,27 @@ export type UpdateFrontComponentInputUpdates = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type UpdateFunnelPageInput = {
+  content?: InputMaybe<Scalars['JSON']['input']>;
+  id: Scalars['UUID']['input'];
+  seoDescription?: InputMaybe<Scalars['String']['input']>;
+  seoTitle?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<FunnelPageType>;
+};
+
+export type UpdateInstagramAutomationRuleInput = {
+  followUpDelayMinutes?: InputMaybe<Scalars['Float']['input']>;
+  followUpMessage?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['UUID']['input'];
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  keywords?: InputMaybe<Array<Scalars['String']['input']>>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  publicReplyVariations?: InputMaybe<Array<Scalars['String']['input']>>;
+  replyMessage?: InputMaybe<Scalars['String']['input']>;
+  requiresFollowToReceiveDm?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type UpdateLabPublicFeatureFlagInput = {
   publicFeatureFlag: Scalars['String']['input'];
   value: Scalars['Boolean']['input'];
@@ -5610,6 +6116,21 @@ export type UpdateViewSortInputUpdates = {
   subFieldName?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type UpdateVoiceAgentInput = {
+  forbiddenPhrases?: InputMaybe<Array<Scalars['String']['input']>>;
+  greetingMessage?: InputMaybe<Scalars['String']['input']>;
+  handoffInstructions?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['UUID']['input'];
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  qualificationCriteria?: InputMaybe<Scalars['String']['input']>;
+  systemPrompt?: InputMaybe<Scalars['String']['input']>;
+  transferPhoneNumber?: InputMaybe<Scalars['String']['input']>;
+  voice?: InputMaybe<Scalars['String']['input']>;
+  weeklyAvailability?: InputMaybe<Scalars['JSON']['input']>;
+};
+
 export type UpdateWebhookInput = {
   /** The id of the webhook to update */
   id: Scalars['UUID']['input'];
@@ -5622,6 +6143,30 @@ export type UpdateWebhookInputUpdates = {
   operations?: InputMaybe<Array<Scalars['String']['input']>>;
   secret?: InputMaybe<Scalars['String']['input']>;
   targetUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UpdateWhatsappAgentInput = {
+  forbiddenPhrases?: InputMaybe<Array<Scalars['String']['input']>>;
+  greetingMessage?: InputMaybe<Scalars['String']['input']>;
+  handoffInstructions?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['UUID']['input'];
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  knowledgeBase?: InputMaybe<Scalars['String']['input']>;
+  model?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  qualificationCriteria?: InputMaybe<Scalars['String']['input']>;
+  systemPrompt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UpdateWhatsappTemplateInput = {
+  bodyText?: InputMaybe<Scalars['String']['input']>;
+  buttons?: InputMaybe<Scalars['JSON']['input']>;
+  category?: InputMaybe<WhatsappTemplateCategory>;
+  footerText?: InputMaybe<Scalars['String']['input']>;
+  headerText?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['UUID']['input'];
+  language?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UpdateWorkspaceInput = {
@@ -6073,6 +6618,55 @@ export enum ViewVisibility {
   WORKSPACE = 'WORKSPACE'
 }
 
+export type VoiceAgent = {
+  __typename?: 'VoiceAgent';
+  createdAt: Scalars['DateTime']['output'];
+  forbiddenPhrases?: Maybe<Array<Scalars['String']['output']>>;
+  greetingMessage?: Maybe<Scalars['String']['output']>;
+  handoffInstructions?: Maybe<Scalars['String']['output']>;
+  id: Scalars['UUID']['output'];
+  isActive: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
+  phoneNumber?: Maybe<Scalars['String']['output']>;
+  qualificationCriteria?: Maybe<Scalars['String']['output']>;
+  systemPrompt: Scalars['String']['output'];
+  transferPhoneNumber?: Maybe<Scalars['String']['output']>;
+  updatedAt: Scalars['DateTime']['output'];
+  voice: Scalars['String']['output'];
+  weeklyAvailability?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type VoiceCall = {
+  __typename?: 'VoiceCall';
+  createdAt: Scalars['DateTime']['output'];
+  direction: VoiceCallDirection;
+  durationSeconds?: Maybe<Scalars['Float']['output']>;
+  endedAt?: Maybe<Scalars['DateTime']['output']>;
+  fromNumber: Scalars['String']['output'];
+  id: Scalars['UUID']['output'];
+  recordingUrl?: Maybe<Scalars['String']['output']>;
+  startedAt?: Maybe<Scalars['DateTime']['output']>;
+  status: VoiceCallStatus;
+  summary?: Maybe<Scalars['String']['output']>;
+  toNumber: Scalars['String']['output'];
+  transcript?: Maybe<Scalars['String']['output']>;
+  twilioCallSid: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+  voiceAgentId: Scalars['UUID']['output'];
+};
+
+export enum VoiceCallDirection {
+  INBOUND = 'INBOUND',
+  OUTBOUND = 'OUTBOUND'
+}
+
+export enum VoiceCallStatus {
+  COMPLETED = 'COMPLETED',
+  FAILED = 'FAILED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  NO_ANSWER = 'NO_ANSWER'
+}
+
 export type Webhook = {
   __typename?: 'Webhook';
   applicationId: Scalars['UUID']['output'];
@@ -6086,7 +6680,95 @@ export type Webhook = {
   updatedAt: Scalars['DateTime']['output'];
 };
 
-export type WidgetConfiguration = AggregateChartConfiguration | BarChartConfiguration | CalendarConfiguration | EmailThreadConfiguration | EmailsConfiguration | FieldConfiguration | FieldRichTextConfiguration | FieldsConfiguration | FilesConfiguration | FrontComponentConfiguration | IframeConfiguration | LineChartConfiguration | NotesConfiguration | PieChartConfiguration | RecordTableConfiguration | StandaloneRichTextConfiguration | TasksConfiguration | TimelineConfiguration | ViewConfiguration | WorkflowConfiguration | WorkflowRunConfiguration | WorkflowVersionConfiguration;
+export type WhatsappAgent = {
+  __typename?: 'WhatsappAgent';
+  createdAt: Scalars['DateTime']['output'];
+  forbiddenPhrases?: Maybe<Array<Scalars['String']['output']>>;
+  greetingMessage?: Maybe<Scalars['String']['output']>;
+  handoffInstructions?: Maybe<Scalars['String']['output']>;
+  id: Scalars['UUID']['output'];
+  isActive: Scalars['Boolean']['output'];
+  knowledgeBase?: Maybe<Scalars['String']['output']>;
+  model: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  qualificationCriteria?: Maybe<Scalars['String']['output']>;
+  systemPrompt: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+  whatsappChannelId: Scalars['UUID']['output'];
+};
+
+export type WhatsappAgentConversation = {
+  __typename?: 'WhatsappAgentConversation';
+  contactPhoneNumber: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['UUID']['output'];
+  isAiEnabled: Scalars['Boolean']['output'];
+  lastMessageAt?: Maybe<Scalars['DateTime']['output']>;
+  qualificationSummary?: Maybe<Scalars['String']['output']>;
+  whatsappAgentId: Scalars['UUID']['output'];
+};
+
+export type WhatsappChannel = {
+  __typename?: 'WhatsappChannel';
+  connectedAccountId: Scalars['UUID']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  displayPhoneNumber: Scalars['String']['output'];
+  id: Scalars['UUID']['output'];
+  isSyncEnabled: Scalars['Boolean']['output'];
+  phoneNumberId: Scalars['String']['output'];
+  syncStatus: InstagramChannelSyncStatus;
+  updatedAt: Scalars['DateTime']['output'];
+  wabaId: Scalars['String']['output'];
+};
+
+export type WhatsappConfiguration = {
+  __typename?: 'WhatsappConfiguration';
+  configurationType: WidgetConfigurationType;
+};
+
+export type WhatsappConversation = {
+  __typename?: 'WhatsappConversation';
+  contactDisplayName: Scalars['String']['output'];
+  contactPhoneNumber: Scalars['String']['output'];
+  lastMessageBody: Scalars['String']['output'];
+  lastMessageReceivedAt: Scalars['DateTime']['output'];
+  messageThreadId: Scalars['String']['output'];
+  personId?: Maybe<Scalars['String']['output']>;
+};
+
+export type WhatsappTemplate = {
+  __typename?: 'WhatsappTemplate';
+  bodyText: Scalars['String']['output'];
+  buttons?: Maybe<Scalars['JSON']['output']>;
+  category: WhatsappTemplateCategory;
+  createdAt: Scalars['DateTime']['output'];
+  footerText?: Maybe<Scalars['String']['output']>;
+  headerText?: Maybe<Scalars['String']['output']>;
+  id: Scalars['UUID']['output'];
+  language: Scalars['String']['output'];
+  metaTemplateId?: Maybe<Scalars['String']['output']>;
+  metaTemplateStatus?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  rejectionReason?: Maybe<Scalars['String']['output']>;
+  status: WhatsappTemplateStatus;
+  updatedAt: Scalars['DateTime']['output'];
+  whatsappChannelId: Scalars['UUID']['output'];
+};
+
+export enum WhatsappTemplateCategory {
+  AUTHENTICATION = 'AUTHENTICATION',
+  MARKETING = 'MARKETING',
+  UTILITY = 'UTILITY'
+}
+
+export enum WhatsappTemplateStatus {
+  APPROVED = 'APPROVED',
+  DRAFT = 'DRAFT',
+  PENDING = 'PENDING',
+  REJECTED = 'REJECTED'
+}
+
+export type WidgetConfiguration = AggregateChartConfiguration | BarChartConfiguration | CalendarConfiguration | EmailThreadConfiguration | EmailsConfiguration | FieldConfiguration | FieldRichTextConfiguration | FieldsConfiguration | FilesConfiguration | FrontComponentConfiguration | IframeConfiguration | LineChartConfiguration | NotesConfiguration | PieChartConfiguration | RecordTableConfiguration | StandaloneRichTextConfiguration | TasksConfiguration | TimelineConfiguration | ViewConfiguration | WhatsappConfiguration | WorkflowConfiguration | WorkflowRunConfiguration | WorkflowVersionConfiguration;
 
 export enum WidgetConfigurationType {
   AGGREGATE_CHART = 'AGGREGATE_CHART',
@@ -6152,11 +6834,6 @@ export type WorkflowVersionConfiguration = {
   configurationType: WidgetConfigurationType;
 };
 
-export enum WorkspacePlanTier {
-  BASIC = 'BASIC',
-  PRO = 'PRO'
-}
-
 export type Workspace = {
   __typename?: 'Workspace';
   activationStatus: WorkspaceActivationStatus;
@@ -6211,6 +6888,8 @@ export type Workspace = {
   workspaceCustomApplication?: Maybe<Application>;
   workspaceCustomApplicationId: Scalars['String']['output'];
   workspaceMembersCount?: Maybe<Scalars['Float']['output']>;
+  workspaceModules: Array<WorkspaceModuleEntitlement>;
+  workspacePlanUsage: Array<PlanLimitUsage>;
   workspaceUrls: WorkspaceUrls;
 };
 
@@ -6311,11 +6990,25 @@ export type WorkspaceMigrationInput = {
   actions: Array<WorkspaceMigrationDeleteActionInput>;
 };
 
+export type WorkspaceModuleEntitlement = {
+  __typename?: 'WorkspaceModuleEntitlement';
+  hasAccess: Scalars['Boolean']['output'];
+  implemented: Scalars['Boolean']['output'];
+  module: PlanGatedFeature;
+  quantity: Scalars['Int']['output'];
+};
+
 export type WorkspaceNameAndId = {
   __typename?: 'WorkspaceNameAndId';
   displayName?: Maybe<Scalars['String']['output']>;
   id: Scalars['UUID']['output'];
 };
+
+/** The plan tier gating a workspace feature access */
+export enum WorkspacePlanTier {
+  BASIC = 'BASIC',
+  PRO = 'PRO'
+}
 
 export type WorkspaceUrls = {
   __typename?: 'WorkspaceUrls';
@@ -6348,11 +7041,12 @@ export type SendEmailMutationVariables = Exact<{
 
 export type SendEmailMutation = { __typename?: 'Mutation', sendEmail: { __typename?: 'SendEmailOutput', success: boolean, error?: string | null } };
 
-export type SendWhatsappMessageInput = {
-  body: Scalars['String']['input'];
-  connectedAccountId: Scalars['String']['input'];
-  to: Scalars['String']['input'];
-};
+export type SendMessageCampaignMutationVariables = Exact<{
+  input: SendMessageCampaignInput;
+}>;
+
+
+export type SendMessageCampaignMutation = { __typename?: 'Mutation', sendMessageCampaign: { __typename?: 'SendMessageCampaignOutputDTO', campaignId: string, queuedCount: number, skipped: { __typename?: 'CampaignSkippedRecipientsDTO', noEmail: number, deduped: number, overCap: number } } };
 
 export type SendWhatsappMessageMutationVariables = Exact<{
   input: SendWhatsappMessageInput;
@@ -6366,12 +7060,12 @@ export type GetWhatsappConversationsQueryVariables = Exact<{ [key: string]: neve
 
 export type GetWhatsappConversationsQuery = { __typename?: 'Query', getWhatsappConversations: Array<{ __typename?: 'WhatsappConversation', messageThreadId: string, contactPhoneNumber: string, contactDisplayName: string, personId?: string | null, lastMessageBody: string, lastMessageReceivedAt: string }> };
 
-export type SendMessageCampaignMutationVariables = Exact<{
-  input: SendMessageCampaignInput;
+export type GetWhatsappThreadIdForPersonQueryVariables = Exact<{
+  personId: Scalars['UUID']['input'];
 }>;
 
 
-export type SendMessageCampaignMutation = { __typename?: 'Mutation', sendMessageCampaign: { __typename?: 'SendMessageCampaignOutputDTO', campaignId: string, queuedCount: number, skipped: { __typename?: 'CampaignSkippedRecipientsDTO', noEmail: number, deduped: number, overCap: number } } };
+export type GetWhatsappThreadIdForPersonQuery = { __typename?: 'Query', getWhatsappThreadIdForPerson?: string | null };
 
 export type AgentFieldsFragment = { __typename?: 'Agent', id: string, name: string, label: string, description?: string | null, icon?: string | null, prompt: string, modelId: string, responseFormat?: any | null, roleId?: string | null, isCustom: boolean, modelConfiguration?: any | null, evaluationInputs: Array<string>, applicationId?: string | null, createdAt: string, updatedAt: string };
 
@@ -6933,6 +7627,7 @@ export type PageLayoutFragmentFragment = { __typename?: 'PageLayout', id: string
         | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+        | { __typename?: 'WhatsappConfiguration' }
         | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -6962,6 +7657,7 @@ export type PageLayoutTabFragmentFragment = { __typename?: 'PageLayoutTab', id: 
       | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+      | { __typename?: 'WhatsappConfiguration' }
       | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7003,6 +7699,7 @@ export type FindOnePageLayoutQuery = { __typename?: 'Query', getPageLayout?: { _
           | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+          | { __typename?: 'WhatsappConfiguration' }
           | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7289,6 +7986,7 @@ export type PageLayoutWidgetFragmentFragment = { __typename?: 'PageLayoutWidget'
     | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
     | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
     | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+    | { __typename?: 'WhatsappConfiguration' }
     | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
     | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
     | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7323,6 +8021,7 @@ export type ResetPageLayoutTabToDefaultMutation = { __typename?: 'Mutation', res
         | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+        | { __typename?: 'WhatsappConfiguration' }
         | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
         | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7357,6 +8056,7 @@ export type ResetPageLayoutToDefaultMutation = { __typename?: 'Mutation', resetP
           | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+          | { __typename?: 'WhatsappConfiguration' }
           | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7391,6 +8091,7 @@ export type ResetPageLayoutWidgetToDefaultMutation = { __typename?: 'Mutation', 
       | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+      | { __typename?: 'WhatsappConfiguration' }
       | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
       | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7426,6 +8127,7 @@ export type UpdatePageLayoutWithTabsAndWidgetsMutation = { __typename?: 'Mutatio
           | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+          | { __typename?: 'WhatsappConfiguration' }
           | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7472,6 +8174,7 @@ export type FindAllPageLayoutsQuery = { __typename?: 'Query', getPageLayouts: Ar
           | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+          | { __typename?: 'WhatsappConfiguration' }
           | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7504,6 +8207,7 @@ export type FindAllRecordPageLayoutsQuery = { __typename?: 'Query', getPageLayou
           | { __typename?: 'TasksConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'TimelineConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'ViewConfiguration', configurationType: WidgetConfigurationType }
+          | { __typename?: 'WhatsappConfiguration' }
           | { __typename?: 'WorkflowConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowRunConfiguration', configurationType: WidgetConfigurationType }
           | { __typename?: 'WorkflowVersionConfiguration', configurationType: WidgetConfigurationType }
@@ -7530,6 +8234,22 @@ export type PieChartDataQueryVariables = Exact<{
 
 export type PieChartDataQuery = { __typename?: 'Query', pieChartData: { __typename?: 'PieChartData', showLegend: boolean, showDataLabels: boolean, showCenterMetric: boolean, hasTooManyGroups: boolean, formattedToRawLookup: any, data: Array<{ __typename?: 'PieChartDataItem', key: string, value: number }> } };
 
+export type ConnectInstagramAccountMutationVariables = Exact<{
+  code: Scalars['String']['input'];
+}>;
+
+
+export type ConnectInstagramAccountMutation = { __typename?: 'Mutation', connectInstagramAccount: { __typename?: 'ConnectInstagramAccountOutput', instagramChannelId: string, username: string } };
+
+export type ConnectWhatsappNumberMutationVariables = Exact<{
+  code: Scalars['String']['input'];
+  wabaId: Scalars['String']['input'];
+  phoneNumberId: Scalars['String']['input'];
+}>;
+
+
+export type ConnectWhatsappNumberMutation = { __typename?: 'Mutation', connectWhatsappNumber: { __typename?: 'ConnectWhatsappNumberOutput', whatsappChannelId: string, displayPhoneNumber: string } };
+
 export type CreateEmailGroupChannelMutationVariables = Exact<{
   input: CreateEmailGroupChannelInput;
 }>;
@@ -7550,6 +8270,56 @@ export type DeleteEmailGroupChannelMutationVariables = Exact<{
 
 
 export type DeleteEmailGroupChannelMutation = { __typename?: 'Mutation', deleteEmailGroupChannel: { __typename?: 'MessageChannel', id: string } };
+
+export type CreateInstagramAutomationRuleMutationVariables = Exact<{
+  input: CreateInstagramAutomationRuleInput;
+}>;
+
+
+export type CreateInstagramAutomationRuleMutation = { __typename?: 'Mutation', createInstagramAutomationRule: { __typename?: 'InstagramAutomationRule', id: string, instagramChannelId: string, name?: string | null, igMediaId?: string | null, igMediaCaption?: string | null, igMediaThumbnailUrl?: string | null, igMediaPermalink?: string | null, keywords: Array<string>, replyMessage: string, publicReplyVariations?: Array<string> | null, requiresFollowToReceiveDm: boolean, followUpMessage?: string | null, followUpDelayMinutes?: number | null, attachToNextReel: boolean, isActive: boolean, createdAt: string, updatedAt: string } };
+
+export type UpdateInstagramAutomationRuleMutationVariables = Exact<{
+  input: UpdateInstagramAutomationRuleInput;
+}>;
+
+
+export type UpdateInstagramAutomationRuleMutation = { __typename?: 'Mutation', updateInstagramAutomationRule: { __typename?: 'InstagramAutomationRule', id: string, instagramChannelId: string, name?: string | null, igMediaId?: string | null, igMediaCaption?: string | null, igMediaThumbnailUrl?: string | null, igMediaPermalink?: string | null, keywords: Array<string>, replyMessage: string, publicReplyVariations?: Array<string> | null, requiresFollowToReceiveDm: boolean, followUpMessage?: string | null, followUpDelayMinutes?: number | null, attachToNextReel: boolean, isActive: boolean, updatedAt: string } };
+
+export type DeleteInstagramAutomationRuleMutationVariables = Exact<{
+  id: Scalars['UUID']['input'];
+}>;
+
+
+export type DeleteInstagramAutomationRuleMutation = { __typename?: 'Mutation', deleteInstagramAutomationRule: { __typename?: 'InstagramAutomationRule', id: string } };
+
+export type DuplicateInstagramAutomationRuleMutationVariables = Exact<{
+  id: Scalars['UUID']['input'];
+}>;
+
+
+export type DuplicateInstagramAutomationRuleMutation = { __typename?: 'Mutation', duplicateInstagramAutomationRule: { __typename?: 'InstagramAutomationRule', id: string, instagramChannelId: string, name?: string | null, igMediaId?: string | null, igMediaCaption?: string | null, igMediaThumbnailUrl?: string | null, igMediaPermalink?: string | null, keywords: Array<string>, replyMessage: string, publicReplyVariations?: Array<string> | null, requiresFollowToReceiveDm: boolean, followUpMessage?: string | null, followUpDelayMinutes?: number | null, attachToNextReel: boolean, isActive: boolean, createdAt: string, updatedAt: string } };
+
+export type ImportInstagramAutomationRulesFromCsvMutationVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+  csvContent: Scalars['String']['input'];
+}>;
+
+
+export type ImportInstagramAutomationRulesFromCsvMutation = { __typename?: 'Mutation', importInstagramAutomationRulesFromCsv: Array<{ __typename?: 'InstagramAutomationRule', id: string, instagramChannelId: string, name?: string | null, igMediaId?: string | null, igMediaCaption?: string | null, igMediaThumbnailUrl?: string | null, igMediaPermalink?: string | null, keywords: Array<string>, replyMessage: string, publicReplyVariations?: Array<string> | null, requiresFollowToReceiveDm: boolean, followUpMessage?: string | null, followUpDelayMinutes?: number | null, attachToNextReel: boolean, isActive: boolean, createdAt: string, updatedAt: string }> };
+
+export type EnableInstagramPublicReportMutationVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+}>;
+
+
+export type EnableInstagramPublicReportMutation = { __typename?: 'Mutation', enableInstagramPublicReport: { __typename?: 'InstagramPublicReport', id: string, instagramChannelId: string, shareSlug: string, isEnabled: boolean } };
+
+export type DisableInstagramPublicReportMutationVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+}>;
+
+
+export type DisableInstagramPublicReportMutation = { __typename?: 'Mutation', disableInstagramPublicReport: { __typename?: 'InstagramPublicReport', id: string, instagramChannelId: string, shareSlug: string, isEnabled: boolean } };
 
 export type SaveImapSmtpCaldavAccountMutationVariables = Exact<{
   handle: Scalars['String']['input'];
@@ -7595,12 +8365,102 @@ export type UpdateMessageFoldersMutationVariables = Exact<{
 
 export type UpdateMessageFoldersMutation = { __typename?: 'Mutation', updateMessageFolders: Array<{ __typename?: 'MessageFolder', id: string, isSynced: boolean, pendingSyncAction: MessageFolderPendingSyncAction }> };
 
+export type CreateVoiceAgentMutationVariables = Exact<{
+  input: CreateVoiceAgentInput;
+}>;
+
+
+export type CreateVoiceAgentMutation = { __typename?: 'Mutation', createVoiceAgent: { __typename?: 'VoiceAgent', id: string, name: string, isActive: boolean, phoneNumber?: string | null, voice: string, systemPrompt: string, greetingMessage?: string | null, forbiddenPhrases?: Array<string> | null, qualificationCriteria?: string | null, handoffInstructions?: string | null, transferPhoneNumber?: string | null, createdAt: string, updatedAt: string } };
+
+export type UpdateVoiceAgentMutationVariables = Exact<{
+  input: UpdateVoiceAgentInput;
+}>;
+
+
+export type UpdateVoiceAgentMutation = { __typename?: 'Mutation', updateVoiceAgent: { __typename?: 'VoiceAgent', id: string, name: string, isActive: boolean, phoneNumber?: string | null, voice: string, systemPrompt: string, greetingMessage?: string | null, forbiddenPhrases?: Array<string> | null, qualificationCriteria?: string | null, handoffInstructions?: string | null, transferPhoneNumber?: string | null, updatedAt: string } };
+
+export type DeleteVoiceAgentMutationVariables = Exact<{
+  id: Scalars['UUID']['input'];
+}>;
+
+
+export type DeleteVoiceAgentMutation = { __typename?: 'Mutation', deleteVoiceAgent: { __typename?: 'VoiceAgent', id: string } };
+
+export type SetWhatsappAgentConversationAiEnabledMutationVariables = Exact<{
+  id: Scalars['UUID']['input'];
+  isAiEnabled: Scalars['Boolean']['input'];
+}>;
+
+
+export type SetWhatsappAgentConversationAiEnabledMutation = { __typename?: 'Mutation', setWhatsappAgentConversationAiEnabled: { __typename?: 'WhatsappAgentConversation', id: string, whatsappAgentId: string, contactPhoneNumber: string, isAiEnabled: boolean, qualificationSummary?: string | null, lastMessageAt?: string | null, createdAt: string } };
+
+export type CreateWhatsappAgentMutationVariables = Exact<{
+  input: CreateWhatsappAgentInput;
+}>;
+
+
+export type CreateWhatsappAgentMutation = { __typename?: 'Mutation', createWhatsappAgent: { __typename?: 'WhatsappAgent', id: string, name: string, whatsappChannelId: string, isActive: boolean, systemPrompt: string, greetingMessage?: string | null, forbiddenPhrases?: Array<string> | null, qualificationCriteria?: string | null, knowledgeBase?: string | null, handoffInstructions?: string | null, model: string, createdAt: string, updatedAt: string } };
+
+export type UpdateWhatsappAgentMutationVariables = Exact<{
+  input: UpdateWhatsappAgentInput;
+}>;
+
+
+export type UpdateWhatsappAgentMutation = { __typename?: 'Mutation', updateWhatsappAgent: { __typename?: 'WhatsappAgent', id: string, name: string, whatsappChannelId: string, isActive: boolean, systemPrompt: string, greetingMessage?: string | null, forbiddenPhrases?: Array<string> | null, qualificationCriteria?: string | null, knowledgeBase?: string | null, handoffInstructions?: string | null, model: string, updatedAt: string } };
+
+export type DeleteWhatsappAgentMutationVariables = Exact<{
+  id: Scalars['UUID']['input'];
+}>;
+
+
+export type DeleteWhatsappAgentMutation = { __typename?: 'Mutation', deleteWhatsappAgent: { __typename?: 'WhatsappAgent', id: string } };
+
 export type GetConnectedImapSmtpCaldavAccountQueryVariables = Exact<{
   id: Scalars['UUID']['input'];
 }>;
 
 
 export type GetConnectedImapSmtpCaldavAccountQuery = { __typename?: 'Query', getConnectedImapSmtpCaldavAccount: { __typename?: 'ConnectedImapSmtpCaldavAccount', id: string, handle: string, provider: string, userWorkspaceId: string, connectionParameters?: { __typename?: 'ImapSmtpCaldavPublicConnectionParameters', IMAP?: { __typename?: 'ImapSmtpCaldavPublicConnectionParams', host: string, port: number, connectionSecurity?: EmailConnectionSecurity | null, username?: string | null } | null, SMTP?: { __typename?: 'ImapSmtpCaldavPublicConnectionParams', host: string, username?: string | null, port: number, connectionSecurity?: EmailConnectionSecurity | null } | null, CALDAV?: { __typename?: 'ImapSmtpCaldavPublicConnectionParams', host: string, port: number, connectionSecurity?: EmailConnectionSecurity | null, username?: string | null } | null } | null } };
+
+export type InstagramAutomationRulesQueryVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+}>;
+
+
+export type InstagramAutomationRulesQuery = { __typename?: 'Query', instagramAutomationRules: Array<{ __typename?: 'InstagramAutomationRule', id: string, instagramChannelId: string, name?: string | null, igMediaId?: string | null, igMediaCaption?: string | null, igMediaThumbnailUrl?: string | null, igMediaPermalink?: string | null, keywords: Array<string>, replyMessage: string, publicReplyVariations?: Array<string> | null, requiresFollowToReceiveDm: boolean, followUpMessage?: string | null, followUpDelayMinutes?: number | null, attachToNextReel: boolean, isActive: boolean, createdAt: string, updatedAt: string }> };
+
+export type InstagramCampaignTemplatesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InstagramCampaignTemplatesQuery = { __typename?: 'Query', instagramCampaignTemplates: Array<{ __typename?: 'InstagramCampaignTemplate', key: string, name: string, description: string, suggestedKeywords: Array<string>, suggestedReplyMessage: string, suggestedPublicReplyVariations: Array<string>, suggestedFollowUpMessage?: string | null }> };
+
+export type InstagramDiagnosticsQueryVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+}>;
+
+
+export type InstagramDiagnosticsQuery = { __typename?: 'Query', instagramDiagnostics: { __typename?: 'InstagramDiagnostics', lastWebhookReceivedAt?: string | null, lastReconciliationAt?: string | null, tokenStatus: InstagramTokenStatus, pendingJobsCount: number, failedJobsCount: number } };
+
+export type InstagramFollowerHistoryQueryVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+}>;
+
+
+export type InstagramFollowerHistoryQuery = { __typename?: 'Query', instagramFollowerHistory: Array<{ __typename?: 'InstagramFollowerSnapshot', id: string, followerCount: number, capturedAt: string }> };
+
+export type InstagramPublicReportQueryVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+}>;
+
+
+export type InstagramPublicReportQuery = { __typename?: 'Query', instagramPublicReport?: { __typename?: 'InstagramPublicReport', id: string, instagramChannelId: string, shareSlug: string, isEnabled: boolean } | null };
+
+export type InstagramRecentMediaQueryVariables = Exact<{
+  instagramChannelId: Scalars['UUID']['input'];
+}>;
+
+
+export type InstagramRecentMediaQuery = { __typename?: 'Query', instagramRecentMedia: Array<{ __typename?: 'InstagramMediaSummary', id: string, caption?: string | null, thumbnailUrl?: string | null, permalink: string }> };
 
 export type MyCalendarChannelsQueryVariables = Exact<{
   connectedAccountId?: InputMaybe<Scalars['UUID']['input']>;
@@ -7614,12 +8474,17 @@ export type MyConnectedAccountsQueryVariables = Exact<{ [key: string]: never; }>
 
 export type MyConnectedAccountsQuery = { __typename?: 'Query', myConnectedAccounts: Array<{ __typename?: 'ConnectedAccountPublicDTO', id: string, handle: string, provider: string, authFailedAt?: string | null, archivedAt?: string | null, scopes?: Array<string> | null, handleAliases?: Array<string> | null, lastSignedInAt?: string | null, userWorkspaceId: string, connectionProviderId?: string | null, name?: string | null, visibility: string, lastCredentialsRefreshedAt?: string | null, createdAt: string, updatedAt: string, connectionParameters?: { __typename?: 'PublicImapSmtpCaldavConnectionParameters', IMAP?: { __typename?: 'PublicConnectionParametersOutput', host: string, port: number, connectionSecurity?: EmailConnectionSecurity | null, username?: string | null } | null, SMTP?: { __typename?: 'PublicConnectionParametersOutput', host: string, port: number, connectionSecurity?: EmailConnectionSecurity | null, username?: string | null } | null, CALDAV?: { __typename?: 'PublicConnectionParametersOutput', host: string, username?: string | null } | null } | null }> };
 
+export type MyInstagramChannelsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyInstagramChannelsQuery = { __typename?: 'Query', myInstagramChannels: Array<{ __typename?: 'InstagramChannel', id: string, connectedAccountId: string, igBusinessAccountId: string, username: string, profilePictureUrl?: string | null, isSyncEnabled: boolean, syncStatus: InstagramChannelSyncStatus, createdAt: string, updatedAt: string }> };
+
 export type MyMessageChannelsQueryVariables = Exact<{
   connectedAccountId?: InputMaybe<Scalars['UUID']['input']>;
 }>;
 
 
-export type MyMessageChannelsQuery = { __typename?: 'Query', myMessageChannels: Array<{ __typename?: 'MessageChannel', id: string, handle: string, visibility: MessageChannelVisibility, type: MessageChannelType, isContactAutoCreationEnabled: boolean, contactAutoCreationPolicy: MessageChannelContactAutoCreationPolicy, messageFolderImportPolicy: MessageFolderImportPolicy, excludeNonProfessionalEmails: boolean, excludeGroupEmails: boolean, isSyncEnabled: boolean, syncStatus: MessageChannelSyncStatus, syncStage: MessageChannelSyncStage, syncStageStartedAt?: string | null, connectedAccountId: string, createdAt: string, updatedAt: string, connectedAccount?: { __typename?: 'ConnectedAccountPublicDTO', id: string, handle: string } | null }> };
+export type MyMessageChannelsQuery = { __typename?: 'Query', myMessageChannels: Array<{ __typename?: 'MessageChannel', id: string, handle: string, visibility: MessageChannelVisibility, type: MessageChannelType, isContactAutoCreationEnabled: boolean, contactAutoCreationPolicy: MessageChannelContactAutoCreationPolicy, messageFolderImportPolicy: MessageFolderImportPolicy, excludeNonProfessionalEmails: boolean, excludeGroupEmails: boolean, isSyncEnabled: boolean, syncStatus: InstagramChannelSyncStatus, syncStage: MessageChannelSyncStage, syncStageStartedAt?: string | null, connectedAccountId: string, createdAt: string, updatedAt: string, connectedAccount?: { __typename?: 'ConnectedAccountPublicDTO', id: string, handle: string } | null }> };
 
 export type MyMessageFoldersQueryVariables = Exact<{
   messageChannelId?: InputMaybe<Scalars['UUID']['input']>;
@@ -7627,6 +8492,40 @@ export type MyMessageFoldersQueryVariables = Exact<{
 
 
 export type MyMessageFoldersQuery = { __typename?: 'Query', myMessageFolders: Array<{ __typename?: 'MessageFolder', id: string, name?: string | null, isSynced: boolean, isSentFolder: boolean, parentFolderId?: string | null, externalId?: string | null, pendingSyncAction: MessageFolderPendingSyncAction, messageChannelId: string, createdAt: string, updatedAt: string }> };
+
+export type MyVoiceAgentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyVoiceAgentsQuery = { __typename?: 'Query', myVoiceAgents: Array<{ __typename?: 'VoiceAgent', id: string, name: string, isActive: boolean, phoneNumber?: string | null, voice: string, systemPrompt: string, greetingMessage?: string | null, forbiddenPhrases?: Array<string> | null, qualificationCriteria?: string | null, handoffInstructions?: string | null, transferPhoneNumber?: string | null, createdAt: string, updatedAt: string }> };
+
+export type MyWhatsappAgentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyWhatsappAgentsQuery = { __typename?: 'Query', myWhatsappAgents: Array<{ __typename?: 'WhatsappAgent', id: string, name: string, whatsappChannelId: string, isActive: boolean, systemPrompt: string, greetingMessage?: string | null, forbiddenPhrases?: Array<string> | null, qualificationCriteria?: string | null, knowledgeBase?: string | null, handoffInstructions?: string | null, model: string, createdAt: string, updatedAt: string }> };
+
+export type MyWhatsappChannelsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyWhatsappChannelsQuery = { __typename?: 'Query', myWhatsappChannels: Array<{ __typename?: 'WhatsappChannel', id: string, connectedAccountId: string, phoneNumberId: string, wabaId: string, displayPhoneNumber: string, isSyncEnabled: boolean, syncStatus: InstagramChannelSyncStatus, createdAt: string, updatedAt: string }> };
+
+export type MyWhatsappTemplatesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyWhatsappTemplatesQuery = { __typename?: 'Query', myWhatsappTemplates: Array<{ __typename?: 'WhatsappTemplate', id: string, whatsappChannelId: string, name: string, category: WhatsappTemplateCategory, language: string, headerText?: string | null, bodyText: string, footerText?: string | null, buttons?: any | null, status: WhatsappTemplateStatus, metaTemplateId?: string | null, metaTemplateStatus?: string | null, rejectionReason?: string | null, createdAt: string, updatedAt: string }> };
+
+export type VoiceCallsQueryVariables = Exact<{
+  voiceAgentId: Scalars['UUID']['input'];
+}>;
+
+
+export type VoiceCallsQuery = { __typename?: 'Query', voiceCalls: Array<{ __typename?: 'VoiceCall', id: string, voiceAgentId: string, twilioCallSid: string, direction: VoiceCallDirection, status: VoiceCallStatus, fromNumber: string, toNumber: string, startedAt?: string | null, endedAt?: string | null, durationSeconds?: number | null, transcript?: string | null, summary?: string | null, createdAt: string }> };
+
+export type WhatsappAgentConversationsQueryVariables = Exact<{
+  whatsappAgentId: Scalars['UUID']['input'];
+}>;
+
+
+export type WhatsappAgentConversationsQuery = { __typename?: 'Query', whatsappAgentConversations: Array<{ __typename?: 'WhatsappAgentConversation', id: string, whatsappAgentId: string, contactPhoneNumber: string, isAiEnabled: boolean, qualificationSummary?: string | null, lastMessageAt?: string | null, createdAt: string }> };
 
 export type ApplicationRegistrationFragmentFragment = { __typename?: 'ApplicationRegistration', id: string, universalIdentifier: string, name: string, logoUrl?: string | null, oAuthClientId: string, oAuthRedirectUris: Array<string>, oAuthScopes: Array<string>, sourceType: ApplicationRegistrationSourceType, sourcePackage?: string | null, latestAvailableVersion?: string | null, isListed: boolean, isFeatured: boolean, isPreInstalled: boolean, isConfigured: boolean, ownerWorkspaceId?: string | null, createdAt: string, updatedAt: string };
 
@@ -8210,7 +9109,7 @@ export type CurrentBillingSubscriptionFragmentFragment = { __typename?: 'Billing
       | { __typename?: 'BillingMeteredProduct', name: string, description: string, images?: Array<string> | null, metadata: { __typename?: 'BillingProductMetadata', productKey: BillingProductKey, planKey: BillingPlanKey, priceUsageBased: BillingUsageType } }
      }> | null };
 
-export type UserQueryFragmentFragment = { __typename?: 'User', id: string, firstName: string, lastName: string, email: string, hasPassword: boolean, canAccessFullAdminPanel: boolean, canImpersonate: boolean, supportUserHash?: string | null, onboardingStatus?: OnboardingStatus | null, userVars?: any | null, workspaceMember?: { __typename?: 'WorkspaceMember', id: string, colorScheme: string, avatarUrl?: string | null, locale?: string | null, userEmail: string, userWorkspaceId?: string | null, timeZone?: string | null, dateFormat?: WorkspaceMemberDateFormatEnum | null, timeFormat?: WorkspaceMemberTimeFormatEnum | null, calendarStartDay?: number | null, numberFormat?: WorkspaceMemberNumberFormatEnum | null, name: { __typename?: 'FullName', firstName: string, lastName: string } } | null, workspaceMembers?: Array<{ __typename?: 'WorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, userWorkspaceId?: string | null, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, deletedWorkspaceMembers?: Array<{ __typename?: 'DeletedWorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, currentUserWorkspace?: { __typename?: 'UserWorkspace', id: string, permissionFlags?: Array<PermissionFlagType> | null, objectsPermissions?: Array<{ __typename?: 'ObjectPermission', objectMetadataId: string, canReadObjectRecords?: boolean | null, canUpdateObjectRecords?: boolean | null, canSoftDeleteObjectRecords?: boolean | null, canDestroyObjectRecords?: boolean | null, restrictedFields?: any | null, rowLevelPermissionPredicates?: Array<{ __typename?: 'RowLevelPermissionPredicate', id: string, fieldMetadataId: string, objectMetadataId: string, operand: RowLevelPermissionPredicateOperand, subFieldName?: string | null, workspaceMemberFieldMetadataId?: string | null, workspaceMemberSubFieldName?: string | null, rowLevelPermissionPredicateGroupId?: string | null, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, value?: any | null }> | null, rowLevelPermissionPredicateGroups?: Array<{ __typename?: 'RowLevelPermissionPredicateGroup', id: string, parentRowLevelPermissionPredicateGroupId?: string | null, logicalOperator: RowLevelPermissionPredicateGroupLogicalOperator, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, objectMetadataId: string }> | null }> | null, twoFactorAuthenticationMethodSummary?: Array<{ __typename?: 'TwoFactorAuthenticationMethodSummary', twoFactorAuthenticationMethodId: string, status: string, strategy: string }> | null } | null, currentWorkspace?: { __typename?: 'Workspace', id: string, displayName?: string | null, logo?: string | null, inviteHash?: string | null, allowImpersonation: boolean, activationStatus: WorkspaceActivationStatus, isPublicInviteLinkEnabled: boolean, isGoogleAuthEnabled: boolean, isMicrosoftAuthEnabled: boolean, isPasswordAuthEnabled: boolean, isGoogleAuthBypassEnabled: boolean, isMicrosoftAuthBypassEnabled: boolean, isPasswordAuthBypassEnabled: boolean, subdomain: string, customDomain?: string | null, hasValidSignedEnterpriseKey: boolean, hasValidEnterpriseValidityToken: boolean, isCustomDomainEnabled: boolean, metadataVersion: number, workspaceMembersCount?: number | null, fastModel: string, smartModel: string, aiAdditionalInstructions?: string | null, enabledAiModelIds?: Array<string> | null, useRecommendedModels: boolean, isTwoFactorAuthenticationEnforced: boolean, trashRetentionDays: number, eventLogRetentionDays: number, editableProfileFields?: Array<string> | null, isInternalMessagesImportEnabled: boolean, workspaceCustomApplication?: { __typename?: 'Application', id: string } | null, installedApplications: Array<{ __typename?: 'Application', id: string, name: string, universalIdentifier: string, logo?: string | null }>, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, featureFlags?: Array<{ __typename?: 'FeatureFlag', key: FeatureFlagKey, value: boolean }> | null, planTier: WorkspacePlanTier, currentBillingSubscription?: { __typename?: 'BillingSubscription', id: string, status: SubscriptionStatus, interval?: SubscriptionInterval | null, metadata: any, currentPeriodEnd?: string | null, phases: Array<{ __typename?: 'BillingSubscriptionSchedulePhase', start_date: number, end_date: number, items: Array<{ __typename?: 'BillingSubscriptionSchedulePhaseItem', price: string, quantity?: number | null }> }>, billingSubscriptionItems?: Array<{ __typename?: 'BillingSubscriptionItem', id: string, hasReachedCurrentPeriodCap: boolean, quantity?: number | null, stripePriceId: string, billingProduct:
+export type UserQueryFragmentFragment = { __typename?: 'User', id: string, firstName: string, lastName: string, email: string, hasPassword: boolean, canAccessFullAdminPanel: boolean, canImpersonate: boolean, supportUserHash?: string | null, onboardingStatus?: OnboardingStatus | null, userVars?: any | null, workspaceMember?: { __typename?: 'WorkspaceMember', id: string, colorScheme: string, avatarUrl?: string | null, locale?: string | null, userEmail: string, userWorkspaceId?: string | null, timeZone?: string | null, dateFormat?: WorkspaceMemberDateFormatEnum | null, timeFormat?: WorkspaceMemberTimeFormatEnum | null, calendarStartDay?: number | null, numberFormat?: WorkspaceMemberNumberFormatEnum | null, name: { __typename?: 'FullName', firstName: string, lastName: string } } | null, workspaceMembers?: Array<{ __typename?: 'WorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, userWorkspaceId?: string | null, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, deletedWorkspaceMembers?: Array<{ __typename?: 'DeletedWorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, currentUserWorkspace?: { __typename?: 'UserWorkspace', id: string, permissionFlags?: Array<PermissionFlagType> | null, objectsPermissions?: Array<{ __typename?: 'ObjectPermission', objectMetadataId: string, canReadObjectRecords?: boolean | null, canUpdateObjectRecords?: boolean | null, canSoftDeleteObjectRecords?: boolean | null, canDestroyObjectRecords?: boolean | null, restrictedFields?: any | null, rowLevelPermissionPredicates?: Array<{ __typename?: 'RowLevelPermissionPredicate', id: string, fieldMetadataId: string, objectMetadataId: string, operand: RowLevelPermissionPredicateOperand, subFieldName?: string | null, workspaceMemberFieldMetadataId?: string | null, workspaceMemberSubFieldName?: string | null, rowLevelPermissionPredicateGroupId?: string | null, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, value?: any | null }> | null, rowLevelPermissionPredicateGroups?: Array<{ __typename?: 'RowLevelPermissionPredicateGroup', id: string, parentRowLevelPermissionPredicateGroupId?: string | null, logicalOperator: RowLevelPermissionPredicateGroupLogicalOperator, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, objectMetadataId: string }> | null }> | null, twoFactorAuthenticationMethodSummary?: Array<{ __typename?: 'TwoFactorAuthenticationMethodSummary', twoFactorAuthenticationMethodId: string, status: string, strategy: string }> | null } | null, currentWorkspace?: { __typename?: 'Workspace', id: string, displayName?: string | null, logo?: string | null, inviteHash?: string | null, allowImpersonation: boolean, activationStatus: WorkspaceActivationStatus, isPublicInviteLinkEnabled: boolean, isGoogleAuthEnabled: boolean, isMicrosoftAuthEnabled: boolean, isPasswordAuthEnabled: boolean, isGoogleAuthBypassEnabled: boolean, isMicrosoftAuthBypassEnabled: boolean, isPasswordAuthBypassEnabled: boolean, subdomain: string, customDomain?: string | null, hasValidSignedEnterpriseKey: boolean, hasValidEnterpriseValidityToken: boolean, isCustomDomainEnabled: boolean, planTier: WorkspacePlanTier, metadataVersion: number, workspaceMembersCount?: number | null, fastModel: string, smartModel: string, aiAdditionalInstructions?: string | null, enabledAiModelIds?: Array<string> | null, useRecommendedModels: boolean, isTwoFactorAuthenticationEnforced: boolean, trashRetentionDays: number, eventLogRetentionDays: number, editableProfileFields?: Array<string> | null, isInternalMessagesImportEnabled: boolean, workspaceCustomApplication?: { __typename?: 'Application', id: string } | null, installedApplications: Array<{ __typename?: 'Application', id: string, name: string, universalIdentifier: string, logo?: string | null }>, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, featureFlags?: Array<{ __typename?: 'FeatureFlag', key: FeatureFlagKey, value: boolean }> | null, currentBillingSubscription?: { __typename?: 'BillingSubscription', id: string, status: SubscriptionStatus, interval?: SubscriptionInterval | null, metadata: any, currentPeriodEnd?: string | null, phases: Array<{ __typename?: 'BillingSubscriptionSchedulePhase', start_date: number, end_date: number, items: Array<{ __typename?: 'BillingSubscriptionSchedulePhaseItem', price: string, quantity?: number | null }> }>, billingSubscriptionItems?: Array<{ __typename?: 'BillingSubscriptionItem', id: string, hasReachedCurrentPeriodCap: boolean, quantity?: number | null, stripePriceId: string, billingProduct:
           | { __typename?: 'BillingLicensedProduct', name: string, description: string, images?: Array<string> | null, metadata: { __typename?: 'BillingProductMetadata', productKey: BillingProductKey, planKey: BillingPlanKey, priceUsageBased: BillingUsageType } }
           | { __typename?: 'BillingMeteredProduct', name: string, description: string, images?: Array<string> | null, metadata: { __typename?: 'BillingProductMetadata', productKey: BillingProductKey, planKey: BillingPlanKey, priceUsageBased: BillingUsageType } }
          }> | null } | null, billingCustomer?: { __typename?: 'BillingCustomer', id: string, hasPaymentMethod?: boolean | null } | null, billingSubscriptions: Array<{ __typename?: 'BillingSubscription', id: string, status: SubscriptionStatus, metadata: any, phases: Array<{ __typename?: 'BillingSubscriptionSchedulePhase', start_date: number, end_date: number, items: Array<{ __typename?: 'BillingSubscriptionSchedulePhaseItem', price: string, quantity?: number | null }> }> }>, billingEntitlements: Array<{ __typename?: 'BillingEntitlement', key: BillingEntitlementKey, value: boolean }>, defaultRole?: { __typename?: 'Role', id: string, label: string, description?: string | null, icon?: string | null, canUpdateAllSettings: boolean, canAccessAllTools: boolean, isEditable: boolean, canReadAllObjectRecords: boolean, canUpdateAllObjectRecords: boolean, canSoftDeleteAllObjectRecords: boolean, canDestroyAllObjectRecords: boolean, canBeAssignedToUsers: boolean, canBeAssignedToAgents: boolean, canBeAssignedToApiKeys: boolean } | null } | null, availableWorkspaces: { __typename?: 'AvailableWorkspaces', availableWorkspacesForSignIn: Array<{ __typename?: 'AvailableWorkspace', id: string, displayName?: string | null, loginToken?: string | null, inviteHash?: string | null, personalInviteToken?: string | null, logo?: string | null, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, sso: Array<{ __typename?: 'SSOConnection', type: IdentityProviderType, id: string, issuer: string, name: string, status: SsoIdentityProviderStatus }> }>, availableWorkspacesForSignUp: Array<{ __typename?: 'AvailableWorkspace', id: string, displayName?: string | null, loginToken?: string | null, inviteHash?: string | null, personalInviteToken?: string | null, logo?: string | null, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, sso: Array<{ __typename?: 'SSOConnection', type: IdentityProviderType, id: string, issuer: string, name: string, status: SsoIdentityProviderStatus }> }> } };
@@ -8232,7 +9131,7 @@ export type DeleteUserWorkspaceMutation = { __typename?: 'Mutation', deleteUserF
 export type GetCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCurrentUserQuery = { __typename?: 'Query', currentUser: { __typename?: 'User', id: string, firstName: string, lastName: string, email: string, hasPassword: boolean, canAccessFullAdminPanel: boolean, canImpersonate: boolean, supportUserHash?: string | null, onboardingStatus?: OnboardingStatus | null, userVars?: any | null, workspaceMember?: { __typename?: 'WorkspaceMember', id: string, colorScheme: string, avatarUrl?: string | null, locale?: string | null, userEmail: string, userWorkspaceId?: string | null, timeZone?: string | null, dateFormat?: WorkspaceMemberDateFormatEnum | null, timeFormat?: WorkspaceMemberTimeFormatEnum | null, calendarStartDay?: number | null, numberFormat?: WorkspaceMemberNumberFormatEnum | null, name: { __typename?: 'FullName', firstName: string, lastName: string } } | null, workspaceMembers?: Array<{ __typename?: 'WorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, userWorkspaceId?: string | null, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, deletedWorkspaceMembers?: Array<{ __typename?: 'DeletedWorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, currentUserWorkspace?: { __typename?: 'UserWorkspace', id: string, permissionFlags?: Array<PermissionFlagType> | null, objectsPermissions?: Array<{ __typename?: 'ObjectPermission', objectMetadataId: string, canReadObjectRecords?: boolean | null, canUpdateObjectRecords?: boolean | null, canSoftDeleteObjectRecords?: boolean | null, canDestroyObjectRecords?: boolean | null, restrictedFields?: any | null, rowLevelPermissionPredicates?: Array<{ __typename?: 'RowLevelPermissionPredicate', id: string, fieldMetadataId: string, objectMetadataId: string, operand: RowLevelPermissionPredicateOperand, subFieldName?: string | null, workspaceMemberFieldMetadataId?: string | null, workspaceMemberSubFieldName?: string | null, rowLevelPermissionPredicateGroupId?: string | null, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, value?: any | null }> | null, rowLevelPermissionPredicateGroups?: Array<{ __typename?: 'RowLevelPermissionPredicateGroup', id: string, parentRowLevelPermissionPredicateGroupId?: string | null, logicalOperator: RowLevelPermissionPredicateGroupLogicalOperator, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, objectMetadataId: string }> | null }> | null, twoFactorAuthenticationMethodSummary?: Array<{ __typename?: 'TwoFactorAuthenticationMethodSummary', twoFactorAuthenticationMethodId: string, status: string, strategy: string }> | null } | null, currentWorkspace?: { __typename?: 'Workspace', id: string, displayName?: string | null, logo?: string | null, inviteHash?: string | null, allowImpersonation: boolean, activationStatus: WorkspaceActivationStatus, isPublicInviteLinkEnabled: boolean, isGoogleAuthEnabled: boolean, isMicrosoftAuthEnabled: boolean, isPasswordAuthEnabled: boolean, isGoogleAuthBypassEnabled: boolean, isMicrosoftAuthBypassEnabled: boolean, isPasswordAuthBypassEnabled: boolean, subdomain: string, customDomain?: string | null, hasValidSignedEnterpriseKey: boolean, hasValidEnterpriseValidityToken: boolean, isCustomDomainEnabled: boolean, metadataVersion: number, workspaceMembersCount?: number | null, fastModel: string, smartModel: string, aiAdditionalInstructions?: string | null, enabledAiModelIds?: Array<string> | null, useRecommendedModels: boolean, isTwoFactorAuthenticationEnforced: boolean, trashRetentionDays: number, eventLogRetentionDays: number, editableProfileFields?: Array<string> | null, isInternalMessagesImportEnabled: boolean, workspaceCustomApplication?: { __typename?: 'Application', id: string } | null, installedApplications: Array<{ __typename?: 'Application', id: string, name: string, universalIdentifier: string, logo?: string | null }>, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, featureFlags?: Array<{ __typename?: 'FeatureFlag', key: FeatureFlagKey, value: boolean }> | null, planTier: WorkspacePlanTier, currentBillingSubscription?: { __typename?: 'BillingSubscription', id: string, status: SubscriptionStatus, interval?: SubscriptionInterval | null, metadata: any, currentPeriodEnd?: string | null, phases: Array<{ __typename?: 'BillingSubscriptionSchedulePhase', start_date: number, end_date: number, items: Array<{ __typename?: 'BillingSubscriptionSchedulePhaseItem', price: string, quantity?: number | null }> }>, billingSubscriptionItems?: Array<{ __typename?: 'BillingSubscriptionItem', id: string, hasReachedCurrentPeriodCap: boolean, quantity?: number | null, stripePriceId: string, billingProduct:
+export type GetCurrentUserQuery = { __typename?: 'Query', currentUser: { __typename?: 'User', id: string, firstName: string, lastName: string, email: string, hasPassword: boolean, canAccessFullAdminPanel: boolean, canImpersonate: boolean, supportUserHash?: string | null, onboardingStatus?: OnboardingStatus | null, userVars?: any | null, workspaceMember?: { __typename?: 'WorkspaceMember', id: string, colorScheme: string, avatarUrl?: string | null, locale?: string | null, userEmail: string, userWorkspaceId?: string | null, timeZone?: string | null, dateFormat?: WorkspaceMemberDateFormatEnum | null, timeFormat?: WorkspaceMemberTimeFormatEnum | null, calendarStartDay?: number | null, numberFormat?: WorkspaceMemberNumberFormatEnum | null, name: { __typename?: 'FullName', firstName: string, lastName: string } } | null, workspaceMembers?: Array<{ __typename?: 'WorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, userWorkspaceId?: string | null, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, deletedWorkspaceMembers?: Array<{ __typename?: 'DeletedWorkspaceMember', id: string, avatarUrl?: string | null, userEmail: string, name: { __typename?: 'FullName', firstName: string, lastName: string } }> | null, currentUserWorkspace?: { __typename?: 'UserWorkspace', id: string, permissionFlags?: Array<PermissionFlagType> | null, objectsPermissions?: Array<{ __typename?: 'ObjectPermission', objectMetadataId: string, canReadObjectRecords?: boolean | null, canUpdateObjectRecords?: boolean | null, canSoftDeleteObjectRecords?: boolean | null, canDestroyObjectRecords?: boolean | null, restrictedFields?: any | null, rowLevelPermissionPredicates?: Array<{ __typename?: 'RowLevelPermissionPredicate', id: string, fieldMetadataId: string, objectMetadataId: string, operand: RowLevelPermissionPredicateOperand, subFieldName?: string | null, workspaceMemberFieldMetadataId?: string | null, workspaceMemberSubFieldName?: string | null, rowLevelPermissionPredicateGroupId?: string | null, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, value?: any | null }> | null, rowLevelPermissionPredicateGroups?: Array<{ __typename?: 'RowLevelPermissionPredicateGroup', id: string, parentRowLevelPermissionPredicateGroupId?: string | null, logicalOperator: RowLevelPermissionPredicateGroupLogicalOperator, positionInRowLevelPermissionPredicateGroup?: number | null, roleId: string, objectMetadataId: string }> | null }> | null, twoFactorAuthenticationMethodSummary?: Array<{ __typename?: 'TwoFactorAuthenticationMethodSummary', twoFactorAuthenticationMethodId: string, status: string, strategy: string }> | null } | null, currentWorkspace?: { __typename?: 'Workspace', id: string, displayName?: string | null, logo?: string | null, inviteHash?: string | null, allowImpersonation: boolean, activationStatus: WorkspaceActivationStatus, isPublicInviteLinkEnabled: boolean, isGoogleAuthEnabled: boolean, isMicrosoftAuthEnabled: boolean, isPasswordAuthEnabled: boolean, isGoogleAuthBypassEnabled: boolean, isMicrosoftAuthBypassEnabled: boolean, isPasswordAuthBypassEnabled: boolean, subdomain: string, customDomain?: string | null, hasValidSignedEnterpriseKey: boolean, hasValidEnterpriseValidityToken: boolean, isCustomDomainEnabled: boolean, planTier: WorkspacePlanTier, metadataVersion: number, workspaceMembersCount?: number | null, fastModel: string, smartModel: string, aiAdditionalInstructions?: string | null, enabledAiModelIds?: Array<string> | null, useRecommendedModels: boolean, isTwoFactorAuthenticationEnforced: boolean, trashRetentionDays: number, eventLogRetentionDays: number, editableProfileFields?: Array<string> | null, isInternalMessagesImportEnabled: boolean, workspaceCustomApplication?: { __typename?: 'Application', id: string } | null, installedApplications: Array<{ __typename?: 'Application', id: string, name: string, universalIdentifier: string, logo?: string | null }>, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, featureFlags?: Array<{ __typename?: 'FeatureFlag', key: FeatureFlagKey, value: boolean }> | null, currentBillingSubscription?: { __typename?: 'BillingSubscription', id: string, status: SubscriptionStatus, interval?: SubscriptionInterval | null, metadata: any, currentPeriodEnd?: string | null, phases: Array<{ __typename?: 'BillingSubscriptionSchedulePhase', start_date: number, end_date: number, items: Array<{ __typename?: 'BillingSubscriptionSchedulePhaseItem', price: string, quantity?: number | null }> }>, billingSubscriptionItems?: Array<{ __typename?: 'BillingSubscriptionItem', id: string, hasReachedCurrentPeriodCap: boolean, quantity?: number | null, stripePriceId: string, billingProduct:
             | { __typename?: 'BillingLicensedProduct', name: string, description: string, images?: Array<string> | null, metadata: { __typename?: 'BillingProductMetadata', productKey: BillingProductKey, planKey: BillingPlanKey, priceUsageBased: BillingUsageType } }
             | { __typename?: 'BillingMeteredProduct', name: string, description: string, images?: Array<string> | null, metadata: { __typename?: 'BillingProductMetadata', productKey: BillingProductKey, planKey: BillingPlanKey, priceUsageBased: BillingUsageType } }
            }> | null } | null, billingCustomer?: { __typename?: 'BillingCustomer', id: string, hasPaymentMethod?: boolean | null } | null, billingSubscriptions: Array<{ __typename?: 'BillingSubscription', id: string, status: SubscriptionStatus, metadata: any, phases: Array<{ __typename?: 'BillingSubscriptionSchedulePhase', start_date: number, end_date: number, items: Array<{ __typename?: 'BillingSubscriptionSchedulePhaseItem', price: string, quantity?: number | null }> }> }>, billingEntitlements: Array<{ __typename?: 'BillingEntitlement', key: BillingEntitlementKey, value: boolean }>, defaultRole?: { __typename?: 'Role', id: string, label: string, description?: string | null, icon?: string | null, canUpdateAllSettings: boolean, canAccessAllTools: boolean, isEditable: boolean, canReadAllObjectRecords: boolean, canUpdateAllObjectRecords: boolean, canSoftDeleteAllObjectRecords: boolean, canDestroyAllObjectRecords: boolean, canBeAssignedToUsers: boolean, canBeAssignedToAgents: boolean, canBeAssignedToApiKeys: boolean } | null } | null, availableWorkspaces: { __typename?: 'AvailableWorkspaces', availableWorkspacesForSignIn: Array<{ __typename?: 'AvailableWorkspace', id: string, displayName?: string | null, loginToken?: string | null, inviteHash?: string | null, personalInviteToken?: string | null, logo?: string | null, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, sso: Array<{ __typename?: 'SSOConnection', type: IdentityProviderType, id: string, issuer: string, name: string, status: SsoIdentityProviderStatus }> }>, availableWorkspacesForSignUp: Array<{ __typename?: 'AvailableWorkspace', id: string, displayName?: string | null, loginToken?: string | null, inviteHash?: string | null, personalInviteToken?: string | null, logo?: string | null, workspaceUrls: { __typename?: 'WorkspaceUrls', subdomainUrl: string, customUrl?: string | null }, sso: Array<{ __typename?: 'SSOConnection', type: IdentityProviderType, id: string, issuer: string, name: string, status: SsoIdentityProviderStatus }> }> } } };
@@ -8659,6 +9558,11 @@ export type GetWorkspaceFromInviteHashQueryVariables = Exact<{
 
 export type GetWorkspaceFromInviteHashQuery = { __typename?: 'Query', findWorkspaceFromInviteHash: { __typename?: 'Workspace', id: string, displayName?: string | null, logo?: string | null, allowImpersonation: boolean } };
 
+export type WorkspacePlanModulesAndUsageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type WorkspacePlanModulesAndUsageQuery = { __typename?: 'Query', currentWorkspace: { __typename?: 'Workspace', id: string, workspaceModules: Array<{ __typename?: 'WorkspaceModuleEntitlement', module: PlanGatedFeature, quantity: number, hasAccess: boolean, implemented: boolean }>, workspacePlanUsage: Array<{ __typename?: 'PlanLimitUsage', key: string, used: number, limit: number }> } };
+
 export const SkillFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SkillFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Skill"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"isCustom"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<SkillFieldsFragment, unknown>;
 export const AgentFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AgentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Agent"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"prompt"}},{"kind":"Field","name":{"kind":"Name","value":"modelId"}},{"kind":"Field","name":{"kind":"Name","value":"responseFormat"}},{"kind":"Field","name":{"kind":"Name","value":"roleId"}},{"kind":"Field","name":{"kind":"Name","value":"isCustom"}},{"kind":"Field","name":{"kind":"Name","value":"modelConfiguration"}},{"kind":"Field","name":{"kind":"Name","value":"evaluationInputs"}},{"kind":"Field","name":{"kind":"Name","value":"applicationId"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<AgentFieldsFragment, unknown>;
 export const ObjectMetadataFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ObjectMetadataFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Object"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"universalIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"nameSingular"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}},{"kind":"Field","name":{"kind":"Name","value":"labelSingular"}},{"kind":"Field","name":{"kind":"Name","value":"labelPlural"}},{"kind":"Field","name":{"kind":"Name","value":"color"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"isRemote"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"isSystem"}},{"kind":"Field","name":{"kind":"Name","value":"isUIEditable"}},{"kind":"Field","name":{"kind":"Name","value":"isUICreatable"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"labelIdentifierFieldMetadataId"}},{"kind":"Field","name":{"kind":"Name","value":"imageIdentifierFieldMetadataId"}},{"kind":"Field","name":{"kind":"Name","value":"applicationId"}},{"kind":"Field","name":{"kind":"Name","value":"shortcut"}},{"kind":"Field","name":{"kind":"Name","value":"isLabelSyncedWithName"}},{"kind":"Field","name":{"kind":"Name","value":"isSearchable"}},{"kind":"Field","name":{"kind":"Name","value":"duplicateCriteria"}},{"kind":"Field","name":{"kind":"Name","value":"indexMetadataList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"indexWhereClause"}},{"kind":"Field","name":{"kind":"Name","value":"indexType"}},{"kind":"Field","name":{"kind":"Name","value":"isUnique"}},{"kind":"Field","name":{"kind":"Name","value":"isCustom"}},{"kind":"Field","name":{"kind":"Name","value":"indexFieldMetadataList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fieldMetadataId"}},{"kind":"Field","name":{"kind":"Name","value":"subFieldName"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"order"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"fieldsList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"universalIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"isSystem"}},{"kind":"Field","name":{"kind":"Name","value":"isUIEditable"}},{"kind":"Field","name":{"kind":"Name","value":"isNullable"}},{"kind":"Field","name":{"kind":"Name","value":"isUnique"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"defaultValue"}},{"kind":"Field","name":{"kind":"Name","value":"options"}},{"kind":"Field","name":{"kind":"Name","value":"settings"}},{"kind":"Field","name":{"kind":"Name","value":"isLabelSyncedWithName"}},{"kind":"Field","name":{"kind":"Name","value":"morphId"}},{"kind":"Field","name":{"kind":"Name","value":"applicationId"}},{"kind":"Field","name":{"kind":"Name","value":"relation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"sourceObjectMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"nameSingular"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}}]}},{"kind":"Field","name":{"kind":"Name","value":"targetObjectMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"nameSingular"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sourceFieldMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"targetFieldMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"morphRelations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"sourceObjectMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"nameSingular"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}}]}},{"kind":"Field","name":{"kind":"Name","value":"targetObjectMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"nameSingular"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sourceFieldMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"targetFieldMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ObjectMetadataFieldsFragment, unknown>;
@@ -8709,6 +9613,9 @@ export const PreviewMessageCampaignAudienceDocument = {"kind":"Document","defini
 export const UnsubscribeTopicsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"UnsubscribeTopics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"unsubscribeTopics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"visibility"}}]}}]}}]} as unknown as DocumentNode<UnsubscribeTopicsQuery, UnsubscribeTopicsQueryVariables>;
 export const SendEmailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SendEmail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SendEmailInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sendEmail"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}},{"kind":"Field","name":{"kind":"Name","value":"error"}}]}}]}}]} as unknown as DocumentNode<SendEmailMutation, SendEmailMutationVariables>;
 export const SendMessageCampaignDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SendMessageCampaign"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SendMessageCampaignInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sendMessageCampaign"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"campaignId"}},{"kind":"Field","name":{"kind":"Name","value":"queuedCount"}},{"kind":"Field","name":{"kind":"Name","value":"skipped"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"noEmail"}},{"kind":"Field","name":{"kind":"Name","value":"deduped"}},{"kind":"Field","name":{"kind":"Name","value":"overCap"}}]}}]}}]}}]} as unknown as DocumentNode<SendMessageCampaignMutation, SendMessageCampaignMutationVariables>;
+export const SendWhatsappMessageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SendWhatsappMessage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"SendWhatsappMessageInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sendWhatsappMessage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}},{"kind":"Field","name":{"kind":"Name","value":"error"}}]}}]}}]} as unknown as DocumentNode<SendWhatsappMessageMutation, SendWhatsappMessageMutationVariables>;
+export const GetWhatsappConversationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetWhatsappConversations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getWhatsappConversations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"messageThreadId"}},{"kind":"Field","name":{"kind":"Name","value":"contactPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"contactDisplayName"}},{"kind":"Field","name":{"kind":"Name","value":"personId"}},{"kind":"Field","name":{"kind":"Name","value":"lastMessageBody"}},{"kind":"Field","name":{"kind":"Name","value":"lastMessageReceivedAt"}}]}}]}}]} as unknown as DocumentNode<GetWhatsappConversationsQuery, GetWhatsappConversationsQueryVariables>;
+export const GetWhatsappThreadIdForPersonDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetWhatsappThreadIdForPerson"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"personId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getWhatsappThreadIdForPerson"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"personId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"personId"}}}]}]}}]} as unknown as DocumentNode<GetWhatsappThreadIdForPersonQuery, GetWhatsappThreadIdForPersonQueryVariables>;
 export const ActivateSkillDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ActivateSkill"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"activateSkill"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SkillFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SkillFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Skill"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"isCustom"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<ActivateSkillMutation, ActivateSkillMutationVariables>;
 export const ArchiveChatThreadDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ArchiveChatThread"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"archiveChatThread"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"deletedAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<ArchiveChatThreadMutation, ArchiveChatThreadMutationVariables>;
 export const AssignRoleToAgentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AssignRoleToAgent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"agentId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"assignRoleToAgent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"agentId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"agentId"}}},{"kind":"Argument","name":{"kind":"Name","value":"roleId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}}}]}]}}]} as unknown as DocumentNode<AssignRoleToAgentMutation, AssignRoleToAgentMutationVariables>;
@@ -8828,20 +9735,49 @@ export const FindAllRecordPageLayoutsDocument = {"kind":"Document","definitions"
 export const BarChartDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BarChartData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BarChartDataInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"barChartData"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"indexBy"}},{"kind":"Field","name":{"kind":"Name","value":"keys"}},{"kind":"Field","name":{"kind":"Name","value":"series"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"xAxisLabel"}},{"kind":"Field","name":{"kind":"Name","value":"yAxisLabel"}},{"kind":"Field","name":{"kind":"Name","value":"showLegend"}},{"kind":"Field","name":{"kind":"Name","value":"showDataLabels"}},{"kind":"Field","name":{"kind":"Name","value":"layout"}},{"kind":"Field","name":{"kind":"Name","value":"groupMode"}},{"kind":"Field","name":{"kind":"Name","value":"hasTooManyGroups"}},{"kind":"Field","name":{"kind":"Name","value":"formattedToRawLookup"}}]}}]}}]} as unknown as DocumentNode<BarChartDataQuery, BarChartDataQueryVariables>;
 export const LineChartDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LineChartData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"LineChartDataInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lineChartData"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"series"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"x"}},{"kind":"Field","name":{"kind":"Name","value":"y"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"xAxisLabel"}},{"kind":"Field","name":{"kind":"Name","value":"yAxisLabel"}},{"kind":"Field","name":{"kind":"Name","value":"showLegend"}},{"kind":"Field","name":{"kind":"Name","value":"showDataLabels"}},{"kind":"Field","name":{"kind":"Name","value":"hasTooManyGroups"}},{"kind":"Field","name":{"kind":"Name","value":"formattedToRawLookup"}}]}}]}}]} as unknown as DocumentNode<LineChartDataQuery, LineChartDataQueryVariables>;
 export const PieChartDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PieChartData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"PieChartDataInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pieChartData"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"Field","name":{"kind":"Name","value":"showLegend"}},{"kind":"Field","name":{"kind":"Name","value":"showDataLabels"}},{"kind":"Field","name":{"kind":"Name","value":"showCenterMetric"}},{"kind":"Field","name":{"kind":"Name","value":"hasTooManyGroups"}},{"kind":"Field","name":{"kind":"Name","value":"formattedToRawLookup"}}]}}]}}]} as unknown as DocumentNode<PieChartDataQuery, PieChartDataQueryVariables>;
+export const ConnectInstagramAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ConnectInstagramAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"code"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"connectInstagramAccount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"code"},"value":{"kind":"Variable","name":{"kind":"Name","value":"code"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}}]} as unknown as DocumentNode<ConnectInstagramAccountMutation, ConnectInstagramAccountMutationVariables>;
+export const ConnectWhatsappNumberDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ConnectWhatsappNumber"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"code"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"wabaId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"phoneNumberId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"connectWhatsappNumber"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"code"},"value":{"kind":"Variable","name":{"kind":"Name","value":"code"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"wabaId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"wabaId"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"phoneNumberId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"phoneNumberId"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"whatsappChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"displayPhoneNumber"}}]}}]}}]} as unknown as DocumentNode<ConnectWhatsappNumberMutation, ConnectWhatsappNumberMutationVariables>;
 export const CreateEmailGroupChannelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateEmailGroupChannel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateEmailGroupChannelInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createEmailGroupChannel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"messageChannel"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"handle"}},{"kind":"Field","name":{"kind":"Name","value":"visibility"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"isSyncEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"excludeGroupEmails"}},{"kind":"Field","name":{"kind":"Name","value":"contactAutoCreationPolicy"}}]}},{"kind":"Field","name":{"kind":"Name","value":"forwardingAddress"}}]}}]}}]} as unknown as DocumentNode<CreateEmailGroupChannelMutation, CreateEmailGroupChannelMutationVariables>;
 export const DeleteConnectedAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteConnectedAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteConnectedAccount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<DeleteConnectedAccountMutation, DeleteConnectedAccountMutationVariables>;
 export const DeleteEmailGroupChannelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteEmailGroupChannel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteEmailGroupChannel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<DeleteEmailGroupChannelMutation, DeleteEmailGroupChannelMutationVariables>;
+export const CreateInstagramAutomationRuleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateInstagramAutomationRule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateInstagramAutomationRuleInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createInstagramAutomationRule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaId"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaCaption"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaThumbnailUrl"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaPermalink"}},{"kind":"Field","name":{"kind":"Name","value":"keywords"}},{"kind":"Field","name":{"kind":"Name","value":"replyMessage"}},{"kind":"Field","name":{"kind":"Name","value":"publicReplyVariations"}},{"kind":"Field","name":{"kind":"Name","value":"requiresFollowToReceiveDm"}},{"kind":"Field","name":{"kind":"Name","value":"followUpMessage"}},{"kind":"Field","name":{"kind":"Name","value":"followUpDelayMinutes"}},{"kind":"Field","name":{"kind":"Name","value":"attachToNextReel"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<CreateInstagramAutomationRuleMutation, CreateInstagramAutomationRuleMutationVariables>;
+export const UpdateInstagramAutomationRuleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateInstagramAutomationRule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateInstagramAutomationRuleInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateInstagramAutomationRule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaId"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaCaption"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaThumbnailUrl"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaPermalink"}},{"kind":"Field","name":{"kind":"Name","value":"keywords"}},{"kind":"Field","name":{"kind":"Name","value":"replyMessage"}},{"kind":"Field","name":{"kind":"Name","value":"publicReplyVariations"}},{"kind":"Field","name":{"kind":"Name","value":"requiresFollowToReceiveDm"}},{"kind":"Field","name":{"kind":"Name","value":"followUpMessage"}},{"kind":"Field","name":{"kind":"Name","value":"followUpDelayMinutes"}},{"kind":"Field","name":{"kind":"Name","value":"attachToNextReel"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<UpdateInstagramAutomationRuleMutation, UpdateInstagramAutomationRuleMutationVariables>;
+export const DeleteInstagramAutomationRuleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteInstagramAutomationRule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteInstagramAutomationRule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<DeleteInstagramAutomationRuleMutation, DeleteInstagramAutomationRuleMutationVariables>;
+export const DuplicateInstagramAutomationRuleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DuplicateInstagramAutomationRule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"duplicateInstagramAutomationRule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaId"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaCaption"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaThumbnailUrl"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaPermalink"}},{"kind":"Field","name":{"kind":"Name","value":"keywords"}},{"kind":"Field","name":{"kind":"Name","value":"replyMessage"}},{"kind":"Field","name":{"kind":"Name","value":"publicReplyVariations"}},{"kind":"Field","name":{"kind":"Name","value":"requiresFollowToReceiveDm"}},{"kind":"Field","name":{"kind":"Name","value":"followUpMessage"}},{"kind":"Field","name":{"kind":"Name","value":"followUpDelayMinutes"}},{"kind":"Field","name":{"kind":"Name","value":"attachToNextReel"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<DuplicateInstagramAutomationRuleMutation, DuplicateInstagramAutomationRuleMutationVariables>;
+export const ImportInstagramAutomationRulesFromCsvDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ImportInstagramAutomationRulesFromCsv"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"csvContent"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"importInstagramAutomationRulesFromCsv"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}},{"kind":"Argument","name":{"kind":"Name","value":"csvContent"},"value":{"kind":"Variable","name":{"kind":"Name","value":"csvContent"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaId"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaCaption"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaThumbnailUrl"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaPermalink"}},{"kind":"Field","name":{"kind":"Name","value":"keywords"}},{"kind":"Field","name":{"kind":"Name","value":"replyMessage"}},{"kind":"Field","name":{"kind":"Name","value":"publicReplyVariations"}},{"kind":"Field","name":{"kind":"Name","value":"requiresFollowToReceiveDm"}},{"kind":"Field","name":{"kind":"Name","value":"followUpMessage"}},{"kind":"Field","name":{"kind":"Name","value":"followUpDelayMinutes"}},{"kind":"Field","name":{"kind":"Name","value":"attachToNextReel"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<ImportInstagramAutomationRulesFromCsvMutation, ImportInstagramAutomationRulesFromCsvMutationVariables>;
+export const EnableInstagramPublicReportDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"EnableInstagramPublicReport"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"enableInstagramPublicReport"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"shareSlug"}},{"kind":"Field","name":{"kind":"Name","value":"isEnabled"}}]}}]}}]} as unknown as DocumentNode<EnableInstagramPublicReportMutation, EnableInstagramPublicReportMutationVariables>;
+export const DisableInstagramPublicReportDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DisableInstagramPublicReport"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"disableInstagramPublicReport"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"shareSlug"}},{"kind":"Field","name":{"kind":"Name","value":"isEnabled"}}]}}]}}]} as unknown as DocumentNode<DisableInstagramPublicReportMutation, DisableInstagramPublicReportMutationVariables>;
 export const SaveImapSmtpCaldavAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SaveImapSmtpCaldavAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"handle"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"connectionParameters"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"EmailAccountConnectionParameters"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"saveImapSmtpCaldavAccount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"handle"},"value":{"kind":"Variable","name":{"kind":"Name","value":"handle"}}},{"kind":"Argument","name":{"kind":"Name","value":"connectionParameters"},"value":{"kind":"Variable","name":{"kind":"Name","value":"connectionParameters"}}},{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}},{"kind":"Field","name":{"kind":"Name","value":"connectedAccountId"}}]}}]}}]} as unknown as DocumentNode<SaveImapSmtpCaldavAccountMutation, SaveImapSmtpCaldavAccountMutationVariables>;
 export const StartChannelSyncDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"StartChannelSync"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"connectedAccountId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"startChannelSync"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"connectedAccountId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"connectedAccountId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}}]}}]}}]} as unknown as DocumentNode<StartChannelSyncMutation, StartChannelSyncMutationVariables>;
 export const UpdateCalendarChannelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateCalendarChannel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateCalendarChannelInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateCalendarChannel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"visibility"}},{"kind":"Field","name":{"kind":"Name","value":"isContactAutoCreationEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"contactAutoCreationPolicy"}}]}}]}}]} as unknown as DocumentNode<UpdateCalendarChannelMutation, UpdateCalendarChannelMutationVariables>;
 export const UpdateMessageChannelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateMessageChannel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateMessageChannelInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateMessageChannel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"visibility"}},{"kind":"Field","name":{"kind":"Name","value":"contactAutoCreationPolicy"}},{"kind":"Field","name":{"kind":"Name","value":"excludeNonProfessionalEmails"}},{"kind":"Field","name":{"kind":"Name","value":"excludeGroupEmails"}},{"kind":"Field","name":{"kind":"Name","value":"messageFolderImportPolicy"}}]}}]}}]} as unknown as DocumentNode<UpdateMessageChannelMutation, UpdateMessageChannelMutationVariables>;
 export const UpdateMessageFolderDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateMessageFolder"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateMessageFolderInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateMessageFolder"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isSynced"}}]}}]}}]} as unknown as DocumentNode<UpdateMessageFolderMutation, UpdateMessageFolderMutationVariables>;
 export const UpdateMessageFoldersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateMessageFolders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateMessageFoldersInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateMessageFolders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isSynced"}},{"kind":"Field","name":{"kind":"Name","value":"pendingSyncAction"}}]}}]}}]} as unknown as DocumentNode<UpdateMessageFoldersMutation, UpdateMessageFoldersMutationVariables>;
+export const CreateVoiceAgentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateVoiceAgent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateVoiceAgentInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createVoiceAgent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"voice"}},{"kind":"Field","name":{"kind":"Name","value":"systemPrompt"}},{"kind":"Field","name":{"kind":"Name","value":"greetingMessage"}},{"kind":"Field","name":{"kind":"Name","value":"forbiddenPhrases"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationCriteria"}},{"kind":"Field","name":{"kind":"Name","value":"handoffInstructions"}},{"kind":"Field","name":{"kind":"Name","value":"transferPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<CreateVoiceAgentMutation, CreateVoiceAgentMutationVariables>;
+export const UpdateVoiceAgentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateVoiceAgent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateVoiceAgentInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateVoiceAgent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"voice"}},{"kind":"Field","name":{"kind":"Name","value":"systemPrompt"}},{"kind":"Field","name":{"kind":"Name","value":"greetingMessage"}},{"kind":"Field","name":{"kind":"Name","value":"forbiddenPhrases"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationCriteria"}},{"kind":"Field","name":{"kind":"Name","value":"handoffInstructions"}},{"kind":"Field","name":{"kind":"Name","value":"transferPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<UpdateVoiceAgentMutation, UpdateVoiceAgentMutationVariables>;
+export const DeleteVoiceAgentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteVoiceAgent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteVoiceAgent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<DeleteVoiceAgentMutation, DeleteVoiceAgentMutationVariables>;
+export const SetWhatsappAgentConversationAiEnabledDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"SetWhatsappAgentConversationAiEnabled"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isAiEnabled"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"setWhatsappAgentConversationAiEnabled"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"isAiEnabled"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isAiEnabled"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"whatsappAgentId"}},{"kind":"Field","name":{"kind":"Name","value":"contactPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"isAiEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationSummary"}},{"kind":"Field","name":{"kind":"Name","value":"lastMessageAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<SetWhatsappAgentConversationAiEnabledMutation, SetWhatsappAgentConversationAiEnabledMutationVariables>;
+export const CreateWhatsappAgentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateWhatsappAgent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateWhatsappAgentInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createWhatsappAgent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"whatsappChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"systemPrompt"}},{"kind":"Field","name":{"kind":"Name","value":"greetingMessage"}},{"kind":"Field","name":{"kind":"Name","value":"forbiddenPhrases"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationCriteria"}},{"kind":"Field","name":{"kind":"Name","value":"knowledgeBase"}},{"kind":"Field","name":{"kind":"Name","value":"handoffInstructions"}},{"kind":"Field","name":{"kind":"Name","value":"model"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<CreateWhatsappAgentMutation, CreateWhatsappAgentMutationVariables>;
+export const UpdateWhatsappAgentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateWhatsappAgent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateWhatsappAgentInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateWhatsappAgent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"whatsappChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"systemPrompt"}},{"kind":"Field","name":{"kind":"Name","value":"greetingMessage"}},{"kind":"Field","name":{"kind":"Name","value":"forbiddenPhrases"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationCriteria"}},{"kind":"Field","name":{"kind":"Name","value":"knowledgeBase"}},{"kind":"Field","name":{"kind":"Name","value":"handoffInstructions"}},{"kind":"Field","name":{"kind":"Name","value":"model"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<UpdateWhatsappAgentMutation, UpdateWhatsappAgentMutationVariables>;
+export const DeleteWhatsappAgentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteWhatsappAgent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteWhatsappAgent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<DeleteWhatsappAgentMutation, DeleteWhatsappAgentMutationVariables>;
 export const GetConnectedImapSmtpCaldavAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetConnectedImapSmtpCaldavAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getConnectedImapSmtpCaldavAccount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"handle"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"userWorkspaceId"}},{"kind":"Field","name":{"kind":"Name","value":"connectionParameters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"IMAP"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"host"}},{"kind":"Field","name":{"kind":"Name","value":"port"}},{"kind":"Field","name":{"kind":"Name","value":"connectionSecurity"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}},{"kind":"Field","name":{"kind":"Name","value":"SMTP"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"host"}},{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"port"}},{"kind":"Field","name":{"kind":"Name","value":"connectionSecurity"}}]}},{"kind":"Field","name":{"kind":"Name","value":"CALDAV"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"host"}},{"kind":"Field","name":{"kind":"Name","value":"port"}},{"kind":"Field","name":{"kind":"Name","value":"connectionSecurity"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetConnectedImapSmtpCaldavAccountQuery, GetConnectedImapSmtpCaldavAccountQueryVariables>;
+export const InstagramAutomationRulesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InstagramAutomationRules"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"instagramAutomationRules"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaId"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaCaption"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaThumbnailUrl"}},{"kind":"Field","name":{"kind":"Name","value":"igMediaPermalink"}},{"kind":"Field","name":{"kind":"Name","value":"keywords"}},{"kind":"Field","name":{"kind":"Name","value":"replyMessage"}},{"kind":"Field","name":{"kind":"Name","value":"publicReplyVariations"}},{"kind":"Field","name":{"kind":"Name","value":"requiresFollowToReceiveDm"}},{"kind":"Field","name":{"kind":"Name","value":"followUpMessage"}},{"kind":"Field","name":{"kind":"Name","value":"followUpDelayMinutes"}},{"kind":"Field","name":{"kind":"Name","value":"attachToNextReel"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<InstagramAutomationRulesQuery, InstagramAutomationRulesQueryVariables>;
+export const InstagramCampaignTemplatesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InstagramCampaignTemplates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"instagramCampaignTemplates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"suggestedKeywords"}},{"kind":"Field","name":{"kind":"Name","value":"suggestedReplyMessage"}},{"kind":"Field","name":{"kind":"Name","value":"suggestedPublicReplyVariations"}},{"kind":"Field","name":{"kind":"Name","value":"suggestedFollowUpMessage"}}]}}]}}]} as unknown as DocumentNode<InstagramCampaignTemplatesQuery, InstagramCampaignTemplatesQueryVariables>;
+export const InstagramDiagnosticsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InstagramDiagnostics"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"instagramDiagnostics"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lastWebhookReceivedAt"}},{"kind":"Field","name":{"kind":"Name","value":"lastReconciliationAt"}},{"kind":"Field","name":{"kind":"Name","value":"tokenStatus"}},{"kind":"Field","name":{"kind":"Name","value":"pendingJobsCount"}},{"kind":"Field","name":{"kind":"Name","value":"failedJobsCount"}}]}}]}}]} as unknown as DocumentNode<InstagramDiagnosticsQuery, InstagramDiagnosticsQueryVariables>;
+export const InstagramFollowerHistoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InstagramFollowerHistory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"instagramFollowerHistory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"followerCount"}},{"kind":"Field","name":{"kind":"Name","value":"capturedAt"}}]}}]}}]} as unknown as DocumentNode<InstagramFollowerHistoryQuery, InstagramFollowerHistoryQueryVariables>;
+export const InstagramPublicReportDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InstagramPublicReport"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"instagramPublicReport"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"instagramChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"shareSlug"}},{"kind":"Field","name":{"kind":"Name","value":"isEnabled"}}]}}]}}]} as unknown as DocumentNode<InstagramPublicReportQuery, InstagramPublicReportQueryVariables>;
+export const InstagramRecentMediaDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InstagramRecentMedia"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"instagramRecentMedia"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"instagramChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"instagramChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"caption"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnailUrl"}},{"kind":"Field","name":{"kind":"Name","value":"permalink"}}]}}]}}]} as unknown as DocumentNode<InstagramRecentMediaQuery, InstagramRecentMediaQueryVariables>;
 export const MyCalendarChannelsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyCalendarChannels"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"connectedAccountId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myCalendarChannels"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"connectedAccountId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"connectedAccountId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"handle"}},{"kind":"Field","name":{"kind":"Name","value":"visibility"}},{"kind":"Field","name":{"kind":"Name","value":"syncStatus"}},{"kind":"Field","name":{"kind":"Name","value":"syncStage"}},{"kind":"Field","name":{"kind":"Name","value":"syncStageStartedAt"}},{"kind":"Field","name":{"kind":"Name","value":"isContactAutoCreationEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"contactAutoCreationPolicy"}},{"kind":"Field","name":{"kind":"Name","value":"isSyncEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"connectedAccountId"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyCalendarChannelsQuery, MyCalendarChannelsQueryVariables>;
 export const MyConnectedAccountsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyConnectedAccounts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myConnectedAccounts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"handle"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"authFailedAt"}},{"kind":"Field","name":{"kind":"Name","value":"archivedAt"}},{"kind":"Field","name":{"kind":"Name","value":"scopes"}},{"kind":"Field","name":{"kind":"Name","value":"handleAliases"}},{"kind":"Field","name":{"kind":"Name","value":"lastSignedInAt"}},{"kind":"Field","name":{"kind":"Name","value":"userWorkspaceId"}},{"kind":"Field","name":{"kind":"Name","value":"connectionProviderId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"visibility"}},{"kind":"Field","name":{"kind":"Name","value":"lastCredentialsRefreshedAt"}},{"kind":"Field","name":{"kind":"Name","value":"connectionParameters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"IMAP"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"host"}},{"kind":"Field","name":{"kind":"Name","value":"port"}},{"kind":"Field","name":{"kind":"Name","value":"connectionSecurity"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}},{"kind":"Field","name":{"kind":"Name","value":"SMTP"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"host"}},{"kind":"Field","name":{"kind":"Name","value":"port"}},{"kind":"Field","name":{"kind":"Name","value":"connectionSecurity"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}},{"kind":"Field","name":{"kind":"Name","value":"CALDAV"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"host"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyConnectedAccountsQuery, MyConnectedAccountsQueryVariables>;
+export const MyInstagramChannelsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyInstagramChannels"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myInstagramChannels"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"connectedAccountId"}},{"kind":"Field","name":{"kind":"Name","value":"igBusinessAccountId"}},{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"profilePictureUrl"}},{"kind":"Field","name":{"kind":"Name","value":"isSyncEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"syncStatus"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyInstagramChannelsQuery, MyInstagramChannelsQueryVariables>;
 export const MyMessageChannelsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyMessageChannels"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"connectedAccountId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myMessageChannels"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"connectedAccountId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"connectedAccountId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"handle"}},{"kind":"Field","name":{"kind":"Name","value":"visibility"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"isContactAutoCreationEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"contactAutoCreationPolicy"}},{"kind":"Field","name":{"kind":"Name","value":"messageFolderImportPolicy"}},{"kind":"Field","name":{"kind":"Name","value":"excludeNonProfessionalEmails"}},{"kind":"Field","name":{"kind":"Name","value":"excludeGroupEmails"}},{"kind":"Field","name":{"kind":"Name","value":"isSyncEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"syncStatus"}},{"kind":"Field","name":{"kind":"Name","value":"syncStage"}},{"kind":"Field","name":{"kind":"Name","value":"syncStageStartedAt"}},{"kind":"Field","name":{"kind":"Name","value":"connectedAccountId"}},{"kind":"Field","name":{"kind":"Name","value":"connectedAccount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"handle"}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyMessageChannelsQuery, MyMessageChannelsQueryVariables>;
 export const MyMessageFoldersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyMessageFolders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"messageChannelId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myMessageFolders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"messageChannelId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"messageChannelId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isSynced"}},{"kind":"Field","name":{"kind":"Name","value":"isSentFolder"}},{"kind":"Field","name":{"kind":"Name","value":"parentFolderId"}},{"kind":"Field","name":{"kind":"Name","value":"externalId"}},{"kind":"Field","name":{"kind":"Name","value":"pendingSyncAction"}},{"kind":"Field","name":{"kind":"Name","value":"messageChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyMessageFoldersQuery, MyMessageFoldersQueryVariables>;
+export const MyVoiceAgentsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyVoiceAgents"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myVoiceAgents"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"voice"}},{"kind":"Field","name":{"kind":"Name","value":"systemPrompt"}},{"kind":"Field","name":{"kind":"Name","value":"greetingMessage"}},{"kind":"Field","name":{"kind":"Name","value":"forbiddenPhrases"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationCriteria"}},{"kind":"Field","name":{"kind":"Name","value":"handoffInstructions"}},{"kind":"Field","name":{"kind":"Name","value":"transferPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyVoiceAgentsQuery, MyVoiceAgentsQueryVariables>;
+export const MyWhatsappAgentsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyWhatsappAgents"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myWhatsappAgents"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"whatsappChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"systemPrompt"}},{"kind":"Field","name":{"kind":"Name","value":"greetingMessage"}},{"kind":"Field","name":{"kind":"Name","value":"forbiddenPhrases"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationCriteria"}},{"kind":"Field","name":{"kind":"Name","value":"knowledgeBase"}},{"kind":"Field","name":{"kind":"Name","value":"handoffInstructions"}},{"kind":"Field","name":{"kind":"Name","value":"model"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyWhatsappAgentsQuery, MyWhatsappAgentsQueryVariables>;
+export const MyWhatsappChannelsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyWhatsappChannels"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myWhatsappChannels"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"connectedAccountId"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumberId"}},{"kind":"Field","name":{"kind":"Name","value":"wabaId"}},{"kind":"Field","name":{"kind":"Name","value":"displayPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"isSyncEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"syncStatus"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyWhatsappChannelsQuery, MyWhatsappChannelsQueryVariables>;
+export const MyWhatsappTemplatesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyWhatsappTemplates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"myWhatsappTemplates"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"whatsappChannelId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"language"}},{"kind":"Field","name":{"kind":"Name","value":"headerText"}},{"kind":"Field","name":{"kind":"Name","value":"bodyText"}},{"kind":"Field","name":{"kind":"Name","value":"footerText"}},{"kind":"Field","name":{"kind":"Name","value":"buttons"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"metaTemplateId"}},{"kind":"Field","name":{"kind":"Name","value":"metaTemplateStatus"}},{"kind":"Field","name":{"kind":"Name","value":"rejectionReason"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<MyWhatsappTemplatesQuery, MyWhatsappTemplatesQueryVariables>;
+export const VoiceCallsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"VoiceCalls"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"voiceAgentId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"voiceCalls"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"voiceAgentId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"voiceAgentId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"voiceAgentId"}},{"kind":"Field","name":{"kind":"Name","value":"twilioCallSid"}},{"kind":"Field","name":{"kind":"Name","value":"direction"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"fromNumber"}},{"kind":"Field","name":{"kind":"Name","value":"toNumber"}},{"kind":"Field","name":{"kind":"Name","value":"startedAt"}},{"kind":"Field","name":{"kind":"Name","value":"endedAt"}},{"kind":"Field","name":{"kind":"Name","value":"durationSeconds"}},{"kind":"Field","name":{"kind":"Name","value":"transcript"}},{"kind":"Field","name":{"kind":"Name","value":"summary"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<VoiceCallsQuery, VoiceCallsQueryVariables>;
+export const WhatsappAgentConversationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"WhatsappAgentConversations"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"whatsappAgentId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"whatsappAgentConversations"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"whatsappAgentId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"whatsappAgentId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"whatsappAgentId"}},{"kind":"Field","name":{"kind":"Name","value":"contactPhoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"isAiEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"qualificationSummary"}},{"kind":"Field","name":{"kind":"Name","value":"lastMessageAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<WhatsappAgentConversationsQuery, WhatsappAgentConversationsQueryVariables>;
 export const DeleteApplicationRegistrationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteApplicationRegistration"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteApplicationRegistration"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}]}}]} as unknown as DocumentNode<DeleteApplicationRegistrationMutation, DeleteApplicationRegistrationMutationVariables>;
 export const RotateApplicationRegistrationClientSecretDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RotateApplicationRegistrationClientSecret"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"rotateApplicationRegistrationClientSecret"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"clientSecret"}}]}}]}}]} as unknown as DocumentNode<RotateApplicationRegistrationClientSecretMutation, RotateApplicationRegistrationClientSecretMutationVariables>;
 export const TransferApplicationRegistrationOwnershipDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"TransferApplicationRegistrationOwnership"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"applicationRegistrationId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"targetWorkspaceSubdomain"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"transferApplicationRegistrationOwnership"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"applicationRegistrationId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"applicationRegistrationId"}}},{"kind":"Argument","name":{"kind":"Name","value":"targetWorkspaceSubdomain"},"value":{"kind":"Variable","name":{"kind":"Name","value":"targetWorkspaceSubdomain"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<TransferApplicationRegistrationOwnershipMutation, TransferApplicationRegistrationOwnershipMutationVariables>;
@@ -8982,3 +9918,4 @@ export const CheckCustomDomainValidRecordsDocument = {"kind":"Document","definit
 export const GetAiSystemPromptPreviewDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAiSystemPromptPreview"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getAiSystemPromptPreview"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"estimatedTokenCount"}}]}},{"kind":"Field","name":{"kind":"Name","value":"estimatedTokenCount"}}]}}]}}]} as unknown as DocumentNode<GetAiSystemPromptPreviewQuery, GetAiSystemPromptPreviewQueryVariables>;
 export const GetPublicWorkspaceDataByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPublicWorkspaceDataById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getPublicWorkspaceDataById"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}}]}}]}}]} as unknown as DocumentNode<GetPublicWorkspaceDataByIdQuery, GetPublicWorkspaceDataByIdQueryVariables>;
 export const GetWorkspaceFromInviteHashDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetWorkspaceFromInviteHash"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"inviteHash"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"findWorkspaceFromInviteHash"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"inviteHash"},"value":{"kind":"Variable","name":{"kind":"Name","value":"inviteHash"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"allowImpersonation"}}]}}]}}]} as unknown as DocumentNode<GetWorkspaceFromInviteHashQuery, GetWorkspaceFromInviteHashQueryVariables>;
+export const WorkspacePlanModulesAndUsageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"WorkspacePlanModulesAndUsage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"currentWorkspace"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"workspaceModules"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"module"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"hasAccess"}},{"kind":"Field","name":{"kind":"Name","value":"implemented"}}]}},{"kind":"Field","name":{"kind":"Name","value":"workspacePlanUsage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"used"}},{"kind":"Field","name":{"kind":"Name","value":"limit"}}]}}]}}]}}]} as unknown as DocumentNode<WorkspacePlanModulesAndUsageQuery, WorkspacePlanModulesAndUsageQueryVariables>;

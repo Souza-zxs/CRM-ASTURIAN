@@ -960,6 +960,9 @@ type Workspace {
   routerModel: String!
   workspaceCustomApplication: Application
   featureFlags: [FeatureFlag!]
+  planTier: WorkspacePlanTier!
+  workspaceModules: [WorkspaceModuleEntitlement!]!
+  workspacePlanUsage: [PlanLimitUsage!]!
   billingSubscriptions: [BillingSubscription!]!
   installedApplications: [Application!]!
   currentBillingSubscription: BillingSubscription
@@ -977,6 +980,12 @@ enum WorkspaceActivationStatus {
   ACTIVE
   INACTIVE
   SUSPENDED
+}
+
+"""The plan tier gating a workspace feature access"""
+enum WorkspacePlanTier {
+  BASIC
+  PRO
 }
 
 type AppToken {
@@ -1030,6 +1039,133 @@ The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](
 """
 scalar JSONObject
 
+type BillingProductMetadata {
+  planKey: BillingPlanKey!
+  priceUsageBased: BillingUsageType!
+  productKey: BillingProductKey!
+}
+
+"""The different billing plans available"""
+enum BillingPlanKey {
+  PRO
+  ENTERPRISE
+}
+
+enum BillingUsageType {
+  METERED
+  LICENSED
+}
+
+"""The different billing products available"""
+enum BillingProductKey {
+  BASE_PRODUCT
+  RESOURCE_CREDIT
+  MODULE_WHATSAPP
+  MODULE_INSTAGRAM
+  MODULE_AI_AGENT
+  MODULE_VOICE_AGENT
+  MODULE_WORKFLOWS_ADVANCED
+  MODULE_CUSTOM_OBJECTS
+  MODULE_CUSTOM_FIELDS
+  MODULE_ROW_LEVEL_PERMISSIONS
+  MODULE_API_ACCESS
+  MODULE_MCP
+}
+
+type BillingSubscriptionSchedulePhaseItem {
+  price: String!
+  quantity: Float
+}
+
+type BillingSubscriptionSchedulePhase {
+  start_date: Float!
+  end_date: Float!
+  items: [BillingSubscriptionSchedulePhaseItem!]!
+}
+
+type BillingPriceLicensed {
+  recurringInterval: SubscriptionInterval!
+  unitAmount: Float!
+  stripePriceId: String!
+  priceUsageType: BillingUsageType!
+  creditAmount: Float
+}
+
+enum SubscriptionInterval {
+  Month
+  Year
+}
+
+type BillingPriceTier {
+  upTo: Float
+  flatAmount: Float
+  unitAmount: Float
+}
+
+type BillingPriceMetered {
+  tiers: [BillingPriceTier!]!
+  recurringInterval: SubscriptionInterval!
+  stripePriceId: String!
+  priceUsageType: BillingUsageType!
+}
+
+type BillingProduct {
+  name: String!
+  description: String!
+  images: [String!]
+  metadata: BillingProductMetadata!
+}
+
+type BillingLicensedProduct implements BillingProductDTO {
+  name: String!
+  description: String!
+  images: [String!]
+  metadata: BillingProductMetadata!
+  prices: [BillingPriceLicensed!]
+}
+
+type BillingMeteredProduct implements BillingProductDTO {
+  name: String!
+  description: String!
+  images: [String!]
+  metadata: BillingProductMetadata!
+  prices: [BillingPriceMetered!]
+}
+
+type BillingSubscriptionItem {
+  id: UUID!
+  hasReachedCurrentPeriodCap: Boolean!
+  quantity: Float
+  stripePriceId: String!
+  billingProduct: BillingProductDTO!
+}
+
+type BillingCustomer {
+  id: UUID!
+  hasPaymentMethod: Boolean
+}
+
+type BillingSubscription {
+  id: UUID!
+  status: SubscriptionStatus!
+  interval: SubscriptionInterval
+  billingSubscriptionItems: [BillingSubscriptionItem!]
+  currentPeriodEnd: DateTime
+  metadata: JSON!
+  phases: [BillingSubscriptionSchedulePhase!]!
+}
+
+enum SubscriptionStatus {
+  Active
+  Canceled
+  Incomplete
+  IncompleteExpired
+  PastDue
+  Paused
+  Trialing
+  Unpaid
+}
+
 type RatioAggregateConfig {
   fieldMetadataId: UUID!
   optionValue: String!
@@ -1078,6 +1214,7 @@ enum WidgetType {
   NOTES
   FILES
   EMAILS
+  WHATSAPP
   CALENDAR
   FIELD_RICH_TEXT
   WORKFLOW
@@ -1113,7 +1250,7 @@ type PageLayoutWidgetCanvasPosition {
   layoutMode: PageLayoutTabLayoutMode!
 }
 
-union WidgetConfiguration = AggregateChartConfiguration | StandaloneRichTextConfiguration | PieChartConfiguration | LineChartConfiguration | IframeConfiguration | BarChartConfiguration | CalendarConfiguration | FrontComponentConfiguration | EmailsConfiguration | EmailThreadConfiguration | FieldConfiguration | FieldRichTextConfiguration | FieldsConfiguration | FilesConfiguration | NotesConfiguration | TasksConfiguration | TimelineConfiguration | ViewConfiguration | RecordTableConfiguration | WorkflowConfiguration | WorkflowRunConfiguration | WorkflowVersionConfiguration
+union WidgetConfiguration = AggregateChartConfiguration | StandaloneRichTextConfiguration | PieChartConfiguration | LineChartConfiguration | IframeConfiguration | BarChartConfiguration | CalendarConfiguration | FrontComponentConfiguration | EmailsConfiguration | WhatsappConfiguration | EmailThreadConfiguration | FieldConfiguration | FieldRichTextConfiguration | FieldsConfiguration | FilesConfiguration | NotesConfiguration | TasksConfiguration | TimelineConfiguration | ViewConfiguration | RecordTableConfiguration | WorkflowConfiguration | WorkflowRunConfiguration | WorkflowVersionConfiguration
 
 type AggregateChartConfiguration {
   configurationType: WidgetConfigurationType!
@@ -1146,6 +1283,7 @@ enum WidgetConfigurationType {
   NOTES
   FILES
   EMAILS
+  WHATSAPP
   CALENDAR
   FIELD_RICH_TEXT
   WORKFLOW
@@ -1313,6 +1451,10 @@ type EmailsConfiguration {
   configurationType: WidgetConfigurationType!
 }
 
+type WhatsappConfiguration {
+  configurationType: WidgetConfigurationType!
+}
+
 type EmailThreadConfiguration {
   configurationType: WidgetConfigurationType!
 }
@@ -1461,123 +1603,6 @@ type FileWithSignedUrl {
   size: Float!
   createdAt: DateTime!
   url: String!
-}
-
-type BillingSubscriptionSchedulePhaseItem {
-  price: String!
-  quantity: Float
-}
-
-type BillingSubscriptionSchedulePhase {
-  start_date: Float!
-  end_date: Float!
-  items: [BillingSubscriptionSchedulePhaseItem!]!
-}
-
-type BillingProductMetadata {
-  planKey: BillingPlanKey!
-  priceUsageBased: BillingUsageType!
-  productKey: BillingProductKey!
-}
-
-"""The different billing plans available"""
-enum BillingPlanKey {
-  PRO
-  ENTERPRISE
-}
-
-enum BillingUsageType {
-  METERED
-  LICENSED
-}
-
-"""The different billing products available"""
-enum BillingProductKey {
-  BASE_PRODUCT
-  RESOURCE_CREDIT
-}
-
-type BillingPriceLicensed {
-  recurringInterval: SubscriptionInterval!
-  unitAmount: Float!
-  stripePriceId: String!
-  priceUsageType: BillingUsageType!
-  creditAmount: Float
-}
-
-enum SubscriptionInterval {
-  Month
-  Year
-}
-
-type BillingPriceTier {
-  upTo: Float
-  flatAmount: Float
-  unitAmount: Float
-}
-
-type BillingPriceMetered {
-  tiers: [BillingPriceTier!]!
-  recurringInterval: SubscriptionInterval!
-  stripePriceId: String!
-  priceUsageType: BillingUsageType!
-}
-
-type BillingProduct {
-  name: String!
-  description: String!
-  images: [String!]
-  metadata: BillingProductMetadata!
-}
-
-type BillingLicensedProduct implements BillingProductDTO {
-  name: String!
-  description: String!
-  images: [String!]
-  metadata: BillingProductMetadata!
-  prices: [BillingPriceLicensed!]
-}
-
-type BillingMeteredProduct implements BillingProductDTO {
-  name: String!
-  description: String!
-  images: [String!]
-  metadata: BillingProductMetadata!
-  prices: [BillingPriceMetered!]
-}
-
-type BillingSubscriptionItem {
-  id: UUID!
-  hasReachedCurrentPeriodCap: Boolean!
-  quantity: Float
-  stripePriceId: String!
-  billingProduct: BillingProductDTO!
-}
-
-type BillingCustomer {
-  id: UUID!
-  hasPaymentMethod: Boolean
-}
-
-type BillingSubscription {
-  id: UUID!
-  status: SubscriptionStatus!
-  interval: SubscriptionInterval
-  billingSubscriptionItems: [BillingSubscriptionItem!]
-  currentPeriodEnd: DateTime
-  metadata: JSON!
-  phases: [BillingSubscriptionSchedulePhase!]!
-}
-
-enum SubscriptionStatus {
-  Active
-  Canceled
-  Incomplete
-  IncompleteExpired
-  PastDue
-  Paused
-  Trialing
-  Unpaid
 }
 
 type BillingEndTrialPeriod {
@@ -1931,6 +1956,14 @@ type PublicFeatureFlag {
   metadata: PublicFeatureFlagMetadata!
 }
 
+type ClientConfigBrand {
+  productName: String!
+  tagline: String!
+  logoUrl: String!
+  supportEmail: String!
+  legalFooterText: String!
+}
+
 type ClientConfigMaintenanceMode {
   startAt: DateTime!
   endAt: DateTime!
@@ -1939,6 +1972,7 @@ type ClientConfigMaintenanceMode {
 
 type ClientConfig {
   appVersion: String
+  brand: ClientConfigBrand!
   authProviders: AuthProviders!
   billing: Billing!
   aiModels: [ClientAiModelConfig!]!
@@ -1959,6 +1993,14 @@ type ClientConfig {
   isMicrosoftCalendarEnabled: Boolean!
   isGoogleMessagingEnabled: Boolean!
   isGoogleCalendarEnabled: Boolean!
+  isWhatsappMessagingEnabled: Boolean!
+  whatsappAppId: String
+  whatsappEmbeddedSignupConfigurationId: String
+  isInstagramMessagingEnabled: Boolean!
+  instagramAppId: String
+  instagramOauthRedirectUri: String
+  isVoiceAgentEnabled: Boolean!
+  isWhatsappAiAgentEnabled: Boolean!
   isConfigVariablesInDbEnabled: Boolean!
   isImapSmtpCaldavEnabled: Boolean!
   isEmailingDomainInDemoMode: Boolean!
@@ -2233,6 +2275,35 @@ type DomainValidRecords {
   records: [DomainRecord!]!
 }
 
+type PlanLimitUsage {
+  key: String!
+  used: Int!
+  limit: Int!
+}
+
+type WorkspaceModuleEntitlement {
+  module: PlanGatedFeature!
+  quantity: Int!
+  hasAccess: Boolean!
+  implemented: Boolean!
+}
+
+"""An à-la-carte paid module a workspace can contract"""
+enum PlanGatedFeature {
+  WHATSAPP
+  INSTAGRAM
+  AI_AGENT
+  VOICE_AGENT
+  WORKFLOWS_ADVANCED
+  CUSTOM_OBJECTS
+  CUSTOM_FIELDS
+  ROW_LEVEL_PERMISSIONS
+  API_ACCESS
+  MCP
+  MANYCHAT_LIKE
+  INTEGRATIONS
+}
+
 type UpsertRowLevelPermissionPredicatesResult {
   predicates: [RowLevelPermissionPredicate!]!
   predicateGroups: [RowLevelPermissionPredicateGroup!]!
@@ -2493,7 +2564,7 @@ type MessageChannel {
   pendingGroupEmailsAction: MessageChannelPendingGroupEmailsAction!
   isSyncEnabled: Boolean!
   syncedAt: DateTime
-  syncStatus: MessageChannelSyncStatus!
+  syncStatus: InstagramChannelSyncStatus!
   syncStage: MessageChannelSyncStage!
   syncStageStartedAt: DateTime
   throttleFailureCount: Float!
@@ -2514,6 +2585,8 @@ enum MessageChannelType {
   EMAIL
   SMS
   EMAIL_GROUP
+  WHATSAPP
+  INSTAGRAM
 }
 
 enum MessageChannelContactAutoCreationPolicy {
@@ -2533,7 +2606,7 @@ enum MessageChannelPendingGroupEmailsAction {
   NONE
 }
 
-enum MessageChannelSyncStatus {
+enum InstagramChannelSyncStatus {
   NOT_SYNCED
   ONGOING
   ACTIVE
@@ -2639,6 +2712,51 @@ type ConnectedImapSmtpCaldavAccount {
 type ImapSmtpCaldavConnectionSuccess {
   success: Boolean!
   connectedAccountId: String!
+}
+
+type ConnectWhatsappNumberOutput {
+  whatsappChannelId: String!
+  displayPhoneNumber: String!
+}
+
+type WhatsappConversation {
+  messageThreadId: String!
+  contactPhoneNumber: String!
+  contactDisplayName: String!
+  personId: String
+  lastMessageBody: String!
+  lastMessageReceivedAt: DateTime!
+}
+
+type WhatsappAgentConversation {
+  id: UUID!
+  whatsappAgentId: UUID!
+  contactPhoneNumber: String!
+  isAiEnabled: Boolean!
+  qualificationSummary: String
+  lastMessageAt: DateTime
+  createdAt: DateTime!
+}
+
+type WhatsappAgent {
+  id: UUID!
+  name: String!
+  whatsappChannelId: UUID!
+  isActive: Boolean!
+  systemPrompt: String!
+  greetingMessage: String
+  forbiddenPhrases: [String!]
+  qualificationCriteria: String
+  knowledgeBase: String
+  handoffInstructions: String
+  model: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ConnectInstagramAccountOutput {
+  instagramChannelId: String!
+  username: String!
 }
 
 type Webhook {
@@ -2767,6 +2885,11 @@ type DuplicatedDashboard {
 }
 
 type SendEmailOutput {
+  success: Boolean!
+  error: String
+}
+
+type SendWhatsappMessageOutput {
   success: Boolean!
   error: String
 }
@@ -2936,6 +3059,30 @@ enum CalendarChannelContactAutoCreationPolicy {
   NONE
 }
 
+type FunnelPage {
+  id: UUID!
+  type: FunnelPageType!
+  slug: String!
+  status: FunnelPageStatus!
+  content: JSON!
+  seoTitle: String
+  seoDescription: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum FunnelPageType {
+  SIGNUP
+  WORKSHOP
+  SALES
+  CONFIRMATION
+}
+
+enum FunnelPageStatus {
+  DRAFT
+  PUBLISHED
+}
+
 type MessageFolder {
   id: UUID!
   name: String
@@ -3017,6 +3164,176 @@ type MinimalMetadata {
   objectMetadataItems: [MinimalObjectMetadata!]!
   views: [MinimalView!]!
   collectionHashes: [CollectionHash!]!
+}
+
+type InstagramDiagnostics {
+  lastWebhookReceivedAt: DateTime
+  lastReconciliationAt: DateTime
+  tokenStatus: InstagramTokenStatus!
+  pendingJobsCount: Float!
+  failedJobsCount: Float!
+}
+
+enum InstagramTokenStatus {
+  VALID
+  EXPIRING_SOON
+  EXPIRED
+  UNKNOWN
+}
+
+type InstagramAutomationRule {
+  id: UUID!
+  instagramChannelId: UUID!
+  name: String
+  igMediaId: String
+  igMediaCaption: String
+  igMediaThumbnailUrl: String
+  igMediaPermalink: String
+  keywords: [String!]!
+  replyMessage: String!
+  publicReplyVariations: [String!]
+  requiresFollowToReceiveDm: Boolean!
+  followUpMessage: String
+  followUpDelayMinutes: Float
+  attachToNextReel: Boolean!
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type InstagramCampaignTemplate {
+  key: String!
+  name: String!
+  description: String!
+  suggestedKeywords: [String!]!
+  suggestedReplyMessage: String!
+  suggestedPublicReplyVariations: [String!]!
+  suggestedFollowUpMessage: String
+}
+
+type InstagramChannel {
+  id: UUID!
+  connectedAccountId: UUID!
+  igBusinessAccountId: String!
+  username: String!
+  profilePictureUrl: String
+  isSyncEnabled: Boolean!
+  syncStatus: InstagramChannelSyncStatus!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type InstagramFollowerSnapshot {
+  id: UUID!
+  instagramChannelId: UUID!
+  followerCount: Float!
+  capturedAt: DateTime!
+}
+
+type InstagramMediaSummary {
+  id: String!
+  caption: String
+  thumbnailUrl: String
+  permalink: String!
+}
+
+type InstagramPublicReport {
+  id: UUID!
+  instagramChannelId: UUID!
+  shareSlug: String!
+  isEnabled: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type VoiceAgent {
+  id: UUID!
+  name: String!
+  isActive: Boolean!
+  phoneNumber: String
+  voice: String!
+  systemPrompt: String!
+  greetingMessage: String
+  forbiddenPhrases: [String!]
+  qualificationCriteria: String
+  handoffInstructions: String
+  transferPhoneNumber: String
+  weeklyAvailability: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type VoiceCall {
+  id: UUID!
+  voiceAgentId: UUID!
+  twilioCallSid: String!
+  direction: VoiceCallDirection!
+  status: VoiceCallStatus!
+  fromNumber: String!
+  toNumber: String!
+  startedAt: DateTime
+  endedAt: DateTime
+  durationSeconds: Float
+  transcript: String
+  summary: String
+  recordingUrl: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum VoiceCallDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum VoiceCallStatus {
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+  NO_ANSWER
+}
+
+type WhatsappChannel {
+  id: UUID!
+  connectedAccountId: UUID!
+  phoneNumberId: String!
+  wabaId: String!
+  displayPhoneNumber: String!
+  isSyncEnabled: Boolean!
+  syncStatus: InstagramChannelSyncStatus!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type WhatsappTemplate {
+  id: UUID!
+  whatsappChannelId: UUID!
+  name: String!
+  category: WhatsappTemplateCategory!
+  language: String!
+  headerText: String
+  bodyText: String!
+  footerText: String
+  buttons: JSON
+  status: WhatsappTemplateStatus!
+  metaTemplateId: String
+  metaTemplateStatus: String
+  rejectionReason: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum WhatsappTemplateCategory {
+  MARKETING
+  UTILITY
+  AUTHENTICATION
+}
+
+enum WhatsappTemplateStatus {
+  DRAFT
+  PENDING
+  APPROVED
+  REJECTED
 }
 
 type Query {
@@ -3109,6 +3426,21 @@ type Query {
   ): FieldConnection!
   getViewGroups(viewId: String): [ViewGroup!]!
   getViewGroup(id: String!): ViewGroup
+  funnelPages: [FunnelPage!]!
+  funnelPage(id: UUID!): FunnelPage!
+  myWhatsappTemplates: [WhatsappTemplate!]!
+  myWhatsappAgents: [WhatsappAgent!]!
+  whatsappAgentConversations(whatsappAgentId: UUID!): [WhatsappAgentConversation!]!
+  myVoiceAgents: [VoiceAgent!]!
+  voiceCalls(voiceAgentId: UUID!): [VoiceCall!]!
+  myInstagramChannels: [InstagramChannel!]!
+  instagramRecentMedia(instagramChannelId: UUID!): [InstagramMediaSummary!]!
+  instagramFollowerHistory(instagramChannelId: UUID!): [InstagramFollowerSnapshot!]!
+  instagramDiagnostics(instagramChannelId: UUID!): InstagramDiagnostics!
+  instagramAutomationRules(instagramChannelId: UUID!): [InstagramAutomationRule!]!
+  instagramCampaignTemplates: [InstagramCampaignTemplate!]!
+  instagramPublicReport(instagramChannelId: UUID!): InstagramPublicReport
+  myWhatsappChannels: [WhatsappChannel!]!
   myMessageFolders(messageChannelId: UUID): [MessageFolder!]!
   myCalendarChannels(connectedAccountId: UUID): [CalendarChannel!]!
   findApplicationRegistrationByClientId(clientId: String!): PublicApplicationRegistration
@@ -3154,6 +3486,8 @@ type Query {
   findManyPublicDomains: [PublicDomain!]!
   findManyMarketplaceApps: [MarketplaceApp!]!
   findMarketplaceAppDetail(universalIdentifier: String!): MarketplaceAppDetail!
+  getWhatsappThreadIdForPerson(personId: UUID!): String
+  getWhatsappConversations: [WhatsappConversation!]!
 }
 
 input GetApiKeyInput {
@@ -3340,6 +3674,7 @@ type Mutation {
   createFrontComponent(input: CreateFrontComponentInput!): FrontComponent!
   updateFrontComponent(input: UpdateFrontComponentInput!): FrontComponent!
   deleteFrontComponent(id: UUID!): FrontComponent!
+  connectWhatsappNumber(input: ConnectWhatsappNumberInput!): ConnectWhatsappNumberOutput!
   sendEmailViaEmailingDomain(input: SendEmailViaDomainInput!): SendEmailViaDomainOutput!
   sendMessageCampaign(input: SendMessageCampaignInput!): SendMessageCampaignOutputDTO!
   createUnsubscribeTopic(input: CreateUnsubscribeTopicInput!): UnsubscribeTopic!
@@ -3375,6 +3710,31 @@ type Mutation {
   updateManyViewGroups(inputs: [UpdateViewGroupInput!]!): [ViewGroup!]!
   deleteViewGroup(input: DeleteViewGroupInput!): ViewGroup!
   destroyViewGroup(input: DestroyViewGroupInput!): ViewGroup!
+  createFunnelPage(input: CreateFunnelPageInput!): FunnelPage!
+  updateFunnelPage(input: UpdateFunnelPageInput!): FunnelPage!
+  publishFunnelPage(id: UUID!): FunnelPage!
+  unpublishFunnelPage(id: UUID!): FunnelPage!
+  deleteFunnelPage(id: UUID!): Boolean!
+  createWhatsappTemplate(input: CreateWhatsappTemplateInput!): WhatsappTemplate!
+  updateWhatsappTemplate(input: UpdateWhatsappTemplateInput!): WhatsappTemplate!
+  deleteWhatsappTemplate(id: UUID!): Boolean!
+  submitWhatsappTemplateForApproval(id: UUID!): WhatsappTemplate!
+  refreshWhatsappTemplateStatus(id: UUID!): WhatsappTemplate!
+  createWhatsappAgent(input: CreateWhatsappAgentInput!): WhatsappAgent!
+  updateWhatsappAgent(input: UpdateWhatsappAgentInput!): WhatsappAgent!
+  deleteWhatsappAgent(id: UUID!): WhatsappAgent!
+  setWhatsappAgentConversationAiEnabled(id: UUID!, isAiEnabled: Boolean!): WhatsappAgentConversation!
+  createVoiceAgent(input: CreateVoiceAgentInput!): VoiceAgent!
+  updateVoiceAgent(input: UpdateVoiceAgentInput!): VoiceAgent!
+  deleteVoiceAgent(id: UUID!): VoiceAgent!
+  createInstagramAutomationRule(input: CreateInstagramAutomationRuleInput!): InstagramAutomationRule!
+  updateInstagramAutomationRule(input: UpdateInstagramAutomationRuleInput!): InstagramAutomationRule!
+  deleteInstagramAutomationRule(id: UUID!): InstagramAutomationRule!
+  duplicateInstagramAutomationRule(id: UUID!): InstagramAutomationRule!
+  importInstagramAutomationRulesFromCsv(instagramChannelId: UUID!, csvContent: String!): [InstagramAutomationRule!]!
+  enableInstagramPublicReport(instagramChannelId: UUID!): InstagramPublicReport!
+  disableInstagramPublicReport(instagramChannelId: UUID!): InstagramPublicReport!
+  connectInstagramAccount(input: ConnectInstagramAccountInput!): ConnectInstagramAccountOutput!
   updateMessageFolder(input: UpdateMessageFolderInput!): MessageFolder!
   updateMessageFolders(input: UpdateMessageFoldersInput!): [MessageFolder!]!
   updateCalendarChannel(input: UpdateCalendarChannelInput!): CalendarChannel!
@@ -3444,6 +3804,7 @@ type Mutation {
   duplicateDashboard(id: UUID!): DuplicatedDashboard!
   impersonate(userId: UUID!, workspaceId: UUID!): Impersonate!
   sendEmail(input: SendEmailInput!): SendEmailOutput!
+  sendWhatsappMessage(input: SendWhatsappMessageInput!): SendWhatsappMessageOutput!
   startChannelSync(connectedAccountId: UUID!): ChannelSyncSuccess!
   saveImapSmtpCaldavAccount(handle: String!, connectionParameters: EmailAccountConnectionParameters!, id: UUID): ImapSmtpCaldavConnectionSuccess!
   updateLabPublicFeatureFlag(input: UpdateLabPublicFeatureFlagInput!): FeatureFlag!
@@ -4108,6 +4469,12 @@ input UpdateFrontComponentInputUpdates {
   description: String
 }
 
+input ConnectWhatsappNumberInput {
+  code: String!
+  wabaId: String!
+  phoneNumberId: String!
+}
+
 input SendEmailViaDomainInput {
   emailingDomainId: String!
   to: [String!]!
@@ -4380,6 +4747,130 @@ input DestroyViewGroupInput {
   id: UUID!
 }
 
+input CreateFunnelPageInput {
+  type: FunnelPageType!
+  slug: String!
+  content: JSON!
+  seoTitle: String
+  seoDescription: String
+}
+
+input UpdateFunnelPageInput {
+  id: UUID!
+  type: FunnelPageType
+  slug: String
+  content: JSON
+  seoTitle: String
+  seoDescription: String
+}
+
+input CreateWhatsappTemplateInput {
+  whatsappChannelId: UUID!
+  name: String!
+  category: WhatsappTemplateCategory!
+  language: String!
+  headerText: String
+  bodyText: String!
+  footerText: String
+  buttons: JSON
+}
+
+input UpdateWhatsappTemplateInput {
+  id: UUID!
+  name: String
+  category: WhatsappTemplateCategory
+  language: String
+  headerText: String
+  bodyText: String
+  footerText: String
+  buttons: JSON
+}
+
+input CreateWhatsappAgentInput {
+  whatsappChannelId: UUID!
+  name: String!
+  systemPrompt: String!
+  greetingMessage: String
+  forbiddenPhrases: [String!]
+  qualificationCriteria: String
+  knowledgeBase: String
+  handoffInstructions: String
+  model: String
+}
+
+input UpdateWhatsappAgentInput {
+  id: UUID!
+  name: String
+  isActive: Boolean
+  systemPrompt: String
+  greetingMessage: String
+  forbiddenPhrases: [String!]
+  qualificationCriteria: String
+  knowledgeBase: String
+  handoffInstructions: String
+  model: String
+}
+
+input CreateVoiceAgentInput {
+  name: String!
+  systemPrompt: String!
+  phoneNumber: String
+  voice: String
+  greetingMessage: String
+  forbiddenPhrases: [String!]
+  qualificationCriteria: String
+  handoffInstructions: String
+  transferPhoneNumber: String
+  weeklyAvailability: JSON
+}
+
+input UpdateVoiceAgentInput {
+  id: UUID!
+  name: String
+  isActive: Boolean
+  phoneNumber: String
+  voice: String
+  systemPrompt: String
+  greetingMessage: String
+  forbiddenPhrases: [String!]
+  qualificationCriteria: String
+  handoffInstructions: String
+  transferPhoneNumber: String
+  weeklyAvailability: JSON
+}
+
+input CreateInstagramAutomationRuleInput {
+  instagramChannelId: UUID!
+  name: String
+  igMediaId: String
+  igMediaCaption: String
+  igMediaThumbnailUrl: String
+  igMediaPermalink: String
+  keywords: [String!]!
+  replyMessage: String!
+  publicReplyVariations: [String!]
+  requiresFollowToReceiveDm: Boolean
+  followUpMessage: String
+  followUpDelayMinutes: Float
+  attachToNextReel: Boolean
+}
+
+input UpdateInstagramAutomationRuleInput {
+  id: UUID!
+  name: String
+  keywords: [String!]
+  replyMessage: String
+  publicReplyVariations: [String!]
+  requiresFollowToReceiveDm: Boolean
+  followUpMessage: String
+  followUpDelayMinutes: Float
+  isActive: Boolean
+}
+
+input ConnectInstagramAccountInput {
+  code: String!
+}
+
 input UpdateMessageFolderInput {
   id: UUID!
   update: UpdateMessageFolderInputUpdates!
@@ -4577,6 +5068,12 @@ input SendEmailInput {
 input SendEmailAttachmentInput {
   id: String!
   name: String!
+}
+
+input SendWhatsappMessageInput {
+  connectedAccountId: String!
+  to: String!
+  body: String!
 }
 
 input EmailAccountConnectionParameters {
