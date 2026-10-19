@@ -32,6 +32,14 @@ runs:
       uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       with:
         node-version: ${{ inputs.node-version }}
+    # Without this, CI runs whatever npm ships with the runner's Node install
+    # instead of the "packageManager" version pinned in package.json, and a
+    # newer npm can disagree with an older one about whether the lockfile is
+    # in sync - failing `npm ci` with spurious "Missing: <pkg> from lock file"
+    # errors even though the lockfile is correct.
+    - name: Enable Corepack
+      shell: ${{ steps.globals.outputs.ACTION_SHELL }}
+      run: corepack enable
     - name: Restore node_modules
       id: cache-node-modules
       uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0 (restore)
