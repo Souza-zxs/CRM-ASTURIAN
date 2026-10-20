@@ -91,6 +91,8 @@ import { BackfillWorkspaceModuleGrandfatherSlowInstanceCommand } from 'src/datab
 import { GrantHorizonWorkspaceAllModulesSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-slow-1803400000000-grant-horizon-workspace-all-modules';
 import { GrandfatherManychatLikeAndIntegrationsByUsageSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-slow-1803600000000-grandfather-manychat-like-and-integrations-by-usage';
 import { GrantHorizonWorkspaceManychatLikeModuleSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-slow-1803700000000-grant-horizon-workspace-manychat-like-module';
+import { AddWhatsappInstagramPaymentEntitiesFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1804000000000-add-whatsapp-instagram-payment-entities';
+import { ReorderPaymentWebhookEventLogUniqueIndexFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-16/2-16-instance-command-fast-1804100000000-reorder-payment-webhook-event-log-unique-index';
 
 export const INSTANCE_COMMANDS = [
   AddViewFieldGroupIdIndexOnViewFieldFastInstanceCommand,
@@ -184,4 +186,6 @@ export const INSTANCE_COMMANDS = [
   GrantHorizonWorkspaceAllModulesSlowInstanceCommand,
   GrandfatherManychatLikeAndIntegrationsByUsageSlowInstanceCommand,
   GrantHorizonWorkspaceManychatLikeModuleSlowInstanceCommand,
+  AddWhatsappInstagramPaymentEntitiesFastInstanceCommand,
+  ReorderPaymentWebhookEventLogUniqueIndexFastInstanceCommand,
 ];
