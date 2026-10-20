@@ -344,8 +344,11 @@ jobs:
           fetch-depth: 10
       - name: Install dependencies
         uses: ./.github/actions/yarn-install
-      - name: Update .env.test for integrations tests
+      - name: Write packages/zyra-server/.env.test
+        working-directory: packages/zyra-server
         run: |
+          cp .env.example .env.test
+          sed -i 's#^PG_DATABASE_URL=.*#PG_DATABASE_URL=postgres://postgres:postgres@localhost:5432/test#' .env.test
           echo "" >> .env.test
           echo "IS_BILLING_ENABLED=true" >> .env.test
           echo "BILLING_STRIPE_API_KEY=test-api-key" >> .env.test
