@@ -4,9 +4,7 @@ describe('getSafeUrl', () => {
   it('returns safe absolute urls unchanged', () => {
     expect(getSafeUrl('https://zyra.com')).toBe('https://zyra.com');
     expect(getSafeUrl('http://zyra.com')).toBe('http://zyra.com');
-    expect(getSafeUrl('mailto:hello@zyra.com')).toBe(
-      'mailto:hello@zyra.com',
-    );
+    expect(getSafeUrl('mailto:hello@zyra.com')).toBe('mailto:hello@zyra.com');
     expect(getSafeUrl('tel:+33123456789')).toBe('tel:+33123456789');
   });
 

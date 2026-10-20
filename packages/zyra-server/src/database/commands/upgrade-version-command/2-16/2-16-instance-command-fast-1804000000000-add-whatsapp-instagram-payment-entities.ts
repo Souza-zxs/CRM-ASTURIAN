@@ -1,0 +1,111 @@
+import { QueryRunner } from 'typeorm';
+
+import { RegisteredInstanceCommand } from 'src/engine/core-modules/upgrade/decorators/registered-instance-command.decorator';
+import { FastInstanceCommand } from 'src/engine/core-modules/upgrade/interfaces/fast-instance-command.interface';
+
+@RegisteredInstanceCommand('2.16.0', 1804000000000)
+export class AddWhatsappInstagramPaymentEntitiesFastInstanceCommand implements FastInstanceCommand {
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('ALTER TABLE "core"."workspaceModuleGrandfather" DROP CONSTRAINT "FK_WORKSPACE_MODULE_GRANDFATHER_WORKSPACE_ID"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" DROP CONSTRAINT "FK_1a1a1a1a1a1a1a1a1a1a1a1a1a1"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" DROP CONSTRAINT "FK_2b2b2b2b2b2b2b2b2b2b2b2b2b2"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" DROP CONSTRAINT "FK_3c3c3c3c3c3c3c3c3c3c3c3c3c3"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" DROP CONSTRAINT "FK_4d4d4d4d4d4d4d4d4d4d4d4d4d4"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" DROP CONSTRAINT "FK_5e5e5e5e5e5e5e5e5e5e5e5e5e5"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" DROP CONSTRAINT "FK_6f6f6f6f6f6f6f6f6f6f6f6f6f6"');
+    await queryRunner.query('ALTER TABLE "core"."paymentProviderConnection" DROP CONSTRAINT "FK_7a1c9e2b6d4f4a3a9c1e8b7d6f5a"');
+    await queryRunner.query('ALTER TABLE "core"."paymentWebhookEventLog" DROP CONSTRAINT "FK_2b4d6f8a1c3e5b7d9f0a2c4e6b8d"');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" DROP CONSTRAINT "FK_1a5a5a5a5a5a5a5a5a5a5a5a5a5"');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" DROP CONSTRAINT "FK_2b6b6b6b6b6b6b6b6b6b6b6b6b6"');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" DROP CONSTRAINT "FK_3c7c7c7c7c7c7c7c7c7c7c7c7c7"');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" DROP CONSTRAINT "FK_4d8d8d8d8d8d8d8d8d8d8d8d8d8"');
+    await queryRunner.query('DROP INDEX "core"."IDX_PAYMENT_WEBHOOK_EVENT_LOG_WORKSPACE_ID_PROVIDER_EXTERNAL_ID"');
+    await queryRunner.query('DROP INDEX "core"."IDX_INSTAGRAM_AUTOMATION_TRIGGER_LOG_WORKSPACE_ID_IG_COMMENT_ID"');
+    await queryRunner.query('CREATE TYPE "core"."whatsappTemplate_category_enum" AS ENUM(\'MARKETING\', \'UTILITY\', \'AUTHENTICATION\')');
+    await queryRunner.query('CREATE TYPE "core"."whatsappTemplate_status_enum" AS ENUM(\'DRAFT\', \'PENDING\', \'APPROVED\', \'REJECTED\')');
+    await queryRunner.query('CREATE TABLE "core"."whatsappTemplate" ("workspaceId" uuid NOT NULL, "id" uuid NOT NULL DEFAULT uuid_generate_v4(), "whatsappChannelId" uuid NOT NULL, "name" character varying NOT NULL, "category" "core"."whatsappTemplate_category_enum" NOT NULL, "language" character varying NOT NULL, "headerText" character varying, "bodyText" text NOT NULL, "footerText" character varying, "buttons" jsonb, "status" "core"."whatsappTemplate_status_enum" NOT NULL DEFAULT \'DRAFT\', "metaTemplateId" character varying, "metaTemplateStatus" character varying, "rejectionReason" text, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), CONSTRAINT "PK_1a1f70b8bb0096bb0990e137d40" PRIMARY KEY ("id"))');
+    await queryRunner.query('CREATE INDEX "IDX_WHATSAPP_TEMPLATE_WORKSPACE_ID_NAME_LANGUAGE" ON "core"."whatsappTemplate" ("workspaceId", "name", "language") ');
+    await queryRunner.query('ALTER TABLE "core"."instagramChannel" ADD "accessTokenExpiresAt" TIMESTAMP WITH TIME ZONE');
+    await queryRunner.query('ALTER TYPE "core"."pageLayoutWidget_type_enum" RENAME TO "pageLayoutWidget_type_enum_old"');
+    await queryRunner.query('CREATE TYPE "core"."pageLayoutWidget_type_enum" AS ENUM(\'VIEW\', \'IFRAME\', \'FIELD\', \'FIELDS\', \'GRAPH\', \'STANDALONE_RICH_TEXT\', \'TIMELINE\', \'TASKS\', \'NOTES\', \'FILES\', \'EMAILS\', \'WHATSAPP\', \'CALENDAR\', \'FIELD_RICH_TEXT\', \'WORKFLOW\', \'WORKFLOW_VERSION\', \'WORKFLOW_RUN\', \'FRONT_COMPONENT\', \'RECORD_TABLE\', \'EMAIL_THREAD\')');
+    await queryRunner.query('ALTER TABLE "core"."pageLayoutWidget" ALTER COLUMN "type" DROP DEFAULT');
+    await queryRunner.query('ALTER TABLE "core"."pageLayoutWidget" ALTER COLUMN "type" TYPE "core"."pageLayoutWidget_type_enum" USING "type"::"text"::"core"."pageLayoutWidget_type_enum"');
+    await queryRunner.query('ALTER TABLE "core"."pageLayoutWidget" ALTER COLUMN "type" SET DEFAULT \'VIEW\'');
+    await queryRunner.query('DROP TYPE "core"."pageLayoutWidget_type_enum_old"');
+    await queryRunner.query('DROP INDEX "core"."IDX_WHATSAPP_CHANNEL_WORKSPACE_ID_PHONE_NUMBER_ID"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappChannel" ADD CONSTRAINT "UQ_de03573120d1ecc57a4a8ec72df" UNIQUE ("phoneNumberId")');
+    await queryRunner.query('DROP INDEX "core"."IDX_INSTAGRAM_CHANNEL_WORKSPACE_ID_IG_BUSINESS_ACCOUNT_ID"');
+    await queryRunner.query('ALTER TABLE "core"."instagramChannel" ADD CONSTRAINT "UQ_77e0e205d31cba22cb33bad391b" UNIQUE ("igBusinessAccountId")');
+    await queryRunner.query('CREATE INDEX "IDX_WHATSAPP_CHANNEL_WORKSPACE_ID_PHONE_NUMBER_ID" ON "core"."whatsappChannel" ("workspaceId", "phoneNumberId") ');
+    await queryRunner.query('CREATE UNIQUE INDEX "IDX_PAYMENT_WEBHOOK_EVENT_LOG_WORKSPACE_ID_PROVIDER_EXTERNAL_ID_TYPE" ON "core"."paymentWebhookEventLog" ("workspaceId", "provider", "externalId", "type") ');
+    await queryRunner.query('CREATE INDEX "IDX_INSTAGRAM_CHANNEL_WORKSPACE_ID_IG_BUSINESS_ACCOUNT_ID" ON "core"."instagramChannel" ("workspaceId", "igBusinessAccountId") ');
+    await queryRunner.query('CREATE UNIQUE INDEX "IDX_INSTAGRAM_AUTOMATION_TRIGGER_LOG_WORKSPACE_ID_IG_COMMENT_ID" ON "core"."instagramAutomationTriggerLog" ("workspaceId", "igCommentId") ');
+    await queryRunner.query('ALTER TABLE "core"."workspaceModuleGrandfather" ADD CONSTRAINT "FK_00901976c8aac35dda425d8c1fb" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" ADD CONSTRAINT "FK_727585d954d9cf6c70abd4e9bbc" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" ADD CONSTRAINT "FK_305055d54428437790c9999d665" FOREIGN KEY ("whatsappChannelId") REFERENCES "core"."whatsappChannel"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" ADD CONSTRAINT "FK_8bfb9958aca84365bd8cce4d081" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" ADD CONSTRAINT "FK_cb078564f6bf8e08216fcc2edc6" FOREIGN KEY ("whatsappAgentId") REFERENCES "core"."whatsappAgent"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" ADD CONSTRAINT "FK_8d66da497e62aaaa784b3d97359" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" ADD CONSTRAINT "FK_06657eb6b9a108641dd3ab60d31" FOREIGN KEY ("conversationId") REFERENCES "core"."whatsappAgentConversation"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."paymentProviderConnection" ADD CONSTRAINT "FK_11a433c33675cb360dfdc81fb44" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."paymentWebhookEventLog" ADD CONSTRAINT "FK_3800f7667e43de762ec78681b18" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" ADD CONSTRAINT "FK_6cad9c9e2ac98b9990663dd5c30" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" ADD CONSTRAINT "FK_35f30ce1c2ede685d2037df6769" FOREIGN KEY ("instagramChannelId") REFERENCES "core"."instagramChannel"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" ADD CONSTRAINT "FK_beda81fb3571b083d2233e7019e" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" ADD CONSTRAINT "FK_d32d9770345e33ebbb0eb406014" FOREIGN KEY ("instagramChannelId") REFERENCES "core"."instagramChannel"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappTemplate" ADD CONSTRAINT "FK_bfa64401600438ede0f8bca6498" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappTemplate" ADD CONSTRAINT "FK_04e1f2368f489b4b6a6e822b300" FOREIGN KEY ("whatsappChannelId") REFERENCES "core"."whatsappChannel"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+  }
+
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('ALTER TABLE "core"."whatsappTemplate" DROP CONSTRAINT "FK_04e1f2368f489b4b6a6e822b300"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappTemplate" DROP CONSTRAINT "FK_bfa64401600438ede0f8bca6498"');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" DROP CONSTRAINT "FK_d32d9770345e33ebbb0eb406014"');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" DROP CONSTRAINT "FK_beda81fb3571b083d2233e7019e"');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" DROP CONSTRAINT "FK_35f30ce1c2ede685d2037df6769"');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" DROP CONSTRAINT "FK_6cad9c9e2ac98b9990663dd5c30"');
+    await queryRunner.query('ALTER TABLE "core"."paymentWebhookEventLog" DROP CONSTRAINT "FK_3800f7667e43de762ec78681b18"');
+    await queryRunner.query('ALTER TABLE "core"."paymentProviderConnection" DROP CONSTRAINT "FK_11a433c33675cb360dfdc81fb44"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" DROP CONSTRAINT "FK_06657eb6b9a108641dd3ab60d31"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" DROP CONSTRAINT "FK_8d66da497e62aaaa784b3d97359"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" DROP CONSTRAINT "FK_cb078564f6bf8e08216fcc2edc6"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" DROP CONSTRAINT "FK_8bfb9958aca84365bd8cce4d081"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" DROP CONSTRAINT "FK_305055d54428437790c9999d665"');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" DROP CONSTRAINT "FK_727585d954d9cf6c70abd4e9bbc"');
+    await queryRunner.query('ALTER TABLE "core"."workspaceModuleGrandfather" DROP CONSTRAINT "FK_00901976c8aac35dda425d8c1fb"');
+    await queryRunner.query('DROP INDEX "core"."IDX_INSTAGRAM_AUTOMATION_TRIGGER_LOG_WORKSPACE_ID_IG_COMMENT_ID"');
+    await queryRunner.query('DROP INDEX "core"."IDX_INSTAGRAM_CHANNEL_WORKSPACE_ID_IG_BUSINESS_ACCOUNT_ID"');
+    await queryRunner.query('DROP INDEX "core"."IDX_PAYMENT_WEBHOOK_EVENT_LOG_WORKSPACE_ID_PROVIDER_EXTERNAL_ID_TYPE"');
+    await queryRunner.query('DROP INDEX "core"."IDX_WHATSAPP_CHANNEL_WORKSPACE_ID_PHONE_NUMBER_ID"');
+    await queryRunner.query('ALTER TABLE "core"."instagramChannel" DROP CONSTRAINT "UQ_77e0e205d31cba22cb33bad391b"');
+    await queryRunner.query('CREATE INDEX "IDX_INSTAGRAM_CHANNEL_WORKSPACE_ID_IG_BUSINESS_ACCOUNT_ID" ON "core"."instagramChannel" ("igBusinessAccountId", "workspaceId") ');
+    await queryRunner.query('ALTER TABLE "core"."whatsappChannel" DROP CONSTRAINT "UQ_de03573120d1ecc57a4a8ec72df"');
+    await queryRunner.query('CREATE INDEX "IDX_WHATSAPP_CHANNEL_WORKSPACE_ID_PHONE_NUMBER_ID" ON "core"."whatsappChannel" ("phoneNumberId", "workspaceId") ');
+    await queryRunner.query('CREATE TYPE "core"."pageLayoutWidget_type_enum_old" AS ENUM(\'CALENDAR\', \'EMAILS\', \'EMAIL_THREAD\', \'FIELD\', \'FIELDS\', \'FIELD_RICH_TEXT\', \'FILES\', \'FRONT_COMPONENT\', \'GRAPH\', \'IFRAME\', \'NOTES\', \'RECORD_TABLE\', \'STANDALONE_RICH_TEXT\', \'TASKS\', \'TIMELINE\', \'VIEW\', \'WORKFLOW\', \'WORKFLOW_RUN\', \'WORKFLOW_VERSION\')');
+    await queryRunner.query('ALTER TABLE "core"."pageLayoutWidget" ALTER COLUMN "type" DROP DEFAULT');
+    await queryRunner.query('ALTER TABLE "core"."pageLayoutWidget" ALTER COLUMN "type" TYPE "core"."pageLayoutWidget_type_enum_old" USING "type"::"text"::"core"."pageLayoutWidget_type_enum_old"');
+    await queryRunner.query('ALTER TABLE "core"."pageLayoutWidget" ALTER COLUMN "type" SET DEFAULT \'VIEW\'');
+    await queryRunner.query('DROP TYPE "core"."pageLayoutWidget_type_enum"');
+    await queryRunner.query('ALTER TYPE "core"."pageLayoutWidget_type_enum_old" RENAME TO "pageLayoutWidget_type_enum"');
+    await queryRunner.query('ALTER TABLE "core"."instagramChannel" DROP COLUMN "accessTokenExpiresAt"');
+    await queryRunner.query('DROP INDEX "core"."IDX_WHATSAPP_TEMPLATE_WORKSPACE_ID_NAME_LANGUAGE"');
+    await queryRunner.query('DROP TABLE "core"."whatsappTemplate"');
+    await queryRunner.query('DROP TYPE "core"."whatsappTemplate_status_enum"');
+    await queryRunner.query('DROP TYPE "core"."whatsappTemplate_category_enum"');
+    await queryRunner.query('CREATE INDEX "IDX_INSTAGRAM_AUTOMATION_TRIGGER_LOG_WORKSPACE_ID_IG_COMMENT_ID" ON "core"."instagramAutomationTriggerLog" ("igCommentId", "workspaceId") ');
+    await queryRunner.query('CREATE UNIQUE INDEX "IDX_PAYMENT_WEBHOOK_EVENT_LOG_WORKSPACE_ID_PROVIDER_EXTERNAL_ID" ON "core"."paymentWebhookEventLog" ("externalId", "provider", "type", "workspaceId") ');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" ADD CONSTRAINT "FK_4d8d8d8d8d8d8d8d8d8d8d8d8d8" FOREIGN KEY ("instagramChannelId") REFERENCES "core"."instagramChannel"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."instagramPublicReport" ADD CONSTRAINT "FK_3c7c7c7c7c7c7c7c7c7c7c7c7c7" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" ADD CONSTRAINT "FK_2b6b6b6b6b6b6b6b6b6b6b6b6b6" FOREIGN KEY ("instagramChannelId") REFERENCES "core"."instagramChannel"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."instagramFollowerSnapshot" ADD CONSTRAINT "FK_1a5a5a5a5a5a5a5a5a5a5a5a5a5" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."paymentWebhookEventLog" ADD CONSTRAINT "FK_2b4d6f8a1c3e5b7d9f0a2c4e6b8d" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."paymentProviderConnection" ADD CONSTRAINT "FK_7a1c9e2b6d4f4a3a9c1e8b7d6f5a" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" ADD CONSTRAINT "FK_6f6f6f6f6f6f6f6f6f6f6f6f6f6" FOREIGN KEY ("conversationId") REFERENCES "core"."whatsappAgentConversation"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentMessage" ADD CONSTRAINT "FK_5e5e5e5e5e5e5e5e5e5e5e5e5e5" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" ADD CONSTRAINT "FK_4d4d4d4d4d4d4d4d4d4d4d4d4d4" FOREIGN KEY ("whatsappAgentId") REFERENCES "core"."whatsappAgent"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgentConversation" ADD CONSTRAINT "FK_3c3c3c3c3c3c3c3c3c3c3c3c3c3" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" ADD CONSTRAINT "FK_2b2b2b2b2b2b2b2b2b2b2b2b2b2" FOREIGN KEY ("whatsappChannelId") REFERENCES "core"."whatsappChannel"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."whatsappAgent" ADD CONSTRAINT "FK_1a1a1a1a1a1a1a1a1a1a1a1a1a1" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+    await queryRunner.query('ALTER TABLE "core"."workspaceModuleGrandfather" ADD CONSTRAINT "FK_WORKSPACE_MODULE_GRANDFATHER_WORKSPACE_ID" FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE ON UPDATE NO ACTION');
+  }
+}
