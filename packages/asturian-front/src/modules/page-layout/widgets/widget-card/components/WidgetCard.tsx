@@ -109,11 +109,11 @@ const StyledWidgetCard = styled.div<WidgetCardStyledProps>`
     )
       return '0';
     if (variant === 'dashboard' || variant === 'standalone')
-      return themeCssVariables.spacing[2];
+      return themeCssVariables.spacing[4];
     if (variant === 'side-column' && !isEditable)
       return themeCssVariables.spacing[3];
     if (variant === 'record-page' || isEditable)
-      return themeCssVariables.spacing[2];
+      return themeCssVariables.spacing[4];
     return '0';
   }};
 

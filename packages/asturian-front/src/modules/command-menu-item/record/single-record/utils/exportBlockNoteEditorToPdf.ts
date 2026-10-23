@@ -6,25 +6,25 @@ import {
 import { Font, pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
 
-const registerInterFonts = (() => {
+const registerGeistFonts = (() => {
   let registrationPromise: Promise<void> | null = null;
 
   return () => {
     if (!registrationPromise) {
       registrationPromise = Promise.resolve().then(() => {
         Font.register({
-          family: 'Inter',
+          family: 'Geist',
           fonts: [
             {
-              src: 'https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf',
+              src: 'https://cdn.jsdelivr.net/npm/geist@1.8.2/dist/fonts/geist-sans/Geist-Regular.ttf',
               fontWeight: 400,
             },
             {
-              src: 'https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf',
+              src: 'https://cdn.jsdelivr.net/npm/geist@1.8.2/dist/fonts/geist-sans/Geist-Medium.ttf',
               fontWeight: 500,
             },
             {
-              src: 'https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf',
+              src: 'https://cdn.jsdelivr.net/npm/geist@1.8.2/dist/fonts/geist-sans/Geist-SemiBold.ttf',
               fontWeight: 600,
             },
           ],
@@ -39,7 +39,7 @@ export const exportBlockNoteEditorToPdf = async (
   parsedBody: PartialBlock[],
   filename: string,
 ) => {
-  await registerInterFonts();
+  await registerGeistFonts();
 
   const editor = BlockNoteEditor.create({
     initialContent: parsedBody,

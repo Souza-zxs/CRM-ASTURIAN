@@ -98,12 +98,12 @@ const STORYBOOK_DEFAULT_USER_CONTEXT = {
   timeZone: 'UTC',
 };
 
-const INTER_FONT_WEIGHTS = ['400', '500', '600'];
+const GEIST_FONT_WEIGHTS = ['400', '500', '600'];
 
-const waitForInterFontLoadedBeforeScreenshot = async () => {
+const waitForGeistFontLoadedBeforeScreenshot = async () => {
   await Promise.all(
-    INTER_FONT_WEIGHTS.map((weight) =>
-      document.fonts.load(`${weight} 1em Inter`),
+    GEIST_FONT_WEIGHTS.map((weight) =>
+      document.fonts.load(`${weight} 1em Geist`),
     ),
   );
   await document.fonts.ready;
@@ -135,7 +135,7 @@ const preview: Preview = {
     resetJotaiStore();
   },
 
-  loaders: [mswLoader, waitForInterFontLoadedBeforeScreenshot],
+  loaders: [mswLoader, waitForGeistFontLoadedBeforeScreenshot],
 
   parameters: {
     controls: {
