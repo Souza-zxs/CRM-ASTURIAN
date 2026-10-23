@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { IconInfoCircle } from '@ui/icon/components/TablerIcons';
+import { IconInfoCircleFilled } from '@ui/icon/components/TablerIcons';
 import { useTheme } from '@ui/theme-constants';
 
 import { Button } from '@ui/input/Button/Button';
@@ -34,7 +34,7 @@ export const Info = ({
   return (
     <div className={clsx(styles.info, INFO_ACCENT_CLASS_NAMES[accent])}>
       <div className={styles.textContainer}>
-        <IconInfoCircle size={theme.icon.size.md} />
+        <IconInfoCircleFilled size={theme.icon.size.md} />
         {text}
       </div>
       {buttonTitle && to && (

@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { useState } from 'react';
 import { isDefined } from '@ui/utilities/utils/isDefined';
 
-import { IconHelp, IconX } from '@ui/icon/components/TablerIcons';
+import { IconHelpFilled, IconXFilled } from '@ui/icon/components/TablerIcons';
 import { type IconComponent } from '@ui/icon/types/IconComponent';
 import { LightButton, LightIconButton } from '@ui/input';
 
@@ -48,7 +48,7 @@ export const Callout = ({
   variant,
   title,
   description,
-  Icon = IconHelp,
+  Icon = IconHelpFilled,
   action,
   isClosable = false,
   onClose,
@@ -87,7 +87,7 @@ export const Callout = ({
         <div className={styles.title}>{title}</div>
         {isClosable && (
           <LightIconButton
-            Icon={IconX}
+            Icon={IconXFilled}
             size="small"
             aria-label="Close"
             onClick={handleClose}

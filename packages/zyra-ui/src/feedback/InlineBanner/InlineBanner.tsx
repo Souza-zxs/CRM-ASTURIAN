@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { useTheme } from '@ui/theme-constants';
 import { Button } from '@ui/input/Button/Button';
 import { type IconComponent } from '@ui/icon/types/IconComponent';
-import { IconInfoCircle } from '@ui/icon/components/TablerIcons';
+import { IconInfoCircleFilled } from '@ui/icon/components/TablerIcons';
 import { Banner, type BannerColor } from '@ui/feedback/Banner/Banner';
 
 import styles from './InlineBanner.module.scss';
@@ -23,7 +23,7 @@ export const InlineBanner = ({
   color,
   message,
   button,
-  LeftIcon = IconInfoCircle,
+  LeftIcon = IconInfoCircleFilled,
   className,
 }: InlineBannerProps) => {
   const theme = useTheme();

@@ -5,7 +5,7 @@ import { useAtomComponentFamilyStateValue } from '@/ui/utilities/state/jotai/hoo
 import { styled } from '@linaria/react';
 import { t } from '@lingui/core/macro';
 import { type ReactNode, useContext } from 'react';
-import { IconTrash } from 'zyra-ui/icon';
+import { IconTrashFilled } from 'zyra-ui/icon';
 import { OverflowingTextWithTooltip } from 'zyra-ui/surfaces';
 import { IconButton } from 'zyra-ui/input';
 
@@ -127,7 +127,7 @@ export const WidgetCardHeader = ({
               >
                 <IconButton
                   onClick={onRemove}
-                  Icon={IconTrash}
+                  Icon={IconTrashFilled}
                   variant="tertiary"
                   size="small"
                 />

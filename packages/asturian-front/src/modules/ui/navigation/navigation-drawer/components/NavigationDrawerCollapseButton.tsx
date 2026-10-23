@@ -5,8 +5,8 @@ import { useAtomState } from '@/ui/utilities/state/jotai/hooks/useAtomState';
 import { useSetAtomState } from '@/ui/utilities/state/jotai/hooks/useSetAtomState';
 import { styled } from '@linaria/react';
 import {
-  IconLayoutSidebarLeftCollapse,
-  IconLayoutSidebarRightCollapse,
+  IconLayoutSidebarLeftCollapseFilled,
+  IconLayoutSidebarRightCollapseFilled,
 } from 'zyra-ui/icon';
 import { LightIconButton } from 'zyra-ui/input';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
@@ -48,8 +48,8 @@ export const NavigationDrawerCollapseButton = ({
       <LightIconButton
         Icon={
           direction === 'left'
-            ? IconLayoutSidebarLeftCollapse
-            : IconLayoutSidebarRightCollapse
+            ? IconLayoutSidebarLeftCollapseFilled
+            : IconLayoutSidebarRightCollapseFilled
         }
         accent="secondary"
         size="small"

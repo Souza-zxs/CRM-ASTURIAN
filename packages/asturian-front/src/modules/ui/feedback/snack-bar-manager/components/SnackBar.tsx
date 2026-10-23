@@ -11,10 +11,10 @@ import {
 } from 'react';
 import { isDefined } from 'zyra-shared/utils';
 import {
-  IconAlertTriangle,
-  IconInfoCircle,
-  IconSquareRoundedCheck,
-  IconX,
+  IconAlertTriangleFilled,
+  IconInfoCircleFilled,
+  IconSquareRoundedCheckFilled,
+  IconXFilled,
 } from 'zyra-ui/icon';
 import { HorizontalSeparator } from 'zyra-ui/layout';
 import { ProgressBar, useProgressAnimation } from 'zyra-ui/feedback';
@@ -178,23 +178,31 @@ export const SnackBar = ({
     switch (variant) {
       case SnackBarVariant.Error:
         return (
-          <IconAlertTriangle {...{ 'aria-label': ariaLabel, color, size }} />
+          <IconAlertTriangleFilled
+            {...{ 'aria-label': ariaLabel, color, size }}
+          />
         );
       case SnackBarVariant.Info:
-        return <IconInfoCircle {...{ 'aria-label': ariaLabel, color, size }} />;
+        return (
+          <IconInfoCircleFilled {...{ 'aria-label': ariaLabel, color, size }} />
+        );
       case SnackBarVariant.Success:
         return (
-          <IconSquareRoundedCheck
+          <IconSquareRoundedCheckFilled
             {...{ 'aria-label': ariaLabel, color, size }}
           />
         );
       case SnackBarVariant.Warning:
         return (
-          <IconAlertTriangle {...{ 'aria-label': ariaLabel, color, size }} />
+          <IconAlertTriangleFilled
+            {...{ 'aria-label': ariaLabel, color, size }}
+          />
         );
       default:
         return (
-          <IconAlertTriangle {...{ 'aria-label': ariaLabel, color, size }} />
+          <IconAlertTriangleFilled
+            {...{ 'aria-label': ariaLabel, color, size }}
+          />
         );
     }
   }, [iconComponent, variant, i18n, theme.icon.size.md, theme.snackBar]);
@@ -235,7 +243,11 @@ export const SnackBar = ({
           {!!onCancel && <LightButton title={t`Cancel`} onClick={onCancel} />}
 
           {!!onClose && (
-            <LightIconButton title={t`Close`} Icon={IconX} onClick={onClose} />
+            <LightIconButton
+              title={t`Close`}
+              Icon={IconXFilled}
+              onClick={onClose}
+            />
           )}
         </StyledActions>
       </StyledHeader>

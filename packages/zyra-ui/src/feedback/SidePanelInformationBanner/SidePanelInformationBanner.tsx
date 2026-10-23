@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { useId } from 'react';
 import { isDefined } from '@ui/utilities/utils/isDefined';
 
-import { IconAlertTriangle, IconInfoCircle } from '@ui/icon';
+import { IconAlertTriangleFilled, IconInfoCircleFilled } from '@ui/icon';
 import { AppTooltip } from '@ui/surfaces';
 
 import styles from './SidePanelInformationBanner.module.scss';
@@ -29,9 +29,9 @@ export const SidePanelInformationBanner = ({
     >
       <div className={styles.iconContainer}>
         {variant === 'default' ? (
-          <IconInfoCircle size={16} />
+          <IconInfoCircleFilled size={16} />
         ) : (
-          <IconAlertTriangle size={16} />
+          <IconAlertTriangleFilled size={16} />
         )}
       </div>
       <p className={styles.message}>{message}</p>
