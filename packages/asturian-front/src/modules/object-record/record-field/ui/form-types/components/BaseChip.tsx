@@ -9,7 +9,7 @@ const StyledChip = styled.div<{ deletable: boolean; danger: boolean }>`
     danger ? themeCssVariables.color.red3 : themeCssVariables.color.blue3};
   border-color: ${({ danger }) =>
     danger ? themeCssVariables.color.red5 : themeCssVariables.color.blue5};
-  border-radius: 4px;
+  border-radius: ${themeCssVariables.border.radius.pill};
   border-style: solid;
   border-width: 1px;
   box-sizing: border-box;

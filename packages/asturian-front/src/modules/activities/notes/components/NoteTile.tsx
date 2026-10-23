@@ -15,7 +15,7 @@ const StyledCard = styled.div<{ isSingleNote: boolean }>`
   align-items: flex-start;
   background: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex-direction: column;
   height: 300px;

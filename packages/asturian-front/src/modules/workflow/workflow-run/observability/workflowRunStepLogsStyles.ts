@@ -6,7 +6,7 @@ import { MONOSPACE_FONT_FAMILY } from '@/ui/theme/constants/MonospaceFontFamily'
 export const StyledSummaryCard = styled.div`
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   gap: ${themeCssVariables.spacing[3]};
@@ -104,7 +104,7 @@ export const StyledSectionTitle = styled.h3`
 export const StyledErrorCard = styled.div`
   background: ${themeCssVariables.background.transparent.danger};
   border: 1px solid ${themeCssVariables.color.red};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   gap: ${themeCssVariables.spacing[2]};

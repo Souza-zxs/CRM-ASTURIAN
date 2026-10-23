@@ -12,7 +12,7 @@ const StyledErrorContainer = styled.div`
   align-items: center;
   background: ${themeCssVariables.background.danger};
   border: 1px solid ${themeCssVariables.border.color.danger};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   gap: ${themeCssVariables.spacing[2]};
   padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[3]};

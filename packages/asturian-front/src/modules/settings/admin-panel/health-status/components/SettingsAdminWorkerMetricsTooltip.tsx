@@ -7,7 +7,7 @@ const StyledTooltipContainer = styled.div`
   backdrop-filter: ${themeCssVariables.blur.medium};
   background-color: ${themeCssVariables.background.transparent.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-shadow: ${themeCssVariables.boxShadow.light};
   display: flex;
   flex-direction: column;

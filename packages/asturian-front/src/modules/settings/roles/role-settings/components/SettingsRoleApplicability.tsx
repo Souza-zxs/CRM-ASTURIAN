@@ -10,7 +10,7 @@ import { ThemeContext, themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledCheckboxContainer = styled.div<{ disabled: boolean }>`
   align-items: center;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   display: flex;
   justify-content: space-between;

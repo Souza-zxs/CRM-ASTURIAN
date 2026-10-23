@@ -13,7 +13,7 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledCollapseButton = styled.div`
   align-items: center;
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.pill};
   color: ${themeCssVariables.font.color.light};
   cursor: pointer;
   display: flex;

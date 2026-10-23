@@ -24,7 +24,7 @@ const StyledColorButton = styled.button`
   align-items: center;
   background: transparent;
   border: none;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   cursor: pointer;
   display: flex;
   height: 24px;

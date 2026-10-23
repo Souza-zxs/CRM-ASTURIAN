@@ -62,7 +62,8 @@ const StyledDayHeaderDay = styled.span<{ isToday: boolean }>`
   align-items: center;
   background: ${({ isToday }) =>
     isToday ? themeCssVariables.color.blue : 'transparent'};
-  border-radius: ${({ isToday }) => (isToday ? '4px' : '0')};
+  border-radius: ${({ isToday }) =>
+    isToday ? themeCssVariables.border.radius.md : '0'};
   color: ${({ isToday }) =>
     isToday
       ? themeCssVariables.font.color.inverted
@@ -85,7 +86,7 @@ const StyledCardsContainer = styled.div<{ isDraggedOver?: boolean }>`
     isDraggedOver
       ? `1px dashed ${themeCssVariables.border.color.medium}`
       : 'none'};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex: 1;
   flex-direction: column;

@@ -27,7 +27,7 @@ const StyledCardContainer = styled.div`
   min-width: 0;
 
   > * {
-    border-radius: ${themeCssVariables.border.radius.md};
+    border-radius: ${themeCssVariables.border.radius.xl};
     color: ${themeCssVariables.font.color.primary};
   }
 `;

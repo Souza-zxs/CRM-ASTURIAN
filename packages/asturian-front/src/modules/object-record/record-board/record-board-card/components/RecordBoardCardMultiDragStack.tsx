@@ -6,7 +6,7 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 const StyledRecordBoardCardStackCard = styled.div<{ offset: number }>`
   background-color: ${themeCssVariables.accent.tertiary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   height: 100%;
   left: 0;
   position: absolute;

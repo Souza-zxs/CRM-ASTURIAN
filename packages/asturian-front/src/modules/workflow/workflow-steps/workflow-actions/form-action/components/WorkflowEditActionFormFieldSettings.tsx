@@ -21,7 +21,7 @@ type WorkflowEditActionFormFieldSettingsProps = {
 const StyledFormFieldSettingsContainer = styled.div`
   background-color: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex-direction: column;
   gap: ${themeCssVariables.spacing[1]};

@@ -9,7 +9,7 @@ type EventCardToggleButtonProps = {
 };
 
 const StyledButtonContainer = styled.div`
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
 `;
 
 export const EventCardToggleButton = ({

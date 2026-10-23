@@ -23,8 +23,8 @@ const StyledSearchVariablesDropdownContainer = styled.div<{
 
   border-radius: ${({ multiline }) =>
     multiline
-      ? themeCssVariables.border.radius.sm
-      : `0 ${themeCssVariables.border.radius.sm} ${themeCssVariables.border.radius.sm} 0`};
+      ? themeCssVariables.border.radius.md
+      : `0 ${themeCssVariables.border.radius.md} ${themeCssVariables.border.radius.md} 0`};
 
   display: flex;
   height: ${({ multiline }) =>

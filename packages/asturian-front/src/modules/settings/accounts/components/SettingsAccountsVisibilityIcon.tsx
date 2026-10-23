@@ -14,7 +14,7 @@ type SettingsAccountsVisibilityIconProps = {
 const StyledCardMedia = styled.div`
   align-items: stretch;
   border: 2px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.light};
   display: flex;
   flex-direction: column;

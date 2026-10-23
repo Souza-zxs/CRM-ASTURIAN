@@ -56,7 +56,7 @@ const StyledSummaryButton = styled.button`
   align-items: center;
   background: none;
   border: none;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.tertiary};
   cursor: pointer;
   display: flex;
@@ -207,7 +207,7 @@ const StyledToolRowButton = styled.button<{ isExpandable: boolean }>`
 const StyledToolDetailsContainer = styled.div`
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   margin-left: ${themeCssVariables.spacing[3]};
   min-width: 0;
   overflow: hidden;

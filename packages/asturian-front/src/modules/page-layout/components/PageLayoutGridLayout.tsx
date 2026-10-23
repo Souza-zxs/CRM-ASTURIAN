@@ -68,7 +68,7 @@ const StyledGridContainer = styled.div`
   .react-grid-placeholder {
     background: ${themeCssVariables.color.blue7} !important;
 
-    border-radius: ${themeCssVariables.border.radius.md};
+    border-radius: ${themeCssVariables.border.radius.xl};
   }
 
   .react-grid-item:not(.react-draggable-dragging) {

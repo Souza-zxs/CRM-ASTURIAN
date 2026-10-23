@@ -33,7 +33,7 @@ const StyledContainer = styled.div`
 
 const StyledPropertyBox = styled.div`
   align-self: stretch;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   gap: ${themeCssVariables.spacing[2]};
@@ -45,7 +45,7 @@ const StyledInlineFieldsPropertyBox = styled.div<{
   hasMoreGroup: boolean;
 }>`
   align-self: stretch;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   gap: ${themeCssVariables.spacing[2]};

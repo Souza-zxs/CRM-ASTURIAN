@@ -107,7 +107,7 @@ const StyledContainer = styled.div<{
   & .react-datepicker__month-dropdown-container,
   & .react-datepicker__year-dropdown-container {
     text-align: left;
-    border-radius: ${themeCssVariables.border.radius.sm};
+    border-radius: ${themeCssVariables.border.radius.md};
     margin-left: ${themeCssVariables.spacing[1]};
     margin-right: 0;
     padding: ${themeCssVariables.spacing[2]};
@@ -169,7 +169,7 @@ const StyledContainer = styled.div<{
     padding: ${themeCssVariables.spacing[2]}
       calc(${themeCssVariables.spacing[2]} - 2px);
     width: calc(100% - ${themeCssVariables.spacing[4]});
-    border-radius: ${themeCssVariables.border.radius.xs};
+    border-radius: ${themeCssVariables.border.radius.sm};
     color: ${themeCssVariables.font.color.secondary};
     cursor: pointer;
     margin: 2px;
@@ -222,7 +222,7 @@ const StyledContainer = styled.div<{
   & .react-datepicker__navigation--previous,
   & .react-datepicker__navigation--next {
     height: 34px;
-    border-radius: ${themeCssVariables.border.radius.sm};
+    border-radius: ${themeCssVariables.border.radius.md};
     padding-top: 6px;
     &:hover {
       background: ${themeCssVariables.background.transparent.light};
@@ -288,7 +288,7 @@ const StyledSeparator = styled.div`
 
 const StyledButtonContainer = styled.div`
   align-items: center;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
@@ -312,7 +312,7 @@ const StyledButtonContent = styled.div`
 const StyledDatePickerFallback = styled.div`
   align-items: center;
   background: ${themeCssVariables.background.secondary};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   color: ${themeCssVariables.font.color.tertiary};
   display: flex;
   flex-direction: column;

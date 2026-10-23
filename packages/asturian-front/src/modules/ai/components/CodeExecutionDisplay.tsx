@@ -20,7 +20,7 @@ import { useCopyToClipboard } from '~/hooks/useCopyToClipboard';
 
 const StyledContainer = styled.div`
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex-direction: column;
   margin: ${themeCssVariables.spacing[2]} 0;
@@ -121,7 +121,7 @@ const StyledFilesGrid = styled.div`
 
 const StyledFileCard = styled.div`
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   overflow: hidden;

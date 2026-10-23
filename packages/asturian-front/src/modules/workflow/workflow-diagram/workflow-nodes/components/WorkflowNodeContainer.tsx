@@ -19,7 +19,7 @@ const StyledNodeContainer = styled.div<{
       ? colors.selected.borderColor
       : colors.unselected.borderColor;
   }};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   border-style: solid;
   border-width: 1px;
   box-sizing: border-box;

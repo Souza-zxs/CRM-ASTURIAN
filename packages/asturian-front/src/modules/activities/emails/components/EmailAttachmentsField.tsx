@@ -25,7 +25,7 @@ const StyledContainer = styled.div`
 const StyledUploadArea = styled.div<{ hasFiles: boolean }>`
   background-color: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   justify-content: center;

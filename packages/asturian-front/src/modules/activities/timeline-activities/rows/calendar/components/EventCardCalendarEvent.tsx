@@ -70,7 +70,7 @@ const StyledCalendarEventBody = styled.div`
 const StyledCalendarEventDateCard = styled.div`
   align-items: center;
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.spacing[1]};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   gap: ${themeCssVariables.spacing[1]};

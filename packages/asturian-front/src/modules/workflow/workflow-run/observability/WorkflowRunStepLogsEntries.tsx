@@ -11,7 +11,7 @@ import {
 
 const StyledEntriesList = styled.div`
   background: ${themeCssVariables.background.tertiary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   font-family: ${MONOSPACE_FONT_FAMILY};

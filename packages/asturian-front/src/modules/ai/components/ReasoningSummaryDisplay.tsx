@@ -24,7 +24,7 @@ const StyledThinkingText = styled.div`
 const StyledReasoningContainer = styled.div`
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   padding: ${themeCssVariables.spacing[3]};
 `;
 

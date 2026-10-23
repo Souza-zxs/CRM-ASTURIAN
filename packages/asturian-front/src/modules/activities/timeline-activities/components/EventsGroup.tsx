@@ -30,7 +30,7 @@ const StyledActivityGroupBar = styled.div`
   align-items: center;
   background: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -51,7 +51,7 @@ const StyledMonthSeperator = styled.div`
 `;
 const StyledMonthSeperatorLine = styled.div`
   background: ${themeCssVariables.border.color.light};
-  border-radius: 50px;
+  border-radius: ${themeCssVariables.border.radius.pill};
   flex: 1 0 0;
   height: 1px;
 `;

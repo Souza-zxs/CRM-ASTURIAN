@@ -18,7 +18,7 @@ const StyledControlContainer = styled.div`
   align-items: center;
   background-color: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-sizing: border-box;
   color: ${themeCssVariables.font.color.primary};
   cursor: pointer;

@@ -40,7 +40,7 @@ const StyledGridCell = styled.div<{ isSelected?: boolean }>`
       isSelected
         ? themeCssVariables.color.blue7
         : themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   cursor: pointer;
   transition: background-color 0.3s ease;
 

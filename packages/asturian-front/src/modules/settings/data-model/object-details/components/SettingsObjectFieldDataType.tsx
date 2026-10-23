@@ -22,7 +22,7 @@ const StyledDataType = styled.div<{
 }>`
   align-items: center;
   border: 1px solid transparent;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${({ to }) =>
     to
       ? themeCssVariables.font.color.secondary

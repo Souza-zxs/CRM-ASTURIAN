@@ -35,7 +35,7 @@ const StyledMessageBubble = styled.div<{ isUser?: boolean }>`
 const StyledMessageContent = styled.div<{ isUser?: boolean }>`
   background: ${({ isUser }) =>
     isUser ? themeCssVariables.background.tertiary : 'transparent'};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${({ isUser }) =>
     isUser
       ? themeCssVariables.font.color.secondary

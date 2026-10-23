@@ -10,7 +10,7 @@ const StyledButtonContainer = styled.div`
     position: relative;
     right: 7px;
   }
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   margin: ${themeCssVariables.spacing[1]};
 `;
 

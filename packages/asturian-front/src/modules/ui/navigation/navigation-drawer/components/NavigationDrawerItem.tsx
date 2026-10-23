@@ -40,7 +40,10 @@ const DEFAULT_INDENTATION_LEVEL = 1;
 export type NavigationDrawerItemIndentationLevel = 1 | 2;
 
 export type NavigationDrawerItemModifier =
-  'soon' | 'new' | 'locked' | { keyboard: string[] };
+  | 'soon'
+  | 'new'
+  | 'locked'
+  | { keyboard: string[] };
 
 export type NavigationDrawerItemProps = {
   className?: string;
@@ -91,7 +94,7 @@ const StyledItem = styled.button<StyledItemProps>`
     isSelectedInEditMode
       ? `1px solid ${themeCssVariables.color.blue}`
       : '1px solid transparent'};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-sizing: border-box;
   color: ${({ active, isSoon, isLocked, variant }) => {
     if (variant === 'tertiary') {

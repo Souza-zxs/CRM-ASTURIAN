@@ -7,7 +7,7 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledTableContainer = styled.div`
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   min-height: 0;
   overflow: hidden;
 `;

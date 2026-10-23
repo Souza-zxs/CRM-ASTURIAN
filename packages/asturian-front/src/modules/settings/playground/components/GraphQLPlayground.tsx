@@ -31,7 +31,7 @@ const StyledGraphiQLContainer = styled.div`
 
   .graphiql-container {
     background: ${themeCssVariables.background.primary};
-    border-radius: ${themeCssVariables.border.radius.md};
+    border-radius: ${themeCssVariables.border.radius.xl};
   }
 `;
 

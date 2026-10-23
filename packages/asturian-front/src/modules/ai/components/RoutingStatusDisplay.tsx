@@ -52,7 +52,7 @@ const StyledIconTextContainer = styled.div`
 const StyledContentContainer = styled.div`
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   min-width: 0;
   padding: ${themeCssVariables.spacing[3]};
 `;

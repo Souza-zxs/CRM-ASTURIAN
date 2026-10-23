@@ -44,7 +44,7 @@ const StyledModelBadge = styled.span`
 const StyledUsageGrid = styled.div`
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: grid;
   gap: ${themeCssVariables.spacing[1]} ${themeCssVariables.spacing[4]};
   grid-template-columns: max-content 1fr;

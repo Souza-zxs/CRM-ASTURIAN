@@ -56,7 +56,7 @@ const StyledColorIcon = styled.div<{
 }>`
   align-items: center;
   background: ${({ color }) => color};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-sizing: border-box;
   display: flex;
   height: 14px;

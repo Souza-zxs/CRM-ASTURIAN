@@ -25,7 +25,7 @@ const StyledObjectSummaryCardContainer = styled.div`
   max-width: 480px;
 
   > * {
-    border-radius: ${themeCssVariables.border.radius.md};
+    border-radius: ${themeCssVariables.border.radius.xl};
     color: ${themeCssVariables.font.color.primary};
   }
 `;

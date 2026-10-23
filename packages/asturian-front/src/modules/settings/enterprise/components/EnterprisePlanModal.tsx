@@ -24,7 +24,7 @@ const YEARLY_PRICE = 19;
 const StyledSubscriptionContainer = styled.div`
   background-color: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex-direction: column;
   margin: ${themeCssVariables.spacing[8]} 0 ${themeCssVariables.spacing[2]};

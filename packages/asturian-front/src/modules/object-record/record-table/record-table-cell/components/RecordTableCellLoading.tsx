@@ -5,7 +5,7 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledStaticCellSkeleton = styled.div`
   background-color: ${themeCssVariables.background.tertiary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   margin: 8px;
   padding: 8px;
 `;

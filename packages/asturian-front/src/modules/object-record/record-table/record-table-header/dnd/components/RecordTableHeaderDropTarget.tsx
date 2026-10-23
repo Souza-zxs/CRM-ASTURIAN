@@ -17,8 +17,8 @@ const StyledDropTarget = styled.div<{
 
   &::before {
     background-color: ${themeCssVariables.color.blue};
-    border-radius: 0 ${themeCssVariables.border.radius.sm}
-      ${themeCssVariables.border.radius.sm} 0;
+    border-radius: 0 ${themeCssVariables.border.radius.md}
+      ${themeCssVariables.border.radius.md} 0;
     content: '';
     height: 100%;
     left: 0;

@@ -23,7 +23,7 @@ type SettingsDataModelFieldPreviewWidgetProps = {
 
 const StyledCardContainer = styled.div`
   > * {
-    border-radius: ${themeCssVariables.border.radius.md};
+    border-radius: ${themeCssVariables.border.radius.xl};
     color: ${themeCssVariables.font.color.primary};
   }
 `;

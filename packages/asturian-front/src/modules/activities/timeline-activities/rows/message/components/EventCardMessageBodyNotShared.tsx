@@ -7,7 +7,7 @@ const StyledEmailBodyNotSharedContainer = styled.div`
   align-items: center;
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.spacing[1]};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.light};
   display: flex;
   flex-direction: column;

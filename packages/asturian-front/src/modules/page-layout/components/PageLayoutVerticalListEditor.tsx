@@ -41,7 +41,7 @@ const StyledDraggableWrapper = styled.div<{ isDragging: boolean }>`
     isDragging
       ? themeCssVariables.background.transparent.light
       : 'transparent'};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   transition: background 0.1s ease;
 `;
 

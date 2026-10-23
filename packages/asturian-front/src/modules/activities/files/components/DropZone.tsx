@@ -11,7 +11,7 @@ const StyledContainer = styled.div`
   align-items: center;
   background: ${themeCssVariables.background.secondary};
   border: 2px dashed ${themeCssVariables.border.color.strong};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   height: 100%;

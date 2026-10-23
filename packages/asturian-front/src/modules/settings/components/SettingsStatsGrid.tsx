@@ -16,7 +16,7 @@ type SettingsStatsGridProps = {
 const StyledContainer = styled.div`
   background: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   gap: ${themeCssVariables.spacing[3]};
   padding: ${themeCssVariables.spacing[2]};

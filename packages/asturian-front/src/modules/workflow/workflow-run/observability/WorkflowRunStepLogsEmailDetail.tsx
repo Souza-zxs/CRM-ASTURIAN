@@ -54,7 +54,7 @@ const StyledSubject = styled.div`
 const StyledRecipientsCard = styled.div`
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: grid;
   gap: ${themeCssVariables.spacing[1]} ${themeCssVariables.spacing[3]};
   grid-template-columns: max-content 1fr;
@@ -75,7 +75,7 @@ const StyledRecipientValue = styled.span`
 
 const StyledBodyContainer = styled.div`
   background: ${themeCssVariables.background.tertiary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.primary};
   font-size: ${themeCssVariables.font.size.sm};
   max-height: 300px;

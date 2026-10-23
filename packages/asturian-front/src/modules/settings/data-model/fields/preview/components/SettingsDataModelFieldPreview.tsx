@@ -30,7 +30,7 @@ const StyledFieldPreview = styled.div<{ shrink?: boolean }>`
   align-items: center;
   background-color: ${themeCssVariables.background.primary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   gap: ${themeCssVariables.spacing[2]};
   height: fit-content;

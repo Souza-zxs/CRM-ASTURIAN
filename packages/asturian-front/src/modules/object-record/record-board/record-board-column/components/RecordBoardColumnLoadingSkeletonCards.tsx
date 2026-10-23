@@ -6,7 +6,7 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 const StyledSkeletonCardContainer = styled.div`
   background-color: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.background.quaternary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-shadow:
     0px 4px 8px 0px ${themeCssVariables.color.gray2},
     0px 0px 4px 0px ${themeCssVariables.color.gray2};

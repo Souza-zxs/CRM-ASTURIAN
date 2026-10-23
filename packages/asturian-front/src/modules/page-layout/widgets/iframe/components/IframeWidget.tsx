@@ -9,7 +9,7 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledContainer = styled.div<{ $isEditMode: boolean }>`
   background: ${themeCssVariables.background.primary};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

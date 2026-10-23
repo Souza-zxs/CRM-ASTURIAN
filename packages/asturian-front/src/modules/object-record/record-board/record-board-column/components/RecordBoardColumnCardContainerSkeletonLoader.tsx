@@ -29,7 +29,7 @@ const StyledBodyContainer = styled.div`
 
 const StyledStaticCellSkeleton = styled.div<{ width: number; height: number }>`
   background-color: ${themeCssVariables.background.tertiary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
 
   height: ${({ height }) => height}px;
   width: ${({ width }) => width}px;

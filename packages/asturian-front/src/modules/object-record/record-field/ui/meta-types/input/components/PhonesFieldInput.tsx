@@ -39,7 +39,8 @@ const StyledCustomPhoneInputContainer = styled.div<{
         ? `1px solid ${themeCssVariables.border.color.danger}`
         : `1px solid ${themeCssVariables.border.color.medium}`
       : 'none'};
-  border-radius: ${({ hasItem }) => (hasItem ? '4px' : '0')};
+  border-radius: ${({ hasItem }) =>
+    hasItem ? themeCssVariables.border.radius.md : '0'};
   height: ${({ hasItem }) => (hasItem ? '30px' : 'auto')};
 `;
 

@@ -16,7 +16,7 @@ export const OverlayContainer = styled.div<{
       themeCssVariables.border.color[hasDangerBorder ? 'danger' : 'medium']};
 
   border-radius: ${({ borderRadius }) =>
-    themeCssVariables.border.radius[borderRadius ?? 'md']};
+    themeCssVariables.border.radius[borderRadius ?? 'xl']};
   box-shadow: ${themeCssVariables.boxShadow.strong};
   display: flex;
 

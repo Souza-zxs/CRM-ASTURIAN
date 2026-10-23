@@ -16,7 +16,7 @@ const StyledNewButton = styled.button`
   align-self: baseline;
   background-color: ${themeCssVariables.background.primary};
   border: none;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.tertiary};
   cursor: pointer;
   display: flex;

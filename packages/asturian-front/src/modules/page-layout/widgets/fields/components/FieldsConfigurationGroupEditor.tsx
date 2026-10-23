@@ -28,7 +28,7 @@ const StyledFieldsDroppable = styled.div`
 const StyledEmptyGroupDropZone = styled.div`
   align-items: center;
   border: 1px dashed ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.light};
   display: flex;
   font-size: ${themeCssVariables.font.size.sm};
@@ -43,7 +43,7 @@ const StyledGroupContainer = styled.div<{ isDragging: boolean }>`
   border: 1px solid
     ${({ isDragging }) =>
       isDragging ? themeCssVariables.color.blue : 'transparent'};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex-direction: column;
   width: 100%;

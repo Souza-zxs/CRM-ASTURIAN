@@ -7,7 +7,7 @@ import { ThemeContext, themeCssVariables } from 'zyra-ui/theme-constants';
 const StyledContainer = styled.div`
   align-items: center;
   background-color: ${themeCssVariables.background.transparent.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.pill};
   display: flex;
   gap: ${themeCssVariables.spacing[1]};
   height: ${themeCssVariables.spacing[5]};
@@ -29,7 +29,7 @@ const StyledIconBox = styled.div`
 const StyledStaticLoader = styled.div`
   align-items: center;
   border: 1px solid ${themeCssVariables.font.color.tertiary};
-  border-radius: 12px;
+  border-radius: ${themeCssVariables.border.radius.pill};
   box-sizing: border-box;
   display: flex;
   height: 12px;

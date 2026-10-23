@@ -15,7 +15,7 @@ import { ThemeContext, themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledContainer = styled.div`
   border: 1px solid transparent;
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ const StyledHeader = styled.div`
 const StyledMenuItemList = styled.div`
   background-color: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   margin-top: ${themeCssVariables.spacing[2]};
   overflow: hidden;
   padding: ${themeCssVariables.spacing[2]};

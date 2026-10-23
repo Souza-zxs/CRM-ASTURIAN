@@ -8,7 +8,7 @@ const StyledBoardCard = styled.div<{
 }>`
   background-color: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   opacity: ${({ isSecondaryDragged }) => (isSecondaryDragged ? '0.3' : '1')};

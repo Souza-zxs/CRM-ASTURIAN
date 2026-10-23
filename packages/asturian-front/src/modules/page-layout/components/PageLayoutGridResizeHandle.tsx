@@ -60,7 +60,7 @@ const StyledCornerIconWrapper = styled.div<{
 `;
 
 const StyledVerticalHandle = styled.div`
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.pill};
   height: ${themeCssVariables.spacing[5]};
   width: calc(${themeCssVariables.icon.stroke.lg} * 1px);
 `;
@@ -68,7 +68,7 @@ const StyledVerticalHandle = styled.div`
 const StyledVerticalHandleWrapper = styled.div<{
   widgetHandleAxis: WidgetVerticalHandleAxis;
 }>`
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.pill};
   cursor: col-resize;
   padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[2]};
   transform: ${({ widgetHandleAxis }) =>
@@ -82,7 +82,7 @@ const StyledVerticalHandleWrapper = styled.div<{
 `;
 
 const StyledHorizontalHandle = styled.div`
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.pill};
   height: calc(${themeCssVariables.icon.stroke.lg} * 1px);
   width: ${themeCssVariables.spacing[5]};
 `;
@@ -90,7 +90,7 @@ const StyledHorizontalHandle = styled.div`
 const StyledHorizontalHandleWrapper = styled.div<{
   widgetHandleAxis: WidgetHorizontalHandleAxis;
 }>`
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.pill};
   cursor: row-resize;
   padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[2]};
   transform: ${({ widgetHandleAxis }) =>

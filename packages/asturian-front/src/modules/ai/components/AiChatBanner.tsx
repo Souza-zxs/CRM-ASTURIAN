@@ -17,7 +17,7 @@ const StyledBanner = styled.div<{ variant: AiChatBannerVariant }>`
     variant === 'warning'
       ? themeCssVariables.background.transparent.orange
       : themeCssVariables.accent.secondary};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-sizing: border-box;
   display: flex;
   gap: ${themeCssVariables.spacing[2]};

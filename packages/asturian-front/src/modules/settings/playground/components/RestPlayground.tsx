@@ -15,7 +15,7 @@ import { ThemeContext, themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledContainer = styled.div`
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   height: 100%;
   overflow-y: scroll;
   width: 100%;

@@ -9,7 +9,7 @@ const StyledRadioCardContentContainer = styled.div`
   > * {
     align-items: center;
     border: 1px solid ${themeCssVariables.border.color.medium};
-    border-radius: ${themeCssVariables.border.radius.sm};
+    border-radius: ${themeCssVariables.border.radius.md};
     cursor: pointer;
     display: flex;
     flex-grow: 1;

@@ -52,7 +52,7 @@ const StyledEditorScroll = styled.div`
 `;
 
 const StyledCollapseButton = styled.div`
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   color: ${themeCssVariables.font.color.light};
   cursor: pointer;
   display: flex;

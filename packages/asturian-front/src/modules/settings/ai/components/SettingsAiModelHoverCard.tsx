@@ -1,12 +1,7 @@
 import { styled } from '@linaria/react';
 import { t } from '@lingui/core/macro';
 import { useContext } from 'react';
-import {
-  Chip,
-  ChipAccent,
-  ChipSize,
-  ChipVariant,
-} from 'zyra-ui/data-display';
+import { Chip, ChipAccent, ChipSize, ChipVariant } from 'zyra-ui/data-display';
 import {
   IconBolt,
   IconBuildingSkyscraper,
@@ -26,7 +21,7 @@ import { isDefined } from 'zyra-shared/utils';
 import { formatNumber } from '~/utils/format/formatNumber';
 
 const StyledHoverCardWrapper = styled.div`
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-shadow: ${themeCssVariables.boxShadow.strong};
   overflow: hidden;
   width: 320px;

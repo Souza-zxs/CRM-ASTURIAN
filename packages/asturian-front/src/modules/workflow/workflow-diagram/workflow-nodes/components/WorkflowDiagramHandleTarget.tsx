@@ -12,7 +12,7 @@ const StyledHandleContainer = styled.div`
   position: absolute;
 
   & .react-flow__handle {
-    border-radius: ${themeCssVariables.border.radius.md};
+    border-radius: ${themeCssVariables.border.radius.xl};
     height: 100%;
     left: 0;
     opacity: 0;

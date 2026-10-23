@@ -25,7 +25,8 @@ const StyledInput = styled.input<{
         : `1px solid ${themeCssVariables.border.color.medium}`
       : 'none'};
   border: none;
-  border-radius: ${({ hasItem }) => (hasItem ? '4px' : '0')};
+  border-radius: ${({ hasItem }) =>
+    hasItem ? themeCssVariables.border.radius.md : '0'};
   box-sizing: border-box;
   color: ${themeCssVariables.font.color.primary};
   font-family: ${themeCssVariables.font.family};

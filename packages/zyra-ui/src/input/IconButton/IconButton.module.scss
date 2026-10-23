@@ -14,7 +14,7 @@
   align-items: center;
   background: var(--icon-button-bg, transparent);
   border-color: var(--icon-button-border-color, transparent);
-  border-radius: var(--icon-button-radius, var(--t-border-radius-sm));
+  border-radius: var(--icon-button-radius, var(--t-border-radius-pill));
   border-style: solid;
   border-width: var(--icon-button-border-width, 1px);
   box-shadow: var(--icon-button-box-shadow, none);
@@ -64,8 +64,8 @@
 // position only reshapes the border radius; standalone keeps the .button
 // fallback radius.
 .button[data-position='left'] {
-  --icon-button-radius: var(--t-border-radius-sm) 0px 0px
-    var(--t-border-radius-sm);
+  --icon-button-radius: var(--t-border-radius-pill) 0px 0px
+    var(--t-border-radius-pill);
 }
 
 .button[data-position='middle'] {
@@ -73,8 +73,8 @@
 }
 
 .button[data-position='right'] {
-  --icon-button-radius: 0px var(--t-border-radius-sm) var(--t-border-radius-sm)
-    0px;
+  --icon-button-radius: 0px var(--t-border-radius-pill)
+    var(--t-border-radius-pill) 0px;
 }
 
 // Default border widths: tertiary is borderless and middle collapses the

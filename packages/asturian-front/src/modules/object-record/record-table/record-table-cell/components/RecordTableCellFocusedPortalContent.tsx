@@ -22,7 +22,7 @@ const StyledRecordTableCellFocusPortalContent = styled.div<{
     isRecordTableRowActive
       ? themeCssVariables.accent.quaternary
       : themeCssVariables.background.primary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-sizing: border-box;
   display: flex;
 

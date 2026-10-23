@@ -15,7 +15,7 @@ import { IconCheck } from 'zyra-ui/icon';
 
 const StyledBooleanSelectContainer = styled.div<{ selected?: boolean }>`
   align-items: center;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   display: flex;

@@ -21,7 +21,7 @@ const StyledScreenshotsContainer = styled.div`
   aspect-ratio: 8 / 5;
   background-color: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -49,7 +49,7 @@ const StyledThumbnail = styled.div<{ isSelected?: boolean }>`
       isSelected
         ? themeCssVariables.color.blue
         : themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   cursor: pointer;
   display: flex;
   flex: 0 0 96px;

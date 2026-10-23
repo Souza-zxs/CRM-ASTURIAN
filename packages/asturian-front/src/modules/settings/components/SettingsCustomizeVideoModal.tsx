@@ -44,7 +44,7 @@ const StyledVideoContainer = styled.div`
 const StyledVideoIframe = styled.iframe`
   aspect-ratio: 1440 / 900;
   border: 0;
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-shadow: ${themeCssVariables.boxShadow.strong};
   display: block;
   height: auto;

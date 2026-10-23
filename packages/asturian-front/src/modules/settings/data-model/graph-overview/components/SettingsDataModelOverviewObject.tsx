@@ -28,7 +28,7 @@ type SettingsDataModelOverviewObjectProps =
 const StyledNode = styled.div`
   background-color: ${themeCssVariables.background.secondary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-shadow: ${themeCssVariables.boxShadow.light};
   display: flex;
   flex-direction: column;
@@ -45,7 +45,8 @@ const StyledHeader = styled.div`
 
 const StyledObjectName = styled.div`
   border: 0;
-  border-radius: 4px 4px 0 0;
+  border-radius: ${themeCssVariables.border.radius.xl}
+    ${themeCssVariables.border.radius.xl} 0 0;
   display: flex;
   font-weight: ${themeCssVariables.font.weight.medium};
   gap: ${themeCssVariables.spacing[1]};
@@ -56,7 +57,7 @@ const StyledObjectName = styled.div`
 const StyledInnerCard = styled.div`
   background-color: ${themeCssVariables.background.primary};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.tertiary};
   display: flex;
   flex-flow: column nowrap;

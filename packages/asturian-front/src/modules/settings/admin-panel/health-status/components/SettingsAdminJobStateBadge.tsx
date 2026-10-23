@@ -27,7 +27,7 @@ const StyledContainer = styled.div`
 const StyledAttemptBadge = styled.span`
   background-color: ${themeCssVariables.background.danger};
   border: 1px solid ${themeCssVariables.border.color.danger};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.danger};
   font-size: ${themeCssVariables.font.size.xs};
   font-weight: ${themeCssVariables.font.weight.medium};

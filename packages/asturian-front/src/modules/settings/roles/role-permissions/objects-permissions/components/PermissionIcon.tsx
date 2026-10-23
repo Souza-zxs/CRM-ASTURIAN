@@ -22,7 +22,7 @@ const StyledIconWrapper = styled.div<{ isRevoked?: boolean }>`
       isRevoked
         ? themeCssVariables.color.orange7
         : themeCssVariables.color.blue7};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   height: ${themeCssVariables.spacing[4]};
   justify-content: center;

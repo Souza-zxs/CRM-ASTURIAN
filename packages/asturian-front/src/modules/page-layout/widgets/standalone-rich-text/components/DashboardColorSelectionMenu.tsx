@@ -15,7 +15,7 @@ import { useContext } from 'react';
 
 const StyledColorMenuItem = styled.div`
   align-items: center;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   cursor: pointer;
   display: flex;
   gap: ${themeCssVariables.spacing[2]};

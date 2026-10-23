@@ -40,7 +40,7 @@ const StyledEmptyState = styled.div`
 
 const StyledTruncatedNotice = styled.div`
   background: ${themeCssVariables.background.transparent.orange};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.tertiary};
   font-size: ${themeCssVariables.font.size.xs};
   padding: ${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[3]};

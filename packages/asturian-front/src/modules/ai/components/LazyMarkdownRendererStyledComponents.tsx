@@ -2,7 +2,7 @@ import { styled } from '@linaria/react';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 export const StyledMarkdownContainer = styled.div`
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   line-height: 150%;
   margin: ${themeCssVariables.spacing['1.5']} 0;
   overflow-x: auto;
@@ -108,7 +108,7 @@ export const StyledMarkdownContainer = styled.div`
 
   :not(pre) > code {
     background-color: ${themeCssVariables.background.tertiary};
-    border-radius: ${themeCssVariables.border.radius.sm};
+    border-radius: ${themeCssVariables.border.radius.md};
     color: ${themeCssVariables.color.red10};
     font-family: ${themeCssVariables.code.font.family}, monospace;
     font-size: 1em;
@@ -127,14 +127,14 @@ export const StyledMarkdownContainer = styled.div`
   }
 
   .markdown-code-outer-container {
-    border-radius: ${themeCssVariables.border.radius.md} !important;
+    border-radius: ${themeCssVariables.border.radius.xl} !important;
     overflow: hidden;
   }
 
   .markdown-block-code {
     background-color: ${themeCssVariables.background.secondary};
     border: 1px solid ${themeCssVariables.border.color.medium};
-    border-radius: ${themeCssVariables.border.radius.md} !important;
+    border-radius: ${themeCssVariables.border.radius.xl} !important;
     overflow-x: auto;
   }
 

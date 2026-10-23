@@ -18,7 +18,7 @@ import { type AgentChatThread } from '~/generated-metadata/graphql';
 const StyledThreadItem = styled.div`
   align-items: center;
   border-left: 3px solid transparent;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   cursor: pointer;
   display: flex;
   gap: ${themeCssVariables.spacing[2]};
@@ -40,7 +40,7 @@ const StyledThreadIcon = styled.div<{ $isArchived: boolean }>`
     $isArchived
       ? themeCssVariables.background.transparent.lighter
       : themeCssVariables.background.transparent.blue};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${({ $isArchived }) =>
     $isArchived
       ? themeCssVariables.font.color.tertiary

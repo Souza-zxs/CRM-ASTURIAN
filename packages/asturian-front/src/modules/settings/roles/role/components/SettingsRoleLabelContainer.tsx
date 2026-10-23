@@ -7,7 +7,7 @@ import { t } from '@lingui/core/macro';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledHeaderTitle = styled.div`
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   max-width: 420px;
   padding-left: ${themeCssVariables.spacing[1]};
   padding-right: ${themeCssVariables.spacing[1]};

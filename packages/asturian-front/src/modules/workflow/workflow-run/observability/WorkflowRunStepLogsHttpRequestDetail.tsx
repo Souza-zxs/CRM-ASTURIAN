@@ -69,7 +69,7 @@ const StyledUrl = styled.div`
 const StyledHeaderTable = styled.div`
   background: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: grid;
   gap: ${themeCssVariables.spacing[1]} ${themeCssVariables.spacing[3]};
   grid-template-columns: max-content 1fr;
@@ -91,7 +91,7 @@ const StyledHeaderValue = styled.span`
 
 const StyledBodyPre = styled.pre`
   background: ${themeCssVariables.background.tertiary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.primary};
   font-family: ${MONOSPACE_FONT_FAMILY};
   font-size: ${themeCssVariables.font.size.sm};

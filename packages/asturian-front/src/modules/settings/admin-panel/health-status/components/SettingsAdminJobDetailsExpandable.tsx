@@ -35,7 +35,7 @@ const StyledSectionTitle = styled.div`
 const StyledPreformattedText = styled.pre`
   background-color: ${themeCssVariables.background.primary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.danger};
   font-family: ${themeCssVariables.font.family};
   font-size: ${themeCssVariables.font.size.sm};
@@ -50,7 +50,7 @@ const StyledPreformattedText = styled.pre`
 const StyledLogEntry = styled.div`
   background-color: ${themeCssVariables.background.primary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   font-family: ${themeCssVariables.font.family};
   font-size: ${themeCssVariables.font.size.sm};
   margin-bottom: ${themeCssVariables.spacing[1]};

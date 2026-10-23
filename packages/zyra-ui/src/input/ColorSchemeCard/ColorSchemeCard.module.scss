@@ -13,7 +13,7 @@
   padding-top: var(--t-spacing-6);
   padding-left: var(--t-spacing-6);
   border: 1px solid var(--color-scheme-card-border-color);
-  border-radius: var(--t-border-radius-md);
+  border-radius: var(--t-border-radius-xl);
   background: var(--color-scheme-card-background);
   overflow: hidden;
   cursor: pointer;
@@ -28,7 +28,7 @@
   padding-left: var(--t-spacing-2);
   border-top: 1px solid var(--color-scheme-card-border-color);
   border-left: 1px solid var(--color-scheme-card-border-color);
-  border-radius: var(--t-border-radius-md) 0px 0px 0px;
+  border-radius: var(--t-border-radius-xl) 0px 0px 0px;
   background: var(--color-scheme-card-content-background);
   color: var(--color-scheme-card-content-color);
   font-size: 20px;
@@ -49,7 +49,7 @@
   display: flex;
   width: 160px;
   height: 80px;
-  border-radius: var(--t-border-radius-md);
+  border-radius: var(--t-border-radius-xl);
   overflow: hidden;
   cursor: pointer;
 }

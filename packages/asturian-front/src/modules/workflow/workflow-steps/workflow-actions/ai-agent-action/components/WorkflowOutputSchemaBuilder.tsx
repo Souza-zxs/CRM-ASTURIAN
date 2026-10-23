@@ -35,7 +35,7 @@ const StyledFieldsContainer = styled.div`
 const StyledOutputSchemaFieldContainer = styled.div`
   background-color: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   flex-direction: column;
   gap: ${themeCssVariables.spacing[1]};

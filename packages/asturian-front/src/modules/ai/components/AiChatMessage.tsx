@@ -34,7 +34,7 @@ const StyledMessageText = styled.div<{ isUser?: boolean }>`
   background: ${({ isUser }) =>
     isUser ? themeCssVariables.background.tertiary : 'transparent'};
   border-radius: ${({ isUser }) =>
-    isUser ? themeCssVariables.border.radius.sm : '0'};
+    isUser ? themeCssVariables.border.radius.md : '0'};
   color: ${({ isUser }) =>
     isUser
       ? themeCssVariables.font.color.secondary
@@ -53,7 +53,7 @@ const StyledMessageText = styled.div<{ isUser?: boolean }>`
 
   code {
     background: ${themeCssVariables.background.tertiary};
-    border-radius: ${themeCssVariables.border.radius.sm};
+    border-radius: ${themeCssVariables.border.radius.md};
     line-height: 1.4;
     max-width: 100%;
     overflow: auto;
@@ -64,7 +64,7 @@ const StyledMessageText = styled.div<{ isUser?: boolean }>`
 
   pre {
     background: ${themeCssVariables.background.tertiary};
-    border-radius: ${themeCssVariables.border.radius.sm};
+    border-radius: ${themeCssVariables.border.radius.md};
     max-width: 100%;
     overflow-x: auto;
     padding: ${themeCssVariables.spacing[2]};

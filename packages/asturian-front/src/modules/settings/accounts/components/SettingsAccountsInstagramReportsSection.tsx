@@ -29,7 +29,7 @@ const StyledLinkRow = styled.div`
   align-items: center;
   background-color: ${themeCssVariables.background.transparent.lighter};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   gap: ${themeCssVariables.spacing[2]};
   justify-content: space-between;
@@ -103,7 +103,9 @@ export const SettingsAccountsInstagramReportsSection = ({
       </StyledToggleRow>
       {isPublicReportEnabled && publicReportUrl && (
         <StyledLinkRow>
-          <StyledLinkText title={publicReportUrl}>{publicReportUrl}</StyledLinkText>
+          <StyledLinkText title={publicReportUrl}>
+            {publicReportUrl}
+          </StyledLinkText>
           <IconButton
             Icon={IconCopy}
             variant="secondary"

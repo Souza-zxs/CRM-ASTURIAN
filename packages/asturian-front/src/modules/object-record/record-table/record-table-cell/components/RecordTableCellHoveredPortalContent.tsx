@@ -29,7 +29,7 @@ const StyledRecordTableCellHoveredPortalContent = styled.div<{
       ? themeCssVariables.accent.quaternary
       : themeCssVariables.background.primary};
   border-radius: ${({ showInteractiveStyle }) =>
-    showInteractiveStyle ? themeCssVariables.border.radius.sm : 'none'};
+    showInteractiveStyle ? themeCssVariables.border.radius.md : 'none'};
   box-sizing: border-box;
   cursor: ${({ showInteractiveStyle }) =>
     showInteractiveStyle ? 'pointer' : 'default'};

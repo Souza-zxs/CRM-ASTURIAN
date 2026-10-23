@@ -26,7 +26,7 @@ const StyledQueueLabel = styled.div`
 const StyledQueuedItem = styled.div`
   align-items: center;
   background: ${themeCssVariables.background.tertiary};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.secondary};
   display: flex;
   font-size: ${themeCssVariables.font.size.md};

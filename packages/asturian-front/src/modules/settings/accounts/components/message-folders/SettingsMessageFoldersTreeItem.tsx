@@ -47,7 +47,7 @@ const StyledCollapsibleContent = styled.div`
 
 const StyledTreeItemContent = styled.div<{ depth: number }>`
   align-items: center;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   cursor: pointer;
   display: flex;
   height: 28px;

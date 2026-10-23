@@ -20,7 +20,7 @@ const StyledButton = styled.button`
   align-items: center;
   background: ${themeCssVariables.background.primary};
   border: none;
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   color: ${themeCssVariables.font.color.secondary};
   cursor: pointer;
   display: flex;

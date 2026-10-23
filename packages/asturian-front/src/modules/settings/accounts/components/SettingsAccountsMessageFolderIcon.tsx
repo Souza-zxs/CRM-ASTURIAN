@@ -11,7 +11,7 @@ type SettingsAccountsMessageFolderIconProps = {
 const StyledCardMedia = styled.div`
   align-items: center;
   background-color: ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-sizing: border-box;
   display: flex;
   height: 40px;

@@ -47,7 +47,7 @@ const StyledTrigger = styled.div<{ hasUsage: boolean }>`
 const StyledHoverCard = styled.div`
   background: ${themeCssVariables.background.primary};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   bottom: calc(100% + 8px);
   box-shadow: ${themeCssVariables.boxShadow.strong};
   left: 0;

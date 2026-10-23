@@ -15,7 +15,7 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 const StyledContainer = styled.div<{ x: number; y: number }>`
   background: ${themeCssVariables.background.primary};
-  border-radius: ${themeCssVariables.spacing[2]};
+  border-radius: ${themeCssVariables.border.radius.md};
   box-shadow: ${themeCssVariables.boxShadow.strong};
   display: flex;
   flex-direction: column;

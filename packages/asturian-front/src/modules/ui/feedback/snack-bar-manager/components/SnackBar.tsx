@@ -54,7 +54,7 @@ export type SnackBarProps = Pick<ComponentPropsWithoutRef<'div'>, 'id'> & {
 const StyledContainer = styled.div`
   backdrop-filter: ${themeCssVariables.blur.medium};
   background-color: ${themeCssVariables.background.transparent.primary};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-shadow: ${themeCssVariables.boxShadow.strong};
   box-sizing: border-box;
   margin-top: ${themeCssVariables.spacing[2]};

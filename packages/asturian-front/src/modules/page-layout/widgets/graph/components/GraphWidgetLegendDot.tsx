@@ -1,4 +1,5 @@
 import { styled } from '@linaria/react';
+import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 type GraphWidgetLegendDotProps = {
   color: string;
@@ -7,7 +8,7 @@ type GraphWidgetLegendDotProps = {
 
 const StyledDot = styled.div<{ color: string }>`
   background: ${({ color }) => color};
-  border-radius: 2px;
+  border-radius: ${themeCssVariables.border.radius.rounded};
   flex-shrink: 0;
   height: 8px;
   width: 8px;

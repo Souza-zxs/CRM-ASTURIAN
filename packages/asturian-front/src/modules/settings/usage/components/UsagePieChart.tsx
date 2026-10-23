@@ -24,7 +24,7 @@ const StyledContainer = styled.div`
 const StyledTooltip = styled.div`
   background: ${themeCssVariables.background.primary};
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   box-shadow: ${themeCssVariables.boxShadow.strong};
   display: flex;
   flex-direction: column;

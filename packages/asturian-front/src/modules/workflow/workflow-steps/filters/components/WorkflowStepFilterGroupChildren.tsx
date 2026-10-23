@@ -14,7 +14,7 @@ const StyledContainer = styled.div<{ isGrayBackground?: boolean }>`
       ? themeCssVariables.background.transparent.lighter
       : 'transparent'};
   border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex: 1;
   flex-direction: column;

@@ -23,7 +23,7 @@ const StyledMessagePartsContainer = styled.div`
 const StyledLoadingIconContainer = styled.div`
   align-items: center;
   border: 1px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.md};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   justify-content: center;
   padding-inline: ${themeCssVariables.spacing[1]};

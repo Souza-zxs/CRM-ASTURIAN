@@ -31,7 +31,7 @@ const StyledMainCardWrapper = styled.div`
 // oxlint-disable-next-line zyra/no-hardcoded-colors
 const StyledCard = styled.div`
   background: ${themeCssVariables.background.primary};
-  border-radius: 16px 0 0 0;
+  border-radius: ${themeCssVariables.border.radius.xl} 0 0 0;
   box-shadow:
     -4px 0 4px 0 rgba(0, 0, 0, 0.006),
     0 0 0 1px ${themeCssVariables.border.color.medium};

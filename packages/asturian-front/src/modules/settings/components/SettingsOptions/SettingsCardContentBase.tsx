@@ -19,7 +19,7 @@ export const StyledSettingsCardIcon = styled.div`
   align-items: center;
   background-color: ${themeCssVariables.background.primary};
   border: 2px solid ${themeCssVariables.border.color.light};
-  border-radius: ${themeCssVariables.border.radius.sm};
+  border-radius: ${themeCssVariables.border.radius.md};
   display: flex;
   height: ${themeCssVariables.spacing[7]};
   justify-content: center;
