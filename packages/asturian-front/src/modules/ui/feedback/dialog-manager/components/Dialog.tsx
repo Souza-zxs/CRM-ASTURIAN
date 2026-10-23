@@ -30,6 +30,7 @@ const StyledDialogOverlay = motion.create(StyledDialogOverlayBase);
 const StyledDialogContainerBase = styled.div`
   background: ${themeCssVariables.background.primary};
   border-radius: ${themeCssVariables.border.radius.xl};
+  box-shadow: ${themeCssVariables.boxShadow.strong};
   display: flex;
   flex-direction: column;
   max-width: 320px;

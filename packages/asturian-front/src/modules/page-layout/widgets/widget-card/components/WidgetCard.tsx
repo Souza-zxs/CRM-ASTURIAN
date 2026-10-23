@@ -75,6 +75,14 @@ const StyledWidgetCard = styled.div<WidgetCardStyledProps>`
       ? themeCssVariables.border.radius.xl
       : '0'};
 
+  box-shadow: ${({ variant, isEditable }) =>
+    variant === 'dashboard' ||
+    variant === 'standalone' ||
+    variant === 'record-page' ||
+    isEditable
+      ? themeCssVariables.boxShadow.light
+      : 'none'};
+
   box-sizing: border-box;
 
   cursor: ${({

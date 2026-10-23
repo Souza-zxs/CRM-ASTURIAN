@@ -14,6 +14,7 @@
   padding-left: var(--t-spacing-6);
   border: 1px solid var(--color-scheme-card-border-color);
   border-radius: var(--t-border-radius-xl);
+  box-shadow: var(--t-box-shadow-light);
   background: var(--color-scheme-card-background);
   overflow: hidden;
   cursor: pointer;
@@ -50,6 +51,7 @@
   width: 160px;
   height: 80px;
   border-radius: var(--t-border-radius-xl);
+  box-shadow: var(--t-box-shadow-light);
   overflow: hidden;
   cursor: pointer;
 }
