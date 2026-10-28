@@ -10,7 +10,7 @@ type PageBodyProps = {
 };
 
 const StyledMainContainer = styled.div`
-  background: ${themeCssVariables.background.noisy};
+  background: ${themeCssVariables.background.secondary};
   box-sizing: border-box;
   display: flex;
   flex: 1 1 auto;
