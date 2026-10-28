@@ -1,5 +1,5 @@
 import { styled } from '@linaria/react';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 
 import { NavigationMenuItemFolderContentDispatcherEffect } from '@/navigation-menu-item/edit/components/NavigationMenuItemFolderContentDispatcher';
 import { useNavigationMenuItemsByFolder } from '@/navigation-menu-item/display/folder/hooks/useNavigationMenuItemsByFolder';
@@ -42,9 +42,26 @@ export const MainNavigationDrawerNavigationContent = () => {
 
   // On desktop the icon rail already lists every top-level entry, so the
   // panel only shows the context of the entry that is active in the rail.
-  const activeRailItem = isMobile
+  // Record pages live under a different base path than their list, so no
+  // rail item is active there; keep showing the last active one.
+  const [lastActiveRailItemId, setLastActiveRailItemId] = useState<
+    string | undefined
+  >(undefined);
+  const currentActiveRailItem = isMobile
     ? undefined
     : iconRailItems.find((item) => item.isActive);
+
+  if (
+    currentActiveRailItem !== undefined &&
+    currentActiveRailItem.id !== lastActiveRailItemId
+  ) {
+    setLastActiveRailItemId(currentActiveRailItem.id);
+  }
+
+  const activeRailItem = isMobile
+    ? undefined
+    : (currentActiveRailItem ??
+      iconRailItems.find((item) => item.id === lastActiveRailItemId));
 
   const openedFolderId = isMobile
     ? currentNavigationMenuItemFolderId
