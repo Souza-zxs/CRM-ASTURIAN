@@ -9,7 +9,12 @@ import { useIconRailItems } from '@/navigation/hooks/useIconRailItems';
 import { currentNavigationMenuItemFolderIdState } from '@/navigation-menu-item/common/states/currentNavigationMenuItemFolderIdState';
 import { useIsMobile } from '@/ui/utilities/responsive/hooks/useIsMobile';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
+import { IconTool } from 'zyra-ui/icon';
+import { LightIconButton } from 'zyra-ui/input';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
+import { useEnterLayoutCustomizationMode } from '@/layout-customization/hooks/useEnterLayoutCustomizationMode';
+import { isLayoutCustomizationModeEnabledState } from '@/layout-customization/states/isLayoutCustomizationModeEnabledState';
+import { preloadNavigationMenuItemDndKit } from '@/navigation-menu-item/display/dnd/preloadNavigationMenuItemDndKit';
 
 const FavoritesSectionDispatcher = lazy(() =>
   import('@/navigation-menu-item/display/sections/favorites/components/FavoritesSectionDispatcher').then(
@@ -19,9 +24,23 @@ const FavoritesSectionDispatcher = lazy(() =>
   ),
 );
 
+const WorkspaceSectionDispatcher = lazy(() =>
+  import('@/navigation-menu-item/display/sections/workspace/components/WorkspaceSectionDispatcher').then(
+    (module) => ({
+      default: module.WorkspaceSectionDispatcher,
+    }),
+  ),
+);
+
 const StyledScrollableContent = styled.div`
   height: 100%;
   min-height: 0;
+`;
+
+const StyledContextHeadingRow = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const StyledContextHeading = styled.div`
@@ -39,6 +58,10 @@ export const MainNavigationDrawerNavigationContent = () => {
   );
   const { navigationMenuItemsByFolder } = useNavigationMenuItemsByFolder();
   const iconRailItems = useIconRailItems();
+  const { enterLayoutCustomizationMode } = useEnterLayoutCustomizationMode();
+  const isLayoutCustomizationModeEnabled = useAtomStateValue(
+    isLayoutCustomizationModeEnabledState,
+  );
 
   // On desktop the icon rail already lists every top-level entry, so the
   // panel only shows the context of the entry that is active in the rail.
@@ -73,6 +96,30 @@ export const MainNavigationDrawerNavigationContent = () => {
     (folder) => folder.id === openedFolderId,
   );
 
+  // Editing the menu needs the full tree (drag and drop, add item), so the
+  // contextual panel steps aside while layout customization is on.
+  if (!isMobile && isLayoutCustomizationModeEnabled) {
+    return (
+      <StyledScrollableContent>
+        <Suspense fallback={null}>
+          <WorkspaceSectionDispatcher />
+        </Suspense>
+      </StyledScrollableContent>
+    );
+  }
+
+  const editWorkspaceButton = isMobile ? null : (
+    <div onMouseEnter={preloadNavigationMenuItemDndKit}>
+      <LightIconButton
+        Icon={IconTool}
+        accent="tertiary"
+        size="small"
+        aria-label="Edit workspace"
+        onClick={enterLayoutCustomizationMode}
+      />
+    </div>
+  );
+
   if (isMobile && !openedNavigationMenuItemFolder) {
     return (
       <StyledScrollableContent>
@@ -86,9 +133,12 @@ export const MainNavigationDrawerNavigationContent = () => {
       {openedNavigationMenuItemFolder ? (
         <>
           {!isMobile && (
-            <StyledContextHeading>
-              {openedNavigationMenuItemFolder.folderName}
-            </StyledContextHeading>
+            <StyledContextHeadingRow>
+              <StyledContextHeading>
+                {openedNavigationMenuItemFolder.folderName}
+              </StyledContextHeading>
+              {editWorkspaceButton}
+            </StyledContextHeadingRow>
           )}
           <NavigationMenuItemFolderContentDispatcherEffect
             folderName={openedNavigationMenuItemFolder.folderName}
@@ -102,7 +152,10 @@ export const MainNavigationDrawerNavigationContent = () => {
       ) : (
         <>
           {activeRailItem !== undefined && (
-            <StyledContextHeading>{activeRailItem.label}</StyledContextHeading>
+            <StyledContextHeadingRow>
+              <StyledContextHeading>{activeRailItem.label}</StyledContextHeading>
+              {editWorkspaceButton}
+            </StyledContextHeadingRow>
           )}
           <NavigationDrawerOpenedSection />
           <Suspense fallback={null}>
