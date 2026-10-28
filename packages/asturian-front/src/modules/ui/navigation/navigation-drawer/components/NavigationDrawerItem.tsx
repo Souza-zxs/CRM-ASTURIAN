@@ -89,7 +89,7 @@ type StyledItemProps = Pick<
 const StyledItem = styled.button<StyledItemProps>`
   align-items: center;
   background: ${({ active }) =>
-    active ? themeCssVariables.background.transparent.light : 'transparent'};
+    active ? themeCssVariables.accent.accent2 : 'transparent'};
   border: ${({ isSelectedInEditMode }) =>
     isSelectedInEditMode
       ? `1px solid ${themeCssVariables.color.blue}`
@@ -101,7 +101,7 @@ const StyledItem = styled.button<StyledItemProps>`
       return themeCssVariables.font.color.tertiary;
     }
     if (active === true) {
-      return themeCssVariables.font.color.primary;
+      return themeCssVariables.accent.accent11;
     }
     if (isSoon || isLocked) {
       return themeCssVariables.font.color.light;
@@ -113,7 +113,7 @@ const StyledItem = styled.button<StyledItemProps>`
   display: flex;
   font-family: ${themeCssVariables.font.family};
   font-size: ${themeCssVariables.font.size.md};
-  height: ${themeCssVariables.spacing[7]};
+  height: ${themeCssVariables.spacing[8]};
   margin-top: ${({ indentationLevel }) =>
     indentationLevel === 2 ? '2px' : '0'};
   min-width: 0;

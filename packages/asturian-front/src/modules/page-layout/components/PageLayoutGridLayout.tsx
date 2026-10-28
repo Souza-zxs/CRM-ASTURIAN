@@ -57,6 +57,7 @@ const disabledTransitionsClass = css`
 `;
 
 const StyledGridContainer = styled.div`
+  background: ${themeCssVariables.background.secondary};
   box-sizing: border-box;
   flex: 1;
   min-height: 100%;

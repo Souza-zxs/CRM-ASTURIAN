@@ -16,8 +16,11 @@ import { isDefined } from 'zyra-shared/utils';
 
 const StyledColumn = styled.div`
   background-color: ${themeCssVariables.background.primary};
+  border: 1px dashed ${themeCssVariables.border.color.medium};
+  border-radius: ${themeCssVariables.border.radius.xl};
   display: flex;
   flex-direction: column;
+  margin-right: ${themeCssVariables.spacing[3]};
   max-width: var(
     ${RECORD_BOARD_COLUMN_WIDTH_CSS_VARIABLE_NAME},
     ${RECORD_BOARD_COLUMN_WIDTH}px

@@ -40,7 +40,7 @@ const StyledWidgetCard = styled.div<WidgetCardStyledProps>`
       props.variant === 'standalone' ||
       (props.variant === 'side-column' && props.isEditable)
     ) {
-      return themeCssVariables.background.secondary;
+      return themeCssVariables.background.primary;
     }
     if (props.variant === 'record-page') {
       return themeCssVariables.background.primary;

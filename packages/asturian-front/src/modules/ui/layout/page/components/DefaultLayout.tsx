@@ -7,6 +7,7 @@ import { InformationBannerIsImpersonating } from '@/information-banner/component
 import { KeyboardShortcutMenu } from '@/keyboard-shortcut-menu/components/KeyboardShortcutMenu';
 import { LayoutCustomizationBar } from '@/layout-customization/components/LayoutCustomizationBar';
 import { LanguageSelectionCard } from '@/localization/components/LanguageSelectionCard';
+import { AppIconRail } from '@/navigation/components/AppIconRail';
 import { AppNavigationDrawer } from '@/navigation/components/AppNavigationDrawer';
 import { MobileNavigationBar } from '@/navigation/components/MobileNavigationBar';
 import { PageDragDropProvider } from '@/navigation-menu-item/display/dnd/providers/PageDragDropProvider';
@@ -26,7 +27,7 @@ import { AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Outlet } from 'react-router-dom';
 import { themeCssVariables } from 'zyra-ui/theme-constants';
 const StyledLayout = styled.div`
-  background: ${themeCssVariables.grayScale.gray3};
+  background: ${themeCssVariables.background.secondary};
   display: flex;
   flex-direction: column;
   height: 100dvh;
@@ -80,9 +81,12 @@ export const DefaultLayout = () => {
                     <BackgroundMockNavigationDrawer />
                   </StyledNavigationDrawerWrapper>
                 ) : useShowFullScreen ? null : (
-                  <StyledNavigationDrawerWrapper>
-                    <AppNavigationDrawer />
-                  </StyledNavigationDrawerWrapper>
+                  <>
+                    <AppIconRail />
+                    <StyledNavigationDrawerWrapper>
+                      <AppNavigationDrawer />
+                    </StyledNavigationDrawerWrapper>
+                  </>
                 )}
                 {showAuthModal ? (
                   <>

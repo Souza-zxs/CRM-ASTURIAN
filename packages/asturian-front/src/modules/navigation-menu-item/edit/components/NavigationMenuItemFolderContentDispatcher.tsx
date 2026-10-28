@@ -7,12 +7,14 @@ type NavigationMenuItemFolderContentDispatcherEffectProps = {
   folderName: string;
   folderId: string;
   navigationMenuItems?: NavigationMenuItem[];
+  shouldShowBackButton?: boolean;
 };
 
 export const NavigationMenuItemFolderContentDispatcherEffect = ({
   folderName,
   folderId,
   navigationMenuItems,
+  shouldShowBackButton,
 }: NavigationMenuItemFolderContentDispatcherEffectProps) => {
   if (isDefined(navigationMenuItems)) {
     return (
@@ -20,6 +22,7 @@ export const NavigationMenuItemFolderContentDispatcherEffect = ({
         folderId={folderId}
         folderName={folderName}
         navigationMenuItems={navigationMenuItems}
+        shouldShowBackButton={shouldShowBackButton}
       />
     );
   }

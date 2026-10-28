@@ -34,6 +34,18 @@ export const STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS = {
           dealValueCreatedThisMonth: {
             universalIdentifier: '20202020-d111-4d11-8d11-da5ab0a11008',
           },
+          newContactsLast7Days: {
+            universalIdentifier: '20202020-d111-4d11-8d11-da5ab0a11009',
+          },
+          openOpportunities: {
+            universalIdentifier: '20202020-d111-4d11-8d11-da5ab0a1100a',
+          },
+          tasksDueToday: {
+            universalIdentifier: '20202020-d111-4d11-8d11-da5ab0a1100b',
+          },
+          upcomingTasksByDay: {
+            universalIdentifier: '20202020-d111-4d11-8d11-da5ab0a1100c',
+          },
         },
       },
     },

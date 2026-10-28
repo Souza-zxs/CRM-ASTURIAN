@@ -7,6 +7,15 @@ import {
   type StandardPageLayoutTabConfig,
 } from 'src/engine/workspace-manager/zyra-standard-application/utils/page-layout-config/standard-page-layout-config.type';
 
+const DASHBOARD_WIDGET_IDENTIFIERS =
+  STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1.widgets;
+
+// The default dashboard ("Início") shows the operation's real numbers: three
+// KPIs on top, the pipeline by stage and the tasks of the next seven days.
+// Widgets of the previous sample dashboard keep their identifiers in
+// zyra-shared (no-delete rule) but are no longer created here. Note that a
+// standard application sync DELETES standard widgets missing from this config,
+// so it only reaches workspaces that run that sync on purpose.
 const DASHBOARD_PAGE_TABS = {
   tab1: {
     universalIdentifier:
@@ -17,47 +26,32 @@ const DASHBOARD_PAGE_TABS = {
     icon: null,
     layoutMode: PageLayoutTabLayoutMode.GRID,
     widgets: {
-      welcomeRichText: {
+      newContactsLast7Days: {
         universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.welcomeRichText.universalIdentifier,
+          DASHBOARD_WIDGET_IDENTIFIERS.newContactsLast7Days.universalIdentifier,
       },
-      dealsByCompany: {
+      openOpportunities: {
         universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.dealsByCompany.universalIdentifier,
+          DASHBOARD_WIDGET_IDENTIFIERS.openOpportunities.universalIdentifier,
+      },
+      tasksDueToday: {
+        universalIdentifier:
+          DASHBOARD_WIDGET_IDENTIFIERS.tasksDueToday.universalIdentifier,
       },
       pipelineValueByStage: {
         universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.pipelineValueByStage.universalIdentifier,
+          DASHBOARD_WIDGET_IDENTIFIERS.pipelineValueByStage.universalIdentifier,
       },
-      revenueTimeline: {
+      upcomingTasksByDay: {
         universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.revenueTimeline.universalIdentifier,
-      },
-      opportunitiesByOwner: {
-        universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.opportunitiesByOwner.universalIdentifier,
-      },
-      dealsCreatedThisMonth: {
-        universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.dealsCreatedThisMonth.universalIdentifier,
-      },
-      dealValueCreatedThisMonth: {
-        universalIdentifier:
-          STANDARD_PAGE_LAYOUT_UNIVERSAL_IDENTIFIERS.myFirstDashboard.tabs.tab1
-            .widgets.dealValueCreatedThisMonth.universalIdentifier,
+          DASHBOARD_WIDGET_IDENTIFIERS.upcomingTasksByDay.universalIdentifier,
       },
     },
   },
 } as const satisfies Record<string, StandardPageLayoutTabConfig>;
 
 export const STANDARD_DASHBOARD_PAGE_LAYOUT_CONFIG = {
-  name: 'My First Dashboard',
+  name: 'Início',
   type: PageLayoutType.DASHBOARD,
   objectUniversalIdentifier: null,
   universalIdentifier:
