@@ -6,9 +6,10 @@ const StyledBoardCard = styled.div<{
   isSecondaryDragged?: boolean;
   isPrimaryMultiDrag?: boolean;
 }>`
-  background-color: ${themeCssVariables.background.secondary};
-  border: 1px solid ${themeCssVariables.border.color.medium};
-  border-radius: ${themeCssVariables.border.radius.md};
+  background-color: ${themeCssVariables.background.primary};
+  border: 1px solid ${themeCssVariables.border.color.light};
+  border-radius: ${themeCssVariables.border.radius.xl};
+  box-shadow: ${themeCssVariables.boxShadow.light};
   color: ${themeCssVariables.font.color.primary};
   cursor: pointer;
   opacity: ${({ isSecondaryDragged }) => (isSecondaryDragged ? '0.3' : '1')};

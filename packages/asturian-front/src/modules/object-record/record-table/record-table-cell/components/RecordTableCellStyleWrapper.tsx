@@ -18,8 +18,7 @@ export const StyledCell = styled.div<{
   border-bottom: 1px solid
     ${({ borderColor, hasBottomBorder, isDragging }) =>
       hasBottomBorder && !isDragging ? borderColor : 'transparent'};
-  border-right: ${({ borderColor, hasRightBorder }) =>
-    hasRightBorder ? `1px solid ${borderColor}` : 'none'};
+  border-right: none;
 
   color: ${({ fontColor }) => fontColor};
 

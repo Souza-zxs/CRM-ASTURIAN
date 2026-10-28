@@ -8,12 +8,12 @@ const StyledHeaderCell = styled.div<{
   isResizing: boolean;
   isReadOnly: boolean;
 }>`
-  background-color: ${themeCssVariables.background.primary};
+  background-color: ${themeCssVariables.background.secondary};
   border-bottom: ${({ shouldDisplayBorderBottom }) =>
     shouldDisplayBorderBottom
       ? `1px solid ${themeCssVariables.border.color.light}`
       : 'none'};
-  border-right: 1px solid ${themeCssVariables.border.color.light};
+  border-right: none;
 
   color: ${themeCssVariables.font.color.tertiary};
 

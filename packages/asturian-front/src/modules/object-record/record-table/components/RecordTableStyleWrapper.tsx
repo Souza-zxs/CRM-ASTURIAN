@@ -82,14 +82,14 @@ const StyledTable = styled.div<{
   }
 
   div.header-cell.${RECORD_TABLE_COLUMN_DRAG_AND_DROP_WIDTH_CLASS_NAME} {
-    background-color: ${themeCssVariables.background.primary};
+    background-color: ${themeCssVariables.background.secondary};
     left: 0px;
     position: sticky;
     z-index: ${TABLE_Z_INDEX.headerColumns.headerColumnsSticky};
   }
 
   div.header-cell.${RECORD_TABLE_COLUMN_CHECKBOX_WIDTH_CLASS_NAME} {
-    background-color: ${themeCssVariables.background.primary};
+    background-color: ${themeCssVariables.background.secondary};
     left: var(${RECORD_TABLE_DRAG_DROP_WIDTH_CSS_VAR});
     position: sticky;
     top: 0;
@@ -97,7 +97,7 @@ const StyledTable = styled.div<{
   }
 
   div.header-cell.${getRecordTableColumnFieldWidthClassName(0)} {
-    background-color: ${themeCssVariables.background.primary};
+    background-color: ${themeCssVariables.background.secondary};
     left: calc(
       var(${RECORD_TABLE_DRAG_DROP_WIDTH_CSS_VAR}) +
         var(${RECORD_TABLE_CHECKBOX_WIDTH_CSS_VAR})
