@@ -115,7 +115,7 @@ export const MainNavigationDrawerNavigationContent = () => {
         accent="tertiary"
         size="small"
         aria-label="Edit workspace"
-        onClick={enterLayoutCustomizationMode}
+        onClick={() => enterLayoutCustomizationMode()}
       />
     </div>
   );
@@ -151,12 +151,12 @@ export const MainNavigationDrawerNavigationContent = () => {
         </>
       ) : (
         <>
-          {activeRailItem !== undefined && (
-            <StyledContextHeadingRow>
-              <StyledContextHeading>{activeRailItem.label}</StyledContextHeading>
-              {editWorkspaceButton}
-            </StyledContextHeadingRow>
-          )}
+          <StyledContextHeadingRow>
+            <StyledContextHeading>
+              {activeRailItem?.label ?? ''}
+            </StyledContextHeading>
+            {editWorkspaceButton}
+          </StyledContextHeadingRow>
           <NavigationDrawerOpenedSection />
           <Suspense fallback={null}>
             <FavoritesSectionDispatcher />
