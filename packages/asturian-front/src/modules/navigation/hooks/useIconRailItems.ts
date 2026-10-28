@@ -63,7 +63,11 @@ export const useIconRailItems = (): IconRailItem[] => {
     };
 
     const entries = topLevelItems.map((item): IconRailEntry => {
-      const label = getNavigationMenuItemLabel(item, objectMetadataItems, views);
+      const label = getNavigationMenuItemLabel(
+        item,
+        objectMetadataItems,
+        views,
+      );
 
       if (isNavigationMenuItemFolder(item)) {
         const childPaths = getReadableChildPaths(item.id);

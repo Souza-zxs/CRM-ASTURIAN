@@ -24,7 +24,9 @@ jest.mock('@/navigation/hooks/useIconRailItems', () => ({
   useIconRailItems: () => mockUseIconRailItems(),
 }));
 
-const TestIcon = (() => <svg data-testid="rail-icon" />) as unknown as IconComponent;
+const TestIcon = (() => (
+  <svg data-testid="rail-icon" />
+)) as unknown as IconComponent;
 
 const buildItem = (overrides: Partial<IconRailItem>): IconRailItem => ({
   id: 'item',

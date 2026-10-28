@@ -259,7 +259,8 @@ const createNewContactsLast7Days = ({
     widgetName: 'newContactsLast7Days',
     title: 'Novos contatos (7 dias)',
     column: 0,
-    objectMetadataUniversalIdentifier: STANDARD_OBJECTS.person.universalIdentifier,
+    objectMetadataUniversalIdentifier:
+      STANDARD_OBJECTS.person.universalIdentifier,
     objectMetadataId: person.id,
     aggregateFieldMetadataId: person.fields.id.id,
     aggregateFieldMetadataUniversalIdentifier:
@@ -329,7 +330,8 @@ const createTasksDueToday = ({
     widgetName: 'tasksDueToday',
     title: 'Tarefas de hoje',
     column: 8,
-    objectMetadataUniversalIdentifier: STANDARD_OBJECTS.task.universalIdentifier,
+    objectMetadataUniversalIdentifier:
+      STANDARD_OBJECTS.task.universalIdentifier,
     objectMetadataId: task.id,
     aggregateFieldMetadataId: task.fields.id.id,
     aggregateFieldMetadataUniversalIdentifier:
@@ -375,7 +377,8 @@ const createUpcomingTasksByDay = ({
 
   return createStandardPageLayoutWidgetFlatMetadata({
     ...args,
-    objectMetadataUniversalIdentifier: STANDARD_OBJECTS.task.universalIdentifier,
+    objectMetadataUniversalIdentifier:
+      STANDARD_OBJECTS.task.universalIdentifier,
     context: {
       layoutName: 'myFirstDashboard',
       tabTitle: 'tab1',

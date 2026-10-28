@@ -10,7 +10,9 @@ const readDefaultExpandedState = (viewportWidth: number): boolean => {
   jest.isolateModules(() => {
     // The default is computed when the module loads, so load it fresh.
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { isNavigationDrawerExpandedState } = require('@/ui/navigation/states/isNavigationDrawerExpanded');
+    const {
+      isNavigationDrawerExpandedState,
+    } = require('@/ui/navigation/states/isNavigationDrawerExpanded');
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { jotaiStore } = require('@/ui/utilities/state/jotai/jotaiStore');
 

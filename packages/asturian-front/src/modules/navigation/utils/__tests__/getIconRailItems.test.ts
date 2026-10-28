@@ -57,7 +57,9 @@ describe('getIconRailItems', () => {
 
   it('should send a folder item to its first accessible child', () => {
     const items = getIconRailItems({
-      entries: [folderEntry('f1', 'Sales', ['/objects/people', '/objects/companies'])],
+      entries: [
+        folderEntry('f1', 'Sales', ['/objects/people', '/objects/companies']),
+      ],
       activePath: '/',
       getIcon,
     });
