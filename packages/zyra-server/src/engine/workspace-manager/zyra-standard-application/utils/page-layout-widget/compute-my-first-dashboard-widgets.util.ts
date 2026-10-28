@@ -72,246 +72,6 @@ const createFilterConfigs = (
   };
 };
 
-const createWelcomeRichText = ({
-  args,
-}: {
-  args: DashboardWidgetBuilderArgs;
-}): FlatPageLayoutWidget => {
-  const configuration = {
-    configurationType: WidgetConfigurationType.STANDALONE_RICH_TEXT as const,
-    body: {
-      blocknote: JSON.stringify([
-        {
-          id: v4(),
-          type: 'heading',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-            level: 3,
-          },
-          content: [
-            {
-              type: 'text',
-              text: 'Welcome to your workspace',
-              styles: {},
-            },
-          ],
-          children: [],
-        },
-        {
-          id: v4(),
-          type: 'paragraph',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-          },
-          content: [],
-          children: [],
-        },
-        {
-          id: v4(),
-          type: 'paragraph',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-          },
-          content: [
-            {
-              type: 'text',
-              text: 'You can edit this dashboard by clicking the ',
-              styles: {},
-            },
-            { type: 'text', text: 'Edit', styles: { code: true } },
-            {
-              type: 'text',
-              text: ' button in the top-right corner to add your own charts or customize this one.',
-              styles: {},
-            },
-          ],
-          children: [],
-        },
-        {
-          id: v4(),
-          type: 'paragraph',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-          },
-          content: [],
-          children: [],
-        },
-        {
-          id: v4(),
-          type: 'paragraph',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-          },
-          content: [
-            {
-              type: 'text',
-              text: "Don't forget to replace the sample data with your own.",
-              styles: {},
-            },
-          ],
-          children: [],
-        },
-        {
-          id: v4(),
-          type: 'paragraph',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-          },
-          content: [],
-          children: [],
-        },
-        {
-          id: v4(),
-          type: 'paragraph',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-          },
-          content: [
-            {
-              type: 'text',
-              text: 'If you have any issues, you can check ',
-              styles: {},
-            },
-            {
-              type: 'link',
-              href: 'https://docs.zyra.com/getting-started/introduction',
-              content: [
-                {
-                  type: 'text',
-                  text: 'our documentation',
-                  styles: {},
-                },
-              ],
-            },
-            {
-              type: 'text',
-              text: ' or contact us through the Support section in Settings.',
-              styles: {},
-            },
-          ],
-          children: [],
-        },
-        {
-          id: v4(),
-          type: 'paragraph',
-          props: {
-            textColor: 'default',
-            backgroundColor: 'default',
-            textAlignment: 'left',
-          },
-          content: [],
-          children: [],
-        },
-      ]),
-      markdown: null,
-    },
-  };
-
-  return createStandardPageLayoutWidgetFlatMetadata({
-    ...args,
-    objectMetadataUniversalIdentifier: null,
-    context: {
-      layoutName: 'myFirstDashboard',
-      tabTitle: 'tab1',
-      widgetName: 'welcomeRichText',
-      title: 'Untitled Rich Text',
-      type: WidgetType.STANDALONE_RICH_TEXT,
-      gridPosition: { row: 2, column: 0, rowSpan: 6, columnSpan: 6 },
-      position: {
-        layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 2,
-        column: 0,
-        rowSpan: 6,
-        columnSpan: 6,
-      },
-      configuration,
-      universalConfiguration: configuration,
-      objectMetadataId: null,
-      conditionalDisplay: null,
-      conditionalAvailabilityExpression: null,
-    },
-  });
-};
-
-const createDealsByCompany = ({
-  args,
-}: {
-  args: DashboardWidgetBuilderArgs;
-}): FlatPageLayoutWidget => {
-  const opportunityFields =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.fields;
-  const opportunityObjectId =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.id;
-
-  return createStandardPageLayoutWidgetFlatMetadata({
-    ...args,
-    objectMetadataUniversalIdentifier:
-      STANDARD_OBJECTS.opportunity.universalIdentifier,
-    context: {
-      layoutName: 'myFirstDashboard',
-      tabTitle: 'tab1',
-      widgetName: 'dealsByCompany',
-      title: 'Deals by Company',
-      type: WidgetType.GRAPH,
-      gridPosition: { row: 2, column: 6, rowSpan: 6, columnSpan: 6 },
-      position: {
-        layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 2,
-        column: 6,
-        rowSpan: 6,
-        columnSpan: 6,
-      },
-      configuration: {
-        configurationType: WidgetConfigurationType.PIE_CHART,
-        groupByFieldMetadataId: opportunityFields.company.id,
-        groupBySubFieldName: 'name',
-        aggregateFieldMetadataId: opportunityFields.id.id,
-        aggregateOperation: AggregateOperations.COUNT,
-        orderBy: GraphOrderBy.FIELD_ASC,
-        displayDataLabel: false,
-        showCenterMetric: true,
-        displayLegend: true,
-        color: 'orange',
-        timezone: 'UTC',
-        firstDayOfTheWeek: CalendarStartDay.SUNDAY,
-      },
-      universalConfiguration: {
-        configurationType: WidgetConfigurationType.PIE_CHART,
-        groupByFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.company.universalIdentifier,
-        groupBySubFieldName: 'name',
-        aggregateFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.id.universalIdentifier,
-        aggregateOperation: AggregateOperations.COUNT,
-        orderBy: GraphOrderBy.FIELD_ASC,
-        displayDataLabel: false,
-        showCenterMetric: true,
-        displayLegend: true,
-        color: 'orange',
-        timezone: 'UTC',
-        firstDayOfTheWeek: CalendarStartDay.SUNDAY,
-      },
-      objectMetadataId: opportunityObjectId,
-      conditionalDisplay: null,
-      conditionalAvailabilityExpression: null,
-    },
-  });
-};
-
 const createPipelineValueByStage = ({
   args,
 }: {
@@ -330,15 +90,15 @@ const createPipelineValueByStage = ({
       layoutName: 'myFirstDashboard',
       tabTitle: 'tab1',
       widgetName: 'pipelineValueByStage',
-      title: 'Pipeline Value by Stage',
+      title: 'Funil por etapa',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 8, column: 0, rowSpan: 6, columnSpan: 6 },
+      gridPosition: { row: 2, column: 0, rowSpan: 6, columnSpan: 8 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 8,
+        row: 2,
         column: 0,
         rowSpan: 6,
-        columnSpan: 6,
+        columnSpan: 8,
       },
       configuration: {
         configurationType: WidgetConfigurationType.BAR_CHART,
@@ -357,7 +117,7 @@ const createPipelineValueByStage = ({
         displayLegend: true,
         color: 'green',
         layout: BarChartLayout.VERTICAL,
-        timezone: 'UTC',
+        timezone: DASHBOARD_TIMEZONE,
         firstDayOfTheWeek: CalendarStartDay.SUNDAY,
       },
       universalConfiguration: {
@@ -380,7 +140,7 @@ const createPipelineValueByStage = ({
         displayLegend: true,
         color: 'green',
         layout: BarChartLayout.VERTICAL,
-        timezone: 'UTC',
+        timezone: DASHBOARD_TIMEZONE,
         firstDayOfTheWeek: CalendarStartDay.SUNDAY,
       },
       objectMetadataId: opportunityObjectId,
@@ -390,287 +150,267 @@ const createPipelineValueByStage = ({
   });
 };
 
-const createRevenueTimeline = ({
-  args,
+const DASHBOARD_TIMEZONE = 'America/Sao_Paulo';
+
+type FilterInput = Parameters<typeof createFilterConfigs>[0][number];
+
+const buildRelativeDateFilter = ({
+  label,
+  relativeValue,
+  fieldMetadataId,
+  fieldMetadataUniversalIdentifier,
 }: {
+  label: string;
+  relativeValue: string;
+  fieldMetadataId: string;
+  fieldMetadataUniversalIdentifier: string;
+}): FilterInput => {
+  const value = `${relativeValue};;${DASHBOARD_TIMEZONE};;SUNDAY;;`;
+
+  return {
+    type: 'DATE_TIME',
+    label,
+    value,
+    displayValue: value,
+    operand: 'IS_RELATIVE',
+    fieldMetadataId,
+    fieldMetadataUniversalIdentifier,
+  };
+};
+
+type KpiWidgetParams = {
   args: DashboardWidgetBuilderArgs;
-}): FlatPageLayoutWidget => {
-  const opportunityFields =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.fields;
-  const opportunityObjectId =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.id;
+  widgetName: string;
+  title: string;
+  column: number;
+  objectMetadataUniversalIdentifier: string;
+  objectMetadataId: string;
+  aggregateFieldMetadataId: string;
+  aggregateFieldMetadataUniversalIdentifier: string;
+  aggregateOperation: AggregateOperations;
+  filters: FilterInput[];
+};
+
+const createKpiWidget = ({
+  args,
+  widgetName,
+  title,
+  column,
+  objectMetadataUniversalIdentifier,
+  objectMetadataId,
+  aggregateFieldMetadataId,
+  aggregateFieldMetadataUniversalIdentifier,
+  aggregateOperation,
+  filters,
+}: KpiWidgetParams): FlatPageLayoutWidget => {
+  const filterConfigs = createFilterConfigs(filters);
 
   return createStandardPageLayoutWidgetFlatMetadata({
     ...args,
-    objectMetadataUniversalIdentifier:
-      STANDARD_OBJECTS.opportunity.universalIdentifier,
+    objectMetadataUniversalIdentifier,
     context: {
       layoutName: 'myFirstDashboard',
       tabTitle: 'tab1',
-      widgetName: 'revenueTimeline',
-      title: 'Revenue Timeline',
+      widgetName,
+      title,
       type: WidgetType.GRAPH,
-      gridPosition: { row: 8, column: 6, rowSpan: 6, columnSpan: 6 },
+      gridPosition: { row: 0, column, rowSpan: 2, columnSpan: 4 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 8,
-        column: 6,
-        rowSpan: 6,
-        columnSpan: 6,
+        row: 0,
+        column,
+        rowSpan: 2,
+        columnSpan: 4,
       },
       configuration: {
-        configurationType: WidgetConfigurationType.LINE_CHART,
-        aggregateFieldMetadataId: opportunityFields.amount.id,
-        aggregateOperation: AggregateOperations.SUM,
-        primaryAxisGroupByFieldMetadataId: opportunityFields.closeDate.id,
-        primaryAxisDateGranularity: ObjectRecordGroupByDateGranularity.DAY,
-        primaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
-        axisNameDisplay: AxisNameDisplay.NONE,
+        configurationType: WidgetConfigurationType.AGGREGATE_CHART,
+        aggregateFieldMetadataId,
+        aggregateOperation,
         displayDataLabel: false,
-        displayLegend: true,
-        color: 'crimson',
-        isCumulative: false,
-        timezone: 'UTC',
+        filter: filterConfigs.configuration,
+        timezone: DASHBOARD_TIMEZONE,
         firstDayOfTheWeek: CalendarStartDay.SUNDAY,
       },
       universalConfiguration: {
-        configurationType: WidgetConfigurationType.LINE_CHART,
-        aggregateFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.amount.universalIdentifier,
-        aggregateOperation: AggregateOperations.SUM,
-        primaryAxisGroupByFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.closeDate.universalIdentifier,
-        primaryAxisDateGranularity: ObjectRecordGroupByDateGranularity.DAY,
-        primaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
-        axisNameDisplay: AxisNameDisplay.NONE,
+        configurationType: WidgetConfigurationType.AGGREGATE_CHART,
+        aggregateFieldMetadataUniversalIdentifier,
+        aggregateOperation,
         displayDataLabel: false,
-        displayLegend: true,
-        color: 'crimson',
-        isCumulative: false,
-        timezone: 'UTC',
+        filter: filterConfigs.universal,
+        timezone: DASHBOARD_TIMEZONE,
         firstDayOfTheWeek: CalendarStartDay.SUNDAY,
       },
-      objectMetadataId: opportunityObjectId,
+      objectMetadataId,
       conditionalDisplay: null,
       conditionalAvailabilityExpression: null,
     },
   });
 };
 
-const createOpportunitiesByOwner = ({
+const createNewContactsLast7Days = ({
   args,
 }: {
   args: DashboardWidgetBuilderArgs;
 }): FlatPageLayoutWidget => {
-  const opportunityFields =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.fields;
-  const opportunityObjectId =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.id;
+  const person = args.standardObjectMetadataRelatedEntityIds.person;
 
-  return createStandardPageLayoutWidgetFlatMetadata({
-    ...args,
-    objectMetadataUniversalIdentifier:
-      STANDARD_OBJECTS.opportunity.universalIdentifier,
-    context: {
-      layoutName: 'myFirstDashboard',
-      tabTitle: 'tab1',
-      widgetName: 'opportunitiesByOwner',
-      title: 'Opportunities by Owner',
-      type: WidgetType.GRAPH,
-      gridPosition: { row: 14, column: 0, rowSpan: 6, columnSpan: 12 },
-      position: {
-        layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 14,
-        column: 0,
-        rowSpan: 6,
-        columnSpan: 12,
-      },
-      configuration: {
-        configurationType: WidgetConfigurationType.BAR_CHART,
-        aggregateFieldMetadataId: opportunityFields.id.id,
-        aggregateOperation: AggregateOperations.COUNT,
-        primaryAxisGroupByFieldMetadataId: opportunityFields.owner.id,
-        primaryAxisGroupBySubFieldName: 'name.firstName',
-        primaryAxisDateGranularity: ObjectRecordGroupByDateGranularity.DAY,
-        primaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
-        secondaryAxisGroupByFieldMetadataId: opportunityFields.owner.id,
-        secondaryAxisGroupBySubFieldName: 'name.firstName',
-        secondaryAxisGroupByDateGranularity:
-          ObjectRecordGroupByDateGranularity.DAY,
-        secondaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
-        axisNameDisplay: AxisNameDisplay.NONE,
-        displayDataLabel: false,
-        displayLegend: true,
-        color: 'blue',
-        layout: BarChartLayout.HORIZONTAL,
-        isCumulative: false,
-        timezone: 'UTC',
-        firstDayOfTheWeek: CalendarStartDay.SUNDAY,
-      },
-      universalConfiguration: {
-        configurationType: WidgetConfigurationType.BAR_CHART,
-        aggregateFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.id.universalIdentifier,
-        aggregateOperation: AggregateOperations.COUNT,
-        primaryAxisGroupByFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.owner.universalIdentifier,
-        primaryAxisGroupBySubFieldName: 'name.firstName',
-        primaryAxisDateGranularity: ObjectRecordGroupByDateGranularity.DAY,
-        primaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
-        secondaryAxisGroupByFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.owner.universalIdentifier,
-        secondaryAxisGroupBySubFieldName: 'name.firstName',
-        secondaryAxisGroupByDateGranularity:
-          ObjectRecordGroupByDateGranularity.DAY,
-        secondaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
-        axisNameDisplay: AxisNameDisplay.NONE,
-        displayDataLabel: false,
-        displayLegend: true,
-        color: 'blue',
-        layout: BarChartLayout.HORIZONTAL,
-        isCumulative: false,
-        timezone: 'UTC',
-        firstDayOfTheWeek: CalendarStartDay.SUNDAY,
-      },
-      objectMetadataId: opportunityObjectId,
-      conditionalDisplay: null,
-      conditionalAvailabilityExpression: null,
-    },
+  return createKpiWidget({
+    args,
+    widgetName: 'newContactsLast7Days',
+    title: 'Novos contatos (7 dias)',
+    column: 0,
+    objectMetadataUniversalIdentifier: STANDARD_OBJECTS.person.universalIdentifier,
+    objectMetadataId: person.id,
+    aggregateFieldMetadataId: person.fields.id.id,
+    aggregateFieldMetadataUniversalIdentifier:
+      STANDARD_OBJECTS.person.fields.id.universalIdentifier,
+    aggregateOperation: AggregateOperations.COUNT,
+    filters: [
+      buildRelativeDateFilter({
+        label: 'Creation date',
+        relativeValue: 'PAST_7_DAY',
+        fieldMetadataId: person.fields.createdAt.id,
+        fieldMetadataUniversalIdentifier:
+          STANDARD_OBJECTS.person.fields.createdAt.universalIdentifier,
+      }),
+    ],
   });
 };
 
-const createDealsCreatedThisMonth = ({
+const OPEN_OPPORTUNITY_STAGES = '["NEW","SCREENING","MEETING","PROPOSAL"]';
+
+const createOpenOpportunities = ({
   args,
 }: {
   args: DashboardWidgetBuilderArgs;
 }): FlatPageLayoutWidget => {
-  const opportunityFields =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.fields;
-  const opportunityObjectId =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.id;
+  const opportunity = args.standardObjectMetadataRelatedEntityIds.opportunity;
 
+  return createKpiWidget({
+    args,
+    widgetName: 'openOpportunities',
+    title: 'Oportunidades abertas',
+    column: 4,
+    objectMetadataUniversalIdentifier:
+      STANDARD_OBJECTS.opportunity.universalIdentifier,
+    objectMetadataId: opportunity.id,
+    aggregateFieldMetadataId: opportunity.fields.id.id,
+    aggregateFieldMetadataUniversalIdentifier:
+      STANDARD_OBJECTS.opportunity.fields.id.universalIdentifier,
+    aggregateOperation: AggregateOperations.COUNT,
+    filters: [
+      {
+        type: 'SELECT',
+        label: 'Stage',
+        value: OPEN_OPPORTUNITY_STAGES,
+        displayValue: OPEN_OPPORTUNITY_STAGES,
+        operand: 'IS',
+        fieldMetadataId: opportunity.fields.stage.id,
+        fieldMetadataUniversalIdentifier:
+          STANDARD_OBJECTS.opportunity.fields.stage.universalIdentifier,
+      },
+    ],
+  });
+};
+
+const createTasksDueToday = ({
+  args,
+}: {
+  args: DashboardWidgetBuilderArgs;
+}): FlatPageLayoutWidget => {
+  const task = args.standardObjectMetadataRelatedEntityIds.task;
+
+  return createKpiWidget({
+    args,
+    widgetName: 'tasksDueToday',
+    title: 'Tarefas de hoje',
+    column: 8,
+    objectMetadataUniversalIdentifier: STANDARD_OBJECTS.task.universalIdentifier,
+    objectMetadataId: task.id,
+    aggregateFieldMetadataId: task.fields.id.id,
+    aggregateFieldMetadataUniversalIdentifier:
+      STANDARD_OBJECTS.task.fields.id.universalIdentifier,
+    aggregateOperation: AggregateOperations.COUNT,
+    filters: [
+      buildRelativeDateFilter({
+        label: 'Due Date',
+        relativeValue: 'THIS_1_DAY',
+        fieldMetadataId: task.fields.dueAt.id,
+        fieldMetadataUniversalIdentifier:
+          STANDARD_OBJECTS.task.fields.dueAt.universalIdentifier,
+      }),
+    ],
+  });
+};
+
+const createUpcomingTasksByDay = ({
+  args,
+}: {
+  args: DashboardWidgetBuilderArgs;
+}): FlatPageLayoutWidget => {
+  const task = args.standardObjectMetadataRelatedEntityIds.task;
   const filterConfigs = createFilterConfigs([
-    {
-      type: 'DATE_TIME',
-      label: 'Creation date',
-      value: 'THIS_1_MONTH;;UTC;;SUNDAY;;',
-      displayValue: 'THIS_1_MONTH;;UTC;;SUNDAY;;',
-      operand: 'IS_RELATIVE',
-      fieldMetadataId: opportunityFields.createdAt.id,
+    buildRelativeDateFilter({
+      label: 'Due Date',
+      relativeValue: 'NEXT_7_DAY',
+      fieldMetadataId: task.fields.dueAt.id,
       fieldMetadataUniversalIdentifier:
-        STANDARD_OBJECTS.opportunity.fields.createdAt.universalIdentifier,
-    },
+        STANDARD_OBJECTS.task.fields.dueAt.universalIdentifier,
+    }),
   ]);
 
   return createStandardPageLayoutWidgetFlatMetadata({
     ...args,
-    objectMetadataUniversalIdentifier:
-      STANDARD_OBJECTS.opportunity.universalIdentifier,
+    objectMetadataUniversalIdentifier: STANDARD_OBJECTS.task.universalIdentifier,
     context: {
       layoutName: 'myFirstDashboard',
       tabTitle: 'tab1',
-      widgetName: 'dealsCreatedThisMonth',
-      title: 'Deals created this month',
+      widgetName: 'upcomingTasksByDay',
+      title: 'Próximos compromissos',
       type: WidgetType.GRAPH,
-      gridPosition: { row: 0, column: 0, rowSpan: 2, columnSpan: 6 },
+      gridPosition: { row: 2, column: 8, rowSpan: 6, columnSpan: 4 },
       position: {
         layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 0,
-        column: 0,
-        rowSpan: 2,
-        columnSpan: 6,
+        row: 2,
+        column: 8,
+        rowSpan: 6,
+        columnSpan: 4,
       },
       configuration: {
-        configurationType: WidgetConfigurationType.AGGREGATE_CHART,
-        aggregateFieldMetadataId: opportunityFields.id.id,
+        configurationType: WidgetConfigurationType.BAR_CHART,
+        aggregateFieldMetadataId: task.fields.id.id,
         aggregateOperation: AggregateOperations.COUNT,
-        displayDataLabel: false,
+        primaryAxisGroupByFieldMetadataId: task.fields.dueAt.id,
+        primaryAxisDateGranularity: ObjectRecordGroupByDateGranularity.DAY,
+        primaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
+        axisNameDisplay: AxisNameDisplay.NONE,
+        displayDataLabel: true,
+        displayLegend: false,
+        color: 'blue',
+        layout: BarChartLayout.VERTICAL,
         filter: filterConfigs.configuration,
-        prefix: '',
-        timezone: 'UTC',
+        timezone: DASHBOARD_TIMEZONE,
         firstDayOfTheWeek: CalendarStartDay.SUNDAY,
       },
       universalConfiguration: {
-        configurationType: WidgetConfigurationType.AGGREGATE_CHART,
+        configurationType: WidgetConfigurationType.BAR_CHART,
         aggregateFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.id.universalIdentifier,
+          STANDARD_OBJECTS.task.fields.id.universalIdentifier,
         aggregateOperation: AggregateOperations.COUNT,
-        displayDataLabel: false,
+        primaryAxisGroupByFieldMetadataUniversalIdentifier:
+          STANDARD_OBJECTS.task.fields.dueAt.universalIdentifier,
+        primaryAxisDateGranularity: ObjectRecordGroupByDateGranularity.DAY,
+        primaryAxisOrderBy: GraphOrderBy.FIELD_ASC,
+        axisNameDisplay: AxisNameDisplay.NONE,
+        displayDataLabel: true,
+        displayLegend: false,
+        color: 'blue',
+        layout: BarChartLayout.VERTICAL,
         filter: filterConfigs.universal,
-        prefix: '',
-        timezone: 'UTC',
+        timezone: DASHBOARD_TIMEZONE,
         firstDayOfTheWeek: CalendarStartDay.SUNDAY,
       },
-      objectMetadataId: opportunityObjectId,
-      conditionalDisplay: null,
-      conditionalAvailabilityExpression: null,
-    },
-  });
-};
-
-const createDealValueCreatedThisMonth = ({
-  args,
-}: {
-  args: DashboardWidgetBuilderArgs;
-}): FlatPageLayoutWidget => {
-  const opportunityFields =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.fields;
-  const opportunityObjectId =
-    args.standardObjectMetadataRelatedEntityIds.opportunity.id;
-
-  const filterConfigs = createFilterConfigs([
-    {
-      type: 'DATE_TIME',
-      label: 'Creation date',
-      value: 'THIS_1_MONTH;;UTC;;SUNDAY;;',
-      displayValue: 'THIS_1_MONTH;;UTC;;SUNDAY;;',
-      operand: 'IS_RELATIVE',
-      fieldMetadataId: opportunityFields.createdAt.id,
-      fieldMetadataUniversalIdentifier:
-        STANDARD_OBJECTS.opportunity.fields.createdAt.universalIdentifier,
-    },
-  ]);
-
-  return createStandardPageLayoutWidgetFlatMetadata({
-    ...args,
-    objectMetadataUniversalIdentifier:
-      STANDARD_OBJECTS.opportunity.universalIdentifier,
-    context: {
-      layoutName: 'myFirstDashboard',
-      tabTitle: 'tab1',
-      widgetName: 'dealValueCreatedThisMonth',
-      title: 'Deal value created this month',
-      type: WidgetType.GRAPH,
-      gridPosition: { row: 0, column: 6, rowSpan: 2, columnSpan: 6 },
-      position: {
-        layoutMode: PageLayoutTabLayoutMode.GRID,
-        row: 0,
-        column: 6,
-        rowSpan: 2,
-        columnSpan: 6,
-      },
-      configuration: {
-        configurationType: WidgetConfigurationType.AGGREGATE_CHART,
-        aggregateFieldMetadataId: opportunityFields.amount.id,
-        aggregateOperation: AggregateOperations.SUM,
-        displayDataLabel: false,
-        filter: filterConfigs.configuration,
-        prefix: '$',
-        timezone: 'UTC',
-        firstDayOfTheWeek: CalendarStartDay.SUNDAY,
-      },
-      universalConfiguration: {
-        configurationType: WidgetConfigurationType.AGGREGATE_CHART,
-        aggregateFieldMetadataUniversalIdentifier:
-          STANDARD_OBJECTS.opportunity.fields.amount.universalIdentifier,
-        aggregateOperation: AggregateOperations.SUM,
-        displayDataLabel: false,
-        filter: filterConfigs.universal,
-        prefix: '$',
-        timezone: 'UTC',
-        firstDayOfTheWeek: CalendarStartDay.SUNDAY,
-      },
-      objectMetadataId: opportunityObjectId,
+      objectMetadataId: task.id,
       conditionalDisplay: null,
       conditionalAvailabilityExpression: null,
     },
@@ -681,12 +421,10 @@ export const computeMyFirstDashboardWidgets = (
   args: DashboardWidgetBuilderArgs,
 ): FlatPageLayoutWidget[] => {
   return [
-    createDealsCreatedThisMonth({ args }),
-    createDealValueCreatedThisMonth({ args }),
-    createWelcomeRichText({ args }),
-    createDealsByCompany({ args }),
+    createNewContactsLast7Days({ args }),
+    createOpenOpportunities({ args }),
+    createTasksDueToday({ args }),
     createPipelineValueByStage({ args }),
-    createRevenueTimeline({ args }),
-    createOpportunitiesByOwner({ args }),
+    createUpcomingTasksByDay({ args }),
   ];
 };
