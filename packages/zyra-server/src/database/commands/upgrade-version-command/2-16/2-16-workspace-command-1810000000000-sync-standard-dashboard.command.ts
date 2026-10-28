@@ -6,11 +6,15 @@ import { type RunOnWorkspaceArgs } from 'src/database/commands/command-runners/w
 import { RegisteredWorkspaceCommand } from 'src/engine/core-modules/upgrade/decorators/registered-workspace-command.decorator';
 import { ZyraStandardApplicationService } from 'src/engine/workspace-manager/zyra-standard-application/services/zyra-standard-application.service';
 
-// Workspaces created before the "Início" dashboard shipped still carry the
-// sample "My First Dashboard" widgets. Re-running the standard application
-// sync reconciles that dashboard with the current standard config (the new
-// KPIs, the pipeline chart and the upcoming tasks). The sync is idempotent:
-// on a workspace that is already up to date it changes nothing.
+// The standard application sync deletes standard widgets that are no longer
+// in the config (inferDeletionFromMissingEntities), so this command must not
+// reach workspaces whose owners may have edited the sample dashboard. It is
+// limited to the owner's own workspace ("Horizon"), whose default dashboard
+// was still the unedited sample when this shipped. Workspaces created from
+// now on get the "Início" dashboard at activation and need nothing here.
+export const SYNC_STANDARD_DASHBOARD_TARGET_WORKSPACE_IDS: ReadonlySet<string> =
+  new Set(['8d342e51-c39b-4392-a143-2ceef0317290']);
+
 @RegisteredWorkspaceCommand('2.16.0', 1810000000000)
 @Command({
   name: 'upgrade:2-16:sync-standard-dashboard',
@@ -29,6 +33,14 @@ export class SyncStandardDashboardCommand extends ActiveOrSuspendedWorkspaceComm
     workspaceId,
     options,
   }: RunOnWorkspaceArgs): Promise<void> {
+    if (!SYNC_STANDARD_DASHBOARD_TARGET_WORKSPACE_IDS.has(workspaceId)) {
+      this.logger.log(
+        `Workspace ${workspaceId} is not a target of the dashboard sync, skipping`,
+      );
+
+      return;
+    }
+
     if (options.dryRun ?? false) {
       this.logger.log(
         `[DRY RUN] Would synchronize the standard dashboard for workspace ${workspaceId}`,

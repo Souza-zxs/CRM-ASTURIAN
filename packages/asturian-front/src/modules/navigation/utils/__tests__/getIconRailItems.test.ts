@@ -15,11 +15,17 @@ const buildIcon = (name: string) => {
 
 const getIcon = (iconName: string) => buildIcon(iconName);
 
-const folderEntry = (id: string, label: string): IconRailEntry => ({
+const folderEntry = (
+  id: string,
+  label: string,
+  childPaths: string[] = [`/objects/${id}`],
+): IconRailEntry => ({
   kind: 'folder',
   id,
   label,
   iconName: 'IconBuildingStore',
+  path: childPaths[0] ?? null,
+  childPaths,
 });
 
 const linkEntry = (
@@ -40,7 +46,6 @@ describe('getIconRailItems', () => {
   it('should return one folder item per folder entry', () => {
     const items = getIconRailItems({
       entries: [folderEntry('f1', 'Sales'), folderEntry('f2', 'Productivity')],
-      openedFolderId: null,
       activePath: '/',
       getIcon,
     });
@@ -50,10 +55,61 @@ describe('getIconRailItems', () => {
     ).toEqual(['Sales', 'Productivity']);
   });
 
+  it('should send a folder item to its first accessible child', () => {
+    const items = getIconRailItems({
+      entries: [folderEntry('f1', 'Sales', ['/objects/people', '/objects/companies'])],
+      activePath: '/',
+      getIcon,
+    });
+
+    expect(items[0]).toMatchObject({ kind: 'folder', path: '/objects/people' });
+  });
+
+  it('should hide a folder with no accessible child', () => {
+    const items = getIconRailItems({
+      entries: [folderEntry('empty', 'Empty', [])],
+      activePath: '/',
+      getIcon,
+    });
+
+    expect(items).toEqual([]);
+  });
+
+  it('should mark a folder active when the current path is inside one of its children', () => {
+    const items = getIconRailItems({
+      entries: [
+        folderEntry('f1', 'Sales', ['/objects/people', '/objects/companies']),
+        folderEntry('f2', 'Productivity', ['/objects/tasks']),
+      ],
+      activePath: '/object/person/abc',
+      getIcon,
+    });
+
+    // /objects/people is a list; the record page lives under /object/person.
+    expect(items.map((item) => item.isActive)).toEqual([false, false]);
+
+    const onList = getIconRailItems({
+      entries: [folderEntry('f1', 'Sales', ['/objects/people'])],
+      activePath: '/objects/people',
+      getIcon,
+    });
+
+    expect(onList[0].isActive).toBe(true);
+  });
+
+  it('should ignore the query string of a child path when matching', () => {
+    const items = getIconRailItems({
+      entries: [folderEntry('f1', 'Sales', ['/objects/people?viewId=1'])],
+      activePath: '/objects/people',
+      getIcon,
+    });
+
+    expect(items[0].isActive).toBe(true);
+  });
+
   it('should return a link item with its path for each readable link entry', () => {
     const items = getIconRailItems({
       entries: [linkEntry('dash', 'Início')],
-      openedFolderId: null,
       activePath: '/',
       getIcon,
     });
@@ -65,7 +121,6 @@ describe('getIconRailItems', () => {
   it('should use the default icon when an entry has no icon name', () => {
     const items = getIconRailItems({
       entries: [linkEntry('dash', 'Início', { iconName: null })],
-      openedFolderId: null,
       activePath: '/',
       getIcon,
     });
@@ -81,7 +136,6 @@ describe('getIconRailItems', () => {
         linkEntry('hidden', 'Hidden', { isReadable: false }),
         linkEntry('shown', 'Shown'),
       ],
-      openedFolderId: null,
       activePath: '/',
       getIcon,
     });
@@ -92,7 +146,6 @@ describe('getIconRailItems', () => {
   it('should hide link entries without a destination', () => {
     const items = getIconRailItems({
       entries: [linkEntry('nowhere', 'Nowhere', { path: null })],
-      openedFolderId: null,
       activePath: '/',
       getIcon,
     });
@@ -100,26 +153,24 @@ describe('getIconRailItems', () => {
     expect(items).toEqual([]);
   });
 
-  it('should mark only the opened folder as active', () => {
+  it('should mark the link whose path matches the current path as active', () => {
     const items = getIconRailItems({
-      entries: [folderEntry('f1', 'Sales'), folderEntry('f2', 'Productivity')],
-      openedFolderId: 'f2',
-      activePath: '/',
+      entries: [linkEntry('a', 'A'), linkEntry('b', 'B')],
+      activePath: '/b',
       getIcon,
     });
 
     expect(items.map((item) => item.isActive)).toEqual([false, true]);
   });
 
-  it('should mark the link whose path matches the current path as active', () => {
+  it('should keep a link active on pages nested under its path', () => {
     const items = getIconRailItems({
-      entries: [linkEntry('a', 'A'), linkEntry('b', 'B')],
-      openedFolderId: null,
-      activePath: '/b',
+      entries: [linkEntry('objects', 'Objects', { path: '/objects/people' })],
+      activePath: '/objects/people/record-1',
       getIcon,
     });
 
-    expect(items.map((item) => item.isActive)).toEqual([false, true]);
+    expect(items[0].isActive).toBe(true);
   });
 
   it('should keep every entry when there are more than 12', () => {
@@ -129,7 +180,6 @@ describe('getIconRailItems', () => {
 
     const items = getIconRailItems({
       entries,
-      openedFolderId: null,
       activePath: '/',
       getIcon,
     });

@@ -28,6 +28,15 @@ describe('SyncStandardDashboardCommand', () => {
     expect(synchronize).toHaveBeenCalledWith({ workspaceId: WORKSPACE_ID });
   });
 
+  it('should skip workspaces outside the target list so no other dashboard is touched', async () => {
+    await command.runOnWorkspace({
+      workspaceId: '11111111-1111-4111-8111-111111111111',
+      options: { dryRun: false },
+    } as unknown as RunOnWorkspaceArgs);
+
+    expect(synchronize).not.toHaveBeenCalled();
+  });
+
   it('should not change anything on a dry run', async () => {
     await command.runOnWorkspace(buildArgs(true));
 

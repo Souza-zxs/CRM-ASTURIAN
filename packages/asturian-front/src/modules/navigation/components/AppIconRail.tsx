@@ -6,7 +6,6 @@ import { themeCssVariables } from 'zyra-ui/theme-constants';
 
 import { currentWorkspaceMemberState } from '@/auth/states/currentWorkspaceMemberState';
 import { currentWorkspaceState } from '@/auth/states/currentWorkspaceState';
-import { currentNavigationMenuItemFolderIdState } from '@/navigation-menu-item/common/states/currentNavigationMenuItemFolderIdState';
 import { useIconRailItems } from '@/navigation/hooks/useIconRailItems';
 import { type IconRailItem } from '@/navigation/types/IconRailItem';
 import { isNavigationDrawerExpandedState } from '@/ui/navigation/states/isNavigationDrawerExpanded';
@@ -128,9 +127,6 @@ export const AppIconRail = () => {
   const items = useIconRailItems();
   const currentWorkspace = useAtomStateValue(currentWorkspaceState);
   const currentWorkspaceMember = useAtomStateValue(currentWorkspaceMemberState);
-  const setOpenedFolderId = useSetAtomState(
-    currentNavigationMenuItemFolderIdState,
-  );
   const setIsNavigationDrawerExpanded = useSetAtomState(
     isNavigationDrawerExpandedState,
   );
@@ -140,14 +136,11 @@ export const AppIconRail = () => {
   }
 
   const handleItemClick = (item: IconRailItem) => {
+    // A folder opens its first accessible child. The drawer's "opened folder"
+    // drill-in is a mobile-only mode, so the rail never sets it.
     if (item.kind === 'folder') {
-      setOpenedFolderId(item.id);
       setIsNavigationDrawerExpanded(true);
-
-      return;
     }
-
-    setOpenedFolderId(null);
 
     if (item.path !== undefined) {
       navigate(item.path);

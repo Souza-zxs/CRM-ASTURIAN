@@ -313,6 +313,10 @@ const createOpenOpportunities = ({
   });
 };
 
+// Tasks that are not finished; DONE is left out so a completed task does not
+// keep counting as "due today".
+const PENDING_TASK_STATUSES = '["TODO","IN_PROGRESS"]';
+
 const createTasksDueToday = ({
   args,
 }: {
@@ -339,6 +343,16 @@ const createTasksDueToday = ({
         fieldMetadataUniversalIdentifier:
           STANDARD_OBJECTS.task.fields.dueAt.universalIdentifier,
       }),
+      {
+        type: 'SELECT',
+        label: 'Status',
+        value: PENDING_TASK_STATUSES,
+        displayValue: PENDING_TASK_STATUSES,
+        operand: 'IS',
+        fieldMetadataId: task.fields.status.id,
+        fieldMetadataUniversalIdentifier:
+          STANDARD_OBJECTS.task.fields.status.universalIdentifier,
+      },
     ],
   });
 };

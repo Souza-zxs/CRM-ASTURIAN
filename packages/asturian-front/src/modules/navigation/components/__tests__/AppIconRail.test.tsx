@@ -81,17 +81,38 @@ describe('AppIconRail', () => {
     );
   });
 
-  it('should open the folder in the context panel when a folder item is clicked', () => {
+  it('should open the first accessible item of a folder when a folder item is clicked', () => {
     mockUseIconRailItems.mockReturnValue([
-      buildItem({ id: 'folder-1', label: 'Vendas', kind: 'folder', path: undefined }),
+      buildItem({
+        id: 'folder-1',
+        label: 'Vendas',
+        kind: 'folder',
+        path: '/objects/people',
+      }),
     ]);
 
     renderRail();
     fireEvent.click(screen.getByRole('button', { name: 'Vendas' }));
 
-    expect(jotaiStore.get(currentNavigationMenuItemFolderIdState.atom)).toBe(
-      'folder-1',
-    );
+    expect(mockNavigate).toHaveBeenCalledWith('/objects/people');
+  });
+
+  it('should not put the desktop drawer in the mobile folder drill-in mode', () => {
+    mockUseIconRailItems.mockReturnValue([
+      buildItem({
+        id: 'folder-1',
+        label: 'Vendas',
+        kind: 'folder',
+        path: '/objects/people',
+      }),
+    ]);
+
+    renderRail();
+    fireEvent.click(screen.getByRole('button', { name: 'Vendas' }));
+
+    expect(
+      jotaiStore.get(currentNavigationMenuItemFolderIdState.atom),
+    ).toBeNull();
   });
 
   it('should navigate to the item path when a link item is clicked', () => {

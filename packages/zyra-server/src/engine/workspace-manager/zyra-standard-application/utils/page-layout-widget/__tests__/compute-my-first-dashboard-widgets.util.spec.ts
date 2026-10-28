@@ -49,6 +49,14 @@ describe('computeMyFirstDashboardWidgets', () => {
     expect(serialize(tasksDueToday)).toContain('THIS_1_DAY');
   });
 
+  it('should not count finished tasks as due today', () => {
+    const serialized = serialize(buildWidgets()[2]);
+
+    expect(serialized).toContain('TODO');
+    expect(serialized).toContain('IN_PROGRESS');
+    expect(serialized).not.toContain('DONE');
+  });
+
   it('should include the pipeline by stage chart', () => {
     const titles = buildWidgets().map((widget) => widget.title);
 

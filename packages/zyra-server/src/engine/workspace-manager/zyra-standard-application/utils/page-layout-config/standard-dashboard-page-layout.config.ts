@@ -13,7 +13,9 @@ const DASHBOARD_WIDGET_IDENTIFIERS =
 // The default dashboard ("Início") shows the operation's real numbers: three
 // KPIs on top, the pipeline by stage and the tasks of the next seven days.
 // Widgets of the previous sample dashboard keep their identifiers in
-// zyra-shared (no-delete rule) but are no longer created here.
+// zyra-shared (no-delete rule) but are no longer created here. Note that a
+// standard application sync DELETES standard widgets missing from this config,
+// so it only reaches workspaces that run that sync on purpose.
 const DASHBOARD_PAGE_TABS = {
   tab1: {
     universalIdentifier:

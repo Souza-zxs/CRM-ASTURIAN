@@ -10,6 +10,9 @@ export type IconRailEntry =
       id: string;
       label: string;
       iconName?: string | null;
+      // First accessible child of the folder; null when the user can read none.
+      path: string | null;
+      childPaths: string[];
     }
   | {
       kind: 'link';
@@ -22,16 +25,20 @@ export type IconRailEntry =
 
 type GetIconRailItemsArgs = {
   entries: IconRailEntry[];
-  openedFolderId: string | null;
   activePath: string;
   getIcon: (iconName: string) => IconComponent;
 };
 
-// Entries arrive already in menu display order; links the user cannot read
-// or that have no destination are dropped so the rail never shows dead ends.
+const getPathname = (path: string): string => path.split('?')[0];
+
+const isWithinPath = (activePath: string, basePath: string): boolean =>
+  activePath === basePath || activePath.startsWith(`${basePath}/`);
+
+// Entries arrive already in menu display order. Links the user cannot read,
+// and folders with no readable child, are dropped so the rail never shows
+// dead ends.
 export const getIconRailItems = ({
   entries,
-  openedFolderId,
   activePath,
   getIcon,
 }: GetIconRailItemsArgs): IconRailItem[] =>
@@ -39,13 +46,20 @@ export const getIconRailItems = ({
     const Icon = getIcon(entry.iconName ?? ICON_RAIL_DEFAULT_ICON_NAME);
 
     if (entry.kind === 'folder') {
+      if (entry.path === null) {
+        return [];
+      }
+
       return [
         {
           id: entry.id,
           label: entry.label,
           Icon,
           kind: 'folder',
-          isActive: entry.id === openedFolderId,
+          path: entry.path,
+          isActive: entry.childPaths.some((childPath) =>
+            isWithinPath(activePath, getPathname(childPath)),
+          ),
         },
       ];
     }
@@ -61,7 +75,7 @@ export const getIconRailItems = ({
         Icon,
         kind: 'link',
         path: entry.path,
-        isActive: entry.path === activePath,
+        isActive: isWithinPath(activePath, getPathname(entry.path)),
       },
     ];
   });
