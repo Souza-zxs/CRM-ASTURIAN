@@ -7,6 +7,11 @@ import { NavigationDrawerOpenedSection } from '@/navigation-menu-item/display/se
 import { MainNavigationDrawerScrollableItems } from '@/navigation/components/MainNavigationDrawerScrollableItems';
 import { useIconRailItems } from '@/navigation/hooks/useIconRailItems';
 import { currentNavigationMenuItemFolderIdState } from '@/navigation-menu-item/common/states/currentNavigationMenuItemFolderIdState';
+import { NavigationMenuItemDisplay } from '@/navigation-menu-item/display/components/NavigationMenuItemDisplay';
+import { isNavigationMenuItemReadable } from '@/navigation-menu-item/common/utils/isNavigationMenuItemReadable';
+import { objectMetadataItemsSelector } from '@/object-metadata/states/objectMetadataItemsSelector';
+import { useObjectPermissions } from '@/object-record/hooks/useObjectPermissions';
+import { viewsSelector } from '@/views/states/selectors/viewsSelector';
 import { useIsMobile } from '@/ui/utilities/responsive/hooks/useIsMobile';
 import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
 import { IconTool } from 'zyra-ui/icon';
@@ -37,6 +42,17 @@ const StyledScrollableContent = styled.div`
   min-height: 0;
 `;
 
+const READ_ONLY_EDIT_MODE_PROPS = {
+  isSelectedInEditMode: false,
+  onEditModeClick: undefined,
+} as const;
+
+const StyledFolderItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${themeCssVariables.betweenSiblingsGap};
+`;
+
 const StyledContextHeadingRow = styled.div`
   align-items: center;
   display: flex;
@@ -58,6 +74,9 @@ export const MainNavigationDrawerNavigationContent = () => {
   );
   const { navigationMenuItemsByFolder } = useNavigationMenuItemsByFolder();
   const iconRailItems = useIconRailItems();
+  const objectMetadataItems = useAtomStateValue(objectMetadataItemsSelector);
+  const views = useAtomStateValue(viewsSelector);
+  const { objectPermissionsByObjectMetadataId } = useObjectPermissions();
   const { enterLayoutCustomizationMode } = useEnterLayoutCustomizationMode();
   const isLayoutCustomizationModeEnabled = useAtomStateValue(
     isLayoutCustomizationModeEnabledState,
@@ -140,14 +159,39 @@ export const MainNavigationDrawerNavigationContent = () => {
               {editWorkspaceButton}
             </StyledContextHeadingRow>
           )}
-          <NavigationMenuItemFolderContentDispatcherEffect
-            folderName={openedNavigationMenuItemFolder.folderName}
-            folderId={openedNavigationMenuItemFolder.id ?? ''}
-            navigationMenuItems={
-              openedNavigationMenuItemFolder.navigationMenuItems
-            }
-            shouldShowBackButton={isMobile}
-          />
+          {isMobile ? (
+            <NavigationMenuItemFolderContentDispatcherEffect
+              folderName={openedNavigationMenuItemFolder.folderName}
+              folderId={openedNavigationMenuItemFolder.id ?? ''}
+              navigationMenuItems={
+                openedNavigationMenuItemFolder.navigationMenuItems
+              }
+              shouldShowBackButton
+            />
+          ) : (
+            <StyledFolderItems>
+              {openedNavigationMenuItemFolder.navigationMenuItems
+                .filter((navigationMenuItem) =>
+                  isNavigationMenuItemReadable({
+                    item: navigationMenuItem,
+                    objectMetadataItems,
+                    views,
+                    objectPermissionsByObjectMetadataId,
+                  }),
+                )
+                .map((navigationMenuItem) => (
+                  <NavigationMenuItemDisplay
+                    key={navigationMenuItem.id}
+                    item={navigationMenuItem}
+                    editModeProps={READ_ONLY_EDIT_MODE_PROPS}
+                    isDragging={false}
+                    folderChildrenById={{}}
+                    folderCount={0}
+                    readOnly
+                  />
+                ))}
+            </StyledFolderItems>
+          )}
         </>
       ) : (
         <>
